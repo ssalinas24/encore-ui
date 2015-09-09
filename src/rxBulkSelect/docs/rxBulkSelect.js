@@ -17,6 +17,9 @@ angular.module('demoApp')
         { name: 'SYD2', city: 'Sydney' }
     ];
 
+    // cloned to avoid interference with first demo table
+    $scope.validateDatacenters = _.cloneDeep($scope.datacenters);
+
     $scope.filter = { keyword: '' };
 
     $scope.getSelectedDatacenters = function () {

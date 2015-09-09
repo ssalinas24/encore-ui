@@ -50,6 +50,16 @@ This directive is used to provide links for the batch actions in a hideable menu
 </tr>
 ```
 
+## rxBulkSelectValidate
+
+rxBulkSelectValidate is an **attribute** directive that can accompany the rxBulkSelect directive to provide validation inside a `<form>`. It renders a form invalid until at least one item in the table has been selected.
+
+```html
+<rx-modal-form>
+    <table rx-bulk-select rx-bulk-select-validate bulk-source="servers" selectedKey="rowIsSelected">
+    </table>
+</rx-modal-form>
+```
 
 # Styling
 

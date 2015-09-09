@@ -1,0 +1,40 @@
+<rx-page title="'Collapsible Elements'" class="styleguide">
+
+    <h3> Collaspible Box </h3>
+    <p>
+        The rxCollapse element can be used to display and hide content. It can be
+        configured to show as either expanded or collapsed on page load. A double
+        chevron is used as a toggle to show/hide the inner contents, while keeping
+        the header and border visible.
+    </p>
+    <rx-styleguide code-url="layout/collapsible/box.html"></rx-styleguide>
+
+    <h3> See More/See Less </h3>
+    <p>
+        In areas where metadata needs to be available but space is limited, a
+        "See More"/"See Less" link can be used to expand to show more metadata.
+        The most relevant lines of metadata for a page's content should display on
+        load, with less relevant lines of metadata hidden behind "See More".
+        <ul class="list">
+            <li>
+                This pattern was developed for areas displaying metadata that may
+                be short on screen real estate, as a way to hide data on load that
+                is not as important to the user in the context where they are presented.
+            </li>
+            <li>
+                This pattern is not very responsive-friendly, since as browser
+                width decreases, columns will wrap. As columns wrap, the
+                "See More" rxCollapse elements get lost in the new context, which
+                is bad for user experience.
+            </li>
+            <li>
+                To avoid the problem described above, "See More" rxCollapse elements
+                should only be used at the end of the final column present on the page,
+                so that when the columns wrap via flexbox, "See More" is always last
+                and doesn't get lost in between metadata key/value pairs.
+            </li>
+        </ul>
+    </p>
+    <rx-styleguide code-url="layout/collapsible/see-more-see-less.html"></rx-styleguide>
+
+</rx-page>

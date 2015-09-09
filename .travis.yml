@@ -1,8 +1,17 @@
+sudo: false
 language: node_js
 node_js:
 - '0.10'
 addons:
   firefox: "35.0"
+  apt:
+    packages:
+      - libcairo2-dev
+      - libjpeg8-dev
+      - libpango1.0-dev
+      - libgif-dev
+      - build-essential
+      - g++
 before_install:
 - npm install -g grunt-cli bower
 install:

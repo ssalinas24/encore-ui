@@ -48,6 +48,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 name: 'Style Guide'
             }])
         })
+        /* Layouts */
         .when('/styleguide/layouts', {
             templateUrl: 'styleguide/layouts.html',
             controller: genericRouteController([{
@@ -108,6 +109,13 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 name: 'Style Guide', path: '#/styleguide/basics'
             }, {
                 name: 'Modals'
+            }])
+        })
+        /* Layouts */
+        .when('/layout/collapsible', {
+            templateUrl: 'layout/collapsible.html',
+            controller: genericRouteController([{
+                name: 'Collapsible'
             }])
         })
         /* Style Pages */
@@ -326,6 +334,15 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                             linkText: 'UI Roadmap / Possible Future-work'
                         }
                     ]
+                }
+            ]
+        },
+        {
+            title: 'Layout',
+            children: [
+                {
+                    href: '#/layout/collapsible',
+                    linkText: 'Collapsible'
                 }
             ]
         },

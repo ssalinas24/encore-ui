@@ -21,7 +21,7 @@ td.rx-status-column {
     &.status-WARNING {
         background: #fdbc3c;
         i {
-            color: #db7820;
+            color: @orange;
         }
     }
     &.status-ERROR {
@@ -31,13 +31,13 @@ td.rx-status-column {
         }
     }
     &.status-INFO {
-        background: #86cafd;
+        background: @light-blue;
         i {
             color: #287BBD;
         }
     }
     &.status-DISABLED {
-        background: #dededd;
+        background: @disabled-gray;
     }
 
     .fa-exclamation-circle {

@@ -1,3 +1,26 @@
+<a name="1.29.0"></a>
+## 1.29.0 (2015-09-09)
+
+
+#### Bug Fixes
+
+* **docs:**
+  * Update rxMetadata markup ([ca7c365a](git@github.com:rackerlabs/encore-ui/commit/ca7c365a730a4ff9d7031f1b2a15b6a6ca0e25f0))
+  * Capitalize 'it' ([ec85a7a3](git@github.com:rackerlabs/encore-ui/commit/ec85a7a3f39070b88143727b0125b016b871498c))
+* **index:** Add font-awesome back ([9466e18a](git@github.com:rackerlabs/encore-ui/commit/9466e18afe2f988e1a62901cd33ab8b0f7b86d19))
+* **rxForm:** add top/bottom margins ([34bb001b](git@github.com:rackerlabs/encore-ui/commit/34bb001b07b16d0006477507a93b81dacac81afe))
+* **typo:** colors ([62456ce9](git@github.com:rackerlabs/encore-ui/commit/62456ce964a49679bc641b0a2fe275308144dac6))
+
+
+#### Features
+
+* **accessPolicy:** Add Account Access Policy to rxAccountInfo ([15275798](git@github.com:rackerlabs/encore-ui/commit/152757983da450cc02bc0e8c8ca791e40c77e620))
+* **docs:**
+  * Add collapsible partials ([eab556d3](git@github.com:rackerlabs/encore-ui/commit/eab556d3792e8f0ccea85a0c5f677ef419a8d069))
+  * Add Collapsible Layout page ([ed29f05c](git@github.com:rackerlabs/encore-ui/commit/ed29f05c9a6e8949e4508542db4bfa57d998f666))
+* **rxBulkSelectValidate:** Validate rxBulkSelect in a form ([21f9b564](git@github.com:rackerlabs/encore-ui/commit/21f9b56417b19096ff209bf27308aebd993ae140))
+
+
 <a name="1.28.1"></a>
 ### 1.28.1 (2015-09-03)
 

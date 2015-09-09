@@ -11,7 +11,8 @@ describe('rxAccountInfo', function () {
 
         account = {
             name: 'Mosso',
-            status: 'Active'
+            status: 'Active',
+            accessPolicy: 'Full'
         };
 
         badges = [
@@ -123,6 +124,26 @@ describe('rxAccountInfo', function () {
         expect(el.text()).to.contain('Mosso');
     });
 
+    it('should populate the account access policy: Full', function () {
+        account.$deferred.resolve(account);
+        scope.$digest();
+        expect(el.text()).to.contain('Full');
+    });
+
+    it('should populate the account access policy: Suspended', function () {
+        account.accessPolicy = 'Suspended';
+        account.$deferred.resolve(account);
+        scope.$digest();
+        expect(el.text()).to.contain('Suspended');
+    });
+
+    it('should populate the account access policy: Terminated', function () {
+        account.accessPolicy = 'Terminated';
+        account.$deferred.resolve(account);
+        scope.$digest();
+        expect(el.text()).to.contain('Terminated');
+    });
+
     it('should set an empty status class for an Active account', function () {
         account.$deferred.resolve(account);
         scope.$digest();
@@ -135,7 +156,7 @@ describe('rxAccountInfo', function () {
         scope.$digest();
         expect(el.isolateScope().statusClass).to.equal('msg-warn');
     });
-    
+
     it('should set the info class for Pending Approval', function () {
         account.status = 'Pending Approval';
         account.$deferred.resolve(account);

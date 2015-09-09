@@ -91,6 +91,15 @@ var rxAccountInfo = {
     },
 
     /**
+       @returns {String} The account access policy.
+     */
+    accessPolicy: {
+        get: function () {
+            return this.rootElement.element(by.binding('accountAccessPolicy')).getText();
+        }
+    },
+
+    /**
        The resulting status is lowercased so that it is easy to use with
        <a href="#encore.module_rxAccountInfo.statuses">encore.rxAccountInfo.statuses</a>.
        @returns {String} The account status, to lower case.

@@ -22,6 +22,10 @@ describe('rxAccountInfo', function () {
         expect(rxAccountInfo.number).to.eventually.equal('12345');
     });
 
+    it('should show the account access policy', function () {
+        expect(rxAccountInfo.accessPolicy).to.eventually.equal('Full');
+    });
+
     describe('badges', function () {
         var badgeNames = ['Creative Commons', 'Attribution', 'Non-Commercial', 'Public Domain'];
 

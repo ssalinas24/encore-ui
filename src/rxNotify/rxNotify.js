@@ -1,16 +1,89 @@
+/**
+ * @ngdoc overview
+ * @name rxNotify
+ * @description
+ * # rxNotify Component
+ *
+ * Logic for displaying status messages on a page.
+ *
+ * ## Services
+ * * {@link rxNotify.service:rxNotify rxNotify}
+ * * {@link rxNotify.service:rxPromiseNotifications rxPromiseNotifications}
+ *
+ * ## Directives
+ * * {@link rxNotify.directive:rxNotification rxNotification}
+ * * {@link rxNotify.directive:rxNotifications rxNotifications}
+ *
+ * # Use Cases
+ *
+ * ## Add Notification in Loading State
+ * <pre>
+ * rxNotify.add('Loading', {
+ *     loading: true,
+ *     dismiss: [$scope, 'loaded']
+ * });
+ * var apiCallback = function (data) {
+ *     $scope.loaded = true;
+ *     // do something with the data
+ * };
+ * </pre>
+ *
+ * ## Show Notification on Variable Change
+ * <pre>
+ * $scope.loaded = false;
+ * rxNotify.add('Content Loaded', {
+ *     show: [$scope, 'loaded']
+ * });
+ * $timeout(function () {
+ *     $scope.loaded = true;
+ * }, 1500);
+ * </pre>
+ *
+ *
+ * ## Dismiss Notification on Variable Change
+ * <pre>
+ * $scope.loaded = false;
+ * rxNotify.add('Content Loaded', {
+ *     dismiss: [$scope, 'loaded']
+ * });
+ * $timeout(function () {
+ *     $scope.loaded = true;
+ * }, 1500);
+ * </pre>
+ *
+ *
+ * ## Using a Custom Stack
+ * Say you want to create a stack for a login form.
+ * Let's call the stack 'loginForm' to reference in our code.
+ *
+ * **Controller**
+ * <pre>
+ * rxNotify.add('Username required', {
+ *     type: 'error',
+ *     stack: 'loginForm'
+ * });
+ * </pre>
+ *
+ * **View**
+ * <pre>
+ * <rx-notifications stack="loginForm"></rx-notifications>
+ * </pre>
+ */
 angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
 /**
 * @ngdoc directive
-* @name encore.ui.rxNotify:rxNotification
+* @name rxNotify.directive:rxNotification
 * @restrict E
 * @scope
 * @description
 * Display a static message with styling taken from rx-notifications
 *
-* @param {string} type The type of notification (e.g. 'warning', 'error')
+* @param {String=} [type='info'] The type of notification (e.g. 'warning', 'error')
 *
 * @example
+* <pre>
 * <rx-notification type="warning">This is a message!</rx-notification>
+* </pre>
 */
 .directive('rxNotification', function (rxNotify) {
     return {
@@ -56,16 +129,18 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
 })
  /**
  * @ngdoc directive
- * @name encore.ui.rxNotify:rxNotifications
+ * @name rxNotify.directive:rxNotifications
  * @restrict E
  * @scope
  * @description
  * Displays all messages in a stack
  *
- * @param {string} [stack] The message stack to associate with
+ * @param {String=} [stack='page'] The message stack to associate with
  *
  * @example
+ * <pre>
  * <rx-notifications stack="myCustomStack"></rx-notifications>
+ * </pre>
  */
 .directive('rxNotifications', function (rxNotify) {
     return {
@@ -99,11 +174,11 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
     };
 })
 /**
-* @ngdoc service
-* @name encore.ui.rxNotify:rxNotify
-* @description
-* Manages page messages for an application
-*/
+ * @ngdoc service
+ * @name rxNotify.service:rxNotify
+ * @description
+ * Manages page messages for an application
+ */
 .service('rxNotify', function ($interval, $rootScope) {
     var defaultStack = 'page';
     var stacks = {};
@@ -117,7 +192,6 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
     var messageDefaults = {
         type: 'info',
         timeout: -1,
-        dismissable: true,
         loading: false,
         show: 'immediate',
         dismiss: 'next',
@@ -126,10 +200,12 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         repeat: true
     };
 
-    /*
-     * Adds a message to a stack
+    /**
+     * @function
      * @private
-     * @param {object} message The message object to add.
+     * @description Adds a message to a stack
+     *
+     * @param {Object} message The message object to add.
      */
     var addToStack = function (message) {
         // if repeat is false, check to see if the message is already in the stack
@@ -148,12 +224,15 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         if (message.text.length > 0) {
             stacks[message.stack].push(message);
         }
-    };
+    };//addToStack
 
-    /*
-     * Sets a timeout to wait a specific time then dismiss message
+    /**
+     * @function
      * @private
-     * @param {object} message The message object to remove.
+     * @description
+     * Sets a timeout to wait a specific time then dismiss message
+     *
+     * @param {Object} message The message object to remove.
      */
     var dismissAfterTimeout = function (message) {
         // convert seconds to milliseconds
@@ -162,14 +241,16 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         $interval(function () {
             dismiss(message);
         }, timeoutMs, 1);
-
     };
 
-    /*
-     * Shows/dismisses message after scope.prop change to true
+    /**
+     * @function
      * @private
-     * @param {object} message The message object to show/dismiss
-     * @param {string} changeType Whether to 'show' or 'dismiss' the message
+     * @description
+     * Shows/dismisses message after scope.prop change to true
+     *
+     * @param {Object} message The message object to show/dismiss
+     * @param {String} changeType Whether to 'show' or 'dismiss' the message
      */
     var changeOnWatch = function (message, changeType) {
         var scope = message[changeType][0];
@@ -195,13 +276,14 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
                 cb(message);
             }
         });
-    };
+    };//changeOnWatch
 
-    /*
-     * removes all messages that are shown and dismissable
+    /**
+     * @function
      * @private
+     * @description removes all messages that are shown
      */
-    var clearAllDismissable = function () {
+    var clearAllShown = function () {
         _.forOwn(stacks, function (index, key) {
             stacks[key] = _.reject(stacks[key], {
                 'dismiss': messageDefaults.dismiss
@@ -209,9 +291,10 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         });
     };
 
-    /*
-     * adds messages marked as 'next' to relevant queues
+    /**
+     * @function
      * @private
+     * @description adds messages marked as 'next' to relevant queues
      */
     var addAllNext = function () {
         _.each(nextQueue, function (message) {
@@ -223,10 +306,13 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         nextQueue.length = 0;
     };
 
-    /*
-     * deletes all messages in a stack
-     * @public
-     * @param {string} stack The name of the stack to clear
+    /**
+     * @name clear
+     * @ngdoc method
+     * @methodOf rxNotify.service:rxNotify
+     * @description deletes all messages in a stack
+     *
+     * @param {String} stack The name of the stack to clear
      */
     var clear = function (stack) {
         if (stacks.hasOwnProperty(stack)) {
@@ -235,10 +321,13 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         }
     };
 
-    /*
-     * removes a specific message from a stack
-     * @public
-     * @param {string} msg Message to remove
+    /**
+     * @name dismiss
+     * @ngdoc method
+     * @methodOf rxNotify.service:rxNotify
+     * @description removes a specific message from a stack
+     *
+     * @param {Object} msg Message object to remove
      */
     var dismiss = function (msg) {
         // remove message by id
@@ -249,13 +338,64 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
                 msg.ondismiss(msg);
             }, 0, 1);
         }
-    };
+    };//dismiss()
 
-    /*
-     * adds a message to a stack
-     * @public
-     * @param {string} text Message text
-     * @param {object} options Message options. See README.md for examples
+    /**
+     * @name add
+     * @ngdoc method
+     * @methodOf rxNotify.service:rxNotify
+     * @description adds a message to a stack
+     *
+     * @param {String} text Message text
+     * @param {Object=} options Message options
+     * @param {String=} [options.type='info'] Message Type
+     *
+     * Values:
+     * * 'info'
+     * * 'warning'
+     * * 'error'
+     * * 'success'
+     * @param {Integer=} [options.timeout=-1]
+     * Time (in seconds) for message to appear. A value of -1 will display
+     * the message until it is dismissed or the user navigates away from the
+     * page.
+     *
+     * Values:
+     * * -1
+     * * Any positive integer
+     * @param {Boolean=} [options.repeat=true]
+     * Whether the message should be allowed to appear more than once in the stack.
+     * @param {Boolean=} [options.loading=false]
+     * Replaces type icon with spinner. Removes option for use to dismiss message.
+     *
+     * You usually want to associate this with a 'dismiss' property.
+     * @param {String|Array=} [options.show='immediate']
+     * When to have the message appear.
+     *
+     * Values:
+     * * 'immediate'
+     * * 'next'
+     * * [scope, 'property']
+     *   * Pass in a property on a scope to watch for a change.
+     *     When the property equals true, the message is shown.
+     * @param {String|Array=} [options.dismiss='next']
+     * When to have the message disappear.
+     *
+     * Values:
+     * * 'next'
+     * * [scope, 'property']
+     *     * Pass in a property on a scope to watch for a change.
+     *       When the property equals true, the message is dismissed.
+     * @param {Function=} [options.ondismiss=_.noop]
+     * Function that should be run when message is dismissed.
+     * @param {String=} [options.stack='page']
+     * Which message stack the message gets added to.
+     *
+     * Values:
+     * * 'page'
+     * * Any String *(results in a custom stack)*
+     *
+     * @returns {Object} message object
      */
     var add = function (text, options) {
         var message = {
@@ -297,11 +437,11 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
 
         // return message object
         return message;
-    };
+    };//add()
 
     // add a listener to root scope which listens for the event that gets fired when the route successfully changes
     $rootScope.$on('$routeChangeSuccess', function processRouteChange () {
-        clearAllDismissable();
+        clearAllShown();
         addAllNext();
     });
 
@@ -315,21 +455,22 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
 })
 /**
 * @ngdoc service
-* @name encore.ui.rxNotify:rxPromiseNotifications
-* @description
-* Manages displaying messages for a promise
+* @name rxNotify.service:rxPromiseNotifications
+* @description Manages displaying messages for a promise
 *
 * @example
+* <pre>
 * rxPromiseNotifications.add($scope.deferred.promise, {
 *     loading: 'Loading Message',
 *     success: 'Success Message',
 *     error: 'Error Message'
 * });
+* </pre>
 */
 .factory('rxPromiseNotifications', function (rxNotify, $rootScope, $q, $interpolate) {
     var scope = $rootScope.$new();
 
-    /*
+    /**
      * Removes 'loading' message from stack
      * @private
      * @this Scope used for storing messages data
@@ -340,7 +481,7 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         }
     };
 
-    /*
+    /**
      * shows either a success or error message
      * @private
      * @this Scope used for storing messages data
@@ -366,7 +507,7 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         }
     };
 
-    /*
+    /**
      * cancels all messages from displaying
      * @private
      * @this Scope used for storing messages data
@@ -376,15 +517,23 @@ angular.module('encore.ui.rxNotify', ['ngSanitize', 'ngAnimate'])
         this.deferred.reject();
     };
 
-    /*
-     * Creates a new promise notification handler to show loading, success/error messages
-     * @public
-     * @param {Object} promise The promise to attach to for showing success/error messages
-     * @param {Object} msgs The messages to display. Can take in HTML/expressions
-     * @param {Object} msgs.loading Loading message to show while promise is unresolved
-     * @param {Object} [msgs.success] Success message to show on successful promise resolve
-     * @param {Object} [msgs.error] Error message to show on promise rejection
-     * @param {string} [stack] What stack to add to. Defaults to default rxNotify stack
+    /**
+     * @name add
+     * @ngdoc method
+     * @methodOf rxNotify.service:rxPromiseNotifications
+     * @description
+     * @param {Object} promise
+     * The promise to attach to for showing success/error messages
+     * @param {Object} msgs
+     * The messages to display. Can take in HTML/expressions
+     * @param {String} msgs.loading
+     * Loading message to show while promise is unresolved
+     * @param {String=} msgs.success
+     * Success message to show on successful promise resolve
+     * @param {String=} msgs.error
+     * Error message to show on promise rejection
+     * @param {String=} [stack='page']
+     * What stack to add to
      */
     var add = function (promise, msgs, stack) {
         var deferred = $q.defer();

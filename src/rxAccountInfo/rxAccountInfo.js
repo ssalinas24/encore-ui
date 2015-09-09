@@ -72,6 +72,7 @@ angular.module('encore.ui.rxAccountInfo', [])
             Encore.getAccount({ id: scope.accountNumber }, function (account) {
                 scope.accountName = account.name;
                 scope.accountStatus = account.status;
+                scope.accountAccessPolicy = account.accessPolicy;
                 scope.statusClass = '';
                 var statusClass = AccountStatusGroup(account.status);
                 if (statusClass === 'warning') {

@@ -8,7 +8,6 @@ angular.module('demoApp')
     $scope.options = {
         type: 'info',
         timeout: -1,
-        dismissable: true,
         show: 'immediate',
         repeat: true
     };

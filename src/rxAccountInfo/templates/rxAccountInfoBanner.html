@@ -20,6 +20,10 @@
             <div class="label">Account Status:</div>
             <div class="account-data {{ statusClass }} account-status">{{ accountStatus }}</div>
         </li>
+        <li>
+            <div class="label">Access Policy:</div>
+            <div class="account-data">{{ accountAccessPolicy }}</div>
+        </li>
         <li ng-if="showCurrentUser">
             <div class="label">Current User:</div>
             <div class="account-data">

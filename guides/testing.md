@@ -112,7 +112,7 @@ The filename for these page objects follows the `componentName.page.js` conventi
 
 On a build of EncoreUI, all page object files are concatenated and tarballed into the `dist` directory. They are then published either manually or via Travis. To use these page objects, developers should include the following dependency in their app's `package.json` file:
 
-    "rx-page-objects": "rx-page-objects-1.28.1.tgz"
+    "rx-page-objects": "rx-page-objects-1.29.0.tgz"
 
 Alternatively, they can install the file using this command:
 
