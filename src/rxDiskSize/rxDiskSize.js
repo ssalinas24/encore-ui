@@ -1,4 +1,20 @@
+/**
+ * @ngdoc overview
+ * @name rxDiskSize
+ * @description
+ * # rxDiskSize Component
+ *
+ * [TBD]
+ *
+ * ## Filters
+ * * {@link rxDiskSize.filter:rxDiskSize rxDiskSize}
+ */
 angular.module('encore.ui.rxDiskSize', [])
+/**
+ * @ngdoc filter
+ * @name rxDiskSize.filter:rxDiskSize
+ * @description [TBD]
+ */
 .filter('rxDiskSize', function () {
     return function (size, unit) {
         var units = ['GB', 'TB', 'PB'];

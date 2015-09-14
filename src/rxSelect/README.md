@@ -1,7 +1,5 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxSelect.directive:rxSelect)
-
 The rxSelect component is an **attribute directive** that wraps native select elements in markup required for styling.
 
 ## Styling

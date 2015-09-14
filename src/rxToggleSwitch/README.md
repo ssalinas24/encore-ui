@@ -1,7 +1,5 @@
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxToggleSwitch.directive:rxToggleSwitch)
-
 A simple boolean toggle switch.
 
 The switch shows the states of 'ON' and 'OFF', which evaluate to `true` and `false`, respectively.  The model values are configurable with the `true-value` and `false-value` attributes.

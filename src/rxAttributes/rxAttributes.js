@@ -1,4 +1,21 @@
+/**
+ * @ngdoc overview
+ * @name rxAttributes
+ * @description
+ * # rxAttributes Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxAttributes.directive:rxAttributes rxAttributes}
+ */
 angular.module('encore.ui.rxAttributes', [])
+/**
+ * @ngdoc directive
+ * @name rxAttributes.directive:rxAttributes
+ * @restrict E
+ * @description [TBD]
+ */
 .directive('rxAttributes', function ($parse, $compile) {
     // @see http://stackoverflow.com/questions/19224028/add-directives-from-directive-in-angularjs
     return {

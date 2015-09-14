@@ -1,10 +1,17 @@
 /**
  * @ngdoc overview
  * @name rxOptionTable
+ * @description
+ * # rxOptionTable Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}
+ * * {@link rxOptionTable.directive:rxFormOptionTable rxFormOptionTable} (*deprecated*)
  */
 angular.module('encore.ui.rxOptionTable', ['ngSanitize'])
 /**
- *
  * @ngdoc directive
  * @name rxOptionTable.directive:rxOptionTable
  * @restrict E

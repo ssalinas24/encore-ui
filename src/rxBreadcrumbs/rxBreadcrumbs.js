@@ -1,4 +1,23 @@
+/**
+ * @ngdoc overview
+ * @name rxBreadcrumbs
+ * @description
+ * # rxBreadcrumbs Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxBreadcrumbs.directive:rxBreadcrumbs rxBreadcrumbs}
+ *
+ * ## Services
+ * * {@link rxBreadcrumbs.service:rxBreadcrumbsSvc rxBreadcrumbsSvc}
+ */
 angular.module('encore.ui.rxBreadcrumbs', ['ngSanitize'])
+/**
+ * @ngdoc service
+ * @name rxBreadcrumbs.service:rxBreadcrumbsSvc
+ * @description [TBD]
+ */
 .factory('rxBreadcrumbsSvc', function () {
     // default will always be home
     var breadcrumbs = [{
@@ -41,22 +60,21 @@ angular.module('encore.ui.rxBreadcrumbs', ['ngSanitize'])
 
     return breadcrumbsService;
 })
-
 /**
-* @ngdoc directive
-* @name encore.ui.rxBreadcrumbs:rxBreadcrumbs
-* @restrict E
-* @scope
-* @description
-* Responsible for drawing the breadcrumbs for a page
-*
-* @param {string} [status] The tag to apply to any breadcrumbs with usePageStatusTag:true
-*
-* @example
-* <pre>
-*     <rx-app site-title="Custom Title"></rx-app>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxBreadcrumbs.directive:rxBreadcrumbs
+ * @restrict E
+ * @scope
+ * @description
+ * Responsible for drawing the breadcrumbs for a page
+ *
+ * @param {String=} status The tag to apply to any breadcrumbs with usePageStatusTag:true
+ *
+ * @example
+ * <pre>
+ * <rx-app site-title="Custom Title"></rx-app>
+ * </pre>
+ */
 .directive('rxBreadcrumbs', function () {
     return {
         restrict: 'E',

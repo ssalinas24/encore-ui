@@ -1,3 +1,18 @@
+/**
+ * @ngdoc overview
+ * @name rxFeedback
+ * @description
+ * # rxFeedback Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxFeedback.directive:rxFeedback rxFeedback}
+ *
+ * ## Services
+ * * {@link rxFeedback.service:rxFeedbackSvc rxFeedbackSvc}
+ * * {@link rxFeedback.service:rxScreenshotSvc rxScreenshotSvc}
+ */
 angular.module('encore.ui.rxFeedback', ['ngResource'])
 .value('feedbackTypes', [
     {
@@ -22,7 +37,14 @@ angular.module('encore.ui.rxFeedback', ['ngResource'])
             'to make it even better'
     }
 ])
-// requires html2canvas
+/**
+ * @ngdoc service
+ * @name rxFeedback.service:rxScreenshotSvc
+ * @description
+ * requires html2canvas
+ *
+ * [TBD]
+ */
 .service('rxScreenshotSvc', function ($log, $q) {
     // double check that html2canvas is loaded
     var hasDependencies = function () {
@@ -52,6 +74,11 @@ angular.module('encore.ui.rxFeedback', ['ngResource'])
         }
     };
 })
+/**
+ * @ngdoc service
+ * @name rxFeedback.service:rxFeedbackSvc
+ * @description [TBD]
+ */
 .factory('rxFeedbackSvc', function ($resource, feedbackApi, $location, $window) {
     var container = {
         api: undefined,
@@ -86,6 +113,13 @@ angular.module('encore.ui.rxFeedback', ['ngResource'])
 
     return container;
 })
+/**
+ * @ngdoc directive
+ * @name rxFeedback.directive:rxFeedback
+ * @restrict E
+ * @scope
+ * @description [TBD]
+ */
 .directive('rxFeedback', function (feedbackTypes, $location, rxFeedbackSvc, rxScreenshotSvc, rxNotify, Session) {
     return {
         restrict: 'E',

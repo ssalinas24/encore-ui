@@ -1,7 +1,5 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxRadio.directive:rxRadio)
-
 rxRadio is an **attribute directive** that wraps a native radio element in markup required for styling purposes.
 To use the directive, you can replace `type="radio"` with `rx-radio`. The directive is smart enough to set
 the correct input type.

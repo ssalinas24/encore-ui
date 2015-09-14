@@ -1,14 +1,50 @@
-angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnvironment', 'ngSanitize',
-    'ngRoute', 'cfp.hotkeys', 'encore.ui.rxSession', 'encore.ui.rxLocalStorage', 'encore.ui.rxPermission'])
 /**
-* @ngdoc service
-* @name encore.ui.rxApp:encoreRoutes
-* @description
-* Creates a shared instance of AppRoutes that is used for the Encore App nav.
-* This allows apps to make updates to the nav via `encoreRoutes`.
-*
-* @returns {object} Instance of rxAppRoutes with `fetchRoutes` method added
-*/
+ * @ngdoc overview
+ * @name rxApp
+ * @description
+ * # rxApp Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxApp.directive:rxAccountSearch rxAccountSearch}
+ * * {@link rxApp.directive:rxAccountUsers rxAccountUsers}
+ * * {@link rxApp.directive:rxApp rxApp}
+ * * {@link rxApp.directive:rxAppNav rxAppNav}
+ * * {@link rxApp.directive:rxAppNavItem rxAppNavItem}
+ * * {@link rxApp.directive:rxAppSearch rxAppSearch}
+ * * {@link rxApp.directive:rxAtlasSearch rxAtlasSearch}
+ * * {@link rxApp.directive:rxBillingSearch rxBillingSearch}
+ * * {@link rxApp.directive:rxPage rxPage}
+ * * {@link rxApp.directive:rxStatusTag rxStatusTag}
+ * * {@link rxApp.directive:rxTicketSearch rxTicketSearch}
+ *
+ * ## Services
+ * * {@link rxApp.service:encoreRoutes encoreRoutes}
+ * * {@link rxApp.service:rxHideIfUkAccount rxHideIfUkAccount}
+ * * {@link rxApp.service:rxVisibility rxVisibility}
+ * * {@link rxApp.service:rxVisibilityPathParams rxVisibilityPathParams}
+ * * {@link rxApp.service:rxStatusTags rxStatusTags}
+ */
+angular.module('encore.ui.rxApp', [
+    'encore.ui.rxAppRoutes',
+    'encore.ui.rxEnvironment',
+    'ngSanitize',
+    'ngRoute',
+    'cfp.hotkeys',
+    'encore.ui.rxSession',
+    'encore.ui.rxLocalStorage',
+    'encore.ui.rxPermission'
+])
+/**
+ * @ngdoc service
+ * @name rxApp.service:encoreRoutes
+ * @description
+ * Creates a shared instance of AppRoutes that is used for the Encore App nav.
+ * This allows apps to make updates to the nav via `encoreRoutes`.
+ *
+ * @return {Object} Instance of rxAppRoutes with `fetchRoutes` method added
+ */
 .factory('encoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
                                    rxVisibilityPathParams, rxVisibility, Environment,
                                    rxHideIfUkAccount, LocalStorage) {
@@ -79,26 +115,26 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     return encoreRoutes;
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxApp
-* @restrict E
-* @scope
-* @description
-* Responsible for creating the HTML necessary for a common Encore layout.
-*
-* @param {string} [siteTitle] Title of site to use in upper right hand corner
-* @param {array} [menu] Menu items used for left-hand navigation
-* @param {string} [collapsibleNav] Set to 'true' if the navigation menu should be collapsible
-* @param {string} [collapsedNav] Binding for the collapsed state of the menu.
-* @param {boolean} [newInstance] Whether the menu items should be a new instance of rxAppRoutes
-* @param {boolean} [hideFeeback] Whether to hide the 'feedback' link or not (defaults to show it)
-* @param {string} [logoutUrl] URL to pass to rx-logout
-*
-* @example
-* <pre>
-*     <rx-app site-title="Custom Title"></rx-app>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxApp
+ * @restrict E
+ * @scope
+ * @description
+ * Responsible for creating the HTML necessary for a common Encore layout.
+ *
+ * @param {string} [siteTitle] Title of site to use in upper right hand corner
+ * @param {array} [menu] Menu items used for left-hand navigation
+ * @param {string} [collapsibleNav] Set to 'true' if the navigation menu should be collapsible
+ * @param {string} [collapsedNav] Binding for the collapsed state of the menu.
+ * @param {boolean} [newInstance] Whether the menu items should be a new instance of rxAppRoutes
+ * @param {boolean} [hideFeeback] Whether to hide the 'feedback' link or not (defaults to show it)
+ * @param {string} [logoutUrl] URL to pass to rx-logout
+ *
+ * @example
+ * <pre>
+ * <rx-app site-title="Custom Title"></rx-app>
+ * </pre>
+ */
 .directive('rxApp', function (encoreRoutes, rxAppRoutes, hotkeys,
                               Environment, routesCdnPath, Session) {
     return {
@@ -164,28 +200,28 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxPage
-* @restrict E
-* @scope
-* @description
-* Responsible for creating the HTML necessary for a page (including breadcrumbs and page title)
-* You can pass in a `title` attribute or an `unsafeHtmlTitle` attribute, but not both. Use the former
-* if your title is a plain string, use the latter if your title contains embedded HTML tags AND you
-* trust the source of this title. Arbitrary javascript can be executed, so ensure you trust your source.
-*
-* The document title will be set to either `title` or a stripped version of `unsafeHtmlTitle`, depending
-* on which you provide.
-*
-* @param {expression} [title] Title of page
-* @param {expression} [unsafeHtmlTitle] Title for the page, with embedded HTML tags
-* @param {expression} [subtitle] Subtitle of page
-*
-* @example
-* <pre>
-*     <rx-page title="'Page Title'"></rx-page>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxPage
+ * @restrict E
+ * @scope
+ * @description
+ * Responsible for creating the HTML necessary for a page (including breadcrumbs and page title)
+ * You can pass in a `title` attribute or an `unsafeHtmlTitle` attribute, but not both. Use the former
+ * if your title is a plain string, use the latter if your title contains embedded HTML tags AND you
+ * trust the source of this title. Arbitrary javascript can be executed, so ensure you trust your source.
+ *
+ * The document title will be set to either `title` or a stripped version of `unsafeHtmlTitle`, depending
+ * on which you provide.
+ *
+ * @param {expression} [title] Title of page
+ * @param {expression} [unsafeHtmlTitle] Title for the page, with embedded HTML tags
+ * @param {expression} [subtitle] Subtitle of page
+ *
+ * @example
+ * <pre>
+ * <rx-page title="'Page Title'"></rx-page>
+ * </pre>
+ */
 .directive('rxPage', function () {
     return {
         restrict: 'E',
@@ -239,21 +275,21 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxAppNav
-* @restrict E
-* @scope
-* @description
-* Creates a menu based on items passed in.
-*
-* @param {object} items Menu items to display. See encoreNav for object definition
-* @param {string} level Level in heirarchy in page. Higher number is deeper nested
-*
-* @example
-* <pre>
-*     <rx-app-nav level="1" items="menuItems"></rx-app-nav>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxAppNav
+ * @restrict E
+ * @scope
+ * @description
+ * Creates a menu based on items passed in.
+ *
+ * @param {object} items Menu items to display. See encoreNav for object definition
+ * @param {string} level Level in heirarchy in page. Higher number is deeper nested
+ *
+ * @example
+ * <pre>
+ * <rx-app-nav level="1" items="menuItems"></rx-app-nav>
+ * </pre>
+ */
 .directive('rxAppNav', function () {
     return {
         restrict: 'E',
@@ -266,18 +302,19 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxAppNavItem
-* @restrict E
-* @description
-* Creates a menu item. Recursively creates rx-app-nav if 'children' present.
-* 'Item' must be avialable via scope
-*
-* @example
-* <pre>
-*     <rx-app-nav-item ng-repeat="item in items"></rx-app-nav-item>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxAppNavItem
+ * @restrict E
+ * @scope
+ * @description
+ * Creates a menu item. Recursively creates rx-app-nav if 'children' present.
+ * 'Item' must be avialable via scope
+ *
+ * @example
+ * <pre>
+ * <rx-app-nav-item ng-repeat="item in items"></rx-app-nav-item>
+ * </pre>
+ */
 .directive('rxAppNavItem', function ($compile, $location, $route) {
     var linker = function (scope, element) {
         var injectContent = function (selector, content) {
@@ -399,18 +436,17 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxAppSearch
-* @restrict E
-* @scope
-* @description
-* Creates a search input form for navigation
-*
-* @param {string} [placeholder] Title of page
-* @param {*} [model] Model to tie input form to (via ng-model)
-* @param {function} [submit] Function to run on submit (model is passed as only argument to function)
-*
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxAppSearch
+ * @restrict E
+ * @scope
+ * @description
+ * Creates a search input form for navigation
+ *
+ * @param {string} [placeholder] Title of page
+ * @param {*} [model] Model to tie input form to (via ng-model)
+ * @param {function} [submit] Function to run on submit (model is passed as only argument to function)
+ */
 .directive('rxAppSearch', function () {
     return {
         restrict: 'E',
@@ -426,7 +462,7 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
 })
 /**
  * @ngdoc directive
- * @name encore.ui.rxApp:rxAccountUsers
+ * @name rxApp.directive:rxAccountUsers
  * @restrict E
  * @description
  * Provides the ability to switch between account users. This directive is specific to Rackspace
@@ -511,12 +547,12 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxAtlasSearch
-* @restrict E
-* @description
-* Used to search accounts for Cloud Atlas
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxAtlasSearch
+ * @restrict E
+ * @description
+ * Used to search accounts for Cloud Atlas
+ */
 .directive('rxAtlasSearch', function ($window) {
     return {
         template: '<rx-app-search placeholder="Search by username..." submit="searchAccounts"></rx-app-search>',
@@ -530,6 +566,12 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         }
     };
 })
+/**
+ * @ngdoc directive
+ * @name rxApp.directive:rxAccountSearch
+ * @restrict E
+ * @description [TBD]
+ */
 .directive('rxAccountSearch', function ($window) {
     return {
         templateUrl: 'templates/rxAccountSearch.html',
@@ -543,6 +585,12 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         }
     };
 })
+/**
+ * @ngdoc directive
+ * @name rxApp.directive:rxBillingSearch
+ * @restrict E
+ * @description [TBD]
+ */
 .directive('rxBillingSearch', function ($location, $window, encoreRoutes) {
     return {
         templateUrl: 'templates/rxBillingSearch.html',
@@ -567,14 +615,13 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         }
     };
 })
-
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxTicketSearch
-* @restrict E
-* @description
-* Used to search tickets for Ticket Queues
-*/
+ * @ngdoc directive
+ * @name rxApp.directive:rxTicketSearch
+ * @restrict E
+ * @description
+ * Used to search tickets for Ticket Queues
+ */
 .directive('rxTicketSearch', function () {
     return {
         template: '<rx-app-search placeholder="Search for a Ticket..." submit="searchTickets"></rx-app-search>',
@@ -587,10 +634,9 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         }
     };
 })
-
-/*
+/**
  * @ngdoc service
- * @name encore.ui.rxApp:rxVisibility
+ * @name rxApp.service:rxVisibility
  * @description
  * Provides an interface for adding new `visibility` methods for nav menus.
  * Methods added via `addMethod` should have a `function (scope, args)` interface
@@ -599,7 +645,6 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
  * second argument `args`, i.e. function (scope, args) {}
  */
 .factory('rxVisibility', function () {
-
     var methods = {};
 
     var addMethod = function (methodName, method) {
@@ -628,12 +673,10 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         addVisibilityObj: addVisibilityObj
 
     };
-
 })
-
-/*
- * @ngdoc object
- * name encore.ui.rxApp:rxVisibilityPathParams
+/**
+ * @ngdoc service
+ * @name rxApp.service:rxVisibilityPathParams
  * @description
  * Returns an object with `name` and `method` params that can
  * be passed to `rxVisibility.addMethod()`. We use register this by
@@ -643,7 +686,6 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
  * Use it as `visibility: [ 'rxPathParams', { param: 'userName' } ]`
  */
 .factory('rxVisibilityPathParams', function ($routeParams) {
-
     var pathParams = {
         name:'rxPathParams',
         method: function (scope, args) {
@@ -653,13 +695,13 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
 
     return pathParams;
 })
-
-/*
- * @ngdoc object
- * name encore.ui.rxApp:rxHideIfUkAccount
+/**
+ * @ngdoc service
+ * @name rxApp.service:rxHideIfUkAccount
  * @description
  * Check if account number in URL is of the UK origin
- * @return false if account number matches UK pattern
+ *
+ * @return {Boolean} false if account number matches UK pattern
  * Use it as `visibility: [ 'rxHideIfUkAccount' ]`
  */
 .factory('rxHideIfUkAccount', function ($routeParams) {
@@ -672,10 +714,9 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
 
     return isUkAccount;
 })
-
-/*
- * @ngdoc provider
- * name encore.ui.rxApp: rxStatusTags
+/**
+ * @ngdoc service
+ * @name rxApp.service:rxStatusTags
  * @description
  * This provider is primarily used for applications to specify custom status
  * tags, for use with the `status` attributes of `rx-page` and of breadcrumb
@@ -685,7 +726,6 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
  * these should rarely, if ever, be needed outside of the framework.
  */
 .provider('rxStatusTags', function () {
-
     var allTags = {
         alpha: {
             class: 'alpha-status',
@@ -722,11 +762,11 @@ angular.module('encore.ui.rxApp', ['encore.ui.rxAppRoutes', 'encore.ui.rxEnviron
         };
     };
 })
-
 /**
 * @ngdoc directive
-* @name encore.ui.rxApp:rxStatusTag
+* @name rxApp.directive:rxStatusTag
 * @restrict E
+* @scope
 * @description
 * This is used to draw the Alpha/Beta/etc tags in page titles and in breadcrumbs. It's not
 * intended as a public directive.

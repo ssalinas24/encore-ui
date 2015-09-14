@@ -1,8 +1,27 @@
+/**
+ * @ngdoc overview
+ * @name rxStatusColumn
+ * @description
+ * # rxStatusColumn Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxStatusColumn.directive:rxStatusColumn rxStatusColumn}
+ * * {@link rxStatusColumn.directive:rxStatusHeader rxStatusHeader}
+ *
+ * ## Objects/Values
+ * * {@link rxStatusColumn.object:rxStatusColumnIcons rxStatusColumnIcons}
+ *
+ * ## Services
+ * * {@link rxStatusColumn.service:rxStatusMappings rxStatusMappings}
+ */
 angular.module('encore.ui.rxStatusColumn', [])
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxStatusColumn:rxStatusColumn
+ * @name rxStatusColumn.directive:rxStatusColumn
+ * @restrict A
+ * @scope
  * @description
  * A directive for drawing colored status columns in a table. This
  * takes the place of the <td></td> for the column it's in.
@@ -10,7 +29,7 @@ angular.module('encore.ui.rxStatusColumn', [])
  * @param {String} status The status to draw
  * @param {String} [api] Optionally specify which API mapping to use for the status
  * @param {String} [tooltip] The string to use for the tooltip. If omitted,
- *                           it will default to using the passed in status 
+ *                           it will default to using the passed in status
  */
 .directive('rxStatusColumn', function (rxStatusMappings, rxStatusColumnIcons) {
     return {
@@ -53,10 +72,9 @@ angular.module('encore.ui.rxStatusColumn', [])
         }
     };
 })
-
 /**
  * @ngdoc object
- * @name encore.ui.rxStatusColumn:rxStatusColumnIcons
+ * @name rxStatusColumn.object:rxStatusColumnIcons
  * @description
  * Mapping of internal statuses to FontAwesome icons.
  * The keys map to the names defined in rxStatusColumn.less
@@ -66,10 +84,9 @@ angular.module('encore.ui.rxStatusColumn', [])
     'WARNING': 'fa-exclamation-triangle',
     'INFO': 'fa-info-circle',
 })
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxStatusColumn:rxStatusHeader
+ * @name rxStatusColumn.directive:rxStatusHeader
  * @description
  * Place this attribute directive on the `<th>` for the status columns. It ensures
  * correct styling.
@@ -82,17 +99,14 @@ angular.module('encore.ui.rxStatusColumn', [])
         }
     };
 })
-
 /**
  * @ngdoc service
- * @name encore.ui.rxStatusColumn:rxStatusMappings
+ * @name rxStatusColumn.service:rxStatusMappings
  * @description
  * A set of methods for creating mappings between a product's notion
  * of statuses, and the status identifiers used in encore-ui
- *
  */
 .factory('rxStatusMappings', function () {
-
     var globalMappings = {};
     var apiMappings = {};
     var rxStatusMappings = {};
@@ -144,7 +158,7 @@ angular.module('encore.ui.rxStatusColumn', [])
     rxStatusMappings.mapToInfo = buildMapFunc('INFO');
     rxStatusMappings.mapToPending = buildMapFunc('PENDING');
     rxStatusMappings.mapToDisabled = buildMapFunc('DISABLED');
-    
+
     rxStatusMappings.getInternalMapping = function (statusString, api) {
         if (_.has(apiMappings, api) && _.has(apiMappings[api], statusString)) {
             return apiMappings[api][statusString];
@@ -156,5 +170,4 @@ angular.module('encore.ui.rxStatusColumn', [])
     };
 
     return rxStatusMappings;
-    
 });

@@ -1,3 +1,14 @@
+/**
+ * @ngdoc overview
+ * @name rxToggleSwitch
+ * @description
+ * # rxToggleSwitch Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * {@link rxToggleSwitch.directive:rxToggleSwitch rxToggleSwitch}
+ */
 angular.module('encore.ui.rxToggleSwitch', [])
 /**
  * @ngdoc directive
@@ -6,15 +17,15 @@ angular.module('encore.ui.rxToggleSwitch', [])
  * @description
  * Displays an on/off switch toggle
  *
- * @paran {string} [ng-model] The scope property to bind to
- * @param {boolean} [disabled] Indicates if the input is disabled
- * @param {function} [postHook] A function to run when the switch is toggled
- * @param {expression} [trueValue=true] The value of the scope property when the switch is on
- * @param {expression} [falseValue=false] The value of the scope property when the switch is off
+ * @param {String} [ng-model] The scope property to bind to
+ * @param {Boolean} [disabled] Indicates if the input is disabled
+ * @param {Function} [postHook] A function to run when the switch is toggled
+ * @param {Expression} [trueValue=true] The value of the scope property when the switch is on
+ * @param {Expression} [falseValue=false] The value of the scope property when the switch is off
  *
  * @example
  * <pre>
- *     <rx-toggle-switch ng-model="foo"></rx-toggle-switch>
+ * <rx-toggle-switch ng-model="foo"></rx-toggle-switch>
  * </pre>
  */
 .directive('rxToggleSwitch', function () {

@@ -1,8 +1,20 @@
+/**
+ * @ngdoc overview
+ * @name rxSelect
+ * @description
+ * # rxSelect component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxSelect.directive:rxSelect rxSelect}
+ */
 angular.module('encore.ui.rxSelect', [])
 /**
  * @ngdoc directive
  * @name rxSelect.directive:rxSelect
  * @restrict A
+ * @scope
  * @description This directive is to apply styling to native `<select>` elements
  *
  * @example

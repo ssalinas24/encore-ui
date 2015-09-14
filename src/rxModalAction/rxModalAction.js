@@ -1,26 +1,42 @@
+/**
+ * @ngdoc overview
+ * @name rxModalAction
+ * @description
+ * # rxModalAction Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxModalAction.directive:rxModalAction rxModalAction}
+ * * {@link rxModalAction.directive:rxModalFooter rxModalFooter}
+ * * {@link rxModalAction.directive:rxModalForm rxModalForm}
+ *
+ * ## Services
+ * * {@link rxModalAction.service:rxModalFooterTemplates rxModalFooterTemplates}
+ */
 angular.module('encore.ui.rxModalAction', ['ui.bootstrap'])
 .run(function ($compile, $templateCache) {
     $compile($templateCache.get('templates/rxModalFooters.html'));
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxModalAction:rxModalForm
-* @restrict E
-* @scope
-* @description
-* Responsible for creating the HTML necessary for modal form
-*
-* @param {string} title Title of modal window
-* @param {string} [subtitle] Subtitle of modal window
-* @param {boolean} [isLoading] True to show a spinner by default
-* @param {string} [submitText] 'Submit' button text to use. Defaults to 'Submit'
-* @param {string} [cancelText] 'Cancel' button text to use. Defaults to 'Cancel'
-* @param {string} [returnText] 'Return' button text to use. Defaults to 'Return'
-* @param {string} [defaultFocus] default focus element. May be 'submit' or 'cancel'. Defaults to 'firstTabbable'
-*
-* @example
-* <rx-modal-form title="My Form" is-loading="true" submit-text="Yes!"></rx-modal-form>
-*/
+ * @ngdoc directive
+ * @name rxModalAction.directive:rxModalForm
+ * @restrict E
+ * @scope
+ * @description
+ * Responsible for creating the HTML necessary for modal form
+ *
+ * @param {string} title Title of modal window
+ * @param {string} [subtitle] Subtitle of modal window
+ * @param {boolean} [isLoading] True to show a spinner by default
+ * @param {string} [submitText] 'Submit' button text to use. Defaults to 'Submit'
+ * @param {string} [cancelText] 'Cancel' button text to use. Defaults to 'Cancel'
+ * @param {string} [returnText] 'Return' button text to use. Defaults to 'Return'
+ * @param {string} [defaultFocus] default focus element. May be 'submit' or 'cancel'. Defaults to 'firstTabbable'
+ *
+ * @example
+ * <rx-modal-form title="My Form" is-loading="true" submit-text="Yes!"></rx-modal-form>
+ */
 .directive('rxModalForm', function ($timeout, $compile, rxModalFooterTemplates) {
     return {
         transclude: true,
@@ -92,18 +108,19 @@ angular.module('encore.ui.rxModalAction', ['ui.bootstrap'])
     $rootScope.$on('$routeChangeSuccess', $modalInstance.dismiss);
 })
 /**
-* @ngdoc service
-* @name encore.ui.rxModalAction:rxModalFooterTemplates
-* @description
-* A cache for storing the modal footer templates
-* This is used internally by rxModalFooter, which is preferred
-* for registering templates over direct calling of this api.
-* @example
-* <pre>
-* rxModalFooterTemplates.add("step1", "<p>Step 1 Body</p>");
-* rxModalFooterTemplates.flush(); // returns html string to be inserted into DOM
-* </pre>
-*/
+ * @ngdoc service
+ * @name rxModalAction.service:rxModalFooterTemplates
+ * @description
+ * A cache for storing the modal footer templates
+ * This is used internally by rxModalFooter, which is preferred
+ * for registering templates over direct calling of this api.
+ *
+ * @example
+ * <pre>
+ * rxModalFooterTemplates.add("step1", "<p>Step 1 Body</p>");
+ * rxModalFooterTemplates.flush(); // returns html string to be inserted into DOM
+ * </pre>
+ */
 .factory('rxModalFooterTemplates', function () {
     var globals = {};
     var locals = {};
@@ -139,22 +156,24 @@ angular.module('encore.ui.rxModalAction', ['ui.bootstrap'])
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxModalAction:rxModalFooter
-* @restrict E
-* @scope
-* @description
-* Define a footer for the next modal.
-*
-* @param {string} state The content will be shown in the footer when this state is activated.
-* @param {string} [global] If the global attribute is present, then this footer can be used
-*                          in other modals. This attribute takes no values.
-*
-* @example
-* <rx-modal-footer state="confirm">
-*     <button class="button" ng-click="setState('pending')">I understand the risks.</button>
-* </rx-modal-footer>
-*/
+ * @ngdoc directive
+ * @name rxModalAction.directive:rxModalFooter
+ * @restrict E
+ * @scope
+ * @description
+ * Define a footer for the next modal.
+ *
+ * @param {String} state The content will be shown in the footer when this state is activated.
+ * @param {String=} [global] If the global attribute is present, then this footer can be used
+ *                          in other modals. This attribute takes no values.
+ *
+ * @example
+ * <pre>
+ * <rx-modal-footer state="confirm">
+ *     <button class="button" ng-click="setState('pending')">I understand the risks.</button>
+ * </rx-modal-footer>
+ * </pre>
+ */
 .directive('rxModalFooter', function (rxModalFooterTemplates) {
     return {
         restrict: 'E',
@@ -174,29 +193,31 @@ angular.module('encore.ui.rxModalAction', ['ui.bootstrap'])
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxModalAction:rxModalAction
-* @restrict E
-* @scope
-* @description
-* Link which will show a modal window on click, and handle callbacks for pre/post modal actions
-*
-* @param {function} [preHook] Function to call when a modal is opened
-* @param {function} [postHook] Function to call when a modal is submitted (not called when cancelled out of)
-* @param {function} [dismissHook] Function to call when a modal is dismissed (not called when submitted)
-* @param {string} [templateUrl] URL of template to use for modal content
-* @param {string} [disable-esc] If the `disable-esc` attribute is present, then "Press Esc to close" will be disabled
-*                               for the modal. This attribute takes no values.
-*
-* @example
-* <rx-modal-action
-*     pre-hook="myPreHook(this)"
-*     post-hook="myPostHook(fields)"
-*     template-url="modalContent.html"
-*     disable-esc>
-*         My Link Text
-*  </rx-modal-action>
-*/
+ * @ngdoc directive
+ * @name rxModalAction.directive:rxModalAction
+ * @restrict E
+ * @scope
+ * @description
+ * Link which will show a modal window on click, and handle callbacks for pre/post modal actions
+ *
+ * @param {Function=} [preHook] Function to call when a modal is opened
+ * @param {Function=} [postHook] Function to call when a modal is submitted (not called when cancelled out of)
+ * @param {Function=} [dismissHook] Function to call when a modal is dismissed (not called when submitted)
+ * @param {String=} [templateUrl] URL of template to use for modal content
+ * @param {*=} [disable-esc] If the `disable-esc` attribute is present, then "Press Esc to close" will be disabled
+ *                           for the modal. This attribute takes no values.
+ *
+ * @example
+ * <pre>
+ * <rx-modal-action
+ *     pre-hook="myPreHook(this)"
+ *     post-hook="myPostHook(fields)"
+ *     template-url="modalContent.html"
+ *     disable-esc>
+ *         My Link Text
+ *  </rx-modal-action>
+ *  </pre>
+ */
 .directive('rxModalAction', function ($modal) {
     var createModal = function (config, scope) {
         config = _.defaults(config, {

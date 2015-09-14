@@ -1,13 +1,24 @@
+/**
+ * @ngdoc overview
+ * @name rxToggle
+ * @description
+ * # rxToggle Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxToggle.directive:rxToggle rxToggle}
+ */
 angular.module('encore.ui.rxToggle', [])
 /**
-* @ngdoc directive
-* @name encore.ui.rxApp:rxToggle
-* @restrict A
-* @description
-* Adds a 'click' listener to an element that, when fired, toggles the boolean scope property defined
-*
-* @param {string} rxToggle Boolean property to toggle true/false state
-*/
+ * @ngdoc directive
+ * @name rxToggle.directive:rxToggle
+ * @restrict A
+ * @description
+ * Adds a 'click' listener to an element that, when fired, toggles the boolean scope property defined
+ *
+ * @param {String} rxToggle Boolean property to toggle true/false state
+ */
 .directive('rxToggle', function () {
     return {
         restrict: 'A',

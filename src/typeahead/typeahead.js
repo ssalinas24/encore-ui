@@ -1,3 +1,11 @@
+/**
+ * @ngdoc overview
+ * @name typeahead
+ * @description
+ * # typeahead Component
+ *
+ * [TBD]
+ */
 angular.module('encore.ui.typeahead', ['ui.bootstrap'])
 .config(function ($provide) {
     $provide.decorator('typeaheadDirective', function ($delegate, $filter) {

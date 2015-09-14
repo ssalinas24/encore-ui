@@ -1,7 +1,5 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxForm)
-
 The rxForm component is a set of directives used to create forms throughout
 Encore.  These directives provide a common HTML layout and style for all form
 elements, which helps ensure form accessibility and makes creating advanced

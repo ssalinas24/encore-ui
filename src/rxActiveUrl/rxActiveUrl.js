@@ -1,13 +1,24 @@
+/**
+ * @ngdoc overview
+ * @name rxActiveUrl
+ * @description
+ * # rxActiveUrl Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxActiveUrl.directive:rxActiveUrl rxActiveUrl}
+ */
 angular.module('encore.ui.rxActiveUrl', [])
 /**
- *
  * @ngdoc directive
- * @name encore.ui.rxActiveUrl
+ * @name rxActiveUrl.directive:rxActiveUrl
  * @restrict A
+ * @scope
  * @description
- * This is used as an attribute to directive <rx-product-resources>, in the
- * form of <li rx-active-url="/servers">. The directive checks if the attribute
- * value is a subset of the current URL. If so it returns the class name "selected"
+ * This is used as an attribute to directive `<rx-product-resources>`, in the
+ * form of `<li rx-active-url="/servers">`. The directive checks if the attribute
+ * value is a subset of the current URL. If so it returns the class name "selected".
  */
 .directive('rxActiveUrl', function ($location) {
     return {

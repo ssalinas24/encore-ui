@@ -1,4 +1,23 @@
+/**
+ * @ngdoc overview
+ * @name rxPageTitle
+ * @description
+ * # rxPageTitle Component
+ *
+ * [TBD]
+ *
+ * ## Filters
+ * * {@link rxPageTitle.filter:rxUnsafeRemoveHTML rxUnsafeRemoveHTML}
+ *
+ * ## Services
+ * * {@link rxPageTitle.service:rxPageTitle rxPageTitle}
+ */
 angular.module('encore.ui.rxPageTitle', [])
+/**
+ * @ngdoc service
+ * @name rxPageTitle.service:rxPageTitle
+ * @description [TBD]
+ */
 .factory('rxPageTitle', function ($document, $filter) {
     var suffix = '',
         title = '';
@@ -9,7 +28,7 @@ angular.module('encore.ui.rxPageTitle', [])
         } else {
             title = t;
         }
-        
+
     };
 
     var setDocumentTitle = function (t) {
@@ -29,7 +48,7 @@ angular.module('encore.ui.rxPageTitle', [])
         },
 
         // Set the page title to `t`, and strip any HTML tags/entities
-        // within it. This is considered unsafe, i.e. you *must* trust the 
+        // within it. This is considered unsafe, i.e. you *must* trust the
         // source of the input, as it allows arbitrary javascript to be executed
         setTitleUnsafeStripHTML: function (t) {
             addSuffix(t);
@@ -41,11 +60,9 @@ angular.module('encore.ui.rxPageTitle', [])
         }
     };
 })
-
 /**
- *
  * @ngdoc filter
- * @name encore.ui.rxPageTitle:rxUnsafeRemoveHTML
+ * @name rxPageTitle.filter:rxUnsafeRemoveHTML
  * @description
  * Given a string, it removes all HTML tags from the string, using the
  * browser's own parsing engine. Any content inside of tags will be kept.
@@ -53,9 +70,8 @@ angular.module('encore.ui.rxPageTitle', [])
  * NOTE: You must only use this with trusted text. See
  * http://stackoverflow.com/a/5002618 for more details
  *
- * @param {string} The string to remove HTML from
- *
- * @returns {string} Cleaned string
+ * @param {String} The string to remove HTML from
+ * @returns {String} Cleaned string
  */
 .filter('rxUnsafeRemoveHTML', function ($document) {
     return function (htmlString) {

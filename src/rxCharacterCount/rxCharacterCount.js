@@ -1,19 +1,30 @@
+/**
+ * @ngdoc overview
+ * @name rxCharacterCount
+ * @description
+ * # rxCharacterCount Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxCharacterCount.directive:rxCharacterCount rxCharacterCount}
+ */
 angular.module('encore.ui.rxCharacterCount', [])
 /**
- *
  * @ngdoc directive
  * @name rxCharacterCount.directive:rxCharacterCount
  * @restrict A
+ * @scope
  * @description
  * Monitors the number of characters in a text input and compares it to the desired length.
  *
- * @param {number} [low-boundary=10] How far from the maximum to enter a warning state
- * @param {number} [max-characters=254] The maximum number of characters allowed
- * @param {boolean} [highlight=false] Whether or not characters over the limit are highlighted
+ * @param {Number=} [low-boundary=10] How far from the maximum to enter a warning state
+ * @param {Number=} [max-characters=254] The maximum number of characters allowed
+ * @param {Boolean=} [highlight=false] Whether or not characters over the limit are highlighted
  *
  * @example
  * <pre>
- *     <textarea ng-model="model" rx-character-count></textarea>
+ * <textarea ng-model="model" rx-character-count></textarea>
  * </pre>
  */
 .directive('rxCharacterCount', function ($compile) {

@@ -1,16 +1,33 @@
+/**
+ * @ngdoc overview
+ * @name rxEnvironment
+ * @description
+ * # rxEnvironment Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxEnvironment.directive:rxEnvironment rxEnvironment}
+ *
+ * ## Filters
+ * * {@link rxEnvironment.filter:rxEnvironmentMatch rxEnvironmentMatch}
+ * * {@link rxEnvironment.filter:rxEnvironmentUrl rxEnvironmentUrl}
+ *
+ * ## Services
+ * * {@link rxEnvironment.service:Environment Environment}
+ */
 angular.module('encore.ui.rxEnvironment', ['ngSanitize'])
 /**
-*
-* @ngdoc service
-* @name encore.ui.rxEnvironment:Environment
-* @description
-* Allows defining environments and retrieving the current environment based on location
-*
-* @example
-* <pre>
-* Environment.get() // return environment object that matches current location
-* </pre>
-*/
+ * @ngdoc service
+ * @name rxEnvironment.service:Environment
+ * @description
+ * Allows defining environments and retrieving the current environment based on location
+ *
+ * @example
+ * <pre>
+ * Environment.get() // return environment object that matches current location
+ * </pre>
+ */
 .service('Environment', function ($location, $rootScope, $log) {
     /*
      * This array defines different environments to check against.
@@ -22,7 +39,6 @@ angular.module('encore.ui.rxEnvironment', ['ngSanitize'])
      * @property {string} url The url pattern used to build out urls for that environment.
      *                        See 'buildUrl' for more details
      */
-
     var environments = [{
         // http://localhost:3000/
         // http://localhost:9000/
@@ -172,25 +188,23 @@ angular.module('encore.ui.rxEnvironment', ['ngSanitize'])
      * @public
      */
     this.isUnifiedProd = makeEnvCheck('unified-prod');
-
 })
 /**
-*
-* @ngdoc filter
-* @name encore.ui.rxEnvironment:rxEnvironmentUrl
-* @description
-* Builds a URL based on current environment.
-* Note: if value passed in isn't an object, it will simply return that value
-*
-* @example
-* <pre>
-* {{ { tld: 'cloudatlas', path: 'cbs/servers' } | rxEnvironmentUrl }}
-* Renders as '//staging.cloudatlas.encore.rackspace.com/cbs/servers' in staging
-*
-* {{ '/myPath' | rxEnvironmentUrl }}
-* Renders as '/myPath' regardless of environment, because value passed in was not an object
-* </pre>
-*/
+ * @ngdoc filter
+ * @name rxEnvironment.filter:rxEnvironmentUrl
+ * @description
+ * Builds a URL based on current environment.
+ * Note: if value passed in isn't an object, it will simply return that value
+ *
+ * @example
+ * <pre>
+ * {{ { tld: 'cloudatlas', path: 'cbs/servers' } | rxEnvironmentUrl }}
+ * Renders as '//staging.cloudatlas.encore.rackspace.com/cbs/servers' in staging
+ *
+ * {{ '/myPath' | rxEnvironmentUrl }}
+ * Renders as '/myPath' regardless of environment, because value passed in was not an object
+ * </pre>
+ */
 .filter('rxEnvironmentUrl', function (Environment, $interpolate) {
     return function (details) {
         var environment = Environment.get();
@@ -200,21 +214,20 @@ angular.module('encore.ui.rxEnvironment', ['ngSanitize'])
     };
 })
 /**
-*
-* @ngdoc filter
-* @name encore.ui.rxEnvironment:rxEnvironmentMatch
-* @description
-* Checks if current environment matches target environment
-*
-* @example
-* <pre>
-* {{ 'production' | rxEnvironmentMatch }}
-* returns true if current environment is 'production', false otherwise
-*
-* {{ '!production' | rxEnvironmentMatch }}
-* returns false if current environment is 'production', true otherwise
-* </pre>
-*/
+ * @ngdoc filter
+ * @name rxEnvironment.filter:rxEnvironmentMatch
+ * @description
+ * Checks if current environment matches target environment
+ *
+ * @example
+ * <pre>
+ * {{ 'production' | rxEnvironmentMatch }}
+ * returns true if current environment is 'production', false otherwise
+ *
+ * {{ '!production' | rxEnvironmentMatch }}
+ * returns false if current environment is 'production', true otherwise
+ * </pre>
+ */
 .filter('rxEnvironmentMatch', function (Environment) {
     return function (environment) {
         // check to see if first character is negation indicator
@@ -228,19 +241,19 @@ angular.module('encore.ui.rxEnvironment', ['ngSanitize'])
     };
 })
 /**
-* @ngdoc directive
-* @name encore.ui.rxEnvironment:rxEnvironment
-* @restrict A
-* @description
-* Show or hide content based on environment name
-* @requires encore.ui.rxEnvironment:Environment
-*
-* @example
-* <pre>
-*     <div rx-if-environment="unified-preprod">Show if staging</div>
-*     <div rx-if-environment="!unified-prod">Show if not prod</div>
-* </pre>
-*/
+ * @ngdoc directive
+ * @name rxEnvironment.directive:rxEnvironment
+ * @restrict A
+ * @requires rxEnvironment.service:Environment
+ * @description
+ * Show or hide content based on environment name
+ *
+ * @example
+ * <pre>
+ * <div rx-if-environment="unified-preprod">Show if staging</div>
+ * <div rx-if-environment="!unified-prod">Show if not prod</div>
+ * </pre>
+ */
 .directive('rxIfEnvironment', function ($compile) {
     return {
         restrict: 'A',

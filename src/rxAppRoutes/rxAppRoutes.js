@@ -1,10 +1,22 @@
+/**
+ * @ngdoc overview
+ * @name rxAppRoutes
+ * @description
+ * # rxAppRoutes Component
+ *
+ * [TBD]
+ *
+ * ## Services
+ * * {@link rxAppRoutes.service:rxAppRoutes rxAppRoutes}
+ * * {@link rxAppRoutes.service:urlUtils urlUtils}
+ */
 angular.module('encore.ui.rxAppRoutes', ['encore.ui.rxEnvironment'])
 /**
-* @ngdoc service
-* @name encore.ui.rxAppRoutes:urlUtils
-* @description
-* Set of utility functions used by rxAppRoutes to break apart/compare URLs
-*/
+ * @ngdoc service
+ * @name rxAppRoutes.service:urlUtils
+ * @description
+ * Set of utility functions used by rxAppRoutes to break apart/compare URLs
+ */
 .service('urlUtils', function ($location, rxEnvironmentUrlFilter, $interpolate, $route, $document) {
     // remove any preceding # and / from the URL for cleaner comparison
     this.stripLeadingChars = function (url) {
@@ -122,11 +134,11 @@ angular.module('encore.ui.rxAppRoutes', ['encore.ui.rxEnvironment'])
     };
 })
 /**
-* @ngdoc interface
-* @name encore.ui.rxApp:AppRoutes
-* @description
-* Manages page routes, building urls and marking them as active on route change
-*/
+ * @ngdoc service
+ * @name rxAppRoutes.service:rxAppRoutes
+ * @description
+ * Manages page routes, building urls and marking them as active on route change
+ */
 .factory('rxAppRoutes', function ($rootScope, $log, urlUtils, $q) {
     var AppRoutes = function (routes) {
         routes = routes || [];
@@ -253,7 +265,7 @@ angular.module('encore.ui.rxAppRoutes', ['encore.ui.rxEnvironment'])
                 }, function () {
                     return $q.reject();
                 });
-                
+
             },
             /**
              * functionality to update routes based on their key

@@ -1,7 +1,26 @@
+/**
+ * @ngdoc overview
+ * @name rxSelectFilter
+ * @description
+ * # rxSelectFilter component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxSelectFilter.directive:rxMultiSelect rxMultiSelect}
+ * * {@link rxSelectFilter.directive:rxSelectFilter rxSelectFilter}
+ * * {@link rxSelectFilter.directive:rxSelectOption rxSelectOption}
+ *
+ * ## Filters
+ * * {@link rxSelectFilter.filter:Apply Apply}
+ *
+ * ## Services
+ * * {@link rxSelectFilter.service:SelectFilter SelectFilter}
+ */
 angular.module('encore.ui.rxSelectFilter', ['encore.ui.rxMisc', 'encore.ui.rxSelect'])
 /**
  * @ngdoc filter
- * @name encore.ui.rxSelectFilter:Apply
+ * @name rxSelectFilter.filter:Apply
  * @description
  * Used to apply an instance of SelectFilter to an array.
  *
@@ -13,10 +32,9 @@ angular.module('encore.ui.rxSelectFilter', ['encore.ui.rxMisc', 'encore.ui.rxSel
         return filter.applyTo(list);
     };
 })
-
 /**
  * @ngdoc service
- * @name encore.ui.rxSelectFilter:SelectFilter
+ * @name rxSelectFilter.service:SelectFilter
  * @description
  * A prototype for creating objects that can be used for filtering arrays.
  *
@@ -69,11 +87,11 @@ angular.module('encore.ui.rxSelectFilter', ['encore.ui.rxMisc', 'encore.ui.rxSel
         }
     };
 })
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxSelectFilter:rxSelectFilter
+ * @name rxSelectFilter.directive:rxSelectFilter
  * @restrict E
+ * @scope
  * @description
  * Autmatically creates the appropriate dropdowns to manage a filter object.
  *
@@ -88,15 +106,15 @@ angular.module('encore.ui.rxSelectFilter', ['encore.ui.rxMisc', 'encore.ui.rxSel
         }
     };
 })
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxSelectFilter:rxMultiSelect
+ * @name rxSelectFilter.directive:rxMultiSelect
  * @restrict E
+ * @scope
  * @description
  * A multi-select dropdown with checkboxes for each option
  *
- * @param {string} ng-model The scope property that stores the value of the input
+ * @param {String} ng-model The scope property that stores the value of the input
  * @param {Array} [options] A list of the options for the dropdown
  */
 .directive('rxMultiSelect', function ($document, rxDOMHelper, rxSelectDirective) {
@@ -207,15 +225,14 @@ angular.module('encore.ui.rxSelectFilter', ['encore.ui.rxMisc', 'encore.ui.rxSel
         }
     };
 })
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxSelectFilter:rxSelectOption
+ * @name rxSelectFilter.directive:rxSelectOption
  * @restrict E
  * @description
  * A single option for rxMultiSelect
  *
- * @param {string} value The value of the option. If no transcluded content is provided,
+ * @param {String} value The value of the option. If no transcluded content is provided,
  *                       the value will also be used as the option's text.
  */
 .directive('rxSelectOption', function (rxDOMHelper) {

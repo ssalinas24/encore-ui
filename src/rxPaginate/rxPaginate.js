@@ -1,8 +1,27 @@
+/**
+ * @ngdoc overview
+ * @name rxPaginate
+ * @description
+ * # rxPaginate Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxPaginate.directive:rxLoadingOverlay rxLoadingOverlay}
+ * * {@link rxPaginate.directive:rxPaginate rxPaginate}
+ *
+ * ## Filters
+ * * {@link rxPaginate.filter:Page Page}
+ * * {@link rxPaginate.filter:Paginate Paginate}
+ *
+ * ## Services
+ * * {@link rxPaginate.service:PageTracking PageTracking}
+ * * {@link rxPaginate.service:rxPaginateUtils rxPaginateUtils}
+ */
 angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
 /**
- *
  * @ngdoc directive
- * @name encore.ui.rxPaginate:rxPaginate
+ * @name rxPaginate.directive:rxPaginate
  * @restrict E
  * @description
  * Directive that takes in the page tracking object and outputs a page
@@ -12,7 +31,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
  *
  * @param {Object} pageTracking This is the page tracking service instance to
  * be used for this directive
- * @param {number} numberOfPages This is the maximum number of pages that the
+ * @param {Number} numberOfPages This is the maximum number of pages that the
  * page object will display at a time.
  * @param {Object} [serverInterface] An object with a `getItems()` method. The requirements
  * of this method are described in the rxPaginate README
@@ -89,7 +108,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
                     }
                     return response;
                 };
-        
+
                 // Register the getItems function with the PageTracker
                 scope.pageTracking.updateItemsFn(getItems);
 
@@ -98,9 +117,9 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
                     scope.pageTracking.newItems(getItems(pageNumber, scope.pageTracking.itemsPerPage));
                 };
 
-                // When someone changes the sort column, it will go to the 
+                // When someone changes the sort column, it will go to the
                 // default direction for that column. That could cause both
-                // `sortColumn` and `sortDirection` to get changed, and 
+                // `sortColumn` and `sortDirection` to get changed, and
                 // we don't want to cause two separate API requests to happen
                 var columnOrDirectionChange = debounce(notifyPageTracking, 100);
 
@@ -139,11 +158,9 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
         }
     };
 })
-
 /**
- *
  * @ngdoc directive
- * @name encore.ui.rxPaginate:rxLoadingOverlay
+ * @name rxPaginate.directive:rxLoadingOverlay
  * @restrict A
  * @description
  * This directive can be used to show and hide a "loading" overlay on top
@@ -193,22 +210,18 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
     };
 })
 /**
-*
-* @ngdoc service
-* @name encore.ui.rxPaginate:PageTracking
-* @description
-* This is the data service that can be used in conjunction with the pagination
-* objects to store/control page display of data tables and other items.
-*
-* 
-*
-* @example
-* <pre>
-* PageTracking.createInstance({showAll: true, itemsPerPage: 15});
-* </pre>
-*/
+ * @ngdoc service
+ * @name rxPaginate.service:PageTracking
+ * @description
+ * This is the data service that can be used in conjunction with the pagination
+ * objects to store/control page display of data tables and other items.
+ *
+ * @example
+ * <pre>
+ * PageTracking.createInstance({showAll: true, itemsPerPage: 15});
+ * </pre>
+ */
 .factory('PageTracking', function ($q, LocalStorage, rxPaginateUtils) {
-
     function PageTrackingObject (opts) {
         var pager = _.defaults(_.cloneDeep(opts), {
             itemsPerPage: 200,
@@ -244,7 +257,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
         if (!opts.itemsPerPage && !_.isNaN(selectedItemsPerPage) && _.contains(itemSizeList, selectedItemsPerPage)) {
             pager.itemsPerPage = selectedItemsPerPage;
         }
-        
+
         Object.defineProperties(pager, {
             'items': {
                 // This returns the slice of data for whatever current page the user is on.
@@ -268,7 +281,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
         }
 
         updateCache(pager, 0, pager.localItems);
-        
+
         var updateItems = function (pageNumber) {
             // This is the function that gets used when doing UI pagination,
             // thus we're not waiting for the pageNumber to come back from a service,
@@ -352,11 +365,11 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
         pager.isPage = function (n) {
             return pager.pageNumber === n;
         };
-        
+
         pager.isPageNTheLastPage = function (n) {
             return pager.totalPages - 1 === n;
         };
-        
+
         pager.currentPage = function () {
             return pager.pageNumber;
         };
@@ -451,21 +464,19 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
 
     return PageTracking;
 })
-
 /**
-*
-* @ngdoc filter
-* @name encore.ui.rxPaginate:Paginate
-* @description
-* This is the pagination filter that is used to calculate the division in the
-* items list for the paging.
-*
-* @param {Object} items The list of items that are to be sliced into pages
-* @param {Object} pager The instance of the PageTracking service. If not
-* specified, a new one will be created.
-*
-* @returns {Object} The list of items for the current page in the PageTracking object
-*/
+ * @ngdoc filter
+ * @name rxPaginate.filter:Paginate
+ * @description
+ * This is the pagination filter that is used to calculate the division in the
+ * items list for the paging.
+ *
+ * @param {Object} items The list of items that are to be sliced into pages
+ * @param {Object} pager The instance of the PageTracking service. If not
+ * specified, a new one will be created.
+ *
+ * @returns {Object} The list of items for the current page in the PageTracking object
+ */
 .filter('Paginate', function (PageTracking, rxPaginateUtils) {
     return function (items, pager) {
         if (!pager) {
@@ -476,7 +487,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
             return items;
         }
         if (items) {
-            
+
             pager.total = items.length;
             // We were previously on the last page, but enough items were deleted
             // to reduce the total number of pages. We should now jump to whatever the
@@ -494,14 +505,12 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
         }
     };
 })
-
 /**
-*
-* @ngdoc service
-* @name encore.ui.rxPaginate:rxPaginateUtils
-* @description
-* A few utilities
-*/
+ * @ngdoc service
+ * @name rxPaginate.service:rxPaginateUtils
+ * @description
+ * A few utilities
+ */
 .factory('rxPaginateUtils', function () {
     var rxPaginateUtils = {};
 
@@ -514,7 +523,7 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
             first: first,
             last: last,
         };
-        
+
     };
 
     // Given the user requested pageNumber and itemsPerPage, and the number of items we'll
@@ -534,10 +543,9 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
 
     return rxPaginateUtils;
 })
-
 /**
  * @ngdoc filter
- * @name encore.ui.rxPaginate:PaginatedItemsSummary
+ * @name rxPaginate.filter:PaginatedItemsSummary
  * @description
  * Given an active pager (i.e. the result of PageTracking.createInstance()),
  * return a string like "26-50 of 500", when on the second page of a list of
@@ -562,18 +570,17 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
     };
 })
 /**
-*
-* @ngdoc filter
-* @name encore.ui.rxPaginate:Page
-* @description
-* This is the pagination filter that is used to limit the number of pages
-* shown
-*
-* @param {Object} pager The instance of the PageTracking service. If not
-* specified, a new one will be created.
-*
-* @returns {Array} The list of page numbers that will be displayed.
-*/
+ * @ngdoc filter
+ * @name rxPaginate.filter:Page
+ * @description
+ * This is the pagination filter that is used to limit the number of pages
+ * shown
+ *
+ * @param {Object} pager The instance of the PageTracking service. If not
+ * specified, a new one will be created.
+ *
+ * @returns {Array} The list of page numbers that will be displayed.
+ */
 .filter('Page', function (PageTracking) {
     return function (pager) {
         if (!pager) {
@@ -602,5 +609,4 @@ angular.module('encore.ui.rxPaginate', ['encore.ui.rxLocalStorage', 'debounce'])
 
         return displayPages;
     };
-
 });

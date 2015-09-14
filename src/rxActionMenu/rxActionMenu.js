@@ -1,4 +1,24 @@
+/**
+ * @ngdoc overview
+ * @name rxActionMenu
+ * @description
+ * # rxActionMenu Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxActionMenu.directive:rxActionMenu rxActionMenu}
+ */
 angular.module('encore.ui.rxActionMenu', [])
+/**
+ * @ngdoc directive
+ * @name rxActionMenu.directive:rxActionMenu
+ * @restrict E
+ * @scope
+ * @description [TBD]
+ *
+ * @param {Boolean=} [globalDismiss=true] TBD
+ */
 .directive('rxActionMenu', function ($rootScope, $document) {
     return {
         restrict: 'E',
@@ -29,21 +49,21 @@ angular.module('encore.ui.rxActionMenu', [])
                     $scope.displayed = false;
                 }
             });
-            
+
             $document.on('click', function (clickEvent) {
                 if ($scope.globalDismiss && $scope.displayed && !element[0].contains(clickEvent.target)) {
                     $scope.$apply(function () { $scope.displayed = false;});
                 }
             });
 
-            // TODO: Center the Action Menu box so it 
+            // TODO: Center the Action Menu box so it
             // takes the height of the translucded content
-            // and then centers it with CSS. 
+            // and then centers it with CSS.
             // I spent an afternoon trying to see if I could
             // repurpose angularjs' bootstrap popover library
             // and their position.js file, but I spent too
             // much time and had to table this.  -Ernie
-            
+
             // https://github.com/angular-ui/bootstrap/blob/master/src/position/position.js
             // https://github.com/angular-ui/bootstrap/blob/master/src/tooltip/tooltip.js
         }

@@ -1,7 +1,5 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxButton.directive:rxButton)
-
 An **element directive** used to create buttons with a dynamically-displayed loading indicator. This is used as a replacement for `<button>` elements in scenarios where the button has multiple states.
 
 ## Usage

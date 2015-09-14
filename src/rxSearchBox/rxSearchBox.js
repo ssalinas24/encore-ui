@@ -1,4 +1,21 @@
+/**
+ * @nagdoc overview
+ * @name rxSearchBox
+ * @description
+ * # rxSearchBox component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxSearchBox.directive:rxSearchBox rxSearchBox}
+ */
 angular.module('encore.ui.rxSearchBox', [])
+/**
+ * @ngdoc directive
+ * @name rxSearchBox.directive:rxSearchBox
+ * @restrict E
+ * @description [TBD]
+ */
 .directive('rxSearchBox', function () {
     return {
         restrict: 'E',

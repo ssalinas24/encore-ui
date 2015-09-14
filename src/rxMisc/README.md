@@ -1,6 +1,6 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-A module for shared functionality across framework components.  See [API Documentation](ngdocs/index.html#/api/rxMisc).
+A module for shared functionality across framework components.
 
 
 ## rxDOMHelper

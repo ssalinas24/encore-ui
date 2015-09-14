@@ -1,7 +1,5 @@
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](/ngdocs/index.html#/api/rxMetadata)
-
 `rxMetadata` contains directives to provide consistent styling for the display of metadata information.
 
 ## Organizing into Columns

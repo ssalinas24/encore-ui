@@ -1,7 +1,23 @@
+/**
+ * @ngdoc overview
+ * @name rxAge
+ * @description
+ * # rxAge Component
+ *
+ * [TBD]
+ *
+ * ## Filters
+ * * {@link rxAge.filter:rxAge rxAge}
+ */
 angular.module('encore.ui.rxAge', [])
 // Another option
 // age.js -- https://github.rackspace.com/gist/roge5001/2417941
 // age.spec.js -- https://github.rackspace.com/gist/roge5001/2417940
+/**
+ * @ngdoc filter
+ * @name rxAge.filter:rxAge
+ * @description [TBD]
+ */
 .filter('rxAge', function () {
     return function (dateString, maxUnits, verbose) {
         if (!dateString) {

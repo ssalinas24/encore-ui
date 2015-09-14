@@ -1,7 +1,5 @@
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-[API Documenation](ngdocs/index.html#/api/rxCharacterCount.directive:rxCharacterCount)
-
 This provides an attribute directive intended for adding to `<textarea>` elements. Place the `rx-character-count` attribute into your `<textarea>`, and a new
 `<div>` will be added directly underneath it. This directive requires that you're using `ng-model` with your `<textarea>`
 

@@ -1,7 +1,5 @@
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-[API Documentation](ngdocs/index.html#/api/rxCheckbox.directive:rxCheckbox)
-
 rxCheckbox is an **attribute directive** that wraps a native checkbox element in markup required for styling purposes.
 To use the directive, you can replace `type="checkbox"` with `rx-checkbox`. The directive is smart enough to set the correct input type.
 

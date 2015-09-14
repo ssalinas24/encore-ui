@@ -1,15 +1,31 @@
+/**
+ * @ngdoc overview
+ * @name rxFavicon
+ * @description
+ * # rxFavicon Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxFavicon.directive:rxFavicon rxFavicon}
+ */
 angular.module('encore.ui.rxFavicon', ['encore.ui.rxEnvironment'])
 /**
-* @ngdoc directive
-* @name encore.ui.rxFavicon:rxFavicon
-* @restrict A
-*
-* @description
-* Updates href of element and replaces it with path to a different image based on environment
-* @scope
-* @param {Object} rxFavicon - Takes two optional properties (staging and local), with the value of each being
-*                             the path to the favicon.
-*/
+ * @ngdoc directive
+ * @name rxFavicon.directive:rxFavicon
+ * @restrict A
+ * @scope
+ * @description
+ * Updates href of element and replaces it with path to a different image based on environment
+ *
+ * @param {Object} rxFavicon - Takes two optional properties (staging and local), with the value of each being
+ *                             the path to the favicon.
+ *
+ * @example
+ * <pre>
+ * TBD
+ * </pre>
+ */
 .directive('rxFavicon', function (Environment, $parse, $log) {
     return {
         restrict: 'A',

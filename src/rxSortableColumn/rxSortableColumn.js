@@ -1,19 +1,35 @@
+/**
+ * @ngdoc overview
+ * @name rxSortableColumn
+ * @description
+ * # rxSortableColumn Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxSortableColumn.directive:rxSortableColumn rxSortableColumn}
+ *
+ * ## Filters
+ * * {@link rxSortableColumn.filter:rxSortEmptyTop rxSortEmptyTop}
+ *
+ * ## Services
+ * * {@link rxSortableColumn.service:rxSortUtil rxSortUtil}
+ */
 angular.module('encore.ui.rxSortableColumn', [])
 /**
-* @ngdoc directive
-* @name encore.ui.rxSortableColumn:rxSortableColumn
-* @restrict E
-*
-* @description
-* Renders a clickable link in a table heading which will sort the table by
-* the referenced property in ascending or descending order.
-*
-* @param {String} displayText - The text to be displayed in the link
-* @param {Function} sortMethod - The sort function to be called when the link is clicked
-* @param {String} sortProperty - The property on the array to sort by when the link is clicked.
-* @param {Object} predicate - The current property the collection is sorted by.
-* @param {Boolean} reverse - Indicates whether the collection should sort the array in reverse order.
-*/
+ * @ngdoc directive
+ * @name rxSortableColumn.directive:rxSortableColumn
+ * @restrict E
+ * @description
+ * Renders a clickable link in a table heading which will sort the table by
+ * the referenced property in ascending or descending order.
+ *
+ * @param {String} displayText - The text to be displayed in the link
+ * @param {Function} sortMethod - The sort function to be called when the link is clicked
+ * @param {String} sortProperty - The property on the array to sort by when the link is clicked.
+ * @param {Object} predicate - The current property the collection is sorted by.
+ * @param {Boolean} reverse - Indicates whether the collection should sort the array in reverse order.
+ */
 .directive('rxSortableColumn', function () {
     return {
         restrict: 'E',
@@ -28,17 +44,17 @@ angular.module('encore.ui.rxSortableColumn', [])
     };
 })
 /**
-* @ngdoc service
-* @name encore.ui.rxSortableColumn:rxSortUtil
-* @description
-* Service which provided utility methods for sorting collections.
-*
-* @example
-* <pre>
-* rxSortUtil.getDefault() // returns a sort object with name as the default.
-* rxSortUtil.sortCol($scope, 'name') // sorts the collection based on the predicate
-* </pre>
-*/
+ * @ngdoc service
+ * @name rxSortableColumn.service:rxSortUtil
+ * @description
+ * Service which provided utility methods for sorting collections.
+ *
+ * @example
+ * <pre>
+ * rxSortUtil.getDefault() // returns a sort object with name as the default.
+ * rxSortUtil.sortCol($scope, 'name') // sorts the collection based on the predicate
+ * </pre>
+ */
 .factory('rxSortUtil', function () {
     var util = {};
 
@@ -61,22 +77,21 @@ angular.module('encore.ui.rxSortableColumn', [])
     return util;
 })
 /**
-* @ngdoc filter
-* @name encore.ui.rxSortableColumn:rxSortEmptyTop
-* @description
-* Filter that moves rows with an empty predicate to the top of the column in ascending order,
-  and to the bottom in descending order.
-*
-* @example
-* <pre>
-* [{ name: { firstName: 'Adam' } }, { }] | rxSortEmptyTop 'name.firstName':false
-* Will sort as [{}, { name: { firstName: 'Adam' } }].
-
-* [{ name: { firstName: 'Adam' } }, { name: { firstName: null } ] | rxSortEmptyTop 'name.firstName':true
-* Will sort as [{ name: { firstName: 'Adam' } }, {}]
-
-* </pre>
-*/
+ * @ngdoc filter
+ * @name rxSortableColumn.filter:rxSortEmptyTop
+ * @description
+ * Filter that moves rows with an empty predicate to the top of the column in ascending order,
+ * and to the bottom in descending order.
+ *
+ * @example
+ * <pre>
+ * [{ name: { firstName: 'Adam' } }, { }] | rxSortEmptyTop 'name.firstName':false
+ * Will sort as [{}, { name: { firstName: 'Adam' } }].
+ *
+ * [{ name: { firstName: 'Adam' } }, { name: { firstName: null } ] | rxSortEmptyTop 'name.firstName':true
+ * Will sort as [{ name: { firstName: 'Adam' } }, {}]
+ * </pre>
+ */
 .filter('rxSortEmptyTop', ['$filter', '$parse', function ($filter, $parse) {
     return function (array, key, reverse) {
 

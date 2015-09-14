@@ -1,8 +1,18 @@
+/**
+ * @ngdoc overview
+ * @name rxAccountInfo
+ * @description
+ * # rxAccountInfo Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxAccountInfo.directive:rxAccountInfo rxAccountInfo}
+ */
 angular.module('encore.ui.rxAccountInfo', [])
-
 /**
  * @ngdoc directive
- * @name encore.ui.rxAccountInfo:rxAccountInfo
+ * @name rxAccountInfo.directive:rxAccountInfo
  * @restrict E
  * @scope
  * @description

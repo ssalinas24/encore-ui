@@ -1,10 +1,22 @@
 /**
+ * @ngdoc overview
+ * @name rxFloatingHeader
+ * @description
+ * # rxFloatingHeader Component
+ *
+ * TBD
+ *
+ * ## Directives
+ * * {@link rxFloatingHeader.directive:rxFloatingHeader rxFloatingHeader}
+ */
+angular.module('encore.ui.rxFloatingHeader', ['encore.ui.rxMisc'])
+/**
  * @ngdoc directive
- * @name encore.ui.rxFloatingHeader:rxFloatingHeader
+ * @name rxFloatingHeader.directive:rxFloatingHeader
+ * @restrict A
  * @description
  * Turns a tableheader into a floating persistent header
  */
-angular.module('encore.ui.rxFloatingHeader', ['encore.ui.rxMisc'])
 .directive('rxFloatingHeader', function ($document, rxDOMHelper) {
     return {
         restrict: 'A',
@@ -52,7 +64,7 @@ angular.module('encore.ui.rxFloatingHeader', ['encore.ui.rxMisc'])
                 inputs = [],
                 maxHeight,
                 header = angular.element(table.find('thead'));
-                
+
                 // Are we currently floating?
                 var floating = false;
                 // Grab all the original `tr` elements from the `thead`,

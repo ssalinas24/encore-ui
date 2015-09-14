@@ -1,3 +1,14 @@
+/**
+ * @ngdoc overview
+ * @name configs
+ * @description
+ * # configs Component
+ *
+ * [TBD]
+ *
+ * ## Services
+ * * {@link configs.service:routesCdnPath routesCdnPath}
+ */
 angular.module('encore.ui.configs', [])
 .value('devicePaths', [
     { value: '/dev/xvdb', label: '/dev/xvdb' },
@@ -15,8 +26,12 @@ angular.module('encore.ui.configs', [])
     { value: '/dev/xvdp', label: '/dev/xvdp' }
 ])
 .constant('feedbackApi', '/api/encore/feedback')
+/**
+ * @ngdoc service
+ * @name configs.service:routesCdnPath
+ * @description [TBD]
+ */
 .provider('routesCdnPath', function () {
-
     this.customURL = null;
 
     this.$get = function () {
@@ -35,6 +50,5 @@ angular.module('encore.ui.configs', [])
             preprod: preprod,
             hasCustomURL: !_.isEmpty(this.customURL)
         };
-        
     };
 });

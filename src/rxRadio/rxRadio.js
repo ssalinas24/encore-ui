@@ -1,3 +1,14 @@
+/**
+ * @ngdoc overview
+ * @name rxRadio
+ * @description
+ * # rxRadio Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxRadio.directive:rxRadio rxRadio}
+ */
 angular.module('encore.ui.rxRadio', [])
 /**
  * @name rxRadio.directive:rxRadio

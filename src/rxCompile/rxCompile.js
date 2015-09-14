@@ -1,7 +1,18 @@
+/**
+ * @ngdoc overview
+ * @name rxCompile
+ * @description
+ * # rxCompile Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxCompile.directive:rxCompile rxCompile}
+ */
 angular.module('encore.ui.rxCompile', [])
-/*
+/**
  * @ngdoc directive
- * @name encore.ui.rxCompile:rxCompile
+ * @name rxCompile.directive:rxCompile
  * @see http://docs.angularjs.org/api/ng/service/$compile#attributes
  */
 .directive('rxCompile', function ($compile) {

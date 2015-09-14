@@ -1,3 +1,14 @@
+/**
+ * @ngdoc overview
+ * @name rxCheckbox
+ * @description
+ * # rxCheckbox Component
+ *
+ * [TBD]
+ *
+ * ## Directives
+ * * {@link rxCheckbox.directive:rxCheckbox rxCheckbox}
+ */
 angular.module('encore.ui.rxCheckbox', [])
 /**
  * @name rxCheckbox.directive:rxCheckbox
