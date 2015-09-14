@@ -1,0 +1,33 @@
+/*
+ * rxMultiSelect
+ */
+.rx-multi-select {
+
+    z-index: auto !important;
+
+    &[disabled] .preview {
+        pointer-events: none;
+    }
+
+    .preview {
+        padding: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    ul {
+        z-index: 100;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 100%;
+        border: 1px solid @inputBorderColor;
+        background: @white;
+        box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.35);
+    }
+
+    rx-select-option[value="all"] label {
+        border-bottom: 1px solid @inputBorderColor;
+    }
+
+}

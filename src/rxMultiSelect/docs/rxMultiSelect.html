@@ -1,0 +1,61 @@
+<!-- Sample HTML goes here as a live example of how the component can be used -->
+<div ng-controller="rxMultiSelectCtrl">
+    <h3 class="title">rxMultiSelect Input</h3>
+    <p class="multi-select-container">
+        <span class="field-label">Classification:</span>
+        <rx-multi-select ng-model="data.classification" id="classification">
+            <rx-select-option value="A">Type A</rx-select-option>
+            <rx-select-option value="B">Type B</rx-select-option>
+            <rx-select-option value="C">Type C</rx-select-option>
+            <rx-select-option value="D">Type D</rx-select-option>
+        </rx-multi-select>
+    </p>
+    <span>Model value: [{{ data.classification.join(', ') }}]</span>
+
+    <p class="multi-select-container">
+        <span class="field-label">Disabled:</span>
+        <rx-multi-select ng-model="data.other" disabled>
+            <rx-select-option value="Not allowed"></rx-select-option>
+        </rx-multi-select>
+    </p>
+
+    <h3 class="title">Filtered Table</h3>
+    <table class="table-striped">
+        <thead>
+            <th colspan="6" class="filter-header">
+                <rx-select-filter filter="filter"></rx-select-filter>
+            </th>
+            <tr>
+                <th>Account</th>
+                <th>Status</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ticket in (filteredTickets = (tickets | Apply:filter))">
+                <td>{{ticket.account}}</td>
+                <td>{{ticket.status}}</td>
+                <td>{{ticket.description}}</td>
+            </tr>
+            <tr ng-if="filteredTickets.length === 0">
+                <td colspan="6">
+                    <div ng-if="tickets.length === 0">No tickets were found.</div>
+                    <div ng-if="tickets.length !== 0">No results match those criteria.</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    .multi-select-container {
+        width: 200px;
+    }
+
+    .account-filter .rxSelect {
+        width: 150px;
+    }
+
+    .status-filter .rxSelect {
+        width: 180px;
+    }
+</style>
