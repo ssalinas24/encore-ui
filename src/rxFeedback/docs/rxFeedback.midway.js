@@ -26,7 +26,8 @@ describe('rxFeedback', function () {
         expect(successfulFeedback.descriptionPlaceholder).to.eventually.equal(placeholder);
     });
 
-    it('should include the url in the subtitle', function () {
+    // This is being skipped due to removal of the subtitle
+    it.skip('should include the url in the subtitle', function () {
         browser.getCurrentUrl().then(function (url) {
             var feedbackUrl = url.split('#')[1];
             expect(successfulFeedback.subtitle).to.eventually.equal('for page: ' + feedbackUrl);
