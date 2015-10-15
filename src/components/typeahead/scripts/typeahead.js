@@ -6,7 +6,8 @@ angular.module('encore.ui.typeahead')
         var lowercase = $filter('lowercase');
 
         typeahead.compile = function () {
-            return function (scope, element, attrs, ngModelCtrl) {
+            return function (scope, element, attrs, ctrls) {
+                var ngModelCtrl = ctrls[0];
                 link.apply(this, arguments);
 
                 if (/allowEmpty/.test(attrs.typeahead)) {
