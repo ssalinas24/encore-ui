@@ -1,6 +1,6 @@
 <!-- Sample HTML goes here as a live example of how to the component can be used -->
 
-<h3 class="title">Account Info Enabled</h3>
+<h3>Account Info Enabled</h3>
 <p>When <code>account-number="..."</code> is passed to <code>&lt;rx-page&gt;</code>, the account info banner will automatically be drawn underneath the breadcrumbs, as shown here.
 </p>
 <div ng-controller='rxAccountInfoDemo'>
@@ -15,21 +15,21 @@ The rest of the examples just show the affect of different conditions on the acc
 
 <hr />
 
-<h3 class="title sm">Working Account Info</h3>
+<h4>Working Account Info</h4>
 <div class="demo-working-account">
     <rx-account-info account-info-banner='true' account-number="12345"></rx-account-info>
 </div>
 
 <hr />
 
-<h3 class="title sm">Deliquent Account </h3>
+<h4>Deliquent Account </h4>
 <p>Note the changed styling on "Account Status".<p>
 <div class="delinquent-account">
     <rx-account-info account-info-banner='true' account-number="5623"></rx-account-info>
 </div>
 <hr />
 
-<h3 class="title sm">Working Account Info with Team Badges</h3>
+<h4>Working Account Info with Team Badges</h4>
 <div class="demo-working-teams unverified-account">
     <rx-account-info account-info-banner='true' account-number="3265" team-id="123"></rx-account-info>
 </div>
@@ -37,7 +37,7 @@ The rest of the examples just show the affect of different conditions on the acc
 <hr />
 
 <div>
-    <h3 class="title sm">Can't Load Badges</h3>
+    <h4>Can't Load Badges</h4>
     <rx-notifications stack="badgeError"></rx-notifications>
     <div class="demo-badge-error">
         <rx-account-info account-info-banner='true' account-number="6789" notify-stack="badgeError"></rx-account-info>
@@ -47,7 +47,7 @@ The rest of the examples just show the affect of different conditions on the acc
 <hr />
 
 <div>
-    <h3 class="title sm">Can't Load Team Badges</h3>
+    <h4>Can't Load Team Badges</h4>
     <rx-notifications stack="teamBadgeError"></rx-notifications>
     <div class="demo-team-badge-error">
         <rx-account-info account-info-banner='true' account-number="12345" team-id="9876" notify-stack="teamBadgeError"></rx-account-info>
@@ -57,7 +57,7 @@ The rest of the examples just show the affect of different conditions on the acc
 <hr />
 
 <div>
-    <h3 class="title sm">Can't Load Account Name</h3>
+    <h4>Can't Load Account Name</h4>
     <rx-notifications stack="nameError"></rx-notifications>
     <div class="demo-name-error">
         <rx-account-info account-info-banner='true' account-number="9876" notify-stack="nameError"></rx-account-info>
