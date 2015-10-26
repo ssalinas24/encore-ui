@@ -88,4 +88,9 @@ Provides styling for the Angular-UI tab HTML
     &.active {
         display: block;
     }
+
+    // If the title is the first part of the tab-pane, remove its top border so there isn't so much space
+    .title:first-child {
+        margin-top: 0;
+    }
 }
