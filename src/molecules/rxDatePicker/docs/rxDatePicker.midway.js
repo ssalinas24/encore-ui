@@ -2,180 +2,155 @@ var moment = require('moment');
 
 describe('rxDatePicker', function () {
     var picker;
-    var today = moment(new Date());
-    var isoFormat = 'YYYY-MM-DD';
-    var formattedToday = today.format(isoFormat);
 
     before(function () {
         demoPage.go('#/molecules/rxDatePicker');
     });
 
     describe('simple example', function () {
+        var today = new Date();
+        var lastMonth = new Date(moment(today).subtract(1, 'month'));
+        var nextMonth = new Date(moment(today).add(1, 'month'));
+        var yearMonthDayString = function (date) {
+            if (date === undefined) {
+                date = today;
+            }
+
+            return date.toISOString().split('T')[0];
+        };
+
         before(function () {
             picker = encore.rxDatePicker.initialize($('#dpSimple'));
         });
 
-        it('should display "November 17, 2015" as selected date', function () {
-            expect(picker.txtDisplayValue).to.eventually.eq('November 17, 2015');
-        });
-
         it('should not be disabled', function () {
-            expect(picker.isDisabled).to.eventually.eq(false);
+            expect(picker.isDisabled()).to.eventually.eq(false);
         });
 
         it('should be valid', function () {
-            expect(picker.isValid).to.eventually.eq(true);
+            expect(picker.isValid()).to.eventually.eq(true);
         });
 
         it('should not display calendar', function () {
             expect(picker.isOpen()).to.eventually.eq(false);
         });
 
-        describe('clicking control', function () {
-            it('toggles visibility of calendar', function () {
-                picker.eleControl.click();
-                expect(picker.isOpen()).to.eventually.eq(true);
+        it('should open the calendar', function () {
+            picker.open();
+            expect(picker.isOpen()).to.eventually.eq(true);
+        });
 
-                picker.eleControl.click();
-                expect(picker.isOpen()).to.eventually.eq(false);
+        it('should display the current month and year by default', function () {
+            picker.monthAndYear.then(function (date) {
+                expect(date.getYear()).to.equal(today.getYear());
+                expect(date.getMonth()).to.equal(today.getMonth());
             });
         });
 
-        describe('with open calendar', function () {
-            before(function () {
-                picker.open();
+        it('should have some days that are in the current month', function () {
+            expect(picker.tblCurrentMonthDays.count()).to.eventually.be.above(0);
+        });
+
+        it('should have some days that are out of the current month', function () {
+            expect(picker.rootElement.$$('.day.outOfMonth').count()).to.eventually.be.above(0);
+        });
+
+        it('should navigate back one month', function () {
+            picker.previousMonth();
+            picker.monthAndYear.then(function (date) {
+                expect(date.getYear()).to.equal(lastMonth.getYear());
+                expect(date.getMonth()).to.equal(lastMonth.getMonth());
             });
+        });
 
-            after(function () {
-                picker.close();
+        it('should navigate forward two months', function () {
+            picker.nextMonth();
+            picker.nextMonth();
+            picker.monthAndYear.then(function (date) {
+                expect(date.getYear()).to.equal(nextMonth.getYear());
+                expect(date.getMonth()).to.equal(nextMonth.getMonth());
             });
+        });
 
-            it('should have November 17 selected', function () {
-                expect(picker.isDaySelected('2015-11-17')).to.eventually.eq(true);
+        it('should close the calendar', function () {
+            picker.close();
+            expect(picker.isOpen()).to.eventually.eq(false);
+        });
+
+        it('should reopen the calendar and have the month unchanged', function () {
+            picker.open();
+            picker.monthAndYear.then(function (date) {
+                expect(date.getYear()).to.equal(nextMonth.getYear());
+                expect(date.getMonth()).to.equal(nextMonth.getMonth());
+                picker.previousMonth();
             });
+        });
 
-            describe('navigating', function () {
-                describe('to December 2015', function () {
-                    before(function () {
-                        picker.navigateForward();
-                    });
-
-                    it('should display "December 2015" as current month', function () {
-                        expect(picker.txtCurrentMonth).to.eventually.eq('December 2015');
-                    });
-
-                    it('should have November 29 as first date', function () {
-                        expect(picker.eleFirstDay.getAttribute('data-date')).to.eventually.eq('2015-11-29');
-                    });
-
-                    it('should have January 2 as last date', function () {
-                        expect(picker.eleLastDay.getAttribute('data-date')).to.eventually.eq('2016-01-02');
-                    });
-                });
-
-                describe('to November 2015', function () {
-                    before(function () {
-                        picker.navigateBack();
-                    });
-
-                    it('should display "November 2015" as the current month', function () {
-                        expect(picker.txtCurrentMonth).to.eventually.eq('November 2015');
-                    });
-
-                    it('should have November 1 as first date', function () {
-                        expect(picker.eleFirstDay.getAttribute('data-date')).to.eventually.eq('2015-11-01');
-                    });
-
-                    it('should have December 5 as last date', function () {
-                        expect(picker.eleLastDay.getAttribute('data-date')).to.eventually.eq('2015-12-05');
-                    });
-                });
-            });//navigating
-
-            describe('clicking December 3', function () {
-                beforeEach(function () {
-                    picker.selectDate('2015-12-03');
-                });
-
-                it('should not close calendar', function () {
-                    expect(picker.isOpen()).to.eventually.eq(true);
-                });
-
-                it('should not change control display value', function () {
-                    expect(picker.txtDisplayValue).to.eventually.eq('November 17, 2015');
-                });
-
-                it('should not change current picker month', function () {
-                    expect(picker.txtCurrentMonth).to.eventually.eq('November 2015');
-                });
-
-                it('should not change selected day', function () {
-                    expect(picker.isDaySelected('2015-11-17')).to.eventually.eq(true);
-                });
+        it('should display today as the current date', function () {
+            picker.date.then(function (date) {
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString());
             });
+        });
 
-            describe('clicking November 5', function () {
-                it('should close calendar', function () {
-                    picker.selectDate('2015-11-05');
-                    expect(picker.isOpen()).to.eventually.eq(false);
-                });
-
-                it('should change control display value', function () {
-                    expect(picker.txtDisplayValue).to.eventually.eq('November 05, 2015');
-                });
-
-                it('should not change current picker month', function () {
-                    picker.open();
-                    expect(picker.txtCurrentMonth).to.eventually.eq('November 2015');
-                });
-
-                it('should change selected day', function () {
-                    picker.open();
-                    expect(picker.isDaySelected('2015-11-05')).to.eventually.eq(true);
+        it('should not select a date that is out of month', function () {
+            picker.open();
+            picker.date.then(function (currentDate) {
+                picker.rootElement.$$('.day.outOfMonth span').each(function (invalidDay) {
+                    invalidDay.click();
+                    picker.date.then(function (date) {
+                        expect(date.valueOf()).to.equal(currentDate.valueOf());
+                    });
                 });
             });
         });
+
+        it('should highlight today\'s date with a special class', function () {
+            expect(picker.isDateToday(today)).to.eventually.be.true;
+        });
+
+        it('should highlight the currently selected date with a special class', function () {
+            expect(picker.isDateSelected(today)).to.eventually.be.true;
+        });
+
+        it('should update the date to one month from now', function () {
+            picker.date = new Date(nextMonth);
+            picker.date.then(function (date) {
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(nextMonth));
+            });
+        });
+
+        it('should update the date back to today', function () {
+            picker.date = today;
+            picker.date.then(function (date) {
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString());
+            });
+        });
+
+        it('should update the date to the first of the month', function () {
+            var firstOfMonth = moment(today).startOf('month');
+            picker.date = new Date(firstOfMonth);
+            picker.date.then(function (date) {
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(firstOfMonth));
+            });
+        });
+
+        it('should update the date to the last of the month', function () {
+            picker.selectLastDayOfCurrentMonth();
+            picker.date.then(function (date) {
+                // we'll parse out the YYYY-MM-DD string with moment to avoid UTC offsets
+                var lastOfMonth = moment(today).endOf('month').format().split('T')[0];
+                expect(yearMonthDayString(date)).to.equal(lastOfMonth);
+            });
+        });
+
+        it('should update the date to one month ago', function () {
+            picker.date = new Date(lastMonth);
+            picker.date.then(function (date) {
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(lastMonth));
+            });
+        });
+
     });
-
-    describe('empty model value', function () {
-        before(function () {
-            picker = encore.rxDatePicker.initialize($('#dpEmpty'));
-        });
-
-        describe('with open calendar', function () {
-            before(function () {
-                picker.open();
-            });
-
-            after(function () {
-                picker.close();
-            });
-
-            it(formattedToday + ' should be "today"', function () {
-                expect(picker.isDayToday(formattedToday)).to.eventually.eq(true);
-            });
-        });
-    });//empty model value
-
-    describe('undefined model value', function () {
-        before(function () {
-            picker = encore.rxDatePicker.initialize($('#dpUndefined'));
-        });
-
-        describe('with open calendar', function () {
-            before(function () {
-                picker.open();
-            });
-
-            after(function () {
-                picker.close();
-            });
-
-            it(formattedToday + ' should be "today"', function () {
-                expect(picker.isDayToday(formattedToday)).to.eventually.eq(true);
-            });
-        });
-    });//undefined model value
 
     describe('enabled, valid', function () {
         before(function () {
@@ -183,11 +158,11 @@ describe('rxDatePicker', function () {
         });
 
         it('should not be disabled', function () {
-            expect(picker.isDisabled).to.eventually.eq(false);
+            expect(picker.isDisabled()).to.eventually.eq(false);
         });
 
         it('should be valid', function () {
-            expect(picker.isValid).to.eventually.eq(true);
+            expect(picker.isValid()).to.eventually.eq(true);
         });
     });//enabled, valid
 
@@ -197,11 +172,11 @@ describe('rxDatePicker', function () {
         });
 
         it('should not be disabled', function () {
-            expect(picker.isDisabled).to.eventually.eq(false);
+            expect(picker.isDisabled()).to.eventually.eq(false);
         });
 
         it('should not be valid', function () {
-            expect(picker.isValid).to.eventually.eq(false);
+            expect(picker.isValid()).to.eventually.eq(false);
         });
     });//enabled, invalid
 
@@ -211,11 +186,11 @@ describe('rxDatePicker', function () {
         });
 
         it('should be disabled', function () {
-            expect(picker.isDisabled).to.eventually.eq(true);
+            expect(picker.isDisabled()).to.eventually.eq(true);
         });
 
         it('should be valid', function () {
-            expect(picker.isValid).to.eventually.eq(true);
+            expect(picker.isValid()).to.eventually.eq(true);
         });
     });//disabled, valid
 
@@ -225,11 +200,11 @@ describe('rxDatePicker', function () {
         });
 
         it('should be disabled', function () {
-            expect(picker.isDisabled).to.eventually.eq(true);
+            expect(picker.isDisabled()).to.eventually.eq(true);
         });
 
         it('should not be valid', function () {
-            expect(picker.isValid).to.eventually.eq(false);
+            expect(picker.isValid()).to.eventually.eq(false);
         });
     });//disabled, invalid
 });

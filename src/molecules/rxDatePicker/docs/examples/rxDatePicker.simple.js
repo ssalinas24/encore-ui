@@ -1,4 +1,4 @@
 angular.module('demoApp')
 .controller('rxDatePickerSimpleCtrl', function ($scope) {
-    $scope.dateModel = '2015-11-17';
+    $scope.dateModel = new Date().toISOString().split('T')[0];
 });
