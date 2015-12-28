@@ -1,0 +1,7 @@
+{
+    "displayName": "rxNotify",
+    "stability": "stable",
+    "description": "Manages page messages for an application.",
+    "api": "service:rxNotify",
+    "keywords": []
+}
