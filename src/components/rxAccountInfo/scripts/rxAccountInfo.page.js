@@ -1,18 +1,18 @@
-/*jshint node:true*/
 var Page = require('astrolabe').Page;
 
 /**
-   The specific information about a single badge.
-   Returned from {@link rxAccountInfo.badge}
-   @namespace rxAccountInfo.badge.badge
+ * @description Properties around a single badge, or a collection of badges.
+ * Can be accessed via functions in {@link rxAccountInfo#badge}
+ * @namespace rxAccountInfo.badge
  */
 var badge = function (rootElement) {
     return Page.create({
 
         /**
-           A link to the image source for the badge.
-           @memberof rxAccountInfo.badge.badge
-           @returns {String} The attribute under `ng-src` for the badge.
+         * @instance
+         * @description The attribute under <tt>ng-src</tt> for a single badge.
+         * @memberof rxAccountInfo.badge
+         * @type {String}
          */
         src: {
             get: function () {
@@ -21,9 +21,10 @@ var badge = function (rootElement) {
         },
 
         /**
-           Will get the `data-name` attribute from the badge.
-           @memberof rxAccountInfo.badge.badge
-           @returns {String} The name of the badge.
+         * @instance
+         * @description The <tt>data-name</tt> attribute from a single badge.
+         * @memberof rxAccountInfo.badge
+         * @type {String}
          */
         name: {
             get: function () {
@@ -32,9 +33,10 @@ var badge = function (rootElement) {
         },
 
         /**
-           Will get the `data-description` attribute from the badge.
-           @memberof rxAccountInfo.badge.badge
-           @returns {String} The description of the badge.
+         * @instance
+         * @description Will get the <tt>data-description</tt> attribute from a single badge.
+         * @memberof rxAccountInfo.badge
+         * @type {String}
          */
         description: {
             get: function () {
@@ -46,7 +48,7 @@ var badge = function (rootElement) {
 };
 
 /**
-   @namespace
+   @namespace rxAccountInfo
  */
 var rxAccountInfo = {
 
@@ -63,8 +65,10 @@ var rxAccountInfo = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @function
+     * @instance
+     * @description Whether or not the account info element is displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -73,7 +77,9 @@ var rxAccountInfo = {
     },
 
     /**
-       @returns {String} The name of the account.
+     * @instance
+     * @description The name of the account.
+     * @type {String}
      */
     name: {
         get: function () {
@@ -82,7 +88,9 @@ var rxAccountInfo = {
     },
 
     /**
-       @returns {String} The account number.
+     * @instance
+     * @description The account number.
+     * @type {String}
      */
     number: {
         get: function () {
@@ -91,7 +99,9 @@ var rxAccountInfo = {
     },
 
     /**
-       @returns {String} The account access policy.
+     * @instance
+     * @description The account access policy.
+     * @type {String}
      */
     accessPolicy: {
         get: function () {
@@ -100,9 +110,9 @@ var rxAccountInfo = {
     },
 
     /**
-       The resulting status is lowercased so that it is easy to use with
-       <a href="#encore.module_rxAccountInfo.statuses">encore.rxAccountInfo.statuses</a>.
-       @returns {String} The account status, to lower case.
+     * @description The resulting status is lowercased so that it is easy to use with {@link rxAccountInfo.statuses}.
+     * @instance
+     * @type {String}
      */
     status: {
         get: function () {
@@ -113,10 +123,10 @@ var rxAccountInfo = {
     },
 
     /**
-       Parses a class name from the DOM to determine what the status of the account is.
-       Designed to be easily compared with
-       <a href="#encore.module_rxAccountInfo.statusTypes">encore.rxAccountInfo.statusTypes</a>.
-       @returns {String} The status type of the account.
+     * @description Parses a class name from the DOM to determine what the status of the account is.
+     * Designed to be easily compared with {@link rxAccountInfo.statusTypes}.
+     * @instance
+     * @type {String}
      */
     statusType: {
         get: function () {
@@ -128,7 +138,9 @@ var rxAccountInfo = {
     },
 
     /**
-       @namespace rxAccountInfo.badge
+     * @description Methods for interacting with a collection of badges.
+     * @see rxAccountInfo.badge
+     * @instance
      */
     badge: {
         get: function () {
@@ -136,10 +148,11 @@ var rxAccountInfo = {
             return Page.create({
 
                 /**
-                   @function
-                   @param {Number} index - The badge to return at position `index`.
-                   @memberof rxAccountInfo.badge
-                   @returns {rxAccountInfo.badge.badge} A single badge object at position `index`.
+                 * @function
+                 * @instance
+                 * @param {Number} index - The badge to return at position <tt>index</tt>.
+                 * @memberof rxAccountInfo.badge
+                 * @returns {rxAccountInfo.badge} A single badge object at position <tt>index</tt>.
                  */
                 byIndex: {
                     value: function (index) {
@@ -148,10 +161,12 @@ var rxAccountInfo = {
                 },
 
                 /**
-                   @function
-                   @param {String} badgeName - The name of the badge to check if present.
-                   @memberof rxAccountInfo.badge
-                   @returns {Boolean} Whether or not the badge `badgeName` is present.
+                 * @function
+                 * @instance
+                 * @description Whether or not the badge <tt>badgeName</tt> is present.
+                 * @param {String} badgeName - The name of the badge to check if present.
+                 * @memberof rxAccountInfo.badge
+                 * @returns {Boolean}
                  */
                 exists: {
                     value: function (badgeName) {
@@ -160,11 +175,16 @@ var rxAccountInfo = {
                 },
 
                 /**
-                   Accepts a string for a fast, exact match only. Matches on the `img[data-name]` attribute.
-                   @function
-                   @memberof rxAccountInfo.badge
-                   @param {String} badgeName - Badge name to match against.
-                   @returns {rxAccountInfo.badge.badge} A single badge objects by name `badgeName`.
+                 * @function
+                 * @instance
+                 * @description A single badge object by name <tt>badgeName</tt>.
+                 * Accepts a string for a fast, exact match only. Matches on the <tt>img[data-name]</tt> attribute.
+                 * @memberof rxAccountInfo.badge
+                 * @param {String} badgeName - Badge name to match against.
+                 * @returns {rxAccountInfo.badge}
+                 * @example
+                 * var badge = encore.rxAccountInfo.initialize().badge.byName('Super Support');
+                 * expect(badge.name).to.eventually.equal('Super Support');
                  */
                 byName: {
                     value: function (badgeName) {
@@ -173,8 +193,13 @@ var rxAccountInfo = {
                 },
 
                 /**
-                   @memberof rxAccountInfo.badge
-                   @returns {String[]} All badge names.
+                 * @memberof rxAccountInfo.badge
+                 * @description All badge names.
+                 * @instance
+                 * @type {String[]}
+                 * @example
+                 * var names = encore.rxAccountInfo.initialize().badge.names;
+                 * expect(names).to.eventually.equal(['Super Support', 'Never Say Die SLA']);
                  */
                 names: {
                     get: function () {
@@ -185,8 +210,11 @@ var rxAccountInfo = {
                 },
 
                 /**
-                   @function
-                   @returns {Number} The total number of badges for the account.
+                 * @function
+                 * @instance
+                 * @description The total number of badges for the account.
+                 * @memberof rxAccountInfo.badge
+                 * @returns {Number}
                  */
                 count: {
                     value: function () {
@@ -221,17 +249,21 @@ var rxAccountInfo = {
 
 };
 
-/**
-   @exports encore.rxAccountInfo
- */
 exports.rxAccountInfo = {
 
     /**
-       @function
-       @param {WebElement} rxAccountInfoElement - WebElement to be transformed into an rxAccountInfoElement object
-       @returns {rxAccountInfo} Page object representing the rxAccountInfo object.
+     * @function
+     * @memberof rxAccountInfo
+     * @description Creates a page object from an <tt>rx-account-info</tt> DOM element.
+     * @param {ElementFinder} [rxAccountInfoElement=$('rx-account-info')] -
+     * ElementFinder to be transformed into an {@link rxAccountInfo} object.
+     * @returns {rxAccountInfo}
      */
     initialize: function (rxAccountInfoElement) {
+        if (rxAccountInfoElement === undefined) {
+            rxAccountInfoElement = $('rx-account-info');
+        }
+
         rxAccountInfo.rootElement = {
             get: function () { return rxAccountInfoElement; }
         };
@@ -239,7 +271,11 @@ exports.rxAccountInfo = {
     },
 
     /**
-       @returns {rxAccountInfo} Page object representing the _first_ rxAccountInfo object found on the page.
+     * @memberof rxAccountInfo
+     * @deprecated
+     * @description Page object representing the first {@link rxAccountInfo} object found on the page.
+     * DEPRECATED: Use {@link rxAccountInfo.initialize} (without arguments) instead.
+     * @returns {rxAccountInfo}
      */
     main: (function () {
         rxAccountInfo.rootElement = {
@@ -249,12 +285,14 @@ exports.rxAccountInfo = {
     })(),
 
     /**
-       @constant
-       @returns {Object} Lookup of account statuses from status text. Used for comparisons in tests.
-       @example
-       ```js
-       expect(encore.rxAccountInfo.main.status).to.eventually.equal(encore.rxAccountInfo.statuses.delinquent);
-       ```
+     * @constant
+     * @description Lookup of account statuses from status text. Used for comparisons in tests.
+     * See link to source code for full details.
+     * @memberof rxAccountInfo
+     * @type {Object}
+     * @example
+     * var accountInfo = encore.rxAccountInfo.initialize();
+     * expect(accountInfo.status).to.eventually.equal(accountInfo.statuses.delinquent);
      */
     statuses: {
         approvalDenied: 'approval denied',
@@ -269,12 +307,14 @@ exports.rxAccountInfo = {
     },
 
     /**
-       @constant
-       @returns {Object} Lookup of status types from a human-readable class name. Used for comparisons in tests.
-       @example
-       ```js
-       expect(encore.rxAccountInfo.main.statusType).to.eventually.equal(encore.rxAccountInfo.statusTypes.warning);
-       ```
+     * @constant
+     * @description Lookup of status types from a human-readable class name. Used for comparisons in tests.
+     * See link to source code for full details.
+     * @memberof rxAccountInfo
+     * @type {Object}
+     * @example
+     * var accountInfo = encore.rxAccountInfo.initialize();
+     * expect(accountInfo.statusType).to.eventually.equal(accountInfo.statusTypes.warning);
      */
     statusTypes: {
         active: 'active',
