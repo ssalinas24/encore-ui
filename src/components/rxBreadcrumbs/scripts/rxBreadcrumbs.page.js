@@ -1,9 +1,20 @@
 /*jshint node:true*/
 var Page = require('astrolabe').Page;
 
+/**
+ * @description Properties around a single breadcrumb.
+ * @see rxBreadcrumbs
+ * @namespace rxBreadcrumbs.breadcrumb
+ */
 var breadcrumb = function (rootElement) {
     return Page.create({
 
+        /**
+         * @instance
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @type {String}
+         * @description The inner text of the breadcrumb.
+         */
         name: {
             get: function () {
                 return rootElement.element(by.exactBinding('breadcrumb.name')).getText();
@@ -14,6 +25,12 @@ var breadcrumb = function (rootElement) {
             get: function () { return rootElement.$('.status-tag'); }
         },
 
+        /**
+         * @instance
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @type {String|null}
+         * @description The label tag's inner text, if present. Otherwise, <tt>null</tt>.
+         */
         tag: {
             get: function () {
                 var page = this;
@@ -27,6 +44,12 @@ var breadcrumb = function (rootElement) {
             }
         },
 
+        /**
+         * @instance
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @type {String|null}
+         * @description The href present in the breadcrumb, if present. Otherwise, <tt>null</tt>.
+         */
         href: {
             get: function () {
                 return this.isLink().then(function (isLink) {
@@ -39,24 +62,65 @@ var breadcrumb = function (rootElement) {
             }
         },
 
+        /**
+         * @instance
+         * @function
+         * @deprecated
+         * @alias {rxBreadcrumbs.breadcrumb#click}
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @description Use rxBreadcrumbs.breadcrumb#click instead. This will be removed in the future.
+         */
         visit: {
+            value: function () {
+                return this.click();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @description Click the breadcrumb to visit it.
+         */
+        click: {
             value: function () {
                 return rootElement.$('a').click();
             }
         },
 
+        /**
+         * @instance
+         * @function
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @description Whether or not the breadcrumb is the first in a group of breadcrumbs.
+         * @returns {Boolean}
+         */
         isFirst: {
             value: function () {
                 return rootElement.element(by.className('first')).isPresent();
             }
         },
 
+        /**
+         * @instance
+         * @function
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @description Whether or not the breadcrumb is last in a group of breadcrumbs.
+         * @returns {Boolean}
+         */
         isLast: {
             value: function () {
                 return rootElement.element(by.className('last')).isPresent();
             }
         },
 
+        /**
+         * @instance
+         * @function
+         * @memberOf rxBreadcrumbs.breadcrumb
+         * @description Whether or not a breadcrumb has an anchor tag in it somewhere.
+         * @returns {Boolean}
+         */
         isLink: {
             value: function () {
                 return rootElement.$('a').isPresent();
@@ -66,6 +130,10 @@ var breadcrumb = function (rootElement) {
     });
 };
 
+/**
+ * @description Properties around a collection of breadcrumbs.
+ * @namespace
+ */
 var rxBreadcrumbs = {
 
     tblBreadcrumbs: {
@@ -74,11 +142,15 @@ var rxBreadcrumbs = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Select a single breadcrumb by name, case sensitive.
+     * If multiple entries exist with the same name, the first will be returned.
+     * @param {String} breadcrumbName - The name of the breadcrumb to return.
+     * @returns {rxBreadcrumbs.breadcrumb}
+     */
     byName: {
-        /**
-          Return a single breadcrumb entry, located by the text of the element, case sensitive.
-          If multiple entries exist with the same name, the first will be returned.
-        */
         value: function (breadcrumbName) {
             var eleBreadcrumb = this.tblBreadcrumbs.filter(function (breadcrumbElement) {
                 return breadcrumbElement.element(by.exactBinding('breadcrumb.name')).getText().then(function (name) {
@@ -89,18 +161,39 @@ var rxBreadcrumbs = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Select a single breadcrumb by position (index).
+     * @param {String} breadcrumbName - The position of the breadcrumb to return.
+     * @returns {rxBreadcrumbs.breadcrumb}
+     */
     byPosition: {
         value: function (position) {
             return breadcrumb(this.tblBreadcrumbs.get(position));
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description The total number of breadcrumbs present in total.
+     * @returns {Number}
+     */
     count: {
         value: function () {
             return this.tblBreadcrumbs.count();
         }
     },
 
+    /**
+     * @instance
+     * @type {String[]}
+     * @description A list of all breadcrumbs by name.
+     * @returns {rxBreadcrumbs.breadcrumb}
+     * @example
+     * expect(encore.rxBreadcrumbs.initialize().names).to.eventually.eql(['Home', 'More']);
+     */
     names: {
         get: function () {
             return this.tblBreadcrumbs.map(function (breadcrumbElement) {
@@ -112,13 +205,32 @@ var rxBreadcrumbs = {
 };
 
 exports.rxBreadcrumbs = {
+    /**
+     * @function
+     * @memberof rxBreadcrumbs
+     * @description Creates a page object from an <tt>rx-breadcrumbs</tt> DOM element.
+     * @param {ElementFinder} [rxBreadcrumbsElement=$('rx-breadcrumbs')] -
+     * ElementFinder to be transformed into an {@link rxBreadcrumbs} object.
+     * @returns {rxBreadcrumbs}
+     */
     initialize: function (rootElement) {
+        if (rootElement === undefined) {
+            rootElement = $('rx-breadcrumbs');
+        }
+
         rxBreadcrumbs.rootElement = {
             get: function () { return rootElement; }
         };
         return Page.create(rxBreadcrumbs);
     },
 
+    /**
+     * @memberof rxBreadcrumbs
+     * @deprecated
+     * @description Page object representing the first {@link rxBreadcrumbs} object found on the page.
+     * DEPRECATED: Use {@link rxBreadcrumbs.initialize} (without arguments) instead.
+     * @returns {rxBreadcrumbs}
+     */
     main: (function () {
         rxBreadcrumbs.rootElement = {
             get: function () { return $('rx-breadcrumbs'); }
