@@ -2,10 +2,6 @@
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
-/**
-   @namespace
- */
-
 var rxBulkSelectDefaultRowFn = function (rowElement) {
     return exports.rxCheckbox.initialize(rowElement.$('input[type="checkbox"]'));
 };
@@ -16,7 +12,7 @@ var rxBatchActionMenu = function (rootElement) {
     // Need to override several properties styles and the ng-hide attribute
     // compared to what is seen in rxActionMenu.
     Object.defineProperties(actionMenu, {
-        'isExpanded': {
+        isExpanded: {
             value: function () {
                 return rootElement.$('.batch-action-menu-container')
                     .getAttribute('class').then(function (className) {
@@ -24,17 +20,20 @@ var rxBatchActionMenu = function (rootElement) {
                 });
             }
         },
-        'icoCog': {
+
+        icoCog: {
             get: function () {
                 return rootElement.$('.fa-cogs');
             }
         },
-        'isEnabled': {
+
+        isEnabled: {
             value: function () {
                 return rootElement.$('.btn-link.header-button').isEnabled();
             }
         },
-        'isPresent': {
+
+        isPresent: {
             value: function () {
                 return rootElement.isPresent();
             }
@@ -44,10 +43,16 @@ var rxBatchActionMenu = function (rootElement) {
     return actionMenu;
 };
 
+/**
+ * @description Properties for interacting with an rxBulkSelect component.
+ * @namespace
+*/
 var rxBulkSelect = {
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @function
+     * @instance
+     * @description Whether the bulk select component is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -55,6 +60,12 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Whether the bulk select component is currently enabled.
+     * @returns {Boolean}
+     */
     isEnabled: {
         value: function () {
             return this.rootElement.element(
@@ -63,12 +74,22 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @instance
+     * @type {rxActionMenu}
+     * @description The action menu present in the bulk actions action menu area.
+     */
     batchActions: {
         get: function () {
             return rxBatchActionMenu(this.rootElement.$('rx-batch-actions'));
         }
     },
 
+    /**
+     * @instance
+     * @type {rxCheckbox}
+     * @description The checkbox object used to select all rows in the bulk select component.
+     */
     selectAllCheckbox: {
         get: function () {
             return exports.rxCheckbox.initialize(
@@ -83,6 +104,12 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @instance
+     * @type {String|null}
+     * @description The message appearing above the bulk select table, if present.
+     * Only appears when some rows are selected. Otherwise, <tt>null</tt>.
+     */
     bulkMessage: {
         get: function () {
             return this.eleBulkMessage.element(by.binding('numSelected')).getText().then(function (text) {
@@ -91,12 +118,24 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @private
+     * @description Clicks the "select all" link that is only present when selected rows exist.
+     */
     selectAll: {
         value: function () {
             this.eleBulkMessage.element(by.partialButtonText('Select all')).click();
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @private
+     * @description Clicks the "Clear all" link that is only present when selected rows exist.
+     */
     clearSelections: {
         value: function () {
             this.eleBulkMessage.element(by.partialButtonText('Clear')).click();
@@ -109,6 +148,29 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Grab a row by index <tt>i</tt>, then pass that row element to the
+     * function <tt>rowFromElement</tt>, which is created at initialization time via an
+     * argument passed to {@link rxBulkSelect.initialize}.
+     * @returns {*}
+     * @example
+     * var tableRowFn = function (rootElement) {
+     *     return {
+     *         get rootElement() { return rootElement; },
+     *         get type() {
+     *             return rootElement.element(by.binding('status.type')).getText();
+     *         },
+     *
+     *         get checkbox() {
+     *             return encore.rxCheckbox.initialize(rootElement.$('input[type="checkbox"]'));
+     *         }
+     *     };
+     * };
+     * var table = encore.rxBulkSelect.initialize(undefined, tableRowFn);
+     * expect(table.row(1).type).to.eventually.equal('normal');
+     */
     row: {
         value: function (i) {
             return this.rowFromElement(this.tblRows.get(i));
@@ -121,6 +183,13 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @function
+     * @private
+     * @instance
+     * @description Whether or not every available row is selected.
+     * @returns {Boolean}
+     */
     anySelected: {
         value: function () {
             return this.tblSelectedRows.count().then(function (numSelectedRows) {
@@ -129,6 +198,13 @@ var rxBulkSelect = {
         }
     },
 
+    /**
+     * @function
+     * @private
+     * @instance
+     * @description Whether or not every available row is selected.
+     * @returns {Boolean}
+     */
     allSelected: {
         value: function () {
             var page = this;
@@ -141,12 +217,12 @@ var rxBulkSelect = {
     },
 
     /**
-       @function
-       @param {Number|Number[]} i - The index or indices of the row(s) to select
+     * @function
+     * @param {Number|Number[]} i - The index or indices of the row(s) to select
      */
     selectByIndex: {
         value: function selectRowByIndex (i) {
-            if (Array.isArray(i)) {
+            if (_.isArray(i)) {
                 _.each(i, selectRowByIndex, this);
             } else {
                 rxBulkSelectDefaultRowFn(this.tblRows.get(i)).select();
@@ -155,8 +231,8 @@ var rxBulkSelect = {
     },
 
     /**
-       @function
-       @param {Number|Number[]} i - The index or indices of the row(s) to deselect
+     * @function
+     * @param {Number|Number[]} i - The index or indices of the row(s) to deselect
      */
     deselectByIndex: {
         value: function deselectRowByIndex (i) {
@@ -169,16 +245,23 @@ var rxBulkSelect = {
     }
 };
 
-/**
-   @exports encore.rxBulkSelect
- */
 exports.rxBulkSelect = {
     /**
-       @function
-       @param {WebElement} rxBulkSelectElement - WebElement to be transformed into an rxBulkSelectElement object.
-       @returns {rxBulkSelect} Page object representing the rxBulkSelect object.
+     * @function
+     * @memberof rxBulkSelect
+     * @description Creates a page object from an <tt>[rx-bulk-select]</tt> DOM element.
+     * @param {ElementFinder} [rxBulkSelectElement=$('[rx-bulk-select]')] -
+     * ElementFinder to be transformed into an {@link rxBulkSelect} object.
+     * @param {Function} [rxBulkSelectRowFn={@link rxCheckbox}] -
+     * Function used to initialize a row object in the table. See {@link rxBulkSelect#row}
+     * for more information about this parameter.
+     * @returns {rxBulkSelect}
      */
     initialize: function (rxBulkSelectElement, rxBulkSelectRowFn) {
+        if (rxBulkSelectElement === undefined) {
+            rxBulkSelectElement = $('[rx-bulk-select]');
+        }
+
         rxBulkSelect.rowFromElement = {
             value: rxBulkSelectRowFn || rxBulkSelectDefaultRowFn
         };
@@ -190,8 +273,12 @@ exports.rxBulkSelect = {
     },
 
     /**
-       @returns {rxBulkSelect} Page object representing the _first_ rxBulkSelect object found on the page.
-    */
+     * @memberof rxBulkSelect
+     * @deprecated
+     * @description Page object representing the first {@link rxBulkSelect} object found on the page.
+     * DEPRECATED: Use {@link rxBulkSelect.initialize} (without arguments) instead.
+     * @returns {rxBulkSelect}
+     */
     main: (function () {
         rxBulkSelect.rowFromElement = {
             value: rxBulkSelectDefaultRowFn
