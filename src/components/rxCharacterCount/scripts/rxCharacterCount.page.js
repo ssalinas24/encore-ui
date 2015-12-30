@@ -2,7 +2,7 @@
 var Page = require('astrolabe').Page;
 
 /**
-   @namespace
+ * @namespace
  */
 var rxCharacterCount = {
 
@@ -25,8 +25,10 @@ var rxCharacterCount = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @function
+     * @instance
+     * @description Whether the root element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -35,16 +37,14 @@ var rxCharacterCount = {
     },
 
     /**
-       Get and set the comment's textual content. Will erase the current text when setting new text.
-       @param {String} text - The desired comment to be sent via `.sendKeys(text)`.
-       @returns {String} The current comment's text, via `.getAttribute('value')`.
-       @example
-       ```js
-       it('should erase all text and replace it with new text on update', function () {
-           rxCharacterCount.comment = 'Bar';
-           expect(rxCharacterCount.comment).to.eventually.equal('Bar');
-       });
-       ```
+     * @instance
+     * @description Get and set the comment's textual content. Will erase the current text when setting new text.
+     * @type {String}
+     * @example
+     * it('should erase all text and replace it with new text on update', function () {
+     *     myPage.comment = 'Bar';
+     *     expect(myPage.comment).to.eventually.equal('Bar');
+     * });
      */
     comment: {
         get: function () {
@@ -58,7 +58,10 @@ var rxCharacterCount = {
     },
 
     /**
-       @returns {Number} The remaining number of characters that can be entered.
+     * @instance
+     * @type {Number}
+     * @description The remaining number of characters that can be entered.
+     * @returns {Number}
      */
     remaining: {
         get: function () {
@@ -67,8 +70,10 @@ var rxCharacterCount = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the 'near-limit' class is displayed.
+     * @function
+     * @instance
+     * @description Whether or not the 'near-limit' class is displayed.
+     * @returns {Boolean}
      */
     isNearLimit: {
         value: function () {
@@ -79,8 +84,10 @@ var rxCharacterCount = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the 'over-limit' class is displayed.
+     * @function
+     * @instance
+     * @description Whether or not the 'over-limit' class is displayed.
+     * @returns {Boolean}
      */
     isOverLimit: {
         value: function () {
@@ -91,7 +98,14 @@ var rxCharacterCount = {
     },
 
     /**
-       @returns {String} The characters that are over the limit.
+     * @instance
+     * @type {String}
+     * @description The characters that are over the limit.
+     * @returns {String}
+     * @example
+     * // in this example, the limit of characters is 3
+     * myPage.comment = 'Anda Apine';
+     * expect(myPage.overLimitText).to.eventually.equal('a Apine');
      */
     overLimitText: {
         get: function () {
@@ -101,15 +115,15 @@ var rxCharacterCount = {
 
 };
 
-/**
-   @exports encore.rxCharacterCount
- */
 exports.rxCharacterCount = {
 
     /**
-       @function
-       @param {WebElement} rxCharacterCountElement - WebElement to be transformed into an rxCharacterCountElement object
-       @returns {rxCharacterCount} Page object representing the rxCharacterCount object.
+     * @function
+     * @memberof rxCharacterCount
+     * @description Creates a page object from an <tt>[rx-bulk-select]</tt> DOM element.
+     * @param {ElementFinder} [rxCharacterCountElement=$('[rx-character-count]')] -
+     * ElementFinder to be transformed into an {@link rxCharacterCount} object.
+     * @returns {rxCharacterCount}
      */
     initialize: function (rxCharacterCountElement) {
         rxCharacterCount.rootElement = {
@@ -119,7 +133,11 @@ exports.rxCharacterCount = {
     },
 
     /**
-       @returns {rxCharacterCount} Page object representing the _first_ rxCharacterCount object found on the page.
+     * @memberof rxCharacterCount
+     * @deprecated
+     * @description Page object representing the first {@link rxCharacterCount} object found on the page.
+     * DEPRECATED: Use {@link rxCharacterCount.initialize} (without arguments) instead.
+     * @returns {rxCharacterCount}
      */
     main: (function () {
         rxCharacterCount.rootElement = {

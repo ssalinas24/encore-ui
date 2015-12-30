@@ -2,25 +2,25 @@ var _ = require('lodash');
 var rxCharacterCount = require('./rxCharacterCount.page').rxCharacterCount;
 
 /**
-   rxCharacterCount exercises.
-   @exports encore.exercise.rxCharacterCount
-   @param {Object} [options=] - Test options. Used to build valid tests.
-   @param {rxCharacterCount} [options.instance=] - Component to exercise.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @param {Number} [options.maxCharacters=254] - The total number of characters allowed.
-   @param {Number} [options.nearLimit=10] - The number of remaining characters needed to trigger the "near-limit" class.
-   @param {Boolean} [options.ignoreInsignificantWhitespace=false] - Whether or not the textbox ignores leading and
-   trailing whitespace when calculating the remaining character count.
-   @param {Boolean} [options.highlight=false] - Determines if text over the limit should be highlighted.
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxCharacterCount({
-       instance: myPage.submission // select one of many widgets from your page objects
-       maxCharacters: 25,
-       nearLimit: 12,
-       ignoreInsignificantWhitespace: false
-   }));
-   ```
+ * @function
+ * @description rxCharacterCount exercises.
+ * @exports exercise/rxCharacterCount
+ * @returns {function} A function to be passed to mocha's `describe`.
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxCharacterCount} [options.instance={@link rxCharacterCount.intiailize}] - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Number} [options.maxCharacters=254] - The total number of characters allowed.
+ * @param {Number} [options.nearLimit=10] - The number of remaining characters needed to trigger the "near-limit" class.
+ * @param {Boolean} [options.ignoreInsignificantWhitespace=false] - Whether or not the textbox ignores leading and
+ * trailing whitespace when calculating the remaining character count.
+ * @param {Boolean} [options.highlight=false] - Determines if text over the limit should be highlighted.
+ * @example
+ * describe('default exercises', encore.exercise.rxCharacterCount({
+ *     instance: myPage.submission // select one of many widgets from your page objects
+ *     maxCharacters: 25,
+ *     nearLimit: 12,
+ *     ignoreInsignificantWhitespace: false
+ * }));
  */
 exports.rxCharacterCount = function (options) {
     if (options === undefined) {
