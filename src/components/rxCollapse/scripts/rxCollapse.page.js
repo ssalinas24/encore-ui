@@ -3,13 +3,15 @@ var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
 /**
-   @namespace
+ * @namespace
  */
 var rxCollapse = {
 
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @instance
+     * @function
+     * @description Whether the root element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -18,8 +20,10 @@ var rxCollapse = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the component is currently expanded.
+     * @instance
+     * @function
+     * @description Whether or not the component is currently expanded.
+     * @returns {Boolean}
      */
     isExpanded: {
         value: function () {
@@ -28,8 +32,10 @@ var rxCollapse = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the component is currently collapsed.
+     * @instance
+     * @function
+     * @description Whether or not the component is currently collapsed.
+     * @returns {Boolean}
      */
     isCollapsed: {
         value: function () {
@@ -40,8 +46,10 @@ var rxCollapse = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the component has a custom title.
+     * @instance
+     * @function
+     * @description Whether or not the component has a custom title.
+     * @returns {Boolean}
      */
     hasCustomTitle: {
         value: function () {
@@ -52,9 +60,10 @@ var rxCollapse = {
     },
 
     /**
-       Will return the custom title's text if the component uses one. Otherwise, it'll return
-       the default title, found in the `.sml-title` (see-more-less-title) class.
-       @returns {String} Either the custom title's text, or the default title.
+     * @instance
+     * @description Will return the custom title's text if the component uses one. Otherwise, it'll return
+     * the default title, found in the `.sml-title` (see-more-less-title) class.
+     * @type {String}
      */
     title: {
         get: function () {
@@ -70,9 +79,9 @@ var rxCollapse = {
     },
 
     /**
-       Will expand the component if collapsed, or will collapse it if it's expanded.
-       @function
-       @returns {undefined}
+     * @instance
+     * @description Will expand the component if collapsed, or will collapse it if it's expanded.
+     * @function
      */
     toggle: {
         value: function () {
@@ -88,8 +97,9 @@ var rxCollapse = {
     },
 
     /**
-       Will toggle the component *only* if it's currently collapsed.
-       @returns {undefined}
+     * @instance
+     * @function
+     * @description Will toggle the component only if it's currently collapsed.
      */
     expand: {
         value: function () {
@@ -103,8 +113,9 @@ var rxCollapse = {
     },
 
     /**
-       Will toggle the component *only* if it's currently expanded.
-       @returns {undefined}
+     * @instance
+     * @function
+     * @description Will toggle the component only if it's currently expanded.
      */
     collapse: {
         value: function () {
@@ -119,17 +130,21 @@ var rxCollapse = {
 
 };
 
-/**
-   @exports encore.rxCollapse
- */
 exports.rxCollapse = {
 
     /**
-       @function
-       @param {WebElement} rxCollapseElement - WebElement to be transformed into an rxCollapseElement object.
-       @returns {rxCollapse} Page object representing the rxCollapse object.
+     * @function
+     * @memberof rxCollapse
+     * @description Creates a page object from an `[rx-collapse]` DOM element.
+     * @param {ElementFinder} [rxCollapseElement=$('rx-collapse')] -
+     * ElementFinder to be transformed into an {@link rxCollapse} object.
+     * @returns {rxCollapse}
      */
     initialize: function (rxCollapseElement) {
+        if (rxCollapseElement === undefined) {
+            rxCollapseElement = $('rx-collapse');
+        }
+
         rxCollapse.rootElement = {
             get: function () { return rxCollapseElement; }
         };
@@ -137,8 +152,11 @@ exports.rxCollapse = {
     },
 
     /**
-       @returns {rxCollapse} Page object representing the _first_ rxCollapse object found on the page.
-    */
+     * @deprecated
+     * @memberof rxCollapse
+     * @description Creates a page object from the first `[rx-bulk-select]` DOM element present on the page.
+     * @type {rxCollapse}
+     */
     main: (function () {
         rxCollapse.rootElement = {
             get: function () { return $('rx-collapse'); }
