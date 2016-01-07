@@ -5,7 +5,7 @@ describe('rxFeedbackSvc', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxFeedback');
+        module('encore.ui.quarks');
 
         mockResource = sinon.stub().returns({
             save: sinon.stub()
