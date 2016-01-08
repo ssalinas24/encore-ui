@@ -19,6 +19,7 @@ angular.module('encore.ui.rxForm')
  *   <dt>Siblings:</dt>
  *   <dd>
  *     <ul>
+ *       <li>{@link rxForm.directive:rxInfix rxInfix}</li>
  *       <li>{@link rxForm.directive:rxSuffix rxSuffix}</li>
  *       <li>Any HTML Element</li>
  *     </ul>

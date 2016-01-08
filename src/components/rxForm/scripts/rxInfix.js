@@ -1,13 +1,11 @@
 angular.module('encore.ui.rxForm')
 /**
- * @name rxForm.directive:rxSuffix
+ * @name rxForm.directive:rxInfix
  * @ngdoc directive
  * @restrict E
  * @description
  * Structural element directive used to wrap content to be placed
  * inline with a form control element.
- *
- * * Best placed after a form control element.
  *
  * <dl>
  *   <dt>Display:</dt>
@@ -20,7 +18,7 @@ angular.module('encore.ui.rxForm')
  *   <dd>
  *     <ul>
  *       <li>{@link rxForm.directive:rxPrefix rxPrefix}</li>
- *       <li>{@link rxForm.directive:rxInfix rxInfix}</li>
+ *       <li>{@link rxForm.directive:rxSuffix rxSuffix}</li>
  *       <li>Any HTML Element</li>
  *     </ul>
  *   </dd>
@@ -35,12 +33,12 @@ angular.module('encore.ui.rxForm')
  * <form rx-form>
  *   <rx-form-section>
  *     <rx-field>
- *       <rx-field-name>Salary:</rx-field-name>
+ *       <rx-field-name>Time of Day:</rx-field-name>
  *       <rx-field-content>
  *         <rx-input>
- *           <rx-prefix>$</rx-prefix>
- *           <input type="number" />
- *           <rx-suffix>Million</rx-suffix>
+ *           <input type="number" name="hours" />
+ *           <rx-infix>:</rx-infix>
+ *           <input type="number" name="minutes" />
  *         </rx-input>
  *       </rx-field-content>
  *     </rx-field>
@@ -49,7 +47,7 @@ angular.module('encore.ui.rxForm')
  * ...
  * </pre>
  */
-.directive('rxSuffix', function (rxNestedElement) {
+.directive('rxInfix', function (rxNestedElement) {
     return rxNestedElement({
         parent: 'rxInput'
     });

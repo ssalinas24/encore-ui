@@ -1,0 +1,102 @@
+<div class="rxTimePicker wrapper">
+  <div class="control" ng-click="togglePopup()">
+    <input
+      type="text"
+      data-time="{{modelValue}}"
+      class="displayValue"
+      ng-model="displayValue" />
+
+    <div class="overlay">
+      <i class="icon fa fa-fw fa-clock-o"></i>
+    </div>
+  </div>
+
+  <div class="popup" ng-show="isPickerVisible">
+    <form rx-form name="timePickerForm">
+      <rx-form-section>
+        <rx-field>
+          <rx-field-content>
+            <rx-input>
+              <input
+                type="text"
+                name="hour"
+                class="hour"
+                maxlength="2"
+                autocomplete="off"
+                ng-required="true"
+                ng-pattern="/^(1[012]|0?[1-9])$/"
+                ng-model="hour" />
+
+              <rx-infix>:</rx-infix>
+
+              <input
+                type="text"
+                name="minutes"
+                class="minutes"
+                maxlength="2"
+                autocomplete="off"
+                ng-required="true"
+                ng-pattern="/^[0-5][0-9]$/"
+                ng-model="minutes" />
+
+              <rx-suffix>
+                <select
+                  rx-select
+                  name="period"
+                  class="period"
+                  ng-model="period">
+
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </rx-suffix>
+
+              <rx-suffix class="offsetWrapper">
+                <select
+                  rx-select
+                  name="utcOffset"
+                  class="utcOffset"
+                  ng-model="offset">
+
+                  <option
+                    ng-repeat="utcOffset in availableUtcOffsets"
+                    ng-selected="{{utcOffset === offset}}">
+
+                    {{utcOffset}}
+                  </option>
+                </select>
+              </rx-suffix>
+            </rx-input>
+
+            <rx-inline-error ng-if="timePickerForm.hour.$dirty && !timePickerForm.hour.$valid">
+              Invalid Hour
+            </rx-inline-error>
+
+            <rx-inline-error ng-if="timePickerForm.minutes.$dirty && !timePickerForm.minutes.$valid">
+              Invalid Minutes
+            </rx-inline-error>
+          </rx-field-content>
+        </rx-field>
+      </rx-form-section>
+
+      <rx-form-section class="actions">
+        <div>
+          <rx-button
+            classes="done"
+            default-msg="Done"
+            disable="!timePickerForm.$valid"
+            ng-click="submitPopup()">
+          </rx-button>
+
+          &nbsp;
+
+          <rx-button
+            classes="cancel"
+            default-msg="Cancel"
+            ng-click="closePopup()">
+          </rx-button>
+        </div>
+      </rx-form-section>
+    </form>
+  </div>
+</div>

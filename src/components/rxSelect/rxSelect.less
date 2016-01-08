@@ -31,6 +31,37 @@
     height: 100%;
   }
 
+  .disabledSelect() {
+    cursor: not-allowed;
+
+    & + .fake-select {
+      border-color: @rxSelect-border-color-disabled;
+      border-width: 1px;
+
+      .select-trigger {
+        background: @rxSelect-background-disabled;
+        border-left-width: 0px;
+        border-left-color: @rxSelect-color-disabled;
+        color: @rxSelect-trigger-color-disabled;
+      }
+    }
+  }//.disabledSelect()
+
+  .invalidSelect() {
+    & + .fake-select {
+      border-color: @rxSelect-border-color-invalid;
+      border-width: 2px;
+
+      .select-trigger {
+        color: @rxSelect-trigger-color-invalid;
+      }
+    }
+
+    &[disabled] {
+      .rxSelect.disabledSelect();
+    }
+  }//.invalidSelect()
+
   select,
   rx-multi-select {
     z-index: 0;
@@ -52,40 +83,13 @@
       border-width: 1px;
     }
 
-    .disabled() {
-      cursor: not-allowed;
-
-      & + .fake-select {
-        border-color: @rxSelect-border-color-disabled;
-        border-width: 1px;
-
-        .select-trigger {
-          background: @rxSelect-background-disabled;
-          border-left-width: 0;
-          border-left-color: @rxSelect-color-disabled;
-          color: @rxSelect-trigger-color-disabled;
-        }
-      }
-    }//.disabled()
-
     &.ng-invalid.ng-dirty {
-      & + .fake-select {
-        border-color: @rxSelect-border-color-invalid;
-        border-width: 2px;
-
-        .select-trigger {
-          color: @rxSelect-trigger-color-invalid;
-        }
-      }
-
-      &[disabled] {
-        .disabled();
-      }
+      .invalidSelect();
     }
 
     // Disabled Trumps All
     &[disabled] {
-      .disabled();
+      .disabledSelect();
     }
   }//select
 

@@ -1,0 +1,106 @@
+@import (reference) 'vars';
+
+rx-time-picker {
+  #vars.rxTimePicker();
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: @control-width;
+
+  &,
+  &.ng-valid {
+    .control {
+      background-color: @control-background-color;
+      border: 1px solid @control-border-color;
+      box-sizing: border-box;
+      color: @control-text-color;
+      cursor: @control-cursor;
+      height: @control-height;
+      overflow: hidden;
+      padding: @control-padding-x @control-padding-y;
+      position: relative;
+
+      .displayValue {
+        background-color: transparent;
+      }
+
+      .icon {
+        color: @control-icon-color;
+        flex: 0 0 @control-icon-width;
+        margin-left: @control-gutter;
+      }
+
+      .overlay {
+        align-items: center;
+        background-color: transparent;
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: row nowrap;
+        height: 100%;
+        justify-content: flex-end;
+        left: 0;
+        padding: @control-padding-x @control-padding-y;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }//.overlay
+    }//.control
+  }//valid/norm
+
+  &.ng-invalid.ng-dirty {
+    .control {
+      border: 2px solid @invalid-control-border-color;
+      // MUST differ with valid padding by 1px to account for thicker border
+      padding: (@control-padding-x - 1) (@control-padding-y - 1);
+
+      .icon {
+        color: @invalid-control-icon-color;
+      }
+    }
+  }
+
+  // Disabled styles should trump all other styles
+  // !important is required to achieve this
+  &[disabled] {
+    .control {
+      background-color: @disabled-control-background-color !important;
+      border: 1px solid @disabled-control-border-color !important;
+      color: @disabled-control-text-color !important;
+      cursor: @disabled-control-cursor !important;
+
+      .icon {
+        color: @disabled-control-icon-color !important;
+      }
+    }
+  }
+
+  .popup {
+    background-color: @popup-background-color;
+    border-color: @popup-border-color;
+    border-style: solid;
+    border-width: 5px 1px 1px;
+    border-top-color:  @popup-border-top-color;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: @popup-width;
+    z-index: @popup-z-index;
+
+    .hour,
+    .minutes {
+      width: 30px;
+    }
+
+    .offsetWrapper {
+      width: 85px;
+    }
+
+    .actions {
+      div {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
