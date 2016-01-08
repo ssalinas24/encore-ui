@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxIdentity', function () {
+describe('quarks:Identity', function () {
     var identity, $httpBackend, token;
 
     token = {
@@ -8,7 +8,7 @@ describe('rxIdentity', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxIdentity');
+        module('encore.ui.quarks');
 
         inject(function ($injector) {
             $httpBackend = $injector.get('$httpBackend');

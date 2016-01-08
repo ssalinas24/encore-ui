@@ -28,5 +28,12 @@
  * * {@link quarks.service:Environment Environment}
  * * {@link quarks.service:rxPromiseNotifications rxPromiseNotifications}
  * * {@link quarks.service:rxSortUtil rxSortUtil}
+ * * {@link quarks.service:Identity Identity}
+ * * {@link quarks.service:rxStatusMappings rxStatusMappings}
+ * * {$link quarks.service:ErrorFormatter ErrorFormatter}
+ * * {$link quarks.service:rxFeedbackSvc rxFeedbackSvc}
+ * * {$link quarks.service:rxNotify rxNotify}
  */
-angular.module('encore.ui.quarks', []);
+angular.module('encore.ui.quarks', [
+    'ngResource',
+]);

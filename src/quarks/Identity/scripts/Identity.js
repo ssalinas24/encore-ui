@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxIdentity')
+angular.module('encore.ui.quarks')
 /**
 * @ngdoc service
-* @name rxIdentity.service:Identity
+* @name quarks.service:Identity
 * @description
 * This is a component designed to aid interaction with Rackspace's Identity API.
 *

@@ -8,7 +8,7 @@ angular.module('encore.ui.rxAuth')
  * Permission services.  These services were broken into smaller components to facilitate
  * customization and re-use.
  *
- * @requires rxIdentity.service:Identity
+ * @requires quarks.service:Identity
  * @requires rxSession.service:Session
  * @requires rxPermission.service:Permission
  *
