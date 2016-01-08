@@ -5,7 +5,7 @@ describe('rxFormUtils', function () {
     var template;
 
     beforeEach(function () {
-        module('encore.ui.rxForm');
+        module('encore.ui.quarks');
 
         inject(function ($rootScope, _$document_, rxFormUtils) {
             rootScope = $rootScope;

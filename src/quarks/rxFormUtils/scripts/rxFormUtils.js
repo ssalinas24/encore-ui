@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxForm')
+angular.module('encore.ui.quarks')
 /**
- * @name rxForm.service:rxFormUtils
+ * @name quarks.service:rxFormUtils
  * @ngdoc service
  *
  * @description
- * Set of utility functions used by rxForm to access form data
+ * Set of utility functions used by rxForm to access form data.
  *
  * @example
  * <pre>

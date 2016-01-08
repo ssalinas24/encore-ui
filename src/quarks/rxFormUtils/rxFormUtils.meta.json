@@ -1,0 +1,7 @@
+{
+    "displayName": "rxFormUtils",
+    "stability": "unstable",
+    "description": "Set of utility functions used by rxForm to access form data",
+    "api": "service:rxFormUtils",
+    "keywords": []
+}

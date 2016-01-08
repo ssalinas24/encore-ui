@@ -189,9 +189,6 @@
  * </form>
  * </pre>
  *
- * ## Services
- * * {@link rxForm.service:rxFormUtils rxFormUtils}
- *
  * ## Hierarchical Directives
  * * {@link rxForm.directive:rxForm rxForm}
  * * {@link rxForm.directive:rxFormSection rxFormSection}
