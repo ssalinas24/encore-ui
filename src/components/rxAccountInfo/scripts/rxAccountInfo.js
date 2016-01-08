@@ -57,8 +57,8 @@ angular.module('encore.ui.rxAccountInfo')
                 });
             });
 
-            if (!_.isEmpty(scope.teamId) && (_.isNumber(_.parseInt(scope.teamId)))) {
-                Teams.badges({ id: scope.teamId }).$promise.then(function (badges) {
+            var fetchTeamBadges = function (teamId) {
+                Teams.badges({ id: teamId }).$promise.then(function (badges) {
                     scope.badges = scope.badges.concat(badges);
                 }, function () {
                     rxNotify.add('Error retrieving badges for this team', {
@@ -66,9 +66,24 @@ angular.module('encore.ui.rxAccountInfo')
                         stack: notifyStack
                     });
                 });
+            };
+
+            if (!_.isEmpty(scope.teamId) && (_.isNumber(_.parseInt(scope.teamId)))) {
+                fetchTeamBadges(scope.teamId);
             }
 
             Encore.getAccount({ id: scope.accountNumber }, function (account) {
+                // Only attempt if no teamId is passed to directive
+                if (_.isEmpty(scope.teamId)) {
+                    var primaryTeam = _.find(account.teams, function (team) {
+                        return _.contains(team.flags, 'primary');
+                    });
+
+                    if (primaryTeam) {
+                        fetchTeamBadges(primaryTeam.id);
+                    }
+                }
+
                 scope.accountName = account.name;
                 scope.accountStatus = account.status;
                 scope.accountAccessPolicy = account.accessPolicy;
