@@ -129,7 +129,6 @@
  *
  * ## Services
  * * {@link rxFeedback.service:rxFeedbackSvc rxFeedbackSvc}
- * * {@link rxFeedback.service:rxScreenshotSvc rxScreenshotSvc}
  */
 angular.module('encore.ui.rxFeedback', [
     'ngResource'

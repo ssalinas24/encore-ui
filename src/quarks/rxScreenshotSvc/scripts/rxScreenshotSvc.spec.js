@@ -5,7 +5,7 @@ describe('rxScreenshotSvc', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxFeedback');
+        module('encore.ui.quarks');
 
         // Inject in angular constructs
         inject(function ($rootScope, $compile, rxScreenshotSvc, $timeout) {
