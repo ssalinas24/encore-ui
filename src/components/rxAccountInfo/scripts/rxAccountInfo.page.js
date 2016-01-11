@@ -10,7 +10,7 @@ var badge = function (rootElement) {
 
         /**
          * @instance
-         * @description The attribute under <tt>ng-src</tt> for a single badge.
+         * @description The attribute under `ng-src` for a single badge.
          * @memberof rxAccountInfo.badge
          * @type {String}
          */
@@ -22,7 +22,7 @@ var badge = function (rootElement) {
 
         /**
          * @instance
-         * @description The <tt>data-name</tt> attribute from a single badge.
+         * @description The `data-name` attribute from a single badge.
          * @memberof rxAccountInfo.badge
          * @type {String}
          */
@@ -34,7 +34,7 @@ var badge = function (rootElement) {
 
         /**
          * @instance
-         * @description Will get the <tt>data-description</tt> attribute from a single badge.
+         * @description Will get the `data-description` attribute from a single badge.
          * @memberof rxAccountInfo.badge
          * @type {String}
          */
@@ -150,9 +150,9 @@ var rxAccountInfo = {
                 /**
                  * @function
                  * @instance
-                 * @param {Number} index - The badge to return at position <tt>index</tt>.
+                 * @param {Number} index - The badge to return at position `index`.
                  * @memberof rxAccountInfo.badge
-                 * @returns {rxAccountInfo.badge} A single badge object at position <tt>index</tt>.
+                 * @returns {rxAccountInfo.badge} A single badge object at position `index`.
                  */
                 byIndex: {
                     value: function (index) {
@@ -163,7 +163,7 @@ var rxAccountInfo = {
                 /**
                  * @function
                  * @instance
-                 * @description Whether or not the badge <tt>badgeName</tt> is present.
+                 * @description Whether or not the badge `badgeName` is present.
                  * @param {String} badgeName - The name of the badge to check if present.
                  * @memberof rxAccountInfo.badge
                  * @returns {Boolean}
@@ -177,8 +177,8 @@ var rxAccountInfo = {
                 /**
                  * @function
                  * @instance
-                 * @description A single badge object by name <tt>badgeName</tt>.
-                 * Accepts a string for a fast, exact match only. Matches on the <tt>img[data-name]</tt> attribute.
+                 * @description A single badge object by name `badgeName`.
+                 * Accepts a string for a fast, exact match only. Matches on the `img[data-name]` attribute.
                  * @memberof rxAccountInfo.badge
                  * @param {String} badgeName - Badge name to match against.
                  * @returns {rxAccountInfo.badge}
@@ -254,7 +254,7 @@ exports.rxAccountInfo = {
     /**
      * @function
      * @memberof rxAccountInfo
-     * @description Creates a page object from an <tt>rx-account-info</tt> DOM element.
+     * @description Creates a page object from an `rx-account-info` DOM element.
      * @param {ElementFinder} [rxAccountInfoElement=$('rx-account-info')] -
      * ElementFinder to be transformed into an {@link rxAccountInfo} object.
      * @returns {rxAccountInfo}

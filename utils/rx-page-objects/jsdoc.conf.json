@@ -3,5 +3,11 @@
         "default": {
             "useLongnameInNav": true
         }
-    }
+    },
+    "markdown": {
+        "idInHeadings": true
+    },
+    "plugins": [
+        "plugins/markdown"
+    ]
 }

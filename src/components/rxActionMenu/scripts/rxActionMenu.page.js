@@ -26,12 +26,12 @@ var action = function (actionElement) {
          * @function
          * @instance
          * @memberof rxActionMenu.action
-         * @description Returns a modal object to manipulate later, with given <tt>customFunctionality</tt>.
-         * See {@link rxModalAction.initialize} for more information about what <tt>customFunctionality</tt> means here.
+         * @description Returns a modal object to manipulate later, with given `customFunctionality`.
+         * See {@link rxModalAction.initialize} for more information about what `customFunctionality` means here.
          * Using a modal object is the default action since many instances of the action menu serve to launch
          * modals. If you're not using rxActionMenu to launch modals, over-ride this entire section
          * when calling <a href="#encore.module_rxActionMenu.initialize">rxActionMenu.initialize</a>,
-         * where you can pass in a custom <tt>actionConstructorFn</tt>.
+         * where you can pass in a custom `actionConstructorFn`.
          * @param {Object} customFunctionality - Custom functionality of the modal, should you use one.
          * @returns {rxModalAction} A modal that gets opened by clicking the action menu item.
          */
@@ -72,10 +72,10 @@ var rxActionMenu = {
     },
 
     /**
-     * @description This selector will grab any top-level child elements under <tt>.actions-area</tt>, one level deep.
+     * @description This selector will grab any top-level child elements under `.actions-area`, one level deep.
      * Since action menus allow for free-form html entry, there is no guarantee that any
      * particular structure will appear inside the action menu. However, we can be sure
-     * that they'll use the <tt>.actions-area</tt> class to style it, and inside of it will be some
+     * that they'll use the `.actions-area` class to style it, and inside of it will be some
      * sort of element list. This exposes a hook into the html for matching text or counting nodes.
      * @private
      */
@@ -146,7 +146,7 @@ var rxActionMenu = {
     },
 
     /**
-     * @description Whether or not the action menu has an item matching the text <tt>actionName</tt>.
+     * @description Whether or not the action menu has an item matching the text `actionName`.
      * Will expand the action menu to determine if the action is available.
      * @function
      * @instance
@@ -200,8 +200,8 @@ exports.rxActionMenu = {
     /**
      * @function
      * @memberOf rxActionMenu
-     * @description Passing in an <tt>actionConstructorFn</tt> will default to calling that for any
-     * calls made to <tt>rxActionMenu.action('Action Name')</tt>. If it's not defined, it defaults to a function
+     * @description Passing in an `actionConstructorFn` will default to calling that for any
+     * calls made to `rxActionMenu.action('Action Name')`. If it's not defined, it defaults to a function
      * that creates a page object represented by {@link rxActionMenu.action}.
      * Most times you'll want to use the default option.
      * @param {ElementFinder} rxActionMenuElement - ElementFinder to be transformed into an {@link rxActionMenu} object

@@ -162,7 +162,7 @@ exports.rxCheckbox = {
     /**
      * @function
      * @memberof rxCheckbox
-     * @description Creates a page object from an <tt>[rx-checkbox]</tt> DOM element.
+     * @description Creates a page object from an `[rx-checkbox]` DOM element.
      * @param {ElementFinder} rxCheckboxElement -
      * ElementFinder to be transformed into an {@link rxCheckbox} page object.
      * @returns {rxCheckbox}

@@ -120,7 +120,7 @@ exports.rxCharacterCount = {
     /**
      * @function
      * @memberof rxCharacterCount
-     * @description Creates a page object from an <tt>[rx-bulk-select]</tt> DOM element.
+     * @description Creates a page object from an `[rx-bulk-select]` DOM element.
      * @param {ElementFinder} [rxCharacterCountElement=$('[rx-character-count]')] -
      * ElementFinder to be transformed into an {@link rxCharacterCount} object.
      * @returns {rxCharacterCount}

@@ -29,7 +29,7 @@ var breadcrumb = function (rootElement) {
          * @instance
          * @memberOf rxBreadcrumbs.breadcrumb
          * @type {String|null}
-         * @description The label tag's inner text, if present. Otherwise, <tt>null</tt>.
+         * @description The label tag's inner text, if present. Otherwise, `null`.
          */
         tag: {
             get: function () {
@@ -48,7 +48,7 @@ var breadcrumb = function (rootElement) {
          * @instance
          * @memberOf rxBreadcrumbs.breadcrumb
          * @type {String|null}
-         * @description The href present in the breadcrumb, if present. Otherwise, <tt>null</tt>.
+         * @description The href present in the breadcrumb, if present. Otherwise, `null`.
          */
         href: {
             get: function () {
@@ -208,7 +208,7 @@ exports.rxBreadcrumbs = {
     /**
      * @function
      * @memberof rxBreadcrumbs
-     * @description Creates a page object from an <tt>rx-breadcrumbs</tt> DOM element.
+     * @description Creates a page object from an `rx-breadcrumbs` DOM element.
      * @param {ElementFinder} [rxBreadcrumbsElement=$('rx-breadcrumbs')] -
      * ElementFinder to be transformed into an {@link rxBreadcrumbs} object.
      * @returns {rxBreadcrumbs}

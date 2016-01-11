@@ -108,7 +108,7 @@ var rxBulkSelect = {
      * @instance
      * @type {String|null}
      * @description The message appearing above the bulk select table, if present.
-     * Only appears when some rows are selected. Otherwise, <tt>null</tt>.
+     * Only appears when some rows are selected. Otherwise, `null`.
      */
     bulkMessage: {
         get: function () {
@@ -151,8 +151,8 @@ var rxBulkSelect = {
     /**
      * @function
      * @instance
-     * @description Grab a row by index <tt>i</tt>, then pass that row element to the
-     * function <tt>rowFromElement</tt>, which is created at initialization time via an
+     * @description Grab a row by index `i`, then pass that row element to the
+     * function `rowFromElement`, which is created at initialization time via an
      * argument passed to {@link rxBulkSelect.initialize}.
      * @returns {*}
      * @example
@@ -249,7 +249,7 @@ exports.rxBulkSelect = {
     /**
      * @function
      * @memberof rxBulkSelect
-     * @description Creates a page object from an <tt>[rx-bulk-select]</tt> DOM element.
+     * @description Creates a page object from an `[rx-bulk-select]` DOM element.
      * @param {ElementFinder} [rxBulkSelectElement=$('[rx-bulk-select]')] -
      * ElementFinder to be transformed into an {@link rxBulkSelect} object.
      * @param {Function} [rxBulkSelectRowFn={@link rxCheckbox}] -

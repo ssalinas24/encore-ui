@@ -115,11 +115,11 @@ var rxFeedback = {
      * @function
      * @description A high-level utility function for quickly submitting feedback.
      * Prepares, writes, and submits feedback.
-     * If <tt>confirmSuccessWithin</tt> is defined, a confirmation of submission success must appear
-     * within <tt>confirmSuccessWithin</tt> milliseconds.
-     * If <tt>confirmSuccessFn</tt> is undefined, the default behavior will look for an rxNotify success
-     * message. Otherwise, <tt>confirmSuccessFn</tt> will be attempted until it yields a truthy value,
-     * using Protractor's <tt>wait</tt> function.
+     * If `confirmSuccessWithin` is defined, a confirmation of submission success must appear
+     * within `confirmSuccessWithin` milliseconds.
+     * If `confirmSuccessFn` is undefined, the default behavior will look for an rxNotify success
+     * message. Otherwise, `confirmSuccessFn` will be attempted until it yields a truthy value,
+     * using Protractor's `wait` function.
      * @param {String} feedbackType - The type of feedback to submit.
      * @param {String} feedbackText - The text to include as a feedback description.
      * @param {Number} [confirmSuccessWithin=3000] - Milliseconds to confirm success within.
