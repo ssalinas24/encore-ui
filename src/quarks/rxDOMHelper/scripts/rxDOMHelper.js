@@ -1,13 +1,13 @@
-angular.module('encore.ui.rxMisc')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxMisc.service:rxDOMHelper
+ * @name quarks.service:rxDOMHelper
  * @description
  * A small set of functions to provide some functionality
- * that isn't present in Angular's jQuery-lite, and other
- * DOM-related functions that are useful.
+ * that isn't present in [Angular's jQuery-lite](https://docs.angularjs.org/api/ng/function/angular.element), 
+ * and other DOM-related functions that are useful.
  *
- * All methods take jquery-lite wrapped elements as arguments.
+ * **NOTE:** All methods take jQuery-lite wrapped elements as arguments.
  */
 .factory('rxDOMHelper', function ($document, $window) {
     var scrollTop = function () {
