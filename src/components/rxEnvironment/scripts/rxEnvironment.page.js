@@ -61,12 +61,13 @@ exports.rxEnvironment = {
     },
 
     /**
-     * @constant
      * @type {Object}
      * @description The default environments used in nearly all encore applications. You can provide your own
      * environments by setting your own in your protractor configuration file as `browser.params.environments`.
      * This object clones the environments found there before filling in any missing entries with reasonable defaults.
-     * To see a list of these, read the source.
+     * @property {String} localhost - 'localhost'
+     * @property {String} staging - 'staging'
+     * @property {String} preprod - 'preprod'
      * @example
      * // protractor.conf.js
      * params: {

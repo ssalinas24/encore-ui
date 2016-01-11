@@ -285,11 +285,18 @@ exports.rxAccountInfo = {
     })(),
 
     /**
-     * @constant
      * @description Lookup of account statuses from status text. Used for comparisons in tests.
-     * See link to source code for full details.
      * @memberof rxAccountInfo
      * @type {Object}
+     * @property {String} statuses.approvalDenied - 'approval denied'
+     * @property {String} statuses.aupViolation - 'aup violation'
+     * @property {String} statuses.delinquent - 'delinquent'
+     * @property {String} statuses.pendingApproval - 'pending approval'
+     * @property {String} statuses.pendingMigration - 'pending migration'
+     * @property {String} statuses.suspended - 'suspended'
+     * @property {String} statuses.terminated - 'terminated'
+     * @property {String} statuses.testStatus - 'teststatus'
+     * @property {String} statuses.unverified - 'unverified'
      * @example
      * var accountInfo = encore.rxAccountInfo.initialize();
      * expect(accountInfo.status).to.eventually.equal(accountInfo.statuses.delinquent);
@@ -307,11 +314,12 @@ exports.rxAccountInfo = {
     },
 
     /**
-     * @constant
      * @description Lookup of status types from a human-readable class name. Used for comparisons in tests.
-     * See link to source code for full details.
      * @memberof rxAccountInfo
      * @type {Object}
+     * @property {String} active - 'active'
+     * @property {String} info - 'info'
+     * @property {String} warning - 'warn'
      * @example
      * var accountInfo = encore.rxAccountInfo.initialize();
      * expect(accountInfo.statusType).to.eventually.equal(accountInfo.statusTypes.warning);
