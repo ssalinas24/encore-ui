@@ -1,11 +1,12 @@
-angular.module('encore.ui.rxFeedback')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxFeedback.service:rxScreenshotSvc
+ * @name quarks.service:rxScreenshotSvc
  * @description
  * Captures a screenshot for `rxFeedback` submission form.
  *
- * **NOTE:** Requires `html2canvas` which Encore Framework provides by default.
+ * **NOTE:** [html2canvas](https://github.com/niklasvh/html2canvas) is required by `rxScreenshotSvc`.
+ * `EncoreUI Framework` provides it by default.
  */
 .service('rxScreenshotSvc', function ($log, $q) {
     // double check that html2canvas is loaded
