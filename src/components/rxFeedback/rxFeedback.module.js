@@ -128,8 +128,9 @@
  * * {@link rxFeedback.directive:rxFeedback rxFeedback}
  *
  * ## Services
- * * {@link rxFeedback.service:rxFeedbackSvc rxFeedbackSvc}
+ * * {@link rxFeedback.service:rxScreenshotSvc rxScreenshotSvc}
  */
 angular.module('encore.ui.rxFeedback', [
-    'ngResource'
+    'ngResource',
+    'encore.ui.quarks'
 ]);

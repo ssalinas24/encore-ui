@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxFeedback')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxFeedback.service:rxFeedbackSvc
+ * @name quarks.service:rxFeedbackSvc
  * @description
  * `rxFeedbackSvc` service supports `rxFeedback` directive functionality.  A `custom endpoint` may be set to override
  * the `default` endpoint.
