@@ -1,0 +1,7 @@
+{
+    "displayName": "Identity",
+    "stability": "unstable",
+    "description": "This is a component designed to aid interaction with Rackspace's Identity API.",
+    "api": "service:Identity",
+    "keywords": []
+}
