@@ -9,7 +9,7 @@ describe('rxDOMHelper', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxMisc');
+        module('encore.ui.quarks');
 
         module(function ($provide) {
             $provide.value('$window', windowMock);

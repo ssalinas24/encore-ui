@@ -8,7 +8,6 @@
  *
  * ## Services
  * * {@link rxMisc.service:rxAutoSave rxAutoSave}
- * * {@link rxMisc.service:rxDOMHelper rxDOMHelper}
  */
 angular.module('encore.ui.rxMisc', [
     'debounce',
