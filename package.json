@@ -72,6 +72,7 @@
     "moment": "~2.9.0",
     "node-timing.js": "^1.1.0",
     "protractor": "^2.0.0",
-    "semver": "~4.2.0"
+    "semver": "~4.2.0",
+    "vinyl-fs": "2.2.1"
   }
 }
