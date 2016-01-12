@@ -10,5 +10,5 @@
  * * {@link rxSession.service:Session Session}
  */
 angular.module('encore.ui.rxSession', [
-    'encore.ui.rxLocalStorage'
+    'encore.ui.quarks',
 ]);

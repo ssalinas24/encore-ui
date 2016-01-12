@@ -1,26 +1,26 @@
-angular.module('encore.ui.rxLocalStorage')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxLocalStorage.service:LocalStorage
+ * @name quarks.service:rxLocalStorage
  * @description
  * A simple wrapper for injecting the global variable `localStorage`
  * for storing values in the browser's local storage object. This service is similar to Angular's
  * `$window` and `$document` services.  The API works the same as the W3C's
- * specification provided at: http://dev.w3.org/html5/webstorage/#storage-0.
+ * specification provided at: https://html.spec.whatwg.org/multipage/webstorage.html.
  * This service also includes helper functions for getting and setting objects.
  *
  * @example
  * <pre>
- * LocalStorage.setItem('Batman', 'Robin'); // no return value
- * LocalStorage.key(0); // returns 'Batman'
- * LocalStorage.getItem('Batman'); // returns 'Robin'
- * LocalStorage.removeItem('Batman'); // no return value
- * LocalStorage.setObject('hero', {name:'Batman'}); // no return value
- * LocalStorage.getObject('hero'); // returns { name: 'Batman'}
- * LocalStorage.clear(); // no return value
+ * rxLocalStorage.setItem('Batman', 'Robin'); // no return value
+ * rxLocalStorage.key(0); // returns 'Batman'
+ * rxLocalStorage.getItem('Batman'); // returns 'Robin'
+ * rxLocalStorage.removeItem('Batman'); // no return value
+ * rxLocalStorage.setObject('hero', {name:'Batman'}); // no return value
+ * rxLocalStorage.getObject('hero'); // returns { name: 'Batman'}
+ * rxLocalStorage.clear(); // no return value
  * </pre>
  */
-.service('LocalStorage', function ($window) {
+.service('rxLocalStorage', function ($window) {
     this.setItem = function (key, value) {
         $window.localStorage.setItem(key, value);
     };
