@@ -4,10 +4,7 @@
  * @description
  * # rxMisc Component
  *
- * A module for shared functionality across framework components.
- *
- * ## Services
- * * {@link rxMisc.service:rxAutoSave rxAutoSave}
+ * **NOTE:** Marked for DEPRECATION.  All `rxMisc` components refactored to `Quarks`. 
  */
 angular.module('encore.ui.rxMisc', [
     'debounce',

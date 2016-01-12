@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-describe('rxAutoSave', function () {
+describe('quarks:rxAutoSave', function () {
     var $rootScope, $q, $timeout, scope, rxAutoSave, a, b, LocalStorage, SessionStorage,
         now;
 
@@ -27,7 +27,6 @@ describe('rxAutoSave', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxMisc');
         module('encore.ui.quarks');
 
         module(function ($provide) {
@@ -36,12 +35,12 @@ describe('rxAutoSave', function () {
 
         url = 'foo/bar?x=y';
 
-        inject(function (_$rootScope_, _$q_, _$timeout_, _rxAutoSave_, _LocalStorage_, _SessionStorage_) {
+        inject(function (_$rootScope_, _$q_, _$timeout_, _rxAutoSave_, _rxLocalStorage_, _SessionStorage_) {
             $rootScope = _$rootScope_;
             $q = _$q_;
             $timeout = _$timeout_;
             rxAutoSave = _rxAutoSave_;
-            LocalStorage = _LocalStorage_;
+            LocalStorage = _rxLocalStorage_;
             SessionStorage = _SessionStorage_;
             scope = $rootScope.$new();
             LocalStorage.clear();

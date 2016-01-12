@@ -1,0 +1,21 @@
+<p>
+  Provides a way to store values in a form for later use.
+</p>
+<h3>Form with automatically saved state</h3>
+<p>
+  Try entering some data into this form, and then navigating away to a different page. When you return here,
+  the form data will automatically be populated with what you had previously entered.
+</p>
+<p>
+  Once you've tried that, you can clear the stored data with either of the "Clear" buttons below. Clicking those
+  will <em>not</em> erase the form, but will erase the rxAutoSave stored data. If you navigate away after clicking
+  one of the buttons, and then return here, the form will not be auto-populated, because rxAutoSave will have no data for it!
+</p>
+
+<p>
+  Finally, we have set a Time-To-Live of 24 hours for this form, and explicitly told it not to save the "Sensitive data" field
+  into storage. If you enter data here, and come back &gt;24 hours later, the form will not be auto-populated, as the data will
+  have expired.
+</p>
+
+<rx-example name="rxAutoSave.simple"></rx-example>
