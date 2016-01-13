@@ -1,3 +1,13 @@
+<a name="1.43.0"></a>
+## 1.43.0 (2016-01-13)
+
+
+#### Bug Fixes
+
+* **depedencies:** pin vinyl-fs version ([8612237b](git@github.com:rackerlabs/encore-ui/commit/8612237bd69b41dfe86ff10152d9a672286b71de))
+* **rxAccountInfo:** auto load primary team badges ([3ea14bc2](git@github.com:rackerlabs/encore-ui/commit/3ea14bc29a328d628a8c5d77ff3cf563336873d9))
+
+
 <a name="1.42.2"></a>
 ### 1.42.2 (2016-01-06)
 
