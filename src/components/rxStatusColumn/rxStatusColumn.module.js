@@ -10,9 +10,6 @@
  * ## Directives
  * * {@link rxStatusColumn.directive:rxStatusColumn rxStatusColumn}
  * * {@link rxStatusColumn.directive:rxStatusHeader rxStatusHeader}
- *
- * ## Objects/Values
- * * {@link rxStatusColumn.object:rxStatusColumnIcons rxStatusColumnIcons}
  */
 angular.module('encore.ui.rxStatusColumn', [
     'encore.ui.quarks'
