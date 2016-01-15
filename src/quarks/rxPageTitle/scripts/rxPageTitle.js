@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPageTitle')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxPageTitle.service:rxPageTitle
+ * @name quarks.service:rxPageTitle
  * @description
  *  `rxPageTitle` service manages page titles.
  *
