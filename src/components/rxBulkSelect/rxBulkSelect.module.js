@@ -13,9 +13,6 @@
  * * {@link rxBulkSelect.directive:rxBulkSelectHeaderCheck rxBulkSelectHeaderCheck}
  * * {@link rxBulkSelect.directive:rxBulkSelectRow rxBulkSelectRow}
  * * {@link rxBulkSelect.directive:rxBulkSelectValidate rxBulkSelectValidate}
- *
- * ## Services
- * * {@link rxBulkSelect.service:rxBulkSelectUtils rxBulkSelectUtils}
  */
 angular.module('encore.ui.rxBulkSelect', [
     'encore.ui.quarks',
