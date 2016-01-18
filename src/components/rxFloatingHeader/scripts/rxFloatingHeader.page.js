@@ -1,7 +1,5 @@
-/*jshint node:true*/
-
 /**
- * @exports encore.rxFloatingHeader
+ * @namespace
  */
 exports.rxFloatingHeader = {
     /**
