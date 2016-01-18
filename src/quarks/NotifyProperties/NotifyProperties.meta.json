@@ -1,0 +1,7 @@
+{
+    "displayName": "NotifyProperties",
+    "stability": "experimental",
+    "description": "Provides a registration service for directive, controller, or other service notification updates.",
+    "api": "service:NotifyProperties",
+    "keywords": []
+}

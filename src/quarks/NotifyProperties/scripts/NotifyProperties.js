@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxBulkSelect.service:NotifyProperties
+ * @name quarks.service:NotifyProperties
  * @description
  *
  * This factory provides functionality for abstracting "properties", and allowing
@@ -17,19 +17,29 @@ angular.module('encore.ui.rxBulkSelect')
  * The `registrationFn` method here sets all of this up. In your directive/controller where
  * you want your property to live, do something like:
  *
- * ```
+ * @example
+ * <pre>
  * stats = { _numSelected: 0 };
  * scope.registerForNumSelected = NotifyProperties.registrationFn(stats, 'numSelected', '_numSelected');
- * ```
+ * </pre>
  *
- * This is saying "We have a property `_numSelected` in `stats`, and we want it exposted as `numSelected`
- * in `stats`. Whenever `stats.numSelected` is modified, other directives/controllers should be notified"
+ * This is saying "We have a property `_numSelected` in `stats`, and we want it exposed as `numSelected`
+ * in `stats`. Whenever `stats.numSelected` is modified, other directives/controllers should be notified."
  *
- * Anyone that wants to register for notifications can call `registerForNumSelected(notificationFunction)`. Then,
- * whenever `numSelected` changes, it will call `notificationFunction(newValue, oldValue)`
+ * In this example, a user registers for notifications by calling:
+ * <pre>
+ * registerForNumSelected(notificationFunction);
+ * </pre>
+ * Then, whenever `numSelected` changes, it will call:
+ * <pre>
+ * notificationFunction(newValue, oldValue);
+ * </pre>
  *
- * This means that if you do `stats.numSelected = 20`, everyone that registered for notifications will
- * get their notification function called.
+ * This means that if you set:
+ * <pre>
+ * stats.numSelected = 20;
+ * </pre>
+ * Everyone that registered for notifications will get their notification function called.
  */
 .factory('NotifyProperties', function ($timeout) {
     var NotifyProperties = {};
