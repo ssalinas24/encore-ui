@@ -1,25 +1,9 @@
-@import "vars";
-
-//
-// Tooltips
-// --------------------------------------------------
-
-@zindexTooltip: 1070;
-@tooltipMaxWidth: 200px;
-@tooltipHeaderColor: @white;
-@tooltipColor: @white;
-@tooltipBg: @gray-700;
-@tooltipOpacity: 1;
-
-//** Tooltip arrow width
-@tooltipArrowWidth: 5px;
-//** Tooltip arrow color
-@tooltipArrowColor: @tooltipBg;
+@import 'vars';
 
 // Base class
 .tooltip {
   position: absolute;
-  z-index: @zindexTooltip;
+  z-index: @tooltip-z-index;
   display: block;
   visibility: visible;
   font-size: @app-font-size;
@@ -27,43 +11,44 @@
   .opacity(0);
 
   &.in {
-    .opacity(@tooltipOpacity);
+    .opacity(@tooltip-opacity);
   }
 
   &.top {
-    margin-top: -3px;
-    padding: @tooltipArrowWidth 0;
+    margin-top: -@tooltip-arrow-margin-width;
+    padding: 5px 0;
   }
 
   &.right {
-    margin-left: 3px;
-    padding: 0 @tooltipArrowWidth;
+    margin-left: @tooltip-arrow-margin-width;
+    padding: 0 5px;
   }
 
   &.bottom {
-    margin-top: 3px;
-    padding: @tooltipArrowWidth 0;
+    margin-top: @tooltip-arrow-margin-width;
+    padding: 5px 0;
   }
 
   &.left {
     margin-left: -3px;
-    padding: 0 @tooltipArrowWidth;
+    padding: 0 @tooltip-arrow-margin-width;
   }
 }
 
 // Wrapper for the tooltip content
 .tooltip-inner {
-  max-width: @tooltipMaxWidth;
-  color: @tooltipColor;
+  border: 1px solid @tooltip-border-color;
+  max-width: @tooltip-max-width;
+  color: @tooltip-text-color;
   text-align: center;
   text-decoration: none;
-  background-color: @tooltipBg;
+  background-color: @tooltip-background-color;
   .border-radius(4px);
   box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 4px 0px;
-  padding: 1em;
+  padding: 15px;
 
   .tooltip-header {
-    color: @tooltipHeaderColor;
+    color: @tooltip-header-text-color;
     text-align: left;
     font-size: 15px;
     padding-bottom: 5px;
@@ -82,56 +67,77 @@
 }
 
 .tooltip {
-  &.top .tooltip-arrow {
+  &.top .tooltip-arrow { // Arrow border
     bottom: 0;
     left: 50%;
-    margin-left: -@tooltipArrowWidth;
-    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
-    border-top-color: @tooltipArrowColor;
+    margin-left: -@tooltip-arrow-border-width;
+    margin-bottom: -@tooltip-arrow-margin-width;
+    border-width: @tooltip-arrow-border-width @tooltip-arrow-border-width 0;
+    border-top-color: @tooltip-border-color;
+    &:before { // Arrow
+      top: -@tooltip-arrow-border-width;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-top-color: @tooltip-arrow-color;
+      border-width: @tooltip-arrow-width;
+      margin-left: -@tooltip-arrow-width;
+    }
   }
-  &.top-left .tooltip-arrow {
-    bottom: 0;
-    left: @tooltipArrowWidth;
-    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
-    border-top-color: @tooltipArrowColor;
-  }
-  &.top-right .tooltip-arrow {
-    bottom: 0;
-    right: @tooltipArrowWidth;
-    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
-    border-top-color: @tooltipArrowColor;
-  }
-  &.right .tooltip-arrow {
-    top: 50%;
+  &.right .tooltip-arrow { // Arrow border
+    top: 35%;
     left: 0;
-    margin-top: -@tooltipArrowWidth;
-    border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
-    border-right-color: @tooltipArrowColor;
+    margin-left: -@tooltip-arrow-margin-width;
+    margin-top: -@tooltip-arrow-margin-width;
+    border-width: @tooltip-arrow-border-width @tooltip-arrow-border-width @tooltip-arrow-border-width 0;
+    border-right-color: @tooltip-border-color;
+    &:before { // Arrow
+      top: -@tooltip-arrow-width;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-right-color: @tooltip-arrow-color;
+      border-width: @tooltip-arrow-width;
+      margin-left: -5px;
+    }
   }
-  &.left .tooltip-arrow {
-    top: 50%;
-    right: 0;
-    margin-top: -@tooltipArrowWidth;
-    border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
-    border-left-color: @tooltipArrowColor;
-  }
-  &.bottom .tooltip-arrow {
+  &.bottom .tooltip-arrow { // Arrow border
     top: 0;
     left: 50%;
-    margin-left: -@tooltipArrowWidth;
-    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
-    border-bottom-color: @tooltipArrowColor;
+    margin-left: -@tooltip-arrow-border-width;
+    margin-top: -@tooltip-arrow-margin-width;
+    border-width: 0 @tooltip-arrow-border-width @tooltip-arrow-border-width;
+    border-bottom-color: @tooltip-border-color;
+    &:before { // Arrow
+      top: -5px;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: @tooltip-arrow-color;
+      border-width: @tooltip-arrow-width;
+      margin-left: -@tooltip-arrow-width;
+    }
   }
-  &.bottom-left .tooltip-arrow {
-    top: 0;
-    left: @tooltipArrowWidth;
-    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
-    border-bottom-color: @tooltipArrowColor;
-  }
-  &.bottom-right .tooltip-arrow {
-    top: 0;
-    right: @tooltipArrowWidth;
-    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
-    border-bottom-color: @tooltipArrowColor;
+  &.left .tooltip-arrow { // Arrow border
+    top: 35%;
+    right: 0;
+    margin-right: -8px; // Magic number needed here since vars don't provide correct positioning
+    margin-top: -@tooltip-arrow-margin-width;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid @tooltip-border-color;
+    &:before { // Arrow
+      top: -@tooltip-arrow-width;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-left-color: @tooltip-arrow-color;
+      border-width: @tooltip-arrow-width;
+      margin-left: -@tooltip-arrow-border-width;
+    }
   }
 }
