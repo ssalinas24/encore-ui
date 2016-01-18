@@ -5,7 +5,7 @@ describe('rxFeedbackController', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.configs');
+        module('encore.ui.quarks');
         module('encore.ui.rxFeedback');
     });
 
