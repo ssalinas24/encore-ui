@@ -6,7 +6,7 @@ angular.module('encore.ui.rxSession')
  *
  * Service for managing user session in encore-ui.
  *
- * @requires rxLocalStorage.service:LocalStorage
+ * @requires quarks.service:rxLocalStorage
  *
  * @example
  * <pre>
@@ -17,7 +17,7 @@ angular.module('encore.ui.rxSession')
  * Session.isAuthenticated(); // Returns true/false if the user token is valid.
  * </pre>
  */
-.factory('Session', function (LocalStorage) {
+.factory('Session', function (rxLocalStorage) {
     var TOKEN_ID = 'encoreSessionToken';
     var session = {};
 
@@ -42,7 +42,7 @@ angular.module('encore.ui.rxSession')
     };
 
     session.getToken = function () {
-        return LocalStorage.getObject(TOKEN_ID);
+        return rxLocalStorage.getObject(TOKEN_ID);
     };
 
     session.getTokenId = function () {
@@ -58,11 +58,11 @@ angular.module('encore.ui.rxSession')
     };
 
     session.storeToken = function (token) {
-        LocalStorage.setObject(TOKEN_ID, token);
+        rxLocalStorage.setObject(TOKEN_ID, token);
     };
 
     session.logout = function () {
-        LocalStorage.removeItem(TOKEN_ID);
+        rxLocalStorage.removeItem(TOKEN_ID);
     };
 
     session.isCurrent = function () {

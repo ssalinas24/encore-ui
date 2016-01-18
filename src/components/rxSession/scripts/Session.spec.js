@@ -3,7 +3,7 @@ describe('rxSession', function () {
 
     beforeEach(function () {
         module('encore.ui.rxSession');
-        module('encore.ui.rxLocalStorage');
+        module('encore.ui.quarks');
         tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
         mockToken = {
             access: {

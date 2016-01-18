@@ -1,9 +1,8 @@
-var rxLocalStorage = encore.rxLocalStorage;
-
-describe('rxLocalStorage', function () {
+describe('quarks:rxLocalStorage', function () {
+    var rxLocalStorage = encore.rxLocalStorage;
 
     before(function () {
-        demoPage.go('#/components/rxLocalStorage');
+        demoPage.go('#/quarks/rxLocalStorage');
     });
 
     it('should set and return a string', function () {

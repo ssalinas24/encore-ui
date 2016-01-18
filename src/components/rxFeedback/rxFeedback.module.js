@@ -126,9 +126,6 @@
  *
  * ## Directives
  * * {@link rxFeedback.directive:rxFeedback rxFeedback}
- *
- * ## Services
- * * {@link rxFeedback.service:rxScreenshotSvc rxScreenshotSvc}
  */
 angular.module('encore.ui.rxFeedback', [
     'ngResource',

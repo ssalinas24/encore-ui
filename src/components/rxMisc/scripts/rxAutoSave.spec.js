@@ -28,7 +28,6 @@ describe('rxAutoSave', function () {
 
     beforeEach(function () {
         module('encore.ui.rxMisc');
-        module('encore.ui.rxLocalStorage');
         module('encore.ui.quarks');
 
         module(function ($provide) {

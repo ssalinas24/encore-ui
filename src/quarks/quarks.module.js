@@ -30,9 +30,9 @@
  * * {@link quarks.service:rxSortUtil rxSortUtil}
  * * {@link quarks.service:Identity Identity}
  * * {@link quarks.service:rxStatusMappings rxStatusMappings}
- * * {$link quarks.service:ErrorFormatter ErrorFormatter}
- * * {$link quarks.service:rxFeedbackSvc rxFeedbackSvc}
- * * {$link quarks.service:rxNotify rxNotify}
+ * * {@link quarks.service:ErrorFormatter ErrorFormatter}
+ * * {@link quarks.service:rxFeedbackSvc rxFeedbackSvc}
+ * * {@link quarks.service:rxLocalStorage rxLocalStorage}
  */
 angular.module('encore.ui.quarks', [
     'ngResource',

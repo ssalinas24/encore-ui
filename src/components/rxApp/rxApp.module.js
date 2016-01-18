@@ -113,9 +113,9 @@
  */
 angular.module('encore.ui.rxApp', [
     'cfp.hotkeys',
+    'encore.ui.quarks',
     'encore.ui.rxAppRoutes',
     'encore.ui.rxEnvironment',
-    'encore.ui.rxLocalStorage',
     'encore.ui.rxPermission',
     'encore.ui.rxSession',
     'ngRoute',
