@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxStatusColumn')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc object
- * @name rxStatusColumn.object:rxStatusColumnIcons
+ * @name quarks.object:rxStatusColumnIcons
  * @description
  *
  * Mapping of internal statuses to FontAwesome icons.
