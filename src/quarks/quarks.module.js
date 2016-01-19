@@ -33,7 +33,11 @@
  * * {@link quarks.service:ErrorFormatter ErrorFormatter}
  * * {@link quarks.service:rxFeedbackSvc rxFeedbackSvc}
  * * {@link quarks.service:rxLocalStorage rxLocalStorage}
+ * * {@link quarks.service:rxAutoSave rxAutoSave}
+ * * {@link quarks.service:rxDOMHelper rxDOMHelper}
+ * * {@link quarks.service:rxScreenshotSvc rxScreenshotSvc}
  */
 angular.module('encore.ui.quarks', [
     'ngResource',
+    'debounce',
 ]);

@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxMisc')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxMisc.service:rxAutoSave
+ * @name quarks.service:rxAutoSave
  * @description
  * A factory that controllers can use to help automatically save and load
- * form data (via LocalStorage) on any given page.
+ * form data (via rxLocalStorage) on any given page.
  *
  * `rxAutoSave` provides a way to store values in a form for later. For instance, if a user is entering values into a
  * form, then accidentally navigate to a new page, we likely want the values to be present again when they click the
@@ -22,9 +22,10 @@ angular.module('encore.ui.rxMisc')
  * be saved independently of each other. `rxAutoSave` will also let you independently store values for multiple forms
  * appearing on the same page.
  *
- * By default, all values are stored in the browser's `LocalStorage`. This means that if a user logs into a different
- * computer, their stored values will not be present. Use of `SessionStorage` is also supported out-of-the-box. If you
- * wish to save form states elsewhere (for instance, to an API), see the "Storage Location" section below.
+ * By default, all values are stored in {@link quarks.service:rxLocalStorage rxLocalStoage} which interfaces with the
+ * browser's `LocalStorage` object. This means that if a user logs into a different computer, their stored values will
+ * not be present.  Use of `SessionStorage` is also supported out-of-the-box. If you wish to save form states elsewhere
+ * (for instance, to an API), see the "Storage Location" section below.
  *
  * ## Setting up your template
  *
@@ -97,7 +98,7 @@ angular.module('encore.ui.rxMisc')
  * </pre>
  *
  * And that's it! Your `rxAutoSave` instance will watch for any change to `$scope.formData`, and will automatically
- * write those changes to `LocalStorage`.
+ * write those changes to `rxLocalStorage`.
  *
  * A third argument can be passed to `rxAutoSave`, specifying usage options. The default values for these options are:
  *
@@ -108,7 +109,7 @@ angular.module('encore.ui.rxMisc')
  *     load: true,                  // Boolean or Promise that will resolve with a Boolean
  *     save: true,                  // Boolean or Promise that will resolve with a Boolean
  *     exclude: [],                 // Array<String>
- *     storageBackend: LocalStorage // Object
+ *     storageBackend: rxLocalStorage // Object
  *   });
  * </pre>
  *
@@ -138,11 +139,11 @@ angular.module('encore.ui.rxMisc')
  * ## Clearing values
  *
  * If you need to clear the stored values, you can call `autosave.clear()`. This will clear the values from
- * `LocalStorage`, but won't affect your `$scope.formData` values.
+ * `rxLocalStorage`, but won't affect your `$scope.formData` values.
  *
  * More likely, rather than manually calling `autosave.clear()`, you'd like the values to be cleared on a "successful
  * submit". For example, if your user is editing the form described above, and they click a "Submit" button to send the
- * values to a server, `LocalStorage` should be cleared for this form if the server call is a success.
+ * values to a server, `rxLocalStorage` should be cleared for this form if the server call is a success.
  *
  * To do this, pass an "options" parameter as the third argument to `rxAutoSave`, setting a promise on the
  * `clearOnSuccess` attribute, i.e.
@@ -243,9 +244,10 @@ angular.module('encore.ui.rxMisc')
  *
  * ## Storage location
  *
- * All values for `rxAutoSave` are by default stored in the browser's `LocalStorage`, and keyed on the URL of the page,
- * with a `rxAutoSave::` prefix. For example, if the above form were present at the URL `'users/JonnyRocket/edit'`,
- * then the form data would be saved into `LocalStorage` at location `'rxAutoSave::users/JonnyRocket/edit'`
+ * All values for `rxAutoSave` are by default stored in the browser's `LocalStorage` through the `rxLocalStorage` 
+ * service, and keyed on the URL of the page, with a `rxAutoSave::` prefix. For example, if the above form were 
+ * present at the URL `'users/JonnyRocket/edit'`, then the form data would be saved into the browser's `LocalStorage`
+ * at location `'rxAutoSave::users/JonnyRocket/edit'`.
  *
  * If you wish to use a different storage backend (`SessionStorage`, for instance), use the `storageBackend` parameter:
  *
@@ -254,7 +256,7 @@ angular.module('encore.ui.rxMisc')
  * </pre>
  *
  * `storageBackend` requires that you pass it an object which has `getObject(key)` and `setObject(key, val)` methods.
- * `LocalStorage` and `SessionStorage` are both provided by EncoreUI, and support this interface.
+ * `rxLocalStorage` and `SessionStorage` are both provided by EncoreUI, and support this interface.
  *
  * You can use your own custom backends as well, as long as it supports `getObject(key)` and `setObject(key, val)`.
  *
@@ -337,15 +339,15 @@ angular.module('encore.ui.rxMisc')
  * var autosave = rxAutoSave($scope, 'formData', { exclude: ['password'] });
  * </pr>
  *
- * @param {Object} [options.storageBackend=LocalStorage] *optional* -
+ * @param {Object} [options.storageBackend=rxLocalStorage] *optional* -
  * Must be an object which has `getObject(key)` and `setObject(key, val)` methods.
- * `LocalStorage` and `SessionStorage` are both provided by EncoreUI, and support
+ * `rxLocalStorage` and `SessionStorage` are both provided by EncoreUI, and support
  * this interface.
  *
  * You can use your own custom backends as well, as long as it supports `getObject(key)`
  * and `setObject(key, val)`.
  */
-.factory('rxAutoSave', function ($location, $q, debounce, LocalStorage) {
+.factory('rxAutoSave', function ($location, $q, debounce, rxLocalStorage) {
     /*
      * We'll version the schema for the stored data, so if we need to change
      * the schema in the future, we can do automatic migrations. Never
@@ -379,22 +381,22 @@ angular.module('encore.ui.rxMisc')
     var version = 1;
 
     // This will be used by the rxAutoSave instance to interact with
-    // LocalStorage.
+    // rxLocalStorage.
     //
     // @param watchVar - the string name of the
     //                   object that's being watched, representing the model for the form.
     //                   StorageAPI is not publically exposed, it can only be used and accessed
     //                   by the rxAutoSave instance
-    // @param [storageBackend] - Optional, defaults to LocalStorage. If you pass in a storage object,
+    // @param [storageBackend] - Optional, defaults to rxLocalStorage. If you pass in a storage object,
     //                           it must support both getObject(key) and setObject(key, val), matching
-    //                           the operations of LocalStorage and SessionStorage
+    //                           the operations of rxLocalStorage and SessionStorage
     // @param [keyShaping] - Optional, defaults to just returning the originally defined key value.
     //                       It gets passed the original value defined ('rxAutoSave::' + $location.url())
     //                       and is expected to return the new key that you wish to have used.
     var StorageAPI = function (watchVar, storageBackend, keyShaping) {
         this.key = keyShaping('rxAutoSave::' + $location.url());
         this.watchVar = watchVar;
-        this.storage = storageBackend ? storageBackend : LocalStorage;
+        this.storage = storageBackend ? storageBackend : rxLocalStorage;
     };
 
     // Get all the saved data for this page. If none
@@ -411,7 +413,7 @@ angular.module('encore.ui.rxMisc')
     };
 
     // Given a `watchVar`, return the corresponding
-    // `form` object from LocalStorage. This form object should include
+    // `form` object from rxLocalStorage. This form object should include
     // both `.data` and `.config` properties.
     // If no form currently exists for `watchVar`, then an empty
     // object will be created that matches the current schema
@@ -428,7 +430,7 @@ angular.module('encore.ui.rxMisc')
         return all.forms[this.watchVar];
     };
 
-    // Given a full form object, save it into LocalStorage,
+    // Given a full form object, save it into rxLocalStorage,
     // indexed into the forms[watchVar] location for this page
     StorageAPI.prototype.setForm = function (form) {
         var all = this.getAll();
@@ -448,7 +450,7 @@ angular.module('encore.ui.rxMisc')
     };
 
     // For a given watchVar, set a new expiry time, and save
-    // into LocalStorage
+    // into rxLocalStorage
     StorageAPI.prototype.setExpiryTime = function (expiryTime) {
         var form = this.getForm();
         form.config.expires = expiryTime;
@@ -471,7 +473,7 @@ angular.module('encore.ui.rxMisc')
     };
 
     // For a given watchVar, store `val` as its saved
-    // data, into LocalStorage
+    // data, into rxLocalStorage
     StorageAPI.prototype.setDataObject = function (val) {
         var form = this.getForm();
         form.data = val;
@@ -489,7 +491,7 @@ angular.module('encore.ui.rxMisc')
             exclude: [],
             ttl: 172800,
             keyShaping: _.identity,
-            storageBackend: LocalStorage
+            storageBackend: rxLocalStorage
         });
 
         opts.ttl = opts.ttl * 1000; // convert back to milliseconds
@@ -502,12 +504,12 @@ angular.module('encore.ui.rxMisc')
             }
         };
 
-        // Responsible for loading the data from LocalStorage into the form
+        // Responsible for loading the data from the browser's LocalStorage into the form
         var load = function () {
             var expires = api.getExpires();
             if (expires > 0 && expires <= _.now()) {
                 // This data has expired. Make sure we clear it out
-                // of LocalStorage
+                // of the browser's LocalStorage
                 api.expire();
                 return;
             }
@@ -550,14 +552,14 @@ angular.module('encore.ui.rxMisc')
             // newVal, except for the properties in opts.exclude
             _.assign(data, _.omit(newVal, opts.exclude));
 
-            // Store the newly changed data in LocalStorage
+            // Store the newly changed data in rxLocalStorage
             api.setDataObject(data);
 
             // Update the expiry time whenever we modify data
             updateExpiryTime();
         };
 
-        // We don't want to write to LocalStorage every time the model changes,
+        // We don't want to write to the browser's LocalStorage every time the model changes,
         // because that would turn typing into a textarea into an expensive operation.
         // We'll instead debounce the the writes for 1 second
         var debounced = debounce(update, 1000);
