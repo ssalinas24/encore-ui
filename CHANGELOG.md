@@ -1,3 +1,13 @@
+<a name="1.43.3-0"></a>
+### 1.43.3-0 (2016-01-20)
+
+
+#### Bug Fixes
+
+* **npm:** revert bandaid for dependency regression ([ee817b8a](git@github.com:rackerlabs/encore-ui/commit/ee817b8a374fb7bf4912990c1b85933eb6fe9afd))
+* **rxSelect:** set up local stacking context ([1c424e3d](git@github.com:rackerlabs/encore-ui/commit/1c424e3d125ac3c4a948fe24f505eb674911959f))
+
+
 <a name="1.43.2"></a>
 ### 1.43.2 (2016-01-13)
 
