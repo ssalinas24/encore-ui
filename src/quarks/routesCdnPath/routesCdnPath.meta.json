@@ -1,7 +1,7 @@
 {
-    "displayName": "configs",
+    "displayName": "routesCdnPath",
     "stability": "stable",
     "description": "",
-    "isLegacy": true,
+    "api": "service:routesCdnPath",
     "keywords": []
 }

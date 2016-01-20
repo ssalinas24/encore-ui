@@ -127,7 +127,7 @@ describe('rxBreadcrumbs', function () {
         var defaultBreadcrumbs;
 
         before(function () {
-            demoPage.go('#/components/configs');
+            demoPage.go('#/quarks/titleize');
             defaultBreadcrumbs = rxBreadcrumbs.main;
         });
 
@@ -136,7 +136,7 @@ describe('rxBreadcrumbs', function () {
         });
 
         it('should have the correct names', function () {
-            expect(defaultBreadcrumbs.names).to.eventually.eql(['Overview', 'Modules', 'Components', 'configs']);
+            expect(defaultBreadcrumbs.names).to.eventually.eql(['Overview', 'Modules', 'Quarks', 'titleize']);
         });
     });
 });
