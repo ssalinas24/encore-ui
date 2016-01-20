@@ -146,7 +146,8 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             resolve: {
                 'module': function ($route, Modules) {
                     return _.find(Modules, {
-                        'name': $route.current.params.quark
+                        'name': $route.current.params.quark,
+                        category: 'quarks'
                     });
                 }
             }
@@ -176,7 +177,8 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             resolve: {
                 'module': function ($route, Modules) {
                     return _.find(Modules, {
-                        'name': $route.current.params.atom
+                        'name': $route.current.params.atom,
+                        category: 'atoms'
                     });
                 }
             }
@@ -206,7 +208,8 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             resolve: {
                 'module': function ($route, Modules) {
                     return _.find(Modules, {
-                        'name': $route.current.params.molecule
+                        'name': $route.current.params.molecule,
+                        category: 'molecules'
                     });
                 }
             }
@@ -224,7 +227,8 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             resolve: {
                 'module': function ($route, Modules) {
                     return _.find(Modules, {
-                        'name': $route.current.params.component
+                        'name': $route.current.params.component,
+                        category: 'components'
                     });
                 }
             }

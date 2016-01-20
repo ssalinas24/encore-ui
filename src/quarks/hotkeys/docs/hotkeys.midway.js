@@ -2,7 +2,7 @@ describe('hotkeys', function () {
     var volume, body;
 
     before(function () {
-        demoPage.go('#/components/hotkeys');
+        demoPage.go('#/quarks/hotkeys');
         volume = element(by.binding('volume'));
         body = element(by.css('body'));
     });

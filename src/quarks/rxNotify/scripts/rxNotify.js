@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxNotify')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxNotify.service:rxNotify
+ * @name quarks.service:rxNotify
  * @description
  * Manages page messages for an application.
  *
@@ -206,7 +206,7 @@ angular.module('encore.ui.rxNotify')
     /**
      * @name clear
      * @ngdoc method
-     * @methodOf rxNotify.service:rxNotify
+     * @methodOf quarks.service:rxNotify
      * @description deletes all messages in a stack
      *
      * @param {String} stack The name of the stack to clear
@@ -221,7 +221,7 @@ angular.module('encore.ui.rxNotify')
     /**
      * @name dismiss
      * @ngdoc method
-     * @methodOf rxNotify.service:rxNotify
+     * @methodOf quarks.service:rxNotify
      * @description removes a specific message from a stack
      *
      * @param {Object} msg Message object to remove
@@ -240,7 +240,7 @@ angular.module('encore.ui.rxNotify')
     /**
      * @name add
      * @ngdoc method
-     * @methodOf rxNotify.service:rxNotify
+     * @methodOf quarks.service:rxNotify
      * @description adds a message to a stack
      *
      * @param {String} text Message text

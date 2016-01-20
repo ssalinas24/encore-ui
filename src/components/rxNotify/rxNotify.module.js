@@ -14,11 +14,8 @@
  * differs from {@link rxNotify.directive:rxNotifications rxNotifications} (plural).
  *
  * The type attribute can be any type supported by `options.type` for the `rxNotify.add()` function in
- * the {@link rxNotify.service:rxNotify rxNotify} service.
-
- * ## Services
- * * {@link rxNotify.service:rxNotify rxNotify}
- *
+ * the {@link quarks.service:rxNotify rxNotify} service.
+ * 
  * ## Directives
  * * {@link rxNotify.directive:rxNotification rxNotification}
  * * {@link rxNotify.directive:rxNotifications rxNotifications}

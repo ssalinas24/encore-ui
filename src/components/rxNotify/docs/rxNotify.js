@@ -22,6 +22,10 @@ angular.module('demoApp')
     $scope.routeChange = function (stack) {
         $rootScope.$broadcast('$routeChangeStart', {});
         $rootScope.$broadcast('$routeChangeSuccess', {});
+
+        rxNotify.add('Route Changed', {
+            stack: stack
+        });
     };
 
     $scope.add = function (stack) {
@@ -57,14 +61,4 @@ angular.module('demoApp')
         stack: 'custom'
     });
 
-    // stuff for rxPromiseNotifications
-    $scope.addPromise = function () {
-        $scope.deferred = $q.defer();
-
-        var promiseScope = rxPromiseNotifications.add($scope.deferred.promise, {
-            loading: 'Loading Message',
-            success: 'Success Message',
-            error: 'Error Message'
-        }, 'demo');
-    };
 });

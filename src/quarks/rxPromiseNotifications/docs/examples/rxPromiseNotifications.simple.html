@@ -1,24 +1,10 @@
 <div ng-controller="rxPromiseNotificationsSimpleCtrl">
-  <div layout="row">
-    <div rx-form flex>
-      <rx-form-section>
-        <div>
-          <h2>Example</h2>
-          <p>Select <code>Create Service</code> to simulate creating a service, then select
-            <code>Resolve Promise</code> or <code>Reject Promise</code> to simulate success or failure.
-          </p>
-          <button class="button" ng-click="addPromise()">Create Promise</button>
-          <button class="button positive" ng-click="deferred.resolve();">Resolve Promise</button>
-          <button class="button negative" ng-click="deferred.reject();">Reject Promise</button>
-        </div>
-      </rx-form-section>
+  <p>
+    <button class="button" ng-click="addPromise()">Create Promise</button>
+    <button class="button positive" ng-click="deferred.resolve()">Resolve Promise</button>
+    <button class="button negative" ng-click="deferred.reject()">Reject Promise</button>
+  </p>
 
-      <rx-form-section>
-        <div>
-          <h3>Demo Stack</h3>
-          <rx-notifications stack="demo"></rx-notifications>
-        </div>
-      </rx-form-section>
-    </div>
-  </div>
+  <h3>Demo Stack</h3>
+  <rx-notifications stack="demo"></rx-notifications>
 </div>

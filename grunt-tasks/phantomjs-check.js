@@ -28,14 +28,14 @@ module.exports = function (grunt) {
     });
 
 
-    var spawn = function (done, encoreModule) {
+    var spawn = function (done, encoreCategory, encoreModule) {
         var urlString = 'http://<%= config.server.hostname %>';
         if (grunt.config('config.server.port')) {
             urlString += ':<%= config.server.port %>/';
         }
         var url = grunt.template.process(urlString);
         if (!_.isUndefined(encoreModule)) {
-            url += '#/modules/' + encoreModule; // use generic /modules/:module route
+            url += '#/' + encoreCategory +  '/' + encoreModule;
         }
         grunt.log.writeln('Checking ' + url + ' for console errors.');
         phantomjs.spawn(url, {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('phantomjs-check',
         'Check demo page for Javascript errors',
-        function (mode, moduleName) {
+        function (mode, categoryName, moduleName) {
             if (mode === 'allModules') {
                 var tasks = [];
                 grunt.task.requires('modules');
@@ -61,13 +61,13 @@ module.exports = function (grunt) {
                 tasks.push('phantomjs-check:oneModule');
 
                 _.forEach(grunt.config('config.demoModules'), function (module) {
-                    tasks.push('phantomjs-check:oneModule:' + module.name);
+                    tasks.push('phantomjs-check:oneModule:' + module.category + ':' + module.name);
                 });
                 grunt.log.ok('Configured modules for testing');
                 grunt.task.run(tasks);
             } else if (mode === 'oneModule') {
                 var done = this.async();
-                spawn(done, moduleName);
+                spawn(done, categoryName, moduleName);
             }
         });
 };
