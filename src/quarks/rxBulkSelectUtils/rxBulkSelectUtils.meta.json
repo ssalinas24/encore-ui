@@ -1,0 +1,7 @@
+{
+    "displayName": "rxBulkSelectUtils",
+    "stability": "experimental",
+    "description": "Selects or deselects all visible rows.  Support function for rxBulkSelect.",
+    "api": "service:rxBulkSelectUtils",
+    "keywords": []
+}

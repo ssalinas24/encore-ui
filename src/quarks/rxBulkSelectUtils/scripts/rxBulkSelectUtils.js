@@ -1,8 +1,9 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxBulkSelect.service:rxBulkSelectUtils
- * @description [TBD]
+ * @name quarks.service:rxBulkSelectUtils
+ * @description
+ * Selects or deselects all visible rows. Support function for `rxBulkSelect`.
  */
 .factory('rxBulkSelectUtils', function () {
     var rxBulkSelectUtils = {};
