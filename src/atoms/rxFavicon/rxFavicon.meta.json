@@ -1,0 +1,7 @@
+{
+    "displayName": "rxFavicon",
+    "stability": "unstable",
+    "description": "Allows custom favicons between local, staging and production environments.",
+    "api": "directive:rxFavicon",
+    "keywords": []
+}

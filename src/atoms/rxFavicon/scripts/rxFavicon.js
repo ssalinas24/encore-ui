@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxFavicon')
+angular.module('encore.ui.atoms')
 /**
  * @ngdoc directive
- * @name rxFavicon.directive:rxFavicon
+ * @name atoms.directive:rxFavicon
  * @restrict A
  * @scope
  * @description
@@ -14,9 +14,9 @@ angular.module('encore.ui.rxFavicon')
  * @example
  * <pre>
  * <link rel="icon"
- *     type="image/png"
- *     href="favicon.png"
- *     rx-favicon="{ staging: 'staging-favicon.png', local: 'local-favicon.png' }" />
+ *       type="image/png"
+ *       href="favicon.png"
+ *       rx-favicon="{ staging: 'staging-favicon.png', local: 'local-favicon.png' }" />
  * </pre>
  */
 .directive('rxFavicon', function (Environment, $parse, $log) {
