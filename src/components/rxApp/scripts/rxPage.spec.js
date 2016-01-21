@@ -6,7 +6,7 @@ describe('encore.ui.rxApp', function () {
         beforeEach(function () {
             // load module
             module('encore.ui.rxApp');
-            module('encore.ui.rxPageTitle');
+            module('encore.ui.quarks');
 
             // load templates
             module('templates/rxPage.html');

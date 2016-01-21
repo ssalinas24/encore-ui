@@ -1,10 +1,10 @@
 /* jshint node: true */
-describe('rxPageTitle', function () {
+describe('quarks:rxPageTitle', function () {
     var pageTitle, scope, rootScope;
 
     beforeEach(function () {
         // Load the directive's module
-        module('encore.ui.rxPageTitle');
+        module('encore.ui.quarks');
 
         // Inject in angular constructs
         inject(function ($rootScope) {
