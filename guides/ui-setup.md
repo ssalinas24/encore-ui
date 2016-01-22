@@ -53,6 +53,20 @@ Run the following command:
 
 You can then open `http://localhost:9001` in a new browser and view the demo app. The page will automatically refresh when the code is updated.
 
+## Running Browser Sync
+
+It's important to develop new components while looking at both Firefox and Chrome. You can make this task much easier by running [browser sync](https://browsersync.io/) in a new terminal window after starting the local development server.
+
+```
+grunt browserSync
+```
+
+This will allow you to visit http://localhost:3000/ in both Firefox and Chrome at the same time (as well as any other browser you wish to sync, including your phone or tablet).
+
+When you scroll in one browser, or device, all other connected browsers or devices will also scroll. This also includes clicking elements, visiting links, etc.
+
+This tool is designed to forward all traffic from the typical development server located at http://localhost:9001 and sync it at the new location on port 3000. You can still visit the original development server without any side effects. Use of this tool is completely optional, but strongly recommended.
+
 ### Warning: EMFILE, too many open files 'src'
 
 If you see the following [error when running `grunt server`](https://github.com/gruntjs/grunt-contrib-copy/issues/21#issuecomment-46194402):
@@ -154,4 +168,3 @@ If your application is gulp-based (i.e. created with the EncoreUI Template or En
  4. When you are done testing your EncoreUI changes in your local project, run `bower update` from your project directory. This will tell it to start using the official bower repositories once again.
 
 Note that if you make further changes in your EncoreUI directory, you'll have to run `grunt copy:bower` from within the EncoreUI directory to cause these changes to become visible in the local symlink directory. Requiring this step is a failure on our part, and in the future we'll modify our EncoreUI `watch` task to make sure this happens automatically.
-
