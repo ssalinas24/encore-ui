@@ -1,5 +1,8 @@
 var Page = require('astrolabe').Page;
 
+/**
+ * @namespace
+ */
 var rxPage = {
     lblTitle: {
         get: function () { return this.rootElement.$('.page-title > span'); }
@@ -13,6 +16,11 @@ var rxPage = {
         get: function () { return this.rootElement.$('.page-titles .status-tag'); }
     },
 
+    /**
+     * @instance
+     * @type {String|null}
+     * @description The title, as used by rxPage. If it's not present, then `null`.
+     */
     title: {
         get: function () {
             var page = this;
@@ -22,6 +30,11 @@ var rxPage = {
         }
     },
 
+    /**
+     * @instance
+     * @type {String|null}
+     * @description The subtitle, as used by rxPage. If it's not present, then `null`.
+     */
     subtitle: {
         get: function () {
             var page = this;
@@ -31,6 +44,12 @@ var rxPage = {
         }
     },
 
+    /**
+     * @instance
+     * @type {String}
+     * @description The status label's text. This is located next to the main title.
+     * Oftentimes, it says "ALPHA", or "BETA".
+     */
     titleTag: {
         get: function () {
             var page = this;
@@ -42,13 +61,29 @@ var rxPage = {
 };
 
 exports.rxPage = {
+    /**
+     * @function
+     * @memeberof rxPage
+     * @description Creates a page object from an `rx-page` DOM element.
+     * @param {ElementFinder} [rxFeedbackElement=$('rx-page')] -
+     * ElementFinder to be transformed into an {@link rxPage} object.
+     * @returns {rxPage}
+     */
     initialize: function (rxPageElement) {
+        if (rxPageElement === undefined) {
+            rxPageElement = $('rx-page');
+        }
+
         rxPage.rootElement = {
             get: function () { return rxPageElement; }
         };
         return Page.create(rxPage);
     },
 
+    /**
+     * @deprecated
+     * @private
+     */
     main: (function () {
         rxPage.rootElement = {
             get: function () { return $('html'); }
