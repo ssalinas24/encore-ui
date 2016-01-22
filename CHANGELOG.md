@@ -1,10 +1,8 @@
-<a name="1.46.0"></a>
-## 1.46.0 (2016-03-09)
-
+<a name="2.0.0-0"></a>
+### 2.0.0-0 (2016-01-22)
 
 <a name="1.46.0-0"></a>
 ### 1.46.0-0 (2016-03-09)
-
 
 #### Bug Fixes
 
@@ -110,7 +108,10 @@ version of rx-page-objects.
 
 <a name="1.44.1-0"></a>
 ### 1.44.1-0 (2016-01-27)
-
+=======
+* **midways:** fix broken midways ([c89fb672](git@github.com:rackerlabs/encore-ui/commit/c89fb6727c84c64c7faab0b0b262d9f376f2217a))
+* **rxDatePicker:** fix spec ([c5ec2042](git@github.com:rackerlabs/encore-ui/commit/c5ec204240931d41186d15ba3cb27f83e04c8408))
+* **scope:** rxMultiSelect ([071df5c6](git@github.com:rackerlabs/encore-ui/commit/071df5c610463efc138adcb1d100dcb3cad5f5a8))
 
 <a name="1.44.0"></a>
 ## 1.44.0 (2016-01-20)
@@ -2442,4 +2443,3 @@ If you're defining it before the pre-hook (on page load), this will break. You w
 #### Bug Fixes
 
 * **images:** re-worked way images are added ([9d6e62fd](git@github.com:rackerlabs/encore-ui/commit/9d6e62fda0bb37140fe93593e1a82d596e771e8c))
-
