@@ -1,15 +1,17 @@
 /**
- * @exports encore.rxAge
+ * @namespace
  */
 exports.rxAge = {
 
     /**
      * @function
+     * @description A moment date object representing the point in time the `rxAgeString` refers to. This value does
+     * not come back as a promise, but is instead a direct value.
      * @param {String} rxAgeString - An age string, representing the time that has passed since a certain datetime.
-     * @returns {Date} A moment date object representing the point in time the `rxAgeString` refers to.
+     * @returns {moment}
      * @example
      * // given the current datetime is January 1st, 1970 at noon UTC.
-     * var oneMonthOneDayAgo = new Date('1969-12-31T12:00:00z').valueOf();
+     * var oneMonthOneDayAgo = new Date('1969-11-31T12:00:00z').valueOf();
      * expect(encore.rxAge.toMoment('1m 1d').valueOf()).to.equal(oneMonthOneDayAgo)
      * expect(encore.rxAge.toMoment('1 month, 1 day').valueOf()).to.equal(oneMonthOneDayAgo)
      */
@@ -36,7 +38,7 @@ exports.rxAge = {
         });
 
         var elapsed = _.zipObject(ageParts);
-        return moment().utc().subtract(moment.duration(elapsed));
+        return moment().utc().subtract(elapsed);
     }
 
 };
