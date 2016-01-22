@@ -14,5 +14,5 @@
  * * {@link rxPermission.directive:rxPermission rxPermission}
  */
 angular.module('encore.ui.rxPermission', [
-    'encore.ui.rxSession'
+    'encore.ui.quarks',
 ]);

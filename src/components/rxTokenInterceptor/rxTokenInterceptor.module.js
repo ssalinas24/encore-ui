@@ -12,5 +12,5 @@
  * * {@link rxTokenInterceptor.service:TokenInterceptor TokenInterceptor}
  */
 angular.module('encore.ui.rxTokenInterceptor', [
-    'encore.ui.rxSession'
+    'encore.ui.quarks'
 ]);

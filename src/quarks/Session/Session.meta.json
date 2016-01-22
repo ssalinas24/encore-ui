@@ -1,7 +1,7 @@
 {
-    "displayName": "rxSession",
+    "displayName": "Session",
     "stability": "unstable",
     "description": "Manages user session",
-    "isLegacy": true,
+    "api": "service:Session",
     "keywords": []
 }

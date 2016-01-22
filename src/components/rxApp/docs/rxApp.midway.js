@@ -19,22 +19,6 @@ describe('rxApp', function () {
         expect(rxAppCustom.sectionTitle).to.eventually.equal('Example Menu');
     });
 
-    it('should have the user id in the logout link', function () {
-        browser.addMockModule('encore.ui.rxSession', function () {
-            angular.module('encore.ui.rxSession', []).value('Session', {
-                getUserId: function () { return 'rack0000'; }
-            });
-        });
-        browser.refresh();
-
-        rxAppStandard.userId.then(function (userId) {
-            expect(userId).to.equal('(rack0000)');
-
-            browser.removeMockModule('encore.ui.rxSession');
-            browser.refresh();
-        });
-    });
-
     it('should logout', function () {
         rxAppCustom.logout();
         expect(demoPage.currentUrl).to.eventually.contain('login');

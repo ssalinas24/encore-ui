@@ -4,7 +4,7 @@ describe('service:TokenInterceptor', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxSession');
+        module('encore.ui.quarks');
 
         // Initialize a fake module to get at its config block
         angular.module('testApp', function () {})

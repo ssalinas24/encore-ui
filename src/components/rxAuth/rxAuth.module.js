@@ -11,6 +11,5 @@
  */
 angular.module('encore.ui.rxAuth', [
     'encore.ui.quarks',
-    'encore.ui.rxSession',
     'encore.ui.rxPermission'
 ]);
