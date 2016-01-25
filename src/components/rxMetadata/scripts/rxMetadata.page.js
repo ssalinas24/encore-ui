@@ -7,9 +7,12 @@ var Page = require('astrolabe').Page;
 var rxMetadata = {
 
     /**
-       @function
-       @param {String} metadataTerm - The term to lookup in the metadata component.
-       @returns {*} The web element of the metadata term, unless a `transformFn` is provided, or `null` if not found.
+     * @instance
+     * @function
+     * @description The text of the metadata term, unless a `transformFn` is provided, or `null` if not found.
+     * Uses {@link rxMisc.unless} to ensure that something is returned from the lookup.
+     * @param {String} metadataTerm - The term to lookup in the metadata component.
+     * @returns {*}
      */
     term: {
         value: function (metadataTerm, fallbackReturnValue) {
@@ -25,21 +28,30 @@ var rxMetadata = {
         }
     },
 
+    /**
+     * @type {String[]}
+     * @description All terms in the block of metadata, without processing. Will strip the ending semicolon
+     * from each term.
+     * @example
+     * expect(encore.rxMetadata.initialize().terms).to.eventually.eql(['Age', 'Sex', 'Location']);
+     */
     terms: {
         get: function () {
-            return this.rootElement.$$('div.label').map(function (keyElem) {
-                return keyElem.getText().then(function (key) {
+            return this.rootElement.$$('div.label').getText().then(function (keys) {
+                return keys.map(function (key) {
                     // strip ending colon character
-                    return key.slice(0, -1);
+                    return key.replace(/:$/, '');
                 });
             });
         }
     },
 
     /**
+     * @instance
      * @function
-     * @returns {ElementFinder} The definition web element matching the term, whether it be an rx-meta or
-       rx-meta-show-hide element.
+     * @description The definition web element matching the term, whether it be an rx-meta or
+     * rx-meta-show-hide element.
+     * @returns {ElementFinder}
      */
     definitionElementByTerm: {
         value: function (term) {
@@ -50,8 +62,10 @@ var rxMetadata = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether or not the root element is currently displayed.
+     * @description Whether or not the root element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -60,8 +74,10 @@ var rxMetadata = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether or not the root element is present.
+     * @description Whether or not the root element is present.
+     * @returns {Boolean}
      */
     isPresent: {
         value: function () {
@@ -70,17 +86,15 @@ var rxMetadata = {
     }
 };
 
-/**
- * @exports encore.rxMetadata
- */
 exports.rxMetadata = {
     /**
      * @function
+     * @memberof rxMetadata
+     * description Page object representing an rxMetadata element.
      * @param {WebElement} rxMetadataElement - WebElement to be transformed into an rxMetadata page object.
      * @param {Object} transformFns - An object defining which metadata entries should be transformed, and how.
-     * @returns {rxMetadata} Page object representing the rxMetadata element.
+     * @returns {rxMetadata}
      * @example
-     * ```js
      * var myPage = Page.create({
      *     metadata: {
      *         get: function () {
@@ -88,9 +102,7 @@ exports.rxMetadata = {
      *             // For those entries which need some extra processing, they are defined below
      *             var transforms = {
      *                 'Signup Date': function (elem) {
-     *                     return elem.getText().then(function (text) {
-     *                         return new Date(text);
-     *                     });
+     *                     return elem.getText().then(encore.rxMisc.newDate);
      *                 },
      *                 'Overdue Balance': function (elem) {
      *                     return elem.getText().then(encore.rxMisc.currencyToPennies);
@@ -99,18 +111,19 @@ exports.rxMetadata = {
      *                     return elem.getText().then(encore.rxMisc.currencyToPennies);
      *                 },
      *                 'Expiration Date' function (elem) {
-     *                     return elem.getText().then(function (text) {
-     *                         return new Date(text);
-     *                     });
+     *                     return elem.getText().then(encore.rxMisc.newDate);
      *                 }
      *             }
      *             return encore.rxMetadata.initialize($('rx-metadata'), transforms));
      *         }
      *     }
      * });
-     * ```
      */
     initialize: function (rxMetadataElement, transformFns) {
+        if (rxMetadataElement === undefined) {
+            rxMetadataElement = $('rx-metadata');
+        }
+
         if (transformFns === undefined) {
             transformFns = {};
         }
@@ -126,8 +139,11 @@ exports.rxMetadata = {
     },
 
     /**
+     * @memberof rxMetadata
+     * @deprecated Use {@link rxMetadata.initialize} without arguments instead.
+     * @description Page object representing the _first_ rxMetadata object found on the page.
      * There is no way to configure `transformFns` from the main instance of an rxMetadata component.
-     * @returns {rxMetadata} Page object representing the _first_ rxMetadata object found on the page.
+     * @type {rxMetadata}
      */
     main: (function () {
         rxMetadata.transformFns = {

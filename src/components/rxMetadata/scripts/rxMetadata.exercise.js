@@ -3,20 +3,19 @@ var rxMetadata = require('./rxMetadata.page').rxMetadata;
 
 /**
  * rxMetadata exercises
- * @exports encore.exercise.rxMetadata
- * @param {Object} [options=] Test options. Used to build valid tests.
- * @param {string} [options.cssSelector=] Fallback selector string to initialize widget with.
- * @param {Boolean} [options.present=true] Determines if the metadata is present in the DOM
- * @param {Boolean} [options.visible=true] Determines if the metadata is visible
- * @param {Object} [transformFns=] - Transformation functions to be passed to rxMetadata
- * @param {Object} [options.terms=] The expected label text of each metadata entry
+ * @exports exercise/rxMetadata
+ * @param {Object} [options] Test options. Used to build valid tests.
+ * @param {string} [options.cssSelector] Fallback selector string to initialize widget with.
+ * @param {Boolean} [options.present=true] Determines if the metadata is present in the DOM.
+ * @param {Boolean} [options.visible=true] Determines if the metadata is visible.
+ * @param {Object} [options.transformFns] - Transformation functions to be passed to rxMetadata.
+ * @param {Object} [options.terms] The expected label text of each metadata entry.
  * @example
- * ```js
  * describe('metadata', encore.exercise.rxMetadata({
  *     transformFns: {
  *         'Signup Date': function (elem) {
  *             return elem.getText().then(function (text) {
- *                 return new Date(text);
+ *                 return new Date(text).valueOf();
  *             });
  *         },
  *         'Overdue Balance': function (elem) {
@@ -27,18 +26,17 @@ var rxMetadata = require('./rxMetadata.page').rxMetadata;
  *         },
  *         'Expiration Date' function (elem) {
  *             return elem.getText().then(function (text) {
- *                 return new Date(text);
+ *                 return new Date(text).valueOf();
  *             });
  *         }
  *     },
  *     terms: {
- *         'Signup Date': new Date('March 1st, 2011'),
+ *         'Signup Date': new Date('March 1st, 2011').valueOf(),
  *         'Overdue Balance': 13256,
  *         'Current Due': 64400,
- *         'Expiration Date': new Date('January 1st, 2021')
+ *         'Expiration Date': new Date('January 1st, 2021').valueOf()
  *     }
  * }));
- * ```
  */
 exports.rxMetadata = function (options) {
     if (options === undefined) {
