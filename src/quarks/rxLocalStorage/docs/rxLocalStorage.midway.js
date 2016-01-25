@@ -68,6 +68,11 @@ describe('quarks:rxLocalStorage', function () {
         expect(rxLocalStorage.exists('something')).to.eventually.be.false;
     });
 
+    it('should allow removing something that doesn\'t exist', function () {
+        rxLocalStorage.removeItem('doesNotExist');
+        expect(rxLocalStorage.exists('doesNotExist')).to.eventually.be.false;
+    });
+
     it('should return true if key exists', function () {
         rxLocalStorage.setItem('cortana', 123);
         expect(rxLocalStorage.exists('cortana')).to.eventually.be.true;
@@ -75,6 +80,14 @@ describe('quarks:rxLocalStorage', function () {
 
     it('should return false if a key does not exist', function () {
         expect(rxLocalStorage.exists('masterChief')).to.eventually.be.false;
+    });
+
+    it('should return null if getting a key that does not exist', function () {
+        expect(rxLocalStorage.getItem('doesNotExist')).to.eventually.be.null;
+    });
+
+    it('should not return null if getting an item that exists', function () {
+        expect(rxLocalStorage.exists('cortana')).to.eventually.not.be.null;
     });
 
 });
