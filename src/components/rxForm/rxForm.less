@@ -405,8 +405,8 @@ rx-field-name {
 
         .disabledInput() {
           border: 1px solid @rxForm-input-border-color;
-          color: @disabled-text-color;
-          background: @disabled-background-color;
+          color: @app-disabled-text-color;
+          background: @app-disabled-background-color;
           cursor: not-allowed !important;
         }//.disabledInput()
 
@@ -490,7 +490,7 @@ rx-field-name {
           .rxRadio,
           rx-toggle-switch {
             &[disabled] + label {
-              color: @disabled-text-color;
+              color: @app-disabled-text-color;
             }
           }
 

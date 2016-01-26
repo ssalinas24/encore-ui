@@ -47,7 +47,7 @@
   }//.fake-radio
 
   &.rx-disabled + label {
-    color: @disabled-text-color;
+    color: @app-disabled-text-color;
   }
 
   input[type="radio"] {
@@ -71,7 +71,7 @@
 
       // disabled, unchecked
       & + .fake-radio {
-        border: 1px solid @disabled-background-color;
+        border: 1px solid @app-disabled-background-color;
 
         .tick {
           width: @rxRadio-tick-size;
@@ -80,7 +80,7 @@
       }
 
       &:checked + .fake-radio .tick {
-        background: @disabled-background-color;
+        background: @app-disabled-background-color;
       }
     }//.disabled()
 
