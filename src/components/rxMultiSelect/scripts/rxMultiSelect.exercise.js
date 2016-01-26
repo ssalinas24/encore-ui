@@ -1,18 +1,17 @@
 var rxMultiSelect = require('./rxMultiSelect.page').rxMultiSelect;
 
 /**
-   rxMultiSelect exercises.
-   @exports encore.exercise.rxMultiSelect
-   @param {Object} [options=] - Test options. Used to build valid tests.
-   @param {rxMultiSelect} [options.instance=] - Component to exercise.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @param {Object} [options.inputs=[]] - The options of the select input.
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxMultiSelect({
-       instance: myPage.subscriptionList, // select one of many widgets from your page objects
-   }));
-   ```
+ * rxMultiSelect exercises.
+ * @exports exercise/rxMultiSelect
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxMultiSelect} [options.instance={@link rxMultiSelect.initialize}] - Component to exercise.
+ * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} [options.inputs=[]] - The options of the select input.
+ * @example
+ * describe('default exercises', encore.exercise.rxMultiSelect({
+ *     instance: myPage.subscriptionList, // select one of many widgets from your page objects
+ *     inputs: ['Texas', 'California', 'Virginia', 'Georgia']
+ * }));
  */
 exports.rxMultiSelect = function (options) {
     if (options === undefined) {
@@ -30,7 +29,7 @@ exports.rxMultiSelect = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxMultiSelect.main;
+                component = rxMultiSelect.initialize();
             }
 
             if (options.cssSelector !== undefined) {
