@@ -113,11 +113,11 @@
 @app-body-font-family: @app-sans-serif-font-family;
 
 // # PreProd warnings
-@preprodBackground: #aa161c;
-@preprodBorderTop: #bd1b22;
-@preprodBorderBottom: #991016;
-@preprodBackgroundFocus: #be1c22;
-@preprodActiveBackground: #d41f26;
+@preprod-background-color: @red-700; //#aa161c
+@preprod-border-top-color: @red-500; //#bd1b22
+@preprod-border-bottom-color: darken(@preprod-background-color, 10%); //#991016
+@preprod-focus-background-color: @red-500; //#be1c22
+@preprod-active-background-color: saturate(@preprod-focus-background-color, 10%); //#d41f26
 
 // ## Tables
 @tableHeaderBg: @gray-200;
@@ -424,6 +424,14 @@
 @appFont: @app-font;
 @appLineHeight: @app-line-height;
 @appFontSize: @app-font-size;
+
+// # PreProd warnings
+// deprecated
+@preprodBackground: @preprod-background-color;
+@preprodBorderTop: @preprod-border-top-color;
+@preprodBorderBottom: @preprod-border-bottom-color;
+@preprodBackgroundFocus: @preprod-focus-background-color;
+@preprodActiveBackground: @preprod-active-background-color;
 
 // # Text Colors
 // deprecated

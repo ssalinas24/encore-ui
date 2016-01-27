@@ -143,30 +143,30 @@
 
   &.warning-bar.preprod {
     .rx-app-menu {
-      background: @preprodBackground;
+      background: @preprod-background-color;
     }
     .rx-app-nav-item {
       &.active:not(.has-children) > .item-link {
-        border-top-color: @preprodBorderTop;
+        border-top-color: @preprod-border-top-color;
       }
       .item-link {
-        background: @preprodBackground;
-        border-top: 1px solid @preprodBorderTop;
-        border-bottom: 1px solid @preprodBorderBottom;
+        background: @preprod-background-color;
+        border-top: 1px solid @preprod-border-top-color;
+        border-bottom: 1px solid @preprod-border-bottom-color;
         &:hover,
         &:focus {
-          background: @preprodBackgroundFocus;
-          border-top: 1px solid @preprodBorderBottom;
-          border-bottom: 1px solid @preprodBorderBottom;
+          background: @preprod-focus-background-color;
+          border-top: 1px solid @preprod-border-bottom-color;
+          border-bottom: 1px solid @preprod-border-bottom-color;
         }
       }
 
       // active nav, w/children (double arrow up, gray bg)
       &.active.has-children > .item-link {
-        border-top-color: @preprodBorderTop;
+        border-top-color: @preprod-border-top-color;
         // used to show BG of arrow (because :after is rotated)
         &:before {
-          background: @preprodActiveBackground;
+          background: @preprod-active-background-color;
         }
         .item-content {
           border-bottom: 1px solid @black;
@@ -174,7 +174,7 @@
       }
 
       .item-content {
-        background: @preprodActiveBackground;
+        background: @preprod-active-background-color;
       }
     }
   }
