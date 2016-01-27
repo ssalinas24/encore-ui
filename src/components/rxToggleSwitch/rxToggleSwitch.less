@@ -22,16 +22,16 @@
   .box-sizing(border-box);
 
   &[disabled] {
-    background-color: @disabled-background-color;
-    color: @disabled-text-color;
+    background-color: @app-disabled-background-color;
+    color: @app-disabled-text-color;
     &.on {
       background-color: desaturate(lighten(@rxToggleSwitch-on-state-color, 40%), 30%);
-      color: darken(@disabled-text-color, 10%);
+      color: darken(@app-disabled-text-color, 10%);
     }
     cursor: not-allowed;
     .knob {
-      background-color: @disabled-background-color;
-      border: 1px @disabled-text-color solid;
+      background-color: @app-disabled-background-color;
+      border: 1px @app-disabled-text-color solid;
     }
   }
   &.on {
