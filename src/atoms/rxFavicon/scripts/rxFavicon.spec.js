@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxFavicon', function () {
+describe('atoms:rxFavicon', function () {
     var scope, compile, rootScope, el, envSvc, log;
 
     var paths = {
@@ -27,8 +27,7 @@ describe('rxFavicon', function () {
 
     beforeEach(function () {
         // load modules
-        module('encore.ui.rxFavicon');
-        module('encore.ui.rxEnvironment');
+        module('encore.ui.atoms');
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile, Environment, $log) {
