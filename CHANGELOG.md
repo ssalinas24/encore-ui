@@ -1,3 +1,12 @@
+<a name="1.44.2-4"></a>
+### 1.44.2-4 (2016-01-28)
+
+
+#### Bug Fixes
+
+* **grunt:** fix deploy tasks ([302f991e](git@github.com:rackerlabs/encore-ui/commit/302f991ec5c974892f38a0e33c5b61d36d88541e))
+
+
 <a name="1.44.2-3"></a>
 ### 1.44.2-3 (2016-01-28)
 
