@@ -3,7 +3,6 @@ module.exports = function (grunt) {
         var tasks = [
             'concat:rxPageObjects',
             'concat:rxPageObjectsExercises',
-            'shell:rxPageObjects',
             'jsdoc:rxPageObjects',
             'copy:rxPageObjectsDocs'
         ];

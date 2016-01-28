@@ -2,16 +2,6 @@
 
 module.exports = function (grunt) {
     return {
-        rxPageObjects: {
-            command: 'npm pack',
-            options: {
-                stdout: true,
-                execOptions: {
-                    cwd: 'utils/rx-page-objects'
-                }
-            }
-        },
-
         npmPublish: {
             command: 'npm publish ./rx-page-objects',
             options: {
