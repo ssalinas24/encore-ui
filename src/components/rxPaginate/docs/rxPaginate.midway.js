@@ -79,7 +79,7 @@ describe('rxPaginate', function () {
     describe('UI pagination exercises', encore.exercise.rxPaginate({
         pageSizes: [3, 50, 200, 350, 500],
         defaultPageSize: 3,
-        cssSelector: '.demo-ui-pagination .rx-paginate'
+        instance: encore.rxPaginate.initialize($('.demo-ui-pagination .rx-paginate'))
     }));
 
     describe('API pagination exercises', encore.exercise.rxPaginate({
@@ -94,7 +94,7 @@ describe('rxPaginate', function () {
         var osColumn = table.column('OS');
 
         beforeEach(function () {
-            encore.rxFloatingHeader.scrollToElement(table.tblResults);
+            encore.rxMisc.scrollToElement(table.tblResults);
             table.textFilter = '';
             table.selectFilter({
                 Os: { All: true }
