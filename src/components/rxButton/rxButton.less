@@ -65,14 +65,15 @@
   }
 
   &.finish {
-    background: #fff;
-    color: @rxButton-default-background-color;
-    .box-shadow(inset 0 0 0 2px @rxButton-default-background-color);
+    background: @rxButton-finish-background-color;
+    color: @rxButton-finish-text-color;
+    // Inset line is created with .box-shadow instead of border property, because it avoids changing button height.
+    .box-shadow(inset 0 0 0 2px @rxButton-finish-outline-color);
 
     &:hover,
     &:focus {
-      color: @rxButton-default-hover-background-color;
-      .box-shadow(inset 0 0 0 2px @rxButton-default-hover-background-color);
+      color: @rxButton-finish-hover-text-color;
+      .box-shadow(inset 0 0 0 2px @rxButton-finish-hover-outline-color);
     }
   }
 
