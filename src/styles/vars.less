@@ -113,11 +113,13 @@
 @app-body-font-family: @app-sans-serif-font-family;
 
 // # PreProd warnings
-@preprod-background-color: @red-700; //#aa161c
-@preprod-border-top-color: @red-500; //#bd1b22
-@preprod-border-bottom-color: darken(@preprod-background-color, 10%); //#991016
-@preprod-focus-background-color: @red-500; //#be1c22
-@preprod-active-background-color: saturate(@preprod-focus-background-color, 10%); //#d41f26
+@preprod-background-color: @red-700;
+@preprod-border-top-color: @red-500;
+@preprod-border-bottom-color: darken(@preprod-background-color, 10%);
+@preprod-focus-background-color: desaturate(@preprod-background-color, 5%);
+@preprod-focus-border-top-color: darken(@preprod-background-color, 10%);
+@preprod-focus-border-bottom-color: darken(@preprod-background-color, 10%);
+@preprod-active-background-color: @red-500;
 
 // ## Tables
 @tableHeaderBg: @gray-200;
