@@ -1,13 +1,20 @@
-angular.module('encore.ui.rxApp')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxApp.service:rxVisibility
+ * @name quarks.service:rxVisibility
  * @description
- * Provides an interface for adding new `visibility` methods for nav menus.
- * Methods added via `addMethod` should have a `function (scope, args)` interface
- * When you do `visibility: [ "someMethodName", { foo: 1, bar: 2} ]` in
- * a nav menu definition, the (optional) object will be passed to your method as the
- * second argument `args`, i.e. function (scope, args) {}
+ * Provides an interface for adding new `visibility` methods for nav menus.  Methods added via `addMethod` should 
+ * have a `function (scope, args)` interface.
+ * 
+ * When you do:
+ * <pre>
+ * visibility: [ "someMethodName", { foo: 1, bar: 2} ]
+ * </pre>
+ * in a nav menu definition, the (optional) object will be passed to your method as the
+ * second argument `args`, i.e.:
+ * <pre>
+ * function (scope, args) {}
+ * </pre>
  */
 .factory('rxVisibility', function () {
     var methods = {};

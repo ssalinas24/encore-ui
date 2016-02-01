@@ -1,9 +1,9 @@
-describe('encore.ui.rxApp', function () {
+describe('quarks:rxVisibility', function () {
     describe('rxVisibility', function () {
         var rxvisibility;
 
         beforeEach(function () {
-            module('encore.ui.rxApp');
+            module('encore.ui.quarks');
 
             inject(function (rxVisibility) {
                 rxvisibility = rxVisibility;
