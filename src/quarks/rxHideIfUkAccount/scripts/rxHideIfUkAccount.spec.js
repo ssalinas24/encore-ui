@@ -1,4 +1,4 @@
-describe('encore.ui.rxApp', function () {
+describe('quarks:rxHideIfUkAccount', function () {
     describe('rxHideIfUkAccount', function () {
         var $location, $route, $rootScope, $routeParams, rxHideIfUkAccount;
 
@@ -6,7 +6,7 @@ describe('encore.ui.rxApp', function () {
             // Necessary so `$routeProvider` is available
             module('ngRoute');
 
-            module('encore.ui.rxApp');
+            module('encore.ui.quarks');
 
             module(function ($routeProvider) {
                 $routeProvider.when('/accounts/:accountNumber', {});
