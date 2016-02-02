@@ -2,11 +2,11 @@ var _ = require('lodash');
 var rxOptionTable = require('./rxOptionTable.page').rxOptionTable;
 
 /**
- * rxOptionTable exercises.
- * @exports encore.exercise.rxOptionTable
- * @param {Object} [options=] - Test options. Used to build valid tests.
- * @param {rxOptionTable} [options.instance=] - Component to exercise.
- * @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @description rxOptionTable exercises.
+ * @exports exercise/rxOptionTable
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxOptionTable} [options.instance=rxOptionTable.initialize] - Component to exercise.
+ * @param {string} [options.cssSelector] - **DEPRECATED**: Fallback selector string to initialize widget with.
  * @param {string} [options.visible=true] - Determines if the option table is visible
  * @param {string} [options.empty=false] - Determines if the option table is empty
  */
@@ -27,7 +27,7 @@ exports.rxOptionTable = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxOptionTable.main;
+                component = rxOptionTable.initialize();
             }
 
             if (options.cssSelector !== undefined) {
