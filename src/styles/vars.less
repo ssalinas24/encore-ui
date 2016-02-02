@@ -116,10 +116,13 @@
 @preprod-background-color: @red-700;
 @preprod-border-top-color: @red-500;
 @preprod-border-bottom-color: darken(@preprod-background-color, 10%);
-@preprod-focus-background-color: desaturate(@preprod-background-color, 5%);
+@preprod-focus-background-color: desaturate(@preprod-background-color, 25%);
 @preprod-focus-border-top-color: darken(@preprod-background-color, 10%);
 @preprod-focus-border-bottom-color: darken(@preprod-background-color, 10%);
-@preprod-active-background-color: @red-500;
+@preprod-active-menu-background-color: @red-500;
+@preprod-active-item-background-color: @orange-500;
+@preprod-active-item-text-color: @black;
+@preprod-active-item-arrow-color: @orange-500;
 
 // ## Tables
 @tableHeaderBg: @gray-200;
@@ -433,7 +436,7 @@
 @preprodBorderTop: @preprod-border-top-color;
 @preprodBorderBottom: @preprod-border-bottom-color;
 @preprodBackgroundFocus: @preprod-focus-background-color;
-@preprodActiveBackground: @preprod-active-background-color;
+@preprodActiveBackground: @preprod-active-menu-background-color;
 
 // # Text Colors
 // deprecated
