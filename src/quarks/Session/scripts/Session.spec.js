@@ -1,8 +1,7 @@
-describe('rxSession', function () {
+describe('quarks:Session', function () {
     var storage, session, mockToken, tomorrow;
 
     beforeEach(function () {
-        module('encore.ui.rxSession');
         module('encore.ui.quarks');
         tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
         mockToken = {

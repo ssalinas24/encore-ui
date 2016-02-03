@@ -117,7 +117,6 @@ angular.module('encore.ui.rxApp', [
     'encore.ui.rxAppRoutes',
     'encore.ui.rxEnvironment',
     'encore.ui.rxPermission',
-    'encore.ui.rxSession',
     'ngRoute',
     'ngSanitize'
 ]);

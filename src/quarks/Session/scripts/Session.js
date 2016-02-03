@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxSession')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxSession.service:Session
+ * @name quarks.service:Session
  * @description
  *
  * Service for managing user session in encore-ui.

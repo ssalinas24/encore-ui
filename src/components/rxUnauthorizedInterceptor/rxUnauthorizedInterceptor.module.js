@@ -11,5 +11,5 @@
  * * {@link rxUnauthorizedInterceptor.service:UnauthorizedInterceptor UnauthorizedInterceptor}
  */
 angular.module('encore.ui.rxUnauthorizedInterceptor', [
-    'encore.ui.rxSession'
+    'encore.ui.quarks'
 ]);

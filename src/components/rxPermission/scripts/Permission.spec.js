@@ -20,7 +20,7 @@ describe('rxPermission', function () {
 
         beforeEach(function () {
             module('encore.ui.rxPermission');
-            module('encore.ui.rxSession');
+            module('encore.ui.quarks');
 
             inject(function ($injector) {
                 permission = $injector.get('Permission');
