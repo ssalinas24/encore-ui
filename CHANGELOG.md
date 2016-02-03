@@ -1,3 +1,12 @@
+<a name="1.45.0-0"></a>
+### 1.45.0-0 (2016-02-03)
+
+
+#### Features
+
+* **browserSync:** Include simple FF/Chrome syncing ([8711e756](git@github.com:rackerlabs/encore-ui/commit/8711e7565634309416b5129b16e91f677203515e))
+
+
 <a name="1.44.2"></a>
 ### 1.44.2 (2016-01-28)
 
