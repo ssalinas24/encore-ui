@@ -143,30 +143,38 @@
 
   &.warning-bar.preprod {
     .rx-app-menu {
-      background: @preprodBackground;
+      background: @preprod-background-color;
     }
     .rx-app-nav-item {
-      &.active:not(.has-children) > .item-link {
-        border-top-color: @preprodBorderTop;
-      }
       .item-link {
-        background: @preprodBackground;
-        border-top: 1px solid @preprodBorderTop;
-        border-bottom: 1px solid @preprodBorderBottom;
+        background: @preprod-background-color;
+        border-top: 1px solid @preprod-border-top-color;
+        border-bottom: 1px solid @preprod-border-bottom-color;
         &:hover,
         &:focus {
-          background: @preprodBackgroundFocus;
-          border-top: 1px solid @preprodBorderBottom;
-          border-bottom: 1px solid @preprodBorderBottom;
+          background: @preprod-focus-background-color;
+          border-top: 1px solid @preprod-focus-border-top-color;
+          border-bottom: 1px solid @preprod-focus-border-bottom-color;
+        }
+      }
+
+      // active nav, no children (orange/yellow bg, arrow right)
+      &.active:not(.has-children) > .item-link {
+        border-color: transparent;
+        background: @preprod-active-item-background-color;
+        color: @preprod-active-item-text-color;
+        &:after {
+          right: -6px;
+          border-left-color: @preprod-active-item-arrow-color;
         }
       }
 
       // active nav, w/children (double arrow up, gray bg)
       &.active.has-children > .item-link {
-        border-top-color: @preprodBorderTop;
+        border-top-color: @preprod-border-top-color;
         // used to show BG of arrow (because :after is rotated)
         &:before {
-          background: @preprodActiveBackground;
+          background: @preprod-active-menu-background-color;
         }
         .item-content {
           border-bottom: 1px solid @black;
@@ -174,7 +182,7 @@
       }
 
       .item-content {
-        background: @preprodActiveBackground;
+        background: @preprod-active-menu-background-color;
       }
     }
   }
@@ -484,7 +492,7 @@
     text-shadow: 1px 1px 0px rgba(26, 26, 26, 0.2);
 
     .rx-feedback .modal-link {
-      background: url(images/icon-feedback.png) no-repeat 20px calc(~"50% + 1px");
+      background: url("images/icon-feedback.png") no-repeat 20px calc(~"50% + 1px");
       vertical-align: middle;
       color: @orange-500;
       padding: 0 21px 0 41px;
