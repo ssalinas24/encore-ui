@@ -1,0 +1,7 @@
+{
+    "displayName": "rxHideIfUkAccount",
+    "stability": "unstable",
+    "description": "Check if account number in the URL is of UK origin.",
+    "api": "service:rxHideIfUkAccount",
+    "keywords": []
+}

@@ -1,9 +1,9 @@
-angular.module('encore.ui.rxApp')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxApp.service:rxHideIfUkAccount
+ * @name quarks.service:rxHideIfUkAccount
  * @description
- * Check if account number in URL is of the UK origin
+ * Check if account number in the URL is of UK origin.
  *
  * @return {Boolean} false if account number matches UK pattern
  * Use it as `visibility: [ 'rxHideIfUkAccount' ]`

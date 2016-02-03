@@ -106,7 +106,6 @@
  *
  * ## Services
  * * {@link rxApp.service:encoreRoutes encoreRoutes}
- * * {@link rxApp.service:rxHideIfUkAccount rxHideIfUkAccount}
  * * {@link rxApp.service:rxVisibility rxVisibility}
  * * {@link rxApp.service:rxVisibilityPathParams rxVisibilityPathParams}
  * * {@link rxApp.service:rxStatusTags rxStatusTags}
