@@ -34,6 +34,7 @@
  * * {@link quarks.service:rxDOMHelper rxDOMHelper}
  * * {@link quarks.service:rxFeedbackSvc rxFeedbackSvc}
  * * {@link quarks.service:rxFormUtils rxFormUtils}
+ * * {@link quarks.service:rxHideIfUkAccount rxHideIfUkAccount}
  * * {@link quarks.service:rxLocalStorage rxLocalStorage}
  * * {@link quarks.service:rxNestedElement rxNestedElement}
  * * {@link quarks.service:rxNotify rxNotify}
@@ -42,6 +43,8 @@
  * * {@link quarks.service:rxScreenshotSvc rxScreenshotSvc}
  * * {@link quarks.service:rxSortUtil rxSortUtil}
  * * {@link quarks.service:rxStatusMappings rxStatusMappings}
+ * * {@link quarks.service:rxVisibility rxVisibility}
+ * * {@link quarks.service:Session Session}
  */
 angular.module('encore.ui.quarks', [
     'ngResource',
