@@ -13,7 +13,7 @@ describe('service:UnauthorizedInterceptor', function () {
         q = { reject: sinon.spy() };
 
     beforeEach(function () {
-        module('encore.ui.rxUnauthorizedInterceptor',
+        module('encore.ui.quarks',
             function ($provide) {
                 $provide.value('$q', q);
                 $provide.value('$window', mockWindow);
