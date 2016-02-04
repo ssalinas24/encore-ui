@@ -1,10 +1,10 @@
-describe('encore.ui.rxApp', function () {
+describe('quarks:rxVisibilityPathParams', function () {
     describe('rxVisibilityPathParams', function () {
         beforeEach(function () {
             // Necessary so `$routeProvider` is available
             module('ngRoute');
 
-            module('encore.ui.rxApp');
+            module('encore.ui.quarks');
 
         });
 

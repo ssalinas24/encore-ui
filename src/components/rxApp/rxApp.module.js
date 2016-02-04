@@ -106,7 +106,6 @@
  *
  * ## Services
  * * {@link rxApp.service:encoreRoutes encoreRoutes}
- * * {@link rxApp.service:rxVisibilityPathParams rxVisibilityPathParams}
  * * {@link rxApp.service:rxStatusTags rxStatusTags}
  */
 angular.module('encore.ui.rxApp', [
