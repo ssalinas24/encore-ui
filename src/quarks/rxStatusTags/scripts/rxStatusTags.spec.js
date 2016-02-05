@@ -1,4 +1,4 @@
-describe('encore.ui.rxApp', function () {
+describe('quarks:rxstatusTags', function () {
     describe('rxStatusTags', function () {
         var rxstatusTags;
 
@@ -15,7 +15,7 @@ describe('encore.ui.rxApp', function () {
                         text: 'test text'
                     });
                 });
-            module('encore.ui.rxApp', 'testApp');
+            module('encore.ui.quarks', 'testApp');
 
             // Inject in angular constructs
             inject(function (rxStatusTags) {

@@ -1,13 +1,13 @@
-angular.module('encore.ui.rxApp')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxApp.service:rxStatusTags
+ * @name quarks.service:rxStatusTags
  * @description
  * This provider is primarily used for applications to specify custom status
  * tags, for use with the `status` attributes of `rx-page` and of breadcrumb
  * objects.
  *
- * It also contains getTag and hasTag run time (vs. config time) methods, but
+ * It also contains `getTag` and `hasTag` run time (vs. config time) methods, but
  * these should rarely, if ever, be needed outside of the framework.
  */
 .provider('rxStatusTags', function () {
