@@ -103,9 +103,6 @@
  * * {@link rxApp.directive:rxPage rxPage}
  * * {@link rxApp.directive:rxStatusTag rxStatusTag}
  * * {@link rxApp.directive:rxTicketSearch rxTicketSearch}
- *
- * ## Services
- * * {@link rxApp.service:encoreRoutes encoreRoutes}
  */
 angular.module('encore.ui.rxApp', [
     'cfp.hotkeys',
