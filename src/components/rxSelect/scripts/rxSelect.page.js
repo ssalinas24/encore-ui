@@ -4,15 +4,17 @@ var Page = require('astrolabe').Page;
 
 /**
  * The specific information about a single select element option.
- * Returned from {@link rxSelect.option}
- * @namespace rxSelect.option.option
+ * Returned from {@link rxSelect#option}.
+ * @namespace rxSelect.option
  */
 var rxSelectOptionFromElement = function (rootElement) {
     return Page.create({
 
         /**
-         * @memberof rxSelect.option.option
-         * @returns {string} The text inside of an `<option>` element
+         * @instance
+         * @memberof rxSelect.option
+         * @description The text inside of the `<option>` element.
+         * @type {String}
          */
         text: {
             get: function () {
@@ -21,8 +23,10 @@ var rxSelectOptionFromElement = function (rootElement) {
         },
 
         /**
-         * @memberof rxSelect.option.option
-         * @returns {string} The "value" attribute for an `<option>` element
+         * @instance
+         * @memberof rxSelect.option
+         * @description The "value" attribute for an `<option>` element.
+         * @type {String}
          */
         value: {
             get: function () {
@@ -31,10 +35,14 @@ var rxSelectOptionFromElement = function (rootElement) {
         },
 
         /**
-         * @memberof rxSelect.option.option
+         * @todo Make this function check if it's already selected before selecting itself.
+         * @todo Create a {@link rxCheckbox.option#deselect} function to co-exist with this function.
+         * @instance
+         * @memberof rxSelect.option
          * @function
-         * @description Select an `<option>` element within a `<select>`
-         * @returns {undefined}
+         * @description Clicks the `<option>` element within a `<select>`. Note: this will
+         * also deselect the checkbox if it is called twice in a row. There is no checking
+         * the state of the checkbox before performing this action.
          */
         select: {
             value: function (slowClick) {
@@ -43,9 +51,11 @@ var rxSelectOptionFromElement = function (rootElement) {
         },
 
         /**
-         * @memberof rxSelect.option.option
+         * @instance
+         * @memberof rxSelect.option
          * @function
-         * @returns {Boolean} Whether or not the `<option>` is currently selected
+         * @description Whether or not the `<option>` is currently selected.
+         * @returns {Boolean}
          */
         isSelected: {
             value: function () {
@@ -54,9 +64,11 @@ var rxSelectOptionFromElement = function (rootElement) {
         },
 
         /**
-         * @memberof rxSelect.option.option
+         * @instance
+         * @memberof rxSelect.option
          * @function
-         * @returns {Boolean} Whether or not the `<option>` is currently present
+         * @description Whether or not the `<option>` is currently present.
+         * @returns {Boolean}
          */
         isPresent: {
             value: function () {
@@ -83,9 +95,10 @@ var rxSelect = {
     },
 
     /**
+     * @instance
      * @function
-     * @memberOf rxSelect
-     * @returns {Boolean} Whether or not the select element contains the disabled class name.
+     * @description Whether or not the select element is disabled.
+     * @returns {Boolean}
      */
     isDisabled: {
         value: function () {
@@ -104,9 +117,10 @@ var rxSelect = {
     },
 
     /**
+     * @instance
      * @function
-     * @memberOf rxSelect
-     * @returns {Boolean} Whether the select element is currently displayed.
+     * @description Whether the select element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -123,8 +137,9 @@ var rxSelect = {
 
     /**
      * @function
-     * @memberOf rxSelect
-     * @returns {Boolean} Whether or not the select element exists on the page.
+     * @instance
+     * @description Whether or not the select element exists on the page.
+     * @returns {Boolean}
      */
     isPresent: {
         value: function () {
@@ -137,7 +152,9 @@ var rxSelect = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the `<select>` element is valid
+     * @instance
+     * @description Whether the `<select>` element is valid.
+     * @returns {Boolean}
      */
     isValid: {
         value: function () {
@@ -147,21 +164,19 @@ var rxSelect = {
         }
     },
 
-    /* ========================================
-     * OPTIONS
-     * ======================================== */
-
     /**
-     * @namespace rxSelect.option
-     * @param {String} optionText
-     *   Partial or total string to match the display value of the desired `<option>` element
-     * @returns {rxSelectOption.option.option} Page object representing an option
+     * @function
+     * @instance
+     * @param {String} optionText - The option to find and return an {@link rxSelect.option} object for.
+     * @description Partial or total string to match the display value of the desired `<option>` element,
+     * creates an {@link rxSelect.option} object representing the option selected.
+     * @returns {rxSelect.option}
      * @example
-     * ```js
-     * var homeState = encore.rxSelect.main.option('Indiana');
-     * homeState.select();
-     * expect(homeState.isSelected()).to.eventually.be.true;
-     * ```
+     * it('should grab an individual selection and alter it', function () {
+     *     var homeState = encore.rxSelect.initialize($('#states-dropdown')).option('Indiana');
+     *     homeState.select();
+     *     expect(homeState.isSelected()).to.eventually.be.true;
+     * });
      */
     option: {
         value: function (optionText) {
@@ -171,7 +186,15 @@ var rxSelect = {
     },
 
     /**
-     * @returns {String[]} List of rxSelectOption page objects for each `<option>` element in the dropdown
+     * @instance
+     * @description List of each {@link rxSelect.option#text} values in the dropdown.
+     * @type {String[]}
+     * @example
+     * it('should have every Texas location in the dropdown', function () {
+     *     var texasLocations = ['San Antonio', 'Austin'];
+     *     var dropdown = encore.rxSelect.initialize(element(by.model('locations')));
+     *     expect(dropdown.options).to.eventually.eql(texasLocations);
+     * });
      */
     options: {
         get: function () {
@@ -183,7 +206,13 @@ var rxSelect = {
 
     /**
      * @function
-     * @returns {Integer} The number of `<option>` elements in the dropdown
+     * @instance
+     * @description The number of `<option>` elements in the dropdown.
+     * @returns {Number}
+     * @example
+     * it('should have 50 states in the dropdown', function () {
+     *     expect(encore.rxSelect.initialize().count()).to.eventually.equal(50);
+     * });
      */
     optionCount: {
         value: function () {
@@ -193,9 +222,15 @@ var rxSelect = {
 
     /**
      * @function
-     * @param {String} optionText
+     * @instance
+     * @description Whether or not the option, searched for by partial text match, exists.
+     * @param {String} optionText -
      * Partial or total string to match the display value of the desired `<option>` element
-     * @returns {Boolean} Whether or not the option exists
+     * @returns {Boolean}
+     * @example
+     * it('should not list a United States territory in the states dropdown', function () {
+     *     expect(encore.rxSelect.initialize().optionExists('Guam')).to.eventually.be.false;
+     * });
      */
     optionExists: {
         value: function (optionText) {
@@ -204,7 +239,14 @@ var rxSelect = {
     },
 
     /**
-     * @returns {String[]} List of values for each `<option>` element in the dropdown
+     * @instance
+     * @type {String[]}
+     * @description List of values for each `<option>` element in the dropdown.
+     * @example
+     * it('should have a numbered index for each dropdown value', function () {
+     *     var dropdown = encore.rxSelect.initialize($('#auto-generated-stuff'));
+     *     expect(dropdown.values).to.eventually.eql(_.map(_.range(0, 25), _.toString));
+     * });
      */
     values: {
         get: function () {
@@ -215,7 +257,13 @@ var rxSelect = {
     },
 
     /**
-     * @returns {rxSelectOption} Page object representing the currently selected `<option>` element.
+     * @description {@link rxSelect.option} representing the currently selected `<option>` element.
+     * @type {rxSelect.option}
+     * @example
+     * it('should already have the username populated', function () {
+     *     var dropdown = encore.rxSelect.initialize(element(by.model('username')));
+     *     expect(dropdown.selectedOption.text).to.eventually.equal('Andrew Yurisich');
+     * });
      */
     selectedOption: {
         get: function () {
@@ -224,9 +272,11 @@ var rxSelect = {
     },
 
     /**
+     * @instance
+     * @private
      * @function
-     * @param {String} optionText
-     *   Partial or total string to match the display value of the desired `<option>` element.
+     * @param {String} optionText -
+     * Partial or total string to match the display value of the desired `<option>` element.
      * @returns {WebElement}
      */
     findOptionContaining: {
@@ -236,14 +286,17 @@ var rxSelect = {
     },
 
     /**
+     * @instance
      * @function
-     * @param {String} optionText
-     *   Partial or total string to match the display value of the desired `<option>` element.
+     * @description High level access to change an rxSelect component's selected option.
+     * @param {String} optionText -
+     * Partial or total string to match the display value of the desired `<option>` element.
      * @example
-     * ```js
-     * var dropdown = encore.htmlSelect.initialize($('#country-select'));
-     * dropdown.select('United States');
-     * ```
+     * it('should select the United States for the country', function () {
+     *     var dropdown = encore.rxSelect.initialize($('#country-select'));
+     *     dropdown.select('United States');
+     *     expect(dropdown.selectedOption.text).to.eventually.equal('United States');
+     * });
      */
     select: {
         value: function (optionText, slowClick) {
@@ -256,14 +309,13 @@ var rxSelect = {
 
 };//rxSelect
 
-/**
- * @exports encore.rxSelect
- */
 exports.rxSelect = {
     /**
      * @function
-     * @param {WebElement} rxSelectElement - WebElement to be transformed into an rxSelect page object
-     * @returns {rxSelect} Page object representing a `<select rx-select>` element.
+     * @memberof rxSelect
+     * @description Creates a page object representing a `<select rx-select>` element.
+     * @param {ElementFinder} rxSelectElement - ElementFinder to be transformed into an rxSelect page object
+     * @returns {rxSelect}
      */
     initialize: function (rxSelectElement) {
         rxSelect.rootElement = {
@@ -273,35 +325,43 @@ exports.rxSelect = {
     },
 
     /**
+     * @todo Make the `options` parameter less gross. It shouldn't be
+     * piled on top of pre-existing functionality like this.
+     * @description Generates a getter and a setter for an rxSelect element on your page.
      * An important note: when setting the value of the rxSelect, you can set it to either
      * the text value of the option in the dropdown you'd like selected, or you can pass in
-     * an object. See the example below for more information about the differences between
-     * these two input types.
+     * an object for configuring details about the interaction with the rxSelect component.
+     * See the example below for more information about the differences between these two input types.
      * @function
-     * @description Generates a getter and a setter for an rxSelect element on your page.
-     * @param {WebElement} elem - The WebElement for the rxSelect.
-     * @param {Boolean} [slowClick=true] - Whether to use slow click globally for all accessor interactions.
+     * @memberof rxSelect
+     * @see rxMisc.slowClick
+     * @param {ElementFinder} elem - The ElementFinder for the rxSelect.
+     * @param {Object|Boolean} [options=true] - Options for configuring the behavior of the select box at run time.
+     * If `options` is not a plain old javascript object containing configuration settings, then the default values
+     * for will be used globally, for all configurable interactions.
+     * @param {String} options.option - The option to select. Used only in conjunction with `options.slowClick`.
+     * @param {Boolean} [options.slowClick=true] -
+     * Whether to use {@link rxMisc.slowClick} for this particular accessor interaction.
      * @returns {Object} A getter and a setter to be applied to an rxSelect page object.
      * @example
-     ```js
-     var form = Page.create({
-         state: encore.rxSelect.generateAccessor(element(by.model('states'))),
-         // you can also specify a single dropdown's slow clicking globally this way
-         county: encore.rxSelect.generateAccessor(element(by.model('county')), false)
-     });
-
-     it('should select a new state normally', function () {
-         form.state = 'Indiana';
-         expect(form.state).to.eventually.equal('Indiana');
-     });
-
-     it('should select a new state and county without using `rxMisc.slowClick()`', function () {
-         form.state = { option: 'Texas', slowClick: false };
-         form.county = 'Bexar'; // automatically uses `false` for slow clicking
-         expect(form.state).to.eventually.equal('Texas');
-         expect(form.county).to.eventually.equal('Bexar');
-     });
-     ```
+     * var globalSlowClickPreference = false;
+     * var form = Page.create({
+     *     state: encore.rxSelect.generateAccessor(element(by.model('states'))),
+     *     // you can specify a single dropdown's slow clicking globally this way
+     *     county: encore.rxSelect.generateAccessor(element(by.model('county')), globalSlowClickPreference)
+     * });
+     *
+     * it('should select a new state normally', function () {
+     *     form.state = 'Indiana';
+     *     expect(form.state).to.eventually.equal('Indiana');
+     * });
+     *
+     * it('should select a new state and county without using `rxMisc.slowClick()`', function () {
+     *     form.state = { option: 'Texas', slowClick: false }; // will avoid slow clicking for just this call
+     *     form.county = 'Bexar'; // automatically uses `false` for slow clicking, see page object definition
+     *     expect(form.state).to.eventually.equal('Texas');
+     *     expect(form.county).to.eventually.equal('Bexar');
+     * });
      */
     generateAccessor: function (elem, slowClick) {
         return {

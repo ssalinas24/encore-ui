@@ -2,15 +2,16 @@ var _ = require('lodash');
 var rxSelect = require('./rxSelect.page').rxSelect;
 
 /**
- * @description rxSelect exercises
- * @exports encore.exercise.rxSelect
- * @param {Object} [options=] - Test options. Used to build valid tests.
- * @param {rxSelect} [options.instance=] - Component to exercise.
- * @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @description rxSelect exercises.
+ * @see rxSelect
+ * @exports exercise/rxSelect
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxSelect} options.instance - Component to exercise.
+ * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Boolean} [options.disabled=false] - Determines if the select is disabled
  * @param {Boolean} [options.visible=true] - Determines if the select is visible
  * @param {Boolean} [options.valid=true] - Determines if the select is valid
- * @param {String} selectedText - The expected selected text of the dropdown.
+ * @param {String} [selectedText] - The expected selected text of the dropdown.
  */
 exports.rxSelect = function (options) {
     if (options === undefined) {
