@@ -2,19 +2,19 @@ var _ = require('lodash');
 var rxSearchBox = require('./rxSearchBox.page').rxSearchBox;
 
 /**
-   rxSearchBox exercises.
-   @exports encore.exercise.rxSearchBox
-   @param {Object} [options=] - Test options. Used to build valid tests.
-   @param {rxSearchBox} [options.instance=] - Component to exercise.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @param {boolean} [options.disabled=false] - Determines if the search box is disabled
-   @param {string} [options.placeholder='Search...'] - Expected placeholder value
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxSearchBox({
-       instance: myPage.searchText, // select one of many widgets from your page objects
-   }));
-   ```
+ * @description rxSearchBox exercises.
+ * @see rxSearchBox
+ * @exports exercise/rxSearchBox
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxSearchBox} [options.instance=rxSearchbox.initialize()] - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Boolean} [options.disabled=false] - Determines if the search box is disabled at the start of the exercise.
+ * @param {String} [options.placeholder='Search...'] - Expected placeholder value.
+ * @example
+ * describe('default exercises', encore.exercise.rxSearchBox({
+ *     instance: myPage.searchText, // select one of many widgets from your page objects
+ *     placeholder: 'Filter by name...'
+ * }));
  */
 exports.rxSearchBox = function (options) {
     if (options === undefined) {
@@ -33,7 +33,7 @@ exports.rxSearchBox = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxSearchBox.main;
+                component = rxSearchBox.initialize();
             }
 
             if (options.cssSelector !== undefined) {
