@@ -84,27 +84,27 @@ table {
   border-collapse: collapse;
   td,
   th {
-    border: 1px solid @tableBorder;
-    padding: @tableCellPadding;
-    color: @tableCellText;
+    border: 1px solid @app-table-border-color;
+    padding: @app-table-cell-padding;
+    color: @app-table-cell-text-color;
   }
   thead th {
     text-align: left;
     font-weight: 500;
-    background: @tableHeaderBg;
-    color: @tableHeaderText;
-    border: 1px solid @tableHeaderBorder;
+    background: @app-table-header-background-color;
+    color: @app-table-header-text-color;
+    border: 1px solid @app-table-header-border-color;
     &.actions {
       width: 15px;
     }
   }
   tr {
-    background: @tableBg;
+    background: @app-default-row-background-color;
   }
   &.table-striped {
     tr:nth-child(even),
     tbody:nth-child(odd) > tr {
-      background: @tableBgAlt;
+      background: @app-striped-row-background-color;
     }
   }
   td.double-chevron-cell {
@@ -121,8 +121,8 @@ table {
     }
   }
   td.expanded {
-    background-color: @tableHeaderBg;
-    border-bottom-color: @tableHeaderBg;
+    background-color: @app-table-expanded-chevron-background-color;
+    border-bottom-color: @app-table-expanded-chevron-border-color;
     .double-chevron::after {
       color: @white;
       .chevron-mixin(-1);
@@ -140,7 +140,7 @@ table {
 
 .expanded-container {
   padding: 0 3px 20px 3px;
-  background-color: @tableHeaderBg;
+  background-color: @app-table-header-background-color;
 
   & > * {
     margin-left: 2%;
@@ -159,9 +159,9 @@ table {
     }
 
     th {
-      border-color: @tableHeaderBorder;
-      background-color: @tableHeaderBg;
-      color: @tableHeaderText;
+      border-color: @app-table-header-border-color;
+      background-color: @app-table-header-background-color;
+      color: @app-table-header-text-color;
       border-top: 0;
       border-bottom: 0;
     }
