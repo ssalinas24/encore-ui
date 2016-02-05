@@ -112,7 +112,7 @@ exports.rxSearchBox = {
     */
     main: (function () {
         rxSearchBox.rootElement = {
-            get: function () { return $('rx-search-box'); }
+            get: function () { return $$('rx-search-box').first(); }
         };
         return Page.create(rxSearchBox);
     })()

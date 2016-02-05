@@ -1,11 +1,9 @@
-var rxButtonPage = encore.rxButton;
-
 describe('rxButton', function () {
     var rxButton;
 
     before(function () {
         demoPage.go('#/components/rxButton');
-        rxButton = rxButtonPage.initialize($('rx-button'));
+        rxButton = encore.rxButton.initialize($('#demo-ui-rx-button'));
     });
 
     it('should show element', function () {
