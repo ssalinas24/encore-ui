@@ -3,22 +3,20 @@ var _ = require('lodash');
 var rxPaginate = require('./rxPaginate.page').rxPaginate;
 
 /**
-   rxPaginate exercises.
-   @exports encore.exercise.rxPaginate
-   @param {Object} [options=] - Test options. Used to build valid tests.
-   @param {rxPaginate} [options.instance=] - Component to exercise.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @param {string} [options.pages=6] - Estimated page size in the pagination widget.
-   @param {number[]} [options.pageSizes=50, 200, 350, 500] - Page sizes to validate.
-   @param {number} [options.defaultPageSize=50] - Default page size on page load.
-   @param {number} [options.invalidPageSize=45] - For testing resizing pagination to invalid items per page.
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxPaginate({
-       instance: myPage.pagination, // select one of many pagination instances from your page objects
-       pages: 20 // will exercise full functionality at 6, limited functionality at 2
-   }));
-   ```
+ * rxPaginate exercises.
+ * @exports exercise/rxPaginate
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxPaginate} [options.instance=rxPaginate.initialize] - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {String} [options.pages=6] - Estimated page size in the pagination widget.
+ * @param {Number[]} [options.pageSizes=[50, 200, 350, 500]] - Page sizes to validate.
+ * @param {Number} [options.defaultPageSize=50] - Default page size on page load.
+ * @param {Number} [options.invalidPageSize=45] - For testing resizing pagination to invalid items per page.
+ * @example
+ * describe('default exercises', encore.exercise.rxPaginate({
+ *     instance: myPage.pagination, // select one of many pagination instances from your page objects
+ *     pages: 20 // will exercise full functionality at 6, limited functionality at 2
+ * }));
  */
 exports.rxPaginate = function (options) {
     if (options === undefined) {

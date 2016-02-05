@@ -2,6 +2,9 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+/**
+ * @namespace
+ */
 var rxPaginate = {
 
     lnkCurrentPage: {
@@ -18,6 +21,16 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @private
+     * @param {Number} pageNumber - The page number to paginate to.
+     * @description Paginate through groups of pages until the desired page number becomes visible.
+     * Once it is, click that page number and return control back to the test. If an invalid page
+     * number is passed in, a {@link rxPaginate#NoSuchPageException} will be thrown. Use {@link rxPaginate#page}'s
+     * setter functionality instead.
+     */
     jumpToPage: {
         value: function (pageNumber) {
             var page = this;
@@ -49,10 +62,18 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Visit the first page in the paginated table by clicking the "First" link,
+     * unless the user is already on the first page. In that case, do nothing.
+     * @example
+     * it('should put the newly created resource at the top of the list', function () {
+     *     encore.rxPaginate.initialize().first();
+     *     expect(myPage.someTable.row(0).name).to.eventually.contain('Created by Automated Test');
+     * });
+     */
     first: {
-        /**
-          Does nothing if already at the first page.
-        */
         value: function () {
             var page = this;
             return this.page.then(function (pageNumber) {
@@ -63,6 +84,18 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Go back one page from the current position in the table.
+     * @example
+     * it('should go back a page', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.page).to.eventually.equal(3);
+     *     pagination.previous();
+     *     expect(pagination.page).to.eventually.equal(2);
+     * });
+     */
     previous: {
         value: function () {
             this.checkForInvalidFirstPage();
@@ -70,6 +103,18 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Go forward one page from the current position in the table.
+     * @example
+     * it('should go forward a page', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.page).to.eventually.equal(1);
+     *     pagination.previous();
+     *     expect(pagination.page).to.eventually.equal(2);
+     * });
+     */
     next: {
         value: function () {
             this.checkForInvalidLastPage();
@@ -77,10 +122,18 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @description Visit the last page in the paginated table by clicking the "Last" link,
+     * unless the user is already on the last page. In that case, do nothing.
+     * @example
+     * it('should put the newly created resource at the bottom of the list', function () {
+     *     encore.rxPaginate.initialize().last();
+     *     expect(myPage.someTable.row(-1).name).to.eventually.contain('Created by Automated Test');
+     * });
+     */
     last: {
-        /**
-          Does nothing if already at the last page.
-        */
         value: function () {
             var page = this;
             var css = '.pagination-last a';
@@ -92,10 +145,22 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @instance
+     * @description A getter and setter for changing page numbers.
+     * Will paginate through groups of pages until the desired page number becomes visible.
+     * Once it is, click that page number and return control back to the test. If an invalid page
+     * number is passed in, a {@link rxPaginate#NoSuchPageException} will be thrown.
+     * @type {Number}
+     * @example
+     * it('should always have the same data on page 8', function () {
+     *     var table = encore.rxPaginate.initialize();
+     *     table.page = 8;
+     *     expect(table.page).to.eventually.equal(8);
+     *     // some tests that run on page 8 here...
+     * });
+     */
     page: {
-        /**
-          Return the current page number, or change page numbers.
-        */
         get: function () {
             return this.lnkCurrentPage.getText().then(function (text) {
                 return parseInt(text, 10);
@@ -106,11 +171,21 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @type {Number[]}
+     * @instance
+     * @private
+     * @description A list of all available page numbers that can be
+     * paginated to directly. Click the last page number in this list
+     * to cycle through to the next group of pages, and continue forward
+     * to the desired page number. Internal function that supports {@link rxPaginate#jumpToPage}.-*;p
+     * @example
+     * it('should support jumping to page five directly, without cycling', function () {
+     *     expect(encore.rxPaginate.initialize().pages).to.eventually.equal([1, 2, 3, 4, 5]);
+     * });
+     */
     pages: {
         get: function () {
-            /**
-              Return a list of page numbers available to paginate to.
-            */
             return this.tblPages.map(function (pageNumber) {
                 return pageNumber.getText().then(function (n) {
                     return parseInt(n, 10);
@@ -119,6 +194,23 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @instance
+     * @type {Number[]}
+     * @description A list of available page sizes that can be queried and adjusted
+     * by using the {@link rxPaginate#pageSize} getter and setter.
+     * @see rxPaginate#pageSize
+     * @example
+     * it('should show all 50 states without paginating', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.pageSizes).to.eventually.equal([20, 50, 100, 200]);
+     *     expect(pagination.pageSize).to.eventually.equal(20);
+     *     expect(statesTable.count()).to.eventually.equal(20);
+     *     pagination.pageSize = 100;
+     *     expect(pagination.pageSize).to.eventually.equal(100);
+     *     expect(statesTable.count()).to.eventually.equal(50);
+     * });
+     */
     pageSizes: {
         get: function () {
             return this.tblPageSizes.map(function (pageSizeElement) {
@@ -127,15 +219,30 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @instance
+     * @description Getter and setter for updating the number of visible items on a single page in the table.
+     * If you attempt to set the page size something not listed in {@link rxPaginate#pageSizes}, a
+     * {@link rxPaginate#NoSuchItemsPerPage} exception.
+     * @type {Number}
+     * @example
+     * it('should change the page size to make it easier to find things', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.pageSizes).to.eventually.equal([20, 50, 100, 200]);
+     *     expect(pagination.pageSize).to.eventually.equal(20);
+     *     expect(statesTable.count()).to.eventually.equal(20);
+     *     pagination.pageSize = 200;
+     *     expect(pagination.pageSize).to.eventually.equal(200);
+     *     expect(statesTable.count()).to.eventually.equal(118);
+     *     // you can now search the table for all values without paginating
+     * });
+     */
     pageSize: {
         get: function () {
             var css = '.pagination-per-page-button[disabled="disabled"]';
             return this.rootElement.$(css).getText().then(parseInt);
         },
 
-        /**
-          Will throw an exception if no matching `itemsPerPage` entry is found.
-        */
         set: function (itemsPerPage) {
             var page = this;
             return this.pageSizes.then(function (pageSizes) {
@@ -157,6 +264,25 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @type {rxPaginate.shownItems}
+     * @instance
+     * @description Entry point for the {@link rxPaginate.shownItems} namespace.
+     * Contains properties that are represented by the text "Showing j-k of n items", which is typically
+     * found in the bottom left corner of the pagination element, next to the "Back to Top" link.
+     * @example
+     * it('should always show that there are 50 states', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.pageSize).to.eventually.equal(20);
+     *     expect(pagination.shownItems.first).to.eventually.equal(1);
+     *     expect(pagination.shownItems.last).to.eventually.equal(20);
+     *     expect(pagination.shownItems.total).to.eventually.equal(50);
+     *     pagination.next();
+     *     expect(pagination.shownItems.first).to.eventually.equal(21);
+     *     expect(pagination.shownItems.last).to.eventually.equal(40);
+     *     expect(pagination.shownItems.total).to.eventually.equal(50);
+     * });
+     */
     shownItems: {
         get: function () {
             var rootElement = this.rootElement;
@@ -172,6 +298,10 @@ var rxPaginate = {
                 return parseInt(text.match(indexesRegex)[matchIndex], 10);
             };
 
+            /**
+             * @namespace rxPaginate.shownItems
+             * @see rxPaginate
+             */
             return Page.create({
 
                 lblIndexes: {
@@ -180,6 +310,21 @@ var rxPaginate = {
                     }
                 },
 
+                /**
+                 * @type {Number}
+                 * @memberof rxPaginate.shownItems
+                 * @instance
+                 * @description The index of the first item that sits at the top position of the table.
+                 * @example
+                 * it('should roll over to the 51st item on page two', function () {
+                 *     var pagination = encore.rxPaginate.initialize();
+                 *     expect(pagination.page).to.eventually.equal(1);
+                 *     expect(pagination.pageSize).to.eventually.equal(50);
+                 *     expect(pagination.shownItems.first).to.eventually.equal(1);
+                 *     pagination.page = 2;
+                 *     expect(pagination.shownItems.first).to.eventually.equal(51);
+                 * });
+                 */
                 first: {
                     get: function () {
                         return this.lblIndexes.getText().then(function (text) {
@@ -188,6 +333,21 @@ var rxPaginate = {
                     }
                 },
 
+                /**
+                 * @type {Number}
+                 * @memberof rxPaginate.shownItems
+                 * @instance
+                 * @description The index of the last item that sits at the bottom position of the table.
+                 * @example
+                 * it('should show item number 100 on page two', function () {
+                 *     var pagination = encore.rxPaginate.initialize();
+                 *     expect(pagination.page).to.eventually.equal(1);
+                 *     expect(pagination.pageSize).to.eventually.equal(50);
+                 *     expect(pagination.shownItems.last).to.eventually.equal(50);
+                 *     pagination.page = 2;
+                 *     expect(pagination.shownItems.last).to.eventually.equal(100);
+                 * });
+                 */
                 last: {
                     get: function () {
                         return this.lblIndexes.getText().then(function (text) {
@@ -196,6 +356,25 @@ var rxPaginate = {
                     }
                 },
 
+                /**
+                 * @type {Number}
+                 * @memberof rxPaginate.shownItems
+                 * @instance
+                 * @description The total number of items in the table, according to the Angular controller
+                 * that is handling the data. This number should never change as you move from page to page.
+                 * @example
+                 * it('should always show that there are 50 states', function () {
+                 *     var pagination = encore.rxPaginate.initialize();
+                 *     expect(pagination.pageSize).to.eventually.equal(20);
+                 *     expect(pagination.shownItems.first).to.eventually.equal(1);
+                 *     expect(pagination.shownItems.last).to.eventually.equal(20);
+                 *     expect(pagination.shownItems.total).to.eventually.equal(50);
+                 *     pagination.next();
+                 *     expect(pagination.shownItems.first).to.eventually.equal(21);
+                 *     expect(pagination.shownItems.last).to.eventually.equal(40);
+                 *     expect(pagination.shownItems.total).to.eventually.equal(50);
+                 * });
+                 */
                 total: {
                     get: function () {
                         return this.lblIndexes.getText().then(function (text) {
@@ -208,12 +387,35 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @instance
+     * @type {Number}
+     * @description The total number of items in the table, according to the Angular
+     * controller that is handling the data. This number should never change as you move
+     * from page to page. Directly calls {@link rxPaginate.shownItems#total}. See the
+     * documentation surrounding that function for an in depth example of its usage.
+     * @see rxPaginate.shownItems#total
+     */
     totalItems: {
         get: function () {
             return this.shownItems.total;
         }
     },
 
+    /**
+     * @instance
+     * @type {Number}
+     * @description Takes the total number of items and divides it by the current page size. Will
+     * apply `Math.ceil` to the result to forcibly round it up to the next integer up.
+     * @example
+     * it('should have 8 pages worth of data', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     expect(pagination.totalItems).to.eventually.equal(22);
+     *     expect(pagination.pageSize).to.eventually.equal(3);
+     *     // 22 / 3 -> 7 full pages, and one page with a single item on it.
+     *     expect(pagination.totalPages).to.eventually.equal(8);
+     * });
+     */
     totalPages: {
         get: function () {
             return protractor.promise.all([this.totalItems, this.pageSize]).then(function (results) {
@@ -224,18 +426,31 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @private
+     * @see rxPaginate#jumpToPage
+     */
     jumpToLowestAvailablePage: {
         value: function () {
             this.tblPages.first().click();
         }
     },
 
+    /**
+     * @private
+     * @see rxPaginate#jumpToPage
+     */
     jumpToHighestAvailablePage: {
         value: function () {
             this.tblPages.last().click();
         }
     },
 
+    /**
+     * @function
+     * @private
+     * @see rxPaginate#jumpToPage
+     */
     checkForInvalidFirstPage: {
         value: function () {
             var page = this;
@@ -247,12 +462,15 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @function
+     * @private
+     * @see rxPaginate#jumpToPage
+     * @description Accepts an optional `pageNumber` argument to print to the exception
+     * should the `NoSuchPageException` get triggered during this call.
+     * Otherwise, it defaults to a generic invalid page message.
+     */
     checkForInvalidLastPage: {
-        /**
-          Accepts an optional `pageNumber` argument to print to the exception
-          should the `NoSuchPageException` get triggered during this call.
-          Otherwise, it defaults to a generic invalid page message.
-        */
         value: function (pageNumber) {
             var page = this;
             return this.page.then(function (currentPage) {
@@ -268,10 +486,39 @@ var rxPaginate = {
         }
     },
 
+    /**
+     * @type {Exception}
+     * @instance
+     * @description Will be thrown should you attempt to navigate to a page that doesn't exist.
+     * @example
+     * it('should not pass this test since an exception will be thrown', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     pagination.totalPages.then(function (totalPageCount) {
+     *         pagination.page = totalPageCount + 1;
+     *         // the above line will throw an exception
+     *         expect(pagination).to.never.get.here.so.who.cares.what.you.put;
+     *     });
+     * });
+     */
     NoSuchPageException: {
         get: function () { return this.exception('No such page'); }
     },
 
+    /**
+     * @type {Exception}
+     * @instance
+     * @description Will be thrown should you attempt to update the items per page setter to
+     * a value that isn't included in the list of {@link rxPaginate#pageSizes} for your instance.
+     * @example
+     * it('should not pass this test since an exception will be thrown', function () {
+     *     var pagination = encore.rxPaginate.initialize();
+     *     pagination.pageSizes.then(function (pageSizes) {
+     *         pagination.pageSize = _.last(pageSizes) * 2;
+     *         // the above line will throw an exception
+     *         expect(pagination).to.never.get.here.so.who.cares.what.you.put;
+     *     });
+     * });
+     */
     NoSuchItemsPerPageException: {
         get: function () { return this.exception('No such itemsPerPage'); }
     }
@@ -279,6 +526,13 @@ var rxPaginate = {
 };
 
 exports.rxPaginate = {
+
+    /**
+     * @function
+     * @param {ElementFinder} [rxPaginateElement=$('.rx-paginate')] - DOM element representing the rxPaginate component.
+     * @returns {rxPaginate}
+     * @description Creates a page object representing an rxPaginate component on the page.
+     */
     initialize: function (rxPaginationElement) {
         rxPaginate.rootElement = {
             get: function () { return rxPaginationElement; }
@@ -286,6 +540,13 @@ exports.rxPaginate = {
         return Page.create(rxPaginate);
     },
 
+    /**
+     * @memberof rxPaginate
+     * @deprecated
+     * @description Page object representing the _first_ rxPaginate component found on the page.
+     * **DEPRECATED**: Use {@link rxPaginate.initialize} without arguments instead.
+     * @type {rxPaginate}
+     */
     main: (function () {
         rxPaginate.rootElement = {
             get: function () { return $('.rx-paginate'); }
