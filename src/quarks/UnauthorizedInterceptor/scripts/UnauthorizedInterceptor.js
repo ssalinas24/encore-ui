@@ -1,14 +1,14 @@
-angular.module('encore.ui.rxUnauthorizedInterceptor')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxUnauthorizedInterceptor.service:UnauthorizedInterceptor
+ * @name quarks.service:UnauthorizedInterceptor
  * @description
  * Simple injector which will intercept HTTP responses. If a HTTP 401 response error code is returned,
  * the ui redirects to `/login`.
  *
  * @requires $q
  * @requires @window
- * @requires rxSession.service:Session
+ * @requires quarks.service:Session
  *
  * @example
  * <pre>
