@@ -12,8 +12,8 @@ describe('service:TokenInterceptor', function () {
                 TokenInterceptorProvider.exclusionList.push('abcd.com');
             });
 
-        // Initialize injector for rxTokenInterceptor
-        module('encore.ui.rxTokenInterceptor', 'testApp');
+        // Initialize injector for TokenInterceptor
+        module('encore.ui.quarks', 'testApp');
 
         inject(function ($injector) {
             interceptor = $injector.get('TokenInterceptor');
