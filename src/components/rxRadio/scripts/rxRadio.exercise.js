@@ -3,14 +3,14 @@ var rxRadio = require('./rxRadio.page').rxRadio;
 
 /**
  * @description rxRadio exercises
- * @exports encore.exercise.rxRadio
- * @param {Object} [options=] - Test options. Used to build valid tests.
- * @param {rxRadio} [options.instance=] - Component to exercise.
- * @param {String} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
- * @param {Boolean} [options.disabled=false] - Determines if the radio is disabled.
- * @param {Boolean} [options.selected=false] - Determines if the radio is selected.
- * @param {Boolean} [options.visible=true] - Determines if the radio is visible.
- * @param {Boolean} [options.valid=true] - Determines if the radio is valid.
+ * @exports exercise/rxRadio
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxRadio} options.instance - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Boolean} [options.disabled=false] - Whether or not the radio button is disabled at the start of the exercise.
+ * @param {Boolean} [options.selected=false] - Whether or not the radio button is selected at the start of the exercise.
+ * @param {Boolean} [options.visible=true] - Whether or not the radio button is visible at the start of the exercise.
+ * @param {Boolean} [options.valid=true] - Whether or not the radio button is valid at the start of the exercise.
  */
 exports.rxRadio = function (options) {
     if (options === undefined) {
