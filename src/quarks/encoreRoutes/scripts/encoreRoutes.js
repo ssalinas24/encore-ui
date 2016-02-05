@@ -1,9 +1,9 @@
-angular.module('encore.ui.rxApp')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxApp.service:encoreRoutes
+ * @name quarks.service:encoreRoutes
  * @description
- * Creates a shared instance of AppRoutes that is used for the Encore App nav.
+ * Creates a shared instance of `AppRoutes` that is used for the Encore App nav.
  * This allows apps to make updates to the nav via `encoreRoutes`.
  *
  * @return {Object} Instance of rxAppRoutes with `fetchRoutes` method added
