@@ -2,8 +2,8 @@
 var Page = require('astrolabe').Page;
 
 /**
-   This is a shared function for getting one column's sort direction, and all columns' sort directions.
-   @private
+ * This is a shared function for getting one column's sort direction, and all columns' sort directions.
+ * @private
  */
 var currentSortDirection = function (columnElement) {
     var spanSortDirection = columnElement.$('.sort-direction-icon');
@@ -20,7 +20,19 @@ var currentSortDirection = function (columnElement) {
 };
 
 /**
-   @namespace
+ * @namespace
+ * @description Functions for interacting with sortable columns. See the example below for a typical
+ * pattern you can use in your page objects for generating sortable columns. All examples in the function
+ * documentation below will assume that this example has been set up and executed.
+ * @example
+ * var myTable = {
+ *     get eleTableContainer() { return $('#my-table'); },
+ *
+ *     column: function (name) {
+ *         var column = this.eleTableContainer.element(by.cssContainingText($('rx-sortable-column'), name));
+ *         return encore.rxSortableColumn.initialize(column, 'item in repeaterString');
+ *     }
+ * };
  */
 var rxSortableColumn = {
 
@@ -30,6 +42,16 @@ var rxSortableColumn = {
         }
     },
 
+    /**
+     * @instance
+     * @type {String}
+     * @description The name of the column.
+     * @example
+     *
+     * it('should have the right name', function () {
+     *     expect(myTable.column('Start Date').name).to.eventually.equal('Start Date');
+     * });
+     */
     name: {
         get: function () {
             return this.rootElement.$('.sort-action .display-value').getText();
@@ -37,9 +59,17 @@ var rxSortableColumn = {
     },
 
     /**
-       Will repeatedly click the sort button until the column is sorted ascending.
-       @function
-       @returns {undefined}
+     * @description Will repeatedly click the sort button until the column is sorted ascending.
+     * @instance
+     * @function
+     * @example
+     * it('should sort the column ascending', function () {
+     *     var column = myTable.column('Stuff');
+     *     column.sortAscending();
+     *     column.data.then(function (data) {
+     *         expect(data.sort()).to.eventually.eql(data);
+     *     });
+     * });
      */
     sortAscending: {
         value: function () {
@@ -48,9 +78,17 @@ var rxSortableColumn = {
     },
 
     /**
-       Will repeatedly click the sort button until the column is sorted descending.
-       @function
-       @returns {undefined}
+     * @description Will repeatedly click the sort button until the column is sorted descending.
+     * @instance
+     * @function
+     * @example
+     * it('should sort the column descending', function () {
+     *     var column = myTable.column('Stuff');
+     *     column.sortDescending();
+     *     column.data.then(function (data) {
+     *         expect(data.sort().reverse()).to.eventually.eql(data);
+     *     });
+     * });
      */
     sortDescending: {
         value: function () {
@@ -59,7 +97,11 @@ var rxSortableColumn = {
     },
 
     /**
-       Prefer using {@link rxSortableColumn.sortAscending} and {@link rxSortableColumn.sortDescending} over this.
+     * @function
+     * @instance
+     * @private
+     * @description Prefer using {@link rxSortableColumn.sortAscending}
+     * and {@link rxSortableColumn.sortDescending} over this.
      */
     sort: {
         value: function (namedParams, attempts) {
@@ -87,6 +129,9 @@ var rxSortableColumn = {
         }
     },
 
+    /**
+     * @private
+     */
     sortProperty: {
         get: function () {
             return this.rootElement.getAttribute('sort-property');
@@ -94,14 +139,21 @@ var rxSortableColumn = {
     },
 
     /**
-       @returns {Array} A list of all cell text in this column.
+     * @instance
+     * @type {String[]}
+     * @description Return the result of calling `.getText()` on each cell in the column.
+     * You must provide a repeater string parameter to {@link rxSortableColumn.initialize}
+     * in order to take advantage of this functionality.
+     * @example
+     * it('should have the expected data in the column', function () {
+     *     var data = ['Here', 'is', 'some' 'data'];
+     *     expect(myTable.column('Stuff').data).to.eventually.eql(data);
+     * });
      */
     data: {
         get: function () {
             var defaultFn = function (cellElements) {
-                return cellElements.map(function (cellElement) {
-                    return cellElement.getText();
-                });
+                return cellElements.getText();
             };
 
             return this.getDataUsing(defaultFn);
@@ -109,32 +161,30 @@ var rxSortableColumn = {
     },
 
     /**
-       Return a list of all cell contents in this column.
-       Passes all cell elements to `customFn`, or if undefined, will return just the text of each cell.
-       The second argument, `allByCssSelectorString` is used when your column's binding
-       (which is used by `by.repeater().column`) is for some reason unreachable by protractor.
-       A common reason why this wouldn't be the case is because the binding is not used as text
-       within a web element, but instead used within the tag's attrs. An example of this is illustrated here:
-       [Binding inside of a tag's attributes.]{@link http://goo.gl/HPjLU7}
-       In these cases, you should specify a css selector that will select each element in the column you
-       care about, since `by.binding` is not an option.
-       @param {function} [customFn] - Specific work that must occur to all column cell elements.
-       @param {String} [allByCssSelectorString] - Fallback `$$('.all-by-css')`-style call to select column cells.
-       @returns {Array} Dependent on the return value of `customFn`.
-       @example
-       ```js
-       var sumCurrency = function (columnElements) {
-           return columnElements.reduce(function (acc, columnElement) {
-               return columnElement.getText().then(function (text) {
-                   return acc + encore.rxForm.currencyToPennies(text);
-               });
-           }, 0);
-       };
-
-       charges.column('Usage Charges').getDataUsing(sumCurrency).then(function (sum) {
-           expect(currentUsage.estimate).to.eventually.equal(sum);
-       });
-       ```
+     * @description Return a list of all cell contents in this column.
+     * Passes all cell elements to `customFn`, or if undefined, will return just the text of each cell.
+     * The second argument, `allByCssSelectorString` is used when your column's binding
+     * (which is used by `by.repeater().column`) is for some reason unreachable by protractor.
+     * A common reason why this wouldn't be the case is because the binding is not used as text
+     * within a web element, but instead used within the tag's attrs. An example of this is illustrated here:
+     * [Binding inside of a tag's attributes.]{@link http://goo.gl/HPjLU7}
+     * In these cases, you should specify a css selector that will select each element in the column you
+     * care about, since `by.binding` is not an option. You must provide a repeater string parameter to
+     * {@link rxSortableColumn.initialize} in order to take advantage of this functionality.
+     * @param {function} [customFn] - Specific work that must occur to all column cell elements.
+     * @param {String} [allByCssSelectorString] - Fallback `$$('.all-by-css')`-style call to select column cells.
+     * @returns {Array} Dependent on the return value of `customFn`.
+     * @instance
+     * @function
+     * @example
+     * it('should have the correct sum listed for current usage', function () {
+     *     var sumCurrency = function (columnElements) {
+     *         return columnElements.getText().then(encore.rxMisc.currencyToPennies);
+     *     };
+     *
+     *     var sum = myTable.column('Usage Charges').getDataUsing(sumCurrency);
+     *     expect(sum).to.eventually.equal(14133);
+     * });
      */
     getDataUsing: {
         value: function (customFn, allByCssSelectorString) {
@@ -159,13 +209,14 @@ var rxSortableColumn = {
     },
 
     /**
-       The current sort direction of the column.
-
-       - Ascending sort:  (1)  means the arrow is pointed down. [0-9, a-z]
-       - Descending sort: (0)  means the arrow is pointed up.   [z-a, 9-0]
-       - Not sorted:     (-1)  means there is no arrow for this column.
-       @returns {Integer}: 1, 0, or -1 based on direction.
-       Use {@link encore.module:rxSortableColumn.sortDirections} when testing your columns.
+     * @instance
+     * @description The current sort direction of the column. Returns 1, 0, or -1 based on direction.
+     * - Ascending sort:  (1)  means the arrow is pointed down. [0-9, a-z]
+     * - Not sorted:      (0)  means there is no arrow for this column.
+     * - Descending sort: (-1) means the arrow is pointed up.   [z-a, 9-0]
+     * Use {@link encore.module:rxSortableColumn.sortDirections} when testing your columns.
+     * @type {Integer}
+     * @see rxSortableColumn.sortDirections
      */
     currentSortDirection: {
         get: function () {
@@ -173,10 +224,32 @@ var rxSortableColumn = {
         }
     },
 
+    /**
+     * @instance
+     * @type {Exception}
+     * @description This exception is thrown whenever you attempt to access the data in a column's
+     * cells without specifying a repeater string for the functions {@link rxSortableColumn#data} and
+     * {@link rxSortableColumn#getDataUsing} to use. Including a `repeaterString` argument to
+     * {@link rxSortableColumn.initialize} is required in order to take advantage of this functionality.
+     * @example
+     * it('should throw an exception when trying to get column data', function () {
+     *     var repeaterString = undefined;
+     *     var column = encore.rxSortableColumn.initialize($$('rx-sortable-column').first(), repeaterString);
+     *     expect(column.data).to.eventually.eql(['Does', 'not', 'matter', 'exception', 'was', 'thrown']);
+     * });
+     */
     CellUndiscoverableError: {
         get: function () { return this.exception('repeaterString required at initialization to use'); }
     },
 
+    /**
+     * @instance
+     * @type {Exception}
+     * @description This exception is thrown whenever the sort icon never changes direction after clicking it.
+     * After three attempts to sort the column by clicking the sort icon, this exception
+     * is thrown. This usually happens because there's a typo somewhere in the controller or HTML, causing
+     * the sort functionality in the directive not do anything after clicking the sort icon.
+     */
     ColumnSortRequestUnresponsiveError: {
         get: function () { return this.exception('no sort activity after clicking multiple times for column'); }
     }
@@ -184,7 +257,9 @@ var rxSortableColumn = {
 };
 
 /**
-   @namespace
+ * @namespace
+ * @description Functions for interacting with a table's worth of sortable column data.
+ * @see rxSortableColumn
  */
 var rxSortableColumns = {
 
@@ -195,9 +270,14 @@ var rxSortableColumns = {
     },
 
     /**
-       Return all column names in `tableElement`.
-       If any special work needs to be done, pass in a custom `mapFn` to `getNamesUsing` instead.
-       @returns {Array}: An array of strings representing text in each column in the table.
+     * @instance
+     * @description Return all column names in in the table as an array of strings.
+     * @type {String[]}
+     * @example
+     * it('should have every column present in the table', function () {
+     *     var columns = ['Name', 'Manager', 'Start Date', 'End Date'];
+     *     expect(encore.rxSortableColumn.byTable($('#my-table').names)).to.eventually.equal(columns);
+     * });
      */
     names: {
         get: function () {
@@ -207,12 +287,39 @@ var rxSortableColumns = {
         }
     },
 
+    /**
+     * @function
+     * @instance
+     * @private
+     * @deprecated Not used very often. Should be pulled in 2.0
+     * @description Return all column names, using a special function to alter the names
+     * to something more uniform for testing purposes.
+     */
     getNamesUsing: {
         value: function (mapFn) {
             return this.tblColumns.map(mapFn);
         }
     },
 
+    /**
+     * @type {Number[]}
+     * @instance
+     * @description Return a list of integers representing {@link rxSortableColumn#currentSortDirection} values.
+     * These values map to each column, in the order they appear (left to right).
+     * @see rxSortableColumn#currentSortDirection
+     * @example
+     * it('should have every column in the correct default sorting position', function () {
+     *     var sortDirections = encore.rxSortableColumn.sortDirections;
+     *     var sorts = [
+     *         sortDirections.notSorted,
+     *         sortDirections.notSorted,
+     *         sortDirections.ascending,
+     *         sortDirections.notSorted
+     *     ];
+     *
+     *     expect(encore.rxSortableColumn.byTable($('#my-table')).sorts).to.eventually.eql(sorts);
+     * });
+     */
     sorts: {
         get: function () {
             return this.tblColumns.map(currentSortDirection);
@@ -221,16 +328,15 @@ var rxSortableColumns = {
 
 };
 
-/**
-   @exports encore.rxSortableColumn
- */
 exports.rxSortableColumn = {
 
     /**
-       @function
-       @param {WebElement} rxSortableColumnElement - WebElement to be transformed into an rxSortableColumn object.
-       @param {String} [repeaterString] - Repeater string from the table. Required for {@link rxSortableColumn.data}
-       @returns {Page} Page object representing the {@link rxSortableColumn} object.
+     * @function
+     * @memeberof rxSortableColumn
+     * @param {WebElement} rxSortableColumnElement - WebElement to be transformed into an rxSortableColumn object.
+     * @param {String} [repeaterString] - Repeater string from the table. Required for {@link rxSortableColumn#data}
+     * and {@link rxSortableColumn#getDataUsing}.
+     * @returns {Page} Page object representing the {@link rxSortableColumn} object.
      */
     initialize: function (rxSortableColumnElement, repeaterString) {
         rxSortableColumn.rootElement = {
@@ -245,9 +351,12 @@ exports.rxSortableColumn = {
     },
 
     /**
-       @function
-       @param {WebElement} tableElement - Web element of the entire `<table>` node.
-       @returns {Page} rxSortableColumns Page object representing the {@link rxSortableColumns} object.
+     * @function
+     * @description Entry point for the {@link rxSortableColumns} namespace. Used to return information
+     * about an entire table's worth of columns.
+     * @memeberof rxSortableColumn
+     * @param {ElementFinder} tableElement - ElementFinder of the entire `<table>` node.
+     * @returns {rxSortableColumns} Page object representing the {@link rxSortableColumns} object.
      */
     byTable: function (tableElement) {
         rxSortableColumns.rootElement = {
@@ -258,16 +367,19 @@ exports.rxSortableColumn = {
     },
 
     /**
-       @constant
-       @returns {Object} sortDirections Lookup of integer codes for sort directions from human-readable ones.
-       @example
-       ```js
-       var sorts = encore.rxSortableColumn.sorts;
-       // ...
-       it('should sort the column ascending by default', function () {
-           expect(column.currentSortDirection).to.eventually.equal(sorts.ascending);
-       });
-       ```
+     * @memeberof rxSortableColumn
+     * @description A lookup for comparing sort directions against hard coded values, instead of integers.
+     * @returns {Object} sortDirections Lookup of integer codes for sort directions from human-readable ones.
+     * @property {Number} ascending - The numeral value one. Means the arrow is pointed down. [0-9, a-z]
+     * @property {Number} notSorted - The numeral value zero. Means there is no arrow for this column.
+     * @property {Number} descending - The numeral value negative one. Means the arrow is pointed up. [z-a, 9-0]
+     * @see rxSortableColumn#currentSortDirection
+     * @example
+     * var sorts = encore.rxSortableColumn.sorts;
+     * // ...
+     * it('should sort the column ascending by default', function () {
+     *     expect(column.currentSortDirection).to.eventually.equal(sorts.ascending);
+     * });
      */
     sortDirections: {
         ascending: 1,
