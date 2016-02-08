@@ -8,9 +8,10 @@ var _ = require('lodash');
 var rxSelectFilter = {
 
     /**
-       @function
-       @param {string} label - The label of the rxMultiSelect dropdown.
-       @returns {rxMultiSelect} Page object representing the rxSelectFilter object.
+     * @private
+     * @function
+     * @param {String} label - The label of the rxMultiSelect dropdown.
+     * @returns {rxMultiSelect} Page object representing the rxSelectFilter object.
      */
     multiSelectByLabel: {
         value: function (label) {
@@ -20,20 +21,30 @@ var rxSelectFilter = {
     },
 
     /**
-       @function
-       @param {Object} filterData - Key-value pairs of the rxMultiSelects' labels and their options to select.
-                                    The value is an object, where the keys are the options and the values indicate
-                                    if the option should be selected or deselected.
-       @returns {undefined}
-       @example
-       ```js
-        multiSelect.filter({
-            Account: {
-                All: false,
-                B: true
-            }
-        });
-       ```
+     * @description From `filterData`'s key-value pairs, select the options contained in the values against
+     * the {@link rxMultiSelect} (identified by text) in each key.
+     * @see rxMultiSelect
+     * @function
+     * @param {Object} filterData - Key-value pairs of the rxMultiSelects' labels and their options to select.
+     *                              The value is an object, where the keys are the options and the values indicate
+     *                              if the option should be selected or deselected.
+     * @example
+     * it('should select only the US accounts that are still open', function () {
+     *     var multiSelect = encore.rxSelectFilter.initialize();
+     *     multiSelect.apply({
+     *         Account: {
+     *             All: false,
+     *             US: true
+     *         },
+     *         Status: {
+     *             All: false,
+     *             Open: true
+     *         }
+     *     });
+     *
+     *     expect(myPage.myTable.column('Account').data.then(_.uniq)).to.eventually.eql(['US']);
+     *     expect(myPage.myTable.column('Status').data.then(_.uniq)).to.eventually.eql(['Open']);
+     * });
      */
     apply: {
         value: function (filterData) {
@@ -54,17 +65,20 @@ var rxSelectFilter = {
 
 };
 
-/**
-   @exports encore.rxSelectFilter
- */
 exports.rxSelectFilter = {
 
     /**
-       @function
-       @param {WebElement} rxSelectFilterElement - WebElement to be transformed into an rxSelectFilterElement object.
-       @returns {rxSelectFilter} Page object representing the rxSelectFilter object.
+     * @function
+     * @memberof rxSelectFilter
+     * @param {ElementFinder} [rxSelectFilterElement=$('rx-select-filter')] -
+     * ElementFinder to be transformed into an rxSelectFilterElement object.
+     * @returns {rxSelectFilter} Page object representing the rxSelectFilter object.
      */
     initialize: function (rxSelectFilterElement) {
+        if (rxSelectFilterElement === undefined) {
+            rxSelectFilterElement = $('rx-select-filter');
+        }
+
         rxSelectFilter.rootElement = {
             get: function () { return rxSelectFilterElement; }
         };
@@ -72,8 +86,10 @@ exports.rxSelectFilter = {
     },
 
     /**
-       @returns {rxSelectFilter} Page object representing the _first_ rxSelectFilter object found on the page.
-    */
+     * @memberof rxSelectFilter
+     * @deprecated Use {@link rxSelectFilter.initialize} without arguments instead.
+     * @returns {rxSelectFilter} Page object representing the _first_ rxSelectFilter object found on the page.
+     */
     main: (function () {
         rxSelectFilter.rootElement = {
             get: function () { return $('rx-select-filter'); }
