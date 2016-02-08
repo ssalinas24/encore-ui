@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxAppRoutes', function () {
+describe('quarks:rxAppRoutes', function () {
     var appRoutes, envSvc, generatedRoutes, location, rootScope, log;
 
     var fakeRoutes = [
@@ -58,10 +58,9 @@ describe('rxAppRoutes', function () {
 
     beforeEach(function (done) {
         // load module
-        module('encore.ui.rxAppRoutes');
+        module('encore.ui.quarks');
         module('encore.ui.rxEnvironment');
-        module('encore.ui.rxNotify');
-
+     
         // Provide any mocks needed
         module(function ($provide) {
             $provide.value('$route', route);

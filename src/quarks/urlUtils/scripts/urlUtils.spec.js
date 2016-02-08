@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('urlUtils', function () {
+describe('quarks:urlUtils', function () {
     var urlutils;
     var route = {
         current: {
@@ -10,7 +10,7 @@ describe('urlUtils', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxAppRoutes');
+        module('encore.ui.quarks');
         module('encore.ui.rxEnvironment');
         // Provide any mocks needed
         module(function ($provide) {
