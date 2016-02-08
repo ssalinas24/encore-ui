@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxPaginate.service:PageTracking
+ * @name quarks.service:PageTracking
  * @description
  * This is the data service that can be used in conjunction with the pagination
  * objects to store/control page display of data tables and other items.

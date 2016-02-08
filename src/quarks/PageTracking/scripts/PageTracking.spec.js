@@ -6,7 +6,7 @@ describe('Pagination', function () {
         var LocalStorage;
 
         beforeEach(function () {
-            module('encore.ui.rxPaginate');
+            module('encore.ui.quarks');
             inject(function (PageTracking, _LocalStorage_) {
                 tracking = PageTracking;
                 LocalStorage = _LocalStorage_;
