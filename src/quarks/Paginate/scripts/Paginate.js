@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc filter
- * @name rxPaginate.filter:Paginate
+ * @name quarks.filter:Paginate
  * @description
  * This is the pagination filter that is used to calculate the division in the
  * items list for the paging.

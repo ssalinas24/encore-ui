@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc filter
- * @name rxPaginate.filter:Page
+ * @name quarks.filter:Page
  * @description
  * This is the pagination filter that is used to limit the number of pages
- * shown
+ * shown.
  *
  * @param {Object} pager The instance of the PageTracking service. If not
  * specified, a new one will be created.
