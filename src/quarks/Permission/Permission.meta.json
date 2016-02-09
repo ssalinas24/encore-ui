@@ -1,0 +1,7 @@
+{
+    "displayName": "Permission",
+    "stability": "unstable",
+    "description": "Simple service for accessing roles and permissions for a user.",
+    "api": "service:Permission",
+    "keywords": []
+}

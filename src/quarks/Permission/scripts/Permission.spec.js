@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxPermission', function () {
+describe('quarks:Permission', function () {
     describe('service:Permission', function () {
         var permission, session, mockToken;
 
@@ -19,7 +19,6 @@ describe('rxPermission', function () {
         };
 
         beforeEach(function () {
-            module('encore.ui.rxPermission');
             module('encore.ui.quarks');
 
             inject(function ($injector) {
