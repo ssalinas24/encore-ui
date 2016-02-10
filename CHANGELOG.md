@@ -1,3 +1,12 @@
+<a name="1.45.1-0"></a>
+### 1.45.1-0 (2016-02-10)
+
+
+#### Bug Fixes
+
+* **midways:** FRMW-638-eliminate midway test warnings. ([ef27b2c6](git@github.com:rackerlabs/encore-ui/commit/ef27b2c655ca1375213efb3b2f03968d5554a4ba))
+
+
 <a name="1.45.0"></a>
 ## 1.45.0 (2016-02-03)
 
