@@ -4,7 +4,7 @@ describe('Pagination', function () {
         var rxPaginateUtils;
 
         beforeEach(function () {
-            module('encore.ui.rxPaginate');
+            module('encore.ui.quarks');
             inject(function (_rxPaginateUtils_) {
                 rxPaginateUtils = _rxPaginateUtils_;
             });

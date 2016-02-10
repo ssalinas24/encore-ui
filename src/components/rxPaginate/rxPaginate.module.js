@@ -488,10 +488,6 @@
  * ## Filters
  * * {@link rxPaginate.filter:Page Page}
  * * {@link rxPaginate.filter:Paginate Paginate}
- *
- * ## Services
- * * {@link rxPaginate.service:PageTracking PageTracking}
- * * {@link rxPaginate.service:rxPaginateUtils rxPaginateUtils}
  */
 angular.module('encore.ui.rxPaginate', [
     'encore.ui.quarks',

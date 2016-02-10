@@ -1,0 +1,7 @@
+{
+    "displayName": "rxPaginateUtils",
+    "stability": "stable",
+    "description": "A few utilities to calculate first, last, and number of items.",
+    "api": "service:rxPaginateUtils",
+    "keywords": []
+}

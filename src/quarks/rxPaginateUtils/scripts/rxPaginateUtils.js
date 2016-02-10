@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxPaginate.service:rxPaginateUtils
+ * @name quarks.service:rxPaginateUtils
  * @description
  * A few utilities to calculate first, last, and number of items.
  */
