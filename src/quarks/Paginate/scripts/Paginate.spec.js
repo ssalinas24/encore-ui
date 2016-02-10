@@ -21,7 +21,7 @@ describe('Pagination', function () {
         var paginate, pager;
 
         beforeEach(function () {
-            module('encore.ui.rxPaginate');
+            module('encore.ui.quarks');
 
             inject(function ($filter, PageTracking) {
                 paginate = $filter('Paginate');

@@ -5,7 +5,7 @@ describe('Pagination', function () {
         var page;
 
         beforeEach(function () {
-            module('encore.ui.rxPaginate');
+            module('encore.ui.quarks');
 
             inject(function ($filter) {
                 page = $filter('Page');

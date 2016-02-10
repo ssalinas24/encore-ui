@@ -484,10 +484,6 @@
  * ## Directives
  * * {@link rxPaginate.directive:rxLoadingOverlay rxLoadingOverlay}
  * * {@link rxPaginate.directive:rxPaginate rxPaginate}
- *
- * ## Filters
- * * {@link rxPaginate.filter:Page Page}
- * * {@link rxPaginate.filter:Paginate Paginate}
  */
 angular.module('encore.ui.rxPaginate', [
     'encore.ui.quarks',
