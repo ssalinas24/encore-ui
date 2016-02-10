@@ -62,9 +62,6 @@
  *
  * ## Directives
  * * {@link rxEnvironment.directive:rxEnvironment rxEnvironment}
- *
- * ## Services
- * * {@link quarks.service:Environment Environment}
  */
 angular.module('encore.ui.rxEnvironment', [
     'ngSanitize',
