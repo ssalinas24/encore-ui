@@ -2,22 +2,21 @@ var _ = require('lodash');
 var rxToggleSwitch = require('./rxToggleSwitch.page').rxToggleSwitch;
 
 /**
-   rxToggleSwitch exercises.
-   @exports encore.exercise.rxToggleSwitch
-   @param {Object} [options] - Test options. Used to build valid tests.
-   @param {rxToggleSwitch} [options.instance=] - Component to exercise.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @param {boolean} [options.disabled=false] - Determines if the switch can be toggled
-   @param {boolean} [options.enabledAtStart=null] Beginning state of toggle switch.  The value will be detected
-   automatically if not given.
-   @param {boolean} [options.enabledAtEnd=null] End state of toggle switch.  The value will be detected automatically
-   if not given.
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxToggleSwitch({
-       instance: myPage.emailPreference // select one of many widgets from your page objects
-   }));
-   ```
+ * @description rxToggleSwitch exercises.
+ * @see rxToggleSwitch
+ * @exports exercise/rxToggleSwitch
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxToggleSwitch} [options.instance=rxToggleSwitch.initialize()] - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Boolean} [options.disabled=false] - Determines if the switch can be toggled.
+ * @param {Boolean} [options.enabledAtStart=null] -
+ * Beginning state of toggle switch. The value will be detected automatically if not given.
+ * @param {Boolean} [options.enabledAtEnd=null]
+ * End state of toggle switch. The value will be detected automatically if not given.
+ * @example
+ * describe('default exercises', encore.exercise.rxToggleSwitch({
+ *     instance: myPage.emailPreference // select one of many widgets from your page objects
+ * }));
  */
 exports.rxToggleSwitch = function (options) {
     if (options === undefined) {
