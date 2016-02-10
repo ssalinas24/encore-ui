@@ -90,7 +90,8 @@ module.exports = {
     rxPageObjects: {
         files: [
             'src/**/*.page.js',
-            'src/**/*.exercise.js'
+            'src/**/*.exercise.js',
+            'utils/rx-page-objects/doc/README.md'
         ],
         tasks: [
             'concat:rxPageObjects',

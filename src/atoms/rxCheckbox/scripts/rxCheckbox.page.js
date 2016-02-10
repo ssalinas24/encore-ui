@@ -1,8 +1,8 @@
-/*jshint node:true*/
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
 /**
+ * @description Functions for interacting with a single checkbox element.
  * @namespace
  */
 var rxCheckbox = {
@@ -19,8 +19,10 @@ var rxCheckbox = {
     },
 
     /**
-       Useful for situations where input types might change in the future, ensuring that the expected one is being used.
-       @returns {Boolean} Whether or not the element in question is a checkbox.
+     * @instance
+     * @function
+     * @description Whether or not the element in question is a checkbox.
+     * @returns {Boolean}
      */
     isCheckbox: {
         value: function () {
@@ -31,8 +33,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether the checkbox is currently displayed.
+     * @description Whether the checkbox is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -44,8 +48,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether or not the checkbox is disabled.
+     * @description Whether or not the checkbox is disabled.
+     * @returns {Boolean}
      */
     isDisabled: {
         value: function () {
@@ -64,8 +70,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether or not the checkbox is present on the page.
+     * @description Whether or not the checkbox is present on the page.
+     * @returns {Boolean}
      */
     isPresent: {
         value: function () {
@@ -77,8 +85,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @returns {Boolean} Whether the checkbox is valid.
+     * @description Whether the checkbox is valid.
+     * @returns {Boolean}
      */
     isValid: {
         value: function () {
@@ -89,8 +99,10 @@ var rxCheckbox = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the checkbox is selected.
+     * @instance
+     * @function
+     * @description Whether or not the checkbox is selected.
+     * @returns {Boolean}
      */
     isSelected: {
         value: function () {
@@ -99,8 +111,9 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @description Make sure checkbox is selected/checked
+     * @description Make sure checkbox is selected/checked.
      */
     select: {
         value: function () {
@@ -114,10 +127,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @deprecated
      * @function
-     * @description
-     * **DEPRECATED**: Use {@link rxCheckbox.deselect} instead.
+     * @description DEPRECATED: Use {@link rxCheckbox#deselect} instead.
      * This function will be removed in a future release of the EncoreUI framework.
      * @returns {undefined}
      */
@@ -128,8 +141,10 @@ var rxCheckbox = {
     },
 
     /**
+     * @instance
      * @function
-     * @description make sure checkbox is deselected/unchecked
+     * @description Make sure checkbox is deselected.
+     * @returns {undefined}
      */
     deselect: {
         value: function () {
@@ -143,15 +158,14 @@ var rxCheckbox = {
     }
 };
 
-/**
- * @exports encore.rxCheckbox
- * @description Page object for interacting with rxCheckbox elements
- */
 exports.rxCheckbox = {
     /**
      * @function
-     * @param {WebElement} rxCheckboxElement - WebElement to be transformed into an rxCheckbox page object
-     * @returns {rxCheckbox} Page object representing the rxCheckbox element
+     * @memberof rxCheckbox
+     * @description Creates a page object from an `[rx-checkbox]` DOM element.
+     * @param {ElementFinder} rxCheckboxElement -
+     * ElementFinder to be transformed into an {@link rxCheckbox} page object.
+     * @returns {rxCheckbox}
      */
     initialize: function (rxCheckboxElement) {
         rxCheckbox.rootElement = {
@@ -162,9 +176,14 @@ exports.rxCheckbox = {
 
     /**
      * @function
+     * @memberof rxCheckbox
      * @description Generates a getter and a setter for an rxCheckbox element on your page.
-     * @param {WebElement} elem - The WebElement for the rxCheckbox.
+     * @param {ElementFinder} elem - The ElementFinder for the rxCheckbox.
      * @returns {Object} A getter and a setter to be applied to a rxCheckbox page object.
+     * @example
+     * var myPage = Page.create({
+     *     myCheckbox: encore.rxCheckbox.generateAccessor(element(by.model('settings')))
+     * });
      */
     generateAccessor: function (elem) {
         return {

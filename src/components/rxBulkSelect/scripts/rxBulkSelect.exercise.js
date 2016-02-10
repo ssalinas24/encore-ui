@@ -2,19 +2,20 @@ var rxBulkSelect = require('./rxBulkSelect.page').rxBulkSelect;
 var _ = require('lodash');
 
 /**
-   rxBulkSelect exercises.
-   @exports encore.exercise.rxBulkSelect
-   @param {Object} [options=] - Test options. Used to build valid tests.
-   @param {rxBulkSelect} [options.instance=] - Component to exercise.
-   @param {string[]} [options.batchActions] - List of batch actions to exercise, will not run exercises if empty.
-   @param {number} [options.count=10] - Number of items in the table.
-   @param {string} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
-   @example
-   ```js
-   describe('default exercises', encore.exercise.rxBulkSelect({
-       instance: myPage.bulkSelect // select one of many widgets from your page objects
-   }));
-   ```
+ * @function
+ * @description rxBulkSelect exercises.
+ * @exports exercise/rxBulkSelect
+ * @returns {function} A function to be passed to mocha's `describe`.
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxBulkSelect} [options.instance={@link rxBulkSelect.initialize}] - Component to exercise.
+ * @param {string[]} [options.batchActions=[]] - List of batch actions to exercise, will not run exercises if empty.
+ * @param {number} [options.count=10] - Number of items in the table.
+ * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @example
+ * describe('default exercises', encore.exercise.rxBulkSelect({
+ *     instance: myPage.bulkSelect, // select one of many widgets from your page objects
+ *     batchActions: ['Create', 'Read', 'Update', 'Delete']
+ * }));
  */
 exports.rxBulkSelect = function (options) {
     if (options === undefined) {

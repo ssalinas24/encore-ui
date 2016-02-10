@@ -1,8 +1,18 @@
-var _ = require('lodash');
-var moment = require('moment');
-
+/**
+ * @exports encore.rxAge
+ */
 exports.rxAge = {
 
+    /**
+     * @function
+     * @param {String} rxAgeString - An age string, representing the time that has passed since a certain datetime.
+     * @returns {Date} A moment date object representing the point in time the `rxAgeString` refers to.
+     * @example
+     * // given the current datetime is January 1st, 1970 at noon UTC.
+     * var oneMonthOneDayAgo = new Date('1969-12-31T12:00:00z').valueOf();
+     * expect(encore.rxAge.toMoment('1m 1d').valueOf()).to.equal(oneMonthOneDayAgo)
+     * expect(encore.rxAge.toMoment('1 month, 1 day').valueOf()).to.equal(oneMonthOneDayAgo)
+     */
     toMoment: function (rxAgeString) {
         var rxAge;
         var completeAgePart = /^(\d+)(\s+)?([a-z]+)$/;

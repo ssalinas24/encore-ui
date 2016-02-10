@@ -2,15 +2,17 @@ var _ = require('lodash');
 var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
 
 /**
+ * @function
  * @description rxCheckbox exercises
- * @exports encore.exercise.rxCheckbox
- * @param {Object} [options=] - Test options. Used to build valid tests.
- * @param {rxCheckbox} [options.instance=] - Component to exercise.
- * @param {String} [options.cssSelector=] - DEPRECATED: Fallback selector string to initialize widget with.
- * @param {Boolean} [options.disabled=false] - Determines if the checkbox is disabled
- * @param {Boolean} [options.selected=false] - Determines if the checkbox is selected
- * @param {Boolean} [options.visible=true] - Determines if the checkbox is visible
- * @param {Boolean} [options.valid=true] - Determines if the checkbox is valid
+ * @exports exercise/rxCheckbox
+ * @returns {function} A function to be passed to mocha's `describe`.
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxCheckbox} [options.instance] - Component to exercise.
+ * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Boolean} [options.disabled=false] - Whether the checkbox is disabled at the start of the exercise
+ * @param {Boolean} [options.selected=false] - Whether the checkbox is selected at the start of the exercise
+ * @param {Boolean} [options.visible=true] - Whether the checkbox is visible at the start of the exercise
+ * @param {Boolean} [options.valid=true] - Whether the checkbox is valid at the start of the exercise
  */
 exports.rxCheckbox = function (options) {
     if (options === undefined) {
