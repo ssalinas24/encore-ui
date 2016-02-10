@@ -1,9 +1,9 @@
-angular.module('encore.ui.rxAppRoutes')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxAppRoutes.service:rxAppRoutes
+ * @name quarks.service:rxAppRoutes
  * @description
- * Manages page routes, building urls and marking them as active on route change
+ * Manages page routes, building urls and marking them as active on route change.
  */
 .factory('rxAppRoutes', function ($rootScope, $log, urlUtils, $q) {
     var AppRoutes = function (routes) {

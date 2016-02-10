@@ -56,9 +56,9 @@
  * ## Dynamically updating the menu
  *
  * By default, rxApp will create the navigation menu based on the routes defined
- * in the 'encoreNav' value. This menu is built using the rxAppRoutes service.
+ * in the 'encoreNav' value. This menu is built using the {@link quarks.service:rxAppRoutes rxAppRoutes} service.
  *
- * To update a route, use the `setRouteByKey` function on the rxAppRoutes service:
+ * To update a route, use the `setRouteByKey` function on the `rxAppRoutes` service:
  *
  * <pre>
  * rxAppRoutes.setRouteByKey('myKey', {
@@ -107,7 +107,6 @@
 angular.module('encore.ui.rxApp', [
     'cfp.hotkeys',
     'encore.ui.quarks',
-    'encore.ui.rxAppRoutes',
     'encore.ui.rxEnvironment',
     'encore.ui.rxPermission',
     'ngRoute',

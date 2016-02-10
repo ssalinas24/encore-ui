@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxAppRoutes')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxAppRoutes.service:urlUtils
+ * @name quarks.service:urlUtils
  * @description
  *
- * Set of utility functions used by rxAppRoutes to break apart/compare URLs
+ * Set of utility functions to break apart/compare URLs.
  */
 .service('urlUtils', function ($location, rxEnvironmentUrlFilter, $interpolate, $route, $document) {
     // remove any preceding # and / from the URL for cleaner comparison
