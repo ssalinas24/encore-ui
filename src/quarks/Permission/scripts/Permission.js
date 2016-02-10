@@ -1,11 +1,11 @@
-angular.module('encore.ui.rxPermission')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxPermission.service:Permission
+ * @name quarks.service:Permission
  * @description
  * Simple service for accessing roles and permissions for a user.
  *
- * @requires rxSession.service:Session
+ * @requires quarks.service:Session
  *
  * @example
  * <pre>
@@ -49,7 +49,7 @@ angular.module('encore.ui.rxPermission')
     /**
      * @name  getRoles
      * @ngdoc method
-     * @methodOf rxPermission.service:Permission
+     * @methodOf quarks.service:Permission
      * @description
      * Fetch all the roles tied to the user (in the exact format available in their Session token).
      *
@@ -64,7 +64,7 @@ angular.module('encore.ui.rxPermission')
     /**
      * @name  hasRole
      * @ngdoc method
-     * @methodOf rxPermission.service:Permission
+     * @methodOf quarks.service:Permission
      * @description Check if user has at least _one_ of the given roles.
      * @param {Array} roles List of roles to check against
      * @returns {Boolean} True if user has at least _one_ of the given roles; otherwise, False.
@@ -76,7 +76,7 @@ angular.module('encore.ui.rxPermission')
     /**
      * @name  hasAllRoles
      * @ngdoc method
-     * @methodOf rxPermission.service:Permission
+     * @methodOf quarks.service:Permission
      * @description Checks if user has _every_ role in given list.
      * @param {Array} roles List of roles to check against
      * @returns {Boolean} True if user has _every_ role in given list; otherwise, False.
