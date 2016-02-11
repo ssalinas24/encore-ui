@@ -49,7 +49,7 @@ var rxMetadata = {
     /**
      * @instance
      * @function
-     * @description The definition web element matching the term, whether it be an rx-meta or
+     * @description The definition ElementFinder matching the term, whether it be an rx-meta or
      * rx-meta-show-hide element.
      * @returns {ElementFinder}
      */
@@ -91,7 +91,7 @@ exports.rxMetadata = {
      * @function
      * @memberof rxMetadata
      * description Page object representing an rxMetadata element.
-     * @param {WebElement} rxMetadataElement - WebElement to be transformed into an rxMetadata page object.
+     * @param {ElementFinder} rxMetadataElement - ElementFinder to be transformed into an rxMetadata page object.
      * @param {Object} transformFns - An object defining which metadata entries should be transformed, and how.
      * @returns {rxMetadata}
      * @example

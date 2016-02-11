@@ -277,7 +277,7 @@ var rxSelect = {
      * @function
      * @param {String} optionText -
      * Partial or total string to match the display value of the desired `<option>` element.
-     * @returns {WebElement}
+     * @returns {ElementFinder}
      */
     findOptionContaining: {
         value: function (optionText) {

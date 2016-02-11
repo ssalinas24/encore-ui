@@ -79,7 +79,7 @@ exports.rxForm = {
          * @description
          * Generates a getter and a setter for a text field on your page.
          * Text fields include text boxes, text areas, anything that responds to `.clear()` and `.sendKeys()`.
-         * @param {ElementFinder} elem - The WebElement for the text field.
+         * @param {ElementFinder} elem - The ElementFinder for the text field.
          * @returns {Object} A getter and a setter to be applied to a text field in a page object.
          *
          * @example
@@ -190,7 +190,8 @@ exports.rxForm = {
     fieldName: {
         /**
          * @function
-         * @param {ElementFinder} rxFieldNameElement - WebElement to be transformed into an rxFieldNameElement object.
+         * @param {ElementFinder} rxFieldNameElement -
+         * ElementFinder to be transformed into an rxFieldNameElement object.
          * @returns {rxFieldName} Page object representing the rxFieldName object.
          */
         initialize: function (rxFieldNameElement) {

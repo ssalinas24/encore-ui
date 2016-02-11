@@ -143,7 +143,7 @@ exports.rxSearchBox = {
     /**
      * @function
      * @memberof rxSearchBox
-     * @param {WebElement} rxSearchBoxElement - WebElement to be transformed into an rxSearchBoxElement object.
+     * @param {ElementFinder} rxSearchBoxElement - ElementFinder to be transformed into an rxSearchBoxElement object.
      * @returns {rxSearchBox}
      * @description Page object representing the rxSearchBox object.
      */
