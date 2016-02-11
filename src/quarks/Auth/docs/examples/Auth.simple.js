@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxAuthCtrl', function ($scope, $window, Auth) {
+.controller('AuthSimpleCtrl', function ($scope, $window, Auth) {
     $scope.hasRole = function () {
         $window.alert('Has "superhero" Role? : ' + Auth.hasRole('superhero'));
     };

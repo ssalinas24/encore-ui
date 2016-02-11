@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxAuth')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxAuth.service:Auth
+ * @name quarks.service:Auth
  * @description
  * Service which provides an entire solution for authenticating, user session management
  * and permissions in the UI.  The Auth service is a wrapper for the Identity, Session and
@@ -9,8 +9,8 @@ angular.module('encore.ui.rxAuth')
  * customization and re-use.
  *
  * @requires quarks.service:Identity
- * @requires rxSession.service:Session
- * @requires rxPermission.service:Permission
+ * @requires quarks.service:Session
+ * @requires quarks.service:Permission
  *
  * @example
  * <pre>
