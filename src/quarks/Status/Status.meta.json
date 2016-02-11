@@ -1,7 +1,7 @@
 {
-    "displayName": "rxStatus",
+    "displayName": "Status",
     "stability": "stable",
     "description": "Manages notifications for rxNotify",
-    "isLegacy": true,
+    "api": "service:Status",
     "keywords": []
 }

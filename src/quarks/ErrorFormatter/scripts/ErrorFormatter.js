@@ -4,7 +4,7 @@ angular.module('encore.ui.quarks')
  * @name quarks.service:ErrorFormatter
  * @description
  * Provides a helper method to parse error objects for `message` and format them
- * as necessary for `Status.setError()`.  See {@link rxStatus.service:Status Status} Service
+ * as necessary for `Status.setError()`.  See {@link quarks.service:Status Status} Service
  * for more information.  
  * 
  * # Error Messages Using ErrorFormatter
