@@ -318,6 +318,7 @@ var rxDatePicker = {
     },
 
     /**
+     * @instance
      * @description Getter/setter for entering and retrieving a date from the date picker.
      * @returns {Date} The current date set on the calendar
      * @param {Date} date - The date to pick in the date picker.
@@ -347,12 +348,10 @@ var rxDatePicker = {
     }
 };
 
-/**
- * @exports encore.rxDatePicker
- */
 exports.rxDatePicker = {
     /**
      * @function
+     * @memberof rxDatePicker
      * @param {WebElement} rxDatePickerElement - WebElement to be transformed into an rxDatePicker page object.
      * @returns {rxDatePicker} Page object representing the rxDatepicker element.
      */
