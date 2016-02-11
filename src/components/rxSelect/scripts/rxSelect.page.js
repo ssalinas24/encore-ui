@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 

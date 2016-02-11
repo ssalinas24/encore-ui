@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var Page = require('astrolabe').Page;
 
 exports.rxSpinner = Page.create({

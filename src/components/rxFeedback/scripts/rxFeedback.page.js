@@ -1,5 +1,3 @@
-/*jshint node:true*/
-
 /**
  * @namespace
  * @description Utilities for interacting with an rxFeedback component.
