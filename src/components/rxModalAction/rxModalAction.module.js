@@ -17,9 +17,6 @@
  * * {@link rxModalAction.directive:rxModalAction rxModalAction}
  * * {@link rxModalAction.directive:rxModalFooter rxModalFooter}
  * * {@link rxModalAction.directive:rxModalForm rxModalForm}
- *
- * ## Services
- * * {@link rxModalAction.service:rxModalFooterTemplates rxModalFooterTemplates}
  */
 angular.module('encore.ui.rxModalAction', [
     'ui.bootstrap'
