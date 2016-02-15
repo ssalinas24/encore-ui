@@ -6,6 +6,7 @@ describe('Pagination', function () {
 
         beforeEach(function () {
             module('encore.ui.rxPaginate');
+            module('encore.ui.quarks');
 
             inject(function ($filter) {
                 summary = $filter('PaginatedItemsSummary');

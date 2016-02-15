@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc filter
- * @name rxPaginate.filter:PaginatedItemsSummary
+ * @name quarks.filter:PaginatedItemsSummary
  * @description
  * Given an active pager (i.e. the result of PageTracking.createInstance()),
  * return a string like "26-50 of 500", when on the second page of a list of

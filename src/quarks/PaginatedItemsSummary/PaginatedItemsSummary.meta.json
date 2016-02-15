@@ -1,0 +1,7 @@
+{
+    "displayName": "PaginatedItemsSummary",
+    "stability": "stable",
+    "description": "Provides a formatted string with the current range of items in total items.",
+    "api": "filter:PaginatedItemsSummary",
+    "keywords": []
+}
