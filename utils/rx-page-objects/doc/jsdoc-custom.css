@@ -1,0 +1,9 @@
+#main {
+    float: right;
+    width: 80%;
+}
+
+nav {
+    float: left;
+    width: 20%;
+}
