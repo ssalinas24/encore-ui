@@ -1,4 +1,10 @@
-angular.module('encore.ui.rxFeedback')
+angular.module('encore.ui.quarks')
+/**
+ * @ngdoc parameters
+ * @name quarks.value:feedbackTypes
+ * @description
+ * Provides default feedback types with placeholder text. 
+ */
 .value('feedbackTypes', [
     {
         label: 'Software Bug',
