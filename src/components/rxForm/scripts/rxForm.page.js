@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
@@ -20,8 +19,9 @@ var rxFieldName = {
 
     /**
      * @function
+     * @instance
+     * @description Whether or not a required field currently displays a red asterisk next to it.
      * @returns {Boolean}
-     *   True if field name displays as required (symbol is currently displayed).
      */
     isSymbolVisible: {
         value: function () {
@@ -31,7 +31,9 @@ var rxFieldName = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the required symbol is present in the DOM.
+     * @instance
+     * @description Whether the required symbol is present in the DOM.
+     * @returns {Boolean}
      */
     isSymbolPresent: {
         value: function () {
@@ -41,7 +43,9 @@ var rxFieldName = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the root element is currently displayed.
+     * @instance
+     * @description Whether the field is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -51,7 +55,9 @@ var rxFieldName = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the root element is present on the page.
+     * @instance
+     * @description Whether the field is currently present on the page.
+     * @returns {Boolean}
      */
     isPresent: {
         value: function () {
@@ -61,7 +67,7 @@ var rxFieldName = {
 };//rxFieldName
 
 /**
- * @exports encore.rxForm
+ * @namespace rxForm
  */
 exports.rxForm = {
     /**
@@ -73,11 +79,10 @@ exports.rxForm = {
          * @description
          * Generates a getter and a setter for a text field on your page.
          * Text fields include text boxes, text areas, anything that responds to `.clear()` and `.sendKeys()`.
-         * @param {WebElement} elem - The WebElement for the text field.
+         * @param {ElementFinder} elem - The WebElement for the text field.
          * @returns {Object} A getter and a setter to be applied to a text field in a page object.
          *
          * @example
-         * ```js
          * var yourPage = Page.create({
          *     plainTextbox: rxForm.textField.generateAccessor(element(by.model('username')));
          * });
@@ -86,7 +91,6 @@ exports.rxForm = {
          *     yourPage.plainTextbox = 'My Username'; // setter
          *     expect(yourPage.plainTextbox).to.eventually.equal('My Username'); // getter
          * });
-         * ```
          */
         generateAccessor: function (elem) {
             return {
@@ -122,18 +126,39 @@ exports.rxForm = {
      * @param {Object} formData - Key-value pairs of deeply-nested form items, and their values to fill.
      *
      * @example
-     * ```js
      * var yourPage = Page.create({
      *     form: {
      *         set: function (formData) {
      *             rxForm.fill(this, formData);
      *         }
+     *     },
+     *
+     *     aTextbox: encore.rxForm.textField.generateAccessor(element(by.model('textbox'))),
+     *
+     *     aRadioButton: encore.rxRadio.generateAccessor(element(by.model('radioButton'))),
+     *     anotherRadioButton: encore.rxRadio.generateAccessor(element(by.model('radioButton_1'))),
+     *
+     *     aSelectDropdown: encore.rxSelect.generateAccessor(element(by.model('dropdown')));
+     *
+     *     aModule: {
+     *         // this is now a namespace within your page object
+     *         get hasMethods() {
+     *             return encore.rxForm.textField.generateAccessor(element(by.model('internalTextbox')))
+     *         },
+     *
+     *         deepNesting: {
+     *             // namespace within a namespace
+     *             get might() {
+     *                 return encore.rxForm.textField.generateAccessor(element(by.model('nested')))
+     *             }
+     *         }
      *     }
+     *
      * });
      *
      * yourPage.form = {
      *     aTextbox: 'My Name',
-     *     aRadioButton: 'Second Option'
+     *     aRadioButton: true,
      *     aSelectDropdown: 'My Choice'
      *     aModule: {
      *         hasMethods: 'Can Accept Input Too',
@@ -142,7 +167,7 @@ exports.rxForm = {
      *         }
      *     }
      * };
-     * ```
+     * // executing the above would execute all `setter` methods of your form to equal the values listed above.
      */
     fill: function (reference, formData) {
         var next = this;
@@ -165,7 +190,7 @@ exports.rxForm = {
     fieldName: {
         /**
          * @function
-         * @param {WebElement} rxFieldNameElement - WebElement to be transformed into an rxFieldNameElement object.
+         * @param {ElementFinder} rxFieldNameElement - WebElement to be transformed into an rxFieldNameElement object.
          * @returns {rxFieldName} Page object representing the rxFieldName object.
          */
         initialize: function (rxFieldNameElement) {
@@ -177,10 +202,9 @@ exports.rxForm = {
     },
 
     /**
-     * @namespace
-     * @deprecated
-     * @description
-     * **ALIASED** Directly uses <a href="#encore.module_rxCheckbox">encore.rxCheckbox</a>.
+     * @description **ALIASED**: Directly uses {@link rxCheckbox}.
+     * @property {Function} initialize - {@link rxCheckbox.initialize}
+     * @property {Function} generateAccessor - {@link rxCheckbox.generateAccessor}
      */
     checkbox: {
         get initialize() { return exports.rxCheckbox.initialize; },
@@ -188,9 +212,9 @@ exports.rxForm = {
     },
 
     /**
-     * @namespace
-     * @description
-     * **ALIASED** Directly uses <a href="#encore.module_rxRadio">encore.rxRadio</a>.
+     * @description **ALIASED**: Directly uses {@link rxRadio}.
+     * @property {Function} initialize - {@link rxRadio.initialize}
+     * @property {Function} generateAccessor - {@link rxRadio.generateAccessor}
      */
     radioButton: {
         get initialize() { return exports.rxRadio.initialize; },
@@ -198,9 +222,9 @@ exports.rxForm = {
     },
 
     /**
-     * @namespace
-     * @description
-     * **ALIASED** Directly uses <a href="#encore.module_rxSelect">encore.rxSelect</a>.
+     * @description **ALIASED**: Directly uses {@link rxDropdown}.
+     * @property {Function} initialize - {@link rxDropdown.initialize}
+     * @property {Function} generateAccessor - {@link rxDropdown.generateAccessor}
      */
     dropdown: {
         get initialize() { return exports.rxSelect.initialize; },
@@ -209,6 +233,7 @@ exports.rxForm = {
 
     /**
      * @deprecated
+     * @function
      * @description
      * **ALIASED**: Please use {@link rxMisc.currencyToPennies} instead.
      * This function will be removed in a future release of the EncoreUI framework.
@@ -219,6 +244,7 @@ exports.rxForm = {
 
     /**
      * @deprecated
+     * @function
      * @description
      * **ALIASED**: Please use {@link rxMisc.slowClick} instead.
      * This function will be removed in a future release of the EncoreUI framework.
