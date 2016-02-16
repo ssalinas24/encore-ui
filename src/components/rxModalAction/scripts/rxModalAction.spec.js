@@ -18,6 +18,7 @@ describe('rxModalAction', function () {
     beforeEach(function () {
         // Load the directive's module
         module('encore.ui.rxModalAction');
+        module('encore.ui.quarks');
 
         // load the template
         module('templates/rxModalAction.html');

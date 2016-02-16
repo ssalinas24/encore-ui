@@ -1,4 +1,11 @@
-angular.module('encore.ui.rxModalAction')
+angular.module('encore.ui.quarks')
+/**
+ * @ngdoc controller
+ * @name quarks.controller:rxModalCtrl
+ * @scope
+ * @description
+ * Provides a controller for `rxModalAction` to use.
+ */
 .controller('rxModalCtrl', function ($scope, $modalInstance, $rootScope) {
     // define a controller for the modal to use
     $scope.submit = function () {

@@ -1,0 +1,7 @@
+{
+    "displayName": "rxModalCtrl",
+    "stability": "stable",
+    "description": "Provides a controller for rxModalAction to use.",
+    "api": "controller:rxModalCtrl",
+    "keywords": []
+}
