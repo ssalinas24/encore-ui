@@ -2,16 +2,15 @@ var rxTags = require('./rxTags.page').rxTags;
 
 /**
  * rxTags exercises
- * @exports encore.exercise.rxTags
- * @param {Object} [options=] - Test options. Used to build valid tests.
- * @param {rxTags} [options.instance=] - Component to Exercise.
+ * @exports exercise/rxTags
+ * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {rxTags} [options.instance=rxTags.initialize()] - Component to Exercise.
  * @param {string} options.sampleText - A tag that can be added.
  * @example
- * <pre>
  * describe('default exercises', encore.exercise.rxTags({
  *     instance: encore.rxTags.initialize('.demo rx-tags') // select one of many widgets on page
+ *     sampleText: 'Tag text to use when creating and testing your tags'
  * }));
- * </pre>
  */
 exports.rxTags = function (options) {
     if (options === undefined) {
@@ -29,7 +28,7 @@ exports.rxTags = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxTags.main;
+                component = rxTags.initialize();
             }
 
             component.count().then(function (num) {
