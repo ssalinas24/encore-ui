@@ -5,7 +5,7 @@ describe('forms', function () {
 
     describe('manual saving', function () {
         it('form', function () {
-            screenshot.snap(this, $('rx-styleguide[code-url$="manual-saving.html"]'));
+            screenshot.snap(this, $('rx-example[name="forms.manualSave"]'));
         });
 
         it('notification', function () {
