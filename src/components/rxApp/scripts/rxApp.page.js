@@ -1,6 +1,9 @@
 /*jshint node:true*/
 var Page = require('astrolabe').Page;
 
+/**
+ * @namespace
+ */
 var rxApp = {
     cssCollapseButtonSelector: {
         /**
@@ -14,6 +17,11 @@ var rxApp = {
         get: function () { return this.rootElement.$(this.cssCollapseButtonSelector); }
     },
 
+    /**
+     * @instance
+     * @type {String}
+     * @description The rightmost text in the uppermost location. Typically, this is "Encore".
+     */
     title: {
         get: function () { return this.rootElement.$('.site-title').getText(); }
     },
@@ -22,6 +30,11 @@ var rxApp = {
         get: function () { return this.rootElement.$('.nav-section-title').getText(); }
     },
 
+    /**
+     * @instance
+     * @function
+     * @description Expand the navigation menu, if it is collapsible.
+     */
     expand: {
         value: function () {
             var page = this;
@@ -33,6 +46,11 @@ var rxApp = {
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @description Collapse the navigation menu, if it is collapsible.
+     */
     collapse: {
         value: function () {
             var page = this;
@@ -44,6 +62,13 @@ var rxApp = {
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @returns {Boolean}
+     * @description Whether or not the navigation section is collapsed. If the navigation section is
+     * not collapsible, it will throw an {@link rxApp#NotCollapsibleException}.
+     */
     isCollapsed: {
         value: function () {
             var page = this;
@@ -61,6 +86,13 @@ var rxApp = {
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @returns {Boolean}
+     * @description Whether or not the navigation section is expanded. If the navigation section is
+     * not expandable, it will throw an {@link rxApp#NotCollapsibleException}.
+     */
     isExpanded: {
         value: function () {
             return this.isCollapsed().then(function (result) {
@@ -69,12 +101,23 @@ var rxApp = {
         }
     },
 
+    /**
+     * @instance
+     * @function
+     * @returns {Boolean}
+     * @description Whether or not the navigation component is collapsible.
+     */
     isCollapsible: {
         value: function () {
             return this.btnCollapseToggle.isPresent();
         }
     },
 
+    /**
+     * @instance
+     * @type {String}
+     * @description The currently logged in user's id.
+     */
     userId: {
         get: function () {
             return this.rootElement.element(by.binding('userId')).getText();
@@ -87,6 +130,12 @@ var rxApp = {
         }
     },
 
+    /**
+     * @instance
+     * @type {Exception}
+     * @description Thrown by functions that may attempt to expand or collapse a navigation
+     * menu that it not designed to support such interactions.
+     */
     NotCollapsibleException: {
         get: function () {
             return this.exception('Navigation menu not collapsible');
@@ -95,7 +144,19 @@ var rxApp = {
 };
 
 exports.rxApp = {
+    /**
+     * @function
+     * @memberof rxApp
+     * @description Creates a page object from an `rx-app` DOM element.
+     * @param {ElementFinder} [rxFeedbackElement=$('rx-app')] -
+     * ElementFinder to be transformed into an {@link rxApp} object.
+     * @returns {rxApp}
+     */
     initialize: function (rxAppElement) {
+        if (rxAppElement === undefined) {
+            rxAppElement = $('rx-app');
+        }
+
         rxApp.rootElement = {
             get: function () { return rxAppElement; }
         };
