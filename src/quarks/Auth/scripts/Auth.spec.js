@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxAuth', function () {
+describe('quarks:Auth', function () {
     var auth, identity, permission, session, token;
 
     token = {
@@ -8,7 +8,6 @@ describe('rxAuth', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxAuth');
         module('encore.ui.quarks');
 
         inject(function ($injector) {

@@ -10,5 +10,5 @@
  * * {@link rxLogout.directive:rxLogout rxLogout}
  */
 angular.module('encore.ui.rxLogout', [
-    'encore.ui.rxAuth'
+    'encore.ui.quarks'
 ]);
