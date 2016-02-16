@@ -1,12 +1,11 @@
 /* jshint node: true */
-describe('rxFeedbackController', function () {
+describe('quarks:rxFeedbackController', function () {
     var ctrl, ctrlScope, rootScope, controller;
     var modalInstance;
 
     beforeEach(function () {
         // load module
         module('encore.ui.quarks');
-        module('encore.ui.rxFeedback');
     });
 
     describe('Expected Modal Behavior', function () {
