@@ -1,4 +1,4 @@
-describe('rxStatus: StatusUtil', function () {
+describe('quarks: StatusUtil', function () {
     var util,
         rootScope,
         status = {
@@ -7,7 +7,7 @@ describe('rxStatus: StatusUtil', function () {
 
     beforeEach(function () {
         module('ngRoute');
-        module('encore.ui.rxStatus', function ($provide) {
+        module('encore.ui.quarks', function ($provide) {
             $provide.value('Status', status);
         });
 

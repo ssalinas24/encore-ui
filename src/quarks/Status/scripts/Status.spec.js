@@ -1,9 +1,8 @@
-describe('rxStatus: Status', function () {
+describe('quarks: Status', function () {
     var status, scope, rootScope, rxNotify;
 
     beforeEach(function () {
-        //module('encore');
-        module('encore.ui.rxStatus');
+        module('encore.ui.quarks');
 
         inject(function ($rootScope, Status, _rxNotify_) {
             scope = $rootScope.$new();

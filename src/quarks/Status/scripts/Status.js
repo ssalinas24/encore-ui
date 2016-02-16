@@ -1,13 +1,13 @@
-angular.module('encore.ui.rxStatus')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxStatus.service:Status
+ * @name quarks.service:Status
  * @description
  *
  * Manages notifications for rxNotify with an abstracted set of functions for
  * ease of use.
  *
- * This service is provided as a compliment to the `rxNotify`.  It abstracts out
+ * This service is provided as a compliment to {@link rxNotify}.  It abstracts out
  * some of the raw functionality provided by `rxNotify` to make the addition and
  * removal of single messages easier.
  *
