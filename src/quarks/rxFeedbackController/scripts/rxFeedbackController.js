@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxFeedback')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc controller
- * @name rxFeedback.controller:rxFeedbackController
+ * @name quarks.controller:rxFeedbackController
  * @scope
  * @description
  * Allows the customization of the feedback modal via `$scope` and `$modalInstance`.
