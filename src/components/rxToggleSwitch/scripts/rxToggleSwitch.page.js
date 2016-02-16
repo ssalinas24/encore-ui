@@ -2,7 +2,8 @@
 var Page = require('astrolabe').Page;
 
 /**
-   @namespace
+ * @namespace
+ * @description Functionality around interacting with toggle switches.
  */
 var rxToggleSwitch = {
     btnToggleSwitch: {
@@ -12,8 +13,10 @@ var rxToggleSwitch = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @function
+     * @instance
+     * @description Whether the root element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -22,8 +25,10 @@ var rxToggleSwitch = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the switch component is currently enabled.
+     * @function
+     * @instance
+     * @description Whether or not the switch component is currently set to the "on" position.
+     * @returns {Boolean}
      */
     isEnabled: {
         value: function () {
@@ -34,9 +39,20 @@ var rxToggleSwitch = {
     },
 
     /**
-       @function
-       @returns {undefined}
-    */
+     * @function
+     * @instance
+     * @description Toggles the switch to the "on" position. If the toggle switch is already
+     * set to this position, nothing happens.
+     * @example
+     * it('should enable the switch', function () {
+     *     var switch = encore.rxToggleSwitch.initialize();
+     *     expect(switch.isEnabled()).to.eventually.be.false;
+     *     switch.enable();
+     *     expect(switch.isEnabled()).to.eventually.be.true;
+     *     switch.enable(); // does nothing the second time it is called
+     *     expect(switch.isEnabled()).to.eventually.be.true;
+     * });
+     */
     enable: {
         value: function () {
             var page = this;
@@ -49,8 +65,11 @@ var rxToggleSwitch = {
     },
 
     /**
-       @function
-       @returns {Boolean} Whether or not the switch component is currently disabled.
+     * @todo Rename this function. This sounds like it checks for `ng-disable` on the directive.
+     * @function
+     * @instance
+     * @description Whether or not the switch component is currently set to the "off" position.
+     * @returns {Boolean}
      */
     isDisabled: {
         value: function () {
@@ -61,9 +80,20 @@ var rxToggleSwitch = {
     },
 
     /**
-       @function
-       @returns {undefined}
-    */
+     * @function
+     * @instance
+     * @description Toggles the switch to the "off" position. If the toggle switch is already
+     * set to this position, nothing happens.
+     * @example
+     * it('should disable the switch', function () {
+     *     var switch = encore.rxToggleSwitch.initialize();
+     *     expect(switch.isEnabled()).to.eventually.be.true;
+     *     switch.disable();
+     *     expect(switch.isEnabled()).to.eventually.be.false;
+     *     switch.disable(); // does nothing the second time it is called
+     *     expect(switch.isEnabled()).to.eventually.be.false;
+     * });
+     */
     disable: {
         value: function () {
             var page = this;
@@ -76,7 +106,15 @@ var rxToggleSwitch = {
     },
 
     /**
-       @returns {String} The current text of the switch.
+     * @instance
+     * @description The current text of the switch.
+     * @type {String}
+     * @example
+     * it('should toggle to the "on" position', function () {
+     *     var switch = encore.rxToggleSwitch.initialize();
+     *     switch.enable();
+     *     expect(switch.text).to.eventually.equal('ON');
+     * });
      */
     text: {
         get: function () {
@@ -85,16 +123,19 @@ var rxToggleSwitch = {
     }
 };
 
-/**
-   @exports encore.rxToggleSwitch
- */
 exports.rxToggleSwitch = {
     /**
-       @function
-       @param {WebElement} rxToggleSwitchElement - WebElement to be transformed into an rxToggleSwitchElement object.
-       @returns {rxToggleSwitch} Page object representing the rxToggleSwitch object.
+     * @function
+     * @memberof rxToggleSwitch
+     * @param {ElementFinder} [rxToggleSwitchElement=$('rx-toggle-switch')] -
+     * ElementFinder to be transformed into an rxToggleSwitchElement object.
+     * @returns {rxToggleSwitch} Page object representing the {@link rxToggleSwitch} object.
      */
     initialize: function (rxToggleSwitchElement) {
+        if (rxToggleSwitchElement === undefined) {
+            rxToggleSwitchElement = $('rx-toggle-switch');
+        }
+
         rxToggleSwitch.rootElement = {
             get: function () { return rxToggleSwitchElement; }
         };
@@ -102,8 +143,11 @@ exports.rxToggleSwitch = {
     },
 
     /**
-       @returns {rxToggleSwitch} Page object representing the _first_ rxToggleSwitch object found on the page.
-    */
+     * @deprecated Use {@link rxToggleSwitch.initialize} without arguments instead.
+     * @memberof rxToggleSwitch
+     * @description Page object representing the _first_ rxToggleSwitch object found on the page.
+     * @type {rxToggleSwitch}
+     */
     main: (function () {
         rxToggleSwitch.rootElement = {
             get: function () { return $('rx-toggle-switch'); }
