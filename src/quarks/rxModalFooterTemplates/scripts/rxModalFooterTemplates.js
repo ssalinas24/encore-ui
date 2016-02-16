@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxModalAction')
+angular.module('encore.ui.quarks')
 /**
  * @ngdoc service
- * @name rxModalAction.service:rxModalFooterTemplates
+ * @name quarks.service:rxModalFooterTemplates
  * @description
  * A cache for storing the modal footer templates
  * This is used internally by rxModalFooter, which is preferred
@@ -21,7 +21,7 @@ angular.module('encore.ui.rxModalAction')
         /*
          * Concatenates all the registered templates and clears the local template cache.
          * @public
-         * @returns {string} The concatenated templates wrapped in an ng-switch.
+         * @returns {string} The concatenated templates wrapped in an `ng-switch`.
          */
         flush: function () {
             var states = _.assign({}, globals, locals);
@@ -34,7 +34,7 @@ angular.module('encore.ui.rxModalAction')
          * Register a template with an associated state.
          * @public
          * @param {string} The state being registered.
-         * @param {string} The template assicated with the state.
+         * @param {string} The template associated with the state.
          * @param [object} options
          * @param {boolean} options.global Indicates if the template is used in other modals.
          */

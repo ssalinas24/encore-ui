@@ -14,6 +14,7 @@ describe('rxModalForm', function () {
         // The footers template must be loaded first because it is used in .run
         module('templates/rxModalFooters.html');
 
+        module('encore.ui.quarks');
         module('encore.ui.rxModalAction');
         module('templates/rxModalActionForm.html');
 

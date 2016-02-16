@@ -1,5 +1,5 @@
 /* jshint node: true */
-describe('rxModalFooterTemplates', function () {
+describe('quarks:rxModalFooterTemplates', function () {
     var rxModalFooterTemplates;
 
     function wrap (html) {
@@ -9,7 +9,7 @@ describe('rxModalFooterTemplates', function () {
     }
 
     beforeEach(function () {
-        module('encore.ui.rxModalAction');
+        module('encore.ui.quarks');
 
         inject(function (_rxModalFooterTemplates_) {
             rxModalFooterTemplates = _rxModalFooterTemplates_;
