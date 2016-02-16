@@ -13,6 +13,11 @@ var isOptionSelected = function (eleOptionRow) {
 };
 
 var optionRowFromElement = function (eleOptionRow) {
+    /**
+     * @namespace rxOptionTable.row
+     * @see rxOptionTable
+     * @description Functions for interacting with a row from an {@link rxOptionTable}.
+     */
     return Page.create({
         rootElement: {
             get: function () { return eleOptionRow; }
@@ -20,8 +25,10 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @function
+         * @instance
          * @memberof rxOptionTable.row
-         * @returns {boolean} Whether or not the row is currently selected.
+         * @description Whether or not the row is currently selected.
+         * @returns {Boolean}
          */
         isSelected: {
             value: function () {
@@ -31,8 +38,10 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @function
+         * @instance
          * @memberof rxOptionTable.row
-         * @returns {boolean} Whether or not the row is visually marked as "current".
+         * @description Whether or not the row is visually marked as "current".
+         * @returns {Boolean}
          */
         isCurrent: {
             value: function () {
@@ -44,20 +53,26 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @function
+         * @instance
          * @memberof rxOptionTable.row
          * @description
          * Return the value of the cell by `columnName`, using `getText` by default.
          * For more control, pass in a `customFn`.
          * The reason `columnName` is used, as opposed to by binding, is due to some
          * complexity contained within the `getContent` function in the rxOptionTable directive.
-         * [Link to the `getContent` function]{@link http://goo.gl/HKBoez}.
+         * [Link to the `getContent` function]{@link https://goo.gl/jWMt2V}.
          * There are columns that may contain static data (or expressions to be evaluated against `$scope`)
          * for every row, and those data items are never bound to `$scope`. Although the column.keys that are
          * passed into `$scope.getContent` that contain angular expressions can be located by binding, there are
          * cases when plain text or HTML gets passed in. These never get bound to `$scope`. They can, however,
          * be located by querying the column name via CSS selector, so that's used instead.
          * @param {string} columnName - Column name to grab the current row's cell under.
-         * @param {function} [customFn=getText()] - Special work to be done to the resulting `cellElement`.
+         * @param {function} [customFn=getText()] -
+         * Special work to be done to the resulting cellElements found under `columnName`.
+         * @example
+         * it('should have the right name in the first row', function () {
+         *     expect(encore.rxOptionTable.row(0).cell('Name')).to.eventually.equal('Andrew Yurisich');
+         * });
          */
         cell: {
             value: function (columnName, customFn) {
@@ -74,9 +89,11 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @memberof rxOptionTable.row
+         * @instance
          * @description
-         * Since checkboxes are a superset of radio input elements, a checkbox is used.
-         * @returns {rxCheckbox} Page object representing a checkbox.
+         * Since checkboxes are a superset of radio input elements, a checkbox is used, regardless
+         * if the option table is a checkbox type or a radio button type table.
+         * @type {rxCheckbox}
          */
         selectInput: {
             get: function () {
@@ -87,9 +104,9 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @function
+         * @instance
          * @memberof rxOptionTable.row
          * @description Selects the current row.
-         * @returns {undefined}
          */
         select: {
             value: function () {
@@ -99,13 +116,26 @@ var optionRowFromElement = function (eleOptionRow) {
 
         /**
          * @function
+         * @instance
          * @memberof rxOptionTable.row
-         * @description Unselects the current row.
-         * @returns {undefined}
+         * @description Deselects the current row.
+         */
+        deselect: {
+            value: function () {
+                this.selectInput.deselect();
+            }
+        },
+
+        /**
+         * @deprecated
+         * @function
+         * @instance
+         * @memberof rxOptionTable.row
+         * @description **DEPRECATED**: Use {@link rxOptionTable.row#deselect} instead.
          */
         unselect: {
             value: function () {
-                this.selectInput.deselect();
+                this.deselect();
             }
         }
     });
@@ -153,7 +183,24 @@ var rxOptionTable = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the root element is currently displayed.
+     * @instance
+     * @description The number of rows in the table.
+     * @example
+     * it('should have more than two rows', function () {
+     *     expect(encore.rxOptionTable.initialize().count()).to.eventually.be.above(2);
+     * });
+     */
+    count: {
+        value: function () {
+            return this.tblRows.count();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether the root element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -163,7 +210,15 @@ var rxOptionTable = {
 
     /**
      * @function
-     * @returns {boolean} Whether or not the table's  the empty message label is currently present.
+     * @instance
+     * @description Whether or not the table's empty message label is currently present.
+     * @returns {Boolean}
+     * @example
+     * it('should not have any rows in the table', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     expect(table.count()).to.eventually.equal(0);
+     *     expect(table.isEmpty()).to.eventually.be.true;
+     * });
      */
     isEmpty: {
         value: function () {
@@ -172,7 +227,16 @@ var rxOptionTable = {
     },
 
     /**
-     * @returns {string|null} The currently displayed empty message label text, or `null` if not present.
+     * @instance
+     * @description The currently displayed empty message label text, or `null` if not present.
+     * @type {String|null}
+     * @example
+     * it('should not have any rows in the table', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     expect(table.count()).to.eventually.equal(0);
+     *     expect(table.isEmpty()).to.eventually.be.true;
+     *     expect(table.emptyMessage).to.eventually.not.be.null;
+     * });
      */
     emptyMessage: {
         get: function () {
@@ -184,7 +248,9 @@ var rxOptionTable = {
     },
 
     /**
-     * @namespace
+     * @function
+     * @instance
+     * @description Exposes a namespace of functions to interact with a row in an option table.
      * @param {number} rowIndex - Index of the row in the table.
      * @returns {rxOptionTable.row} Page object representing a row.
      */
@@ -195,11 +261,17 @@ var rxOptionTable = {
     },
 
     /**
+     * @instance
      * @description
      * Will default to the first selected row if many are selected.
      * Be certain you have a selected row before calling this, or a
-     * NoSuchElementError will be thrown.
-     * @returns {rxOptionTable.row} Page object representing a row.
+     * `NoSuchElementError` will be thrown.
+     * @type {rxOptionTable.row}
+     * @example
+     * it('should already have the row for "Texas" selected', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     expect(table.selectedRow.cell('State')).to.eventually.equal('Texas');
+     * });
      */
     selectedRow: {
         get: function () {
@@ -208,7 +280,14 @@ var rxOptionTable = {
     },
 
     /**
-     * @returns {string[]} Every column heading's text, as an array.
+     * @instance
+     * @description Every column heading's text, as an array.
+     * @type {String[]}
+     * @example
+     * it('should have every column present in the option table', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     expect(table.columnNames).to.eventually.equal(['Name', 'Role', 'Hire Date']);
+     * });
      */
     columnNames: {
         get: function () {
@@ -220,26 +299,22 @@ var rxOptionTable = {
 
     /**
      * @function
+     * @instance
      * @description
      * Return the value of the cells found under `columnName`, using `getText` by default.
      * For more control, pass in a `customFn`.
-     * @param {string} columnName - Column name containing the cell elements to be retrieved.
-     * @param {function} [customFn=getText()] - Special work to be done on the column's cell elements.
-     * @returns {*|string[]} Array of return values specified in `customFn`, or an array of strings from `getText()`
-     *
+     * @param {String} columnName - Column name containing the cell elements to be retrieved.
+     * @param {Function} [customFn=getText()] - Special work to be done on the column's cell elements.
+     * @returns {*|String[]} Array of return values specified in `customFn`, or an array of strings from `getText()`
      * @example
-     * ```js
      * // three rows, with ['$0.00', '$1.00', '$2.00'] in their cells, respectively.
      * var penniesData = [0, 100, 200];
      * var penniesFn = function (cellElements) {
-     *     return cellElements.map(function (cellElement) {
-     *         return cellElement.getText().then(rxMisc.currencyToPennies);
-     *     });
+     *     return cellElements.getText().then(rxMisc.currencyToPennies);
      * };
      *
      * // without the second argument, each cell will have `.getText()` called on it
      * expect(optionTable.columnData('Surcharge', penniesFn)).to.eventually.eql(penniesData);
-     * ```
      */
     columnData: {
         value: function (columnName, customFn) {
@@ -258,8 +333,8 @@ var rxOptionTable = {
 
     /**
      * @function
+     * @instance
      * @description Unselects every row in the rxOptionTable.
-     * @returns {undefined}
      */
     unselectAll: {
         value: function () {
@@ -271,14 +346,20 @@ var rxOptionTable = {
 
     /**
      * @function
+     * @instance
      * @description
      * Unselect a row by the `columnName` that contains `columnText`.
      * This function uses cssContainingText, be certain your column name and text is unique.
      * @param {string} columnName - Name of the column that contains the cell to select.
      * @param {string} columnText - Cell text that uniquely identifies the selection.
-     * @returns {undefined}
+     * @example
+     * it('should deselect the row that matches my dog\'s name', function () {
+     *     var dogList = encore.rxOptionTable.initialize($('#dog-list'));
+     *     dogList.deselectByColumnText('Name', 'Sebastian');
+     *     expect(dogList.selections).to.eventually.eql([]);
+     * });
      */
-    unselectByColumnText: {
+    deselectByColumnText: {
         value: function (columnName, columnText) {
             var page = this;
             var css = cellSelectorForColumn(columnName);
@@ -290,19 +371,39 @@ var rxOptionTable = {
     },
 
     /**
+     * @deprecated
      * @function
+     * @instance
+     * @description **DEPRECATED**: Use {@link rxOptionTable#deselectByColumnText} instead.
+     * @alias rxOptionTable#deselectByColumnText
+     */
+    unselectByColumnText: {
+        value: function (columnName, columnText) {
+            this.deselectByColumnText(columnName, columnText);
+        }
+    },
+
+    /**
+     * @function
+     * @instance
      * @description
-     * Unselect options where each `{ columnName: columnText }` in `selections` is passed to
-     * {@link rxOptionTable.unselectByColumnText}.
+     * Deselect options where each `{ columnName: columnText }` in `selections` is passed to
+     * {@link rxOptionTable#unselectByColumnText}.
      * @param {Object[]} selections - Array of single key-value pairs to unselect.
      * @returns {undefined}
      * @example
-     * ```js
-     * unselectMany([{ 'Name': 'Item 1' },
-     *               { 'Name': 'Item 2' }]);
-     * ```
+     * it('should deselect the second item', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     expect(table.selections).to.eventually.eql([0, 1]);
+     *     table.deselectMany(
+     *         [
+     *             { 'Name': 'Item 2' }
+     *         ]
+     *     );
+     *     expect(table.selections).to.eventually.eql([0]);
+     * });
      */
-    unselectMany: {
+    deselectMany: {
         value: function (selections) {
             var page = this;
             _.forEach(selections, function (selection) {
@@ -312,13 +413,32 @@ var rxOptionTable = {
     },
 
     /**
+     * @deprecated
      * @function
+     * @instance
+     * @description **DEPRECATED**: Use {@link rxOptionTable#deselectMany} instead.
+     * @alias rxCheckbox#deselectMany
+     */
+    unselectMany: {
+        value: function (selections) {
+            this.deselectMany(selections);
+        }
+    },
+
+    /**
+     * @function
+     * @instance
      * @description
      * Select a row by the `columnName` that contains `columnText`.
      * This function uses cssContainingText, be certain your column name and text is unique.
      * @param {string} columnName - Name of the column that contains the cell to select.
      * @param {string} columnText - Cell text that uniquely identifies the selection.
-     * @returns {undefined}
+     * @example
+     * it('should select the row that matches my dog\'s name', function () {
+     *     var dogList = encore.rxOptionTable.initialize($('#dog-list'));
+     *     dogList.selectByColumnText('Name', 'Sebastian');
+     *     expect(dogList.selections).to.eventually.eql([0]);
+     * });
      */
     selectByColumnText: {
         value: function (columnName, columnText) {
@@ -333,16 +453,23 @@ var rxOptionTable = {
 
     /**
      * @function
+     * @instance
      * @description
      * Select options where each `{ columnName: columnText }` in `selections` is passed to
-     * {@link rxOptionTable.selectByColumnText}.
+     * {@link rxOptionTable#selectByColumnText}.
+     * @see rxOptionTable#selectByColumnText
      * @param {Object[]} selections - Array of single key-value pairs to select.
-     * @returns {undefined}
      * @example
-     * ```js
-     * selectMany([{ 'Name': 'Item 1' },
-     *             { 'Name': 'Item 2' }]);
-     * ```
+     * it('should select the first and second item', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     table.selectMany(
+     *         [
+     *             { 'Name': 'Item 1' },
+     *             { 'Name': 'Item 2' }
+     *         ]
+     *     );
+     *     expect(table.selections).to.eventually.eql([0, 1]);
+     * });
      */
     selectMany: {
         value: function (selections) {
@@ -354,10 +481,22 @@ var rxOptionTable = {
     },
 
     /**
+     * @instance
      * @description
      * Return a list of row indexes that are currently selected.
      * Get the row yourself if you need more information about the row's contents.
-     * @returns {number[]} All selected rows' indexes from the rxOptionTable.
+     * @type {Number[]}
+     * @example
+     * it('should have every state the user has lived in already selected', function () {
+     *     var states = ['Florida', 'Indiana', 'Texas'];
+     *     var table = encore.rxOptionTable.initialize();
+     *     table.selections.then(function (selectedRows) {
+     *         expect(selectedRows.length).to.equal(3);
+     *         selectedRows.forEach(function (selectedRow) {
+     *             expect(table.row(selectedRow).cell('State')).to.eventually.be.oneOf(states);
+     *         });
+     *     });
+     * });
      */
     selections: {
         get: function () {
@@ -375,9 +514,16 @@ var rxOptionTable = {
     },
 
     /**
-     * @description
-     * Return a list of row indexes that are currently disabled.
-     * @returns {number[]} All disabled row indexes from the rxOptionTable
+     * @instance
+     * @description A list of row indexes that are currently disabled.
+     * @returns {Number[]}
+     * @example
+     * it('should have the first and last row disabled', function () {
+     *     var table = encore.rxOptionTable.initialize();
+     *     table.count().then(function (rowCount) {
+     *         expect(table.disabledOptions).to.eventually.eql([0, rowCount - 1]);
+     *     });
+     * });
      */
     disabledOptions: {
         get: function () {
@@ -395,24 +541,21 @@ var rxOptionTable = {
     }
 };
 
-/**
- * @deprecated
- * @namespace
- * @description
- * **DEPRECATED**: Please use {@link rxOptionTable} as a stand-in replacement.
- */
 var rxOptionFormTable = rxOptionTable; // jshint ignore:line
 
-/**
- * @exports encore.rxOptionTable
- */
 exports.rxOptionTable = {
     /**
      * @function
-     * @param {WebElement} rxOptionTableElement - WebElement to be transformed into an rxOptionTableElement object.
+     * @memberof rxOptionTable
+     * @param {ElementFinder} [rxOptionTableElement=$('rx-option-table')] -
+     * ElementFinder to be transformed into an rxOptionTableElement object.
      * @returns {rxOptionTable} Page object representing the rxOptionTable object.
      */
     initialize: function (rxOptionTableElement) {
+        if (rxOptionTableElement === undefined) {
+            rxOptionTableElement = $('rx-option-table');
+        }
+
         rxOptionTable.rootElement = {
             get: function () { return rxOptionTableElement; }
         };
@@ -420,16 +563,21 @@ exports.rxOptionTable = {
     },
 
     /**
-     * @returns {rxOptionTable} Page object representing the _first_ rxOptionTable object found on the page.
+     * @deprecated
+     * @memberof rxOptionTable
+     * @description **DEPRECATED**: Use {@link rxOptionTable.initialize} without arguments instead.
+     * Will return a page object representing the _first_ rxOptionTable object found on the page.
+     * @type {rxOptionTable}
      */
     main: (function () {
         rxOptionTable.rootElement = {
-            get: function () { return $('rx-option-table')[0]; }
+            get: function () { return $('rx-option-table'); }
         };
         return Page.create(rxOptionTable);
     })(),
 
     /**
+     * @memberof rxOptionTable
      * @function
      * @description
      * Generates a getter and a setter for an option table on your page, no matter if that
@@ -438,17 +586,16 @@ exports.rxOptionTable = {
      * consider exposing a raw rxOptionTable component on your page object as well. This
      * provides users the ability to not only quickly get and set options in the rxOptionTable,
      * but also get columns, query cells, and other useful functions exposed in the component.
-     * @param {WebElement} elem - The WebElement for the rxOptionTable.
-     * @returns {Object} A getter and a setter to be applied to an option form table in a page object.
+     * @param {ElementFinder} elem - The root element of the rxOptionTable.
+     * @returns {rxOptionTable} A getter and a setter to be applied to an option form table in a page object.
      * @example
-     * ```js
      * var yourPage = Page.create({
-     *     paymentMethod: rxOptionTable.generateAccessor(element(by.model('paymentMethod.primary')));
+     *     paymentMethod: encore.rxOptionTable.generateAccessor(element(by.model('paymentMethod.primary')));
      *
      *     // you should still expose the optionTable as well, for greater usability in integration tests
      *     paymentMethodTable: {
      *         get: function () {
-     *             rxOptionTable.initialize(element(by.model('paymentMethod.primary')));
+     *             encore.rxOptionTable.initialize(element(by.model('paymentMethod.primary')));
      *         }
      *     }
      * });
@@ -460,7 +607,6 @@ exports.rxOptionTable = {
      *     // include a raw option table object as well -- it will simplify more expressive tests
      *     expect(yourPage.paymentMethodTable.row(2).cell('Card Type')).to.eventually.equal('Visa');
      * });
-     * ```
      */
     generateAccessor: function (elem) {
         return {
@@ -478,27 +624,37 @@ exports.rxOptionTable = {
 
 /**
  * @deprecated
- * @exports encore.rxOptionFormTable
+ * @namespace
  * @description
- * **DEPRECATED**: Please use `encore.rxOptionTable` as a stand-in replacement.
+ * **DEPRECATED**: Please use {@link rxOptionTable} as a stand-in replacement.
  */
 exports.rxOptionFormTable = {
     /**
      * @deprecated
+     * @function
+     * @returns {rxOptionTable}
+     * @memberof rxOptionFormTable
      * @description
-     * **DEPRECATED**: Please use `encore.rxOptionTable.initialize` as a stand-in replacement.
+     * **DEPRECATED**: Please use {@link encore.rxOptionTable.initialize} as a stand-in replacement.
      */
     initialize: exports.rxOptionTable.initialize,
+
     /**
      * @deprecated
+     * @memberof rxOptionFormTable
+     * @type {rxOptionTable}
      * @description
-     * **DEPRECATED**: Please use `encore.rxOptionTable.main` as a stand-in replacement.
+     * **DEPRECATED**: Please use {@link rxOptionTable.initialize} (without arguments) as a stand-in replacement.
      */
     main: exports.rxOptionTable.main,
+
     /**
      * @deprecated
+     * @function
+     * @memberof rxOptionFormTable
+     * @returns {rxOptionTable}
      * @description
-     * **DEPRECATED**: Please use `encore.rxOptionTable.generateAccessor` as a stand-in replacement.
+     * **DEPRECATED**: Please use {@link rxOptionTable.generateAccessor} as a stand-in replacement.
      */
     generateAccessor: exports.rxOptionTable.generateAccessor
 };
