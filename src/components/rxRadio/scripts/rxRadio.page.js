@@ -19,8 +19,11 @@ var rxRadio = {
     },
 
     /**
-       Useful for situations where input types might change in the future, ensuring that the expected one is being used.
-       @returns {Boolean} Whether or not the element in question is a radio button.
+     * @function
+     * @instance
+     * @description Whether or not the element in question is a radio button.
+     * Useful for situations where input types might change in the future, ensuring that the expected one is being used.
+     * @returns {Boolean}
      */
     isRadio: {
         value: function () {
@@ -32,7 +35,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the radio button is valid
+     * @instance
+     * @description Whether the radio button is valid.
+     * @returns {Boolean}
      */
     isValid: {
         value: function () {
@@ -44,7 +49,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @returns {Boolean} Whether the radio element is currently displayed.
+     * @instance
+     * @description Whether the radio element is currently displayed.
+     * @returns {Boolean}
      */
     isDisplayed: {
         value: function () {
@@ -57,7 +64,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @returns {Boolean} Whether or not the radio button is present.
+     * @instance
+     * @description Whether or not the radio button is present.
+     * @returns {Boolean}
      */
     isPresent: {
         value: function () {
@@ -67,7 +76,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @return {Boolean} whether or not the radio element is disabled
+     * @instance
+     * @description Whether or not the radio element is disabled.
+     * @return {Boolean}
      */
     isDisabled: {
         value: function () {
@@ -87,7 +98,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @returns {boolean} Whether or not the radio button is currently selected.
+     * @instance
+     * @description Whether or not the radio button is currently selected.
+     * @returns {Boolean}
      */
     isSelected: {
         value: function () {
@@ -97,8 +110,9 @@ var rxRadio = {
 
     /**
      * @function
-     * @returns {undefined}
-     * @description Makes sure that the radio button is selected.
+     * @instance
+     * @description Makes sure that the radio button is selected. If the radio button is already
+     * selected, this function will do nothing.
      */
     select: {
         value: function () {
@@ -112,14 +126,13 @@ var rxRadio = {
     }
 };
 
-/**
- * @exports encore.rxRadio
- */
 exports.rxRadio = {
     /**
      * @function
-     * @param {WebElement} rxRadioElement - WebElement to be transformed into an rxRadio page object
-     * @returns {rxRadio} Page object representing the rxRadio element
+     * @memberof rxRadio
+     * @description Creates a page object representing the rxRadio element.
+     * @param {ElementFinder} rxRadioElement - ElementFinder to be transformed into an rxRadio page object.
+     * @returns {rxRadio}
      */
     initialize: function (rxRadioElement) {
         rxRadio.rootElement = {
@@ -130,9 +143,12 @@ exports.rxRadio = {
 
     /**
      * @function
+     * @memberof rxRadio
      * @description Generates a getter and a setter for an rxRadio element on your page.
-     * @param {WebElement} elem - The WebElement for the rxRadio.
-     * @returns {Object} A getter and a setter to be applied to a rxRadio page object.
+     * The getter maps to the value returned from the instance's {@link rxRadio#isSelected},
+     * whereas the setter will apply the given value against {@link rxRadio#select}.
+     * @param {ElementFinder} elem - The ElementFinder for the rxRadio.
+     * @returns {Object}
      */
     generateAccessor: function (elem) {
         return {
