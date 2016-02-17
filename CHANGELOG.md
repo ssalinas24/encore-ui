@@ -1,3 +1,13 @@
+<a name="1.45.2-0"></a>
+### 1.45.2-0 (2016-02-17)
+
+
+#### Bug Fixes
+
+* **jsdoc:** Supress publication of private entries ([5ebfa86a](git@github.com:rackerlabs/encore-ui/commit/5ebfa86a7ddd1474bda3eb9eec73ff171180cca5))
+* **visualRegression:** correct forms manual save screenshot ([38726467](git@github.com:rackerlabs/encore-ui/commit/387264677f533b0ca3ac9460d0cbb0dddbe23a79))
+
+
 <a name="1.45.1"></a>
 ### 1.45.1 (2016-02-10)
 
