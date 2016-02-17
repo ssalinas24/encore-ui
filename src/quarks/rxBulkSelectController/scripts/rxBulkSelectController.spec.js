@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-describe('rxBulkSelect', function () {
+describe('quarks:rxBulkSelectController', function () {
     var scope, compile, rootScope, timeout;
 
     var servers = [
@@ -18,7 +18,7 @@ describe('rxBulkSelect', function () {
     };
 
     beforeEach(function () {
-        module('encore.ui.rxMisc');
+        module('encore.ui.quarks');
         module('encore.ui.rxBulkSelect', function ($provide) {
             $provide.value('rxBulkSelectUtils', rxBulkSelectUtils);
         });
@@ -106,4 +106,4 @@ describe('rxBulkSelect', function () {
             expect(numSelected).to.equal(0);
         });
     });//controller:rxBulkSelectController
-});//rxBulkSelect
+});//quarks:rxBulkSelectController

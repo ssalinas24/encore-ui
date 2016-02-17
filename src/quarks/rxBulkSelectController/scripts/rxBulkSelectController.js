@@ -1,4 +1,11 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.quarks')
+/**
+ * @ngdoc controller
+ * @name quarks.controller:rxBulkSelectController
+ * @scope
+ * @description
+ * Provides controller logic for {@link rxBulkSelect}.
+ */
 .controller('rxBulkSelectController', function ($scope, NotifyProperties, rxBulkSelectUtils) {
     $scope.showMessage = false;
 
