@@ -12,6 +12,7 @@
  * * {@link quarks.object:rxStatusColumnIcons rxStatusColumnIcons}
  *
  * ## Controllers
+ * * {@link quarks.controller:rxBulkSelectController rxBulkSelectController}
  * * {@link quarks.controller:rxFeedbackController rxFeedbackController}
  * * {@link quarks.controller:rxModalCtrl rxModalCtrl}
  * 
