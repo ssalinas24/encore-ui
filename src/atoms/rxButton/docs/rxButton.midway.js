@@ -2,7 +2,7 @@ describe('rxButton', function () {
     var rxButton;
 
     before(function () {
-        demoPage.go('#/components/rxButton');
+        demoPage.go('#/atoms/rxButton');
         rxButton = encore.rxButton.initialize($('#demo-ui-rx-button'));
     });
 
