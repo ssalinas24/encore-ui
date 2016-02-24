@@ -171,6 +171,12 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 { name: 'Links' }
             ])
         })
+        .when('/atoms/lists', {
+            templateUrl: 'templates/atoms/lists.html',
+            controller: genericRouteController([
+                { name: 'Lists' }
+            ])
+        })
         .when('/atoms/:atom', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
@@ -323,7 +329,11 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         {
                             linkText: 'Links',
                             href: '#/atoms/links'
-                        }
+                        },
+                        {
+                            linkText: 'Lists',
+                            href: '#/atoms/lists'
+                        },
                     ].concat(linksForModuleCategory('atoms'))
                 },
                 {
