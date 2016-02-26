@@ -28,44 +28,50 @@
     already in use and should not be duplicated.
   </p>
   <p>
-    HEADS UP: Most icons have been chosen based on the verb (Add ,Edit, Delete,
+    <strong>HEADS UP:</strong> Most icons have been chosen based on the verb (Add ,Edit, Delete,
     Restart, etc) but there are a couple of icons chosen on the noun (consoles,
     tachometers for throttling). This is a design pattern discrepancy that will
     need to be resolved in a future iteration.
   </p>
-  <rx-example name="link.reservedIcons"></rx-example>
 
-  <h2>Action Link Colors</h2>
+  <rx-example name="link.icons.reserved"></rx-example>
+
+  <h3>Types &amp; Colors</h3>
   <p>
     Status Classes are used to provide a clearer status regarding a simple
     message. Within the context of Encore, the following colors are used
     to convey action links:
   </p>
-  <ul class="list">
-    <li>
-      Green (<code>.msg-action</code>) is for create/add actions.
-      When part of a list, they appear at the top.
-    </li>
-    <li>
-      Blue (<code>.msg-info-blue</code>) is for download actions.
-      When part of a list, they appear second.
-    </li>
-    <li>
-      Orange (<code>.msg-info</code>) is for edit/modify actions.
-      When part of a list, they appear third.
-    </li>
-    <li>
-      Red (<code>.msg-warn</code>) is for destructive actions.
-      When part of a list, they appear last.
-    </li>
-  </ul>
-  <rx-example name="link.colors"></rx-example>
+  <h4>Create/Add Actions</h4>
+  <p>
+    Green (<code>.msg-action</code>) is for create/add actions.
+    When part of a list, they appear at the top.
+  </p>
+  <rx-example name="link.colors.create"></rx-example>
+  <h4>Download Actions</h4>
+  <p>
+    Blue (<code>.msg-info-blue</code>) is for download actions.
+    When part of a list, they appear second.
+  </p>
+  <rx-example name="link.colors.download"></rx-example>
+  <h4>Edit/Modify Actions</h4>
+  <p>
+    Orange (<code>.msg-info</code>) is for edit/modify actions.
+    When part of a list, they appear third.
+  </p>
+  <rx-example name="link.colors.modify"></rx-example>
+  <h4>Destructive Actions</h4>
+  <p>
+    Red (<code>.msg-warn</code>) is for destructive actions.
+    When part of a list, they appear last.
+  </p>
+  <rx-example name="link.colors.destructive"></rx-example>
 
-  <h2>Using Spinners with Action Links</h2>
+  <h3>Links with Spinners</h2>
   <p>
     You can use a spinner style for action links. Different spinner styles are
     available when a user takes action by clicking a button
-    (see <a href="#">Buttons &amp; Links demo</a>).
+    (see <a href="#/atoms/buttons">Buttons Demo Page</a>).
   </p>
   <p>
     When an action link must first fetch data or determine state before the user
@@ -73,10 +79,10 @@
     spinner and link have a disabled gray color and are not clickable.
   </p>
   <p>
-    HEADS UP: The spinner with action link is being styled on a per-project
-    basis currently, since the current implementation of rxSpinner needs to be
+    <strong>HEADS UP:</strong> The spinner with action link is being styled on a per-project
+    basis currently, since the current implementation of <code>rxSpinner</code> needs to be
     updated to support this use case more easily.
   </p>
-  <rx-example name="link.withSpinner"></rx-example>
+  <rx-example name="link.spinner"></rx-example>
 </rx-page>
 
