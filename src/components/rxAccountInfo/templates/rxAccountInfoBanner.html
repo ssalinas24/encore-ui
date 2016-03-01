@@ -4,7 +4,7 @@
             <div class="label">Account Name:</div>
             <div class="account-data">
                 <a href="{{ accountPageUrl }}" target="_blank">
-                    {{ accountName }}
+                    {{ accountName || 'N/A' }}
                 </a>
             </div>
         </li>
@@ -18,11 +18,13 @@
         </li>
         <li>
             <div class="label">Account Status:</div>
-            <div class="account-data {{ statusClass }} account-status">{{ accountStatus }}</div>
+            <div class="account-data {{ statusClass }} account-status">
+              {{ accountStatus || 'N/A' }}
+            </div>
         </li>
         <li>
             <div class="label">Access Policy:</div>
-            <div class="account-data">{{ accountAccessPolicy }}</div>
+            <div class="account-data">{{ accountAccessPolicy || 'N/A' }}</div>
         </li>
         <li ng-if="showCurrentUser">
             <div class="label">Current User:</div>
