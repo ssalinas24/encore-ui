@@ -6,7 +6,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class="first-row">
             <td>table1 data1</td>
             <td>table1 data1</td>
         </tr>
@@ -21,6 +21,14 @@
         <tr class="middle-row">
             <td>table1 data4</td>
             <td>table1 data4</td>
+        </tr>
+        <tr>
+            <td>table1 data5</td>
+            <td>table1 data5</td>
+        </tr>
+        <tr class="last-row">
+            <td>table1 data6</td>
+            <td>table1 data6</td>
         </tr>
     </tbody>
 </table>
@@ -48,7 +56,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="datum in data | filter:searchText" class="row_{{datum.value}}" ng-class="{'middle-row': $index===2}">
+            <tr ng-repeat="datum in data | filter:searchText"
+                class="row_{{datum.value}}"
+                ng-class="{'first-row': $index===0, 'middle-row': $index===11, 'last-row': $index===21}">
                 <td>{{datum.name}}</td>
                 <td>{{datum.value}}</td>
             </tr>

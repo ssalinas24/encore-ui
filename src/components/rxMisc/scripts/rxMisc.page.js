@@ -228,15 +228,34 @@ exports.rxMisc = {
      * the element with the smallest Y coordinate will be scrolled to.
      * @function
      * @param {ElementFinder|ElementArrayFinder} elem - An element, or a list of elements to scroll to.
+     * @param {Object} [options={}] - The options for scrolling to the element.
+     * @param {String} [options.elementTargetPoint='top'] -
+     * Which point in the element to position when scrolling to it.
+     *
+     * - **top** : targets the top of the element
+     * - **middle** : targets the middle of the element
+     * - **bottom** : targets the bottom of the element
+     *
+     * @param {String} [options.positionOnScreen='top'] -
+     * Where to place the point in the element on the screen when scrolling to it.
+     *
+     * - **top**: position the element target point at the top of the screen
+     * - **middle** : position the element target point in the middle of the screen
+     * - **bottom** : position the element target point at the bottom of the screen
+     *
      * @example
      * var tablePage = {
-     *     get tblRows() { return element.all(by.repeater('row in rows')); },
+     *     get tblRows() {
+     *         return element.all(by.repeater('row in rows'));
+     *     },
+     *
      *     isLoading: function () {
      *         return $('.infinite-scrolling.loading');
      *     },
      *
      *     triggerLoad: function () {
-     *         encore.rxMisc.scrollToElement(this.tblRows.get(-1));
+     *         // will attempt to put the top of the last row in the middle of the screen
+     *         encore.rxMisc.scrollToElement(this.tblRows.get(-1), { positionOnScreen: 'middle' });
      *     }
      * };
      *
@@ -247,22 +266,81 @@ exports.rxMisc = {
      *    browser.ignoreSynchronization = false;
      * });
      */
-    scrollToElement: function (elem) {
-        return elem.getLocation().then(function (loc) {
+    scrollToElement: function (elem, options) {
+        if (options === undefined) {
+            options = {};
+        }
+
+        options = _.defaults(options, {
+            elementTargetPoint: 'top', // 'middle', 'bottom'
+            positionOnScreen: 'top', // 'middle', 'bottom'
+        });
+
+        return protractor.promise.all([elem.getSize(), elem.getLocation()]).then(function (info) {
+            var size = info[0];
+            var loc = info[1];
+
             if (_.isArray(loc)) {
                 loc = _.min(loc, 'y');
             }
 
-            var command = ['window.scrollTo(0, ', loc.y.toString(), ');'].join('');
-            browser.executeScript(command);
+            if (_.isArray(size)) {
+                size = _.min(size, 'height');
+            }
+
+            return browser.executeScript('return window.innerHeight;').then(function (height) {
+                var positionOnScreen = {
+                    top: 0,
+                    middle: height / 2,
+                    bottom: height
+                }[options.positionOnScreen];
+
+                var elementTargetPoint = {
+                    top: loc.y,
+                    middle: loc.y + size.height / 2,
+                    bottom: loc.y + size.height
+                }[options.elementTargetPoint];
+
+                var yLocation = elementTargetPoint - positionOnScreen;
+
+                var command = ['window.scrollTo(0, ', yLocation.toString(), ');'].join('');
+                browser.executeScript(command);
+            });
         });
+    },
+
+    /**
+     * @type Object
+     * @property {Promise<Number>} x - The number of pixels from the left edge of the current scroll location.
+     * @property {Promise<Number>} y - The number of pixels from the upper edge of the current scroll location.
+     * @description The current scroll location, given as an _immediate_ object (not a promise of an object)
+     * with members `x`/`y`, which are coordinates that _are_ returned as promises.
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollX
+     * @example
+     * it('should scroll down a bit', function () {
+     *     expect(encore.rxMisc.scrollPosition.x).to.eventually.equal(0);
+     *     expect(encore.rxMisc.scrollPosition.y).to.eventually.equal(0);
+     *     encore.rxMisc.scrollToElement($('.footer'));
+     *     expect(encore.rxMisc.scrollPosition.x).to.eventually.equal(0);
+     *     expect(encore.rxMisc.scrollPosition.y).to.eventually.equal(841);
+     * });
+     */
+    scrollPosition: {
+        get x() {
+            return browser.executeScript('return window.scrollX;');
+        },
+
+        get y() {
+            return browser.executeScript('return window.scrollY;');
+        }
     },
 
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same Y coordinates.
-     * @param {ElementFinder} e1 First element to compare Y locations against.
-     * @param {ElementFinder} e2 Second element to compare Y locations against.
+     * @param {ElementFinder|ElementArrayFinder} e1 First element to compare Y locations against.
+     * @param {ElementFinder|ElementArrayFinder} e2 Second element to compare Y locations against.
      * @returns {Boolean}
      * @example
      * var rowOfThings = $$('ul li'); // inline-style row list
@@ -278,8 +356,8 @@ exports.rxMisc = {
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same X coordinates.
-     * @param {ElementFinder} e1 First element to compare X locations against.
-     * @param {ElementFinder} e2 Second element to compare X locations against.
+     * @param {ElementFinder|ElementArrayFinder} e1 First element to compare X locations against.
+     * @param {ElementFinder|ElementArrayFinder} e2 Second element to compare X locations against.
      * @returns {Boolean}
      * @example
      * var listOfThings = $$('ol li'); // left-justified list
@@ -302,7 +380,11 @@ exports.rxMisc = {
      * return a promise representing the y value of the resulting (or provided) location object.
      */
     transformLocation: function (elementOrLocation, attribute) {
-        if (_.isFunction(elementOrLocation.getLocation)) {
+        if (elementOrLocation instanceof protractor.ElementArrayFinder) {
+            elementOrLocation = elementOrLocation.first();
+        }
+
+        if (elementOrLocation instanceof protractor.ElementFinder) {
             var elem = elementOrLocation;
             return elem.getLocation().then(function (loc) {
                 return loc[attribute];
@@ -315,6 +397,32 @@ exports.rxMisc = {
                 return protractor.promise.fulfilled(location);
             }
         }
+    },
+
+    /**
+     * @private
+     * @function
+     * @description Return the absolute distance between `e1` and `e2`'s Y-coordinates on the screen.
+     * This function does not account for the extra space incurred by measuring the the heights of `e1`
+     * or `e2` themselves. This function returns only the distance between the top left corner of `e1`
+     * and the top left corner of `e2`.
+     * @param {ElementFinder|Number} e1 - The element to measure (or its y-coordinates as a number).
+     * @param {ElementFinder|Number} e2 - The element to compare (or its y-coordinates as a number).
+     * @example
+     * it('should be 20 pixels below the breadcrumbs', function () {
+     *     var yDifference = encore.rxMisc.yDiff(myPage.lblTitle, myPage.pagination.rootElement);
+     *     expect(yDifference).to.eventually.equal(-20);
+     * });
+     */
+    yDiff: function (e1, e2) {
+        var promises = [
+            this.transformLocation(e1, 'y'),
+            this.transformLocation(e2, 'y')
+        ];
+
+        return protractor.promise.all(promises).then(function (locations) {
+            return locations[0] - locations[1];
+        });
     },
 
     /**
