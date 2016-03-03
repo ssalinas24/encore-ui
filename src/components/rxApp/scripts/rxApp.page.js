@@ -112,17 +112,6 @@ var rxApp = {
         }
     },
 
-    /**
-     * @instance
-     * @type {String}
-     * @description The currently logged in user's id.
-     */
-    userId: {
-        get: function () {
-            return this.rootElement.element(by.binding('userId')).getText();
-        }
-    },
-
     logout: {
         value: function () {
             this.rootElement.$('.site-logout').click();

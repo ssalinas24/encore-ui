@@ -19,10 +19,8 @@ describe('rxApp', function () {
         expect(rxAppCustom.sectionTitle).to.eventually.equal('Example Menu');
     });
 
-    it('should logout', function () {
-        rxAppCustom.logout();
-        expect(demoPage.currentUrl).to.eventually.contain('login');
-        demoPage.go('#/components/rxApp');
+    it('should not have a user name', function () {
+        expect(rxAppCustom.rootElement.all(by.binding('userId')).count()).to.eventually.equal(0);
     });
 
     describe('with collapsible navigation', function () {
