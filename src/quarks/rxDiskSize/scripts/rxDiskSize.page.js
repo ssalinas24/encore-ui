@@ -1,5 +1,5 @@
 /**
- * @exports encore.rxDiskSize
+ * @namespace
  */
 exports.rxDiskSize = {
 

@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var Page = require('astrolabe').Page;
 
 /**
@@ -166,7 +165,7 @@ var rxSortableColumn = {
      * The second argument, `allByCssSelectorString` is used when your column's binding
      * (which is used by `by.repeater().column`) is for some reason unreachable by protractor.
      * A common reason why this wouldn't be the case is because the binding is not used as text
-     * within a web element, but instead used within the tag's attrs. An example of this is illustrated here:
+     * within an ElementFinder, but instead used within the tag's attrs. An example of this is illustrated here:
      * [Binding inside of a tag's attributes.]{@link http://goo.gl/HPjLU7}
      * In these cases, you should specify a css selector that will select each element in the column you
      * care about, since `by.binding` is not an option. You must provide a repeater string parameter to
@@ -333,7 +332,7 @@ exports.rxSortableColumn = {
     /**
      * @function
      * @memeberof rxSortableColumn
-     * @param {WebElement} rxSortableColumnElement - WebElement to be transformed into an rxSortableColumn object.
+     * @param {ElementFinder} rxSortableColumnElement - ElementFinder to be transformed into an rxSortableColumn object.
      * @param {String} [repeaterString] - Repeater string from the table. Required for {@link rxSortableColumn#data}
      * and {@link rxSortableColumn#getDataUsing}.
      * @returns {Page} Page object representing the {@link rxSortableColumn} object.

@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
@@ -277,7 +276,7 @@ var rxSelect = {
      * @function
      * @param {String} optionText -
      * Partial or total string to match the display value of the desired `<option>` element.
-     * @returns {WebElement}
+     * @returns {ElementFinder}
      */
     findOptionContaining: {
         value: function (optionText) {

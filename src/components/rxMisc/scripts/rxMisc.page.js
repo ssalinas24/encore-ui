@@ -1,4 +1,3 @@
-/*jshint node:true*/
 var _ = require('lodash');
 
 /**
@@ -12,7 +11,7 @@ exports.rxMisc = {
      * that don't seem to work right. Either the element does not appear to respond to a normal `.click()` call, or
      * the element is responding to more than one click event. This typically happens more often in Firefox than
      * in other browsers.
-     * @param {WebElement} elem - Web element to "slow click".
+     * @param {ElementFinder} elem - Element to "slow click".
      * @example
      * it('should click the crazy custom HTML thing that looks like a button but isn\'t', function () {
      *     var crazyButton = $('.button-wrapper[id="userId_"' + browser.params.userId + '"]');
@@ -117,10 +116,11 @@ exports.rxMisc = {
      * `fallbackReturnValue`, which will over ride the default `null` response into something else you'd prefer.
      * This is useful when applications feature use of `ng-if` to control various messages to the user.
      * @function
-     * @param {WebElement} elem - The web element that may or may not be present, or displayed, or valid.
+     * @param {ElementFinder} elem - The ElementFinder that may or may not be present, or displayed, or valid.
      * @param {Function} [innerFn=getText()] -
      * Function to call on the element should it be present, displayed, and valid.
-     * @param {*} [fallbackReturnValue=null] - Returned if the web element is not present, or not displayed, or invalid.
+     * @param {*} [fallbackReturnValue=null] -
+     * Returned if the ElementFinder is not present, or not displayed, or invalid.
      * @example
      * // given this html
      * <span class="accent-text">
@@ -239,8 +239,8 @@ exports.rxMisc = {
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same Y coordinates.
-     * @param {WebElement} e1 First element to compare Y locations against.
-     * @param {WebElement} e2 Second element to compare Y locations against.
+     * @param {ElementFinder} e1 First element to compare Y locations against.
+     * @param {ElementFinder} e2 Second element to compare Y locations against.
      * @returns {Boolean}
      * @example
      * var rowOfThings = $$('ul li'); // inline-style row list
@@ -256,8 +256,8 @@ exports.rxMisc = {
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same X coordinates.
-     * @param {WebElement} e1 First element to compare X locations against.
-     * @param {WebElement} e2 Second element to compare X locations against.
+     * @param {ElementFinder} e1 First element to compare X locations against.
+     * @param {ElementFinder} e2 Second element to compare X locations against.
      * @returns {Boolean}
      * @example
      * var listOfThings = $$('ol li'); // left-justified list
@@ -274,7 +274,7 @@ exports.rxMisc = {
      * @function
      * @private
      * @description
-     * Unify input from either a location object or a web element into a promise
+     * Unify input from either a location object or an ElementFinder into a promise
      * representing the location attribute (x or y) of either input.
      * Both `transformLocation($('.element'), 'y')` and `transformLocation({x: 20, y: 0}, 'y')`
      * return a promise representing the y value of the resulting (or provided) location object.
@@ -298,8 +298,8 @@ exports.rxMisc = {
     /**
      * @private
      * @function
-     * @param {WebElement} e1 First element to compare locations against.
-     * @param {WebElement} e2 Second element to compare locations against.
+     * @param {ElementFinder} e1 First element to compare locations against.
+     * @param {ElementFinder} e2 Second element to compare locations against.
      * @param {String} attribute attribute to compare ('x' or 'y')
      */
     compareLocations: function (e1, e2, attribute) {
