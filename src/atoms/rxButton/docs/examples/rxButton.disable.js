@@ -1,6 +1,5 @@
-/*jshint unused:false*/
 angular.module('demoApp')
-.controller('rxButtonCtrl', function ($scope, $timeout) {
+.controller('rxButtonDisableCtrl', function ($scope, $timeout) {
     $scope.status = {
         loading: false,
         disable: true
@@ -12,5 +11,5 @@ angular.module('demoApp')
         $timeout(function () {
             $scope.status.loading = false;
         }, 4000);
-    };
+    };//login()
 });

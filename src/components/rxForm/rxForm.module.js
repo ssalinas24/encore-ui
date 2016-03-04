@@ -36,10 +36,10 @@
  * * {@link rxForm.directive:rxInlineError rxInlineError}
  *   * Designed to style form control error messages.
  *
- * ## Compatible Components
- * These components work well with rxForm.
+ * ## Compatible Modules
+ * These modules work well with rxForm.
  *
- * * {@link rxButton}
+ * * {@link atoms.directive:rxButton rxButton}
  * * {@link rxCharacterCount}
  * * {@link atoms.directive:rxCheckbox rxCheckbox}
  * * {@link rxMultiSelect}
@@ -204,7 +204,7 @@
  * * {@link rxForm.directive:rxInlineError rxInlineError}
  *
  * ### Related Directives
- * * {@link rxButton.directive:rxButton rxButton}
+ * * {@link atoms.directive:rxButton rxButton}
  * * {@link rxCharacterCount.directive:rxCharacterCount rxCharacterCount}
  * * {@link atoms.directive:rxCheckbox rxCheckbox}
  * * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}

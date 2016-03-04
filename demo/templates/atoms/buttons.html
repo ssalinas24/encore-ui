@@ -3,7 +3,7 @@
   <p>
     You can style most of your buttons using this <code>.button</code> class.
     Exceptions can include <code>input type="button"</code> or
-    <a href="#/components/rxButton">rxButton</a> for dynamic loading indicators.
+    <a href="#/atoms/rxButton">rxButton</a> for dynamic loading indicators.
   </p>
 
   <h3>Button Sizing</h3>
@@ -13,18 +13,10 @@
   </p>
   <rx-example name="button.sizing"></rx-example>
 
+  <h3>Types &amp; Colors</h3>
 
-  <h3>Button Types &amp; Using Color</h3>
-  <p>
-    <span class="msg-info">ENCORE-SPECIFIC:</span> in the context of EncoreUI,
-    when is a button blue and when is it green?
-  </p>
+  <h4>Progression Button</h4>
   <ul class="list">
-    <li>
-      If the form you are submitting results in CREATING or ADDING something,
-      use green.
-    </li>
-    <li>If the form you are submitting is within a modal, use green.</li>
     <li>
       If the form you are submitting results in EDITING something or something
       auxiliary like getting metadata from a different source, keep it blue.
@@ -33,13 +25,38 @@
       If you are providing a button for the user to continue through a series
       of modals (with no submit), use blue.
     </li>
+  </ul>
+  <rx-example name="button.colors.progression"></rx-example>
+
+  <h4>Submit Button</h4>
+  <ul class="list">
+    <li>
+      If the form you are submitting results in CREATING or ADDING something,
+      use green.
+    </li>
+    <li>If the form you are submitting is within a modal, use green.</li>
+  </ul>
+  <rx-example name="button.colors.submit"></rx-example>
+
+  <h4>Negative Button</h4>
+  <rx-example name="button.colors.negative"></rx-example>
+
+  <h4>Cancel Button</h4>
+  <rx-example name="button.colors.cancel"></rx-example>
+
+  <h4>Finish Button</h4>
+  <ul class="list">
     <li>
       If you are providing a button for the user to exit a series of modals
       where no other action is required by the user, use the "Finish &amp; Close"
       button with a blue outline.
     </li>
   </ul>
-  <rx-example name="button.colors"></rx-example>
+  <rx-example name="button.colors.finish"></rx-example>
+
+  <h4>Disabled Button</h4>
+  <rx-example name="button.colors.disabled"></rx-example>
+
 
   <h3>Button with Animation</h3>
   <p>
@@ -72,4 +89,12 @@
     Also, this type of control should only be used with at most four segments.
   </p>
   <rx-example name="button.group"></rx-example>
+
+
+  <h3>rxButton</h4>
+  <rx-example name="rxButton.simple"></rx-example>
+
+  <h4>rxButton with <code>disable</code> attribute</h4>
+  <rx-example name="rxButton.disable"></rx-example>
+
 </rx-page>
