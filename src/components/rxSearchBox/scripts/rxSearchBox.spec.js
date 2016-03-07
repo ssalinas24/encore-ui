@@ -1,12 +1,12 @@
 describe('rxSearchBox', function () {
-    var scope, compile, rootScope, el, template;
+    var scope, isoScope, compile, el, template;
 
     beforeEach(function () {
         module('encore.ui.rxSearchBox');
         module('templates/rxSearchBox.html');
 
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
+            scope = $rootScope.$new();
             compile = $compile;
         });
     });
@@ -14,73 +14,131 @@ describe('rxSearchBox', function () {
     describe('simple invokation', function () {
         beforeEach(function () {
             template = '<rx-search-box ng-model="testModel"></rx-search-box>';
-            rootScope.testModel = '';
-            el = helpers.createDirective(template, compile, rootScope);
-            scope = el.isolateScope();
+            el = helpers.createDirective(template, compile, scope);
+            isoScope = el.isolateScope();
         });
 
-        it('should have same searchVal as testModel', function () {
-            expect(scope.searchVal).to.eq(rootScope.testModel);
-        });
+        describe('on $apply', function () {
+            var applyFn;
 
-        it('should not be clearable', function () {
-            expect(scope.isClearable).to.be.false;
-        });
-
-        it('should have default placeholder', function () {
-            expect(scope.rxPlaceholder).to.eq('Search...');
-        });
-
-        describe('given a non-empty rootScope.testModel', function () {
             beforeEach(function () {
-                rootScope.testModel = 'hiyoo';
-                scope.$digest();
+                applyFn = function () {
+                    scope.$apply();
+                };
             });
 
-            it('should not be clearable', function () {
-                expect(scope.isClearable).to.be.true;
-            });
-
-            describe('clearSearch()', function () {
+            describe('an undefined model', function () {
                 beforeEach(function () {
-                    scope.clearSearch();
+                    scope.testModel = undefined;
                 });
 
-                it('should set searchVal to empty string', function () {
-                    expect(scope.searchVal).to.be.empty;
+                it('should not throw error', function () {
+                    expect(applyFn).to.not.throw(Error);
                 });
-            });//clearSearch()
+            });
+
+            describe('a null model', function () {
+                beforeEach(function () {
+                    scope.testModel = null;
+                });
+
+                it('should not throw error', function () {
+                    expect(applyFn).to.not.throw(Error);
+                });
+            });
+
+            describe('an empty string model', function () {
+                beforeEach(function () {
+                    scope.testModel = '';
+                });
+
+                it('should not throw error', function () {
+                    expect(applyFn).to.not.throw(Error);
+                });
+            });
+
+            describe('a non-empty string model', function () {
+                beforeEach(function () {
+                    scope.testModel = 'hiyoo';
+                });
+
+                it('should not throw error', function () {
+                    expect(applyFn).to.not.throw(Error);
+                });
+            });
+        });//on $apply
+
+        describe('after $apply', function () {
+            describe('an empty string model', function () {
+                beforeEach(function () {
+                    scope.testModel = '';
+                    scope.$apply();
+                });
+
+                it('should have same searchVal as testModel', function () {
+                    expect(isoScope.searchVal).to.eq(scope.testModel);
+                });
+
+                it('should not be clearable', function () {
+                    expect(isoScope.isClearable).to.be.false;
+                });
+
+                it('should have default placeholder', function () {
+                    expect(isoScope.rxPlaceholder).to.eq('Search...');
+                });
+            });
+
+            describe('a non-empty string model', function () {
+                beforeEach(function () {
+                    scope.testModel = 'hiyoo';
+                    scope.$apply();
+                });
+
+                it('should be clearable', function () {
+                    expect(isoScope.isClearable).to.be.true;
+                });
+
+                describe('clearSearch()', function () {
+                    beforeEach(function () {
+                        isoScope.clearSearch();
+                    });
+
+                    it('should set searchVal to empty string', function () {
+                        expect(isoScope.searchVal).to.be.empty;
+                    });
+                });//clearSearch()
+            });
         });
     });//simple invokation
 
     describe('disabled invokation (with non-empty model value)', function () {
         beforeEach(function () {
             template = '<rx-search-box ng-model="testModel" ng-disabled="true"></rx-search-box>';
-            rootScope.testModel = 'hiyoo';
-            el = helpers.createDirective(template, compile, rootScope);
-            scope = el.isolateScope();
-            scope.$digest();
+            scope.testModel = 'hiyoo';
+            el = helpers.createDirective(template, compile, scope);
+            isoScope = el.isolateScope();
+            isoScope.$digest();
         });
 
         it('should not be clearable', function () {
-            expect(scope.isClearable).to.be.false;
+            expect(isoScope.isClearable).to.be.false;
         });
 
         it('should have same searchVal as testModel', function () {
-            expect(scope.searchVal).to.eq(rootScope.testModel);
+            expect(isoScope.searchVal).to.eq(scope.testModel);
         });
     });
 
     describe('with custom placeholder', function () {
         beforeEach(function () {
             template = '<rx-search-box ng-model="testModel" rx-placeholder="\'hiyoo\'"></rx-search-box>';
-            el = helpers.createDirective(template, compile, rootScope);
-            scope = el.isolateScope();
-            scope.$digest();
+            el = helpers.createDirective(template, compile, scope);
+            isoScope = el.isolateScope();
+            isoScope.$digest();
         });
 
         it('should have expected rxPlaceholder', function () {
-            expect(scope.rxPlaceholder).to.eq('hiyoo');
+            expect(isoScope.rxPlaceholder).to.eq('hiyoo');
         });
     });
 });
