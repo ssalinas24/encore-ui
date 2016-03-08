@@ -26,6 +26,7 @@
  *        * {@link rxForm.directive:rxFieldContent rxFieldContent} (0..1)
  *          * {@link rxForm.directive:rxInput rxInput} (0..N)
  *            * {@link rxForm.directive:rxPrefix rxPrefix} (0..1)
+ *            * {@link rxForm.directive:rxInfix rxInfix} (0..1)
  *            * {@link rxForm.directive:rxSuffix rxSuffix} (0..1)
  *
  * ## Free-Range Directives

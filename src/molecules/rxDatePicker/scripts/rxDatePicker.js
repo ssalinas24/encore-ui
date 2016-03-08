@@ -10,7 +10,7 @@ angular.module('encore.ui.molecules')
  * ## Notice
  * This molecule is designed to be used in conjunction with other picker
  * molecules to compose a valid ISO 8601 DateTime string in the format of
- * <code>YYYY-MM-DDTHH:mm:ssZ</code>.
+ * <code>YYYY-MM-DDTHH:mmZ</code>.
  *
  * * This molecule will generate a **String** in the format of `YYYY-MM-DD`
  *   to be used as the date portion of the ISO 8601 standard DateTime string
@@ -20,8 +20,8 @@ angular.module('encore.ui.molecules')
  * @param {expression} ngModel
  * Expression that evaluates to a date string in `YYYY-MM-DD` format
  *
- * @return {String} **IMPORTANT** returns an ISO8601 standard date string in the
- * formate of `YYYY-MM-DD`.
+ * @return {String} **IMPORTANT** returns an ISO 8601 standard date string in the
+ * format of `YYYY-MM-DD`.
  */
 .directive('rxDatePicker', function () {
     return {

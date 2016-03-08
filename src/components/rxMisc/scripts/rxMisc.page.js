@@ -93,6 +93,28 @@ exports.rxMisc = {
     },
 
     /**
+     * @function
+     * @description Utility function to negate a value in a `.then` callback using shorthand.
+     * @param {*} value - The value to toggle. Runs the `!` operator on the value.
+     * @returns {*} Whatever happens when you run `!value` on `value`. Use with caution!
+     * @example
+     * var myPage = {
+     *     someComponent: {
+     *         isOpen: function () {
+     *             return $('.opened-component').isPresent();
+     *         },
+     *
+     *         isClosed: function () {
+     *             return this.isOpen().then(encore.rxMisc.negate);
+     *         }
+     *     }
+     * };
+     */
+    negate: function (value) {
+        return !value;
+    },
+
+    /**
      * @description A list of common strings that appear in the UI that represent `null` to a page object.
      * Add to this list yourself or create a new one in this namespace for your application.
      * @example

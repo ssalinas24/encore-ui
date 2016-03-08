@@ -1,0 +1,7 @@
+{
+    "displayName": "rxTimePickerUtil",
+    "stability": "experimental",
+    "description": "Utilities for rxTimePicker molecule",
+    "api": "service:rxTimePickerUtil",
+    "keywords": []
+}

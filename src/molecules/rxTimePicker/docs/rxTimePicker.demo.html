@@ -1,4 +1,4 @@
-<div ng-controller="rxDatePickerCtrl">
+<div ng-controller="rxTimePickerCtrl">
   <rx-notification type="info">
     <p>
       This molecule is designed to be used in conjunction with other picker
@@ -11,8 +11,13 @@
   <ul class="list">
     <li>
       This molecule will generate a <strong>String</strong> in the format of
-      <code>YYYY-MM-DD</code> to be used as the date portion of the ISO 8601
+      <code>HH:mmZ</code> to be used as the time portion of the ISO 8601
       standard DateTime string mentioned above.
+      <ul>
+        <li><code>HH</code> is the 24-hour format from 00 to 23</li>
+        <li><code>mm</code> is the minutes from 00 to 59</li>
+        <li><code>Z</code> is the UTC offset that matches <code>[-+]\d{2}:\d{2}</code></li>
+      </ul>
     </li>
     <li>
       This molecule will never generate anything other than a String.
@@ -20,26 +25,12 @@
   </ul>
 
   <h2>Examples of Usage</h2>
-
   <h3>Simple Example</h3>
-  <p>
-    Sometimes, a form may need to prepopulate a value for rxDatePicker. The
-    example below shows how the element behaves when its model is defaulted
-    to <code>2015-11-17</code>.
-  </p>
-  <rx-example name="rxDatePicker.simple"></rx-example>
-
-  <h3>Behavior with Empty Model</h3>
-  <p>
-    A typical use case is to use rxDatePicker without a default value set. The
-    example below shows how it will behave if you have a blank (empty string) or
-    undefined value for your model.
-  </p>
-  <rx-example name="rxDatePicker.empty"></rx-example>
+  <rx-example name="rxTimePicker.simple"></rx-example>
 
   <h2>Molecule States</h2>
   <p>
-    Below you'll find examples of how <code>rxDatePicker</code> will appear in
+    Below you'll find examples of how <code>rxTimePicker</code> will appear in
     different states.
   </p>
   <table>
@@ -52,35 +43,37 @@
       <tr>
         <th>Valid</th>
         <td>
-          <rx-date-picker
-            id="dpEnabledValid"
+          <rx-time-picker
+            id="tpEnabledValid"
+            ng-disabled="false"
             ng-model="enabledValid">
-          </rx-date-picker>
+          </rx-time-picker>
         </td>
         <td>
-          <rx-date-picker
-            id="dpDisabledValid"
+          <rx-time-picker
+            id="tpDisabledValid"
             ng-disabled="true"
             ng-model="disabledValid">
-          </rx-date-picker>
+          </rx-time-picker>
         </td>
       </tr>
       <tr>
         <th>Invalid</th>
         <td>
-          <rx-date-picker
-            id="dpEnabledInvalid"
+          <rx-time-picker
+            id="tpEnabledInvalid"
             always-invalid
+            ng-disabled="false"
             ng-model="enabledInvalid">
-          </rx-date-picker>
+          </rx-time-picker>
         </td>
         <td>
-          <rx-date-picker
-            id="dpDisabledInvalid"
+          <rx-time-picker
+            id="tpDisabledInvalid"
             ng-disabled="true"
             always-invalid
             ng-model="disabledInvalid">
-          </rx-date-picker>
+          </rx-time-picker>
         </td>
       </tr>
     </tbody>

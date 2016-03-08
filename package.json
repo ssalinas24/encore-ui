@@ -3,7 +3,7 @@
   "name": "EncoreUI",
   "version": "1.45.2",
   "homepage": "https://github.com/rackerlabs/encore-ui",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:rackerlabs/encore-ui.git"

@@ -1,0 +1,7 @@
+{
+    "displayName": "UtcOffsets",
+    "stability": "experimental",
+    "description": "List of known UTC offset values",
+    "api": "constant:UtcOffsets",
+    "keywords": []
+}
