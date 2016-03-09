@@ -51,7 +51,7 @@ angular.module('encore.ui.rxSearchBox')
             $scope.rxPlaceholder = $scope.rxPlaceholder || 'Search...';
 
             $scope.$watch('searchVal', function (newVal) {
-                if ($scope.isDisabled) {
+                if (!newVal || $scope.isDisabled) {
                     $scope.isClearable = false;
                 } else {
                     $scope.isClearable = newVal.toString() !== '';
