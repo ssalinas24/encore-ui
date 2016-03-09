@@ -1,0 +1,65 @@
+{
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "$": false,
+        "$$": false,
+        "Mousetrap": false,
+        "_": true,
+        "angular": false,
+        "browser": false,
+        "by": false,
+        "console": false,
+        "demoPage": true,
+        "describe": false,
+        "element": false,
+        "encore": true,
+        "exports": false,
+        "helpers": true,
+        "html2canvas": false,
+        "jQuery": false,
+        "module": false,
+        "moment": true,
+        "protractor": true,
+        "require": false,
+        "runs": true,
+        "waitsFor": true
+    },
+    "rules": {
+        "no-bitwise": 2,
+        "camelcase": [2, { "properties": "never" }],
+        "curly": [2, "all"],
+        "wrap-iife": [2, "inside"],
+        "indent": [2, 4, { "SwitchCase": 1 }],
+        "guard-for-in": 2,
+        "no-use-before-define": 2,
+        "new-cap": 0,
+        "no-caller": 2,
+        "quotes": [2, "single"],
+        "no-undef": 2,
+        "no-unused-vars": 2,
+        "strict": 0,
+        "max-len": [2, 120, { "ignoreUrls": true }],
+        "no-unused-expressions": 2,
+        "complexity": [2, 10],
+        "max-depth": [2, 3],
+        "keyword-spacing": [2],
+        "space-before-function-paren": [2, "always"],
+        "no-empty": 2,
+        "space-in-parens": [2, "never"],
+        "key-spacing": [2, {
+            "beforeColon": false,
+            "afterColon": true
+        }],
+        "comma-style": [2, "last"],
+        "space-unary-ops": [2],
+        "space-infix-ops": 2,
+        "no-multiple-empty-lines": [2, { "max": 2 }],
+        "object-curly-spacing": [2, "always", {
+            "objectsInObjects": false,
+            "arraysInObjects": false
+        }],
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }]
+    }
+}
