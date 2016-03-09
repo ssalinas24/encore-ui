@@ -1,3 +1,32 @@
+<a name="1.46.0-0"></a>
+### 1.46.0-0 (2016-03-09)
+
+
+#### Bug Fixes
+
+* **less:** apply lesshinting ([a64cf6c1](git@github.com:rackerlabs/encore-ui/commit/a64cf6c195d264b120208474d46076e5f3afabd3))
+* **package:** use SPDX licence expression ([f90ba931](git@github.com:rackerlabs/encore-ui/commit/f90ba931e31ce83264f240c284785174d6941d20))
+* **rxAccountInfoBanner:** apply null data pattern ([4942729a](git@github.com:rackerlabs/encore-ui/commit/4942729a3dda48d2417c22d72b60bcfbbc0c0e91))
+* **rxApp:** Drop all user id display and logout display ([d4c00c35](git@github.com:rackerlabs/encore-ui/commit/d4c00c3527779fb621d0a0b7b5b0df9abfbfd120))
+* **rxSearchbox:** FRMW-714 support undefined and null value ([41398da0](git@github.com:rackerlabs/encore-ui/commit/41398da0afc2bc3db712735d5e3f9b94d84651bd))
+
+
+#### Features
+
+* **rxTimePicker:** add rxTimePicker molecule ([1052967d](git@github.com:rackerlabs/encore-ui/commit/1052967dadf716eb51002e79d0586fde4d11e532))
+
+
+#### Breaking Changes
+
+* Anyone who is checking the rxApp page objects for the userId
+property will have their tests fail. This isn't a huge deal because part of the
+update to the new version of the framework will make those tests irrelevent. Just
+delete all tests exercising logout functionality and checking the currently logged
+in user from your end to end test suite to successfully migrate to the newest
+version of rx-page-objects.
+ ([d4c00c35](git@github.com:rackerlabs/encore-ui/commit/d4c00c3527779fb621d0a0b7b5b0df9abfbfd120))
+
+
 <a name="1.45.2"></a>
 ### 1.45.2 (2016-02-17)
 
