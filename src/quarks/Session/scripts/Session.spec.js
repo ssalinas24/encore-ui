@@ -6,21 +6,20 @@ describe('quarks:Session', function () {
         tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
         mockToken = {
             access: {
-                token:
-                    {
-                        id: 'someid',
-                        expires: '2014-03-11T19:43:14.685Z',
-                        'RAX-AUTH:authenticatedBy': ['PASSWORD']
-                    },
-                    serviceCatalog: [],
-                    user: {
-                        id: '12345',
-                        'roles': [{ 'id': '9','name': 'Customer' }],
-                        'RAX-AUTH:defaultRegion': '',
-                        name: 'joe.user'
-                    }
+                token: {
+                    id: 'someid',
+                    expires: '2014-03-11T19:43:14.685Z',
+                    'RAX-AUTH:authenticatedBy': ['PASSWORD']
+                },
+                serviceCatalog: [],
+                user: {
+                    id: '12345',
+                    'roles': [{ 'id': '9','name': 'Customer' }],
+                    'RAX-AUTH:defaultRegion': '',
+                    name: 'joe.user'
                 }
-            };
+            }
+        };
 
         inject(function ($injector) {
             session = $injector.get('Session');

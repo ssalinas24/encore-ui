@@ -78,18 +78,17 @@ describe('encore.ui.rxApp', function () {
             // load module
             var mockToken = {
                 access: {
-                    token:
-                        {
-                            id: 'someid',
-                        },
-                        user: {
-                            id: 'joe.customer',
-                            'roles': [{ 'id': '9','name': 'role1' },
-                                      { 'id': '10','name': 'role2' },
-                                      { 'id': '11','name': 'Test' }]
-                        }
+                    token: {
+                        id: 'someid',
+                    },
+                    user: {
+                        id: 'joe.customer',
+                        'roles': [{ 'id': '9','name': 'role1' },
+                                  { 'id': '10','name': 'role2' },
+                                  { 'id': '11','name': 'Test' }]
                     }
-                };
+                }
+            };
 
             var SessionMock = {
                 getToken: function () {
