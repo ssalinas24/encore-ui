@@ -41,7 +41,7 @@
         "no-unused-vars": 2,
         "strict": 0,
         "max-len": [2, 120, { "ignoreUrls": true }],
-        "no-unused-expressions": 2,
+        "no-unused-expressions": [2, { "allowTernary": true, "allowShortCircuit": true }],
         "complexity": [2, 10],
         "max-depth": [2, 3],
         "keyword-spacing": [2],
