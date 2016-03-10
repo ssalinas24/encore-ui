@@ -51,25 +51,25 @@ describe('encore.ui.rxApp', function () {
                     visibility: function () {
                         return true;
                     },
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }, {
                     linkText: 'noVisibilityButRolePresent',
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }, {
                     linkText: 'visibilityOkButRoleFails',
-                    roles: { 'any': [ 'weDontHaveThisRole' ] }
+                    roles: { 'any': ['weDontHaveThisRole'] }
                 }, {
                     linkText: 'multipleAllRolesPass',
-                    roles: { 'all': [ 'role1', 'role2', 'Test' ] }
+                    roles: { 'all': ['role1', 'role2', 'Test'] }
                 }, {
                     linkText: 'multipleAllRolesFailure',
-                    roles: { 'all': [ 'role1', 'role2', 'ThisRoleDoesNotExist' ] }
+                    roles: { 'all': ['role1', 'role2', 'ThisRoleDoesNotExist'] }
                 }, {
                     linkText: 'failedVisibilityAndOKRoles',
                     visibility: function () {
                         return false;
                     },
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }
             ]
         };

@@ -8,7 +8,7 @@ angular.module('encore.ui.quarks')
  * ## Two Digit Display
  * 1. You can just have it use the default abbreviated method and it truncates it
  *  to the two largest units.
- *  
+ *
  *  <pre>
  *    <div ng-controller="rxAgeCtrl">
  *      <ul>
@@ -21,7 +21,7 @@ angular.module('encore.ui.quarks')
  * ## Full Word Representation
  * 2. You can also pass in a second value of `true` and have it expand the units
  *  from the first letter to their full word representation.
- *  
+ *
  *  <pre>
  *    <div ng-controller="rxAgeCtrl">
  *      <ul>
@@ -34,7 +34,7 @@ angular.module('encore.ui.quarks')
  * ## Mulitple Digits
  * 3. Or you can pass in a number from `1` to `3` as the second value to allow for
  *  different amounts of units.
- *  
+ *
  *  <pre>
  *    <div ng-controller="rxAgeCtrl">
  *      <ul>
@@ -47,7 +47,7 @@ angular.module('encore.ui.quarks')
  * ## Multiple Argument Usage
  * 4. **OR** you can pass in a number as the second argument and `true` as the
  *    third argument to combine these two effects.
- *    
+ *
  *  <pre>
  *    <div ng-controller="rxAgeCtrl">
  *      <ul>
@@ -57,8 +57,8 @@ angular.module('encore.ui.quarks')
  *  </pre>
  *  `Thu Aug 13 2015 06:22:05 GMT-0500 (CDT) → 40 days, 4 hours, 49 minutes`
  *
- * 
- * **NOTE:** This component requires [moment.js](http://momentjs.com/) to parse, manipulate, and 
+ *
+ * **NOTE:** This component requires [moment.js](http://momentjs.com/) to parse, manipulate, and
  * display dates which is provided by Encore Framework.
  */
 .filter('rxAge', function () {

@@ -34,6 +34,8 @@ angular.module('encore.ui.rxBulkSelect')
 
             var rxBulkSelectCtrl = controllers[0],
                 // Optional controller, so mock it out if it's not present
+                // https://github.com/eslint/eslint/issues/5537
+                // eslint-disable-next-line object-curly-spacing
                 rxFloatingHeaderCtrl = controllers[1] || { update: function () {} };
 
             scope.selectAll = function () {

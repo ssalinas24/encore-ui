@@ -102,7 +102,7 @@ describe('rxTags', function () {
     });
 
     describe('focusTag()', function () {
-        var elementMock = { previousElementSibling: { focus: sinon.stub() } };
+        var elementMock = { previousElementSibling: { focus: sinon.stub() }};
 
         beforeEach(function () {
             elementMock.previousElementSibling.focus.reset();
