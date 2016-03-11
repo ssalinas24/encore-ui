@@ -12,7 +12,7 @@ angular.module('demoApp')
         { status: 'REBUILD', title: 'REBUILD status mapped to PENDING' },
         { status: 'RESIZE', title: 'RESIZE status mapped to PENDING' },
         { status: 'MIGRATING', title: 'MIGRATING status mapped to PENDING' },
-        { status: 'DELETING', title: 'DELETING status mapped to PENDING, using `fooApi` mapping', api:'fooApi' }
+        { status: 'DELETING', title: 'DELETING status mapped to PENDING, using `fooApi` mapping', api: 'fooApi' }
     ];
 
     // We have a few different ways of adding mappings. We've tried to show them all here
