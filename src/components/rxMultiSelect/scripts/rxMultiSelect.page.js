@@ -86,7 +86,7 @@ var rxMultiSelect = {
      */
     isOpen: {
         value: function () {
-            return this.rootElement.$('ul').isDisplayed();
+            return this.rootElement.$('.menu').isDisplayed();
         }
     },
 
@@ -225,6 +225,20 @@ var rxMultiSelect = {
             this.openMenu();
             optionTexts.forEach(function (optionText) {
                 self.option(optionText).deselect();
+            });
+        }
+    },
+
+    /**
+     * @instance
+     * @function
+     * @description Whether the '<rx-multi-select>' element is valid.
+     * @returns {Boolean}
+     */
+    isValid: {
+        value: function () {
+            return this.rootElement.getAttribute('class').then(function (classes) {
+                return _.contains(classes.split(' '), 'ng-valid');
             });
         }
     }

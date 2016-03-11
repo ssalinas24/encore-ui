@@ -1,10 +1,20 @@
-<div class="rx-multi-select" ng-click="toggleDisplay($event)">
-	<div class="preview">{{ preview }}</div>
-	    <ul ng-show="listDisplayed">
-	    	<rx-select-option value="all">Select All</rx-select-option>
-	    	<rx-select-option value="{{option}}" ng-repeat="option in options"></rx-select-option>
-	    	<div ng-if="!options" ng-transclude></div>
-		</ul>
-	</div>
-</div>
+<div class="rxMultiSelect">
+  <div class="backdrop"
+    ng-if="listDisplayed"
+    ng-click="closeMenu()">
+  </div>
 
+  <div class="control" ng-click="toggleMenu()">
+    <div class="preview">{{ preview }}</div>
+
+    <div class="select-trigger">
+      <i class="fa fa-fw fa-caret-down"></i>
+    </div>
+  </div>
+
+  <div class="menu" ng-show="listDisplayed">
+    <rx-select-option value="all">Select All</rx-select-option>
+    <rx-select-option value="{{option}}" ng-repeat="option in options"></rx-select-option>
+    <div ng-if="!options" ng-transclude></div>
+  </div>
+</div>
