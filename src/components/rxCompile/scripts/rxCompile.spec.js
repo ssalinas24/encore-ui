@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxCompile', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate = '<div rx-compile="myExpression"></div>';
     var world = 'wrrrld';
     var expression = 'Hello {{world}}';
@@ -11,7 +11,6 @@ describe('rxCompile', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

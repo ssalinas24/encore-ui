@@ -1,6 +1,6 @@
 describe('quarks:rxHideIfUkAccount', function () {
     describe('rxHideIfUkAccount', function () {
-        var $location, $route, $rootScope, $routeParams, rxHideIfUkAccount;
+        var $location, $rootScope, $routeParams, rxHideIfUkAccount;
 
         beforeEach(function () {
             // Necessary so `$routeProvider` is available
@@ -14,7 +14,7 @@ describe('quarks:rxHideIfUkAccount', function () {
 
             inject(function ($injector) {
                 $location = $injector.get('$location');
-                $route = $injector.get('$route');
+                $injector.get('$route');
                 $rootScope = $injector.get('$rootScope');
                 $routeParams = $injector.get('$routeParams');
                 rxHideIfUkAccount = $injector.get('rxHideIfUkAccount');

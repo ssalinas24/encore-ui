@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAppNavItem', function () {
-        var scope, compile, rootScope, el, location, someProp, rxvisibility;
+        var scope, compile, el, someProp, rxvisibility;
         var template = '<rx-app-nav-item item="item"></rx-app-nav-item>';
 
         var menuItem = {
@@ -108,11 +108,9 @@ describe('encore.ui.rxApp', function () {
             });
 
             // Inject in angular constructs
-            inject(function ($rootScope, $compile, $location, rxVisibility) {
-                rootScope = $rootScope;
+            inject(function ($rootScope, $compile, rxVisibility) {
                 scope = $rootScope.$new();
                 compile = $compile;
-                location = $location;
                 rxvisibility = rxVisibility;
             });
 

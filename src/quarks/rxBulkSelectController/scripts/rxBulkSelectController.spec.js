@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('quarks:rxBulkSelectController', function () {
-    var scope, compile, rootScope, timeout;
+    var scope, rootScope, timeout;
 
     var servers = [
         { name: 'server1', rowIsSelected: false },
@@ -25,8 +25,7 @@ describe('quarks:rxBulkSelectController', function () {
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');
 
-        inject(function ($compile, $rootScope, $timeout) {
-            compile = $compile;
+        inject(function ($rootScope, $timeout) {
             rootScope = $rootScope;
             scope = rootScope.$new();
             timeout = $timeout;

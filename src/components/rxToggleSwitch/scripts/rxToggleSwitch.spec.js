@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('directive:rxToggleSwitch', function () {
-    var scope, timeout, compile, rootScope, directiveScope, el, disabledEL, customEL, postHookEL, failedAsyncEL,
+    var scope, timeout, compile, directiveScope, el, disabledEL, customEL, postHookEL, failedAsyncEL,
         validTemplate = '<rx-toggle-switch ng-model="model"></rx-toggle-switch>',
         disabledTemplate = '<rx-toggle-switch ng-model="model" disabled="true"></rx-toggle-switch>',
         postHookTemplate = '<rx-toggle-switch ng-model="model" post-hook="countMe(newVal, oldVal)"></rx-toggle-switch>',
@@ -15,7 +15,6 @@ describe('directive:rxToggleSwitch', function () {
 
         inject(function ($rootScope, $compile, $timeout) {
             timeout = $timeout;
-            rootScope = $rootScope;
             compile = $compile;
             scope = $rootScope.$new();
             scope.countMe = sinon.stub();

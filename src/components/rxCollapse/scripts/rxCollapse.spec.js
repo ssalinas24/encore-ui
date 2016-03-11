@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxCollapse', function () {
-    var scope, compile, rootScope, el, elCollapsed, elExanded;
+    var scope, compile, el, elCollapsed, elExanded;
     var validTemplate = '<rx-collapse title="Filter results"></rx-collapse>';
     var otherTemplate1 = '<rx-collapse expanded="false"></rx-collapse>';
     var otherTemplate2 = '<rx-collapse expanded="true"></rx-collapse>';
@@ -14,7 +14,6 @@ describe('rxCollapse', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

@@ -27,11 +27,9 @@ describe('rxBulkSelect', function () {
     }));
 
     describe('rxBulkSelectValidate', function () {
-
-        var bulkSelect, validateModal;
+        var validateModal;
 
         beforeEach(function () {
-            bulkSelect = encore.rxBulkSelect.main;
             validateModal = encore.rxModalAction.initialize();
         });
 

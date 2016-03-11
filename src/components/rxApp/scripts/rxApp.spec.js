@@ -2,10 +2,9 @@ describe('encore.ui.rxApp', function () {
     describe('rxApp', function () {
         describe('default', function () {
             var scope, scopeCustomNav, collapsibleScope, compile, rootScope, el, elCustom, elCollapsible,
-                elCollapsibleVar, appRoutes, httpMock, cdnPath, cdnGet;
+                httpMock, cdnPath, cdnGet;
             var standardTemplate = '<rx-app></rx-app>';
             var collapsibleTemplate = '<rx-app collapsible-nav="true"></rx-app>';
-            var collapsibleExternalVarTemplate = '<rx-app collapsible-nav="true" collapsed-nav="collapsed"></rx-app>';
             var customTemplate = '<rx-app site-title="My App" menu="customNav" new-instance="true"' +
                 'hide-feedback="true"></rx-app>';
 
@@ -63,7 +62,6 @@ describe('encore.ui.rxApp', function () {
                 inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, LocalStorage) {
                     rootScope = $rootScope;
                     compile = $compile;
-                    appRoutes = encoreRoutes;
                     httpMock = $httpBackend;
                     cdnPath = routesCdnPath;
 
@@ -84,7 +82,6 @@ describe('encore.ui.rxApp', function () {
                 el = helpers.createDirective(standardTemplate, compile, scope);
                 elCustom = helpers.createDirective(customTemplate, compile, scopeCustomNav);
                 elCollapsible = helpers.createDirective(collapsibleTemplate, compile, collapsibleScope);
-                elCollapsibleVar = helpers.createDirective(collapsibleExternalVarTemplate, compile, rootScope.$new());
             });
 
             describe('default menu', function () {
@@ -451,7 +448,7 @@ describe('encore.ui.rxApp', function () {
 
         describe('preprod environment', function () {
             var scope, compile, rootScope, el,
-                appRoutes, httpMock, cdnPath, cdnGet, isolateScope;
+                httpMock, cdnPath, cdnGet, isolateScope;
             var standardTemplate = '<rx-app></rx-app>';
 
             // Fake default nav that gets passed as the mock cdn response
@@ -492,7 +489,6 @@ describe('encore.ui.rxApp', function () {
                 inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath) {
                     rootScope = $rootScope;
                     compile = $compile;
-                    appRoutes = encoreRoutes;
                     httpMock = $httpBackend;
                     cdnPath = routesCdnPath;
                 });

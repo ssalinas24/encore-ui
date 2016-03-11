@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxToggle', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate = '<button rx-toggle="vacillate">Vacillate!</button>';
     var validTemplateNested = '<button rx-toggle="nested.val">Nested Vacillate!</button>';
 
@@ -10,7 +10,6 @@ describe('rxToggle', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

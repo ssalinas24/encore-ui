@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxEnvironment', function () {
-    var rootScope, envSvc, location, log;
+    var envSvc, location, log;
 
     beforeEach(function () {
         // load module
@@ -9,7 +9,6 @@ describe('rxEnvironment', function () {
         // Inject in angular constructs
         inject(function ($location, $rootScope, Environment, $log) {
             location = $location;
-            rootScope = $rootScope;
             envSvc = Environment;
             log = $log;
         });

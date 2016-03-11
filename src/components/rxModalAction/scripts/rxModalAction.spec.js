@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxModalAction', function () {
-    var el, scope, compile, rootScope, mockModal, modalApi, instanceApi, instanceMock, controller;
+    var el, scope, compile, rootScope, modalApi, instanceApi, instanceMock, controller;
     var validTemplate = '<rx-modal-action ' +
                             'template-url="test.html" ' +
                             'post-hook="post()" ' +
@@ -43,7 +43,6 @@ describe('rxModalAction', function () {
 
         // Provide any mocks needed
         module(function ($provide) {
-            mockModal = sinon.mock(modalApi);
             $provide.value('$modal', modalApi);
         });
 

@@ -4,7 +4,7 @@ angular.module('demoApp')
     $scope.toggle3 = true;
     $scope.toggle5 = true;
 
-    $scope.attemptChange = function (value) {
+    $scope.attemptChange = function () {
         $scope.loading = true;
         rxNotify.clear('page');
         rxNotify.add('Saving...', {
@@ -35,7 +35,7 @@ angular.module('demoApp')
             rxNotify.add('Asynchronous operation failed', {
                 type: 'error',
             });
-            
+
             // Reset toggle switch to original value to simulate failed async operation
             $scope.toggle5 = !value;
         }, 1000);

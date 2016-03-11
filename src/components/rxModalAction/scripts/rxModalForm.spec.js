@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxModalForm', function () {
-    var el, scope, compile, rootScope, timeout;
+    var el, scope, compile, timeout;
 
     var rxModalForm = '<rx-modal-form>${ fields }</rx-modal-form>';
     var hiddenInput = '<input type="hidden">';
@@ -20,7 +20,6 @@ describe('rxModalForm', function () {
 
         // Inject in angular constructs
         inject(function ($rootScope, $compile, $timeout) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
             timeout = $timeout;

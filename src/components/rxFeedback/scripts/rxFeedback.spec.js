@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxFeedback', function () {
-    var scope, compile, rootScope, el, feedbackSvc, apiUrl, httpMock,
+    var scope, compile, el, feedbackSvc, apiUrl, httpMock,
         notifySvcMock, screenshotSvcMock, elScope, sessionSvcMock, locationMock;
     var validTemplate = '<rx-feedback></rx-feedback>';
     var theScreenshot = 'the screenshot';
@@ -53,7 +53,6 @@ describe('rxFeedback', function () {
 
         // Inject in angular constructs
         inject(function ($rootScope, $compile, rxFeedbackSvc, $httpBackend, feedbackApi) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
             feedbackSvc = rxFeedbackSvc;

@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('rxMultiSelect', function () {
-    var scope, compile, rootScope, createDirective;
+    var scope, compile, createDirective;
     var transcludedTemplate = '<rx-multi-select ng-model="types">' +
                               '<rx-select-option value="A">Type A</rx-select-option>' +
                               '<rx-select-option value="B">Type B</rx-select-option>' +
@@ -18,7 +18,6 @@ describe('rxMultiSelect', function () {
         module('templates/rxSelectOption.html');
 
         inject(function ($rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

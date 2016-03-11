@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('rxCharacterCount', function () {
-    var originalScope, scope, compile, rootScope, el;
+    var originalScope, scope, compile, el;
     var initialTemplate = '<textarea ng-model="initComment" rx-character-count></textarea>';
     var defaultTemplate = '<textarea ng-model="comment" rx-character-count></textarea>';
     var maxCharsTemplate = '<textarea ng-model="comment" rx-character-count max-characters="50"></textarea>';
@@ -14,7 +14,6 @@ describe('rxCharacterCount', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             originalScope = $rootScope.$new();
             originalScope.comment = '';
             originalScope.initComment = 'I have an initial value';
@@ -68,10 +67,10 @@ describe('rxCharacterCount', function () {
             el = helpers.createDirective(boundaryTemplate, compile, originalScope);
             scope = el.scope();
         });
-        
+
         it('should let you pass in a custom lowBoundary', function () {
             expect(scope.nearLimit).to.be.false;
-            
+
             changeText(el, '1234567890123456');
             expect(scope.nearLimit).to.be.true;
         });
@@ -86,14 +85,14 @@ describe('rxCharacterCount', function () {
         it('should let you pass in a custom maxCharacters', function () {
             expect(scope.remaining).to.equal(50);
         });
-        
+
         it('should set nearLimit to true when we drop below', function () {
             expect(scope.nearLimit).to.be.false;
 
             // Pass in 40 characters, should not be below limit
             changeText(el, '1234567890123456789012345678901234567890');
             expect(scope.nearLimit).to.be.false;
-            
+
             // Pass in 41 characters, should be below limit
             changeText(el, '12345678901234567890123456789012345678901');
             expect(scope.nearLimit).to.be.true;
@@ -107,12 +106,12 @@ describe('rxCharacterCount', function () {
             changeText(el, '1234567890123456789012345678901234567890');
             expect(scope.nearLimit, 'near, 40 chars').to.be.false;
             expect(scope.overLimit, 'over, 40 chars').to.be.false;
-            
+
             // Pass in 50 characters, should be below limit, but not over
             changeText(el, '12345678901234567890123456789012345678901234567890');
             expect(scope.nearLimit, 'near, 50 chars').to.be.true;
             expect(scope.overLimit, 'over, 50 chars').to.be.false;
-            
+
             // Pass in 51 characters, should be over, but not below
             changeText(el, '123456789012345678901234567890123456789012345678901');
             expect(scope.nearLimit, 'near, 51 chars').to.be.false;
@@ -136,7 +135,7 @@ describe('rxCharacterCount', function () {
             originalScope.$apply();
             expect(parentDiv.is(':empty')).to.be.true;
         });
-        
+
         it('should hide the character count if the element hides (ngShow)', function () {
             parentDiv = helpers.createDirective(ngShowTemplate, compile, originalScope);
             el = parentDiv.find('textarea');
@@ -146,7 +145,7 @@ describe('rxCharacterCount', function () {
             expect(el.hasClass('ng-hide'), 'textarea').to.be.true;
             expect(characterCount.hasClass('ng-hide'), 'character countdown').to.be.true;
         });
-        
+
         it('should show the character count if the element becomes visible (ngHide)', function () {
             parentDiv = helpers.createDirective(ngHideTemplate, compile, originalScope);
             el = parentDiv.find('textarea');

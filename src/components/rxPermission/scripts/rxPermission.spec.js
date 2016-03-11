@@ -1,7 +1,7 @@
 /* jshint node: true */
 describe('rxPermission', function () {
     describe('directive:rxPermission', function () {
-        var scope, compile, rootScope, el, elRoles, elFail, elFailRoles;
+        var scope, compile, el, elRoles, elFail, elFailRoles;
         var validTemplate = '<rx-permission role="pass">Hello</rx-permission>';
         var validRolesTemplate = '<rx-permission role="pass,also">Hello</rx-permission>';
         var invalidTemplate = '<rx-permission role="fail">Hello</rx-permission>';
@@ -21,7 +21,6 @@ describe('rxPermission', function () {
             module('templates/rxPermission.html');
 
             inject(function ($location, $rootScope, $compile) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
             });

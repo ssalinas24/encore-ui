@@ -1,13 +1,12 @@
 describe('quarks: Status', function () {
-    var status, scope, rootScope, rxNotify;
+    var status, scope, rootScope;
 
     beforeEach(function () {
         module('encore.ui.quarks');
 
-        inject(function ($rootScope, Status, _rxNotify_) {
+        inject(function ($rootScope, Status) {
             scope = $rootScope.$new();
             status = Status;
-            rxNotify = _rxNotify_;
             rootScope = $rootScope;
 
             status.setScope(scope);

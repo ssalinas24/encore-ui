@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxAttributes', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate = '<div rx-attributes="{\'my-custom-attr\': customAttrVal, \'ng-click\': noFunc}"></div>';
 
     beforeEach(function () {
@@ -9,7 +9,6 @@ describe('rxAttributes', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

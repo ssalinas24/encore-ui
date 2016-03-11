@@ -1,5 +1,5 @@
 describe('rxDatePicker', function () {
-    var scope, isoScope, compile, rendered, renderDirective;
+    var scope, isoScope, compile, renderDirective;
     var clock;
     var actual, expected;
     var template;
@@ -37,7 +37,7 @@ describe('rxDatePicker', function () {
         describe('with valid date string', function () {
             beforeEach(function () {
                 scope.specModel = '2015-12-15';
-                rendered = renderDirective(scope);
+                renderDirective(scope);
             });
 
             it('should not have a "date" error', function () {
@@ -247,7 +247,7 @@ describe('rxDatePicker', function () {
         describe('with empty string for model', function () {
             beforeEach(function () {
                 scope.specModel = '';
-                rendered = renderDirective(scope);
+                renderDirective(scope);
             });
 
             it('should set calendarMonth to beginning of this month', function () {
@@ -272,7 +272,7 @@ describe('rxDatePicker', function () {
         describe('with invalid date string', function () {
             beforeEach(function () {
                 scope.specModel = 'abcd';
-                rendered = renderDirective(scope);
+                renderDirective(scope);
             });
 
             it('should set calendarMonth to beginning of this month', function () {
@@ -297,7 +297,7 @@ describe('rxDatePicker', function () {
         describe('with undefined date model', function () {
             beforeEach(function () {
                 scope.specModel = undefined;
-                rendered = renderDirective(scope);
+                renderDirective(scope);
             });
 
             it('should set calendarMonth to beginning of this month', function () {
@@ -328,7 +328,7 @@ describe('rxDatePicker', function () {
         describe('with valid date string', function () {
             beforeEach(function () {
                 scope.specModel = '2015-12-15';
-                rendered = renderDirective(scope);
+                renderDirective(scope);
             });
 
             describe('toggleCalendar()', function () {
