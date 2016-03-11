@@ -73,6 +73,7 @@ angular.module('encore.ui.rxOptionTable')
             disableFn: '&?'
         },
         link: function (scope, element) {
+            var boxesChecked = 0;
             scope.selectAllModel = false;
 
             scope.$watchCollection('modelProxy', function (newValue) {
@@ -162,7 +163,6 @@ angular.module('encore.ui.rxOptionTable')
             // If we are using checkboxes and the required attribute is set, then we
             // need an array to store the indexes of checked boxes. ng-required is
             // specifically set if required is true and the array is empty.
-            var boxesChecked = 0;
             _.forEach(scope.modelProxy, function (el) {
                 if (el) {
                     boxesChecked += 1;
