@@ -53,7 +53,7 @@
         "enabled": false
     },
     "importantRule": {
-        "enabled": false // TODO: enable on audit of !important
+        "enabled": true
     },
     "importPath": {
         "enabled": false

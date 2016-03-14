@@ -376,13 +376,14 @@ a:focus .subdued {
 
 // Used to hide content visually but let them still be read
 // by screen readers (removed from the page spacing)
+// !important is required and prevents visible styling
 .visually-hidden {
-  position: absolute !important;
+  position: absolute !important; // lesshint importantRule: false
   clip: rect(1px, 1px, 1px, 1px);
-  padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
+  padding: 0 !important; // lesshint importantRule: false
+  border: 0 !important; // lesshint importantRule: false
+  height: 1px !important; // lesshint importantRule: false
+  width: 1px !important; // lesshint importantRule: false
   overflow: hidden;
 }
 body:hover .visually-hidden a,
