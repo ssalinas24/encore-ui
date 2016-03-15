@@ -53,16 +53,16 @@ rx-date-picker {
   }
 
   // Disabled styles should trump all other styles
-  // !important is required to achieve this
+  // !important is required and prevents additional styling
   &[disabled] {
     .control {
-      background-color: @disabled-control-background-color !important;
-      border: 1px solid @disabled-control-border-color !important;
-      color: @disabled-control-text-color !important;
-      cursor: @disabled-control-cursor !important;
+      background-color: @disabled-control-background-color !important; // lesshint importantRule: false
+      border: 1px solid @disabled-control-border-color !important; // lesshint importantRule: false
+      color: @disabled-control-text-color !important; // lesshint importantRule: false
+      cursor: @disabled-control-cursor !important; // lesshint importantRule: false
 
       .icon {
-        color: @disabled-control-icon-color !important;
+        color: @disabled-control-icon-color !important; // lesshint importantRule: false
       }
     }
   }

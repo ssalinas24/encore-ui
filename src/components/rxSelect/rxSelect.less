@@ -68,8 +68,9 @@
     cursor: pointer;
 
     // reset native styling
-    border: 0 !important;
-    outline: none !important;
+    // !important is required to reset native styling and avoid any additional styling
+    border: 0 !important; // lesshint importantRule: false
+    outline: none !important; // lesshint importantRule: false
     background: transparent;
     &:-moz-focusring {
       // FF uses text color to draw ring. Make it transparent
@@ -104,7 +105,7 @@
 
     // This allow pointer events to pass THROUGH to the
     // native <select> element
-    pointer-events: none !important;
+    pointer-events: none !important; // lesshint importantRule: false
 
     // Custom trigger button will cover native <select> button
     .select-trigger {
