@@ -33,6 +33,7 @@
         "comma-style": [2, "last"],
         "complexity": [2, 10],
         "curly": [2, "all"],
+        "eol-last": 2,
         "guard-for-in": 2,
         "indent": [2, 4, { "SwitchCase": 1 }],
         "key-spacing": [2, {
