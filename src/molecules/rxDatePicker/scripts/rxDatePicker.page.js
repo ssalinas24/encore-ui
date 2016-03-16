@@ -86,53 +86,13 @@ var rxDatePicker = {
     /**
      * @private
      * @instance
-     * @type {Date}
-     * @description Getter and setter for changing the visible month on the calendar.
-     * This function does not select an actual date. Setting the month and year requires
-     * assigning this property to a date object corresponding to that month/year pair.
-     * @see rxDatePicker#date
-     * @example
-     * var picker = encore.rxDatePicker.initialize();
-     * picker.monthAndYear = new Date('June 2012');
-     * expect(picker.monthAndYear).to.eventually.equalDate(new Date('June 2012'));
-     */
-    monthAndYear: {
-        get: function () {
-            this.open();
-            return this.rootElement.$('.currentMonth').getText().then(exports.rxMisc.newDate);
-        },
-        set: function (date) {
-            var self = this;
-            this.open();
-            return this.monthAndYear.then(function (currentDate) {
-                if (_.all([
-                    currentDate.getYear() === date.getYear(),
-                    currentDate.getMonth() === date.getMonth()
-                ])) {
-                    return;
-                }
-
-                if (date > currentDate) {
-                    self.nextMonth();
-                } else {
-                    self.previousMonth();
-                }
-
-                self.monthAndYear = date;
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
      * @function
      * @description Will select the last day of the currently visible month. Does not accept arguments.
-     * Set the visible month yourself with {@link rxDatePicker#monthAndYear} first to pick the right
-     * last day of the month.
+     * Set the visible month yourself with {@link rxDatePicker#month} and {@link rxDatePicker#year} first
+     * to pick the right last day of the month.
      * @example
      * var picker = encore.rxDatePicker.initialize();
-     * picker.monthAndYear = new Date('January 2016');
+     * picker.date = new Date('January 2016');
      * // don't do this!
      * picker.date = moment(new Date('January 2016')).endOf('month');
      * // the date picker uses all `ISOString()` calls to grab dates.
@@ -142,19 +102,22 @@ var rxDatePicker = {
      *     expect(date.toISOString()).to.equal('2016-02-01T05:59:59.999Z');
      * });
      * // do this instead
-     * picker.monthAndYear = new Date('January 2016');
+     * picker.date = new Date('January 2016');
      * picker.selectLastDayOfCurrentMonth();
      * picker.date.then(function (date) {
      *     // although the date is the same, `selectLastDayOfCurrentMonth` uses moment
      *     // to select the last day of the month for you, in a way that won't incur
      *     // any timezone changes.
-     *     expect(date.toISOString()).to.eventually.equal('2016-02-01T05:59:59.999Z');
+     *     expect(date.toISOString()).to.equal('2016-02-01T05:59:59.999Z');
      * });
      */
     selectLastDayOfCurrentMonth: {
         value: function () {
             var self = this;
-            return this.monthAndYear.then(function (currentDate) {
+            this.open();
+
+            return protractor.promise.all([this.month, this.year]).then(function (results) {
+                var currentDate = new Date(results[0] + ' ' + results[1]);
                 var lastDate = moment(new Date(currentDate)).endOf('month').format();
                 var lastDayString = lastDate.split('T')[0];
                 self.selectVisibleDate(lastDayString);
@@ -211,7 +174,9 @@ var rxDatePicker = {
      */
     isOpen: {
         value: function () {
-            return this.rootElement.$('.calendar').isPresent();
+            return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
+                return !_.contains(classes, 'ng-hide');
+            });
         }
     },
 
@@ -318,6 +283,42 @@ var rxDatePicker = {
     },
 
     /**
+     * @private
+     * @instance
+     * @description Getter/setter for entering and retrieving the month from the date picker.
+     * @returns {String} The current month selected on the calendar.
+     * @param {String} month - Sets the current month on the calendar.
+     */
+    month: {
+        get: function () {
+            return exports.rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.text;
+        },
+
+        set: function (value) {
+            exports.rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value);
+        }
+    },
+
+    /**
+     * @private
+     * @instance
+     * @description Getter/setter for entering and retrieving the year from the date picker.
+     * The date picker provides a 10-year range before and after the selected date, if present.  Otherwise,
+     * the range is calculated from today's date.
+     * @returns {String} The current year selected on the calendar.
+     * @param {String} year - Sets the current year on the calendar.
+     */
+    year: {
+        get: function () {
+            return exports.rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.text;
+        },
+
+        set: function (value) {
+            exports.rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value);
+        }
+    },
+
+    /**
      * @instance
      * @description Getter/setter for entering and retrieving a date from the date picker.
      * @returns {Date} The current date set on the calendar
@@ -341,7 +342,8 @@ var rxDatePicker = {
 
         set: function (date) {
             this.open();
-            this.monthAndYear = date;
+            this.month = date.toString().split(' ')[1];
+            this.year = date.toString().split(' ')[3];
             var targetDateString = date.toISOString().split('T')[0];
             this.selectVisibleDate(targetDateString);
         }
