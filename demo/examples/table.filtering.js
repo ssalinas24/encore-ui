@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('tableFilteringExampleCtrl', function ($scope, PageTracking) {
+.controller('tableFilteringExampleCtrl', function ($scope) {
     $scope.people = [
         { name: 'Patrick Deuley', occupation: 'Design Chaplain' },
         { name: 'Hussam Dawood', occupation: 'Cat Lover' },
@@ -9,4 +9,3 @@ angular.module('demoApp')
         { name: 'Chris Cantu', occupation: 'Texan Tornado' },
     ];
 });
-

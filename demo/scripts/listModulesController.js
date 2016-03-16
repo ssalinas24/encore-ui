@@ -24,7 +24,7 @@ angular.module('demoApp')
     }
 
     function getCaretType () {
-        return vm.sortReverse ? "fa fa-caret-down" : "fa fa-caret-up";
+        return vm.sortReverse ? 'fa fa-caret-down' : 'fa fa-caret-up';
     }
 
     function showCaret (key) {

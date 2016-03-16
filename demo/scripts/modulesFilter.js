@@ -12,8 +12,6 @@ angular.module('demoApp')
  * @param {String} search input string to filter list by
  */
 .filter('modulesFilter', function () {
-    var prevSearch = '';
-
     return function (modules, search) {
         if (!search) {
             return modules;
@@ -21,10 +19,6 @@ angular.module('demoApp')
 
         // build case-insensitive, regular expression from search term
         var searchRegExp = new RegExp(search, 'i');
-
-        function matchesName (mod) {
-            return mod.name.match(searchRegExp);
-        }
 
         function matchesDisplayName (mod) {
             return mod.displayName.match(searchRegExp);

@@ -21,6 +21,7 @@
         "jQuery": false,
         "module": false,
         "moment": true,
+        "Prism": true,
         "protractor": true,
         "require": false,
         "runs": true,

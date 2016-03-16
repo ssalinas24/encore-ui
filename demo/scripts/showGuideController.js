@@ -9,7 +9,7 @@ angular
         vm.guide = $routeParams.guide;
         vm.scrollTo = scrollTo;
 
-        function activate() {
+        function activate () {
             var hash;
             setTitle();
 

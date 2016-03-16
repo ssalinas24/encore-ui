@@ -408,7 +408,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
 
     rxPageTitle.setSuffix(' - EncoreUI');
 
-    $rootScope.$on('$routeChangeSuccess', function() {
+    $rootScope.$on('$routeChangeSuccess', function () {
         if ($location.hash()) {
             $anchorScroll();
         } else {
