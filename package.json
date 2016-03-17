@@ -13,7 +13,9 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postinstall": "grunt hooks"
+    "postinstall": "grunt hooks",
+    "eslint-dev": "eslint -c .eslintrc.json --ignore-path .eslintignore src/**",
+    "eslint-test": "eslint -c .eslintrc.spec.json --ignore-path .eslintignore-spec src/**"
   },
   "dependencies": {
     "normalize.css": "^3.0.2",
@@ -25,6 +27,7 @@
     "chai-as-promised": "~4.1.1",
     "connect-livereload": "~0.5.2",
     "connect-modrewrite": "~0.7.9",
+    "eslint": "^2.2.0",
     "execSync": "^1.0.2",
     "glob": "~4.3.4",
     "grunt": "0.4.5",
