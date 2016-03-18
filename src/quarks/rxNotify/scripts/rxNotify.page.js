@@ -281,17 +281,6 @@ exports.rxNotify = {
     },
 
     /**
-     * @deprecated Use {@link rxNotify.initialize} without arguments instead.
-     * @memeberof rxNotify
-     * @type {rxNotify.notification}
-     * @description The first notification present on the page. Does not return
-     * a collection of notification page objects, but a singular notification page object.
-     */
-    main: (function () {
-        return notification($('.rx-notifications .rx-notification'));
-    })(),
-
-    /**
      * @memeberof rxNotify
      * @type {rxNotify}
      * @description Returns a collection of functions used to interact with all notifications on the page.

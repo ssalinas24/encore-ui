@@ -135,23 +135,5 @@ exports.rxMetadata = {
             get: function () { return rxMetadataElement; }
         };
         return Page.create(rxMetadata);
-    },
-
-    /**
-     * @memberof rxMetadata
-     * @deprecated Use {@link rxMetadata.initialize} without arguments instead.
-     * @description Page object representing the _first_ rxMetadata object found on the page.
-     * There is no way to configure `transformFns` from the main instance of an rxMetadata component.
-     * @type {rxMetadata}
-     */
-    main: (function () {
-        rxMetadata.transformFns = {
-            get: function () { return {}; }
-        };
-
-        rxMetadata.rootElement = {
-            get: function () { return $('rx-metadata'); }
-        };
-        return Page.create(rxMetadata);
-    })()
+    }
 };

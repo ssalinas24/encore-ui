@@ -33,7 +33,7 @@ exports.rxBulkSelect = function (options) {
         before(function () {
 
             if (options.instance === undefined) {
-                component = rxBulkSelect.main;
+                component = rxBulkSelect.initialize();
             } else {
                 component = options.instance;
             }

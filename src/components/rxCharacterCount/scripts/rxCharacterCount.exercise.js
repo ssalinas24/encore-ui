@@ -41,7 +41,7 @@ exports.rxCharacterCount = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxCharacterCount.main;
+                component = rxCharacterCount.initialize();
             }
 
             if (options.cssSelector !== undefined) {

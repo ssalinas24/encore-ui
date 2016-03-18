@@ -308,17 +308,13 @@ exports.tabs = {
      * in a selector that highlights all elements on a page, such as `$('html')` or `$('body')`.
      */
     initialize: function (tabsElement) {
+        if (tabsElement === undefined) {
+            tabsElement = $('html');
+        }
+
         tabs.rootElement = {
             get: function () { return tabsElement; }
         };
         return Page.create(tabs);
-    },
-
-    main: (function () {
-        tabs.rootElement = {
-            get: function () { return $('html'); }
-        };
-        return Page.create(tabs);
-    })()
-
+    }
 };
