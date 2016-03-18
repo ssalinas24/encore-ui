@@ -14,8 +14,8 @@
  * differs from {@link rxNotify.directive:rxNotifications rxNotifications} (plural).
  *
  * The type attribute can be any type supported by `options.type` for the `rxNotify.add()` function in
- * the {@link quarks.service:rxNotify rxNotify} service.
- * 
+ * the {@link utilities.service:rxNotify rxNotify} service.
+ *
  * ## Directives
  * * {@link rxNotify.directive:rxNotification rxNotification}
  * * {@link rxNotify.directive:rxNotifications rxNotifications}
@@ -78,5 +78,5 @@
 angular.module('encore.ui.rxNotify', [
     'ngSanitize',
     'ngAnimate',
-    'encore.ui.quarks'
+    'encore.ui.utilities'
 ]);

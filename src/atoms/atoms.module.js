@@ -1,7 +1,7 @@
 /**
  * @ngdoc overview
  * @name atoms
- * @requires quarks
+ * @requires utilities
  * @description
  * # Atoms
  * Atoms are the basic building blocks for all UI elements.
@@ -11,5 +11,5 @@
  * * {@link atoms.directive:rxFavicon rxFavicon}
  */
 angular.module('encore.ui.atoms', [
-    'encore.ui.quarks'
+    'encore.ui.utilities'
 ]);

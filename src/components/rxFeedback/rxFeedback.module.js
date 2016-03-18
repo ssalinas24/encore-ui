@@ -129,5 +129,5 @@
  */
 angular.module('encore.ui.rxFeedback', [
     'ngResource',
-    'encore.ui.quarks'
+    'encore.ui.utilities'
 ]);

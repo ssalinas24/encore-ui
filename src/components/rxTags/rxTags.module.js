@@ -11,7 +11,7 @@
  *
  */
 angular.module('encore.ui.rxTags', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
     'encore.ui.rxMisc',
     'ui.bootstrap'
 ]);

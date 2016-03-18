@@ -3,7 +3,7 @@ angular.module('encore.ui.rxEnvironment')
  * @ngdoc directive
  * @name rxEnvironment.directive:rxEnvironment
  * @restrict A
- * @requires quarks.service:Environment
+ * @requires utilities.service:Environment
  * @description
  * Show or hide content based on environment name
  *

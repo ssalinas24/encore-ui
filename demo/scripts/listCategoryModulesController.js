@@ -46,7 +46,7 @@ function genericListCategoryModulesController (ilk) {
 }//genericListCategoryModulesController
 
 angular.module('demoApp')
-.controller('listQuarksController', genericListCategoryModulesController('quarks'))
+.controller('listUtilitiesController', genericListCategoryModulesController('utilities'))
 .controller('listAtomsController', genericListCategoryModulesController('atoms'))
 .controller('listMoleculesController', genericListCategoryModulesController('molecules'))
 .controller('listComponentsController', genericListCategoryModulesController('components'));

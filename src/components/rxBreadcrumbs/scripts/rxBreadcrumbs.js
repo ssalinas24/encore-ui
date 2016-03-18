@@ -9,7 +9,7 @@ angular.module('encore.ui.rxBreadcrumbs')
  *
  *
  * By default, the first breadcrumb will always have an URL of `'/'` and a name of `'Home'`. This can be changed
- * with the `rxBreadcrumbsSvc.setHome` method (see {@link quarks.service:rxBreadcrumbsSvc rxBreadcrumbsSvc}).
+ * with the `rxBreadcrumbsSvc.setHome` method (see {@link utilities.service:rxBreadcrumbsSvc rxBreadcrumbsSvc}).
  *
  * @param {String=} status
  * The tag to apply to any breadcrumbs with usePageStatusTag:true

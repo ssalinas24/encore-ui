@@ -42,7 +42,7 @@ describe('encore.ui.rxApp', function () {
             beforeEach(function () {
                 // load module
                 module('encore.ui.rxApp');
-                module('encore.ui.quarks');
+                module('encore.ui.utilities');
                 module('encore.ui.rxNotify');
 
                 // load templates
@@ -218,7 +218,7 @@ describe('encore.ui.rxApp', function () {
 
             beforeEach(function () {
                 module('encore.ui.rxApp');
-                module('encore.ui.quarks');
+                module('encore.ui.utilities');
                 module('encore.ui.rxNotify');
                 module(function ($provide) {
                     $provide.value('Environment', mockEnvironment);
@@ -275,7 +275,7 @@ describe('encore.ui.rxApp', function () {
             beforeEach(function () {
                 // load module
                 module('encore.ui.rxApp');
-                module('encore.ui.quarks');
+                module('encore.ui.utilities');
 
                 // load templates
                 module('templates/rxApp.html');
@@ -383,7 +383,7 @@ describe('encore.ui.rxApp', function () {
                 var customURL = 'foo.json';
 
                 // load module
-                module('encore.ui.quarks');
+                module('encore.ui.utilities');
                 module('encore.ui.rxNotify');
 
                 // load templates
@@ -473,7 +473,7 @@ describe('encore.ui.rxApp', function () {
             beforeEach(function () {
                 // load module
                 module('encore.ui.rxApp');
-                module('encore.ui.quarks');
+                module('encore.ui.utilities');
                 module('encore.ui.rxNotify');
 
                 // load templates

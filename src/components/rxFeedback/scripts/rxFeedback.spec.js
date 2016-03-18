@@ -38,7 +38,7 @@ describe('rxFeedback', function () {
         };
 
         // load module
-        module('encore.ui.quarks');
+        module('encore.ui.utilities');
         module('encore.ui.rxFeedback');
 
         // load templates

@@ -12,5 +12,5 @@
  * * {@link rxStatusColumn.directive:rxStatusHeader rxStatusHeader}
  */
 angular.module('encore.ui.rxStatusColumn', [
-    'encore.ui.quarks'
+    'encore.ui.utilities'
 ]);
