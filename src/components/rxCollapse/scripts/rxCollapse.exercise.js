@@ -1,14 +1,12 @@
 var _ = require('lodash');
-var rxCollapse = require('./rxCollapse.page').rxCollapse;
 
 /**
  * @function
  * @description rxCollapse exercises.
  * @return {function} A function to be passed to mocha's `describe`.
  * @exports exercise/rxCollapse
- * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxCollapse} [options.instance=rxCollapse.initialize()] - Component to exercise.
- * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} options - Test options. Used to build valid tests.
+ * @param {rxCollapse} options.instance - Component to exercise.
  * @param {String} [options.title] - The title of the rxCollapse element.
  * @param {Boolean} [options.expanded=false] - Whether or not the rxCollapse element is currently expanded.
  * @example
@@ -32,16 +30,7 @@ exports.rxCollapse = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxCollapse.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxCollapse.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should show the element', function () {

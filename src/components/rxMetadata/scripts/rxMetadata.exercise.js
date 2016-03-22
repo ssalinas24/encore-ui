@@ -5,13 +5,14 @@ var rxMetadata = require('./rxMetadata.page').rxMetadata;
  * rxMetadata exercises
  * @exports exercise/rxMetadata
  * @param {Object} [options] Test options. Used to build valid tests.
- * @param {string} [options.cssSelector] Fallback selector string to initialize widget with.
+ * @param {rxMetadata} [instance={@link rxMetadata.initialize}] Component to exercise.
  * @param {Boolean} [options.present=true] Determines if the metadata is present in the DOM.
  * @param {Boolean} [options.visible=true] Determines if the metadata is visible.
  * @param {Object} [options.transformFns] - Transformation functions to be passed to rxMetadata.
  * @param {Object} [options.terms] The expected label text of each metadata entry.
  * @example
  * describe('metadata', encore.exercise.rxMetadata({
+ *     instance: myPage.accountOverviewMetadata,
  *     transformFns: {
  *         'Signup Date': function (elem) {
  *             return elem.getText().then(function (text) {
@@ -44,6 +45,7 @@ exports.rxMetadata = function (options) {
     }
 
     options = _.defaults(options, {
+        instance: rxMetadata.initialize(),
         present: true,
         visible: true,
     });
@@ -52,12 +54,7 @@ exports.rxMetadata = function (options) {
         var component;
 
         before(function () {
-            if (options.cssSelector === undefined) {
-                // don't use main -- you need to be able to supply `transformFns` via `initialize`
-                component = rxMetadata.initialize($('rx-metadata'), options.transformFns);
-            } else {
-                component = rxMetadata.initialize($(options.cssSelector), options.transformFns);
-            }
+            component = rxMetadata.initialize(options.instance.rootElement, options.transformFns);
         });
 
         it('should ' + (options.present ? 'be' : 'not be') + ' present', function () {

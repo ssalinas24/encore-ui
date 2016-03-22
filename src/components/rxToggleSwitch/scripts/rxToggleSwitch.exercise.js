@@ -1,13 +1,11 @@
 var _ = require('lodash');
-var rxToggleSwitch = require('./rxToggleSwitch.page').rxToggleSwitch;
 
 /**
  * @description rxToggleSwitch exercises.
  * @see rxToggleSwitch
  * @exports exercise/rxToggleSwitch
- * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxToggleSwitch} [options.instance=rxToggleSwitch.initialize()] - Component to exercise.
- * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} options - Test options. Used to build valid tests.
+ * @param {rxToggleSwitch} options.instance - Component to exercise.
  * @param {Boolean} [options.disabled=false] - Determines if the switch can be toggled.
  * @param {Boolean} [options.enabledAtStart=null] -
  * Beginning state of toggle switch. The value will be detected automatically if not given.
@@ -45,17 +43,7 @@ exports.rxToggleSwitch = function (options) {
         };
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxToggleSwitch.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxToggleSwitch.initialize($(options.cssSelector));
-            }
-
+            component = options.instance;
             component.isEnabled().then(function (isEnabled) {
                 // use option if available, otherwise use detected state
                 enabledAtStart = _.isNull(options.enabledAtStart) ? isEnabled : options.enabledAtStart;
