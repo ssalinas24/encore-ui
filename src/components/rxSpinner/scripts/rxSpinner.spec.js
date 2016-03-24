@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('rxSpinner', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate = '<div rx-spinner toggle="toggle"></div>';
     var darkTemplate = '<div rx-spinner="dark" toggle="toggle"></div>';
 
@@ -11,7 +11,6 @@ describe('rxSpinner', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });
@@ -36,7 +35,7 @@ describe('rxSpinner', function () {
         scope.$digest();
         expect(domEl.querySelector('.rx-spinner')).to.be.null;
     });
-    
+
     it('should add dark spinner div to element', function () {
         el = helpers.createDirective(darkTemplate, compile, scope);
         scope.$digest();

@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxPage', function () {
-        var scope, compile, rootScope, el, pageTitle;
+        var scope, compile, el, pageTitle;
         var template = '<rx-page title="myCustomTitle"></rx-page>';
 
         beforeEach(function () {
@@ -13,7 +13,6 @@ describe('encore.ui.rxApp', function () {
 
             // Inject in angular constructs
             inject(function ($rootScope, $compile) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
             });

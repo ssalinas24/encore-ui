@@ -14,8 +14,8 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "grunt hooks",
-    "eslint-dev": "eslint -c .eslintrc.json --ignore-path .eslintignore src/**",
-    "eslint-test": "eslint -c .eslintrc.spec.json --ignore-path .eslintignore-spec src/**"
+    "eslint-dev": "eslint -c .eslintrc.json --ignore-path .eslintignore src/** demo/**",
+    "eslint-test": "eslint -c .eslintrc.spec.json --ignore-path .eslintignore-spec src/** demo/**"
   },
   "dependencies": {
     "normalize.css": "^3.0.2",

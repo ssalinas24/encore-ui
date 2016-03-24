@@ -131,14 +131,14 @@ angular.module('encore.ui.quarks')
      *
      * @param {Object} message The message object to remove.
      */
-    var dismissAfterTimeout = function (message) {
+    function dismissAfterTimeout (message) {
         // convert seconds to milliseconds
         var timeoutMs = message.timeout * 1000;
 
         $interval(function () {
             dismiss(message);
         }, timeoutMs, 1);
-    };
+    }
 
     /**
      * @function
@@ -226,7 +226,7 @@ angular.module('encore.ui.quarks')
      *
      * @param {Object} msg Message object to remove
      */
-    var dismiss = function (msg) {
+    function dismiss (msg) {
         // remove message by id
         stacks[msg.stack] = _.reject(stacks[msg.stack], { 'id': msg.id });
 
@@ -235,7 +235,7 @@ angular.module('encore.ui.quarks')
                 msg.ondismiss(msg);
             }, 0, 1);
         }
-    };//dismiss()
+    }//dismiss()
 
     /**
      * @name add

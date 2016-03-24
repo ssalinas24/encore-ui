@@ -4,7 +4,7 @@ angular.module('encore.ui.quarks')
  * @name quarks.service:rxDOMHelper
  * @description
  * A small set of functions to provide some functionality
- * that isn't present in [Angular's jQuery-lite](https://docs.angularjs.org/api/ng/function/angular.element), 
+ * that isn't present in [Angular's jQuery-lite](https://docs.angularjs.org/api/ng/function/angular.element),
  * and other DOM-related functions that are useful.
  *
  * **NOTE:** All methods take jQuery-lite wrapped elements as arguments.
@@ -30,7 +30,7 @@ angular.module('encore.ui.quarks')
         var rect = rawDom.getBoundingClientRect();
         _x = rect.left + scrollX;
         _y = rect.top + scrollY;
-        return { left: _x, top:_y };
+        return { left: _x, top: _y };
     };
 
     var style = function (elem) {

@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('quarks:rxAutoSave', function () {
-    var $rootScope, $q, $timeout, scope, rxAutoSave, a, b, LocalStorage, SessionStorage,
+    var $rootScope, $q, $timeout, scope, rxAutoSave, a, LocalStorage, SessionStorage,
         now;
 
     var url;
@@ -53,7 +53,7 @@ describe('quarks:rxAutoSave', function () {
         initializeScope();
 
         a = rxAutoSave(scope, 'formA');
-        b = rxAutoSave(scope, 'formB');
+        rxAutoSave(scope, 'formB');
 
         scope.$digest();
     });
@@ -74,7 +74,7 @@ describe('quarks:rxAutoSave', function () {
 
         // Automatically load the last stored value into the scope
         a = rxAutoSave(scope, 'formA');
-        b = rxAutoSave(scope, 'formB');
+        rxAutoSave(scope, 'formB');
         scope.$digest();
 
         expect(scope.formA.foo).to.equal('bar');
@@ -354,7 +354,7 @@ describe('quarks:rxAutoSave', function () {
     it('should save and load values from SessionStorage', function () {
         // Automatically load the last stored value into the scope
         a = rxAutoSave(scope, 'formA', { storageBackend: SessionStorage });
-        b = rxAutoSave(scope, 'formB', { storageBackend: SessionStorage });
+        rxAutoSave(scope, 'formB', { storageBackend: SessionStorage });
         flush();
 
         scope.formA.foo = 'bar';
@@ -366,7 +366,7 @@ describe('quarks:rxAutoSave', function () {
         initializeScope();
 
         a = rxAutoSave(scope, 'formA', { storageBackend: SessionStorage });
-        b = rxAutoSave(scope, 'formB', { storageBackend: SessionStorage });
+        rxAutoSave(scope, 'formB', { storageBackend: SessionStorage });
         flush();
 
         expect(scope.formA.foo).to.equal('bar');

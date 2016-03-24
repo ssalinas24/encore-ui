@@ -4,32 +4,32 @@ describe('rxSortEmptyTop', function () {
     var predicate = 'image.name';
     var reverse = true;
     var dataRows = [
-        { id: '4', image: { name: 'Cent OS' } },
-        { id: '1', image: { } },
-        { id: '2', image: { name: null } },
-        { id: '3', image: { name: undefined } },
-        { id: '5', image: { name: 'Ubuntu 12.04 LTS' } }
+        { id: '4', image: { name: 'Cent OS' }},
+        { id: '1', image: {}},
+        { id: '2', image: { name: null }},
+        { id: '3', image: { name: undefined }},
+        { id: '5', image: { name: 'Ubuntu 12.04 LTS' }}
     ];
 
     var dataRowsSortedAscending = [
-        { id: '1', image: { } },
-        { id: '2', image: { name: null } },
-        { id: '3', image: { name: undefined } },
-        { id: '4', image: { name: 'Cent OS' } },
-        { id: '5', image: { name: 'Ubuntu 12.04 LTS' } }
+        { id: '1', image: {}},
+        { id: '2', image: { name: null }},
+        { id: '3', image: { name: undefined }},
+        { id: '4', image: { name: 'Cent OS' }},
+        { id: '5', image: { name: 'Ubuntu 12.04 LTS' }}
     ];
 
     var dataRowsSortedDescending = [
-        { id: '5', image: { name: 'Ubuntu 12.04 LTS' } },
-        { id: '4', image: { name: 'Cent OS' } },
-        { id: '1', image: { } },
-        { id: '2', image: { name: null } },
-        { id: '3', image: { name: undefined } }
+        { id: '5', image: { name: 'Ubuntu 12.04 LTS' }},
+        { id: '4', image: { name: 'Cent OS' }},
+        { id: '1', image: {}},
+        { id: '2', image: { name: null }},
+        { id: '3', image: { name: undefined }}
     ];
 
     beforeEach(function () {
         module('encore.ui.quarks');
- 
+
         inject(function ($filter) {
             sortEmptyTop = $filter('rxSortEmptyTop');
         });

@@ -244,8 +244,8 @@ angular.module('encore.ui.quarks')
  *
  * ## Storage location
  *
- * All values for `rxAutoSave` are by default stored in the browser's `LocalStorage` through the `rxLocalStorage` 
- * service, and keyed on the URL of the page, with a `rxAutoSave::` prefix. For example, if the above form were 
+ * All values for `rxAutoSave` are by default stored in the browser's `LocalStorage` through the `rxLocalStorage`
+ * service, and keyed on the URL of the page, with a `rxAutoSave::` prefix. For example, if the above form were
  * present at the URL `'users/JonnyRocket/edit'`, then the form data would be saved into the browser's `LocalStorage`
  * at location `'rxAutoSave::users/JonnyRocket/edit'`.
  *
@@ -544,7 +544,7 @@ angular.module('encore.ui.quarks')
 
         _.bindAll(autoSaveInstance);
 
-        var update = function (newVal) {
+        function update (newVal) {
             // Get the current data stored for this watchVar
             var data = api.getDataObject();
 
@@ -557,7 +557,7 @@ angular.module('encore.ui.quarks')
 
             // Update the expiry time whenever we modify data
             updateExpiryTime();
-        };
+        }
 
         // We don't want to write to the browser's LocalStorage every time the model changes,
         // because that would turn typing into a textarea into an expensive operation.

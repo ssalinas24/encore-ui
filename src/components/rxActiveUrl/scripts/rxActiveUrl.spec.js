@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('Directive: Active URL (inside Product Resources)', function () {
-    var scope, location, compile, rootScope;
+    var scope, location, compile;
     var validTemplate = '<rx-active-url url="/servers"></rx-active-url>';
 
     beforeEach(function () {
@@ -13,7 +13,6 @@ describe('Directive: Active URL (inside Product Resources)', function () {
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
             location = $location;
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

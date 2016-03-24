@@ -12,6 +12,43 @@ angular.module('encore.ui.quarks')
  * </pre>
  */
 .factory('PageTracking', function ($q, LocalStorage, rxPaginateUtils) {
+    var PageTracking = {
+        /**
+        * @property {number} itemsPerPage This is the current setting for the number
+        * of items to display per page.
+        * @property {boolean} [persistItemsPerPage=true] Whether or not a change to this pager's itemsPerPage
+        * should be persisted globally to all other pagers
+        * @property {number} pagesToShow This is the number of pages to show
+        * in the pagination controls
+        * @property {number} pageNumber This is where the current page number is
+        * stored.
+        * @property {boolean} pageInit This is used to determine if the page has been
+        * initialzed before.
+        * @property {number} total This is the total number of items that are in the
+        * data set
+        * @property {boolean} showAll This is used to determine whether or not to use
+        * the pagination or not.
+        *
+        * @method createInstance This is used to generate the instance of the
+        * PageTracking object. Enables the ability to override default pager.
+        * If you choose to override the default `itemsPerPage`, and it isn't
+        * a value in itemSizeList, then it will automatically be added to itemSizeList
+        * at the right spot.
+        */
+        createInstance: function (options) {
+            options = options ? options : {};
+            var tracking = new PageTrackingObject(options);
+            return tracking.pager;
+        },
+
+        /*
+        * @method userSelectedItemsPerPage This method sets a new global itemsPerPage value
+        */
+        userSelectedItemsPerPage: function (itemsPerPage) {
+            LocalStorage.setItem('rxItemsPerPage', itemsPerPage);
+        }
+    };
+
     function PageTrackingObject (opts) {
         var pager = _.defaults(_.cloneDeep(opts), {
             itemsPerPage: 200,
@@ -214,43 +251,6 @@ angular.module('encore.ui.quarks')
         pager.goToPage(pager.pageNumber);
 
     }
-
-    var PageTracking = {
-        /**
-        * @property {number} itemsPerPage This is the current setting for the number
-        * of items to display per page.
-        * @property {boolean} [persistItemsPerPage=true] Whether or not a change to this pager's itemsPerPage
-        * should be persisted globally to all other pagers
-        * @property {number} pagesToShow This is the number of pages to show
-        * in the pagination controls
-        * @property {number} pageNumber This is where the current page number is
-        * stored.
-        * @property {boolean} pageInit This is used to determine if the page has been
-        * initialzed before.
-        * @property {number} total This is the total number of items that are in the
-        * data set
-        * @property {boolean} showAll This is used to determine whether or not to use
-        * the pagination or not.
-        *
-        * @method createInstance This is used to generate the instance of the
-        * PageTracking object. Enables the ability to override default pager.
-        * If you choose to override the default `itemsPerPage`, and it isn't
-        * a value in itemSizeList, then it will automatically be added to itemSizeList
-        * at the right spot.
-        */
-        createInstance: function (options) {
-            options = options ? options : {};
-            var tracking = new PageTrackingObject(options);
-            return tracking.pager;
-        },
-
-        /*
-        * @method userSelectedItemsPerPage This method sets a new global itemsPerPage value
-        */
-        userSelectedItemsPerPage: function (itemsPerPage) {
-            LocalStorage.setItem('rxItemsPerPage', itemsPerPage);
-        }
-    };
 
     return PageTracking;
 });

@@ -11,12 +11,7 @@ describe('Pagination', function () {
             showAll: false,
             pageInit: false
         },
-        pageTracking,
-        items;
-
-    beforeEach(function () {
-        items = originalItems.slice(0);
-    });
+        pageTracking;
 
     describe('Directive: rxPaginate (UI-pagination)', function () {
         // TODO redo these tests to use class names for finding first, prev, next, last, etc items

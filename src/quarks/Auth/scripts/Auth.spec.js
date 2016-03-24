@@ -3,8 +3,17 @@ describe('quarks:Auth', function () {
     var auth, identity, permission, session, token;
 
     token = {
-        'access': { 'token': { 'id': 'somecrazyid', 'expires': '2014-03-20T19:47:36.711Z',
-        'tenant': { 'id': '655062', 'name': '655062' }, 'RAX-AUTH:authenticatedBy': ['PASSWORD'] }}
+        'access': {
+            'token': {
+                'id': 'somecrazyid',
+                'expires': '2014-03-20T19:47:36.711Z',
+                'tenant': {
+                    'id': '655062',
+                    'name': '655062'
+                },
+                'RAX-AUTH:authenticatedBy': ['PASSWORD']
+            }
+        }
     };
 
     beforeEach(function () {

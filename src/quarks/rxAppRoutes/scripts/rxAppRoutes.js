@@ -125,7 +125,7 @@ angular.module('encore.ui.quarks')
                 });
             },
 
-            isActiveByKey:  function (key) {
+            isActiveByKey: function (key) {
                 return this.getRouteByKey(key).then(function (route) {
                     return urlUtils.isActive(route, urlUtils.getCurrentPathChunks());
                 }, function () {

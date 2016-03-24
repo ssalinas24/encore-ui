@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('quarks:rxFeedbackController', function () {
-    var ctrl, ctrlScope, rootScope, controller;
+    var ctrlScope, rootScope;
     var modalInstance;
 
     beforeEach(function () {
@@ -16,11 +16,10 @@ describe('quarks:rxFeedbackController', function () {
             };
 
             inject(function ($rootScope, $controller) {
-                controller = $controller;
                 rootScope = $rootScope;
                 ctrlScope = $rootScope.$new();
 
-                ctrl = $controller('rxFeedbackController', {
+                $controller('rxFeedbackController', {
                     $scope: ctrlScope,
                     $modalInstance: modalInstance,
                     $rootScope: $rootScope
@@ -69,12 +68,11 @@ describe('quarks:rxFeedbackController', function () {
             };
 
             inject(function ($rootScope, $controller) {
-                controller = $controller;
                 rootScope = $rootScope;
                 ctrlScope = $rootScope.$new();
 
                 expect(ctrlScope.test).to.be.undefined;
-                ctrl = $controller('rxFeedbackController', {
+                $controller('rxFeedbackController', {
                     $scope: ctrlScope,
                     $modalInstance: modalInstance,
                     $rootScope: $rootScope

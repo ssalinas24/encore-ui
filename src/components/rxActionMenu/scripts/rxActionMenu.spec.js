@@ -1,7 +1,7 @@
 describe('rxActionMenu', function () {
     /* jshint node: true */
     describe('directive:rxActionMenu', function () {
-        var el, scope, compile, rootScope, document;
+        var el, scope, compile, document;
 
         beforeEach(function () {
             // load module
@@ -12,7 +12,6 @@ describe('rxActionMenu', function () {
 
             // Inject in angular constructs
             inject(function ($rootScope, $compile, $templateCache, $document) {
-                rootScope = $rootScope;
                 compile = $compile;
                 document = $document;
                 scope = $rootScope.$new();

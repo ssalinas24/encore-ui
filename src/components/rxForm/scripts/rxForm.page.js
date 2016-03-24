@@ -202,6 +202,8 @@ exports.rxForm = {
         }
     },
 
+    /* eslint-disable space-before-function-paren */ // https://github.com/eslint/eslint/issues/5520
+
     /**
      * @description **ALIASED**: Directly uses {@link rxCheckbox}.
      * @property {Function} initialize - {@link rxCheckbox.initialize}
@@ -231,6 +233,8 @@ exports.rxForm = {
         get initialize() { return exports.rxSelect.initialize; },
         get generateAccessor() { return exports.rxSelect.generateAccessor; }
     },
+
+    /* eslint-enable space-before-function-paren */
 
     /**
      * @deprecated

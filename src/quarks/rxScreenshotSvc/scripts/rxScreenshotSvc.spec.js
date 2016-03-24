@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxScreenshotSvc', function () {
-    var rootScope, compile, scope, svc, timeout, el;
+    var rootScope, compile, scope, svc, el;
     var validTemplate = '<h1>Here is some content</h1>';
 
     beforeEach(function () {
@@ -8,12 +8,11 @@ describe('rxScreenshotSvc', function () {
         module('encore.ui.quarks');
 
         // Inject in angular constructs
-        inject(function ($rootScope, $compile, rxScreenshotSvc, $timeout) {
+        inject(function ($rootScope, $compile, rxScreenshotSvc) {
             rootScope = $rootScope;
             scope = rootScope.$new();
             compile = $compile;
             svc = rxScreenshotSvc;
-            timeout = $timeout;
         });
 
         el = helpers.createDirective(validTemplate, compile, scope);

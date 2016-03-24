@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAppNav', function () {
-        var scope, compile, rootScope, el;
+        var scope, compile, el;
         var template = '<rx-app-nav items="menuItems" level="1"></rx-app-nav>';
 
         var menuItems = [{
@@ -18,7 +18,6 @@ describe('encore.ui.rxApp', function () {
 
             // Inject in angular constructs
             inject(function ($rootScope, $compile) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
             });
