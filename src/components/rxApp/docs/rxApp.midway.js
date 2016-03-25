@@ -99,7 +99,7 @@ describe('rxPage', function () {
     describe('main title', function () {
 
         before(function () {
-            demoPage.go('#/quarks/titleize');
+            demoPage.go('#/utilities/titleize');
         });
 
         it('should grab the main title', function () {

@@ -1,7 +1,7 @@
 /**
  * @ngdoc overview
  * @name molecules
- * @requires quarks
+ * @requires utilities
  * @requires atoms
  * @description
  * # Molecules
@@ -11,6 +11,6 @@
  * * {@link molecules.directive:rxDatePicker rxDatePicker}
  */
 angular.module('encore.ui.molecules', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
     'encore.ui.atoms'
 ]);

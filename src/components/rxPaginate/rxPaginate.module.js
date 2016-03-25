@@ -57,7 +57,7 @@
  * ## Persistence
  *
  * The user's preference for the number of items to display per page will be persisted across applications
- * using {@link quarks.service:rxLocalStorage rxLocalStorage}. This preference is set whenever the user selects 
+ * using {@link utilities.service:rxLocalStorage rxLocalStorage}. This preference is set whenever the user selects
  * a new number to show.
  *
  * This applies to both UI-based pagination and API-based pagination.
@@ -486,6 +486,6 @@
  * * {@link rxPaginate.directive:rxPaginate rxPaginate}
  */
 angular.module('encore.ui.rxPaginate', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
     'debounce'
 ]);

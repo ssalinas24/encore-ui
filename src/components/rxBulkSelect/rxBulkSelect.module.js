@@ -15,6 +15,6 @@
  * * {@link rxBulkSelect.directive:rxBulkSelectValidate rxBulkSelectValidate}
  */
 angular.module('encore.ui.rxBulkSelect', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
     'encore.ui.atoms'
 ]);
