@@ -153,7 +153,26 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Atom Pages */
+        /* Elements Pages */
+        .when('/elements', {
+            templateUrl: 'templates/modules/listCategoryModules.html',
+            controller: 'listElementsController',
+            controllerAs: 'vm'
+        })
+        .when('/elements/:element', {
+            templateUrl: 'templates/modules/showModule.html',
+            controller: 'showModuleController',
+            resolve: {
+                'module': function ($route, Modules) {
+                    return _.find(Modules, {
+                        'name': $route.current.params.element,
+                        category: 'elements'
+                    });
+                }
+            }
+        })
+
+        /* Atom Pages */ /* Deprecated in favor of Elements */
         .when('/atoms', {
             templateUrl: 'templates/modules/listCategoryModules.html',
             controller: 'listAtomsController',
@@ -196,7 +215,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Molecule Pages */
+        /* Molecule Pages */ /* Deprecated in favor of Elements */
         .when('/molecules', {
             templateUrl: 'templates/modules/listCategoryModules.html',
             controller: 'listMoleculesController',
@@ -227,7 +246,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Component Pages */
+        /* Component Pages */ /* Deprecated in favor of Elements */
         .when('/components', {
             templateUrl: 'templates/modules/listCategoryModules.html',
             controller: 'listComponentsController',
@@ -260,7 +279,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
     });
 })
 .run(function ($rootScope, $window, $location, $anchorScroll, $interpolate,
-               Environment, rxBreadcrumbsSvc, rxPageTitle, Modules) {
+               Environment, rxBreadcrumbsSvc, rxPageTitle, Modules, $timeout) {
     var baseGithubUrl = '//rackerlabs.github.io/encore-ui/';
     Environment.add({
         name: 'ghPages',
@@ -317,15 +336,19 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         }
                     ]
                 },
-                {
+                { /* temporary solution until site-wide search is implemented */
                     linkText: 'All Modules',
                     href: '#/modules'
+                },
+                {
+                    linkText: 'Elements',
+                    children: linksForModuleCategory('elements')
                 },
                 {
                     linkText: 'Utilities',
                     children: linksForModuleCategory('utilities')
                 },
-                {
+                { /* Deprecated in favor of Elements */
                     linkText: 'Atoms',
                     children: [
                         {
@@ -340,23 +363,15 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         {
                             linkText: 'Lists',
                             href: '#/atoms/lists'
-                        },
-                        {
-                            linkText: 'Tables',
-                            href: '#/atoms/tables'
                         }
                     ].concat(linksForModuleCategory('atoms'))
                 },
-                {
+                { /* Deprecated in favor of Elements */
                     linkText: 'Molecules',
                     children: [
                         {
                             linkText: 'Forms',
                             href: '#/molecules/forms'
-                        },
-                        {
-                            linkText: 'Tables',
-                            href: '#/molecules/tables'
                         }
                     ].concat(linksForModuleCategory('molecules'))
                 },
@@ -398,7 +413,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         }
                     ]
                 },
-                {
+                { /* Deprecated in favor of Elements */
                     linkText: 'Components',
                     children: linksForModuleCategory('components')
                 }
@@ -409,10 +424,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
     rxPageTitle.setSuffix(' - EncoreUI');
 
     $rootScope.$on('$routeChangeSuccess', function () {
-        if ($location.hash()) {
-            $anchorScroll();
-        } else {
-            $window.scrollTo(0,0);
-        }
+        $timeout($anchorScroll, 250);
     });
 });
