@@ -48,7 +48,7 @@ exports.rxToggleSwitch = function (options) {
             if (options.instance !== undefined) {
                 component = options.instance;
             } else {
-                component = rxToggleSwitch.main;
+                component = rxToggleSwitch.initialize();
             }
 
             if (options.cssSelector !== undefined) {

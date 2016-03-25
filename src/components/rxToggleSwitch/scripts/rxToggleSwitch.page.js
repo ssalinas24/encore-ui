@@ -126,31 +126,14 @@ exports.rxToggleSwitch = {
     /**
      * @function
      * @memberof rxToggleSwitch
-     * @param {ElementFinder} [rxToggleSwitchElement=$('rx-toggle-switch')] -
+     * @param {ElementFinder} rxToggleSwitchElement -
      * ElementFinder to be transformed into an rxToggleSwitchElement object.
      * @returns {rxToggleSwitch} Page object representing the {@link rxToggleSwitch} object.
      */
     initialize: function (rxToggleSwitchElement) {
-        if (rxToggleSwitchElement === undefined) {
-            rxToggleSwitchElement = $('rx-toggle-switch');
-        }
-
         rxToggleSwitch.rootElement = {
             get: function () { return rxToggleSwitchElement; }
         };
         return Page.create(rxToggleSwitch);
-    },
-
-    /**
-     * @deprecated Use {@link rxToggleSwitch.initialize} without arguments instead.
-     * @memberof rxToggleSwitch
-     * @description Page object representing the _first_ rxToggleSwitch object found on the page.
-     * @type {rxToggleSwitch}
-     */
-    main: (function () {
-        rxToggleSwitch.rootElement = {
-            get: function () { return $('rx-toggle-switch'); }
-        };
-        return Page.create(rxToggleSwitch);
-    })()
+    }
 };

@@ -240,26 +240,9 @@ exports.rxMultiSelect = {
      * @returns {rxMultiSelect}
      */
     initialize: function (rxMultiSelectElement) {
-        if (rxMultiSelectElement === undefined) {
-            rxMultiSelectElement = $('rx-multi-select');
-        }
-
         rxMultiSelect.rootElement = {
             get: function () { return rxMultiSelectElement; }
         };
         return Page.create(rxMultiSelect);
-    },
-
-    /**
-     * @memberof rxMultiSelect
-     * @deprecated Use {@link rxMultiSelect.initialize} without arguments instead.
-     * @description Page object representing the _first_ rxMultiSelect object found on the page.
-     * @type {rxMultiSelect}
-     */
-    main: (function () {
-        rxMultiSelect.rootElement = {
-            get: function () { return $('rx-multi-select'); }
-        };
-        return Page.create(rxMultiSelect);
-    })()
+    }
 };
