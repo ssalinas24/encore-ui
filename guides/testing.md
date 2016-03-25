@@ -123,7 +123,7 @@ Once installed, the page objects can be pulled in to any midway test via:
 ```js
 var someEncoreUIComponent = require('rx-page-objects').someEncoreUIComponent;
 // ...
-expect(someEncoreUIComponent.main.rootElement.isDisplayed()).to.eventually.be.true;
+expect(someEncoreUIComponent.initialize($('.my-component')).isDisplayed()).to.eventually.be.true;
 ```
 
 Alternatively, you could place this helper library in the global scope of all tests. This is the recommended way. In your project's protractor config file, add this to your `onPrepare` section.
@@ -233,7 +233,12 @@ Here's an example of a basic visual regression test for a single component.
 
 ```js
 // utils/visual-regression/components/rxComponent.midway.js
-var rxComponent = exports.rxComponent;
+
+var myPage = {
+    get myComponent() {
+        return encore.rxComponent.initialize($('.my-component'));
+    }
+};
 
 describe('demo component', function () {
 
@@ -247,9 +252,9 @@ describe('demo component', function () {
     });
 
     it('interactive', function () {
-        rxComponent.main.interactWith(); // trigger some click that expands something
+        myPage.myComponent.interactWith(); // trigger some click that expands something
         // this will capture the component in its current "interacted" state
-        screenshot.snap(this, rxComponent.main.rootElement));
+        screenshot.snap(this, myPage.myComponent.rootElement);
     });
 
 });
