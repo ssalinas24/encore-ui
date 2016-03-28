@@ -190,7 +190,7 @@ on a pull request are as close to mock-ups as can be reasonably expected. Common
 * Proper usage of layout guidelines and any other patterns and standards provided by the Framework
 * Consistency with similar elements or pages within the same application or within the Encore ecosystem
     * Even when mock-ups are implemented and the screenshots match, there's still a possibility that the new work 
-      doesn't match existing precendents that have already been coded.
+      doesn't match existing precedents that have already been coded.
 
 When hybrids review a pull request, they may be able to provide additional feedback, like:
 * Were the correct classes used in conjunction with mark-up?
