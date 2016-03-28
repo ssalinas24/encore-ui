@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxMultiSelect', function () {
     var scope, compile, createDirective;
     var transcludedTemplate = '<rx-multi-select ng-model="types">' +
@@ -60,9 +58,16 @@ describe('rxMultiSelect', function () {
             });
 
             it('does not toggle the visibility of the menu when a child element is clicked', function () {
-                angular.element(el[0].querySelector('rx-select-option')).click();
+                angular.element(el[0].querySelector('.menu')).click();
                 expect(isolateScope.listDisplayed).to.be.false;
             });
+
+            it('should close an open menu', function () {
+                isolateScope.listDisplayed = true;
+
+                isolateScope.closeMenu();
+                expect(isolateScope.listDisplayed).to.be.false;
+             });
 
             describe('controller', function () {
                 var ctrl;
