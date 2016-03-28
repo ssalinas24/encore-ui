@@ -5,7 +5,6 @@ var rxMultiSelect = require('./rxMultiSelect.page').rxMultiSelect;
  * @exports exercise/rxMultiSelect
  * @param {Object} [options] - Test options. Used to build valid tests.
  * @param {rxMultiSelect} [options.instance={@link rxMultiSelect.initialize}] - Component to exercise.
- * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Object} [options.inputs=[]] - The options of the select input.
  * @example
  * describe('default exercises', encore.exercise.rxMultiSelect({
@@ -19,6 +18,7 @@ exports.rxMultiSelect = function (options) {
     }
 
     options = _.defaults(options, {
+        instance: rxMultiSelect.initialize(),
         inputs: []
     });
 
@@ -26,16 +26,7 @@ exports.rxMultiSelect = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxMultiSelect.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxMultiSelect.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('hides the menu initially', function () {
