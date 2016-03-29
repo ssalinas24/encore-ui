@@ -14,7 +14,7 @@ var rxToggleSwitch = {
     /**
      * @function
      * @instance
-     * @description Whether the root element is currently displayed.
+     * @description Whether the toggle switch is currently displayed.
      * @returns {Boolean}
      */
     isDisplayed: {
@@ -26,14 +26,12 @@ var rxToggleSwitch = {
     /**
      * @function
      * @instance
-     * @description Whether or not the switch component is currently set to the "on" position.
+     * @description Whether the toggle switch has interaction enabled.
      * @returns {Boolean}
      */
     isEnabled: {
         value: function () {
-            return this.btnToggleSwitch.getAttribute('class').then(function (classes) {
-                return classes.split(' ').indexOf('on') > -1;
-            });
+            return this.btnToggleSwitch.getAttribute('disabled').then(_.isNull);
         }
     },
 
@@ -52,28 +50,13 @@ var rxToggleSwitch = {
      *     expect(switch.isEnabled()).to.eventually.be.true;
      * });
      */
-    enable: {
+    toggleOn: {
         value: function () {
             var page = this;
-            return this.isDisabled().then(function (disabled) {
-                if (disabled) {
+            return this.isToggled().then(function (toggled) {
+                if (!toggled) {
                     page.btnToggleSwitch.click();
                 }
-            });
-        }
-    },
-
-    /**
-     * @todo Rename this function. This sounds like it checks for `ng-disable` on the directive.
-     * @function
-     * @instance
-     * @description Whether or not the switch component is currently set to the "off" position.
-     * @returns {Boolean}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
             });
         }
     },
@@ -93,13 +76,32 @@ var rxToggleSwitch = {
      *     expect(switch.isEnabled()).to.eventually.be.false;
      * });
      */
-    disable: {
+    toggleOff: {
         value: function () {
             var page = this;
-            return this.isEnabled().then(function (enabled) {
-                if (enabled) {
+            return this.isToggled().then(function (toggled) {
+                if (toggled) {
                     page.btnToggleSwitch.click();
                 }
+            });
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the switch component is currently set to the "on" position.
+     * @returns {Boolean}
+     */
+    isToggled: {
+        value: function () {
+            return this.text.then(function (text) {
+                if (text === 'ON') {
+                    return true;
+                } else if (text === 'OFF') {
+                    return false;
+                }
+                throw 'Toggle switch text was not toggled to either "ON" or "OFF" position';
             });
         }
     },
