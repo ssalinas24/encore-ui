@@ -82,10 +82,11 @@ introducing errors, and results in useful diffs and blames.
 * Include a single space before the opening brace of a ruleset.
 * Include one declaration per line in a declaration block.
 * Include a single space after the colon of a declaration.
+* Class names not associated with a specific directive should use kebab-case format (e.g. `.this-is-a-class-name`).
 * Use lowercase and shorthand hex values, e.g., `#aaa`.
-* Use double quotes consistently. (e.g. `content: ""` or `[type="text"]`)
-* Quote attribute values in selectors (e.g. `input[type="checkbox"]`)
-* _Where allowed_, avoid specifying units for zero-values (e.g. `margin: 0;`)
+* Use double quotes consistently (e.g. `content: ""` or `[type="text"]`).
+* Quote attribute values in selectors (e.g. `input[type="checkbox"]`).
+* _Where allowed_, avoid specifying units for zero-values (e.g. `margin: 0;`).
 * Include a space after each comma in comma-separated property or function values.
 * Include a semi-colon at the end of the last declaration in a declaration block.
 * Place the closing brace of a ruleset in the same column as the first character of the ruleset.
