@@ -32,8 +32,19 @@ angular.module('demoApp')
             return mod.category.match(searchRegExp);
         }
 
+        function matchesKeyword (mod) {
+            return _.some(mod.keywords, function (keyword) {
+                return keyword.match(searchRegExp);
+            });
+        }
+
         return _.filter(modules, function (mod) {
-            return matchesDisplayName(mod) || matchesStability(mod) || matchesCategory(mod);
+            return _.some([
+                matchesDisplayName(mod),
+                matchesStability(mod),
+                matchesCategory(mod),
+                matchesKeyword(mod)
+            ]);
         });
     };
 });
