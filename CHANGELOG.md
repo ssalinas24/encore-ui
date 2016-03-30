@@ -1,3 +1,24 @@
+<a name="1.46.1-0"></a>
+### 1.46.1-0 (2016-03-30)
+
+
+#### Bug Fixes
+
+* **css:** rxMultiSelect support ([13139632](git@github.com:rackerlabs/encore-ui/commit/131396322493e5b3097554cde6c3bfa7f7c58782))
+* **eslint:**
+  * Addresses 'eol-last' violations ([7cfd0f71](git@github.com:rackerlabs/encore-ui/commit/7cfd0f71f286af5ea5b0915b078a9640398586ea))
+  * Addresses all errors in demo/** ([bc257be2](git@github.com:rackerlabs/encore-ui/commit/bc257be2b6e4894ca2926a37640f54152982e65b))
+  * Addresses 'no-undef' violations ([01692d67](git@github.com:rackerlabs/encore-ui/commit/01692d6709b5f400fd1a924be5983a12e938f273))
+  * Addresses 'no-unused-vars' violations ([6ffb136a](git@github.com:rackerlabs/encore-ui/commit/6ffb136a7893d0c57aa10ff0272b46d4b614ce85))
+  * Addresses 'key-spacing' violations ([2917676a](git@github.com:rackerlabs/encore-ui/commit/2917676a655c7ff9216ee4a239753199d6a0d543))
+  * Addresses 'space-before-function-paren' violations ([66b91c83](git@github.com:rackerlabs/encore-ui/commit/66b91c83326f00fe2b03985db6d7b05ac1c9b8f2))
+  * Addresses 'object-curly-spacing' violations ([3f22bf4d](git@github.com:rackerlabs/encore-ui/commit/3f22bf4d5c14234b70e67599710566956e0d2d1d))
+  * Addresses 'no-unused-expressions' violations ([173e7634](git@github.com:rackerlabs/encore-ui/commit/173e7634d8eab37e58cd809b890cc5a6594e659a))
+  * Addresses 'indent' violations ([aa6a06cc](git@github.com:rackerlabs/encore-ui/commit/aa6a06cc5f771685233987ef93b0d641dbbb5e1c))
+* **mentionBot:** Only mention rackerlabs contributors ([06491f06](git@github.com:rackerlabs/encore-ui/commit/06491f06fc1bba4d7d50352e92c9ab772ec1dd97))
+* **rxMultiSelect:** FRMW-641 remove rxSelect dependency ([917e5bd3](git@github.com:rackerlabs/encore-ui/commit/917e5bd33cf166d1c7849e853100537c9ace3c19))
+
+
 <a name="1.46.0"></a>
 ## 1.46.0 (2016-03-09)
 
