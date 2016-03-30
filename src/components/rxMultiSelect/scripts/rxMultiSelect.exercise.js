@@ -5,7 +5,6 @@ var rxMultiSelect = require('./rxMultiSelect.page').rxMultiSelect;
  * @exports exercise/rxMultiSelect
  * @param {Object} [options] - Test options. Used to build valid tests.
  * @param {rxMultiSelect} [options.instance={@link rxMultiSelect.initialize}] - Component to exercise.
- * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Object} [options.inputs=[]] - The options of the select input.
  * @param {Object} [options.disabled=false] - Determines if the multiselect is disabled.
  * @param {Object} [options.valid=true] - Determines if the multiselect is valid.
@@ -21,6 +20,7 @@ exports.rxMultiSelect = function (options) {
     }
 
     options = _.defaults(options, {
+        instance: rxMultiSelect.initialize(),
         inputs: [],
         disabled: false,
         valid: true
@@ -30,16 +30,7 @@ exports.rxMultiSelect = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxMultiSelect.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxMultiSelect.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should hide the menu initially', function () {

@@ -54,7 +54,7 @@ angular.module('encore.ui.rxSearchBox')
                 if (!newVal || $scope.isDisabled) {
                     $scope.isClearable = false;
                 } else {
-                    $scope.isClearable = newVal.toString() !== '';
+                    $scope.isClearable = (newVal.toString() !== '');
                 }
             });
 

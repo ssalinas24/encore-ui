@@ -78,16 +78,5 @@ exports.rxPage = {
             get: function () { return rxPageElement; }
         };
         return Page.create(rxPage);
-    },
-
-    /**
-     * @deprecated
-     * @private
-     */
-    main: (function () {
-        rxPage.rootElement = {
-            get: function () { return $('html'); }
-        };
-        return Page.create(rxPage);
-    })()
+    }
 };

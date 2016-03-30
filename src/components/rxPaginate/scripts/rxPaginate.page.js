@@ -528,7 +528,7 @@ exports.rxPaginate = {
 
     /**
      * @function
-     * @param {ElementFinder} [rxPaginateElement=$('.rx-paginate')] - DOM element representing the rxPaginate component.
+     * @param {ElementFinder} rxPaginateElement - DOM element representing the rxPaginate component.
      * @returns {rxPaginate}
      * @description Creates a page object representing an rxPaginate component on the page.
      */
@@ -537,19 +537,5 @@ exports.rxPaginate = {
             get: function () { return rxPaginationElement; }
         };
         return Page.create(rxPaginate);
-    },
-
-    /**
-     * @memberof rxPaginate
-     * @deprecated
-     * @description Page object representing the _first_ rxPaginate component found on the page.
-     * **DEPRECATED**: Use {@link rxPaginate.initialize} without arguments instead.
-     * @type {rxPaginate}
-     */
-    main: (function () {
-        rxPaginate.rootElement = {
-            get: function () { return $('.rx-paginate'); }
-        };
-        return Page.create(rxPaginate);
-    })()
+    }
 };

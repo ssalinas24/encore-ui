@@ -87,14 +87,21 @@ angular.module('encore.ui.rxTags')
             };
 
             scope.add = function (tag) {
-                scope.tags.push(tag);
-                ngModelCtrl.$setViewValue(scope.tags);
-                scope.newTag = '';
+                /*
+                 * See https://code.angularjs.org/1.3.20/docs/api/ng/type/ngModel.NgModelController#$setViewValue
+                 * We have to use `concat` to create a new array to trigger $parsers
+                 */
+                var updatedTags = scope.tags.concat([tag]);
+                // sets ngModelCtrl.$viewValue then $$debounceViewValueCommit()
+                ngModelCtrl.$setViewValue(updatedTags);
+                scope.tags = updatedTags;
+                scope.newTag = ''; // reset new tag input
             };
 
             scope.remove = function (tag) {
-                _.remove(scope.tags, tag);
-                ngModelCtrl.$setViewValue(scope.tags);
+                var updatedTags = _.without(scope.tags, tag);
+                ngModelCtrl.$setViewValue(updatedTags);
+                scope.tags = updatedTags;
                 input.focus();
             };
 
