@@ -1,7 +1,5 @@
-/* jshint node: true */
-
 describe('rxMultiSelect', function () {
-    var scope, compile, rootScope, createDirective;
+    var scope, compile, createDirective;
     var transcludedTemplate = '<rx-multi-select ng-model="types">' +
                               '<rx-select-option value="A">Type A</rx-select-option>' +
                               '<rx-select-option value="B">Type B</rx-select-option>' +
@@ -18,7 +16,6 @@ describe('rxMultiSelect', function () {
         module('templates/rxSelectOption.html');
 
         inject(function ($rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });
@@ -61,9 +58,16 @@ describe('rxMultiSelect', function () {
             });
 
             it('does not toggle the visibility of the menu when a child element is clicked', function () {
-                angular.element(el[0].querySelector('rx-select-option')).click();
+                angular.element(el[0].querySelector('.menu')).click();
                 expect(isolateScope.listDisplayed).to.be.false;
             });
+
+            it('should close an open menu', function () {
+                isolateScope.listDisplayed = true;
+
+                isolateScope.closeMenu();
+                expect(isolateScope.listDisplayed).to.be.false;
+             });
 
             describe('controller', function () {
                 var ctrl;

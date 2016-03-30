@@ -1,19 +1,18 @@
 describe('encore.ui.rxApp', function () {
     describe('rxPage', function () {
-        var scope, compile, rootScope, el, pageTitle;
+        var scope, compile, el, pageTitle;
         var template = '<rx-page title="myCustomTitle"></rx-page>';
 
         beforeEach(function () {
             // load module
             module('encore.ui.rxApp');
-            module('encore.ui.quarks');
+            module('encore.ui.utilities');
 
             // load templates
             module('templates/rxPage.html');
 
             // Inject in angular constructs
             inject(function ($rootScope, $compile) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
             });

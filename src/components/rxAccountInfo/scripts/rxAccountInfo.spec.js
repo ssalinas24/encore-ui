@@ -1,7 +1,7 @@
 describe('rxAccountInfo', function () {
     /* jshint node: true */
     describe('directive:rxAccountInfo', function () {
-        var scope, compile, rootScope, el, q, rxnotify, encoreRoutesMock;
+        var scope, compile, el, rxnotify, encoreRoutesMock;
         var validTemplate = '<rx-account-info account-info-banner="true" account-number="123"></rx-account-info>';
         var defaultStack = 'page';
 
@@ -88,10 +88,8 @@ describe('rxAccountInfo', function () {
             // Inject in angular constructs
             inject(function ($location, $rootScope, $compile, $q, Encore, SupportAccount,
                     rxNotify, Teams, encoreRoutes) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
-                q = $q;
                 rxnotify = rxNotify;
                 encoreRoutesMock = encoreRoutes;
                 helpers.resourceStub($q, Encore, 'getAccount', account);

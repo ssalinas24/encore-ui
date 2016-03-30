@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxSortableColumn', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate = '<rx-sortable-column reverse="false">Yo!</rx-sortable-column>';
 
     beforeEach(function () {
@@ -12,7 +12,6 @@ describe('rxSortableColumn', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

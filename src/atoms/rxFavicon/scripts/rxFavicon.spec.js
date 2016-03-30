@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('atoms:rxFavicon', function () {
-    var scope, compile, rootScope, el, envSvc, log;
+    var scope, compile, el, envSvc, log;
 
     var paths = {
         prod: 'prod.png',
@@ -31,7 +31,6 @@ describe('atoms:rxFavicon', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile, Environment, $log) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
             envSvc = Environment;

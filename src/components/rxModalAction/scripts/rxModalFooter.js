@@ -41,7 +41,7 @@ angular.module('encore.ui.rxModalAction')
                 .attr('ng-switch-when', attrs.state);
 
             rxModalFooterTemplates.add(attrs.state, footer[0].outerHTML, {
-               global: attrs.global !== undefined
+                global: attrs.global !== undefined
             });
 
             return function (scope, el) {

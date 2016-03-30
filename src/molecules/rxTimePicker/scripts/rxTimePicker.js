@@ -4,8 +4,8 @@ angular.module('encore.ui.molecules')
  * @ngdoc directive
  * @restrict E
  * @scope
- * @requires quarks.service:rxTimePickerUtil
- * @requires quarks.constant:UtcOffsets
+ * @requires utilities.service:rxTimePickerUtil
+ * @requires utilities.constant:UtcOffsets
  * @requires atoms.directive:rxButton
  * @description Time Picker
  *

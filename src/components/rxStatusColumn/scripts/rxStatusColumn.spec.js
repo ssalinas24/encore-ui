@@ -1,7 +1,7 @@
 /* jshint node: true */
 describe('rxStatusColumn', function () {
     describe('directive:rxStatusColumn', function () {
-        var scope, compile, rootScope, el, rxstatusMappings;
+        var scope, compile, el, rxstatusMappings;
 
         beforeEach(function () {
             // load module
@@ -12,7 +12,6 @@ describe('rxStatusColumn', function () {
 
             // Inject in angular constructs
             inject(function ($location, $rootScope, $compile, rxStatusMappings) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
                 rxstatusMappings = rxStatusMappings;

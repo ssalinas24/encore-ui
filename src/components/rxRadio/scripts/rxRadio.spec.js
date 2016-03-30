@@ -1,12 +1,11 @@
 describe('rxRadio', function () {
-    var el, scope, compile, rootScope, template;
+    var el, scope, compile, template;
     var parent;
 
     beforeEach(function () {
         module('encore.ui.rxRadio');
 
         inject(function ($rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxModalForm', function () {
-    var el, scope, compile, rootScope, timeout;
+    var el, scope, compile, timeout;
 
     var rxModalForm = '<rx-modal-form>${ fields }</rx-modal-form>';
     var hiddenInput = '<input type="hidden">';
@@ -14,13 +14,12 @@ describe('rxModalForm', function () {
         // The footers template must be loaded first because it is used in .run
         module('templates/rxModalFooters.html');
 
-        module('encore.ui.quarks');
+        module('encore.ui.utilities');
         module('encore.ui.rxModalAction');
         module('templates/rxModalActionForm.html');
 
         // Inject in angular constructs
         inject(function ($rootScope, $compile, $timeout) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
             timeout = $timeout;

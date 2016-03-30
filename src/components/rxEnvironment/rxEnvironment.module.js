@@ -65,5 +65,5 @@
  */
 angular.module('encore.ui.rxEnvironment', [
     'ngSanitize',
-    'encore.ui.quarks'
+    'encore.ui.utilities'
 ]);

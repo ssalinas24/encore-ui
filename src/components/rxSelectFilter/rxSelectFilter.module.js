@@ -11,7 +11,7 @@
  * * {@link rxSelectFilter.directive:rxSelectFilter rxSelectFilter}
  */
 angular.module('encore.ui.rxSelectFilter', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
     'encore.ui.rxMisc',
     'encore.ui.rxSelect'
 ]);

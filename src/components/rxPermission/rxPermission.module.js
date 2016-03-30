@@ -4,12 +4,12 @@
  * @description
  * # rxPermission Component
  * The rxPermission component provides functionality to perform checks against existing user permissions in
- * EncoreUI.  It provides a {@link quarks.service:Permission Permission} service for working with roles, and
+ * EncoreUI.  It provides a {@link utilities.service:Permission Permission} service for working with roles, and
  * a {@link rxPermission.directive:rxPermission rxPermission} directive for excluding DOM content based on roles.
  *
  * ## Directives
  * * {@link rxPermission.directive:rxPermission rxPermission}
  */
 angular.module('encore.ui.rxPermission', [
-    'encore.ui.quarks',
+    'encore.ui.utilities',
 ]);

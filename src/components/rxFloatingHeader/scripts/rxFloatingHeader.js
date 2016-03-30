@@ -4,21 +4,21 @@ angular.module('encore.ui.rxFloatingHeader')
  * @name rxFloatingHeader.directive:rxFloatingHeader
  * @restrict A
  * @description
- * 
- *`rxFloatingHeader` is an attribute directive that turns a tableheader into a floating persistent header so that names 
- * of columns are still visible, even as a user scrolls down the page. This is based off of the example at 
+ *
+ *`rxFloatingHeader` is an attribute directive that turns a tableheader into a floating persistent header so that names
+ * of columns are still visible, even as a user scrolls down the page. This is based off of the example at
  * http://css-tricks.com/persistent-headers/
  *
  * * To use it, add an `rx-floating-header` attribute to a `table` element.
  *
  * * A common pattern in our products is to place an `<input>` filter at the top of the table, to restrict the items
- * that are displayed. We support this as well, by placing the `<input>` directly inside of the `<thead>` in its 
+ * that are displayed. We support this as well, by placing the `<input>` directly inside of the `<thead>` in its
  * own `<tr><th></th></tr>`.
  *
  * * Make sure you set the `colspan` attribute on the filter's `<th>`, to match the number of columns you have.
  *
  * * `rxFloatingHeader` is also fully compatible with {@link rxSortableColumn} and {@link rxPaginate}.
- * 
+ *
  * @example
  * <pre>
  * <table rx-floating-header>
@@ -68,27 +68,26 @@ angular.module('encore.ui.rxFloatingHeader')
                         clone.remove();
                     });
                 }
-                state = 'fixed',
-                seenFirstScroll = false,
+                state = 'fixed';
+                seenFirstScroll = false;
 
                 // The original <tr> elements
-                trs = [],
+                trs = [];
 
                 // The original <th> elements
-                ths = [],
+                ths = [];
 
                 // All <th> elements that are the *only* <th> in their row
-                singleThs = [],
+                singleThs = [];
 
                 // The maximum width we could find for a <th>
-                maxThWidth = 0,
+                maxThWidth = 0;
 
                 // Clones of the <tr> elements
-                clones = [],
+                clones = [];
 
                 // any <input> elements in the <thead>
-                inputs = [],
-                maxHeight,
+                inputs = [];
                 header = angular.element(table.find('thead'));
 
                 // Are we currently floating?

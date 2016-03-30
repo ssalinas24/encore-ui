@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAppNavItem', function () {
-        var scope, compile, rootScope, el, location, someProp, rxvisibility;
+        var scope, compile, el, someProp, rxvisibility;
         var template = '<rx-app-nav-item item="item"></rx-app-nav-item>';
 
         var menuItem = {
@@ -51,25 +51,25 @@ describe('encore.ui.rxApp', function () {
                     visibility: function () {
                         return true;
                     },
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }, {
                     linkText: 'noVisibilityButRolePresent',
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }, {
                     linkText: 'visibilityOkButRoleFails',
-                    roles: { 'any': [ 'weDontHaveThisRole' ] }
+                    roles: { 'any': ['weDontHaveThisRole'] }
                 }, {
                     linkText: 'multipleAllRolesPass',
-                    roles: { 'all': [ 'role1', 'role2', 'Test' ] }
+                    roles: { 'all': ['role1', 'role2', 'Test'] }
                 }, {
                     linkText: 'multipleAllRolesFailure',
-                    roles: { 'all': [ 'role1', 'role2', 'ThisRoleDoesNotExist' ] }
+                    roles: { 'all': ['role1', 'role2', 'ThisRoleDoesNotExist'] }
                 }, {
                     linkText: 'failedVisibilityAndOKRoles',
                     visibility: function () {
                         return false;
                     },
-                    roles: { 'any': [ 'role1' ] }
+                    roles: { 'any': ['role1'] }
                 }
             ]
         };
@@ -78,18 +78,17 @@ describe('encore.ui.rxApp', function () {
             // load module
             var mockToken = {
                 access: {
-                    token:
-                        {
-                            id: 'someid',
-                        },
-                        user: {
-                            id: 'joe.customer',
-                            'roles': [{ 'id': '9','name': 'role1' },
-                                      { 'id': '10','name': 'role2' },
-                                      { 'id': '11','name': 'Test' }]
-                        }
+                    token: {
+                        id: 'someid',
+                    },
+                    user: {
+                        id: 'joe.customer',
+                        'roles': [{ 'id': '9','name': 'role1' },
+                                  { 'id': '10','name': 'role2' },
+                                  { 'id': '11','name': 'Test' }]
                     }
-                };
+                }
+            };
 
             var SessionMock = {
                 getToken: function () {
@@ -109,11 +108,9 @@ describe('encore.ui.rxApp', function () {
             });
 
             // Inject in angular constructs
-            inject(function ($rootScope, $compile, $location, rxVisibility) {
-                rootScope = $rootScope;
+            inject(function ($rootScope, $compile, rxVisibility) {
                 scope = $rootScope.$new();
                 compile = $compile;
-                location = $location;
                 rxvisibility = rxVisibility;
             });
 

@@ -30,7 +30,7 @@ angular.module('encore.ui.rxApp')
             // the former is always available, while $routeParams only gets populated
             // after the route has successfully resolved. See the Angular docs on $routeParams
             // for more details.
-            var loadUsers = function () {
+            function loadUsers () {
                 var success = function (account) {
 
                     // Sort the list so admins are at the top of the array
@@ -56,7 +56,7 @@ angular.module('encore.ui.rxApp')
                 if (accountNumber) {
                     Encore.getAccountUsers({ id: accountNumber }, success);
                 }
-            };
+            }
 
             checkCloud();
 

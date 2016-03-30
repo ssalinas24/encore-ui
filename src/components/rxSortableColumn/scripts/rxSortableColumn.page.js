@@ -8,13 +8,13 @@ var currentSortDirection = function (columnElement) {
     var spanSortDirection = columnElement.$('.sort-direction-icon');
 
     return spanSortDirection.isPresent().then(function (isPresent) {
-      if (isPresent) {
-        return spanSortDirection.getAttribute('class').then(function (klass) {
-          return (klass.indexOf('ascending') > -1 ? 1 : -1);
-        });
-      } else {
-        return 0;
-      }
+        if (isPresent) {
+            return spanSortDirection.getAttribute('class').then(function (klass) {
+                return (klass.indexOf('ascending') > -1 ? 1 : -1);
+            });
+        } else {
+            return 0;
+        }
     });
 };
 

@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('rxFloatingHeader', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var validTemplate =
         '<table rx-floating-header>' +
             '<thead>' +
@@ -61,7 +61,6 @@ describe('rxFloatingHeader', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

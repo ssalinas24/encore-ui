@@ -4,6 +4,7 @@ angular.module('encore.ui.rxMultiSelect')
  * @name rxMultiSelect.directive:rxMultiSelect
  * @restrict E
  * @scope
+ * @requires rxMultiSelect.directive:rxSelectOption
  * @description
  * This component is a multi-select dropdown with checkboxes for each option.
  * It is a replacement for `<select multiple>` when space is an issue, such as
@@ -14,11 +15,12 @@ angular.module('encore.ui.rxMultiSelect')
  * set as the first option for the dropdown, which allows all options to be
  * toggled at once.
  *
- * The following two dropdowns are equivalent.
+ * The following two dropdowns are equivalent:
  * <pre>
  * <!-- $scope.available = [2014, 2015] -->
  * <rx-multi-select ng-model="selected" options="available"></rx-multi-select>
- *
+ *</pre>
+ *<pre>
  * <rx-multi-select ng-model="selected">
  *   <rx-select-option value="2014"></rx-select-option>
  *   <rx-select-option value="2015"></rx-select-option>
@@ -39,15 +41,19 @@ angular.module('encore.ui.rxMultiSelect')
  * @param {String} ng-model The scope property that stores the value of the input
  * @param {Array=} options A list of the options for the dropdown
  */
-.directive('rxMultiSelect', function ($document, rxDOMHelper, rxSelectDirective) {
+.directive('rxMultiSelect', function ($document, rxDOMHelper) {
     return {
         restrict: 'E',
         templateUrl: 'templates/rxMultiSelect.html',
         transclude: true,
-        require: ['rxMultiSelect', 'ngModel'],
+        require: [
+            'rxMultiSelect',
+            'ngModel'
+        ],
         scope: {
             selected: '=ngModel',
             options: '=?',
+            isDisabled: '=ngDisabled',
         },
         controller: function ($scope) {
             if (_.isUndefined($scope.selected)) {
@@ -90,30 +96,16 @@ angular.module('encore.ui.rxMultiSelect')
             };
         },
         link: function (scope, element, attrs, controllers) {
-            rxSelectDirective[0].link.apply(this, arguments);
+            scope.listDisplayed = false;
 
-            var previewElement = rxDOMHelper.find(element, '.preview')[0];
-
-            var documentClickHandler = function (event) {
-                if (event.target !== previewElement) {
-                    scope.listDisplayed = false;
-                    scope.$apply();
+            scope.toggleMenu = function () {
+                if (!scope.isDisabled) {
+                    scope.listDisplayed = !scope.listDisplayed;
                 }
             };
 
-            $document.on('click', documentClickHandler);
-            scope.$on('$destroy', function () {
-                $document.off('click', documentClickHandler);
-            });
-
-            scope.listDisplayed = false;
-
-            scope.toggleDisplay = function (event) {
-                if (event.target === previewElement) {
-                    scope.listDisplayed = !scope.listDisplayed;
-                } else {
-                    event.stopPropagation();
-                }
+            scope.closeMenu = function () {
+                scope.listDisplayed = false;
             };
 
             var selectCtrl = controllers[0];

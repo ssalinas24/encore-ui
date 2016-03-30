@@ -6,7 +6,13 @@ angular.module('demoApp')
     });
 
     $scope.storeToken = function () {
-        Session.storeToken({ access: { user: { roles: [{ name: 'test' } ] }}});
+        Session.storeToken({
+            access: {
+                user: {
+                    roles: [{ name: 'test' }]
+                }
+            }
+        });
     };
 
     $scope.clearToken = function () {

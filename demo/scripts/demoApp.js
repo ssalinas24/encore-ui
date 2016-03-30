@@ -134,20 +134,20 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Quark Pages */
-        .when('/quarks', {
+        /* Utilities Pages */
+        .when('/utilities', {
             templateUrl: 'templates/modules/listCategoryModules.html',
-            controller: 'listQuarksController',
+            controller: 'listUtilitiesController',
             controllerAs: 'vm'
         })
-        .when('/quarks/:quark', {
+        .when('/utilities/:utility', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
             resolve: {
                 'module': function ($route, Modules) {
                     return _.find(Modules, {
-                        'name': $route.current.params.quark,
-                        category: 'quarks'
+                        'name': $route.current.params.utility,
+                        category: 'utilities'
                     });
                 }
             }
@@ -322,8 +322,8 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                     href: '#/modules'
                 },
                 {
-                    linkText: 'Quarks',
-                    children: linksForModuleCategory('quarks')
+                    linkText: 'Utilities',
+                    children: linksForModuleCategory('utilities')
                 },
                 {
                     linkText: 'Atoms',
@@ -408,7 +408,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
 
     rxPageTitle.setSuffix(' - EncoreUI');
 
-    $rootScope.$on('$routeChangeSuccess', function() {
+    $rootScope.$on('$routeChangeSuccess', function () {
         if ($location.hash()) {
             $anchorScroll();
         } else {

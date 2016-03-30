@@ -1,6 +1,6 @@
 /* jshint node: true */
 describe('rxIfEnvironment', function () {
-    var rootScope, scope, compile, envSvc, _location, setUrl,
+    var scope, compile, envSvc, _location, setUrl,
         stagingMsg = 'Show if staging',
         prodMsg = 'Show if not prod',
         stagingTemplate = '<div rx-if-environment="unified-preprod">' + stagingMsg + '</div>',
@@ -11,7 +11,6 @@ describe('rxIfEnvironment', function () {
         module('encore.ui.rxEnvironment');
 
         inject(function ($rootScope, $compile, $location, Environment) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
             envSvc = Environment;

@@ -13,7 +13,7 @@ angular.module('demoApp')
 
     rxVisibility.addMethod(
         'isUserDefined',
-        function (scope, locals) {
+        function () {
             return !_.isEmpty($rootScope.user);
         }
     );

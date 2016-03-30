@@ -540,8 +540,6 @@ var rxOptionTable = {
     }
 };
 
-var rxOptionFormTable = rxOptionTable; // jshint ignore:line
-
 exports.rxOptionTable = {
     /**
      * @function

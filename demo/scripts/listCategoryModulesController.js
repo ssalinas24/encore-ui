@@ -30,7 +30,7 @@ function genericListCategoryModulesController (ilk) {
         }
 
         function getCaretType () {
-            return vm.sortReverse ? "fa fa-caret-down" : "fa fa-caret-up";
+            return vm.sortReverse ? 'fa fa-caret-down' : 'fa fa-caret-up';
         }
 
         function showCaret (key) {
@@ -46,7 +46,7 @@ function genericListCategoryModulesController (ilk) {
 }//genericListCategoryModulesController
 
 angular.module('demoApp')
-.controller('listQuarksController', genericListCategoryModulesController('quarks'))
+.controller('listUtilitiesController', genericListCategoryModulesController('utilities'))
 .controller('listAtomsController', genericListCategoryModulesController('atoms'))
 .controller('listMoleculesController', genericListCategoryModulesController('molecules'))
 .controller('listComponentsController', genericListCategoryModulesController('components'));

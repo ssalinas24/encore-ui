@@ -1,6 +1,6 @@
 /*jshint unused:false*/
 angular.module('demoApp')
-.controller('rxNotifyCtrl', function ($rootScope, $scope, $window, rxNotify, rxPromiseNotifications, $q) {
+.controller('rxNotifyCtrl', function ($rootScope, $scope, $window, rxNotify) {
     $scope.message = 'My message';
 
     $scope.types = [ 'info', 'success', 'warning', 'error' ];

@@ -1,6 +1,6 @@
 describe('rxButton', function () {
     describe('directive:rxButton', function () {
-        var el, scope, compile, rootScope,
+        var el, scope, compile,
             btnTemplate =
             '<rx-button ' +
                 'toggle-msg="Authenticating" ' +
@@ -14,7 +14,6 @@ describe('rxButton', function () {
             module('templates/rxButton.html');
 
             inject(function ($rootScope, $compile) {
-                rootScope = $rootScope;
                 scope = $rootScope.$new();
                 compile = $compile;
             });

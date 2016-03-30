@@ -1,13 +1,12 @@
 /* jshint node: true */
 describe('rxForm', function () {
-    var el, scope, compile, rootScope, template;
+    var el, scope, compile, template;
 
     beforeEach(function () {
         module('encore.ui.rxForm');
         module('templates/rxFormItem.html');
 
         inject(function ($rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });

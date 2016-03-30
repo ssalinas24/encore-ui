@@ -16,7 +16,7 @@ var rxBatchActionMenu = function (rootElement) {
                 return rootElement.$('.batch-action-menu-container')
                     .getAttribute('class').then(function (className) {
                         return className.indexOf('ng-hide') === -1;
-                });
+                    });
             }
         },
 

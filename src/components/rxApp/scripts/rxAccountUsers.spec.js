@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAccountUsers', function () {
-        var rootScope, scope, compile, q, userSelect, users, encoreRoutesMock;
+        var scope, compile, userSelect, users, encoreRoutesMock;
         var validTemplate = '<rx-account-users></rx-account-users>';
         var unregisterCheckCloud = sinon.spy();
         var rootScopeStub = null;
@@ -39,11 +39,9 @@ describe('encore.ui.rxApp', function () {
             module('templates/rxAccountUsers.html');
 
             inject(function ($rootScope, $compile, $templateCache, $location, $route, $q, encoreRoutes) {
-                rootScope = $rootScope;
                 compile = $compile;
                 scope = $rootScope.$new();
-                rootScopeStub = sinon.stub(rootScope, '$on').returns(unregisterCheckCloud);
-                q = $q;
+                rootScopeStub = sinon.stub($rootScope, '$on').returns(unregisterCheckCloud);
                 encoreRoutesMock = encoreRoutes;
 
                 $location.url('http://server/cloud/');

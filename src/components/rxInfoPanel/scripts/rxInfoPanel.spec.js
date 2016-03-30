@@ -1,7 +1,8 @@
 /* jshint node: true */
 
+// https://jira.rax.io/browse/FRMW-729
 describe('rxInfoPanel', function () {
-    var scope, compile, rootScope, el;
+    var scope, compile, el;
     var infoPanelTemplate = '<rx-info-panel title="My Title">' +
                             'Some stuff inside the directive' +
                             '</rx-info-panel>';
@@ -15,12 +16,15 @@ describe('rxInfoPanel', function () {
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
-            rootScope = $rootScope;
             scope = $rootScope.$new();
             compile = $compile;
         });
 
         el = helpers.createDirective(infoPanelTemplate, compile, scope);
+    });
+
+    it('should have created the element', function () {
+        expect(el).to.be.ok;
     });
 
 });

@@ -6,6 +6,8 @@ var rxMultiSelect = require('./rxMultiSelect.page').rxMultiSelect;
  * @param {Object} [options] - Test options. Used to build valid tests.
  * @param {rxMultiSelect} [options.instance={@link rxMultiSelect.initialize}] - Component to exercise.
  * @param {Object} [options.inputs=[]] - The options of the select input.
+ * @param {Object} [options.disabled=false] - Determines if the multiselect is disabled.
+ * @param {Object} [options.valid=true] - Determines if the multiselect is valid.
  * @example
  * describe('default exercises', encore.exercise.rxMultiSelect({
  *     instance: myPage.subscriptionList, // select one of many widgets from your page objects
@@ -19,7 +21,9 @@ exports.rxMultiSelect = function (options) {
 
     options = _.defaults(options, {
         instance: rxMultiSelect.initialize(),
-        inputs: []
+        inputs: [],
+        disabled: false,
+        valid: true
     });
 
     return function () {
@@ -29,52 +33,70 @@ exports.rxMultiSelect = function (options) {
             component = options.instance;
         });
 
-        it('hides the menu initially', function () {
+        it('should hide the menu initially', function () {
             expect(component.isOpen()).to.eventually.be.false;
         });
 
-        it('shows the menu when clicked', function () {
-            component.openMenu();
-            expect(component.isOpen()).to.eventually.be.true;
+        it('should ' + (options.valid ? 'be' : 'not be') + ' valid', function () {
+            expect(component.isValid()).to.eventually.eq(options.valid);
         });
 
-        it('selects no options', function () {
-            component.deselect(['Select All']);
-            expect(component.selectedOptions).to.eventually.be.empty;
-            expect(component.preview).to.eventually.equal('None');
-        });
-
-        it('selects a single option', function () {
-            var input = _.first(options.inputs);
-            component.select([input]);
-            expect(component.selectedOptions).to.eventually.eql([input]);
-            expect(component.preview).to.eventually.equal(input);
-        });
-
-        if (options.inputs.length > 2) {
-            it('selects multiple options', function () {
-                var inputs = options.inputs.slice(0, 2);
-                component.select(inputs);
-                expect(component.selectedOptions).to.eventually.eql(inputs);
-                expect(component.preview).to.eventually.equal('2 Selected');
+        if (options.disabled) {
+            it('should not show the menu when clicked', function () {
+                component.openMenu();
+                expect(component.isOpen()).to.eventually.be.false;
             });
-        }
+        } else {
+            it('should show the menu when clicked', function () {
+                component.openMenu();
+                expect(component.isOpen()).to.eventually.be.true;
+            });
 
-        it('selects all options', function () {
-            component.select(['Select All']);
-            expect(component.selectedOptions).to.eventually.eql(['Select All'].concat(options.inputs));
-            expect(component.preview).to.eventually.equal('All Selected');
-        });
+            it('should select all options', function () {
+                component.select(['Select All']);
+                expect(component.selectedOptions).to.eventually.eql(['Select All'].concat(options.inputs));
+                expect(component.preview).to.eventually.equal('All Selected');
+            });
 
-        it('deselects all options', function () {
-            component.deselect(['Select All']);
-            expect(component.selectedOptions).to.eventually.be.empty;
-            expect(component.preview).to.eventually.equal('None');
-        });
+            it('should select no options', function () {
+                component.deselect(['Select All']);
+                expect(component.selectedOptions).to.eventually.be.empty;
+                expect(component.preview).to.eventually.equal('None');
+            });
 
-        it('hides the menu when another element is clicked', function () {
-            component.rootElement.element(by.xpath('../..')).click();
-            expect(component.isOpen()).to.eventually.be.false;
-        });
+            it('should select a single option', function () {
+                var input = _.first(options.inputs);
+                component.select([input]);
+                expect(component.selectedOptions).to.eventually.eql([input]);
+                expect(component.preview).to.eventually.equal(input);
+            });
+
+            if (options.inputs.length > 2) {
+                it('should select multiple options', function () {
+                    var inputs = options.inputs.slice(0, 2);
+                    component.select(inputs);
+                    expect(component.selectedOptions).to.eventually.eql(inputs);
+                    expect(component.preview).to.eventually.equal('2 Selected');
+                });
+            }
+
+            it('should select all options', function () {
+                component.select(['Select All']);
+                expect(component.selectedOptions).to.eventually.eql(['Select All'].concat(options.inputs));
+                expect(component.preview).to.eventually.equal('All Selected');
+            });
+
+            it('should deselect all options', function () {
+                component.deselect(['Select All']);
+                expect(component.selectedOptions).to.eventually.be.empty;
+                expect(component.preview).to.eventually.equal('None');
+            });
+
+            it('should hide the menu when backdrop is clicked', function () {
+                component.rootElement.$('.backdrop').click();
+                expect(component.isOpen()).to.eventually.be.false;
+            });
+        }//if options.disabled
+
     };
 };
