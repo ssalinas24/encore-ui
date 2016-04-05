@@ -331,7 +331,7 @@ exports.rxSortableColumn = {
 
     /**
      * @function
-     * @memeberof rxSortableColumn
+     * @memberof rxSortableColumn
      * @param {ElementFinder} rxSortableColumnElement - ElementFinder to be transformed into an rxSortableColumn object.
      * @param {String} [repeaterString] - Repeater string from the table. Required for {@link rxSortableColumn#data}
      * and {@link rxSortableColumn#getDataUsing}.
@@ -353,7 +353,7 @@ exports.rxSortableColumn = {
      * @function
      * @description Entry point for the {@link rxSortableColumns} namespace. Used to return information
      * about an entire table's worth of columns.
-     * @memeberof rxSortableColumn
+     * @memberof rxSortableColumn
      * @param {ElementFinder} tableElement - ElementFinder of the entire `<table>` node.
      * @returns {rxSortableColumns} Page object representing the {@link rxSortableColumns} object.
      */
@@ -366,7 +366,7 @@ exports.rxSortableColumn = {
     },
 
     /**
-     * @memeberof rxSortableColumn
+     * @memberof rxSortableColumn
      * @description A lookup for comparing sort directions against hard coded values, instead of integers.
      * @returns {Object} sortDirections Lookup of integer codes for sort directions from human-readable ones.
      * @property {Number} ascending - The numeral value one. Means the arrow is pointed down. [0-9, a-z]
