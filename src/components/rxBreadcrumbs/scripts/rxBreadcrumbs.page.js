@@ -221,19 +221,5 @@ exports.rxBreadcrumbs = {
             get: function () { return rootElement; }
         };
         return Page.create(rxBreadcrumbs);
-    },
-
-    /**
-     * @memberof rxBreadcrumbs
-     * @deprecated
-     * @description Page object representing the first {@link rxBreadcrumbs} object found on the page.
-     * DEPRECATED: Use {@link rxBreadcrumbs.initialize} (without arguments) instead.
-     * @returns {rxBreadcrumbs}
-     */
-    main: (function () {
-        rxBreadcrumbs.rootElement = {
-            get: function () { return $('rx-breadcrumbs'); }
-        };
-        return Page.create(rxBreadcrumbs);
-    })()
+    }
 };

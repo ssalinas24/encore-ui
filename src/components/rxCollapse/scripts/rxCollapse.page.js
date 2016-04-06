@@ -135,32 +135,14 @@ exports.rxCollapse = {
      * @function
      * @memberof rxCollapse
      * @description Creates a page object from an `[rx-collapse]` DOM element.
-     * @param {ElementFinder} [rxCollapseElement=$('rx-collapse')] -
+     * @param {ElementFinder} rxCollapseElement -
      * ElementFinder to be transformed into an {@link rxCollapse} object.
      * @returns {rxCollapse}
      */
     initialize: function (rxCollapseElement) {
-        if (rxCollapseElement === undefined) {
-            rxCollapseElement = $('rx-collapse');
-        }
-
         rxCollapse.rootElement = {
             get: function () { return rxCollapseElement; }
         };
         return Page.create(rxCollapse);
-    },
-
-    /**
-     * @deprecated
-     * @memberof rxCollapse
-     * @description Creates a page object from the first `[rx-bulk-select]` DOM element present on the page.
-     * @type {rxCollapse}
-     */
-    main: (function () {
-        rxCollapse.rootElement = {
-            get: function () { return $('rx-collapse'); }
-        };
-        return Page.create(rxCollapse);
-    })()
-
+    }
 };

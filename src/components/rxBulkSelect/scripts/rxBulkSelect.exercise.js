@@ -1,5 +1,5 @@
-var rxBulkSelect = require('./rxBulkSelect.page').rxBulkSelect;
 var _ = require('lodash');
+var rxBulkSelect = require('./rxBulkSelect.page').rxBulkSelect;
 
 /**
  * @function
@@ -10,7 +10,6 @@ var _ = require('lodash');
  * @param {rxBulkSelect} [options.instance={@link rxBulkSelect.initialize}] - Component to exercise.
  * @param {string[]} [options.batchActions=[]] - List of batch actions to exercise, will not run exercises if empty.
  * @param {number} [options.count=10] - Number of items in the table.
- * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @example
  * describe('default exercises', encore.exercise.rxBulkSelect({
  *     instance: myPage.bulkSelect, // select one of many widgets from your page objects
@@ -23,6 +22,7 @@ exports.rxBulkSelect = function (options) {
     }
 
     options = _.defaults(options, {
+        instance: rxBulkSelect.initialize(),
         count: 10,
         batchActions: []
     });
@@ -31,17 +31,7 @@ exports.rxBulkSelect = function (options) {
         var component;
 
         before(function () {
-
-            if (options.instance === undefined) {
-                component = rxBulkSelect.main;
-            } else {
-                component = options.instance;
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxBulkSelect.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('has no selected rows, a hidden message, and a disabled batch actions link', function () {

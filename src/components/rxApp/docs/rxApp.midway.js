@@ -103,7 +103,7 @@ describe('rxPage', function () {
         });
 
         it('should grab the main title', function () {
-            expect(encore.rxPage.main.title).to.eventually.equal('titleize');
+            expect(encore.rxPage.initialize().title).to.eventually.equal('titleize');
         });
 
     });
