@@ -57,7 +57,7 @@ var notification = function (rootElement) {
          * @example
          * it('should have the right notification text', function () {
          *     var notificationText = encore.rxNotify.all.byText('Something bad happened').text;
-         *     expect(notificationType).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
+         *     expect(notificationText).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
          * });
          */
         text: {
@@ -240,7 +240,7 @@ var rxNotify = {
 
 exports.rxNotify = {
     /**
-     * @memeberof rxNotify
+     * @memberof rxNotify
      * @function
      * @type {rxNotify.notification}
      * @param {ElementFinder} [rxNotificationElement=$('.rx-notifications .rx-notification')] -
@@ -259,7 +259,7 @@ exports.rxNotify = {
     },
 
     /**
-     * @memeberof rxNotify
+     * @memberof rxNotify
      * @function
      * @description Returns a collection of functions used to interact with a group of notifications in a stack.
      * @returns {rxNotify}
@@ -281,7 +281,7 @@ exports.rxNotify = {
     },
 
     /**
-     * @memeberof rxNotify
+     * @memberof rxNotify
      * @type {rxNotify}
      * @description Returns a collection of functions used to interact with all notifications on the page.
      * @see rxNotify.byStack

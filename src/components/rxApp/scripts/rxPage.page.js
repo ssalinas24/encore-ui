@@ -63,7 +63,7 @@ var rxPage = {
 exports.rxPage = {
     /**
      * @function
-     * @memeberof rxPage
+     * @memberof rxPage
      * @description Creates a page object from an `rx-page` DOM element.
      * @param {ElementFinder} [rxFeedbackElement=$('rx-page')] -
      * ElementFinder to be transformed into an {@link rxPage} object.
