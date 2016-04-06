@@ -1,3 +1,12 @@
+<a name="1.46.2-0"></a>
+### 1.46.2-0 (2016-04-06)
+
+
+#### Features
+
+* **demo:** add keyword filtering ([325e6ed8](git@github.com:rackerlabs/encore-ui/commit/325e6ed80b07b05ed50268ffc6e518aa97004942))
+
+
 <a name="1.46.1"></a>
 ### 1.46.1 (2016-03-30)
 
