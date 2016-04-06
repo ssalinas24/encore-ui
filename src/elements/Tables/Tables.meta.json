@@ -1,0 +1,29 @@
+{
+    "displayName": "Tables",
+    "stability": "unstable",
+    "description": "Usage and examples of different Table patterns.",
+    "hasApi": false,
+    "keywords": [
+        "table",
+        "row",
+        "column",
+        "striped",
+        "null data",
+        "actions",
+        "filter",
+        "filtering",
+        "floating header",
+        "nested",
+        "nested content",
+        "nested metadata",
+        "nested table",
+        "option table",
+        "pagination",
+        "paginate",
+        "paginated",
+        "sortable",
+        "sorting",
+        "sort",
+        "status column"
+    ]
+}
