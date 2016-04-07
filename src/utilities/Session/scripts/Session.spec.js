@@ -23,7 +23,7 @@ describe('utilities:Session', function () {
 
         inject(function ($injector) {
             session = $injector.get('Session');
-            storage = $injector.get('LocalStorage');
+            storage = $injector.get('rxLocalStorage');
             storage.setObject = sinon.spy();
             storage.getObject = sinon.stub().returns(mockToken);
             storage.removeItem = sinon.spy();

@@ -23,7 +23,7 @@ angular.module('encore.ui.utilities')
  * appearing on the same page.
  *
  * By default, all values are stored in {@link utilities.service:rxLocalStorage rxLocalStoage} which interfaces with the
- * browser's `LocalStorage` object. This means that if a user logs into a different computer, their stored values will
+ * browser's `localStorage` object. This means that if a user logs into a different computer, their stored values will
  * not be present.  Use of `SessionStorage` is also supported out-of-the-box. If you wish to save form states elsewhere
  * (for instance, to an API), see the "Storage Location" section below.
  *
@@ -244,9 +244,9 @@ angular.module('encore.ui.utilities')
  *
  * ## Storage location
  *
- * All values for `rxAutoSave` are by default stored in the browser's `LocalStorage` through the `rxLocalStorage`
+ * All values for `rxAutoSave` are by default stored in the browser's `localStorage` through the `rxLocalStorage`
  * service, and keyed on the URL of the page, with a `rxAutoSave::` prefix. For example, if the above form were
- * present at the URL `'users/JonnyRocket/edit'`, then the form data would be saved into the browser's `LocalStorage`
+ * present at the URL `'users/JonnyRocket/edit'`, then the form data would be saved into the browser's `localStorage`
  * at location `'rxAutoSave::users/JonnyRocket/edit'`.
  *
  * If you wish to use a different storage backend (`SessionStorage`, for instance), use the `storageBackend` parameter:
@@ -504,12 +504,12 @@ angular.module('encore.ui.utilities')
             }
         };
 
-        // Responsible for loading the data from the browser's LocalStorage into the form
+        // Responsible for loading the data from the browser's localStorage into the form
         var load = function () {
             var expires = api.getExpires();
             if (expires > 0 && expires <= _.now()) {
                 // This data has expired. Make sure we clear it out
-                // of the browser's LocalStorage
+                // of the browser's localStorage
                 api.expire();
                 return;
             }
@@ -559,7 +559,7 @@ angular.module('encore.ui.utilities')
             updateExpiryTime();
         }
 
-        // We don't want to write to the browser's LocalStorage every time the model changes,
+        // We don't want to write to the browser's localStorage every time the model changes,
         // because that would turn typing into a textarea into an expensive operation.
         // We'll instead debounce the the writes for 1 second
         var debounced = debounce(update, 1000);
