@@ -127,4 +127,7 @@ angular.module('demoApp')
             }
         ]
     }];
+
+    // Load docs homepage ('Overview')
+    $scope.embedUrl = $location.absUrl().split('#')[0];
 });

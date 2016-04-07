@@ -3,8 +3,8 @@
         <span class="notification-text">{{ warningMessage }}</span>
     </div>
 </div>
-<div class="rx-app" ng-class="{collapsible: collapsibleNav === 'true', collapsed: collapsedNav, 'warning-bar': isWarning, preprod: isPreProd}" ng-cloak>
-    <nav class="rx-app-menu">
+<div class="rx-app" ng-class="{collapsible: collapsibleNav === 'true', collapsed: collapsedNav, 'warning-bar': isWarning, preprod: isPreProd, 'embedded': isEmbedded}" ng-cloak>
+    <nav class="rx-app-menu" ng-show="!isEmbedded">
         <header class="site-branding">
             <h1 class="site-title">{{ siteTitle || 'Encore' }}</h1>
             <button class="collapsible-toggle btn-link" ng-if="collapsibleNav === 'true'" rx-toggle="$parent.collapsedNav" title="{{ (collapsedNav) ? 'Show' : 'Hide' }} Main Menu">
