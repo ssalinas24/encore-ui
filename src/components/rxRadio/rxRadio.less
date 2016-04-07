@@ -27,7 +27,7 @@
     height: 100%;
     .border-radius(100%);
     overflow: hidden;
-    border: @rxRadio-border-width solid @rxForm-input-border-color;
+    border: @rxRadio-border-width solid @rxRadio-border-color;
     background-color: @rxRadio-background-color;
 
     // perfect center alignment for tick
@@ -39,7 +39,7 @@
     .tick {
       flex: 0 0 auto;
       .box-sizing(border-box);
-      .border-radius(@rxRadio-tick-border-radius);
+      border-radius: @rxRadio-tick-border-radius;
       width: @rxRadio-tick-size;
       height: @rxRadio-tick-size;
       background-color: transparent;
@@ -59,10 +59,10 @@
 
     // enabled checked
     &:checked + .fake-radio {
-      border-color: @rxRadio-color-selected;
+      border-color: @rxRadio-selected-border-color;
 
       .tick {
-        background-color: @rxRadio-color-selected;
+        background-color: @rxRadio-selected-background-color;
       }
     }
 
@@ -87,17 +87,17 @@
     &.ng-invalid.ng-dirty {
       // enabled unchecked error
       & + .fake-radio {
-        border: @rxRadio-border-width-invalid solid @rxRadio-color-error;
+        border: @rxRadio-invalid-border-width solid @rxRadio-invalid-border-color;
 
         .tick {
-          .border-radius(@rxRadio-tick-border-radius-invalid);
-          width: @rxRadio-tick-size-invalid;
-          height: @rxRadio-tick-size-invalid;
+          border-radius: @rxRadio-invalid-tick-border-radius;
+          width: @rxRadio-invalid-tick-size;
+          height: @rxRadio-invalid-tick-size;
         }
       }
 
       &:checked + .fake-radio .tick {
-        background: @rxRadio-color-error;
+        background: @rxRadio-invalid-background-color;
       }
 
       // disabled trumps invalid

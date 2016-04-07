@@ -6,8 +6,8 @@
   .box-sizing(border-box);
   display: block;
   position: relative;
-  color: @rxSelect-color;
-  background: @rxSelect-background;
+  color: @rxSelect-text-color;
+  background: @rxSelect-background-color;
   .border-radius(@rxSelect-border-radius);
 
   // Element should be resizable via wrapper alone
@@ -15,8 +15,8 @@
   height: @rxSelect-height;
 
   &.rx-disabled {
-    color: @rxSelect-color-disabled;
-    background: @rxSelect-background-disabled;
+    color: @rxSelect-disabled-text-color;
+    background: @rxSelect-disabled-background-color;
   }
 
   // position elements in wrapper
@@ -34,25 +34,25 @@
     cursor: not-allowed;
 
     & + .fake-select {
-      border-color: @rxSelect-border-color-disabled;
+      border-color: @rxSelect-disabled-border-color;
       border-width: 1px;
 
       .select-trigger {
-        background: @rxSelect-background-disabled;
+        background: @rxSelect-disabled-background-color;
         border-left-width: 0px;
-        border-left-color: @rxSelect-color-disabled;
-        color: @rxSelect-trigger-color-disabled;
+        border-left-color: @rxSelect-disabled-border-color;
+        color: @rxSelect-disabled-trigger-color;
       }
     }
   }//.disabledSelect()
 
   .invalidSelect() {
     & + .fake-select {
-      border-color: @rxSelect-border-color-invalid;
+      border-color: @rxSelect-invalid-border-color;
       border-width: 2px;
 
       .select-trigger {
-        color: @rxSelect-trigger-color-invalid;
+        color: @rxSelect-invalid-trigger-color;
       }
     }
 
@@ -74,7 +74,7 @@
       // FF uses text color to draw ring. Make it transparent
       color: transparent;
       // However, we still need to display our select <option> text
-      text-shadow: 0 0 0 @rxSelect-color;
+      text-shadow: 0 0 0 @rxSelect-text-color;
     }
 
     & + .fake-select {
@@ -109,7 +109,7 @@
     .select-trigger {
       .box-sizing(border-box);
       width: @rxSelect-trigger-width;
-      background: @rxSelect-trigger-background;
+      background: @rxSelect-background-color;
       color: @rxSelect-trigger-color;
 
       // perfectly center the trigger icon
