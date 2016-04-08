@@ -11,7 +11,7 @@ angular.module('encore.ui.utilities')
  * PageTracking.createInstance({showAll: true, itemsPerPage: 15});
  * </pre>
  */
-.factory('PageTracking', function ($q, LocalStorage, rxPaginateUtils) {
+.factory('PageTracking', function ($q, rxLocalStorage, rxPaginateUtils) {
     var PageTracking = {
         /**
         * @property {number} itemsPerPage This is the current setting for the number
@@ -45,7 +45,7 @@ angular.module('encore.ui.utilities')
         * @method userSelectedItemsPerPage This method sets a new global itemsPerPage value
         */
         userSelectedItemsPerPage: function (itemsPerPage) {
-            LocalStorage.setItem('rxItemsPerPage', itemsPerPage);
+            rxLocalStorage.setItem('rxItemsPerPage', itemsPerPage);
         }
     };
 
@@ -77,7 +77,7 @@ angular.module('encore.ui.utilities')
             itemSizeList.splice(index, 0, itemsPerPage);
         }
 
-        var selectedItemsPerPage = parseInt(LocalStorage.getItem('rxItemsPerPage'));
+        var selectedItemsPerPage = parseInt(rxLocalStorage.getItem('rxItemsPerPage'));
 
         // If the user has chosen a desired itemsPerPage, make sure we're respecting that
         // However, a value specified in the options will take precedence

@@ -59,13 +59,13 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, LocalStorage) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, rxLocalStorage) {
                     rootScope = $rootScope;
                     compile = $compile;
                     httpMock = $httpBackend;
                     cdnPath = routesCdnPath;
 
-                    LocalStorage.clear();
+                    rxLocalStorage.clear();
                 });
 
                 cdnGet = httpMock.whenGET(cdnPath.staging);
@@ -223,7 +223,7 @@ describe('encore.ui.rxApp', function () {
                 module(function ($provide) {
                     $provide.value('Environment', mockEnvironment);
                     $provide.value('routesCdnPath', mockCdnPath);
-                    $provide.value('LocalStorage', mockLocalStorage);
+                    $provide.value('rxLocalStorage', mockLocalStorage);
                 });
 
                 mockLocalStorage.getObject.reset();
@@ -255,7 +255,7 @@ describe('encore.ui.rxApp', function () {
 
         describe('nav caching', function () {
             var scope, compile, rootScope, el, appRoutes, httpMock,
-                cdnPath, cdnGet, localStorage, createDirective;
+                cdnPath, cdnGet, rxLocalStorage, createDirective;
             var standardTemplate = '<rx-app></rx-app>';
 
             var mockNotify = {
@@ -287,19 +287,19 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, LocalStorage) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, _rxLocalStorage_) {
                     rootScope = $rootScope;
                     compile = $compile;
                     appRoutes = encoreRoutes;
                     httpMock = $httpBackend;
                     cdnPath = routesCdnPath;
-                    localStorage = LocalStorage;
+                    rxLocalStorage = _rxLocalStorage_;
                 });
 
                 cdnGet = httpMock.whenGET(cdnPath.staging);
                 cdnGet.respond(defaultNav);
 
-                localStorage.clear();
+                rxLocalStorage.clear();
                 sinon.spy(appRoutes, 'setAll');
 
                 scope = rootScope.$new();
@@ -310,11 +310,11 @@ describe('encore.ui.rxApp', function () {
             });
 
             afterEach(function () {
-                localStorage.clear();
+                rxLocalStorage.clear();
             });
 
             it('should load the cached menu from the local storage', function () {
-                localStorage.setObject('encoreRoutes-staging', defaultNav);
+                rxLocalStorage.setObject('encoreRoutes-staging', defaultNav);
                 createDirective();
                 var navTitle = el[0].querySelector('.nav-section-title');
                 expect($(navTitle).text()).to.equal(defaultNav[0].title);
@@ -323,7 +323,7 @@ describe('encore.ui.rxApp', function () {
             it('should cache the CDN-loaded menu', function () {
                 createDirective();
                 httpMock.flush();
-                expect(localStorage.getObject('encoreRoutes-staging')).to.eql(defaultNav);
+                expect(rxLocalStorage.getObject('encoreRoutes-staging')).to.eql(defaultNav);
             });
 
             describe('when the CDN request fails', function () {
@@ -333,7 +333,7 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 it('should fall back to the cached menu if available', function () {
-                    localStorage.setObject('encoreRoutes-staging', defaultNav);
+                    rxLocalStorage.setObject('encoreRoutes-staging', defaultNav);
                     createDirective();
 
                     // Nav content is written before the request responds
