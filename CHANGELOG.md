@@ -1,3 +1,17 @@
+<a name="1.46.3-0"></a>
+### 1.46.3-0 (2016-04-11)
+
+
+#### Bug Fixes
+
+* **rxLoadingOverlay:** remove isolate scope ([a05230dc](git@github.com:rackerlabs/encore-ui/commit/a05230dc7bf285d48eff5f5c5ec5d858d516014b))
+
+
+#### Features
+
+* **rxApp:** hide navigation if embedded ([288754f0](git@github.com:rackerlabs/encore-ui/commit/288754f06efdd069fea6dd68c258f107bb020e63))
+
+
 <a name="1.46.2"></a>
 ### 1.46.2 (2016-04-06)
 
