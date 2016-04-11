@@ -312,12 +312,12 @@ describe('Pagination', function () {
             helpers.clickElement(link[0]);
 
             scope.$apply();
-            expect(overlayScope.showLoadingOverlay).to.be.true;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
 
             deferred.resolve(response);
 
             scope.$apply();
-            expect(overlayScope.showLoadingOverlay).to.be.false;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.false;
         });
 
         it('should show the loading overlay and hide on reject', function () {
@@ -329,51 +329,51 @@ describe('Pagination', function () {
             helpers.clickElement(link[0]);
 
             scope.$apply();
-            expect(overlayScope.showLoadingOverlay).to.be.true;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
 
             deferred.reject(response);
 
             scope.$apply();
-            expect(overlayScope.showLoadingOverlay).to.be.false;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.false;
         });
 
         it('should show the loading overlay when filterText changes', function () {
             scope.d.filter = 'some search';
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.true;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
 
             deferred.resolve(response);
 
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.false;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.false;
         });
 
         it('should show the loading overlay when selections changes', function () {
             scope.selected.os = _.first(scope.selected.os);
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.true;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
 
             deferred.resolve(response);
 
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.false;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.false;
         });
 
         it('should show the loading overlay when sortColumn changes', function () {
             scope.sort.predicate = 'os';
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.true;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
 
             deferred.resolve(response);
 
             scope.$apply();
             $timeout.flush();
-            expect(overlayScope.showLoadingOverlay).to.be.false;
+            expect(overlayScope._rxLoadingOverlayVisible).to.be.false;
         });
 
         it('should pass the current filter and sort values to getItems', function () {
