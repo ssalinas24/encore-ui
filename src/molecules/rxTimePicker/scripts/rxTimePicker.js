@@ -6,7 +6,7 @@ angular.module('encore.ui.molecules')
  * @scope
  * @requires utilities.service:rxTimePickerUtil
  * @requires utilities.constant:UtcOffsets
- * @requires atoms.directive:rxButton
+ * @requires elements.directive:rxButton
  * @description Time Picker
  *
  * ## Notice

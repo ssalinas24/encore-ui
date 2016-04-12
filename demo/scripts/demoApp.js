@@ -178,12 +178,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: 'listAtomsController',
             controllerAs: 'vm'
         })
-        .when('/atoms/buttons', {
-            templateUrl: 'templates/atoms/buttons.html',
-            controller: genericRouteController([
-                { name: 'Buttons' }
-            ])
-        })
         .when('/atoms/links', {
             templateUrl: 'templates/atoms/links.html',
             controller: genericRouteController([
@@ -351,10 +345,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 { /* Deprecated in favor of Elements */
                     linkText: 'Atoms',
                     children: [
-                        {
-                            linkText: 'Buttons',
-                            href: '#/atoms/buttons'
-                        },
                         {
                             linkText: 'Links',
                             href: '#/atoms/links'
