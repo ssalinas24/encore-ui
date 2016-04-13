@@ -36,7 +36,7 @@ describe('Pagination', function () {
 
             el = $(helpers.createDirective(angular.element(validTemplate), compile, scope));
 
-            items = el.find('li');
+            items = el.find('.page-links > div');
         });
 
         afterEach(function () {
@@ -48,7 +48,6 @@ describe('Pagination', function () {
         it('should link to "first" link non-first page', function () {
             var item = items.filter('.pagination-first');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             scope.pager.goToPage(3);
 
@@ -56,10 +55,9 @@ describe('Pagination', function () {
 
             expect(item.hasClass('disabled'), 'disabled').to.be.false;
             expect(link.hasClass('ng-hide'), 'link ng-hide').to.be.false;
-            expect(span.hasClass('ng-hide'), 'span ng-hide').to.be.true;
 
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             expect(scope.pager.isFirstPage()).to.be.true;
         });
@@ -67,17 +65,14 @@ describe('Pagination', function () {
         it('should disable "first" link on first page', function () {
             var item = items.filter('.pagination-first');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             expect(item.hasClass('disabled')).to.be.true;
             expect(link.hasClass('ng-hide')).to.be.true;
-            expect(span.hasClass('ng-hide')).to.be.false;
         });
 
         it('should link to "prev" link when previous page available', function () {
             var item = items.filter('.pagination-prev');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             scope.pager.goToPage(3);
 
@@ -85,10 +80,9 @@ describe('Pagination', function () {
 
             expect(item.hasClass('disabled')).to.be.false;
             expect(link.hasClass('ng-hide')).to.be.false;
-            expect(span.hasClass('ng-hide')).to.be.true;
 
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             expect(scope.pager.isPage(2)).to.be.true;
         });
@@ -96,11 +90,9 @@ describe('Pagination', function () {
         it('should disable "prev" link on first page', function () {
             var item = items.filter('.pagination-prev');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             expect(item.hasClass('disabled'), 'disabled').to.be.true;
             expect(link.hasClass('ng-hide'), 'link ng-hide').to.be.true;
-            expect(span.hasClass('ng-hide'), 'span ng-hide').to.be.false;
         });
 
         it('should link to individual page numbers', function () {
@@ -122,7 +114,7 @@ describe('Pagination', function () {
             expect(link.text()).to.equal('2');
 
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             scope.$apply();
 
@@ -138,14 +130,12 @@ describe('Pagination', function () {
         it('should link to "next" link when next page available', function () {
             var item = items.filter('.pagination-next');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             expect(item.hasClass('disabled'), 'disabled').to.be.false;
             expect(link.hasClass('ng-hide'), 'link ng-hide').to.be.false;
-            expect(span.hasClass('ng-hide'), 'span ng-hide').to.be.true;
 
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             expect(scope.pager.isPage(1)).to.be.true;
         });
@@ -157,27 +147,23 @@ describe('Pagination', function () {
 
             var item = items.filter('.pagination-next');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             expect(item.hasClass('disabled'), 'item is disabled').to.be.true;
             expect(link.hasClass('ng-hide'), 'link has ng-hide').to.be.true;
-            expect(span.hasClass('ng-hide'), 'span does not have ng-hide').to.be.false;
         });
 
         it('should link to "last" link non-last page', function () {
             var item = items.filter('.pagination-last');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             // make sure we're on the "last" item
             expect(item.hasClass('pagination-last'));
 
             expect(item.hasClass('disabled'), 'item is disabled').to.be.false;
             expect(link.hasClass('ng-hide'), 'link is disabled').to.be.false;
-            expect(span.hasClass('ng-hide'), 'span is not disabled').to.be.true;
 
             // clicking link should move to last page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             expect(scope.pager.isLastPage()).to.be.true;
         });
@@ -189,15 +175,13 @@ describe('Pagination', function () {
 
             var item = items.filter('.pagination-last');
             var link = item.find('a').eq(0);
-            var span = item.find('span').eq(0);
 
             expect(item.hasClass('disabled')).to.be.true;
             expect(link.hasClass('ng-hide')).to.be.true;
-            expect(span.hasClass('ng-hide')).to.be.false;
         });
 
         it('should disable the selected itemsPerPage button', function () {
-            var buttons = items.find('.pagination-per-page-button');
+            var buttons = el.find('.pagination-per-page button');
 
             var firstButton = buttons.eq(0);
             var secondButton = buttons.eq(1);
@@ -206,24 +190,24 @@ describe('Pagination', function () {
             expect(secondButton.prop('disabled'), 'second button disabled').to.be.false;
 
             // clicking link should move to first page
-            helpers.clickElement(secondButton[0]);
+            helpers.clickElement(secondButton);
             expect(firstButton.prop('disabled'), 'first button disabled').to.be.false;
             expect(secondButton.prop('disabled'), 'second button disabled').to.be.true;
 
         });
 
         it('should update the global itemsPerPage when a user selects an itemsPerPage', function () {
-            var buttons = items.find('.pagination-per-page-button');
+            var buttons = el.find('.pagination-per-page button');
 
             var firstButton = buttons.eq(0);
             var thirdButton = buttons.eq(2);
-            helpers.clickElement(firstButton[0]);
+            helpers.clickElement(firstButton);
             expect(firstButton.prop('disabled'), 'first button disabled').to.be.true;
             expect(thirdButton.prop('disabled'), 'second button not disabled').to.be.false;
 
             var thirdButtonValue = _.parseInt(thirdButton.text());
 
-            helpers.clickElement(thirdButton[0]);
+            helpers.clickElement(thirdButton);
 
             var newPagination = pageTracking.createInstance();
 
@@ -294,7 +278,7 @@ describe('Pagination', function () {
             api.getItems.reset();
 
             ul = el.find('ul');
-            items = el.find('li');
+            items = el.find('.page-links > div');
             overlayScope = el.children().eq(-1).scope();
         });
 
@@ -309,7 +293,7 @@ describe('Pagination', function () {
             expect(link.text()).to.equal('2');
             expect(ul.hasClass('loading-row')).to.be.false;
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             scope.$apply();
             expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
@@ -326,7 +310,7 @@ describe('Pagination', function () {
             link = item.find('a').eq(0);
 
             // clicking link should move to first page
-            helpers.clickElement(link[0]);
+            helpers.clickElement(link);
 
             scope.$apply();
             expect(overlayScope._rxLoadingOverlayVisible).to.be.true;
