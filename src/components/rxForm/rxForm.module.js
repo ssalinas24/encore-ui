@@ -98,9 +98,6 @@
  * framework.** They are still functional, but **WILL display a warning in the javascript console** to let you know
  * you should upgrade your code.
  *
- * ### **rxFormOptionTable**
- * Please use {@link rxOptionTable} as a stand-in replacement.
- *
  * ### **rxFormItem**
  * See "Before & After" below
  *
