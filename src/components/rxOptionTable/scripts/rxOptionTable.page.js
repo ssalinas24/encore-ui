@@ -604,31 +604,3 @@ exports.rxOptionTable = {
         };
     }
 };
-
-/**
- * @deprecated
- * @namespace
- * @description
- * **DEPRECATED**: Please use {@link rxOptionTable} as a stand-in replacement.
- */
-exports.rxOptionFormTable = {
-    /**
-     * @deprecated
-     * @function
-     * @returns {rxOptionTable}
-     * @memberof rxOptionFormTable
-     * @description
-     * **DEPRECATED**: Please use {@link encore.rxOptionTable.initialize} as a stand-in replacement.
-     */
-    initialize: exports.rxOptionTable.initialize,
-
-    /**
-     * @deprecated
-     * @function
-     * @memberof rxOptionFormTable
-     * @returns {rxOptionTable}
-     * @description
-     * **DEPRECATED**: Please use {@link rxOptionTable.generateAccessor} as a stand-in replacement.
-     */
-    generateAccessor: exports.rxOptionTable.generateAccessor
-};
