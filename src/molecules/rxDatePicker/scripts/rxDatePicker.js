@@ -12,6 +12,9 @@ angular.module('encore.ui.molecules')
  * molecules to compose a valid ISO 8601 DateTime string in the format of
  * <code>YYYY-MM-DDTHH:mmZ</code>.
  *
+ * `rxDatePicker` provides the user a 10-year range before and after the selected date,
+ * if present.  Otherwise, the range is calculated from today's date.
+ *
  * * This molecule will generate a **String** in the format of `YYYY-MM-DD`
  *   to be used as the date portion of the ISO 8601 standard DateTime string
  *   mentioned above.
@@ -24,6 +27,64 @@ angular.module('encore.ui.molecules')
  * format of `YYYY-MM-DD`.
  */
 .directive('rxDatePicker', function () {
+    var isoFormat = 'YYYY-MM-DD';
+    const YEAR_RANGE = 10;
+
+    /**
+     * @param {Moment} firstOfMonth
+     * @return {Array<Moment>}
+     * @description
+     * Generate an array of Moment objects representing the visible
+     * days on the calendar. This will automatically pad the calendar
+     * with dates from previous/next month to fill out the weeks.
+     */
+    function buildCalendarDays (firstOfMonth) {
+        var dateToken = firstOfMonth.clone().startOf('day');
+        var currentMonth = dateToken.month();
+        var days = [];
+        var prependDay, appendDay;
+
+        // add calendar month's days
+        while (dateToken.month() === currentMonth) {
+            days.push(dateToken.clone());
+            dateToken.add(1, 'day');
+        }
+
+        // until first item of array is Sunday, prepend earlier days to array
+        while (_.first(days).day() > 0) {
+            prependDay = _.first(days).clone();
+            days.unshift(prependDay.subtract(1, 'day'));
+        }
+
+        // until last item of array is Saturday, append later days to array
+        while (_.last(days).day() < 6) {
+            appendDay = _.last(days).clone();
+            days.push(appendDay.add(1, 'day'));
+        }
+
+        return days;
+    }//buildCalendarDays
+
+    /**
+     * @param {Moment} midpoint
+     * @return {Array<ISO 8601 Year> }
+     * @description
+     * Generate an array of ISO 8601 Year (format "YYYY") years.
+     */
+    function generateCalendarYears (midpoint) {
+        var calendarYears = [];
+        var iterator = midpoint.clone().subtract(YEAR_RANGE, 'years');
+        var limit = midpoint.clone().add(YEAR_RANGE, 'years');
+
+        while (iterator.year() <= limit.year()) {
+            calendarYears.push(iterator.year());
+
+            iterator.add(1, 'year');
+        }
+
+        return calendarYears;
+    }//generateCalendarYears
+
     return {
         templateUrl: 'templates/rxDatePicker.html',
         restrict: 'E',
@@ -33,7 +94,6 @@ angular.module('encore.ui.molecules')
         },
         link: function (scope, element, attrs, ngModelCtrl) {
             var today = moment(new Date());
-            var isoFormat = 'YYYY-MM-DD';
 
             scope.calendarVisible = false;
             // keep track of which month we're viewing in the popup (default to 1st of this month)
@@ -45,6 +105,10 @@ angular.module('encore.ui.molecules')
                     scope.calendarVisible = !scope.calendarVisible;
                 }
             };//toggleCalendar()
+
+            scope.closeCalendar = function () {
+                scope.calendarVisible = false;
+            };
 
             /**
              * @param {String} destination
@@ -105,7 +169,9 @@ angular.module('encore.ui.molecules')
 
             // Set calendar month on change of selected date
             scope.$watch('selected', function (newVal) {
-                if (!_.isEmpty(newVal)) {
+                if (_.isEmpty(newVal)) {
+                    scope.calendarMonth = today.clone().startOf('month');
+                } else {
                     var parsed = moment(newVal, isoFormat);
 
                     if (parsed.isValid()) {
@@ -117,6 +183,31 @@ angular.module('encore.ui.molecules')
             // Regenerate calendar if month changes
             scope.$watch('calendarMonth', function (newVal) {
                 scope.calendarDays = buildCalendarDays(newVal);
+                scope.currentMonth = newVal.format('MM');
+                scope.currentYear = newVal.format('YYYY');
+                scope.calendarYears = generateCalendarYears(newVal);
+            });
+
+            scope.$watch('currentMonth', function (newVal) {
+                if (!_.isEmpty(newVal)) {
+                    var dateString = [scope.currentYear, newVal, '01'].join('-');
+                    var parsed = moment(dateString, isoFormat);
+
+                    if (parsed.isValid()) {
+                        scope.calendarMonth = parsed;
+                    }
+                }
+            });
+
+            scope.$watch('currentYear', function (newVal) {
+                if (!_.isEmpty(newVal)) {
+                    var dateString = [newVal, scope.currentMonth, '01'].join('-');
+                    var parsed = moment(dateString, isoFormat);
+
+                    if (parsed.isValid()) {
+                        scope.calendarMonth = parsed;
+                    }
+                }
             });
 
             ngModelCtrl.$formatters.push(function (modelVal) {
@@ -133,41 +224,6 @@ angular.module('encore.ui.molecules')
             ngModelCtrl.$render = function () {
                 scope.displayValue = ngModelCtrl.$viewValue;
             };
-
-            /**
-             * @param {Moment} firstOfMonth
-             * @return {Array<Moment>}
-             * @description
-             * Generate an array of Moment objects representing the visible
-             * days on the calendar. This will automatically pad the calendar
-             * with dates from previous/next month to fill out the weeks.
-             */
-            function buildCalendarDays (firstOfMonth) {
-                var dateToken = firstOfMonth.clone().startOf('day');
-                var currentMonth = dateToken.month();
-                var days = [];
-                var prependDay, appendDay;
-
-                // add calendar month's days
-                while (dateToken.month() === currentMonth) {
-                    days.push(dateToken.clone());
-                    dateToken.add(1, 'day');
-                }
-
-                // until first item of array is Sunday, prepend earlier days to array
-                while (_.first(days).day() > 0) {
-                    prependDay = _.first(days).clone();
-                    days.unshift(prependDay.subtract(1, 'day'));
-                }
-
-                // until last item of array is Saturday, append later days to array
-                while (_.last(days).day() < 6) {
-                    appendDay = _.last(days).clone();
-                    days.push(appendDay.add(1, 'day'));
-                }
-
-                return days;
-            }//buildCalendarDays
         }
     };
 });

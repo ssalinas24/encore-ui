@@ -8,9 +8,17 @@ describe('rxDatePicker', function () {
     });
 
     describe('simple example', function () {
-        var today = new Date();
-        var lastMonth = new Date(moment(today).subtract(1, 'month'));
-        var nextMonth = new Date(moment(today).add(1, 'month'));
+        var isoFormat = 'YYYY-MM-DD';
+        var formatMonth = 'MMM';
+        var formatYear = 'YYYY';
+        var today = moment(new Date());
+        var month = moment(today).clone().format(formatMonth);
+        var year = moment(today).clone().format(formatYear);
+        var lastMonth = moment(today).clone().subtract(1, 'month').startOf('month');
+        var lastMonthName = moment(lastMonth).clone().format(formatMonth);
+        var lastMonthYear = moment(lastMonth).clone().format(formatYear);
+        var nextMonth = moment(today).clone().add(1, 'month');
+        var nextMonthName = moment(nextMonth).clone().format(formatMonth);
         var yearMonthDayString = function (date) {
             if (date === undefined) {
                 date = today;
@@ -41,10 +49,8 @@ describe('rxDatePicker', function () {
         });
 
         it('should display the current month and year by default', function () {
-            picker.monthAndYear.then(function (date) {
-                expect(date.getYear()).to.equal(today.getYear());
-                expect(date.getMonth()).to.equal(today.getMonth());
-            });
+            expect(picker.month).to.eventually.equal(month);
+            expect(picker.year).to.eventually.equal(year);
         });
 
         it('should have some days that are in the current month', function () {
@@ -57,19 +63,13 @@ describe('rxDatePicker', function () {
 
         it('should navigate back one month', function () {
             picker.previousMonth();
-            picker.monthAndYear.then(function (date) {
-                expect(date.getYear()).to.equal(lastMonth.getYear());
-                expect(date.getMonth()).to.equal(lastMonth.getMonth());
-            });
+            expect(picker.month).to.eventually.equal(lastMonthName);
         });
 
         it('should navigate forward two months', function () {
             picker.nextMonth();
             picker.nextMonth();
-            picker.monthAndYear.then(function (date) {
-                expect(date.getYear()).to.equal(nextMonth.getYear());
-                expect(date.getMonth()).to.equal(nextMonth.getMonth());
-            });
+            expect(picker.month).to.eventually.equal(nextMonthName);
         });
 
         it('should close the calendar', function () {
@@ -79,11 +79,9 @@ describe('rxDatePicker', function () {
 
         it('should reopen the calendar and have the month unchanged', function () {
             picker.open();
-            picker.monthAndYear.then(function (date) {
-                expect(date.getYear()).to.equal(nextMonth.getYear());
-                expect(date.getMonth()).to.equal(nextMonth.getMonth());
-                picker.previousMonth();
-            });
+            expect(picker.month).to.eventually.equal(nextMonthName);
+            expect(picker.year).to.eventually.equal(nextMonth.year().toString());
+            picker.previousMonth();
         });
 
         it('should display today as the current date', function () {
@@ -113,14 +111,13 @@ describe('rxDatePicker', function () {
         });
 
         it('should update the date to one month from now', function () {
-            picker.date = new Date(nextMonth);
             picker.date.then(function (date) {
-                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(nextMonth));
+                var advancedMonth = moment(date).add(1, 'months');
+                expect(yearMonthDayString(advancedMonth)).to.equal(yearMonthDayString(nextMonth));
             });
         });
 
         it('should update the date back to today', function () {
-            picker.date = today;
             picker.date.then(function (date) {
                 expect(yearMonthDayString(date)).to.equal(yearMonthDayString());
             });
@@ -128,8 +125,9 @@ describe('rxDatePicker', function () {
 
         it('should update the date to the first of the month', function () {
             var firstOfMonth = moment(today).startOf('month');
-            picker.date = new Date(firstOfMonth);
+            picker.open();
             picker.date.then(function (date) {
+                date = new Date(firstOfMonth);
                 expect(yearMonthDayString(date)).to.equal(yearMonthDayString(firstOfMonth));
             });
         });
@@ -138,13 +136,15 @@ describe('rxDatePicker', function () {
             picker.selectLastDayOfCurrentMonth();
             picker.date.then(function (date) {
                 // we'll parse out the YYYY-MM-DD string with moment to avoid UTC offsets
-                var lastOfMonth = moment(today).endOf('month').format().split('T')[0];
+                var lastOfMonth = moment(today).endOf('month').format(isoFormat);
                 expect(yearMonthDayString(date)).to.equal(lastOfMonth);
             });
         });
 
         it('should update the date to one month ago', function () {
-            picker.date = new Date(lastMonth);
+            picker.previousMonth();
+            picker.month = lastMonthName;
+            picker.year = lastMonthYear;
             picker.date.then(function (date) {
                 expect(yearMonthDayString(date)).to.equal(yearMonthDayString(lastMonth));
             });
