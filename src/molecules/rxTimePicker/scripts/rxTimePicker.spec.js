@@ -7,6 +7,7 @@ describe('molecule:rxTimePicker', function () {
     beforeEach(function () {
         module('encore.ui.utilities');
         module('encore.ui.molecules');
+        module('encore.ui.elements');
         module('templates/rxTimePicker.html');
         module('templates/rxButton.html');
 

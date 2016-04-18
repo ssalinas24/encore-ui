@@ -40,7 +40,7 @@
  * ## Compatible Modules
  * These modules work well with rxForm.
  *
- * * {@link atoms.directive:rxButton rxButton}
+ * * {@link elements.directive:rxButton rxButton}
  * * {@link rxCharacterCount}
  * * {@link atoms.directive:rxCheckbox rxCheckbox}
  * * {@link rxMultiSelect}
@@ -205,7 +205,7 @@
  * * {@link rxForm.directive:rxInlineError rxInlineError}
  *
  * ### Related Directives
- * * {@link atoms.directive:rxButton rxButton}
+ * * {@link elements.directive:rxButton rxButton}
  * * {@link rxCharacterCount.directive:rxCharacterCount rxCharacterCount}
  * * {@link atoms.directive:rxCheckbox rxCheckbox}
  * * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}

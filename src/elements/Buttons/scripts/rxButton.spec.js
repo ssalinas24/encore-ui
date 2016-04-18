@@ -10,7 +10,7 @@ describe('rxButton', function () {
             '</rx-button>';
 
         beforeEach(function () {
-            module('encore.ui.atoms');
+            module('encore.ui.elements');
             module('templates/rxButton.html');
 
             inject(function ($rootScope, $compile) {
