@@ -1,26 +1,19 @@
-.permalink {
-  border-bottom: 2px solid transparent;
-  color: inherit;
-  cursor: pointer;
-  position: relative;
+rx-permalink {
+  .permalink {
+    .icon {
+      visibility: hidden;
+      color: @gray-700;
+    }
 
-  &:before {
-    color: @gray-500;
-    content: '#';
-    display: block;
-    padding-right: 3px;
-    position: absolute;
-    right: 100%;
-    top: 0;
-  }
+    &:hover {
+      .icon {
+        visibility: visible;
 
-  &:hover {
-    border-bottom-color: @gray-900;
-    color: inherit;
-    text-decoration: none;
-
-    &:before {
-      color: inherit;
+        &:hover {
+          color: @app-link-hover-text-color;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
