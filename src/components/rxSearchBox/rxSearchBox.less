@@ -14,8 +14,8 @@ rx-search-box {
     min-width: @rxSearchBox-min-width;
     padding: 0;
 
-    background: @rxSearchBox-background;
-    color: @rxSearchBox-color;
+    background: @rxSearchBox-background-color;
+    color: @rxSearchBox-text-color;
 
     // as flex container
     display: flex;
@@ -35,8 +35,8 @@ rx-search-box {
       min-width: (@rxSearchBox-min-width - @rxSearchBox-clear-width - (2 * @rxSearchBox-padding-horizontal));
 
       &[disabled] {
-        color: @rxSearchBox-color-disabled;
-        background: @rxSearchBox-background-disabled;
+        color: @rxSearchBox-disabled-text-color;
+        background: @rxSearchBox-disabled-background-color;
         cursor: not-allowed;
       }
     }//.rxSearchBox-input
@@ -45,7 +45,7 @@ rx-search-box {
       .box-sizing(border-box);
       cursor: pointer;
       //font-size: 0.75em;
-      color: @rxSearchBox-color-icon;
+      color: @rxSearchBox-icon-color;
 
       // as flex item
       flex: 0 0 @rxSearchBox-clear-width;

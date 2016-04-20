@@ -5,7 +5,7 @@
   display: inline-block;
   width: @rxCheckbox-size;
   height: @rxCheckbox-size;
-  color: @rxCheckbox-color;
+  color: @rxCheckbox-text-color;
   background-color: @rxCheckbox-background-color;
   position: relative;
 
@@ -57,8 +57,8 @@
 
     // enabled checked
     &:checked + .fake-checkbox {
-      background-color: @rxCheckbox-background-color-selected;
-      color: @rxCheckbox-color;
+      background-color: @rxCheckbox-selected-background-color;
+      color: @rxCheckbox-text-color;
       border: 0;
     }
 
@@ -66,7 +66,7 @@
       cursor: not-allowed;
 
       & ~ .fake-checkbox {
-        background: @rxForm-input-background-color;
+        background: @rxCheckbox-background-color;
         border: 1px solid @rxCheckbox-border-color;
       }
 
@@ -81,13 +81,13 @@
       // enabled unchecked error
       & + .fake-checkbox {
         background-color: @rxCheckbox-background-color;
-        border: 2px solid @rxForm-error-accent-color;
+        border: 2px solid @rxCheckbox-invalid-input-border-color;
       }
 
       // enabled checked error
       &:checked {
         & + .fake-checkbox {
-          background-color: @rxForm-error-accent-color;
+          background-color: @rxCheckbox-invalid-input-background-color;
         }
       }
 
