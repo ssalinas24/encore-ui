@@ -22,6 +22,9 @@
  * * {@link utilities.controller:rxFeedbackController rxFeedbackController}
  * * {@link utilities.controller:rxModalCtrl rxModalCtrl}
  *
+ * ## Directives
+ * * {@link utilities.directive:rxFavicon rxFavicon}
+ *
  * ## Filters
  * * {@link utilities.filter:Page Page}
  * * {@link utilities.filter:Paginate Paginate}
