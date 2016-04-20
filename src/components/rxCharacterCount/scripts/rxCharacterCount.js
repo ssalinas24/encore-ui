@@ -72,7 +72,7 @@ angular.module('encore.ui.rxCharacterCount')
  * <textarea ng-model="model" rx-character-count></textarea>
  * </pre>
  */
-.directive('rxCharacterCount', function ($compile) {
+.directive('rxCharacterCount', function ($compile, $timeout) {
     var counterStart = '<div class="character-countdown" ';
     var counterEnd =   'ng-class="{ \'near-limit\': nearLimit, \'over-limit\': overLimit }"' +
                   '>{{ remaining }}</div>';
@@ -168,9 +168,18 @@ angular.module('encore.ui.rxCharacterCount')
             }
 
             scope.$on('$destroy', function () {
-                element.off('input', writeLimitText);
-                wrapper.remove();
+                element.off('input');
+                $timeout(function () {
+                    // When the element containing the rx-character-count is removed, we have to
+                    // ensure we also remove the `wrapper`, which we created. We have to manually
+                    // destroy its scope and remove the element itself. All of this has to happen
+                    // in a $timeout() to ensure it occurs on the next $digest cycle, otherwise
+                    // we go into an infinite loop
+                    wrapper.scope().$destroy();
+                    wrapper.remove();
+                });
             });
+
         }
     };
 });
