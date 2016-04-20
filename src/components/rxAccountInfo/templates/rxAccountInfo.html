@@ -25,7 +25,7 @@
                 Badges
             </div>
             <div class="account-info-data">
-                <img ng-repeat="badge in badges" ng-src="{{badge.url}}" data-name="{{badge.name}}" data-description="{{badge.description}}" tooltip-html-unsafe="{{tooltipHtml(badge)}}" tooltip-placement="bottom">
+                <img ng-repeat="badge in badges" ng-src="{{badge.url}}" data-name="{{badge.name}}" data-description="{{badge.description}}" tooltip-html="tooltipHtml(badge)" tooltip-placement="bottom">
             </div>
         </div>
         <div class="account-info-wrapper" ng-transclude></div>

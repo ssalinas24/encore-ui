@@ -1,7 +1,7 @@
 {
   "author": "",
   "name": "EncoreUI",
-  "version": "1.47.0",
+  "version": "2.0.0-3",
   "homepage": "https://github.com/rackerlabs/encore-ui",
   "license": "Apache-2.0",
   "repository": {
@@ -18,8 +18,7 @@
     "eslint-test": "eslint -c .eslintrc.spec.json --ignore-path .eslintignore-spec src/** demo/**"
   },
   "dependencies": {
-    "normalize.css": "^3.0.2",
-    "karma-sinon-chai": "^0.3.0"
+    "normalize.css": "^3.0.2"
   },
   "devDependencies": {
     "astrolabe": "~0.3.6",
@@ -69,6 +68,7 @@
     "karma-ng-html2js-preprocessor": "~0.1.2",
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-requirejs": "~0.2.2",
+    "karma-sinon-chai": "^0.3.0",
     "load-grunt-tasks": "~2.0.0",
     "lodash": "~2.4.1",
     "marked": "^0.3.3",

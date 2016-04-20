@@ -29,10 +29,12 @@
 
 * **rxLoadingOverlay:** remove isolate scope ([a05230dc](git@github.com:rackerlabs/encore-ui/commit/a05230dc7bf285d48eff5f5c5ec5d858d516014b))
 
-
 #### Features
 
 * **rxApp:** hide navigation if embedded ([288754f0](git@github.com:rackerlabs/encore-ui/commit/288754f06efdd069fea6dd68c258f107bb020e63))
+
+<a name="2.0.0-3"></a>
+### 2.0.0-3 (2016-04-06)
 
 
 <a name="1.46.2"></a>
@@ -46,6 +48,24 @@
 #### Features
 
 * **demo:** add keyword filtering ([325e6ed8](git@github.com:rackerlabs/encore-ui/commit/325e6ed80b07b05ed50268ffc6e518aa97004942))
+
+<a name="2.0.0-2"></a>
+### 2.0.0-2 (2016-03-30)
+
+
+#### Bug Fixes
+
+* **midways:** fix broken midways ([06e997db](git@github.com:rackerlabs/encore-ui/commit/06e997db9860f761f16ce7199d6c1bee33ae7c66))
+* **rxDatePicker:** fix spec ([8bccd6f2](git@github.com:rackerlabs/encore-ui/commit/8bccd6f26a7428ea33dbd3ff82e305b5a123a549))
+* **scope:** rxMultiSelect ([4bf793b0](git@github.com:rackerlabs/encore-ui/commit/4bf793b0bcfbc847c9c32dccfd1875af80ca7c87))
+
+
+#### Breaking Changes
+
+* You will need to refer to the component under test
+using the `instance` option, which should be a page object that you
+instantiate yourself, and hand into the exercise.
+ ([2c795c05](git@github.com:rackerlabs/encore-ui/commit/2c795c05b6fdb44b01863c5cab80544df73acb34))
 
 
 <a name="1.46.1"></a>
@@ -76,10 +96,18 @@
 <a name="1.46.0"></a>
 ## 1.46.0 (2016-03-09)
 
+<a name="2.0.0-1"></a>
+### 2.0.0-1 (2016-02-03)
+
+
+#### Bug Fixes
+
+* **midways:** fix broken midways ([c89fb672](git@github.com:rackerlabs/encore-ui/commit/c89fb6727c84c64c7faab0b0b262d9f376f2217a))
+* **rxDatePicker:** fix spec ([c5ec2042](git@github.com:rackerlabs/encore-ui/commit/c5ec204240931d41186d15ba3cb27f83e04c8408))
+* **scope:** rxMultiSelect ([071df5c6](git@github.com:rackerlabs/encore-ui/commit/071df5c610463efc138adcb1d100dcb3cad5f5a8))
 
 <a name="1.46.0-0"></a>
 ### 1.46.0-0 (2016-03-09)
-
 
 #### Bug Fixes
 
@@ -185,6 +213,14 @@ version of rx-page-objects.
 
 <a name="1.44.1-0"></a>
 ### 1.44.1-0 (2016-01-27)
+
+
+<a name="2.0.0-0"></a>
+### 2.0.0-0 (2016-01-22)
+
+* **midways:** fix broken midways ([c89fb672](git@github.com:rackerlabs/encore-ui/commit/c89fb6727c84c64c7faab0b0b262d9f376f2217a))
+* **rxDatePicker:** fix spec ([c5ec2042](git@github.com:rackerlabs/encore-ui/commit/c5ec204240931d41186d15ba3cb27f83e04c8408))
+* **scope:** rxMultiSelect ([071df5c6](git@github.com:rackerlabs/encore-ui/commit/071df5c610463efc138adcb1d100dcb3cad5f5a8))
 
 
 <a name="1.44.0"></a>
@@ -2517,4 +2553,3 @@ If you're defining it before the pre-hook (on page load), this will break. You w
 #### Bug Fixes
 
 * **images:** re-worked way images are added ([9d6e62fd](git@github.com:rackerlabs/encore-ui/commit/9d6e62fda0bb37140fe93593e1a82d596e771e8c))
-

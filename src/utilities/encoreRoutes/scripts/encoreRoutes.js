@@ -10,7 +10,7 @@ angular.module('encore.ui.utilities')
  */
 .factory('encoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
                                    rxVisibilityPathParams, rxVisibility, Environment,
-                                   rxHideIfUkAccount, LocalStorage) {
+                                   rxHideIfUkAccount, rxLocalStorage) {
 
     // We use rxVisibility in the nav menu at routesCdnPath, so ensure it's ready
     // before loading from the CDN
@@ -56,12 +56,12 @@ angular.module('encore.ui.utilities')
 
     encoreRoutes.fetchRoutes = function () {
         var routesKey = 'encoreRoutes-' + suffix;
-        var cachedRoutes = LocalStorage.getObject(routesKey);
+        var cachedRoutes = rxLocalStorage.getObject(routesKey);
 
         $http.get(url)
             .success(function (routes) {
                 encoreRoutes.setAll(routes);
-                LocalStorage.setObject(routesKey, routes);
+                rxLocalStorage.setObject(routesKey, routes);
             })
             .error(function () {
                 if (cachedRoutes) {
