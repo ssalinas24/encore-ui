@@ -10,7 +10,7 @@ angular.module('encore.ui.rxPaginate')
  * object if you instead intend to use a paginated server-side API
  *
  * @param {Object} pageTracking This is the page tracking service instance to
- * be used for this directive
+ * be used for this directive. See {@link utilities.service:PageTracking}
  * @param {Number} numberOfPages This is the maximum number of pages that the
  * page object will display at a time.
  * @param {Object} [serverInterface] An object with a `getItems()` method. The requirements
