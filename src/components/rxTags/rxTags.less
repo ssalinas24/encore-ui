@@ -19,7 +19,7 @@ rx-tags {
 
 .rx-tags {
   background-color: @white;
-  border: 1px solid @rxForm-input-border-color;
+  border: 1px solid @rxTags-border-color;
 
   &:hover {
     cursor: text;
@@ -34,8 +34,8 @@ rx-tags {
   .tag {
     display: inline-block;
     margin: 6px 10px;
-    line-height: @rxTag-height;
-    border-radius: @rxTag-height / 2;
+    line-height: @rxTags-height;
+    border-radius: @rxTags-height / 2;
     vertical-align: top;
     background-color: @gray-300;
     &:hover {
@@ -69,12 +69,12 @@ rx-tags {
     }
 
     .fa-tag {
-      margin-left: @rxTag-height / 2;
+      margin-left: @rxTags-height / 2;
       color: @gray-600;
     }
 
     .fa-times {
-      margin-right: @rxTag-height / 2;
+      margin-right: @rxTags-height / 2;
       color: @gray-600;
       &:hover {
         cursor: pointer;

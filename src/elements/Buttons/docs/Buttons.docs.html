@@ -1,0 +1,103 @@
+<h2><rx-permalink>Basics</rx-permalink></h2>
+<p>
+  You can style most of your buttons using this <code>.button</code> class.
+  Exceptions can include <code>input type="button"</code> or
+  <a href="#/elements/Buttons#rxButton">rxButton</a> for dynamic loading indicators.
+</p>
+
+<h3><rx-permalink>Button Sizing</rx-permalink></h3>
+<p>
+  Buttons are sized using xl, lg, sm and xs classes. Not adding the additional
+  class defaults the size to medium.
+</p>
+<rx-example name="button.sizing"></rx-example>
+
+<h3><rx-permalink>Types &amp; Colors</rx-permalink></h3>
+
+<h4><rx-permalink>Progression Button</rx-permalink></h4>
+<ul class="list">
+  <li>
+    If the form you are submitting results in EDITING something or something
+    auxiliary like getting metadata from a different source, keep it blue.
+  </li>
+  <li>
+    If you are providing a button for the user to continue through a series
+    of modals (with no submit), use blue.
+  </li>
+</ul>
+<rx-example name="button.colors.progression"></rx-example>
+
+<h4><rx-permalink>Submit Button</rx-permalink></h4>
+<ul class="list">
+  <li>
+    If the form you are submitting results in CREATING or ADDING something,
+    use green.
+  </li>
+  <li>If the form you are submitting is within a modal, use green.</li>
+</ul>
+<rx-example name="button.colors.submit"></rx-example>
+
+<h4><rx-permalink>Negative Button</rx-permalink></h4>
+<rx-example name="button.colors.negative"></rx-example>
+
+<h4><rx-permalink>Cancel Button</rx-permalink></h4>
+<rx-example name="button.colors.cancel"></rx-example>
+
+<h4><rx-permalink>Finish Button</rx-permalink></h4>
+<ul class="list">
+  <li>
+    If you are providing a button for the user to exit a series of modals
+    where no other action is required by the user, use the "Finish &amp; Close"
+    button with a blue outline.
+  </li>
+</ul>
+<rx-example name="button.colors.finish"></rx-example>
+
+<h4><rx-permalink>Disabled Button</rx-permalink></h4>
+<rx-example name="button.colors.disabled"></rx-example>
+
+
+<h3><rx-permalink>Button with Animation</rx-permalink></h3>
+<p>
+  You can use the spinner style with buttons. Different spinner styles are
+  used when content is loading or being fetched (see Using Colors and Icons
+  With Links demo).
+</p>
+<p>
+  When a user takes an action with results that can't be immediately
+  displayed, a spinner is shown on a disabled button state until the call
+  completes or the results of the user's action can be displayed in the UI.
+  Text for your buttons with spinners should describe the action taken using
+  "-ing" verbs, so the user understands why the button appearance has
+  changed. The disabled state ensures the user can't submit the same data
+  multiple times while the initial action completes.
+</p>
+<rx-example name="button.animated"></rx-example>
+
+<h3><rx-permalink>Button Groups</rx-permalink></h3>
+<p>
+  This control should NOT be used as a replacement for radio inputs. Instead,
+  it should be used to indicate state on a page. For example, the legend of a
+  time plot may allow the user to select a range of week, month, or year. In
+  this situation, there is no form being submitted, but there is an indication
+  of the graph's state that can be interacted with. Conversely, radio inputs
+  are the correct way to implement a form input where one of a few options can
+  be selected.
+</p>
+<p>
+  Also, this type of control should only be used with at most four segments.
+</p>
+<rx-example name="button.group"></rx-example>
+
+
+<h3><rx-permalink>rxButton</rx-permalink></h4>
+<p>
+  <code>rxButton</code> is used to create buttons based on the dynamic state of the
+  application.
+</p>
+
+<h4><rx-permalink>Typical Usage</rx-permalink></h4>
+<rx-example name="rxButton.simple"></rx-example>
+
+<h4><rx-permalink>rxButton with <code>disable</code> attribute</rx-permalink></h4>
+<rx-example name="rxButton.disable"></rx-example>

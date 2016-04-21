@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 describe('rxCharacterCount', function () {
-    var originalScope, scope, compile, el;
+    var originalScope, scope, compile, el, $timeout, $rootScope;
     var initialTemplate = '<textarea ng-model="initComment" rx-character-count></textarea>';
     var defaultTemplate = '<textarea ng-model="comment" rx-character-count></textarea>';
     var maxCharsTemplate = '<textarea ng-model="comment" rx-character-count max-characters="50"></textarea>';
@@ -13,13 +13,15 @@ describe('rxCharacterCount', function () {
         module('encore.ui.rxCharacterCount');
 
         // Inject in angular constructs
-        inject(function ($location, $rootScope, $compile) {
+        inject(function ($location, _$rootScope_, $compile, _$timeout_) {
+            $rootScope = _$rootScope_;
             originalScope = $rootScope.$new();
             originalScope.comment = '';
             originalScope.initComment = 'I have an initial value';
             originalScope.showTextArea = true;
             originalScope.hideTextArea = true;
             compile = $compile;
+            $timeout = _$timeout_;
         });
 
     });
@@ -128,11 +130,26 @@ describe('rxCharacterCount', function () {
         var ngHideTemplate = '<div class="parent">' +
                            '<textarea ng-hide="hideTextArea" ng-model="comment" rx-character-count></textarea></div>';
 
-        it('should remove the character count if the element disappears', function () {
+        it('should remove the character count if the element is removed with ng-if', function () {
             parentDiv = helpers.createDirective(ngIfTemplate, compile, originalScope);
             el = parentDiv.find('textarea');
             originalScope.showTextArea = false;
             originalScope.$apply();
+
+            // Because we have to remove the wrapper in a $timeout, we need
+            // to explicity call flush() here. Which sucks, because an implementation
+            // detail is leaking through to the tests.
+            $timeout.flush();
+            expect(parentDiv.is(':empty')).to.be.true;
+        });
+        
+        it('should remove the character count if the element is removed manually', function () {
+            parentDiv = helpers.createDirective(ngIfTemplate, compile, originalScope);
+            el = parentDiv.find('textarea');
+            el.scope().$destroy();
+            el.remove();
+            $rootScope.$apply();
+            $timeout.flush();
             expect(parentDiv.is(':empty')).to.be.true;
         });
 

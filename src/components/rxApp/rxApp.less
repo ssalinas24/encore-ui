@@ -135,6 +135,14 @@
     }
   }
 
+  &.embedded {
+    .page-body {
+      & > .rx-notifications {
+        left: 0;
+      }
+    }
+  }
+
   &.warning-bar {
     position: absolute;
     margin-top: 3em;
@@ -528,14 +536,11 @@
 
     & > .rx-notifications {
       position: fixed;
-      z-index: 20;  // accommodate rxSelect .fake-select class
+      z-index: 20; // accommodate rxSelect .fake-select class
       top: 0;
       left: 300px;
-      right: 100px;
+      right: 0px;
       opacity: 0.95;
-      .rx-notification {
-        width: 100%;
-      }
     }
 
     .page-actions {

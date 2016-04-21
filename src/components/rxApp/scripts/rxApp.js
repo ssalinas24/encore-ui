@@ -21,7 +21,7 @@ angular.module('encore.ui.rxApp')
  * </pre>
  */
 .directive('rxApp', function (encoreRoutes, rxAppRoutes, hotkeys,
-                              Environment, routesCdnPath, Session) {
+                              Environment, routesCdnPath, Session, $window) {
     return {
         restrict: 'E',
         transclude: true,
@@ -43,6 +43,8 @@ angular.module('encore.ui.rxApp')
             scope.isLocalNav = routesCdnPath.hasCustomURL && (Environment.isLocal());
 
             scope.isWarning = scope.isPreProd || scope.isLocalNav;
+
+            scope.isEmbedded = $window.self !== $window.top;
 
             if (scope.isPreProd) {
                 scope.warningMessage =

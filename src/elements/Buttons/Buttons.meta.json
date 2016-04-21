@@ -1,0 +1,12 @@
+{
+    "displayName": "Buttons",
+    "stability": "unstable",
+    "description": "Several examples and styles of Buttons available for different contexts.",
+    "api": "directive:rxButton",
+    "keywords": [
+        "button",
+        "cancel",
+        "rxButton",
+        "submit"
+    ]
+}

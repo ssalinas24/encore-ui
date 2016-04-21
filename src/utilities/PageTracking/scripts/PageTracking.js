@@ -5,35 +5,42 @@ angular.module('encore.ui.utilities')
  * @description
  * This is the data service that can be used in conjunction with the pagination
  * objects to store/control page display of data tables and other items.
+ * This is intended to be used with {@link rxPaginate.directive:rxPaginate}
+ * @namespace PageTracking
  *
  * @example
  * <pre>
- * PageTracking.createInstance({showAll: true, itemsPerPage: 15});
+ * $scope.pager = PageTracking.createInstance({showAll: true, itemsPerPage: 15});
+ * </pre>
+ * <pre>
+ * <rx-paginate page-tracking="pager"></rx-paginate>
  * </pre>
  */
 .factory('PageTracking', function ($q, rxLocalStorage, rxPaginateUtils) {
     var PageTracking = {
         /**
-        * @property {number} itemsPerPage This is the current setting for the number
-        * of items to display per page.
-        * @property {boolean} [persistItemsPerPage=true] Whether or not a change to this pager's itemsPerPage
+        * @ngdoc method
+        * @name utilities.service:PageTracking#createInstance
+        * @methodOf utilities.service:PageTracking
+        * @param {Object} options Configuration options for the pager
+        * @param {number} [options.itemsPerPage=200] The default number of items to display per page.
+        * If you choose a value * that is not in the default set ot itemsPerPage options (50, 200, 350, 500),
+        * then that value will be inserted into that list in the appropriate place
+        * @param {number[]} [options.itemSizeList=(50, 200, 350, 500)] The "items per page" options to give to the user.
+        * As these * same values are used all throughout Encore, you probably should not alter them for your table.
+        * @param {boolean} [options.persistItemsPerPage=true] Whether or not a change to this pager's itemsPerPage
         * should be persisted globally to all other pagers
-        * @property {number} pagesToShow This is the number of pages to show
+        * @param {number} [options.pagesToShow=5] This is the number of page numbers to show
         * in the pagination controls
-        * @property {number} pageNumber This is where the current page number is
-        * stored.
-        * @property {boolean} pageInit This is used to determine if the page has been
-        * initialzed before.
-        * @property {number} total This is the total number of items that are in the
-        * data set
-        * @property {boolean} showAll This is used to determine whether or not to use
-        * the pagination or not.
+        * @param {boolean} [options.showAll=false] This is used to determine whether or not to use
+        * the pagination. If `true`, then all items will be displayed, i.e. pagination will not be used
         *
-        * @method createInstance This is used to generate the instance of the
-        * PageTracking object. Enables the ability to override default pager.
-        * If you choose to override the default `itemsPerPage`, and it isn't
-        * a value in itemSizeList, then it will automatically be added to itemSizeList
-        * at the right spot.
+        * @description This is used to generate the instance of the
+        * PageTracking object. It takes an optional `options` object, allowing you to customize the default
+        * pager behaviour.
+        *
+        * @return {Object} A new pager instance to be passed to the `page-tracking` attribute of `<rx-paginate>`
+        * (see {@link rxPaginate.directive:rxPaginate})
         */
         createInstance: function (options) {
             options = options ? options : {};

@@ -256,6 +256,7 @@ var rxSelect = {
     },
 
     /**
+     * @todo: Stop returning a select option object -- I just want the text!
      * @description {@link rxSelect.option} representing the currently selected `<option>` element.
      * @type {rxSelect.option}
      * @example

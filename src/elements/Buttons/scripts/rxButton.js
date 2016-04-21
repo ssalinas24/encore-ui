@@ -1,7 +1,7 @@
-angular.module('encore.ui.atoms')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name atoms.directive:rxButton
+ * @name elements.directive:rxButton
  * @restrict E
  * @scope
  * @description
@@ -32,7 +32,7 @@ angular.module('encore.ui.atoms')
  * ## Styling
  *
  * There are several styles of buttons available, and they are documented in the
- * [Buttons Styleguide](/encore-ui/#/atoms/buttons). Any classes that need to be
+ * [Buttons Styleguide](/encore-ui/#/elements/Buttons). Any classes that need to be
  * added to the button should be passed to the `classes` attribute.
  *
  * @param {String} loadingMsg Text to be displayed when an operation is in progress.

@@ -14,7 +14,7 @@ angular.module('encore.ui.rxPaginate')
  * hides it when the given promise either resolves or rejects
  */
 .directive('rxLoadingOverlay', function ($compile) {
-    var loadingBlockHTML = '<div ng-show="showLoadingOverlay" class="loading-overlay">' +
+    var loadingBlockHTML = '<div ng-show="_rxLoadingOverlayVisible" class="loading-overlay">' +
                                 '<div class="loading-text-wrapper">' +
                                     '<i class="fa fa-fw fa-lg fa-spin fa-circle-o-notch"></i>' +
                                     '<div class="loading-text">Loading...</div>' +
@@ -23,14 +23,13 @@ angular.module('encore.ui.rxPaginate')
 
     return {
         restrict: 'A',
-        scope: true,
         controller: function ($scope) {
             this.show = function () {
-                $scope.showLoadingOverlay = true;
+                $scope._rxLoadingOverlayVisible = true;
             };
 
             this.hide = function () {
-                $scope.showLoadingOverlay = false;
+                $scope._rxLoadingOverlayVisible = false;
             };
 
             this.showAndHide = function (promise) {
@@ -42,7 +41,7 @@ angular.module('encore.ui.rxPaginate')
             // This target element has to have `position: relative` otherwise the overlay
             // will not sit on top of it
             element.css({ position: 'relative' });
-            scope.showLoadingOverlay = false;
+            scope._rxLoadingOverlayVisible = false;
 
             $compile(loadingBlockHTML)(scope, function (clone) {
                 element.append(clone);

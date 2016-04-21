@@ -8,6 +8,16 @@ rx-date-picker {
   padding: 0;
   width: @control-width;
 
+  .backdrop {
+    z-index: 90;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
+
   .flexCentered() {
     display: flex;
     flex-flow: row wrap;
@@ -137,8 +147,13 @@ rx-date-picker {
           }
         }
 
-        &.currentMonth {
+        &.year-wrapper {
           flex: 1;
+        }
+
+        &.month-wrapper {
+          flex: 1;
+          margin-right: 5px;
         }
       }//span
     }//nav
@@ -157,6 +172,9 @@ rx-date-picker {
         height: @header-height;
         flex-flow: row nowrap;
         flex: 0 0 100%;
+        h6 {
+          margin: 10px auto;
+        }
       }//header
 
       .day {
