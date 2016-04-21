@@ -1,3 +1,20 @@
+<a name="2.0.0-4"></a>
+### 2.0.0-4 (2016-04-20)
+
+
+#### Bug Fixes
+
+* **rxCharacterCount:** Solve max call stack ([1ce0ef74](git@github.com:rackerlabs/encore-ui/commit/1ce0ef74bf99d9296aa95ef32f247465505ea33a))
+* **rxLoadingOverlay:** remove isolate scope ([a05230dc](git@github.com:rackerlabs/encore-ui/commit/a05230dc7bf285d48eff5f5c5ec5d858d516014b))
+
+
+#### Features
+
+* **rxApp:** hide navigation if embedded ([288754f0](git@github.com:rackerlabs/encore-ui/commit/288754f06efdd069fea6dd68c258f107bb020e63))
+* **rxDatePicker:** FRMW-681 add 10-year date range ([71007b5e](git@github.com:rackerlabs/encore-ui/commit/71007b5e5b0531d4128ed32d8bbb74c617c2c532))
+* **rxPermalink:** FRMW-810 redesign rxPermlink behavior ([a71545d3](git@github.com:rackerlabs/encore-ui/commit/a71545d39e6a7367abb26c77312453905c3382cf))
+
+
 <a name="1.47.0"></a>
 ## 1.47.0 (2016-04-20)
 
