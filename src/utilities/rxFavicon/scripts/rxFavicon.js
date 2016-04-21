@@ -1,7 +1,7 @@
-angular.module('encore.ui.atoms')
+angular.module('encore.ui.utilities')
 /**
  * @ngdoc directive
- * @name atoms.directive:rxFavicon
+ * @name utilities.directive:rxFavicon
  * @restrict A
  * @scope
  * @description
