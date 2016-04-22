@@ -11,7 +11,7 @@ describe('rxDatePicker', function () {
         var isoFormat = 'YYYY-MM-DD';
         var formatMonth = 'MMM';
         var formatYear = 'YYYY';
-        var today = moment(new Date());
+        var today = moment(new Date()).format(isoFormat);
         var month = moment(today).clone().format(formatMonth);
         var year = moment(today).clone().format(formatYear);
         var lastMonth = moment(today).clone().subtract(1, 'month').startOf('month');
@@ -24,7 +24,7 @@ describe('rxDatePicker', function () {
                 date = today;
             }
 
-            return date.toISOString().split('T')[0];
+            return moment(date).format(isoFormat);
         };
 
         before(function () {
