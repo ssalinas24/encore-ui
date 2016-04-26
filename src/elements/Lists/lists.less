@@ -1,0 +1,24 @@
+// Lists
+.list {
+  li,
+  .item {
+    display: list-item;
+    margin: 5px 0 0 30px;
+  }
+
+  ul&,
+  &.bulleted {
+    li,
+    .item {
+      list-style: disc;
+    }
+  }
+
+  ol&,
+  &.decimal {
+    li,
+    .item {
+      list-style: decimal;
+    }
+  }
+}
