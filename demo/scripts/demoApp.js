@@ -178,18 +178,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: 'listAtomsController',
             controllerAs: 'vm'
         })
-        .when('/atoms/links', {
-            templateUrl: 'templates/atoms/links.html',
-            controller: genericRouteController([
-                { name: 'Links' }
-            ])
-        })
-        .when('/atoms/tables', {
-            templateUrl: 'templates/atoms/tables.html',
-            controller: genericRouteController([
-                { name: 'Tables' }
-            ])
-        })
         .when('/atoms/:atom', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
@@ -338,13 +326,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Atoms',
-                    children: [
-                        {
-                            linkText: 'Links',
-                            href: '#/atoms/links'
-
-                        }
-                    ].concat(linksForModuleCategory('atoms'))
+                    children: linksForModuleCategory('atoms')
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Molecules',
