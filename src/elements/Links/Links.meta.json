@@ -1,0 +1,19 @@
+{
+    "displayName": "Links",
+    "stability": "unstable",
+    "description": "Usage and examples of different link and status message patterns.",
+    "hasApi": false,
+    "keywords": [
+        "action link",
+        "create link",
+        "delete link",
+        "destroy link",
+        "edit link",
+        "link",
+        "page action",
+        "pending link",
+        "reserved",
+        "spinner link",
+        "update link"
+    ]
+}
