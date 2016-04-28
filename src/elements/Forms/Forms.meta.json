@@ -1,0 +1,26 @@
+{
+    "displayName": "Forms",
+    "stability": "unstable",
+    "description": "Usage and examples of different Form usage patterns.",
+    "hasApi": false,
+    "keywords": [
+        "checkbox",
+        "dropdown",
+        "form",
+        "input",
+        "multi select",
+        "option",
+        "radio",
+        "rxField",
+        "rxFieldContent",
+        "rxForm",
+        "rxFormSection",
+        "rxInfix",
+        "rxPrefix",
+        "rxSuffix",
+        "select",
+        "text",
+        "text area",
+        "validation"
+    ]
+}
