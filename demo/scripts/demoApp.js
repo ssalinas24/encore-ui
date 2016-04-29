@@ -197,18 +197,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: 'listMoleculesController',
             controllerAs: 'vm'
         })
-        .when('/molecules/forms', { // TODO: merge with rxForm
-            templateUrl: 'templates/molecules/forms.html',
-            controller: genericRouteController([
-                { name: 'Forms' }
-            ])
-        })
-        .when('/molecules/tables', {
-            templateUrl: 'templates/molecules/tables.html',
-            controller: genericRouteController([
-                { name: 'Tables' }
-            ])
-        })
         .when('/molecules/:molecule', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
@@ -330,12 +318,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Molecules',
-                    children: [
-                        {
-                            linkText: 'Forms',
-                            href: '#/molecules/forms'
-                        }
-                    ].concat(linksForModuleCategory('molecules'))
+                    children: linksForModuleCategory('molecules')
                 },
                 {
                     linkText: 'Layout',

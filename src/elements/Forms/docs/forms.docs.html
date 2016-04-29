@@ -1,0 +1,346 @@
+<h2 class="clear"><rx-permalink>Directives</rx-permalink></h2>
+<ul class="list">
+  <li>
+    Many of the rxForm directives are designed for layout
+    and positioning. However, there are some that are for stylistic
+    purposes.
+  </li>
+  <li>
+    See
+    <a href="ngdocs/index.html#/api/rxForm">rxForm API Documentation</a>
+    for a more comprehensive list of available directives.
+  </li>
+</ul>
+
+<h3><rx-permalink>Labels and Inputs</rx-permalink></h3>
+<ul class="list">
+  <li>
+    You should remember that the rxFieldName isn't an HTML label element.
+    <ul>
+      <li>
+        rxFieldName is a descriptive design element for a particular
+        form field.
+      </li>
+      <li>An HTML label is used for accessibility.</li>
+    </ul>
+  </li>
+  <li>
+    You should use the <code>&lt;label for="formControlId"&gt;</code>
+    format when defining your HTML labels.
+    <ul>
+      <li>
+        The <code>for</code> attribute connects the label to an
+        appropriate form control. When the label is clicked, wherever it
+        is placed in the DOM, it will focus or activate its
+        corresponding form control.
+      </li>
+      <li>
+        <strong class="msg-warn">
+          DO NOT wrap the control within a label element.
+        </strong>
+        <ul>
+          <li>
+            CSS does not have proper selectors to style label text based
+            on control state
+          </li>
+        </ul>
+      </li>
+      <li>
+        You should place an HTML label around text in an appropriate
+        rxFieldName element.
+      </li>
+      <li>
+        Inline HTML label elements should only be used with radios,
+        checkboxes, and toggle switches.
+        <ul>
+          <li>
+            Place the label
+            <strong>immediately after the form control</strong>.
+            <ul>
+              <li>
+                This enables you to style the label based on the state
+                of the control.
+              </li>
+              <li>
+                See <a href="#/atoms/rxCheckbox">rxCheckbox</a>,
+                <a href="#/components/rxRadio">rxRadio</a>,
+                and <a href="#/components/rxForm">rxForm</a> for markup
+                examples.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    In contrast to its predecessor (rxFormItem), rxField and children
+    provides you the flexibility to create form field inputs that make
+    use of one or more controls.
+    <ul>
+      <li>See "Advanced Controls" in
+        <a href="#/components/rxForm">rxForm</a> demo for examples.
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3><rx-permalink>Error Messages</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Inline Error messages should make use of the
+    <a href="ngdocs/index.html#/api/rxForm.directive:rxInlineError">
+      rxInlineError
+    </a> directive.
+  </li>
+  <li>
+    This directive is styled with bold and red text. It is not
+    constrained by DOM hierarchy, so you may place it wherever it is
+    necessary.
+  </li>
+</ul>
+
+<h3><rx-permalink>Help Text</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Help text should make use of the
+    <a href="ngdocs/index.html#/api/rxForm.directive:rxHelpText">
+      rxHelpText
+    </a> directive.
+  </li>
+  <li>
+    This directive is styled in a slightly smaller, italicized font and
+    is not constrained by DOM hierarchy, so you can place it wherever it
+    is necessary.
+  </li>
+</ul>
+
+<h3><rx-permalink>Buttons</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Reference the <a href="#/elements/Links">links</a> and
+    <a href="#/elements/Buttons">buttons</a> atoms and the
+    <a href="#/layout/page/form">Form Page</a> layout for details about how
+    to style and color buttons.
+    <ul>
+      <li>
+        Submit buttons should use the green <code>.submit</code> class unless
+        you are performing a destructive action, in which case, you should use
+        the <code>.negative</code> class.
+      </li>
+    </ul>
+  </li>
+  <li>
+    If you need to use a button in your form field for auxiliary purposes,
+    use the default blue.
+  </li>
+</ul>
+
+<h3><rx-permalink>Selects</rx-permalink></h3>
+<ul class="list">
+  <li>For single item selection, use the
+    <a href="#/components/rxSelect">rxSelect</a> component.
+  </li>
+  <li>
+    For multi-item selection, use the rxMultiSelect element defined in
+    the <a href="#/components/rxMultiSelect">rxMultiSelect</a>
+    component.
+  </li>
+</ul>
+
+<h3><rx-permalink>Checkboxes</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Use the <a href="#/atoms/rxCheckbox">rxCheckbox</a> component
+    for checkbox controls.
+  </li>
+  <li>
+    If you intend to use a label element, place it <strong>immediately
+    after the rxCheckbox</strong> to style the label when the control
+    is disabled.
+  </li>
+  <li>
+    <strong class="msg-warn">
+      DO NOT wrap rxCheckbox in a label element.
+    </strong>
+  </li>
+</ul>
+
+<h3><rx-permalink>Toggle Switches</rx-permalink></h3>
+<ul class="list">
+  <li>
+    You can use the
+    <a href="#/components/rxToggleSwitch">rxToggleSwitch</a> component
+    for toggle switch controls.
+  </li>
+  <li>
+    If you intend to use a label element, place it <strong> immediately
+    after the rxToggleSwitch</strong> to style the label when the
+    control is disabled.
+  </li>
+  <li>
+    <strong class="msg-warn">
+      DO NOT wrap rxToggleSwitch in a label element.
+    </strong>
+  </li>
+  <li>
+    <strong class="msg-info">NOTE:</strong>
+    An rxToggleSwitch does not toggle when clicking its label. However,
+    CSS styles are still applied if the control is disabled within an
+    rxForm.
+  </li>
+  <li>
+    For consistency, and future compatibility, assume that rxToggleSwitch
+    and label works as expected.
+  </li>
+</ul>
+
+<h3><rx-permalink>Radios</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Use the <a href="#/components/rxRadio">rxRadio</a> component for
+    radio controls.
+  </li>
+  <li>
+    If you intend to use a label element, place it <strong>immediately
+    after the rxRadio</strong> so that CSS rules may style the label when
+    the control is disabled.
+  </li>
+  <li>
+    <strong class="msg-warn">
+      DO NOT wrap rxRadio in a label element.
+    </strong>
+  </li>
+</ul>
+<rx-example name="forms.radios"></rx-example>
+
+<h3><rx-permalink>Using a Character Counter</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Character counters provide color feedback to the user in addition to
+    numeric feedback. As a user approaches the character limit, the
+    numeric value turns from gray to yellow, then yellow to red.
+  </li>
+  <li>
+    The character counter is already styled and has the correct width
+    needed to be positioned next to a textarea. If you need to change the
+    textarea width, a custom wrapper class and textarea width can be set.
+  </li>
+  <li>
+    If you intend to use a counter on text inputs, instead of the more
+    commonly used text area, be aware the framework does not support
+    these fields. You may experience unexpected results. Make sure to
+    test your code.
+  </li>
+  <li>
+    See <a href="#/components/rxCharacterCount/">rxCharacterCount</a> for
+    more specific documentation about implementing a counter on a
+    textarea or text input field.
+  </li>
+</ul>
+
+<h3><rx-permalink>Disabled State</rx-permalink></h3>
+<ul class="list">
+  <li>
+    When an input is disabled, styles are automatically applied to
+    gray out the field with a "not-allowed" pointer style.
+  </li>
+  <li>
+    When label rules (seen above) are applied correctly to a radio,
+    checkbox, or toggle switch, the label will also be styled.
+  </li>
+</ul>
+<rx-example name="forms.disabled"></rx-example>
+
+<h3><rx-permalink>Form Validation</rx-permalink></h3>
+<ul class="list">
+  <li>
+    EncoreUI is built on Angular and uses ngModel directives for validation.
+    As a result, you will see custom CSS styling if an element has the
+    <code>.ng-invalid</code> and/or <code>.ng-dirty</code> classes, which are
+    dynamically added by ngModel validation logic.
+  </li>
+  <li>
+    Some components will style based on both classes being present (typical
+    use case), while others will only use <code>.ng-invalid</code>.
+  </li>
+  <li>
+    Creating an EncoreUI-specific design pattern for placement of form
+    validation messages is on our roadmap.
+  </li>
+  <li>At present, there are no styles for invalid toggle switches.</li>
+</ul>
+<rx-example name="forms.validation"></rx-example>
+
+
+<h2><rx-permalink>Saving Form Data</rx-permalink></h2>
+
+<h3><rx-permalink>Saving In-Progress Form State</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Saving a form state can help with user experience. You can use rxAutoSave
+    to activate this feature.
+  </li>
+  <li>
+    rxAutoSave interacts exclusively with your model layer. Your UI/template
+    code will be unaware that its state is being saved.
+  </li>
+  <li>
+    See <a href="#/utilities/rxAutoSave">rxAutoSave</a> for further details.
+  </li>
+</ul>
+<rx-example name="forms.autoSave"></rx-example>
+
+<h3><rx-permalink>Manual Form Saving</rx-permalink></h3>
+<ul class="list">
+  <li>
+    If you require form data to be completed before submitting, or require
+    interactive form experiences, a conditional save button and notification
+    is used.
+  </li>
+  <li>
+    The notification should only be shown after a change has been made to the
+    form, not on page load.
+  </li>
+  <li>
+    The subtitle of the page should indicate when the form was last saved and
+    contain the save button.
+  </li>
+</ul>
+<rx-example name="forms.manualSave"></rx-example>
+
+<h2><rx-permalink>Design Patterns within Encore</rx-permalink></h2>
+<ul class="list">
+  <li>
+    Forms can be used on their own page. You can see this in Encore when
+    you create a new object such as a Cloud Server or a Database under
+    Encore Cloud.
+  </li>
+  <li>
+    Forms are also used within modals. You can see this when modifying
+    content that requires form fields such as actions performed on a Cloud
+    Server instance.
+  </li>
+  <li>
+    You can use <a href="#/layout/wells">Wells</a> to create additional
+    context for the form.
+  </li>
+</ul>
+
+<h2><rx-permalink>UI Roadmap / Possible Future-work</rx-permalink></h2>
+<ul class="list">
+  <li>
+    Fleshing out a design pattern for edit states.
+    <ul>
+      <li>
+        Up until now, the editing of content has been relegated to using
+        modals to edit individual line items. As a result, different
+        products have handled the concept of an edit state differently.
+      </li>
+      <li>
+        There should be conformity for this, but we have not designed a
+        user pattern yet.
+      </li>
+    </ul>
+  </li>
+</ul>
