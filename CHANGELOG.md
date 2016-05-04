@@ -1,3 +1,12 @@
+<a name="1.47.1-0"></a>
+### 1.47.1-0 (2016-05-04)
+
+
+#### Bug Fixes
+
+* **demo:** FRMW-812 rxDatePicker use local time zone ([18a72642](git@github.com:rackerlabs/encore-ui/commit/18a726426c28974e2cdf8cc08fd80631b0c29fa3))
+
+
 <a name="1.47.0"></a>
 ## 1.47.0 (2016-04-20)
 
