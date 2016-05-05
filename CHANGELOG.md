@@ -1,3 +1,18 @@
+<a name="1.47.2-0"></a>
+### 1.47.2-0 (2016-05-05)
+
+
+#### Bug Fixes
+
+* **prTemplate:** Require a dev video review ([6f4aa3c1](git@github.com:rackerlabs/encore-ui/commit/6f4aa3c1f3f0531ce5492b3c7b01d85d292c490a))
+* **rxDatePicker:** FRMW-825 fix rxDatePicker midway test ([b45bc6aa](git@github.com:rackerlabs/encore-ui/commit/b45bc6aa7a17c8bd30e35a1903748495f89310c8))
+
+
+#### Features
+
+* **formatting:** Add image examples ([874dcb1c](git@github.com:rackerlabs/encore-ui/commit/874dcb1c16f12db0ff99d083e3451877b85d8ad6))
+
+
 <a name="1.47.1"></a>
 ### 1.47.1 (2016-05-04)
 
