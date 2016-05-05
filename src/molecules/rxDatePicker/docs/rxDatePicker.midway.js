@@ -16,7 +16,6 @@ describe('rxDatePicker', function () {
         var year = moment(today).clone().format(formatYear);
         var lastMonth = moment(today).clone().subtract(1, 'month').startOf('month');
         var lastMonthName = moment(lastMonth).clone().format(formatMonth);
-        var lastMonthYear = moment(lastMonth).clone().format(formatYear);
         var nextMonth = moment(today).clone().add(1, 'month');
         var nextMonthName = moment(nextMonth).clone().format(formatMonth);
         var yearMonthDayString = function (date) {
@@ -111,23 +110,23 @@ describe('rxDatePicker', function () {
         });
 
         it('should update the date to one month from now', function () {
+            picker.date = moment(today).add(1, 'months').toDate();
             picker.date.then(function (date) {
-                var advancedMonth = moment(date).add(1, 'months');
-                expect(yearMonthDayString(advancedMonth)).to.equal(yearMonthDayString(nextMonth));
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(nextMonth));
             });
         });
 
         it('should update the date back to today', function () {
+            picker.date = moment(today).toDate();
             picker.date.then(function (date) {
                 expect(yearMonthDayString(date)).to.equal(yearMonthDayString());
             });
         });
 
         it('should update the date to the first of the month', function () {
-            var firstOfMonth = moment(today).startOf('month');
-            picker.open();
+            var firstOfMonth = moment(today).startOf('month').toDate();
+            picker.date = firstOfMonth;
             picker.date.then(function (date) {
-                date = new Date(firstOfMonth);
                 expect(yearMonthDayString(date)).to.equal(yearMonthDayString(firstOfMonth));
             });
         });
@@ -142,11 +141,10 @@ describe('rxDatePicker', function () {
         });
 
         it('should update the date to one month ago', function () {
-            picker.previousMonth();
-            picker.month = lastMonthName;
-            picker.year = lastMonthYear;
+            var previousMonth = moment(today).subtract(1, 'months').toDate();
+            picker.date = previousMonth;
             picker.date.then(function (date) {
-                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(lastMonth));
+                expect(yearMonthDayString(date)).to.equal(yearMonthDayString(previousMonth));
             });
         });
 
