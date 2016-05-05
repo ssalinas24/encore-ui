@@ -142,3 +142,38 @@ p {
 .align-right {
   text-align: right;
 }
+
+.example {
+  border-style: solid;
+  border-width: 9px 2px 2px 2px;
+  padding: 0 10px;
+  background: @white;
+  width: 600px;
+  margin: 25px 0;
+  img {
+    max-width: 100%;
+  }
+  h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  &.do {
+    border-color: @green-500;
+    h4 {
+      color: @green-700;
+    }
+  }
+  &.exception {
+    border-color: @orange-500;
+    h4 {
+      color: @orange-700;
+    }
+  }
+  &.avoid {
+    border-color: @red-500;
+    h4 {
+      color: @red-700;
+    }
+  }
+}
