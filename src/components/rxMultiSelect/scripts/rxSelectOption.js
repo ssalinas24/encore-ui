@@ -3,7 +3,7 @@ angular.module('encore.ui.rxMultiSelect')
  * @ngdoc directive
  * @name rxMultiSelect.directive:rxSelectOption
  * @restrict E
- * @requires atoms.directive:rxCheckbox
+ * @requires elements.directive:rxCheckbox
  * @description
  * A single option for use within rxMultiSelect.
  *

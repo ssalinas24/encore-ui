@@ -2,7 +2,7 @@
  * @ngdoc overview
  * @name molecules
  * @requires utilities
- * @requires atoms
+ * @requires elements
  * @description
  * # Molecules
  * Molecules are complex elements made up of various Atoms.
@@ -13,5 +13,5 @@
  */
 angular.module('encore.ui.molecules', [
     'encore.ui.utilities',
-    'encore.ui.atoms'
+    'encore.ui.elements'
 ]);
