@@ -424,6 +424,91 @@
 </ul>
 <rx-example name="forms.disabled"></rx-example>
 
+<!-- BEGIN: rxTimePicker -->
+<h3>
+  <rx-permalink>Time Picker</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxTimePicker/">View API</a>
+  <!-- (NOTE) stability: 'experimental' -->
+</h3>
+<rx-notification type="info">
+  <p>
+    This element is designed to be used in conjunction with other picker
+    elements to compose a valid ISO 8601 DateTime string in the format of
+    <code>YYYY-MM-DDTHH:mmZ</code>.
+  </p>
+</rx-notification>
+
+<ul class="list">
+  <li>
+    This element will generate a <strong>String</strong> in the format of
+    <code>HH:mmZ</code> to be used as the time portion of the ISO 8601
+    standard DateTime string mentioned above.
+    <ul>
+      <li><code>HH</code> is the 24-hour format from 00 to 23</li>
+      <li><code>mm</code> is the minutes from 00 to 59</li>
+      <li><code>Z</code> is the UTC offset that matches <code>[-+]\d{2}:\d{2}</code></li>
+    </ul>
+  </li>
+  <li>
+    This element will never generate anything other than a String.
+  </li>
+</ul>
+
+<h4>Simple Example</h4>
+<rx-example name="rxTimePicker.simple"></rx-example>
+
+<h4>Time Picker States</h4>
+<p>
+  Below you'll find examples of how <code>Time Picker</code> will appear in
+  different states.
+</p>
+<table ng-controller="rxTimePickerCtrl">
+  <thead>
+    <th></th>
+    <th>Enabled</th>
+    <th>Disabled</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+      <td>
+        <rx-time-picker
+          id="tpEnabledValid"
+          ng-disabled="false"
+          ng-model="enabledValid">
+        </rx-time-picker>
+      </td>
+      <td>
+        <rx-time-picker
+          id="tpDisabledValid"
+          ng-disabled="true"
+          ng-model="disabledValid">
+        </rx-time-picker>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+      <td>
+        <rx-time-picker
+          id="tpEnabledInvalid"
+          always-invalid
+          ng-disabled="false"
+          ng-model="enabledInvalid">
+        </rx-time-picker>
+      </td>
+      <td>
+        <rx-time-picker
+          id="tpDisabledInvalid"
+          ng-disabled="true"
+          always-invalid
+          ng-model="disabledInvalid">
+        </rx-time-picker>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- END: rxTimePicker -->
+
 <h3><rx-permalink>Form Validation</rx-permalink></h3>
 <ul class="list">
   <li>

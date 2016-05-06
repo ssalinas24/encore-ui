@@ -1,7 +1,0 @@
-{
-    "displayName": "rxTimePicker",
-    "stability": "experimental",
-    "description": "Element to aid in generating an ISO 8601 time string",
-    "api": "directive:rxTimePicker",
-    "keywords": []
-}

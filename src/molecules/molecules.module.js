@@ -9,7 +9,6 @@
  *
  * ## Directives
  * * {@link molecules.directive:rxDatePicker rxDatePicker}
- * * {@link molecules.directive:rxTimePicker rxTimePicker}
  */
 angular.module('encore.ui.molecules', [
     'encore.ui.utilities',

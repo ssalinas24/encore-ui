@@ -1,4 +1,4 @@
-describe('molecule:rxTimePicker', function () {
+describe('elements:rxTimePicker', function () {
     var scope, isoScope, compile, renderDirective;
     var beforeModelValue, beforeDisplayValue;
     var spyOpenPopup, spyClosePopup;
@@ -6,7 +6,6 @@ describe('molecule:rxTimePicker', function () {
 
     beforeEach(function () {
         module('encore.ui.utilities');
-        module('encore.ui.molecules');
         module('encore.ui.elements');
         module('templates/rxTimePicker.html');
         module('templates/rxButton.html');
@@ -232,4 +231,4 @@ describe('molecule:rxTimePicker', function () {
             });
         });//openPopup()
     });//PM value with +UTC
-});//molecule:rxTimePicker
+});//elements:rxTimePicker

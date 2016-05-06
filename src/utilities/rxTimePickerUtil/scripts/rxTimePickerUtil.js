@@ -4,7 +4,7 @@ angular.module('encore.ui.utilities')
  * @name utilities.service:rxTimePickerUtil
  *
  * @description
- * Utility service used by {@link molecules.directive:rxTimePicker rxTimePicker}.
+ * Utility service used by {@link elements.directive:rxTimePicker rxTimePicker}.
  */
 .factory('rxTimePickerUtil', function () {
     /**

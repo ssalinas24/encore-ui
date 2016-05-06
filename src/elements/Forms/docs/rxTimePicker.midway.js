@@ -2,7 +2,7 @@ describe('rxTimePicker', function () {
     var picker;
 
     before(function () {
-        demoPage.go('#/molecules/rxTimePicker');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('predefined picker', function () {

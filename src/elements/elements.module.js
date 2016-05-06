@@ -9,6 +9,7 @@
  * ## Directives
  * * {@link elements.directive:rxButton rxButton}
  * * {@link elements.directive:rxCheckbox rxCheckbox}
+ * * {@link elements.directive:rxTimePicker rxTimePicker}
  */
 angular.module('encore.ui.elements', [
     'encore.ui.utilities'
