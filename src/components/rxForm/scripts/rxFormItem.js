@@ -23,7 +23,7 @@ angular.module('encore.ui.rxForm')
     var warnMsg = 'DEPRECATION WARNING: rxFormItem has been marked as deprecated ' +
         'and will be removed in a future release of the EncoreUI framework. ' +
         'Please see current rxForm documentation for updated functionality.';
-    console.warn(warnMsg); // jshint ignore:line
+    console.warn(warnMsg);
 
     return {
         restrict: 'E',

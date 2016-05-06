@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxSortEmptyTop', function () {
     var sortEmptyTop;
     var predicate = 'image.name';

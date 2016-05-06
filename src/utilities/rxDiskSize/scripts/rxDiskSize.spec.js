@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxDiskSize', function () {
     var disksize;
 

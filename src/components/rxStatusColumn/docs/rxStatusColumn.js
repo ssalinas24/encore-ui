@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxStatusColumnCtrl', function ($scope, rxStatusMappings, rxSortUtil) {
     $scope.servers = [

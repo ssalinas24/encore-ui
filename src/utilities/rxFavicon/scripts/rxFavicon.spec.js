@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxFavicon', function () {
     var scope, compile, el, envSvc, log;
 

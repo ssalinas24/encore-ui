@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('typeaheadCtrl', function ($scope) {
     $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',

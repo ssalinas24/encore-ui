@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxActionMenuCtrl', function ($scope, rxNotify) {
     $scope.add = function () {

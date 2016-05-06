@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxForm', function () {
     var el, scope, compile, template;
 

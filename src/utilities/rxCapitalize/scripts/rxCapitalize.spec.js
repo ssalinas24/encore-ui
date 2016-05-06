@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxCapitalize', function () {
     var capitalize;
 

@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxCharacterCountCtrl', function ($scope) {
     $scope.data = {

@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxNotify', function () {
     var scope, compile, el, notifySvc, interval;
     var validTemplate = '<rx-notifications></rx-notifications>';

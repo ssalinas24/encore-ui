@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 // https://jira.rax.io/browse/FRMW-729
 describe('rxInfoPanel', function () {
     var scope, compile, el;

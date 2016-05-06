@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxSpinner', function () {
     var scope, compile, el;
     var validTemplate = '<div rx-spinner toggle="toggle"></div>';

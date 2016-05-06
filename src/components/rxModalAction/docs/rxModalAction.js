@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxModalActionCtrl', function ($scope, rxNotify) {
     $scope.password = 'guest';

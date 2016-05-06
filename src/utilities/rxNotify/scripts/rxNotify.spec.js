@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxNotify', function () {
     var scope, rootScope, notifySvc, interval;
     var messageText1 = 'My Message 1';

@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxSelectFilterCtrl', function ($scope, SelectFilter) {
     $scope.filter = SelectFilter.create({

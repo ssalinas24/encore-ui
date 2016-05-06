@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxAppRoutes', function () {
     var appRoutes, envSvc, generatedRoutes, location, rootScope, log;
 

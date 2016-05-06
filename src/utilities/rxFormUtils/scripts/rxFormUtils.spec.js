@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxFormUtils', function () {
     var rxFormUtilsSvc, rootScope, $document;
 

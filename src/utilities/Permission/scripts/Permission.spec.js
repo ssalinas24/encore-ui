@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:Permission', function () {
     describe('service:Permission', function () {
         var permission, session, mockToken;

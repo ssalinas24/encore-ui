@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxFeedbackController', function () {
     var ctrlScope, rootScope;
     var modalInstance;

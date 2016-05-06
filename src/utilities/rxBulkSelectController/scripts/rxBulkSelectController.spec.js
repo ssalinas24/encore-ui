@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('utilities:rxBulkSelectController', function () {
     var scope, rootScope, timeout;
 

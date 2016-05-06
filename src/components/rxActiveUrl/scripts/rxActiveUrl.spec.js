@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('Directive: Active URL (inside Product Resources)', function () {
     var scope, location, compile;
     var validTemplate = '<rx-active-url url="/servers"></rx-active-url>';

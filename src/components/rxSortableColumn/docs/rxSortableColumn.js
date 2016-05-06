@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxSortableColumnCtrl', function ($scope, PageTracking, rxSortUtil) {
     $scope.sort = rxSortUtil.getDefault('name');

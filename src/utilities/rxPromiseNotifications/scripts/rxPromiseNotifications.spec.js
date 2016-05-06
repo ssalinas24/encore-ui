@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxNotify', function () {
     var scope, rootScope, notifySvc, interval;
     var defaultStack = 'page';

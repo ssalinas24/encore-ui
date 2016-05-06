@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxNestedElement', function () {
     var subject, result;
 

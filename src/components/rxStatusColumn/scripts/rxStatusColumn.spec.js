@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxStatusColumn', function () {
     describe('directive:rxStatusColumn', function () {
         var scope, compile, el, rxstatusMappings;

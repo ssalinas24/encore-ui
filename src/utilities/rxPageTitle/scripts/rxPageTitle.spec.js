@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxPageTitle', function () {
     var pageTitle;
 
