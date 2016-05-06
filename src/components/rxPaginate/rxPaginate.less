@@ -2,148 +2,100 @@
  * rxPaginate
  */
 
-.paginate-area {
-  text-align: center;
-  td {
-    padding: 0;
-    background: @white;
+.back-to-top {
+  padding: 10px 20px;
+  color: @blue-700;
+  background: transparent;
+  position: relative;
+  &:before {
+    content: ".";
+    font-size: 0;
+    position: absolute;
+    border: 6px solid transparent;
+    border-bottom-color: @blue-700;
+    border-top: 0;
+    left: 0;
+    top: 55%;
+    margin-top: -4px;
   }
 }
 
-.rx-paginate {
-  .pagination {
-    display: flex;
-    flex-flow: row nowrap;
-    padding-left: 0;
-    width: 100%;
-  }
+.page-links > div > a {
+  padding: 6px 12px;
+  text-decoration: none;
+  border-top: 2px solid transparent;
+  color: @rxPaginate-pagination-text-color;
+}
 
-  .pagination li {
-    display: inline;
-  }
+.page-links > div > a:hover,
+.page-links > div > span:hover,
+.page-links > div > a:focus,
+.page-links > div > span:focus {
+  border-top: 2px solid @gray-300;
+  padding-top: 3px;
+  cursor: pointer;
+}
 
-  .pagination li a {
-    cursor: pointer;
-  }
+.page-links > .active > a,
+.page-links > .active > a:hover,
+.page-links > .active > a:focus {
+  cursor: default;
+  border-top-color: @black;
+  color: @black;
+  padding-top: 3px;
+  cursor: pointer;
+}
 
-  .pagination li a,
-  .pagination li span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    text-decoration: none;
-    background: @white;
-    border-top: 2px solid transparent;
-    color: @rxPaginate-pagination-text-color;
-  }
+.pagination .disabled > span,
+.pagination .disabled > span:hover,
+.pagination .disabled > span:focus,
+.pagination .disabled > a,
+.pagination .disabled > a:hover,
+.pagination .disabled > a:focus {
+  visibility: hidden;
+}
 
-  .pagination > li:first-child {
-    order: 1;
+.pagination-next,
+.pagination-prev,
+.pagination-first,
+div.pagination-last {
+  white-space: nowrap;
+  a {
+    padding: 6px 2px;
   }
+}
 
-  .pagination > li:first-child > a,
-  .pagination > li:first-child > span {
-    padding-left: 30px;
-    color: @blue-700;
+.pagination-per-page {
+  padding-top: 10px;
+  button {
+    border: 0;
     background: transparent;
-    &:before {
-      content: ".";
-      width: 0;
-      height: 0;
-      font-size: 0;
-      display: block;
-      position: absolute;
-      border: 6px solid transparent;
-      border-bottom-color: @blue-700;
-      border-top: 0;
-      left: 10px;
-      top: 55%;
-      margin-top: -4px;
-    }
+    color: @blue-700;
+    padding: 0 6px;
   }
-
-  .pagination > li:nth-child(2) {
-    order: 2;
-    padding: 6px 12px;
-    border-top: 2px solid transparent;
+  button[disabled] {
     color: @rxPaginate-pagination-text-color;
   }
-
-  .pagination > .page-links {
-    order: 3;
-    margin: auto;
-    align-self: center;
-  }
-
-  .pagination > li:last-child {
-    order: 4;
-    border-top: 2px solid transparent;
-    padding: 6px 12px;
-    color: @rxPaginate-pagination-text-color;
-    button[disabled] {
-      color: @rxPaginate-pagination-text-color;
-    }
-  }
-
-  .pagination > li > div > ul {
-    float: right;
-    padding-left: 5px;
+  div:last-child { // don't apply right padding to the last number
     button {
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: @blue-700;
+      padding: 0 0 0 6px;
     }
-    span {
-      float: none;
-      background: transparent;
-    }
-    & li + li::before {
+  }
+  div { // only put pipes between numbers
+    &:nth-child(n+3):before {
       content: " | ";
-      margin: 0 1em;
     }
   }
+}
 
-  .pagination > .page-links > li > a:hover,
-  .pagination > .page-links > li > span:hover,
-  .pagination > .page-links > li > a:focus,
-  .pagination > .page-links > li > span:focus {
-    border-top: 2px solid @gray-300;
-
+@media (min-width: @layout-breakpoint-md) {
+  .pagination-per-page { // remove padding when flex order changes
+    padding-top: 0;
   }
 
-  .pagination > .page-links > .active > a,
-  .pagination > .page-links > .active > span,
-  .pagination > .page-links > .active > a:hover,
-  .pagination > .page-links > .active > span:hover,
-  .pagination > .page-links > .active > a:focus,
-  .pagination > .page-links > .active > span:focus {
-    cursor: default;
-    border-top-color: @black;
-    color: @black;
-    background: @white;
-  }
-
-  .pagination .disabled > span,
-  .pagination .disabled > span:hover,
-  .pagination .disabled > span:focus,
-  .pagination .disabled > a,
-  .pagination .disabled > a:hover,
-  .pagination .disabled > a:focus {
-    visibility: hidden;
-  }
-
-  .pagination-lg > li > a,
-  .pagination-lg > li > span {
-    padding: 10px 16px;
-    font-size: 18px;
-  }
-
-  .pagination-sm > li > a,
-  .pagination-sm > li > span {
-    padding: 5px 10px;
-    font-size: 12px;
+  .back-to-top { // remove padding when flex order changes
+    padding: 0 20px;
+    cursor: pointer;
   }
 }
 
@@ -164,7 +116,7 @@
     margin-top: 15%;
     text-align: center;
     color: @gray-700;
-  }
+ }
   i {
     font-size: 30px;
     margin-left: 25px;

@@ -238,7 +238,7 @@ var rxPaginate = {
      */
     pageSize: {
         get: function () {
-            var css = '.pagination-per-page-button[disabled="disabled"]';
+            var css = '.pagination-per-page button[disabled="disabled"]';
             return this.rootElement.$(css).getText().then(parseInt);
         },
 
