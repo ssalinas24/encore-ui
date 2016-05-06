@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('encore.ui.molecules')
 /**
  * @name molecules.directive:rxDatePicker
