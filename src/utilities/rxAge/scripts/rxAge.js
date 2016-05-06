@@ -97,7 +97,7 @@ angular.module('encore.ui.utilities')
             suffixes = [' day', ' hour', ' minute'];
 
             _.forEach(suffixes, function (suffix, index) {
-                suffixes[index] += ((dateUnits[index] != 1) ? 's' : '');
+                suffixes[index] += ((dateUnits[index] !== 1) ? 's' : '');
             });
         }
 
@@ -112,7 +112,7 @@ angular.module('encore.ui.utilities')
         age.push({ value: mins - (60 * hours), suffix: suffixes[2] });
 
         return _.map(age.slice(0, maxUnits), function (dateUnit, index, listOfAges) {
-            if (index == listOfAges.length - 1) {
+            if (index === listOfAges.length - 1) {
                 return Math.round(dateUnit.value) + dateUnit.suffix;
             } else {
                 return Math.floor(dateUnit.value) + dateUnit.suffix;

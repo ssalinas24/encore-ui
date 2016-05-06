@@ -87,7 +87,7 @@ angular.module('encore.ui.rxOptionTable')
                     return false;
                 }
 
-                return (val1 == val2);
+                return (val1 === val2);
             };
 
             scope.selectAll = function (currentVal) {
@@ -118,9 +118,9 @@ angular.module('encore.ui.rxOptionTable')
             scope.isSelected = function (val, idx) {
                 // row can only be 'selected' if it's not the 'current' value
                 if (!scope.isCurrent(val)) {
-                    if (scope.type == 'radio') {
-                        return (val == scope.model);
-                    } else if (scope.type == 'checkbox') {
+                    if (scope.type === 'radio') {
+                        return (val === scope.model);
+                    } else if (scope.type === 'checkbox') {
                         if (!_.isUndefined(val)) {
                             // if 'val' is defined, run it through our custom matcher
                             return determineMatch(val, scope.model[idx]);
