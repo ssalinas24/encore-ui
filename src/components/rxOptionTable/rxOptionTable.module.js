@@ -11,6 +11,6 @@
  * * {@link rxOptionTable.directive:rxFormOptionTable rxFormOptionTable} (*deprecated*)
  */
 angular.module('encore.ui.rxOptionTable', [
-    'encore.ui.atoms',
+    'encore.ui.elements',
     'ngSanitize'
 ]);

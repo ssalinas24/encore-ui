@@ -1,6 +1,6 @@
-angular.module('encore.ui.atoms')
+angular.module('encore.ui.elements')
 /**
- * @name atoms.directive:rxCheckbox
+ * @name elements.directive:rxCheckbox
  * @ngdoc directive
  * @restrict A
  * @scope

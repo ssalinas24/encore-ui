@@ -11,6 +11,7 @@
         "multi select",
         "option",
         "radio",
+        "rxCheckbox",
         "rxField",
         "rxFieldContent",
         "rxForm",
@@ -19,8 +20,8 @@
         "rxPrefix",
         "rxSuffix",
         "select",
-        "text",
         "text area",
+        "text",
         "validation"
     ]
 }

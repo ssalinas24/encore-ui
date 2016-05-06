@@ -22,7 +22,7 @@ angular.module('encore.ui.rxForm')
  *     <ul>
  *       <li>{@link rxForm.directive:rxPrefix rxPrefix}</li>
  *       <li>{@link rxForm.directive:rxSuffix rxSuffix}</li>
- *       <li>{@link atoms.directive:rxCheckbox rxCheckbox}</li>
+ *       <li>{@link elements.directive:rxCheckbox rxCheckbox}</li>
  *       <li>{@link rxRadio.directive:rxRadio rxRadio}</li>
  *       <li>{@link rxSelect.directive:rxSelect rxSelect}</li>
  *       <li>{@link rxToggleSwitch.directive:rxToggleSwitch rxToggleSwitch}</li>

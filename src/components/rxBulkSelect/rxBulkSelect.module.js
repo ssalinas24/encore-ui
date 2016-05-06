@@ -1,7 +1,7 @@
 /**
  * @ngdoc overview
  * @name rxBulkSelect
- * @requires atoms.directive:rxCheckbox
+ * @requires elements.directive:rxCheckbox
  * @description
  * # rxBulkSelect Component
  *
@@ -16,5 +16,5 @@
  */
 angular.module('encore.ui.rxBulkSelect', [
     'encore.ui.utilities',
-    'encore.ui.atoms'
+    'encore.ui.elements'
 ]);

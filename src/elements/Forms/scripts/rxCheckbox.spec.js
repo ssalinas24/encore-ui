@@ -3,7 +3,7 @@ describe('rxCheckbox', function () {
     var parent;
 
     beforeEach(function () {
-        module('encore.ui.atoms');
+        module('encore.ui.elements');
 
         inject(function ($rootScope, $compile) {
             scope = $rootScope.$new();
