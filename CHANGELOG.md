@@ -1,3 +1,13 @@
+<a name="1.47.3-0"></a>
+### 1.47.3-0 (2016-05-06)
+
+
+#### Bug Fixes
+
+* **pullRequestTemplate:** Add Design and QE back in ([41c9242f](git@github.com:rackerlabs/encore-ui/commit/41c9242f96b7e812337c5247504288666a1369e2))
+* **styles:** rx-example using incorrect css class ([6cbe9696](git@github.com:rackerlabs/encore-ui/commit/6cbe9696eb0c3606fa3f3ebe9a83ad4961426181))
+
+
 <a name="1.47.2"></a>
 ### 1.47.2 (2016-05-05)
 
