@@ -10,6 +10,7 @@
         "input",
         "multi select",
         "option",
+        "picker",
         "radio",
         "rxCheckbox",
         "rxField",
@@ -19,9 +20,11 @@
         "rxInfix",
         "rxPrefix",
         "rxSuffix",
+        "rxTimePicker",
         "select",
         "text area",
         "text",
+        "time",
         "validation"
     ]
 }
