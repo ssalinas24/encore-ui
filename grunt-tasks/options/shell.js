@@ -1,5 +1,19 @@
 module.exports = function (grunt) {
     return {
+        'eslint-dev': {
+            command: 'npm run eslint-dev',
+            options: {
+                stdout: true
+            }
+        },
+
+        'eslint-test': {
+            command: 'npm run eslint-test',
+            options: {
+                stdout: true
+            }
+        },
+
         npmPublish: {
             command: 'npm publish ./rx-page-objects',
             options: {
