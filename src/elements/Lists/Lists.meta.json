@@ -1,0 +1,13 @@
+{
+    "displayName": "Lists",
+    "stability": "unstable",
+    "description": "Usage and examples of different List patterns.",
+    "hasApi": false,
+    "keywords": [
+        "bulleted",
+        "list",
+        "numbered",
+        "ordered",
+        "unordered"
+    ]
+}

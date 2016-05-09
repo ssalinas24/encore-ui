@@ -1,12 +1,54 @@
+<a name="1.47.3"></a>
+### 1.47.3 (2016-05-06)
+
+
+<a name="1.47.3-0"></a>
+### 1.47.3-0 (2016-05-06)
+
+
+#### Bug Fixes
+
+* **pullRequestTemplate:** Add Design and QE back in ([41c9242f](git@github.com:rackerlabs/encore-ui/commit/41c9242f96b7e812337c5247504288666a1369e2))
+* **styles:** rx-example using incorrect css class ([6cbe9696](git@github.com:rackerlabs/encore-ui/commit/6cbe9696eb0c3606fa3f3ebe9a83ad4961426181))
+
+
+<a name="1.47.2"></a>
+### 1.47.2 (2016-05-05)
+
+
+<a name="1.47.2-0"></a>
+### 1.47.2-0 (2016-05-05)
+
+#### Bug Fixes
+
+* **prTemplate:** Require a dev video review ([6f4aa3c1](git@github.com:rackerlabs/encore-ui/commit/6f4aa3c1f3f0531ce5492b3c7b01d85d292c490a))
+* **rxDatePicker:** FRMW-825 fix rxDatePicker midway test ([b45bc6aa](git@github.com:rackerlabs/encore-ui/commit/b45bc6aa7a17c8bd30e35a1903748495f89310c8))
+
+#### Features
+
+* **formatting:** Add image examples ([874dcb1c](git@github.com:rackerlabs/encore-ui/commit/874dcb1c16f12db0ff99d083e3451877b85d8ad6))
+
+
+<a name="1.47.1"></a>
+### 1.47.1 (2016-05-04)
+
+
+<a name="1.47.1-0"></a>
+### 1.47.1-0 (2016-05-04)
+
+
+#### Bug Fixes
+
+* **demo:** FRMW-812 rxDatePicker use local time zone ([18a72642](git@github.com:rackerlabs/encore-ui/commit/18a726426c28974e2cdf8cc08fd80631b0c29fa3))
+
+
 <a name="2.0.0-4"></a>
 ### 2.0.0-4 (2016-04-20)
-
 
 #### Bug Fixes
 
 * **rxCharacterCount:** Solve max call stack ([1ce0ef74](git@github.com:rackerlabs/encore-ui/commit/1ce0ef74bf99d9296aa95ef32f247465505ea33a))
 * **rxLoadingOverlay:** remove isolate scope ([a05230dc](git@github.com:rackerlabs/encore-ui/commit/a05230dc7bf285d48eff5f5c5ec5d858d516014b))
-
 
 #### Features
 

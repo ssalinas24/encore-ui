@@ -58,7 +58,7 @@ var rxDatePicker = {
     isDateSelected: {
         value: function (date) {
             this.open();
-            var dateString = moment(date).format().split('T')[0];
+            var dateString = moment(date).format('YYYY-MM-DD');
             return this.dateElementByDate(dateString).getAttribute('class').then(function (classes) {
                 return _.contains(classes, 'selected');
             });
@@ -76,7 +76,7 @@ var rxDatePicker = {
     isDateToday: {
         value: function (date) {
             this.open();
-            var dateString = moment(new Date(date)).format().split('T')[0];
+            var dateString = moment(date).format('YYYY-MM-DD');
             return this.dateElementByDate(dateString).getAttribute('class').then(function (classes) {
                 return _.contains(classes, 'today');
             });
@@ -278,6 +278,7 @@ var rxDatePicker = {
      */
     selectVisibleDate: {
         value: function (dateString) {
+            this.open();
             this.dateElementByDate(dateString).$('span').click();
         }
     },
@@ -295,6 +296,7 @@ var rxDatePicker = {
         },
 
         set: function (value) {
+            this.open();
             exports.rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value);
         }
     },
@@ -314,6 +316,7 @@ var rxDatePicker = {
         },
 
         set: function (value) {
+            this.open();
             exports.rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value);
         }
     },
@@ -341,7 +344,6 @@ var rxDatePicker = {
         },
 
         set: function (date) {
-            this.open();
             this.month = date.toString().split(' ')[1];
             this.year = date.toString().split(' ')[3];
             var targetDateString = date.toISOString().split('T')[0];

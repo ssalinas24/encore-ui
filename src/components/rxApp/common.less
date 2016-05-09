@@ -241,91 +241,6 @@ h6 {
   }
 }//.title
 
-// Statuses
-.link-action,
-.link-action a,
-.link-warn,
-.link-warn a {
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.link-action:before,
-.link-action a:before {
-  content: "+ ";
-}
-
-.link-warn:before,
-.link-warn a:before {
-  content: "- ";
-}
-
-.action-separator {
-  font-size: 1.1em;
-  color: @subduedText;
-}
-
-.msg-action,
-.msg-action a {
-  color: @green-700;
-  &:hover,
-  &:focus {
-    color: saturate(@green-700, 15%);
-  }
-}
-
-.msg-warn,
-.msg-warn a {
-  color: @red-700;
-  &:hover,
-  &:focus {
-    color: saturate(@red-700, 15%);
-  }
-}
-
-.msg-info,
-.msg-info a {
-  color: @orange-700;
-  &:hover,
-  &:focus {
-    color: saturate(@orange-700, 15%);
-  }
-}
-
-.msg-info-blue,
-.msg-info-blue a {
-  color: @blue-700;
-  &:hover,
-  &:focus {
-    color: saturate(@blue-700, 15%);
-  }
-}
-
-// Lists
-.list {
-  li,
-  .item {
-    display: list-item;
-    margin: 5px 0 0 30px;
-  }
-
-  ul&,
-  &.bulleted {
-    li,
-    .item {
-      list-style: disc;
-    }
-  }
-
-  ol&,
-  &.decimal {
-    li,
-    .item {
-      list-style: decimal;
-    }
-  }
-}
-
 // Wells
 .well {
   background: @gray-100;
@@ -445,4 +360,10 @@ body:hover .visually-hidden button {
 //DEPRECATED: A "filter" style rxSearchBox
 .filter-box {
   font-style: italic;
+}
+
+//DEPRECATED
+.action-separator {
+  font-size: 1.1em;
+  color: @subduedText;
 }

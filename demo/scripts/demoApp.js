@@ -178,24 +178,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: 'listAtomsController',
             controllerAs: 'vm'
         })
-        .when('/atoms/links', {
-            templateUrl: 'templates/atoms/links.html',
-            controller: genericRouteController([
-                { name: 'Links' }
-            ])
-        })
-        .when('/atoms/lists', {
-            templateUrl: 'templates/atoms/lists.html',
-            controller: genericRouteController([
-                { name: 'Lists' }
-            ])
-        })
-        .when('/atoms/tables', {
-            templateUrl: 'templates/atoms/tables.html',
-            controller: genericRouteController([
-                { name: 'Tables' }
-            ])
-        })
         .when('/atoms/:atom', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
@@ -214,18 +196,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             templateUrl: 'templates/modules/listCategoryModules.html',
             controller: 'listMoleculesController',
             controllerAs: 'vm'
-        })
-        .when('/molecules/forms', { // TODO: merge with rxForm
-            templateUrl: 'templates/molecules/forms.html',
-            controller: genericRouteController([
-                { name: 'Forms' }
-            ])
-        })
-        .when('/molecules/tables', {
-            templateUrl: 'templates/molecules/tables.html',
-            controller: genericRouteController([
-                { name: 'Tables' }
-            ])
         })
         .when('/molecules/:molecule', {
             templateUrl: 'templates/modules/showModule.html',
@@ -344,26 +314,11 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Atoms',
-                    children: [
-                        {
-                            linkText: 'Links',
-                            href: '#/atoms/links'
-
-                        },
-                        {
-                            linkText: 'Lists',
-                            href: '#/atoms/lists'
-                        }
-                    ].concat(linksForModuleCategory('atoms'))
+                    children: linksForModuleCategory('atoms')
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Molecules',
-                    children: [
-                        {
-                            linkText: 'Forms',
-                            href: '#/molecules/forms'
-                        }
-                    ].concat(linksForModuleCategory('molecules'))
+                    children: linksForModuleCategory('molecules')
                 },
                 {
                     linkText: 'Layout',
