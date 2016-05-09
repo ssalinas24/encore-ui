@@ -560,20 +560,6 @@ exports.rxOptionTable = {
     },
 
     /**
-     * @deprecated
-     * @memberof rxOptionTable
-     * @description **DEPRECATED**: Use {@link rxOptionTable.initialize} without arguments instead.
-     * Will return a page object representing the _first_ rxOptionTable object found on the page.
-     * @type {rxOptionTable}
-     */
-    main: (function () {
-        rxOptionTable.rootElement = {
-            get: function () { return $('rx-option-table'); }
-        };
-        return Page.create(rxOptionTable);
-    })(),
-
-    /**
      * @memberof rxOptionTable
      * @function
      * @description
@@ -617,41 +603,4 @@ exports.rxOptionTable = {
             }
         };
     }
-};
-
-/**
- * @deprecated
- * @namespace
- * @description
- * **DEPRECATED**: Please use {@link rxOptionTable} as a stand-in replacement.
- */
-exports.rxOptionFormTable = {
-    /**
-     * @deprecated
-     * @function
-     * @returns {rxOptionTable}
-     * @memberof rxOptionFormTable
-     * @description
-     * **DEPRECATED**: Please use {@link encore.rxOptionTable.initialize} as a stand-in replacement.
-     */
-    initialize: exports.rxOptionTable.initialize,
-
-    /**
-     * @deprecated
-     * @memberof rxOptionFormTable
-     * @type {rxOptionTable}
-     * @description
-     * **DEPRECATED**: Please use {@link rxOptionTable.initialize} (without arguments) as a stand-in replacement.
-     */
-    main: exports.rxOptionTable.main,
-
-    /**
-     * @deprecated
-     * @function
-     * @memberof rxOptionFormTable
-     * @returns {rxOptionTable}
-     * @description
-     * **DEPRECATED**: Please use {@link rxOptionTable.generateAccessor} as a stand-in replacement.
-     */
-    generateAccessor: exports.rxOptionTable.generateAccessor
 };

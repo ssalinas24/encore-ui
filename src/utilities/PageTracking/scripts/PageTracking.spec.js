@@ -3,19 +3,19 @@
 describe('Pagination', function () {
     describe('Factory: PageTracking', function () {
         var tracking;
-        var LocalStorage;
+        var rxLocalStorage;
 
         beforeEach(function () {
             module('encore.ui.utilities');
-            inject(function (PageTracking, _LocalStorage_) {
+            inject(function (PageTracking, _rxLocalStorage_) {
                 tracking = PageTracking;
-                LocalStorage = _LocalStorage_;
-                LocalStorage.clear();
+                rxLocalStorage = _rxLocalStorage_;
+                rxLocalStorage.clear();
             });
         });
 
         afterEach(function () {
-            LocalStorage.clear();
+            rxLocalStorage.clear();
         });
 
         it('Should override default showAll when set', function () {

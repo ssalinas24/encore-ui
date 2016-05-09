@@ -28,7 +28,7 @@ describe('rxSelectFilter', function () {
 
     before(function () {
         demoPage.go('#/components/rxSelectFilter');
-        rxSelectFilter = encore.rxSelectFilter.main;
+        rxSelectFilter = encore.rxSelectFilter.initialize();
     });
 
     it('shows all the table data', function () {

@@ -1,14 +1,12 @@
 var _ = require('lodash');
-var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
 
 /**
  * @function
  * @description rxCheckbox exercises
  * @exports exercise/rxCheckbox
  * @returns {function} A function to be passed to mocha's `describe`.
- * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxCheckbox} [options.instance] - Component to exercise.
- * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} options - Test options. Used to build valid tests.
+ * @param {rxCheckbox} options.instance - Component to exercise.
  * @param {Boolean} [options.disabled=false] - Whether the checkbox is disabled at the start of the exercise
  * @param {Boolean} [options.selected=false] - Whether the checkbox is selected at the start of the exercise
  * @param {Boolean} [options.visible=true] - Whether the checkbox is visible at the start of the exercise
@@ -30,14 +28,7 @@ exports.rxCheckbox = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxCheckbox.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should be present', function () {

@@ -128,7 +128,7 @@ describe('rxBreadcrumbs', function () {
 
         before(function () {
             demoPage.go('#/utilities/titleize');
-            defaultBreadcrumbs = rxBreadcrumbs.main;
+            defaultBreadcrumbs = rxBreadcrumbs.initialize();
         });
 
         it('should find the default breadcrumbs', function () {

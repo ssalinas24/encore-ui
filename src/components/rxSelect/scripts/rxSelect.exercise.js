@@ -1,13 +1,11 @@
 var _ = require('lodash');
-var rxSelect = require('./rxSelect.page').rxSelect;
 
 /**
  * @description rxSelect exercises.
  * @see rxSelect
  * @exports exercise/rxSelect
- * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {Object} options - Test options. Used to build valid tests.
  * @param {rxSelect} options.instance - Component to exercise.
- * @param {string} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Boolean} [options.disabled=false] - Determines if the select is disabled
  * @param {Boolean} [options.visible=true] - Determines if the select is visible
  * @param {Boolean} [options.valid=true] - Determines if the select is valid
@@ -28,14 +26,7 @@ exports.rxSelect = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxSelect.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should be present', function () {
