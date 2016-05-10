@@ -87,6 +87,8 @@ angular.module('encore.ui.rxOptionTable')
                     return false;
                 }
 
+                val1 = val1.toString();
+                val2 = val2.toString();
                 return (val1 === val2);
             };
 
@@ -119,7 +121,7 @@ angular.module('encore.ui.rxOptionTable')
                 // row can only be 'selected' if it's not the 'current' value
                 if (!scope.isCurrent(val)) {
                     if (scope.type === 'radio') {
-                        return (val === scope.model);
+                        return determineMatch(val, scope.model);
                     } else if (scope.type === 'checkbox') {
                         if (!_.isUndefined(val)) {
                             // if 'val' is defined, run it through our custom matcher
