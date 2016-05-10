@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:Identity', function () {
     var identity, $httpBackend, token;
 

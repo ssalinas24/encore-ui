@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxEnvironment', function () {
     var envSvc, location, log;
 

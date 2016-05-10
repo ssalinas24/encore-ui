@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('titleize', function () {
     var titleize;
 

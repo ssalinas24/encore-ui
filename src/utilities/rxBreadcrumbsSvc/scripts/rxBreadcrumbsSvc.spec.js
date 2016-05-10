@@ -1,5 +1,3 @@
-/* jshint node: true */
-/* jshint camelcase:false */
 describe('rxBreadcrumbsSvc', function () {
     var breadcrumbs, freshBreadcrumbs;
 

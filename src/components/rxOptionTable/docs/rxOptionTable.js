@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxOptionTableCtrl', function ($scope) {
     $scope.radioValue = 0;

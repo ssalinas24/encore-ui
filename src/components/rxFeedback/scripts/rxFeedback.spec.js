@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxFeedback', function () {
     var scope, compile, el, feedbackSvc, apiUrl, httpMock,
         notifySvcMock, screenshotSvcMock, elScope, sessionSvcMock, locationMock;

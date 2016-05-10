@@ -26,7 +26,6 @@ angular.module('encore.ui.rxNotify')
             // Transclude returns a jqLite object of the content in the directive pre transclusion into the template.
             pre: function (scope, el, attrs, ctrl, transclude) {
                 if (!_.isEmpty(attrs.stack)) {
-                    /* jshint maxlen:false */
                     /**
                      * transclude().parent() - returns a jqLite instance of the parent (this directive as defined
                      *                           in the template pre-rendering).

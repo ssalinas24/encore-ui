@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxFloatingHeaderCtrl', function ($scope) {
     $scope.searchText = '';

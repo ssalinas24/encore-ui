@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxNotifyCtrl', function ($rootScope, $scope, $window, rxNotify) {
     $scope.message = 'My message';

@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxCollapse', function () {
     var scope, compile, el, elCollapsed, elExanded;
     var validTemplate = '<rx-collapse title="Filter results"></rx-collapse>';

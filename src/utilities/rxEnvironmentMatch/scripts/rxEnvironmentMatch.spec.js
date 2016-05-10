@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxEnvironmentMatch', function () {
     var urlMatch, _location, setUrl;
 

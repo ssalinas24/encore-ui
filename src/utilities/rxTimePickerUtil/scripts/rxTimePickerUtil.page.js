@@ -1,4 +1,3 @@
-
 exports.rxTimePickerUtil = {
     /**
      * @description return offset value, if present in string

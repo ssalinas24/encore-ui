@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('utilities:rxAutoSave', function () {
     var $rootScope, $q, $timeout, scope, rxAutoSave, a, LocalStorage, SessionStorage,
         now;

@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxAttributesCtrl', function ($scope) {
     $scope.customStyles = 'color: red; font-weight: bold;';

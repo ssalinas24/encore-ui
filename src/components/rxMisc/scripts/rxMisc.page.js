@@ -327,11 +327,11 @@ exports.rxMisc = {
      * });
      */
     scrollPosition: {
-        get x() {
+        get x () {
             return browser.executeScript('return window.scrollX;');
         },
 
-        get y() {
+        get y () {
             return browser.executeScript('return window.scrollY;');
         }
     },

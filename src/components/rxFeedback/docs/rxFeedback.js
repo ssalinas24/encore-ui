@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxFeedbackCtrl', function ($scope, rxNotify) {
     $scope.alwaysSucceed = function () {

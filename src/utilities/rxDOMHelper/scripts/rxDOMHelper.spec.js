@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxDOMHelper', function () {
     var rxjq;
 

@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxScreenshotSvc', function () {
     var rootScope, compile, scope, svc, el;
     var validTemplate = '<h1>Here is some content</h1>';

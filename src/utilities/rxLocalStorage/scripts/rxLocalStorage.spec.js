@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('utilities:rxLocalStorage', function () {
     var storage;
 

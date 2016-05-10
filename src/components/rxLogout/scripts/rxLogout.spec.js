@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxLogout', function () {
     var el, compile, scope, elScope, ngWindow, ngLocation;
 

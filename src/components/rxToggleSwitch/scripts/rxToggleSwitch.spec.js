@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('directive:rxToggleSwitch', function () {
     var scope, timeout, compile, directiveScope, el, disabledEL, customEL, postHookEL, failedAsyncEL,
         validTemplate = '<rx-toggle-switch ng-model="model"></rx-toggle-switch>',

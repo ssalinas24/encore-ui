@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxFeedbackSvc', function () {
     var feedbackSvc, mockResource, mockWindow, mockNotifySvc;
     var apiUrl = 'myurl';

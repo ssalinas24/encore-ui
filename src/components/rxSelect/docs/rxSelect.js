@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxSelectCtrl', function ($scope) {
     $scope.radCreateDestroy = 'destroyed';

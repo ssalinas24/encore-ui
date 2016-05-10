@@ -1,5 +1,3 @@
-/* jshint maxlen: false */
-
 /**
  * @ngdoc overview
  * @name rxFeedback

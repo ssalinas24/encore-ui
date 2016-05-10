@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxPermission', function () {
     describe('directive:rxPermission', function () {
         var scope, compile, el, elRoles, elFail, elFailRoles;

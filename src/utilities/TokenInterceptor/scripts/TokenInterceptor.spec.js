@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('service:TokenInterceptor', function () {
     var interceptor, session;
 

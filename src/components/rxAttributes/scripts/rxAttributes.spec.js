@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxAttributes', function () {
     var scope, compile, el;
     var validTemplate = '<div rx-attributes="{\'my-custom-attr\': customAttrVal, \'ng-click\': noFunc}"></div>';

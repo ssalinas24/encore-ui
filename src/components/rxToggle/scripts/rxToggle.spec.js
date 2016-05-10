@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxToggle', function () {
     var scope, compile, el;
     var validTemplate = '<button rx-toggle="vacillate">Vacillate!</button>';

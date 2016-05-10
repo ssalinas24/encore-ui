@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxTagsCtrl', function ($scope) {
     $scope.tagOptions = [

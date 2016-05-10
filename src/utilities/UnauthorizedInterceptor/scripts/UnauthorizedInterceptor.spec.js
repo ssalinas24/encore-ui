@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('service:UnauthorizedInterceptor', function () {
     var interceptor,
         mockWindow = { location: '/arbitrary/path' },

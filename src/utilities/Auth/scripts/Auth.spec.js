@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:Auth', function () {
     var auth, identity, permission, session, token;
 

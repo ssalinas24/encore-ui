@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxAge', function () {
     var age, clock;
 

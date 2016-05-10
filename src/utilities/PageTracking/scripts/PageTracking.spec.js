@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('Pagination', function () {
     describe('Factory: PageTracking', function () {
         var tracking;

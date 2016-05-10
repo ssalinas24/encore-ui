@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('utilities:SelectFilter', function () {
     var filter;
 

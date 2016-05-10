@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('devicePaths', function () {
     var dp;
 

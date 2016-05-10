@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:urlUtils', function () {
     var urlutils;
     var route = {

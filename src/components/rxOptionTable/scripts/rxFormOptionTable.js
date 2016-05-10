@@ -12,6 +12,6 @@ angular.module('encore.ui.rxOptionTable')
     var warnMsg = 'DEPRECATION WARNING: rxFormOptionTable has been marked as deprecated ' +
         'and will be removed in a future release of the EncoreUI framework. ' +
         'Please use rxOptionTable as a stand-in replacement.';
-    console.warn(warnMsg); // jshint ignore:line
+    console.warn(warnMsg);
     return rxOptionTableDirective[0];
 });

@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxAgeCtrl', function ($scope) {
     var day = 1000 * 60 * 60 * 24;

@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxModalAction', function () {
     var el, scope, compile, rootScope, modalApi, instanceApi, instanceMock, controller;
     var validTemplate = '<rx-modal-action ' +

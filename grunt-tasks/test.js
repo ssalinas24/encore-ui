@@ -1,4 +1,3 @@
-/*jshint node:true */
 module.exports = function (grunt) {
     // mode - Either leave it empty or set to 'full', i.e. `grunt test:full`. This will
     // cause the phantomjs-check task to run against all of our EncoreUI modules.

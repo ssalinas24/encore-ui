@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxTags', function () {
     var scope, isolateScope, compile, el, input;
     var createTemplate = _.template('<rx-tags ng-model="tags" options="tagOptions" ${attrs}></rx-tags>');

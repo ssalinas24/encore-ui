@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxSortUtil', function () {
     var util;
 

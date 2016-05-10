@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('Pagination', function () {
     describe('Filter: Page', function () {
         var page;
