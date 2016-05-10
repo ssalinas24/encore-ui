@@ -1,0 +1,124 @@
+<p>
+  This component provides styles and a demo for the
+  <a href="http://angular-ui.github.io/bootstrap/#/tabs">the Angular-UI Bootstrap Tabs plugin</a>,
+  which is included as a dependency for EncoreUI. Usage is the exact same as
+  demoed on the Angular-UI Bootstrap documentation.
+</p>
+
+<h3>Disclaimer</h3>
+<ul class="list">
+  <li>Only the default horizontal tabs are supported by these styles.</li>
+  <li>
+    <code>vertical</code>, <code>pills</code>, and <code>justified</code>
+    tabs are currently unsupported.
+  </li>
+</ul>
+
+<rx-example name="tabs.simple"></rx-example>
+
+<div class="example-case do">
+  <h4>DO</h4>
+  <ul class="list">
+    <li>
+      Do use tabs for complex forms that use option tables. Tabs are a good way
+      to display "either/or" choices to the user.
+    </li>
+    <li>
+      Do use tabs to show closely related information cleanly.
+    </li>
+  </ul>
+  <br />
+
+  <tabset>
+    <tab>
+      <tab-heading>Rackspace Images (3)</tab-heading>
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Min Ram</th>
+            <th>Min Disk</th>
+            <th>Created On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Arch 2015.7</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+          <tr>
+            <td>Debian 7 (Wheezy)</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+          <tr>
+            <td>Ubuntu 14.04 LTS (Trusty Tahr)</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+        </tbody>
+      </table>
+    </tab>
+    <tab>
+      <tab-heading>Saved Images (3)</tab-heading>
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Min Ram</th>
+            <th>Min Disk</th>
+            <th>Created On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TestImageOne</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+          <tr>
+            <td>Woof Meow</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+          <tr>
+            <td>GoldenTicket</td>
+            <td>512 MB</td>
+            <td>20 GB</td>
+            <td>Mar 2, 2016 @ 15:40 (UTC-0600)</td>
+          </tr>
+        </tbody>
+      </table>
+    </tab>
+  </tabset>
+</div>
+
+<div class="example-case avoid">
+  <h4>DON'T</h4>
+  <ul class="list">
+    <li>
+      Don't use non-standard tab patterns, like the accordion example below.
+    </li>
+    <li>
+      Don't use more than 5 tabs. If more than 5 tabs are required, then
+      consider whether tabs are the right pattern.
+    </li>
+    <li>
+      Don't use tabs with a total width of more than 500px. If the width is
+      more than 500px, consider shorter tab labels.
+    </li>
+    <li>
+      Don't use tabs as navigation with entire pages inside. Rather than putting
+      extensive or lengthy content in a tabbed area, create a new page with an
+      additional link in the left hand nav.
+    </li>
+  </ul>
+  <br />
+  <img src="images/tabs_avoid.png" />
+</div>
