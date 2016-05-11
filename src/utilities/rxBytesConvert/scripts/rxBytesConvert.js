@@ -17,7 +17,7 @@ angular.module('encore.ui.utilities')
     return function (bytes, unit) {
         var units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
         var index;
-        
+
         // check if unit is in the list of units
         if (_.isUndefined(unit) || _.indexOf(units, unit.toUpperCase()) === -1) {
             // determine closest unit
@@ -33,7 +33,7 @@ angular.module('encore.ui.utilities')
         } else {
             index = _.indexOf(units, unit.toUpperCase());
         }
-        
+
         // calculate result in exected unit
         var result = bytes / Math.pow(1000, index);
         // check if result is integer (karma doesn't know Number.isInteger())
@@ -45,3 +45,4 @@ angular.module('encore.ui.utilities')
         }
     };
 });
+
