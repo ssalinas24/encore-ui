@@ -4,7 +4,7 @@ describe('rxDatePicker', function () {
     var picker;
 
     before(function () {
-        demoPage.go('#/molecules/rxDatePicker');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('simple example', function () {

@@ -152,7 +152,7 @@
 <h3>
   <rx-permalink>Checkboxes</rx-permalink>
   <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxCheckbox/">View API</a>
-  <!-- (NOTE) stability: 'unstable' -->
+  <!-- (NOTE) stability: 'READY' -->
 </h3>
 <ul class="list">
   <li>Use the rxCheckbox directive for checkbox controls.</li>
@@ -424,11 +424,104 @@
 </ul>
 <rx-example name="forms.disabled"></rx-example>
 
+<!-- BEGIN: rxDatePicker -->
+<h3>
+  <rx-permalink>Date Picker</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxDatePicker/">View API</a>
+  <!-- (NOTE) stability: 'PROTOTYPE' -->
+</h3>
+<rx-notification type="info">
+  <p>
+    This element is designed to be used in conjunction with other picker
+    elements to compose a valid ISO 8601 DateTime string in the format of
+    <code>YYYY-MM-DDTHH:mmZ</code>.
+  </p>
+</rx-notification>
+
+<ul class="list">
+  <li>
+    This element will generate a <strong>String</strong> in the format of
+    <code>YYYY-MM-DD</code> to be used as the date portion of the ISO 8601
+    standard DateTime string mentioned above.
+  </li>
+  <li>
+    This element will never generate anything other than a String.
+  </li>
+</ul>
+
+<h4>Simple Example</h4>
+<p>
+  Sometimes, a form may need to prepopulate a value for Date Picker. The
+  example below shows how the element behaves when its model is defaulted
+  to today's date.  When a different date is selected, a gray circle around
+  the current date provides additional context to users as they find their
+  selection in the date picker.
+</p>
+<rx-example name="rxDatePicker.simple"></rx-example>
+
+<h4>Behavior with Empty Model</h4>
+<p>
+  A typical use case is to use rxDatePicker without a default value set. The
+  example below shows how it will behave if you have a blank (empty string) or
+  undefined value for your model.
+</p>
+<rx-example name="rxDatePicker.empty"></rx-example>
+
+<h4>Date Picker States</h4>
+<p>
+  Below you'll find examples of how <code>Date Picker</code> will appear in
+  different states.
+</p>
+<table ng-controller="rxDatePickerCtrl">
+  <thead>
+    <th></th>
+    <th>Enabled</th>
+    <th>Disabled</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+      <td>
+        <rx-date-picker
+          id="dpEnabledValid"
+          ng-model="enabledValid">
+        </rx-date-picker>
+      </td>
+      <td>
+        <rx-date-picker
+          id="dpDisabledValid"
+          ng-disabled="true"
+          ng-model="disabledValid">
+        </rx-date-picker>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+      <td>
+        <rx-date-picker
+          id="dpEnabledInvalid"
+          always-invalid
+          ng-model="enabledInvalid">
+        </rx-date-picker>
+      </td>
+      <td>
+        <rx-date-picker
+          id="dpDisabledInvalid"
+          ng-disabled="true"
+          always-invalid
+          ng-model="disabledInvalid">
+        </rx-date-picker>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- END: rxDatePicker -->
+
 <!-- BEGIN: rxTimePicker -->
 <h3>
   <rx-permalink>Time Picker</rx-permalink>
   <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxTimePicker/">View API</a>
-  <!-- (NOTE) stability: 'experimental' -->
+  <!-- (NOTE) stability: 'PROTOTYPE' -->
 </h3>
 <rx-notification type="info">
   <p>

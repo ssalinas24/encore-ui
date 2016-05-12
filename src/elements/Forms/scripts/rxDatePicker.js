@@ -1,6 +1,6 @@
-angular.module('encore.ui.molecules')
+angular.module('encore.ui.elements')
 /**
- * @name molecules.directive:rxDatePicker
+ * @name elements.directive:rxDatePicker
  * @ngdoc directive
  * @restrict E
  * @scope
@@ -8,17 +8,17 @@ angular.module('encore.ui.molecules')
  * Basic date picker.
  *
  * ## Notice
- * This molecule is designed to be used in conjunction with other picker
- * molecules to compose a valid ISO 8601 DateTime string in the format of
+ * This element is designed to be used in conjunction with other picker
+ * elements to compose a valid ISO 8601 DateTime string in the format of
  * <code>YYYY-MM-DDTHH:mmZ</code>.
  *
  * `rxDatePicker` provides the user a 10-year range before and after the selected date,
  * if present.  Otherwise, the range is calculated from today's date.
  *
- * * This molecule will generate a **String** in the format of `YYYY-MM-DD`
+ * * This element will generate a **String** in the format of `YYYY-MM-DD`
  *   to be used as the date portion of the ISO 8601 standard DateTime string
  *   mentioned above.
- * * This molecule will never generate anything other than a String.
+ * * This element will never generate anything other than a String.
  *
  * @param {expression} ngModel
  * Expression that evaluates to a date string in `YYYY-MM-DD` format

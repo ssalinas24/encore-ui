@@ -5,6 +5,7 @@
     "hasApi": false,
     "keywords": [
         "checkbox",
+        "date",
         "dropdown",
         "form",
         "input",
@@ -13,6 +14,7 @@
         "picker",
         "radio",
         "rxCheckbox",
+        "rxDatePicker",
         "rxField",
         "rxFieldContent",
         "rxForm",
