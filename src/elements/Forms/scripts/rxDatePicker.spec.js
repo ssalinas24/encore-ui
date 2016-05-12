@@ -6,7 +6,7 @@ describe('rxDatePicker', function () {
     var isoFormat = 'YYYY-MM-DD';
 
     beforeEach(function () {
-        module('encore.ui.molecules');
+        module('encore.ui.elements');
         module('templates/rxDatePicker.html');
 
         inject(function ($rootScope, $compile) {

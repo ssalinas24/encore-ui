@@ -172,25 +172,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Molecule Pages */ /* Deprecated in favor of Elements */
-        .when('/molecules', {
-            templateUrl: 'templates/modules/listCategoryModules.html',
-            controller: 'listMoleculesController',
-            controllerAs: 'vm'
-        })
-        .when('/molecules/:molecule', {
-            templateUrl: 'templates/modules/showModule.html',
-            controller: 'showModuleController',
-            resolve: {
-                'module': function ($route, Modules) {
-                    return _.find(Modules, {
-                        'name': $route.current.params.molecule,
-                        category: 'molecules'
-                    });
-                }
-            }
-        })
-
         /* Component Pages */ /* Deprecated in favor of Elements */
         .when('/components', {
             templateUrl: 'templates/modules/listCategoryModules.html',
@@ -292,10 +273,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 {
                     linkText: 'Utilities',
                     children: linksForModuleCategory('utilities')
-                },
-                { /* Deprecated in favor of Elements */
-                    linkText: 'Molecules',
-                    children: linksForModuleCategory('molecules')
                 },
                 {
                     linkText: 'Layout',
