@@ -71,7 +71,7 @@
     "lodash": "2.4.1",
     "marked": "0.3.3",
     "mocha": "2.1.0",
-    "moment": "2.9.0",
+    "moment": "2.13.0",
     "node-timing.js": "1.1.0",
     "protractor": "2.0.0"
   }
