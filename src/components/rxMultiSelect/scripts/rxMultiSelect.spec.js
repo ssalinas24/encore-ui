@@ -67,7 +67,7 @@ describe('rxMultiSelect', function () {
 
                 isolateScope.closeMenu();
                 expect(isolateScope.listDisplayed).to.be.false;
-             });
+            });
 
             describe('controller', function () {
                 var ctrl;
