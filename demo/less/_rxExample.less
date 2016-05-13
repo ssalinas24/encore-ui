@@ -1,6 +1,9 @@
 rx-example {
   display: block;
   margin-top: 2em;
+  border: 1px solid @gray-300;
+  padding: 15px;
+  background-color: @white;
 
   h1,
   h2,
@@ -10,6 +13,95 @@ rx-example {
   h6 {
     &:first-of-type {
       margin-top: 0;
+    }
+  }
+
+  pre,
+  code {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .demo-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .source-code-wrapper {
+    // (10 * line height) + (1/2 line height) = (10 * 18px) + (0.5 * 18px)
+    // half line to hint that there's more code than what's displayed
+    max-height: 189px;
+    overflow: hidden;
+
+    &.expanded {
+      max-height: none;
+    }
+  }
+
+  .source-tabset {
+    .nav-tabs {
+      font-size: 12px;
+      border: 0;
+
+      li {
+        background: transparent;
+      }
+
+      a {
+        background: transparent;
+        color: @gray-700;
+        padding: 4px 10px;
+        border-bottom: 3px solid transparent;
+
+        &:hover:not(.active),
+        &:focus:not(.active) {
+          color: @blue-700;
+        }
+      }
+
+      .active a {
+        background: transparent;
+        color: @blue-700;
+        border-bottom-color: @blue-700;
+      }
+    }
+
+    .tab-content {
+      border: 0;
+
+      .tab-pane {
+        border: 0;
+        padding: 0;
+
+        .source-code-wrapper {
+          border: 1px solid @blue-700;
+        }
+
+        .toggle-expand {
+          display: block;
+          padding: 15px;
+          text-align: center;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          .fa-expand {
+            display: inline-block;
+          }
+          .fa-compress {
+            display: none;
+          }
+
+          &.expanded {
+            .fa-expand {
+              display: none;
+            }
+            .fa-compress {
+              display: inline-block;
+            }
+          }
+        }
+      }
     }
   }
 }
