@@ -5,7 +5,7 @@ describe('tabs', function () {
     var tabNames = ['Bacon Ipsum', 'Veggie Ipsum', 'Cat Ipsum (meow)', 'Tupac Ipsum'];
 
     before(function () {
-        demoPage.go('#/components/tabs');
+        demoPage.go('#/elements/Tabs');
         tabs = tabsPage.initialize($('#tabs'));
     });
 
