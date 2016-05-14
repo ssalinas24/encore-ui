@@ -105,18 +105,6 @@ exports.rxForm = {
         }
     },
 
-    form: {
-        /**
-         * @private
-         * @description
-         * This is an alias to the new `rxForm.fill`, which was formally `rxForm.form.fill`.
-         * It is kept here to remain backwards compatible with previous versions of the library.
-         */
-        fill: function (reference, formData) {
-            exports.rxForm.fill(reference, formData);
-        }
-    },
-
     /**
      * @description
      * Set `value` in `formData` to the page object's current method `key`.
@@ -201,60 +189,4 @@ exports.rxForm = {
             return Page.create(rxFieldName);
         }
     },
-
-    /* eslint-disable space-before-function-paren */ // https://github.com/eslint/eslint/issues/5520
-
-    /**
-     * @description **ALIASED**: Directly uses {@link rxCheckbox}.
-     * @property {Function} initialize - {@link rxCheckbox.initialize}
-     * @property {Function} generateAccessor - {@link rxCheckbox.generateAccessor}
-     */
-    checkbox: {
-        get initialize() { return exports.rxCheckbox.initialize; },
-        get generateAccessor() { return exports.rxCheckbox.generateAccessor; }
-    },
-
-    /**
-     * @description **ALIASED**: Directly uses {@link rxRadio}.
-     * @property {Function} initialize - {@link rxRadio.initialize}
-     * @property {Function} generateAccessor - {@link rxRadio.generateAccessor}
-     */
-    radioButton: {
-        get initialize() { return exports.rxRadio.initialize; },
-        get generateAccessor() { return exports.rxRadio.generateAccessor; }
-    },
-
-    /**
-     * @description **ALIASED**: Directly uses {@link rxDropdown}.
-     * @property {Function} initialize - {@link rxDropdown.initialize}
-     * @property {Function} generateAccessor - {@link rxDropdown.generateAccessor}
-     */
-    dropdown: {
-        get initialize() { return exports.rxSelect.initialize; },
-        get generateAccessor() { return exports.rxSelect.generateAccessor; }
-    },
-
-    /* eslint-enable space-before-function-paren */
-
-    /**
-     * @deprecated
-     * @function
-     * @description
-     * **ALIASED**: Please use {@link rxMisc.currencyToPennies} instead.
-     * This function will be removed in a future release of the EncoreUI framework.
-     */
-    currencyToPennies: function (currencyString) {
-        return exports.rxMisc.currencyToPennies(currencyString);
-    },
-
-    /**
-     * @deprecated
-     * @function
-     * @description
-     * **ALIASED**: Please use {@link rxMisc.slowClick} instead.
-     * This function will be removed in a future release of the EncoreUI framework.
-     */
-    slowClick: function (elem) {
-        return exports.rxMisc.slowClick(elem);
-    }
 };

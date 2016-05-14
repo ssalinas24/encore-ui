@@ -1,9 +1,5 @@
 var Page = require('astrolabe').Page;
 
-var actionMenu = encore.rxActionMenu;
-var rxForm = encore.rxForm;
-var notifications = encore.rxNotify;
-
 describe('rxActionMenu', function () {
     var globalDismiss, localDismiss, customActions;
     var customActionMenuItem = function (actionElement) {
@@ -11,7 +7,7 @@ describe('rxActionMenu', function () {
 
             triggerNotification: {
                 value: function () {
-                    rxForm.slowClick(actionElement.$('.trigger'));
+                    encore.rxMisc.slowClick(actionElement.$('.trigger'));
                 }
             }
 
@@ -24,9 +20,9 @@ describe('rxActionMenu', function () {
 
     before(function () {
         demoPage.go('#/components/rxActionMenu');
-        globalDismiss = actionMenu.initialize($('rx-action-menu#globalDismissal'));
-        localDismiss = actionMenu.initialize($('rx-action-menu[global-dismiss="false"]'));
-        customActions = actionMenu.initialize($('rx-action-menu#custom'), customActionMenuItem);
+        globalDismiss = encore.rxActionMenu.initialize($('rx-action-menu#globalDismissal'));
+        localDismiss = encore.rxActionMenu.initialize($('rx-action-menu[global-dismiss="false"]'));
+        customActions = encore.rxActionMenu.initialize($('rx-action-menu#custom'), customActionMenuItem);
     });
 
     it('should be collapsed by default', function () {
@@ -116,7 +112,7 @@ describe('rxActionMenu', function () {
 
         it('should offer custom functionality', function () {
             actionItem.triggerNotification();
-            expect(notifications.all.count()).to.eventually.equal(1);
+            expect(encore.rxNotify.all.count()).to.eventually.equal(1);
         });
 
     });
