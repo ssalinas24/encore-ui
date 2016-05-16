@@ -87,7 +87,7 @@ describe('tabs', function () {
         });
 
         it('should find the only tabs on the page', function () {
-            expect(tabsPage.main.names).to.eventually.eql(['Demo', 'Markup', 'JavaScript']);
+            expect(tabsPage.main.names).to.eventually.eql(['Markup', 'JavaScript']);
         });
 
     });
