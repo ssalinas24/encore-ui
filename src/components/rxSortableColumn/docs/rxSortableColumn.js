@@ -1,8 +1,6 @@
 angular.module('demoApp')
-.controller('rxSortableColumnCtrl', function ($scope, PageTracking, rxSortUtil) {
-    $scope.sort = rxSortUtil.getDefault('name');
+.controller('rxSortableColumnCtrl', function ($scope, rxSortUtil) {
     $scope.sort = rxSortUtil.getDefault('name', false);
-    $scope.pager = PageTracking.createInstance();
 
     $scope.sortCol = function (predicate) {
         return rxSortUtil.sortCol($scope, predicate);
