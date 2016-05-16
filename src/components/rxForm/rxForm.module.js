@@ -210,10 +210,6 @@
  * * {@link rxSelect.directive:rxSelect rxSelect}
  * * {@link rxToggleSwitch.directive:rxToggleSwitch rxToggleSwitch}
  *
- * ### Deprecated Directives
- * * {@link rxForm.directive:rxFormItem rxFormItem}
- * * {@link rxForm.directive:rxFormFieldset rxFormFieldset}
- *
  */
 angular.module('encore.ui.rxForm', [
     'ngSanitize',

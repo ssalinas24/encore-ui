@@ -8,14 +8,13 @@ var autoSaving = Page.create({
         }
     },
 
-    checkbox: encore.rxForm.checkbox.generateAccessor(element(by.model('formData.checkbox'))),
+    checkbox: encore.rxCheckbox.generateAccessor(element(by.model('formData.checkbox'))),
 
     name: encore.rxForm.textField.generateAccessor(element(by.model('formData.name'))),
 
     description: encore.rxForm.textField.generateAccessor(element(by.model('formData.description'))),
 
     sensitiveData: encore.rxForm.textField.generateAccessor(element(by.model('formData.sensitive'))),
-
 });
 
 describe('rxMisc', function () {
