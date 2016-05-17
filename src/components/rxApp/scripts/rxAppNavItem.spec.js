@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAppNavItem', function () {
-        var scope, compile, el, someProp, rxvisibility;
+        var scope, compile, el, someProp, rxVisibility, rxEnvironmentUrlFilter, provide;
         var template = '<rx-app-nav-item item="item"></rx-app-nav-item>';
 
         var menuItem = {
@@ -74,6 +74,19 @@ describe('encore.ui.rxApp', function () {
             ]
         };
 
+        var setURLProperties = function (routes) {
+            _.each(routes, function (route) {
+                // build out url for current route
+                route.url = rxEnvironmentUrlFilter(route.href);
+
+                // check if any children exist, if so, build their URLs as well
+                if (route.children) {
+                    route.children = setURLProperties(route.children);
+                }
+            });
+            return routes;
+        };
+
         beforeEach(function () {
             // load module
             var mockToken = {
@@ -105,16 +118,18 @@ describe('encore.ui.rxApp', function () {
 
             module(function ($provide) {
                 $provide.value('Session', SessionMock);
+                provide = $provide;
             });
 
             // Inject in angular constructs
-            inject(function ($rootScope, $compile, rxVisibility) {
+            inject(function ($rootScope, $compile, _rxVisibility_, _rxEnvironmentUrlFilter_) {
                 scope = $rootScope.$new();
                 compile = $compile;
-                rxvisibility = rxVisibility;
+                rxVisibility = _rxVisibility_;
+                rxEnvironmentUrlFilter = _rxEnvironmentUrlFilter_;
             });
 
-            rxvisibility.addMethod(
+            rxVisibility.addMethod(
                 'somePropMethod',
                 function (scope, locals) {
                     /* should return false */
@@ -122,7 +137,7 @@ describe('encore.ui.rxApp', function () {
                 }
             );
 
-            rxvisibility.addMethod(
+            rxVisibility.addMethod(
                 'falseChildVisibilty',
                 function () { return false; }
             );
@@ -233,6 +248,51 @@ describe('encore.ui.rxApp', function () {
             it('should not when when not all roles are present', function () {
                 var item = el.find('a:contains("multipleAllRolesFailure")').parent();
                 expect(item.hasClass('ng-hide')).to.be.true;
+            });
+        });
+
+        describe('Link href prefix', function () {
+            var children;
+            beforeEach(function () {
+                provide.value('NAV_ITEM_PREFIX', 'http://nothing');
+                // Set URL properties
+                setURLProperties([scope.item]);
+
+                el = helpers.createDirective(template, compile, scope);
+
+                // NOTE: this retreives *all* the child nav items, including the sub-child ones
+                // This is why indexing is a little off
+                children = el[0].querySelectorAll('.item-children .rx-app-nav-item');
+            });
+
+            it('should prefix the href of a nav item', function () {
+                // check that second level 2 item has an href that includes http://nothing the item is '1st-2nd'
+                var item = angular.element(children[2].querySelector('a'));
+                expect(item.attr('href')).to.contain('http://nothing');
+            });
+
+            it('should not add a prefix to items without an href', function () {
+                var item = angular.element(children[3].querySelector('a'))
+                expect(item.attr('href')).to.not.contain('http://nothing');
+                expect(item.attr('href')).to.be.empty;
+            });
+        });
+
+        describe('Link target', function () {
+            it('should define a target for the href', function () {
+                provide.value('NAV_ITEM_TARGET', 'some-other-target');
+
+                el = helpers.createDirective(template, compile, scope);
+
+                var item = angular.element(el[0].querySelector('a'));
+                expect(item.attr('target')).to.equal('some-other-target');
+            });
+
+            it('should use the default target when one is not defined', function () {
+                el = helpers.createDirective(template, compile, scope);
+
+                var item = angular.element(el[0].querySelector('a'));
+                expect(item.attr('target')).to.equal('_self');
             });
         });
     });

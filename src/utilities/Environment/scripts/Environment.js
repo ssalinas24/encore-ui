@@ -54,37 +54,47 @@ angular.module('encore.ui.utilities')
      *                        See 'buildUrl' for more details
      */
     var environments = [{
+        // Regexr: http://www.regexr.com/3de5m
         // http://localhost:3000/
         // http://localhost:9000/
         // http://localhost/
         // http://server/
+        // http://encore.dev/
+        // http://apps.server/
         name: 'local',
-        pattern: /\/\/(localhost|server)(:\d{1,4})?/,
-        url: '//localhost:' + $location.port() + '/{{path}}'
+        pattern: /\/\/(?:apps\.)?(localhost|server|(.*)\.dev)(:\d{1,4})?/,
+        url: '//' + $location.host() + ($location.port() !== 80 ? ':' + $location.port() : '') + '/{{path}}'
     }, {
         // Matches only https://preprod.encore.rackspace.com
+        // Regexr: http://www.regexr.com/3de5p
         name: 'preprod',
-        pattern: /\/\/preprod.encore.rackspace.com/,
+        pattern: /\/\/(?:apps\.)?preprod.encore.rackspace.com/,
         url: '{{path}}'
     }, {
         // This is anything with a host preceeding encore.rackspace.com
+        // Regexr: http://www.regexr.com/3de5s
         // https://staging.encore.rackspace.com/
         // https://preprod.encore.rackspace.com/
+        // https://apps.preprod.encore.rackspace.com/
         name: 'unified-preprod',
-        pattern: /\/\/(\w+\.)encore.rackspace.com/,
+        pattern: /\/\/(?:apps\.)?(\w+\.)encore.rackspace.com/,
         url: '{{path}}'
     }, {
         // This is *all* environments
+        // Regexr: http://www.regexr.com/3de5v
         // https://encore.rackspace.com/
         // https://staging.encore.rackspace.com/
         // https://preprod.encore.rackspace.com/
+        // https://apps.encore.rackspace.com
+        // https://apps.staging.encore.rackspace.com
         name: 'unified',
         pattern: 'encore.rackspace.com',
         url: '{{path}}'
     }, {
         // This is only https://encore.rackspace.com/
+        // Regexr: http://www.regexr.com/3de62
         name: 'unified-prod',
-        pattern: /\/\/encore.rackspace.com/,
+        pattern: /\/\/(?:apps\.)?encore.rackspace.com/,
         url: '{{path}}'
     }];
 
