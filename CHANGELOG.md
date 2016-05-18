@@ -1,3 +1,29 @@
+<a name="1.48.0-0"></a>
+### 1.48.0-0 (2016-05-18)
+
+
+#### Bug Fixes
+
+* **eslint:**
+  * Address errors that emerged from the void ([749b6564](git@github.com:rackerlabs/encore-ui/commit/749b65644bf78bb04ad4864a9de94a9893b2c340))
+  * Forbid double equals for comparisons ([f353cd3c](git@github.com:rackerlabs/encore-ui/commit/f353cd3ce54c2bf823d7d4b6d11130b72c5b072f))
+  * Fixes misc unfixed errors ([6fd88d29](git@github.com:rackerlabs/encore-ui/commit/6fd88d29f0283c77b0926bddf18981411ac443e1))
+  * Allow for const keyword ([56ec8a19](git@github.com:rackerlabs/encore-ui/commit/56ec8a195d9f04c89ccb0573bd5b9340ff1ff0dc))
+* **example:** Stop collisions, eliminate 'example' as class name ([111c00b8](git@github.com:rackerlabs/encore-ui/commit/111c00b89fdfa8a9ab4ce12e87c7ef00801cf973))
+* **npm:**
+  * Upgrade from an insecure version of moment ([c3a91038](git@github.com:rackerlabs/encore-ui/commit/c3a91038a3af7d11e835aa9979609588728a0bdf))
+  * Drop unused semver library ([549e52d4](git@github.com:rackerlabs/encore-ui/commit/549e52d4ac241ed6d538351b230fa0f0df92a1c8))
+* **rxDatepicker:** Remove 'use strict' as it breaks unit tests ([a4430237](git@github.com:rackerlabs/encore-ui/commit/a44302379645c75ec57f8f4d7453ae8d9e1a153f))
+* **rxOptionTable:** Use eqeqeq assertions everywhere ([1b707aef](git@github.com:rackerlabs/encore-ui/commit/1b707aef466e74c178f0d5ea08ff27b39142531e))
+
+
+#### Features
+
+* **grunt:** Swap jshint/jscs out with eslint ([c44355af](git@github.com:rackerlabs/encore-ui/commit/c44355af93edd4cc93d5c9477605399d1e0c0747))
+* **rxBytesConvert:** convert from bytes ([4d3676e6](git@github.com:rackerlabs/encore-ui/commit/4d3676e660751620ba13bda48c4652a669c2f529))
+* **rxPaginate:** Use flex grid for responsiveness ([8bb0ffa7](git@github.com:rackerlabs/encore-ui/commit/8bb0ffa7875f1762201559d21056645b78ac0e27))
+
+
 <a name="1.47.3"></a>
 ### 1.47.3 (2016-05-06)
 
