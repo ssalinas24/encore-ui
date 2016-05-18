@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxToggleSwitchCtrl', function ($scope, $timeout, rxNotify) {
     $scope.toggle3 = true;

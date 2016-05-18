@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxStatusMappings', function () {
     var rxstatusMappings;
 

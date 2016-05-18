@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxSelectFilter', function () {
     var scope, compile, template;
 

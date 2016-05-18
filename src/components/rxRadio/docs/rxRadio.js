@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('rxRadioCtrl', function ($scope) {
     $scope.validEnabled = 1;

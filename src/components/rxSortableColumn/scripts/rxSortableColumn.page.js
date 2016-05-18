@@ -115,11 +115,10 @@ var rxSortableColumn = {
                     return page.name.then(page.ColumnSortRequestUnresponsiveError.thro);
                 }
 
-                /*jshint eqeqeq: false*/
                 // Coercing -1 to Boolean results in -1 === true. We don't want that.
                 // It's easier to leave as is since -1 != true and -1 != false.
                 // Meaning we'll always sort the list at least once if it's currently unsorted.
-                if (sortDirection != namedParams.sortValue) {
+                if (sortDirection != namedParams.sortValue) { // eslint-disable-line eqeqeq
                     page.btnSort.click();
                     attempts += 1;
                     page.sort(namedParams, attempts);

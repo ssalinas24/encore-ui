@@ -1,4 +1,3 @@
-/*jshint camelcase:false */
 module.exports = {
     options: {
         debug: true,

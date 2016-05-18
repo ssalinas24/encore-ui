@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('service:SessionStorage', function () {
     var storage;
 

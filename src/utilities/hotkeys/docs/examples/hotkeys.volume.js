@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('hotkeysVolumeCtrl', function ($scope, hotkeys) {
     $scope.volume = 5;

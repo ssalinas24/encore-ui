@@ -10,6 +10,6 @@
  * * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}
  */
 angular.module('encore.ui.rxOptionTable', [
-    'encore.ui.atoms',
+    'encore.ui.elements',
     'ngSanitize'
 ]);

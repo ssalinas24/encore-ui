@@ -238,7 +238,7 @@ var rxPaginate = {
      */
     pageSize: {
         get: function () {
-            var css = '.pagination-per-page-button[disabled="disabled"]';
+            var css = '.pagination-per-page button[disabled="disabled"]';
             return this.rootElement.$(css).getText().then(parseInt);
         },
 
@@ -475,7 +475,7 @@ var rxPaginate = {
             return this.page.then(function (currentPage) {
                 pageNumber = pageNumber || 'any higher number';
                 return page.pages.then(function (pageNumbers) {
-                    if (_.last(pageNumbers) == currentPage) {
+                    if (_.last(pageNumbers) === currentPage) {
                         // We are at the last page, and we still need to go higher.
                         var message = pageNumber + ' exceeds max page of ' + _.last(pageNumbers);
                         page.NoSuchPageException.thro(message);

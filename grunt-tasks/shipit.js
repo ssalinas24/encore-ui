@@ -1,4 +1,3 @@
-/*jshint node:true */
 module.exports = function (grunt) {
     grunt.registerTask('shipit', 'Ships code to prod', function (versionType, arg) {
         var validTypes = ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'];
@@ -29,7 +28,7 @@ module.exports = function (grunt) {
 
             // commit version increment
             tasks.push('bump-commit');
-            
+
             // push rx-page-objects to npm
             if (arg === 'hotfix') {
                 tasks.push('rxPageObjects:hotfix');

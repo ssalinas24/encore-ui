@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxModalFooter', function () {
     var scope, compile, addFooter;
 

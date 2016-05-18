@@ -1,4 +1,3 @@
-/*jshint node:true */
 var _ = require('lodash');
 
 // replace this with _.repeat if/when lodash is upgraded to 3.0+

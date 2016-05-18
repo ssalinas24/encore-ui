@@ -157,9 +157,9 @@ angular.module('encore.ui.utilities')
         var cb;
 
         // switch which function to call based on type
-        if (changeType == 'show') {
+        if (changeType === 'show') {
             cb = addToStack;
-        } else if (changeType == 'dismiss') {
+        } else if (changeType === 'dismiss') {
             cb = dismiss;
 
             // add a listener to dismiss message if scope is destroyed
@@ -324,9 +324,9 @@ angular.module('encore.ui.utilities')
         }
 
         // add message to stack immediately if has default show value
-        if (message.show == messageDefaults.show) {
+        if (message.show === messageDefaults.show) {
             addToStack(message);
-        } else if (message.show == 'next') {
+        } else if (message.show === 'next') {
             nextQueue.push(message);
         } else if (_.isArray(message.show)) {
             changeOnWatch(message, 'show');

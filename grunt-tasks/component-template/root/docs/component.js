@@ -1,4 +1,3 @@
-/*jshint unused:false*/
 angular.module('demoApp')
 .controller('{%= name %}Ctrl', function ($scope) {
     // This controller is used to help build the 'demo' documentation page

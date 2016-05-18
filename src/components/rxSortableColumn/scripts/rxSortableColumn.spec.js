@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxSortableColumn', function () {
     var scope, compile, el;
     var validTemplate = '<rx-sortable-column reverse="false">Yo!</rx-sortable-column>';

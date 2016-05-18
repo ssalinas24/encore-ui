@@ -11,7 +11,7 @@ angular.module('encore.ui.utilities')
 .service('rxScreenshotSvc', function ($log, $q) {
     // double check that html2canvas is loaded
     var hasDependencies = function () {
-        var hasHtml2Canvas = typeof html2canvas == 'function';
+        var hasHtml2Canvas = typeof html2canvas === 'function';
 
         return hasHtml2Canvas;
     };

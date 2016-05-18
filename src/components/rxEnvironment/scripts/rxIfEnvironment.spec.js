@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxIfEnvironment', function () {
     var scope, compile, envSvc, _location, setUrl,
         stagingMsg = 'Show if staging',

@@ -62,7 +62,7 @@
                 of the control.
               </li>
               <li>
-                See <a href="#/atoms/rxCheckbox">rxCheckbox</a>,
+                See <a href="#/elements/Forms#checkboxes">checkboxes</a>,
                 <a href="#/components/rxRadio">rxRadio</a>,
                 and <a href="#/components/rxForm">rxForm</a> for markup
                 examples.
@@ -119,7 +119,7 @@
 <ul class="list">
   <li>
     Reference the <a href="#/elements/Links">links</a> and
-    <a href="#/elements/Buttons">buttons</a> atoms and the
+    <a href="#/elements/Buttons">buttons</a> elements and the
     <a href="#/layout/page/form">Form Page</a> layout for details about how
     to style and color buttons.
     <ul>
@@ -148,12 +148,14 @@
   </li>
 </ul>
 
-<h3><rx-permalink>Checkboxes</rx-permalink></h3>
+<!-- BEGIN: checkboxes -->
+<h3>
+  <rx-permalink>Checkboxes</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxCheckbox/">View API</a>
+  <!-- (NOTE) stability: 'READY' -->
+</h3>
 <ul class="list">
-  <li>
-    Use the <a href="#/atoms/rxCheckbox">rxCheckbox</a> component
-    for checkbox controls.
-  </li>
+  <li>Use the rxCheckbox directive for checkbox controls.</li>
   <li>
     If you intend to use a label element, place it <strong>immediately
     after the rxCheckbox</strong> to style the label when the control
@@ -165,6 +167,176 @@
     </strong>
   </li>
 </ul>
+
+<h4>Show/Hide Input</h4>
+<rx-example name="rxCheckbox.showHide"></rx-example>
+
+<h4>Destroy Input</h4>
+<p>Support for <code>$destroy</code> events.</p>
+<rx-example name="rxCheckbox.destroy"></rx-example>
+
+<h4>Checkbox States</h3>
+<table ng-controller="rxCheckboxCtrl">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Enabled</th>
+      <th>Disabled (ng-disabled)</th>
+      <th>Disabled (disabled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+      <!-- Valid Enabled-->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkValidEnabledOne"
+                 ng-model="chkValidEnabledOne" />
+          <label for="chkValidEnabled">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkValidEnabledTwo"
+                 ng-model="chkValidEnabledTwo" />
+          <label for="chkValidEnabledTwo">Unchecked</label>
+        </p>
+      </td>
+
+      <!-- Valid NG-Disabled -->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkValidNgDisabledOne"
+                 ng-disabled="true"
+                 ng-model="chkValidNgDisabledOne" />
+          <label for="chkValidNgDisabledOne">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkValidNgDisabledTwo"
+                 ng-disabled="true"
+                 ng-model="chkValidNgDisabledTwo" />
+          <label for="chkValidNgDisabledTwo">Unchecked</label>
+        </p>
+      </td>
+
+      <!-- Valid Disabled -->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkValidDisabledOne"
+                 disabled
+                 ng-model="chkValidDisabledOne" />
+          <label for="chkValidDisabledOne">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkValidDisabledTwo"
+                 disabled
+                 ng-model="chkValidDisabledTwo" />
+          <label for="chkValidDisabledTwo">Unchecked</label>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+      <!-- Invalid Enabled -->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidEnabledOne"
+                 ng-model="chkInvalidEnabledOne"
+                 always-invalid />
+          <label for="chkInvalidEnabledOne">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidEnabledTwo"
+                 ng-model="chkInvalidEnabledTwo"
+                 always-invalid />
+          <label for="chkInvalidEnabledTwo">Unchecked</label>
+        </p>
+      </td>
+
+      <!-- Invalid NG-Disabled -->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidNgDisabledOne"
+                 ng-model="chkInvalidNgDisabledOne"
+                 ng-disabled="true"
+                 always-invalid />
+          <label for="chkInvalidNgDisabledOne">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidNgDisabledTwo"
+                 ng-model="chkInvalidNgDisabledTwo"
+                 ng-disabled="true"
+                 always-invalid />
+          <label for="chkInvalidNgDisabledTwo">Unchecked</label>
+        </p>
+      </td>
+
+      <!-- Invalid Disabled -->
+      <td>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidDisabledOne"
+                 ng-model="chkInvalidDisabledOne"
+                 disabled
+                 always-invalid />
+          <label for="chkInvalidDisabledOne">Checked</label>
+        </p>
+        <p>
+          <input rx-checkbox
+                 id="chkInvalidDisabledTwo"
+                 ng-model="chkInvalidDisabledTwo"
+                 disabled
+                 always-invalid />
+          <label for="chkInvalidDisabledTwo">Unchecked</label>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<rx-debug>
+  <h3>Plain HTML Checkboxes (for comparison)</h3>
+  <p>
+    <input type="checkbox"
+           id="plainHtmlNormal"
+           ng-required="true" />
+    <label for="plainHtmlNormal">A plain checkbox</label>
+  </p>
+  <p>
+    <input type="checkbox"
+           id="plainHtmlDisabled"
+           disabled />
+    <label for="plainHtmlDisabled">A plain checkbox (disabled)</label>
+  </p>
+  <p>
+    <input type="checkbox"
+           id="plainHtmlChecked"
+           checked />
+    <label for="plainHtmlChecked">A plain checkbox (checked)</label>
+  </p>
+  <p>
+    <input type="checkbox"
+           id="plainChkRemoveCheckbox"
+           ng-model="plainChkIsRemoved" />
+    <label for="plainChkRemoveCheckbox">Remove Following Checkbox:</label>
+
+    <input type="checkbox"
+           checked
+           id="plainChkRemoveable"
+           ng-if="!plainChkIsRemoved" />
+  </p>
+</rx-debug>
+<!-- END: checkboxes -->
+
 
 <h3><rx-permalink>Toggle Switches</rx-permalink></h3>
 <ul class="list">
@@ -251,6 +423,184 @@
   </li>
 </ul>
 <rx-example name="forms.disabled"></rx-example>
+
+<!-- BEGIN: rxDatePicker -->
+<h3>
+  <rx-permalink>Date Picker</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxDatePicker/">View API</a>
+  <!-- (NOTE) stability: 'PROTOTYPE' -->
+</h3>
+<rx-notification type="info">
+  <p>
+    This element is designed to be used in conjunction with other picker
+    elements to compose a valid ISO 8601 DateTime string in the format of
+    <code>YYYY-MM-DDTHH:mmZ</code>.
+  </p>
+</rx-notification>
+
+<ul class="list">
+  <li>
+    This element will generate a <strong>String</strong> in the format of
+    <code>YYYY-MM-DD</code> to be used as the date portion of the ISO 8601
+    standard DateTime string mentioned above.
+  </li>
+  <li>
+    This element will never generate anything other than a String.
+  </li>
+</ul>
+
+<h4>Simple Example</h4>
+<p>
+  Sometimes, a form may need to prepopulate a value for Date Picker. The
+  example below shows how the element behaves when its model is defaulted
+  to today's date.  When a different date is selected, a gray circle around
+  the current date provides additional context to users as they find their
+  selection in the date picker.
+</p>
+<rx-example name="rxDatePicker.simple"></rx-example>
+
+<h4>Behavior with Empty Model</h4>
+<p>
+  A typical use case is to use rxDatePicker without a default value set. The
+  example below shows how it will behave if you have a blank (empty string) or
+  undefined value for your model.
+</p>
+<rx-example name="rxDatePicker.empty"></rx-example>
+
+<h4>Date Picker States</h4>
+<p>
+  Below you'll find examples of how <code>Date Picker</code> will appear in
+  different states.
+</p>
+<table ng-controller="rxDatePickerCtrl">
+  <thead>
+    <th></th>
+    <th>Enabled</th>
+    <th>Disabled</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+      <td>
+        <rx-date-picker
+          id="dpEnabledValid"
+          ng-model="enabledValid">
+        </rx-date-picker>
+      </td>
+      <td>
+        <rx-date-picker
+          id="dpDisabledValid"
+          ng-disabled="true"
+          ng-model="disabledValid">
+        </rx-date-picker>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+      <td>
+        <rx-date-picker
+          id="dpEnabledInvalid"
+          always-invalid
+          ng-model="enabledInvalid">
+        </rx-date-picker>
+      </td>
+      <td>
+        <rx-date-picker
+          id="dpDisabledInvalid"
+          ng-disabled="true"
+          always-invalid
+          ng-model="disabledInvalid">
+        </rx-date-picker>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- END: rxDatePicker -->
+
+<!-- BEGIN: rxTimePicker -->
+<h3>
+  <rx-permalink>Time Picker</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxTimePicker/">View API</a>
+  <!-- (NOTE) stability: 'PROTOTYPE' -->
+</h3>
+<rx-notification type="info">
+  <p>
+    This element is designed to be used in conjunction with other picker
+    elements to compose a valid ISO 8601 DateTime string in the format of
+    <code>YYYY-MM-DDTHH:mmZ</code>.
+  </p>
+</rx-notification>
+
+<ul class="list">
+  <li>
+    This element will generate a <strong>String</strong> in the format of
+    <code>HH:mmZ</code> to be used as the time portion of the ISO 8601
+    standard DateTime string mentioned above.
+    <ul>
+      <li><code>HH</code> is the 24-hour format from 00 to 23</li>
+      <li><code>mm</code> is the minutes from 00 to 59</li>
+      <li><code>Z</code> is the UTC offset that matches <code>[-+]\d{2}:\d{2}</code></li>
+    </ul>
+  </li>
+  <li>
+    This element will never generate anything other than a String.
+  </li>
+</ul>
+
+<h4>Simple Example</h4>
+<rx-example name="rxTimePicker.simple"></rx-example>
+
+<h4>Time Picker States</h4>
+<p>
+  Below you'll find examples of how <code>Time Picker</code> will appear in
+  different states.
+</p>
+<table ng-controller="rxTimePickerCtrl">
+  <thead>
+    <th></th>
+    <th>Enabled</th>
+    <th>Disabled</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+      <td>
+        <rx-time-picker
+          id="tpEnabledValid"
+          ng-disabled="false"
+          ng-model="enabledValid">
+        </rx-time-picker>
+      </td>
+      <td>
+        <rx-time-picker
+          id="tpDisabledValid"
+          ng-disabled="true"
+          ng-model="disabledValid">
+        </rx-time-picker>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+      <td>
+        <rx-time-picker
+          id="tpEnabledInvalid"
+          always-invalid
+          ng-disabled="false"
+          ng-model="enabledInvalid">
+        </rx-time-picker>
+      </td>
+      <td>
+        <rx-time-picker
+          id="tpDisabledInvalid"
+          ng-disabled="true"
+          always-invalid
+          ng-model="disabledInvalid">
+        </rx-time-picker>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- END: rxTimePicker -->
 
 <h3><rx-permalink>Form Validation</rx-permalink></h3>
 <ul class="list">

@@ -1,14 +1,16 @@
-/*jshint node:true*/
-var Page = require('astrolabe').Page;
-
 /**
-   @namespace
+ * @description Properties and methods describing a {{%= name %}} element.
+ * @namespace
  */
 var {%= name %} = {
 
     /**
-       @function
-       @returns {Boolean} Whether the root element is currently displayed.
+     * @function
+     * @returns {Boolean} Whether the root element is currently displayed.
+     * @example
+     * it('should show the {{%= name %}} element by default', function () {
+     *     expect(encore.{{%= name %}}.initialize().isDisplayed()).to.eventually.be.true;
+     * });
      */
     isDisplayed: {
         value: function () {
@@ -18,31 +20,20 @@ var {%= name %} = {
 
 };
 
-/**
-   @exports encore.{%= name %}
- */
 exports.{%= name %} = {
 
     /**
-       @function
-       @param {WebElement} {%= name %}Element - WebElement to be transformed into an {%= name %}Element object.
-       @returns {{%= name %}} Page object representing the {%= name %} object.
+     * @function
+     * @memberof {{%= name %}}
+     * @description Creates a page object from a DOM element representing a {{%= name %}} element.
+     * @param {ElementFinder} {%= name %}Element - WebElement to be transformed into an {%= name %}Element object.
+     * @returns {{%= name %}}
      */
     initialize: function ({%= name %}Element) {
         {%= name %}.rootElement = {
             get: function () { return {%= name %}Element; }
         };
         return Page.create({%= name %});
-    },
-
-    /**
-       @returns {{%= name %}} Page object representing the _first_ {%= name %} object found on the page.
-    */
-    main: (function () {
-        {%= name %}.rootElement = {
-            get: function () { return $('#{%= name %}'); }
-        };
-        return Page.create({%= name %});
-    })()
+    }
 
 };

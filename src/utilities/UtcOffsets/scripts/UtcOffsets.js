@@ -6,6 +6,8 @@ angular.module('encore.ui.utilities')
  * @description
  * List of known UTC Offset Values
  * See https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+ *
+ * Utility service used by {@link elements.directive:rxTimePicker rxTimePicker}.
  */
 .constant('UtcOffsets', [
     '-12:00',

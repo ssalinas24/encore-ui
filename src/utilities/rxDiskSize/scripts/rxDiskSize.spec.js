@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxDiskSize', function () {
     var disksize;
 
@@ -12,7 +10,7 @@ describe('rxDiskSize', function () {
     });
 
     it('should exist', function () {
-        expect(!!disksize).to.be.true;
+        expect(disksize).to.exist;
     });
 
     it('should convert 100 to 100 GB', function () {

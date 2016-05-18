@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('utilities:rxModalFooterTemplates', function () {
     var rxModalFooterTemplates;
 

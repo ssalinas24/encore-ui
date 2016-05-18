@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxOptionTable', function () {
     var scope, compile, rootScope;
 

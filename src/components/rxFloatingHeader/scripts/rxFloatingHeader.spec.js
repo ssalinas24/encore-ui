@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxFloatingHeader', function () {
     var scope, compile, el;
     var validTemplate =

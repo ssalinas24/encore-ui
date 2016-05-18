@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxBulkSelect', function () {
     var scope, compile, timeout, el;
 

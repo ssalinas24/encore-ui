@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('rxCharacterCount', function () {
     var originalScope, scope, compile, el, $timeout, $rootScope;
     var initialTemplate = '<textarea ng-model="initComment" rx-character-count></textarea>';

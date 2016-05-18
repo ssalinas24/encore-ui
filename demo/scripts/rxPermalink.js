@@ -5,7 +5,7 @@ angular.module('demoApp')
         scope: {},
         transclude: true,
         templateUrl: 'templates/rx-permalink.html',
-        link: function (scope, el, attr) {
+        link: function (scope, el) {
             // Convert Text content to URL-safe string
             scope.permaId = el.text()
                 .toLowerCase() // normalize to lowercase

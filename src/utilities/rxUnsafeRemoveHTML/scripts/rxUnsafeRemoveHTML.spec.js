@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxUnsafeRemoveHTML', function () {
     var unsafeRemove;
 

@@ -166,44 +166,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             }
         })
 
-        /* Atom Pages */ /* Deprecated in favor of Elements */
-        .when('/atoms', {
-            templateUrl: 'templates/modules/listCategoryModules.html',
-            controller: 'listAtomsController',
-            controllerAs: 'vm'
-        })
-        .when('/atoms/:atom', {
-            templateUrl: 'templates/modules/showModule.html',
-            controller: 'showModuleController',
-            resolve: {
-                'module': function ($route, Modules) {
-                    return _.find(Modules, {
-                        'name': $route.current.params.atom,
-                        category: 'atoms'
-                    });
-                }
-            }
-        })
-
-        /* Molecule Pages */ /* Deprecated in favor of Elements */
-        .when('/molecules', {
-            templateUrl: 'templates/modules/listCategoryModules.html',
-            controller: 'listMoleculesController',
-            controllerAs: 'vm'
-        })
-        .when('/molecules/:molecule', {
-            templateUrl: 'templates/modules/showModule.html',
-            controller: 'showModuleController',
-            resolve: {
-                'module': function ($route, Modules) {
-                    return _.find(Modules, {
-                        'name': $route.current.params.molecule,
-                        category: 'molecules'
-                    });
-                }
-            }
-        })
-
         /* Component Pages */ /* Deprecated in favor of Elements */
         .when('/components', {
             templateUrl: 'templates/modules/listCategoryModules.html',
@@ -305,14 +267,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 {
                     linkText: 'Utilities',
                     children: linksForModuleCategory('utilities')
-                },
-                { /* Deprecated in favor of Elements */
-                    linkText: 'Atoms',
-                    children: linksForModuleCategory('atoms')
-                },
-                { /* Deprecated in favor of Elements */
-                    linkText: 'Molecules',
-                    children: linksForModuleCategory('molecules')
                 },
                 {
                     linkText: 'Layout',

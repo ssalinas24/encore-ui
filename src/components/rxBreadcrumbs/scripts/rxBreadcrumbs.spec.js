@@ -1,5 +1,3 @@
-/* jshint node: true */
-/* jshint camelcase:false */
 describe('Breadcrumbs', function () {
     var scope, compile, breadcrumbs;
 

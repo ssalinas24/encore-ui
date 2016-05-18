@@ -1,5 +1,3 @@
-/*jshint node:true*/
-
 // Basic template description.
 exports.description = 'Create an EncoreUI component, including unit tests and documentation.';
 

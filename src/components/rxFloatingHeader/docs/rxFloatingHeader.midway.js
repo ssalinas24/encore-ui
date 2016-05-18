@@ -3,23 +3,23 @@ var singleRowTable = {
         return this.table.isDisplayed();
     },
 
-    get table() {
+    get table () {
         return $('table[rx-floating-header].no-filter');
     },
 
-    get tr() {
+    get tr () {
         return this.table.$('thead tr:first-of-type');
     },
 
-    get trLocation() {
+    get trLocation () {
         return this.tr.getLocation();
     },
 
-    get tableBody() {
+    get tableBody () {
         return this.table.$('tbody');
     },
 
-    get tableBodySize() {
+    get tableBodySize () {
         return this.tableBody.getSize();
     },
 
@@ -40,35 +40,35 @@ var multiRowTable = {
         return this.table.isDisplayed();
     },
 
-    get table() {
+    get table () {
         return $('table[rx-floating-header].filter');
     },
 
-    get tableBody() {
+    get tableBody () {
         return this.table.$('tbody');
     },
 
-    get trs() {
+    get trs () {
         return this.table.$$('thead tr');
     },
 
-    get trLocation() {
+    get trLocation () {
         return this.trs.get(0).getLocation();
     },
 
-    get filtersHeader() {
+    get filtersHeader () {
         return this.trs.get(0);
     },
 
-    get filtersHeaderLocation() {
+    get filtersHeaderLocation () {
         return this.filtersHeader.getLocation();
     },
 
-    get filtersHeaderSize() {
+    get filtersHeaderSize () {
         return this.filtersHeader.getSize();
     },
 
-    get titlesHeaderLocation() {
+    get titlesHeaderLocation () {
         return this.trs.get(1).getLocation();
     },
 

@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxModalForm', function () {
     var el, scope, compile, timeout;
 

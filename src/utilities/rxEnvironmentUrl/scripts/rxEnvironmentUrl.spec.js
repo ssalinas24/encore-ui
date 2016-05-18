@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxEnvironmentUrl', function () {
     var urlFilter, envSvc;
 

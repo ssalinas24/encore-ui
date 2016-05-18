@@ -5,12 +5,16 @@
     "hasApi": false,
     "keywords": [
         "checkbox",
+        "date",
         "dropdown",
         "form",
         "input",
         "multi select",
         "option",
+        "picker",
         "radio",
+        "rxCheckbox",
+        "rxDatePicker",
         "rxField",
         "rxFieldContent",
         "rxForm",
@@ -18,9 +22,11 @@
         "rxInfix",
         "rxPrefix",
         "rxSuffix",
+        "rxTimePicker",
         "select",
-        "text",
         "text area",
+        "text",
+        "time",
         "validation"
     ]
 }

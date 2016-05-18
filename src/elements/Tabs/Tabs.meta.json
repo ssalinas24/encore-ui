@@ -1,0 +1,9 @@
+{
+    "displayName": "Tabs",
+    "stability": "stable",
+    "description": "Styling for ngBootstrap Tabs plugin",
+    "hasApi": false,
+    "keywords": [
+        "tabs"
+    ]
+}

@@ -1,5 +1,4 @@
 describe('rxAccountInfo', function () {
-    /* jshint node: true */
     describe('directive:rxAccountInfo', function () {
         var scope, compile, el, rxnotify, encoreRoutesMock;
         var validTemplate = '<rx-account-info account-info-banner="true" account-number="123"></rx-account-info>';

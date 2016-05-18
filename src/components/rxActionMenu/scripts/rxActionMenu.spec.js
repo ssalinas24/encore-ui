@@ -1,5 +1,4 @@
 describe('rxActionMenu', function () {
-    /* jshint node: true */
     describe('directive:rxActionMenu', function () {
         var el, scope, compile, document;
 

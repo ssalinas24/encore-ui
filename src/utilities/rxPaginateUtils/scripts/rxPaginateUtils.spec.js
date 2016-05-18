@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('Pagination', function () {
     describe('Factory: rxPaginateUtils', function () {
         var rxPaginateUtils;

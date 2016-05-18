@@ -1,4 +1,3 @@
-/* jshint node: true */
 describe('rxNotify', function () {
     var scope, compile, el2, notifySvc;
     var messageText1 = 'My Message 1';

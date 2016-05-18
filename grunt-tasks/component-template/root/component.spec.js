@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 describe('{%= name %}', function () {
     var scope, compile, rootScope, el;
     var validTemplate = '<{%= dashedName %}></{%= dashedName %}>';
