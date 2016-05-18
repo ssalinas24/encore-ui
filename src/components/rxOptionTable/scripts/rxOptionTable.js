@@ -150,8 +150,7 @@ angular.module('encore.ui.rxOptionTable')
             };
 
             // Because of a bug in Angular 1.2.x, we can't use `required` and
-            // ngTrueValue/ngFalseValue simultaneously. We don't want to affect
-            // people that were already using rxFormOptionTable, so instead we'll
+            // ngTrueValue/ngFalseValue simultaneously. We'll
             // build a `modelProxy` which is simply a mapping of $scope.model to
             // an array of `true` / `false` values. We then have to take care
             // of updating the actual $scope.model ourselves in `updateCheckboxes`

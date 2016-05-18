@@ -84,7 +84,7 @@ describe('rxFeedback', function () {
                 deferred.fulfill(unsuccessfulFeedback.send('Software Bug', 'test', 3000));
                 return deferred.promise;
             };
-            browser.sleep(2000);
+            browser.sleep(3000);
             expect(send()).to.be.rejectedWith(Error);
         });
 

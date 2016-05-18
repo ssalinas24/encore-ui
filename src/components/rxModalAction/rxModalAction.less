@@ -25,9 +25,9 @@
 .modal,
 .modal-backdrop {
   .transition();
-  .opacity(0);
+  opacity: 0;
   &.fade.in {
-    .opacity(1);
+    opacity: 1;
   }
 }
 
@@ -40,7 +40,7 @@
   z-index: 1040;
   background: @black;
   &.fade.in {
-    .opacity(0.4);
+    opacity: 0.4;
   }
 }
 
@@ -55,8 +55,8 @@
   transform: translate(-50%, 0);
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
-  .box-shadow(0 3px 7px rgba(0, 0, 0, 0.3));
-  .background-clip();
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
   outline: none;
 }
 

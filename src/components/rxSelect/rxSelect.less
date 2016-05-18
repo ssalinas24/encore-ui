@@ -3,12 +3,12 @@
  */
 .rxSelect {
   z-index: 0; // creates local z-index stacking context
-  .box-sizing(border-box);
+  box-sizing: border-box;
   display: block;
   position: relative;
   color: @rxSelect-text-color;
   background: @rxSelect-background-color;
-  .border-radius(@rxSelect-border-radius);
+  border-radius: @rxSelect-border-radius;
 
   // Element should be resizable via wrapper alone
   min-width: @rxSelect-min-width;
@@ -22,7 +22,7 @@
   // position elements in wrapper
   select,
   .fake-select {
-    .box-sizing(border-box);
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -96,7 +96,7 @@
     z-index: 10;
     border: @rxSelect-border-width solid @rxSelect-border-color;
     overflow: hidden;
-    .border-radius(@rxSelect-border-radius);
+    border-radius: @rxSelect-border-radius;
     display: flex;
     justify-content: flex-end;
     flex-flow: row nowrap;
@@ -107,7 +107,7 @@
 
     // Custom trigger button will cover native <select> button
     .select-trigger {
-      .box-sizing(border-box);
+      box-sizing: border-box;
       width: @rxSelect-trigger-width;
       background: @rxSelect-background-color;
       color: @rxSelect-trigger-color;

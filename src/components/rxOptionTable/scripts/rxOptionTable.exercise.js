@@ -5,8 +5,7 @@ var rxOptionTable = require('./rxOptionTable.page').rxOptionTable;
  * @description rxOptionTable exercises.
  * @exports exercise/rxOptionTable
  * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxOptionTable} [options.instance=rxOptionTable.initialize] - Component to exercise.
- * @param {string} [options.cssSelector] - **DEPRECATED**: Fallback selector string to initialize widget with.
+ * @param {rxOptionTable} [options.instance={@link rxOptionTable.initialize}] - Component to exercise.
  * @param {string} [options.visible=true] - Determines if the option table is visible
  * @param {string} [options.empty=false] - Determines if the option table is empty
  */
@@ -16,6 +15,7 @@ exports.rxOptionTable = function (options) {
     }
 
     options = _.defaults(options, {
+        instance: rxOptionTable.initialize(),
         visible: true,
         empty: false
     });
@@ -24,16 +24,7 @@ exports.rxOptionTable = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxOptionTable.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxOptionTable.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should ' + (options.visible ? 'be' : 'not be') + ' visible', function () {

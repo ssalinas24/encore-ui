@@ -273,8 +273,7 @@ angular.module('encore.ui.rxApp')
  * environment is not necessary.
  *
  * Another technique for visibility is to use a predefined set of visibility
- * functions that exist in the framework. These include `rxPathParams` and
- * `rxHideIfUkAccount`.
+ * functions that exist in the framework—`rxPathParams`, for example.
  *
  * To use these, you pass an array to `visibility`, with the first argument being
  * the name of the function to use (as a string), and the second argument as an

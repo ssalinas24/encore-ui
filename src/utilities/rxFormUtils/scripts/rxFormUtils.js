@@ -4,15 +4,16 @@ angular.module('encore.ui.utilities')
  * @ngdoc service
  *
  * @description
- * Set of utility functions used by rxForm to access form data.
+ * Set of utility functions used by rxForm to access form data in 
+ * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}.
  *
- * @example
  * <pre>
- * // Returns the selected option for the rxFormOptionTable with id tableId
+ * // Returns the selected option for the rxOptionTable with id tableId
  * // [{ tableId: 'tableId', fieldId: 'fieldId', rowId: 'rowId' }]
  * getSelectedOptionForTable(tableId)
-
- * // Returns the selected option for the rxFormOptionTable in the tabset with id tabsetId
+ * </pre>
+ * <pre>
+ * // Returns the selected option for the rxOptionTable in the tabset with id tabsetId
  * // [{ tableId: 'tableId', fieldId: 'fieldId', rowId: 'rowId' }]
  * getSelectedOptionForTabSet(tabsetId)
  * </pre>
@@ -20,13 +21,19 @@ angular.module('encore.ui.utilities')
 .factory('rxFormUtils', function ($document) {
     var rxFormUtils = {};
 
-    // Returns the selected option for the rxFormOptionTable with id: tableId
-    // and fieldId: fieldId (optional)
-    // @param {String} tableId - The id of the table
-    // @returns {object} The rowId of the selected option
+    /**
+     * @ngdoc function
+     * @name  rxFormUtils.getSelectedOptionForTable
+     * @methodOf utilities.service:rxFormUtils
+     * @description
+     * Returns the selected option for the {@link rxOptionTable.directive:rxOptionTable rxOptionTable} with
+     * `id`: tableId and `fieldId`: fieldId (optional).
+     * @param {String} tableId - The id of the table
+     * @returns {object} The rowId of the selected option
+     */
     rxFormUtils.getSelectedOptionForTable = function (tableId) {
         var selectedRow;
-        var row = $document[0].querySelector('rx-form-option-table#' + tableId + ' .selected input');
+        var row = $document[0].querySelector('rx-option-table#' + tableId + ' .selected input');
 
         if (_.isObject(row) && 'value' in row) {
             selectedRow = { rowId: row.value };
@@ -34,13 +41,19 @@ angular.module('encore.ui.utilities')
         return selectedRow;
     };
 
-    // Returns the selected option within the tabset
-    // @param {String} tabsetId - The id of the tabset
-    // @returns {object} The tableId, fieldId, and rowId of the selected option
+    /**
+     * @ngdoc function
+     * @name  rxFormUtils.getSelectedOptionForTabSet
+     * @methodOf utilities.service:rxFormUtils
+     * @description
+     * Returns the selected option within the tabset.
+     * @param {String} tabsetId - The id of the tabset
+     * @returns {object} The tableId, fieldId, and rowId of the selected option
+     */
     rxFormUtils.getSelectedOptionForTabSet = function (tabsetId) {
         var selectedOption;
         var xpathToTable = '//div[@id="' + tabsetId +
-            '"]//tr[contains(@class, "selected")]//ancestor::rx-form-option-table';
+            '"]//tr[contains(@class, "selected")]//ancestor::rx-option-table';
         var result = $document[0].evaluate(xpathToTable, $document[0], null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
         if (result.singleNodeValue) {
             var table = result.singleNodeValue;

@@ -1,6 +1,3 @@
-var modal = encore.rxModalAction;
-var rxForm = encore.rxForm;
-
 describe('rxModalAction', function () {
     var changePasswordModal, triggerModal;
 
@@ -31,10 +28,10 @@ describe('rxModalAction', function () {
     before(function () {
         demoPage.go('#/components/rxModalAction');
         triggerModal = function () {
-            rxForm.slowClick($('#modChangePassword .modal-link'));
+            encore.rxMisc.slowClick($('#modChangePassword .modal-link'));
         };
 
-        changePasswordModal = modal.initialize(customFunctionalty);
+        changePasswordModal = encore.rxModalAction.initialize(customFunctionalty);
     });
 
     it('should not display the modal unless triggered', function () {
@@ -85,6 +82,7 @@ describe('rxModalAction', function () {
 
         it('should submit', function () {
             changePasswordModal.submit();
+            browser.sleep(500);
             expect(changePasswordModal.isDisplayed()).to.eventually.be.false;
         });
     });//when triggered
@@ -101,6 +99,7 @@ describe('rxModalAction', function () {
         describe('when closed with the little X in the corner', function () {
             beforeEach(function () {
                 changePasswordModal.close();
+                browser.sleep(500);
             });
 
             it('should close the modal', function () {
@@ -115,6 +114,7 @@ describe('rxModalAction', function () {
         describe('when closed via the "cancel" button', function () {
             beforeEach(function () {
                 changePasswordModal.cancel();
+                browser.sleep(500);
             });
 
             it('should close the modal', function () {
@@ -131,7 +131,7 @@ describe('rxModalAction', function () {
         var defaultModal;
 
         before(function () {
-            defaultModal = modal.initialize();
+            defaultModal = encore.rxModalAction.initialize();
         });
 
         it('should support basic functionality without supplying any arguments', function () {
@@ -146,9 +146,9 @@ describe('rxModalAction', function () {
 
         before(function () {
             triggerModal = function () {
-                rxForm.slowClick($('#btnDisabledModal .modal-link'));
+                encore.rxMisc.slowClick($('#btnDisabledModal .modal-link'));
             };
-            defaultModal = modal.initialize();
+            defaultModal = encore.rxModalAction.initialize();
         });
 
         it('should not open modal', function () {

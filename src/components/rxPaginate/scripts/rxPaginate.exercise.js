@@ -1,13 +1,10 @@
 var _ = require('lodash');
 
-var rxPaginate = require('./rxPaginate.page').rxPaginate;
-
 /**
  * rxPaginate exercises.
  * @exports exercise/rxPaginate
- * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxPaginate} [options.instance=rxPaginate.initialize] - Component to exercise.
- * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} options - Test options. Used to build valid tests.
+ * @param {rxPaginate} options.instance - Component to exercise.
  * @param {String} [options.pages=6] - Estimated page size in the pagination widget.
  * @param {Number[]} [options.pageSizes=[50, 200, 350, 500]] - Page sizes to validate.
  * @param {Number} [options.defaultPageSize=50] - Default page size on page load.
@@ -34,16 +31,7 @@ exports.rxPaginate = function (options) {
         var pagination;
 
         before(function () {
-            if (options.instance !== undefined) {
-                pagination = options.instance;
-            } else {
-                pagination = rxPaginate.main;
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                pagination = rxPaginate.initialize($(options.cssSelector));
-            }
+            pagination = options.instance;
         });
 
         if (options.pages > 1) {
