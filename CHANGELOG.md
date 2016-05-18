@@ -1,3 +1,23 @@
+<a name="2.0.0-6"></a>
+### 2.0.0-6 (2016-05-18)
+
+
+#### Bug Fixes
+
+* **midway:** fix Tabs midway ([65803fff](git@github.com:rackerlabs/encore-ui/commit/65803fff97f3bc22a4658bd2b5549aa8308d6b6a))
+* **midways:** fix broken midways ([06e997db](git@github.com:rackerlabs/encore-ui/commit/06e997db9860f761f16ce7199d6c1bee33ae7c66))
+* **rxDatePicker:** fix spec ([8bccd6f2](git@github.com:rackerlabs/encore-ui/commit/8bccd6f26a7428ea33dbd3ff82e305b5a123a549))
+* **scope:** rxMultiSelect ([4bf793b0](git@github.com:rackerlabs/encore-ui/commit/4bf793b0bcfbc847c9c32dccfd1875af80ca7c87))
+
+
+#### Breaking Changes
+
+* You will need to refer to the component under test
+using the `instance` option, which should be a page object that you
+instantiate yourself, and hand into the exercise.
+ ([2c795c05](git@github.com:rackerlabs/encore-ui/commit/2c795c05b6fdb44b01863c5cab80544df73acb34))
+
+
 <a name="1.48.0"></a>
 ## 1.48.0 (2016-05-18)
 
