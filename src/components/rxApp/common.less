@@ -279,7 +279,7 @@ a.subdued:hover,
 a.subdued:focus,
 a:hover .subdued,
 a:focus .subdued {
-  color: @subduedTextHover;
+  color: darken(@gray-700, 15%);
 }
 
 // Hidden content
@@ -345,12 +345,12 @@ body:hover .visually-hidden button {
  * https://css-tricks.com/snippets/css/style-placeholder-text/
  */
 ::-webkit-input-placeholder { // Chrome
-  color: @inputPlaceholderColor;
+  color: @rxForm-placeholder-color;
   font-weight: 300;
   font-style: italic;
 }
 ::-moz-placeholder { // Firefox 19+
-  color: @inputPlaceholderColor;
+  color: @rxForm-placeholder-color;
   font-weight: 400;
   font-style: italic;
 }
@@ -363,5 +363,5 @@ body:hover .visually-hidden button {
 //DEPRECATED
 .action-separator {
   font-size: 1.1em;
-  color: @subduedText;
+  color: @gray-700;
 }
