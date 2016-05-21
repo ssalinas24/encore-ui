@@ -24,19 +24,17 @@ module.exports = function (grunt) {
         var _srcFiles = grunt.file.expand([
             globBase + '.module.js', // category manifests
             globBase + '/' + name + '.module.js', // component manifests (legacy)
-            globBase + '/scripts/!(*.spec|*.page|*.exercise).js' // Load additional scripts
+            globBase + '/scripts/!(*.spec).js' // Load additional scripts
         ]);
         var _tplFiles = grunt.file.expand([ globBase + '/*.tpl.html' ]);
         var _tplJsFiles = grunt.file.expand([ 'templates/' + name + '/templates/*.html' ]);
         var _docMdFiles = grunt.file.expand(globBase + '/*.md');
         var _docJsFiles = grunt.file.expand([
-            globBase + '/docs/!(*.midway).js',
+            globBase + '/docs/*.js',
             globBase + '/docs/examples/**/*.js'
         ]);
         var _docHtmlFiles = grunt.file.expand(globBase + '/docs/*.html');
         var _docLessFiles = grunt.file.expand(globBase + '/*.less');
-        var _docMidwayFiles = grunt.file.expand(globBase + '/docs/*.midway.js');
-        var _docExerciseFiles = grunt.file.expand(globBase + '/**/*.exercise.js');
 
         var _moduleName = ['encore', 'ui'];
         if (category == 'components') {
@@ -71,12 +69,7 @@ module.exports = function (grunt) {
                 md: _docMdFiles.map(grunt.file.read).map(parseMarkdown).join('\n'),
                 js: _docJsFiles.map(grunt.file.read).join('\n'),
                 html: _docHtmlFiles.map(grunt.file.read).join('\n'),
-                less: _docLessFiles.map(grunt.file.read).join('\n'),
-                midway: [
-                    _docMidwayFiles.map(grunt.file.read).join('\n') +
-                        '// this component\'s exercise.js file, if it exists, is below\n' +
-                        _docExerciseFiles.map(grunt.file.read).join('\n')
-                ].join('\n')
+                less: _docLessFiles.map(grunt.file.read).join('\n')
             }
         });
 

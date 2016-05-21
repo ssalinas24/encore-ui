@@ -1,10 +1,7 @@
 module.exports = function (grunt) {
     grunt.registerTask('rxPageObjects', 'Publish rxPageObjects to npm', function (publishType) {
         var tasks = [
-            'concat:rxPageObjects',
-            'concat:rxPageObjectsExercises',
-            'jsdoc:rxPageObjects',
-            'copy:rxPageObjectsDocs'
+            'jsdoc:rxPageObjects'
         ];
 
         if (publishType === 'hotfix') {

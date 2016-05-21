@@ -6,10 +6,7 @@ module.exports = {
         files: [
             'src/**/*.js',
             'src/**/*.meta.json',
-            '!src/**/*.spec.js',
-            '!src/**/*.midway.js',
-            '!src/**/*.page.js',
-            '!src/**/*.exercise.js'
+            '!src/**/*.spec.js'
         ],
         tasks: [
             'build',
@@ -89,13 +86,10 @@ module.exports = {
     },
     rxPageObjects: {
         files: [
-            'src/**/*.page.js',
-            'src/**/*.exercise.js',
+            'utils/rx-page-objects/src/*.js',
             'utils/rx-page-objects/doc/README.md'
         ],
         tasks: [
-            'concat:rxPageObjects',
-            'concat:rxPageObjectsExercises',
             'jsdoc:rxPageObjects',
             'copy:rxPageObjectsDocs'
         ]
