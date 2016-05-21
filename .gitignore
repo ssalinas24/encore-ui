@@ -37,8 +37,6 @@ results
 /tmp/
 /bower/
 /dist/
-/utils/rx-page-objects/index.js
-/utils/rx-page-objects/exercise.js
 /utils/rx-page-objects/doc/*
 !/utils/rx-page-objects/doc/jsdoc-custom.css
 !/utils/rx-page-objects/doc/layout.tmpl
