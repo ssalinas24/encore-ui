@@ -1,11 +1,8 @@
 {
     "component.js": "{%= name %}.js",
     "component.spec.js": "{%= name %}.spec.js",
-    "component.page.js": "{%= name %}.page.js",
-    "component.exercise.js": "{%= name %}.exercise.js",
     "component.less": "{%= name %}.less",
     "docs/component.js": "docs/{%= name %}.js",
     "docs/component.html": "docs/{%= name %}.html",
-    "docs/component.midway.js": "docs/{%= name %}.midway.js",
     "templates/component.html": "templates/{%= name %}.html"
 }
