@@ -1,3 +1,7 @@
+var rxSelect = require('./rxSelect.page').rxSelect;
+var rxNotify = require('./rxNotify.page').rxNotify;
+var rxModalAction = require('./rxModalAction.page').rxModalAction;
+
 /**
  * @namespace
  * @description Utilities for interacting with an rxFeedback component.
@@ -5,7 +9,7 @@
 var rxFeedback = {
     selReportType: {
         get: function () {
-            return exports.rxSelect.initialize($('#selFeedbackType'));
+            return rxSelect.initialize($('#selFeedbackType'));
         }
     },
 
@@ -152,7 +156,7 @@ var rxFeedback = {
         value: function (within, fn) {
             if (fn === undefined) {
                 fn = function () {
-                    return exports.rxNotify.all.exists('feedback', 'success');
+                    return rxNotify.all.exists('feedback', 'success');
                 };
             }
 
@@ -183,6 +187,6 @@ exports.rxFeedback = {
         rxFeedback.eleFeedback = {
             get: function () { return rxFeedbackElement; }
         };
-        return exports.rxModalAction.initialize(rxFeedback);
+        return rxModalAction.initialize(rxFeedback);
     }
 };
