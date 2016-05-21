@@ -1,5 +1,4 @@
 var modal = encore.rxModalAction;
-var rxForm = encore.rxForm;
 
 describe('rxModalAction', function () {
     var changePasswordModal, triggerModal;
@@ -31,7 +30,7 @@ describe('rxModalAction', function () {
     before(function () {
         demoPage.go('#/components/rxModalAction');
         triggerModal = function () {
-            rxForm.slowClick($('#modChangePassword .modal-link'));
+            encore.rxMisc.slowClick($('#modChangePassword .modal-link'));
         };
 
         changePasswordModal = modal.initialize(customFunctionalty);
@@ -146,7 +145,7 @@ describe('rxModalAction', function () {
 
         before(function () {
             triggerModal = function () {
-                rxForm.slowClick($('#btnDisabledModal .modal-link'));
+                encore.rxMisc.slowClick($('#btnDisabledModal .modal-link'));
             };
             defaultModal = modal.initialize();
         });

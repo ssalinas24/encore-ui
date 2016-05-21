@@ -1,11 +1,13 @@
 var Page = require('astrolabe').Page;
 
+var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+
 var selectOptionFromElement = function (optionElement) {
     /**
      * @private
      * @namespace rxMultiSelect.option
      */
-    return Object.create(exports.rxCheckbox.initialize(optionElement.$('input')), {
+    return Object.create(rxCheckbox.initialize(optionElement.$('input')), {
 
         /**
          * @memberof rxMultiSelect.option

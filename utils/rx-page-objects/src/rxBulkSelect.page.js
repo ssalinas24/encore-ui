@@ -1,12 +1,15 @@
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
+var rxActionMenu = require('./rxActionMenu.page').rxActionMenu;
+var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+
 var rxBulkSelectDefaultRowFn = function (rowElement) {
-    return exports.rxCheckbox.initialize(rowElement.$('input[type="checkbox"]'));
+    return rxCheckbox.initialize(rowElement.$('input[type="checkbox"]'));
 };
 
 var rxBatchActionMenu = function (rootElement) {
-    var actionMenu = exports.rxActionMenu.initialize(rootElement);
+    var actionMenu = rxActionMenu.initialize(rootElement);
 
     // Need to override several properties styles and the ng-hide attribute
     // compared to what is seen in rxActionMenu.
@@ -91,9 +94,8 @@ var rxBulkSelect = {
      */
     selectAllCheckbox: {
         get: function () {
-            return exports.rxCheckbox.initialize(
-                this.rootElement.$('[rx-bulk-select-header-check]').$('input[type="checkbox"]')
-            );
+            var eleCheckbox = this.rootElement.$('[rx-bulk-select-header-check]').$('input[type="checkbox"]');
+            return rxCheckbox.initialize(eleCheckbox);
         }
     },
 

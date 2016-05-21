@@ -1,6 +1,8 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var rxMisc = require('./rxMisc.page').rxMisc;
+
 /**
  * @namespace
  * @description Functionality for interacting with modals. It is up to you to launch a modal, but once
@@ -103,7 +105,7 @@ var rxModalAction = {
      */
     cancel: {
         value: function () {
-            exports.rxMisc.slowClick(this.btnCancel);
+            rxMisc.slowClick(this.btnCancel);
         }
     }
 

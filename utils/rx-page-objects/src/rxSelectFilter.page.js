@@ -1,6 +1,8 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var rxMultiSelect = require('./rxMultiSelect.page').rxMultiSelect;
+
 /**
    @namespace
  */
@@ -15,7 +17,7 @@ var rxSelectFilter = {
     multiSelectByLabel: {
         value: function (label) {
             var selectWrapper = element(by.cssContainingText('.select-wrapper', label));
-            return exports.rxMultiSelect.initialize(selectWrapper.$('rx-multi-select'));
+            return rxMultiSelect.initialize(selectWrapper.$('rx-multi-select'));
         }
     },
 
