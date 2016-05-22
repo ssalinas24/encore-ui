@@ -57,7 +57,58 @@ angular.module('encore.ui.rxApp')
         scope: {
             item: '='
         },
-        controller: function ($scope, $location, rxVisibility, Permission) {
+        controller: function ($scope, $location, $injector, rxVisibility, Permission, urlUtils) {
+            /*
+             * @description Determines whether or not a nav item should have its href prefixed
+             * based on whether the `$injector` has a `NAV_ITEM_PREFIX` injectable
+             *
+             * _This is *NOT* meant for general consumption, this is strictly for the Origin Project_
+             * _This will eventually be deprecated and removed_
+             *
+             * @param {string} [url] - URL for the nav item's href
+             */
+            $scope.getUrl = function (url) {
+                // For URLs that have no URL definition, let's go ahead and return right away
+                // this avoids issues when we do have a prefix but really the nav item should not have
+                // any defined href, i.e. items that have subitems
+                if (_.isEmpty(url)) {
+                    return url;
+                }
+
+                // Check if we have a definition of NAV_ITEM_PREFIX, if so let's retrieve it and return the given URL
+                // appended to the prefix.  This allows applications like origin to prefix nav items, while not
+                // messing with nav items in the demo/documentation.
+                //
+                // _This is *NOT* meant for general consumption, this is strictly for the Origin Project_
+                // _This will eventually be deprecated and removed_
+                //
+
+                if ($injector.has('NAV_ITEM_PREFIX')) {
+                    var prefix = urlUtils.parseUrl($injector.get('NAV_ITEM_PREFIX'));
+                    return prefix.protocol.concat('//').concat(prefix.host).concat(url);
+                } else {
+                    // Return as normal if no prefix
+                    return url;
+                }
+
+            };
+            /*
+             * @description Determines whether or not the links need to point to a target, this allows
+             * for origin and applications that show the nav to implement a target in which to have the links
+             * open in.
+             *
+             * If ever there was a need to point links to a different target than an application specific
+             * target, we could implement logic here to inspect the item and determine the target.
+             * (i.e. opening an external application in a new window)
+             */
+            $scope.getTarget = function () {
+                // Check if we have a definition of NAV_ITEM_TARGET, if so let's retrieve it and enable the target attr
+                // on the nav item.  This allows applications like origin to give a target to it's nav items, while not
+                // messing with nav items in the demo/documentation.
+                // The default of `_self` is based on the default value of `target` when there's no value present:
+                // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target
+                return $injector.has('NAV_ITEM_TARGET') ? $injector.get('NAV_ITEM_TARGET') : '_self';
+            };
             // provide `route` as a scope property so that links can tie into them
             $scope.route = $route;
 
