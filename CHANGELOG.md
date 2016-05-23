@@ -1,3 +1,12 @@
+<a name="2.0.0-7"></a>
+### 2.0.0-7 (2016-05-23)
+
+
+#### Features
+
+* **rxAppNavItem:** Target & Href prefix for nav items ([c43e3897](git@github.com:rackerlabs/encore-ui/commit/c43e3897ea31455b8d0998888ee4c43dc2abcce5))
+
+
 <a name="2.0.0-6"></a>
 ### 2.0.0-6 (2016-05-18)
 
