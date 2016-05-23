@@ -175,4 +175,54 @@ describe('utilities:urlUtils', function () {
             expect(urlutils.buildUrl(undefined)).to.be.undefined;
         });
     });
+
+    describe('parseUrl', function () {
+        it('should populate object with URL parts', function () {
+            var parsed = urlutils.parseUrl('http://something.com/foo/bar?test=four#foobar');
+            expect(parsed.protocol).to.equal('http:');
+            expect(parsed.hostname).to.equal('something.com');
+            expect(parsed.port).to.equal('0');
+            expect(parsed.pathname).to.equal('/foo/bar');
+            expect(parsed.search).to.equal('?test=four');
+            expect(parsed.hash).to.equal('#foobar');
+            expect(parsed.host).to.equal('something.com');
+        });
+
+        it('should return pathname of undefined with loaded page host values if the url is undefined', function () {
+            var parsed = urlutils.parseUrl(undefined);
+            expect(parsed.protocol).to.equal('http:');
+            expect(parsed.hostname).to.equal('localhost');
+            expect(parsed.port).to.equal('9877');
+            expect(parsed.pathname).to.equal('/undefined');
+            expect(parsed.host).to.equal('localhost:9877');
+        });
+
+        it('should return current loaded page values if the url is blank', function () {
+            var parsed = urlutils.parseUrl('');
+            expect(parsed.protocol).to.equal('http:');
+            expect(parsed.hostname).to.equal('localhost');
+            expect(parsed.port).to.equal('9877');
+            expect(parsed.pathname).to.equal('/context.html');
+            expect(parsed.host).to.equal('localhost:9877');
+        });
+
+        it('should return empty values if the url is null', function () {
+            var parsed = urlutils.parseUrl(null);
+            expect(parsed.protocol).to.equal(':');
+            expect(parsed.hostname).to.equal('');
+            expect(parsed.port).to.equal('0');
+            expect(parsed.pathname).to.equal('');
+            expect(parsed.search).to.equal('');
+            expect(parsed.hash).to.equal('');
+            expect(parsed.host).to.equal('');
+        });
+
+        it('should include the port number in the host property', function () {
+            var parsed = urlutils.parseUrl('http://something.com:1010');
+            expect(parsed.protocol).to.equal('http:');
+            expect(parsed.hostname).to.equal('something.com');
+            expect(parsed.port).to.equal('1010');
+            expect(parsed.host).to.equal('something.com:1010');
+        });
+    });
 });
