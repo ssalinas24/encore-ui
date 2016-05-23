@@ -7,6 +7,7 @@ angular.module('encore.ui.utilities')
  * Set of utility functions to break apart/compare URLs.
  */
 .service('urlUtils', function ($location, rxEnvironmentUrlFilter, $interpolate, $route, $document) {
+    var urlParser = $document[0].createElement('a');
     // remove any preceding # and / from the URL for cleaner comparison
     this.stripLeadingChars = function (url) {
         // http://regexr.com/39coc
@@ -120,5 +121,11 @@ angular.module('encore.ui.utilities')
     // matches all of `subChunks`
     this.matchesSubChunks = function (firstChunks, subChunks, numChunks) {
         return _.isEqual(firstChunks.slice(0, numChunks), subChunks);
+    };
+
+    // Given a URL string, parse all the different pieces of it
+    this.parseUrl = function (url) {
+        urlParser.href = url;
+        return _.pick(urlParser, ['protocol', 'hostname', 'port', 'pathname', 'search', 'hash', 'host']);
     };
 });
