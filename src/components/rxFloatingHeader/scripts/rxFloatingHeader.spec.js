@@ -67,7 +67,7 @@ describe('rxFloatingHeader', function () {
         scope.$digest();
     });
 
-    it('should apply .filter-header and .filter-box to headers and inputs', function () {
+    it('should apply .filter-header to headers and inputs', function () {
         var ths = el.find('th');
         var inputs = el.find('input');
 
@@ -79,7 +79,6 @@ describe('rxFloatingHeader', function () {
         expect(ths.eq(2).hasClass('filter-header'), 'third th').to.be.false;
 
         expect(inputs, 'one input').to.have.length(1);
-        expect(inputs.eq(0).hasClass('filter-box')).to.be.true;
     });
 
     it('should add .rx-floating-header when we scroll past the header', function () {
