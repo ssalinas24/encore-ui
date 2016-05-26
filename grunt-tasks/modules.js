@@ -142,6 +142,10 @@ module.exports = function (grunt) {
 
         // Set the concat task to concatenate the given src modules
         var srcFiles = _.pluck(modules, 'srcFiles'); // OK
+
+        // Prepend ngBootstrap overrides to suppress v0.14.3 deprecation warnings
+        srcFiles = [ 'src/ngBootstrapOverrides.js' ].concat(srcFiles);
+
         grunt.config('concat.dist.src', grunt.config('concat.dist.src').concat(srcFiles));
 
         // Set the concat-with-templates task to concat the given src & tpl modules
