@@ -64,20 +64,6 @@ var breadcrumb = function (rootElement) {
         /**
          * @instance
          * @function
-         * @deprecated
-         * @alias {rxBreadcrumbs.breadcrumb#click}
-         * @memberOf rxBreadcrumbs.breadcrumb
-         * @description Use rxBreadcrumbs.breadcrumb#click instead. This will be removed in the future.
-         */
-        visit: {
-            value: function () {
-                return this.click();
-            }
-        },
-
-        /**
-         * @instance
-         * @function
          * @memberOf rxBreadcrumbs.breadcrumb
          * @description Click the breadcrumb to visit it.
          */

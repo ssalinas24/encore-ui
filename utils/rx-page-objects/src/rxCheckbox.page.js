@@ -128,20 +128,6 @@ var rxCheckbox = {
 
     /**
      * @instance
-     * @deprecated
-     * @function
-     * @description DEPRECATED: Use {@link rxCheckbox#deselect} instead.
-     * This function will be removed in a future release of the EncoreUI framework.
-     * @returns {undefined}
-     */
-    unselect: {
-        value: function () {
-            return this.deselect();
-        }
-    },
-
-    /**
-     * @instance
      * @function
      * @description Make sure checkbox is deselected.
      */

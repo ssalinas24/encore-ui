@@ -113,8 +113,8 @@ describe('rxOptionTable', function () {
             expect(component.selections).to.eventually.eql([0, 1]);
         });
 
-        it('should unselect many rows', function () {
-            component.unselectMany([{ Name: 'Item 1' }, { Name: 'Item 2' }]);
+        it('should deselect many rows', function () {
+            component.deselectMany([{ Name: 'Item 1' }, { Name: 'Item 2' }]);
             expect(component.selections).to.eventually.be.empty;
         });
     });
