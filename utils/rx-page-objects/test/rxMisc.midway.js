@@ -115,7 +115,7 @@ describe('rxMisc', function () {
             var date;
 
             before(function () {
-                demoPage.go('#/components/rxMetadata');
+                demoPage.go('#/elements/Metadata');
                 var transformFns = {
                     'Date Field': function (elem) {
                         return elem.getText().then(encore.rxMisc.newDate);
