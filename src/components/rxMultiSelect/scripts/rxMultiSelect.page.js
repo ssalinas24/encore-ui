@@ -29,6 +29,50 @@ var selectOptionFromElement = function (optionElement) {
             get: function () {
                 return optionElement.getAttribute('value');
             }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxMultiSelect.option
+         * @description Make sure checkbox is selected/checked.
+         */
+        select: {
+            value: function () {
+                /**
+                 * Since protractor 3.0, you must over-ride anything that interacts with the inherited
+                 * checkboxes (since they have a `<label>` tag on top of them). Attempting to click the
+                 * underlying `<input>` tag will throw a ElementNotClickableError.
+                 */
+                var label = optionElement;
+                return this.isSelected().then(function (selected) {
+                    if (!selected) {
+                        label.click();
+                    }
+                });
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxMultiSelect.option
+         * @description Make sure checkbox is deselected.
+         */
+        deselect: {
+            value: function () {
+                /**
+                 * Since protractor 3.0, you must over-ride anything that interacts with the inherited
+                 * checkboxes (since they have a `<label>` tag on top of them). Attempting to click the
+                 * underlying `<input>` tag will throw a ElementNotClickableError.
+                 */
+                var label = optionElement;
+                return this.isSelected().then(function (selected) {
+                    if (selected) {
+                        label.click();
+                    }
+                });
+            }
         }
 
     });
@@ -52,10 +96,9 @@ var rxMultiSelect = {
      */
     closeMenu: {
         value: function () {
-            var self = this;
             this.isOpen().then(function (isOpen) {
                 if (isOpen) {
-                    self.lblPreview.click();
+                    $('body').click();
                 }
             });
         }
@@ -175,7 +218,7 @@ var rxMultiSelect = {
      */
     option: {
         value: function (optionText) {
-            var optionElement = this.rootElement.element(by.cssContainingText('rx-select-option', optionText));
+            var optionElement = this.rootElement.element(by.cssContainingText('rx-select-option label', optionText));
             return selectOptionFromElement(optionElement);
         }
     },

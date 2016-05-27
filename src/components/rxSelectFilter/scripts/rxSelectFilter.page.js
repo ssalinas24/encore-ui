@@ -50,6 +50,7 @@ var rxSelectFilter = {
             var self = this;
             _.each(filterData, function (options, label) {
                 var multiSelect = self.multiSelectByLabel(label);
+                multiSelect.openMenu();
                 _.each(options, function (shouldSelect, option) {
                     if (shouldSelect) {
                         multiSelect.select([option]);

@@ -98,5 +98,9 @@ exports.rxMultiSelect = function (options) {
             });
         }//if options.disabled
 
+        it('hides the menu when another element is clicked', function () {
+            $('body').click();
+            expect(component.isOpen()).to.eventually.be.false;
+        });
     };
 };

@@ -20,7 +20,7 @@ describe('typeahead', function () {
     });
 
     it('should hide the menu when the input loses focus', function () {
-        typeahead.rootElement.element(by.xpath('../..')).click();
+        $('body').click();
         expect(typeahead.isOpen()).to.eventually.be.false;
     });
 });
