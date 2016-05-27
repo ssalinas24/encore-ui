@@ -1,15 +1,3 @@
-var removeFromIndex = [
-    '/*jshint node:true*/',
-    'var _ = require(\'lodash\');',
-    'var moment = require(\'moment\');',
-    'var Page = require(\'astrolabe\').Page;\n'
-];
-
-var removeFromExercises = [
-    '/*jshint node:true*/',
-    'var _ = require(\'lodash\');'
-];
-
 module.exports = {
     dist: {
         options: {
@@ -24,41 +12,6 @@ module.exports = {
         },
         src: [], //src filled in by build task
         dest: '<%= config.dir.dist %>/<%= config.dist.fileNameTpl %>.js'
-    },
-    rxPageObjects: {
-        options: {
-            // Replace all third-party requires with a single one up top
-            banner: removeFromIndex.join('\n'),
-            footer: '\nexports.exercise = require(\'./exercise\');',
-            process: function (src) {
-                removeFromIndex.forEach(function (toRemove) {
-                    // a regex is faster, but this is less work for me
-                    src = src.replace(toRemove, '');
-                });
-                return src;
-            }
-        },
-        src: ['src/**/*.page.js'],
-        dest: 'utils/rx-page-objects/index.js'
-    },
-    rxPageObjectsExercises: {
-        options: {
-            // Replace all third-party requires with a single one up top
-            banner: removeFromExercises.join('\n'),
-            process: function (src) {
-                // replace all exercise require statements from src/ directory to index.js (published version)
-                src = src.replace(/require\('\.\/(.\w+\.page)'\)(?:\.js)?/g, 'require(\'./index\')');
-                removeFromExercises.forEach(function (toRemove) {
-                    // a regex is faster, but this is less work for me
-                    src = src.replace(toRemove, '');
-                });
-                return src;
-            }
-        },
-        src: [
-            'src/**/*.exercise.js',
-        ],
-        dest: 'utils/rx-page-objects/exercise.js'
     },
     tmpDemosLess: {
         options: {

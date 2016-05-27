@@ -1,6 +1,6 @@
 module.exports = {
     rxPageObjects: {
-        src: ['src/**/*.page.js', 'src/**/*.exercise.js'],
+        src: ['utils/rx-page-objects/src/*.js'],
         options: {
             destination: 'utils/rx-page-objects/doc/',
             private: false,

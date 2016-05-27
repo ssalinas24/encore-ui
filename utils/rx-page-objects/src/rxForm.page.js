@@ -1,6 +1,11 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var rxMisc = require('./rxMisc.page').rxMisc;
+var rxSelect = require('./rxSelect.page').rxSelect;
+var rxRadio = require('./rxRadio.page').rxRadio;
+var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+
 /**
  * @namespace
  */
@@ -183,7 +188,7 @@ exports.rxForm = {
         });
     },
 
-    //TODO: split out into exports.rxFieldName (src/rxForm/scripts/rxFieldName.page.js)
+    //TODO: split out into exports.rxFieldName (src/rxFieldName.page.js)
     /**
      * @namespace
      */
@@ -210,8 +215,8 @@ exports.rxForm = {
      * @property {Function} generateAccessor - {@link rxCheckbox.generateAccessor}
      */
     checkbox: {
-        get initialize() { return exports.rxCheckbox.initialize; },
-        get generateAccessor() { return exports.rxCheckbox.generateAccessor; }
+        get initialize() { return rxCheckbox.initialize; },
+        get generateAccessor() { return rxCheckbox.generateAccessor; }
     },
 
     /**
@@ -220,8 +225,8 @@ exports.rxForm = {
      * @property {Function} generateAccessor - {@link rxRadio.generateAccessor}
      */
     radioButton: {
-        get initialize() { return exports.rxRadio.initialize; },
-        get generateAccessor() { return exports.rxRadio.generateAccessor; }
+        get initialize() { return rxRadio.initialize; },
+        get generateAccessor() { return rxRadio.generateAccessor; }
     },
 
     /**
@@ -230,8 +235,8 @@ exports.rxForm = {
      * @property {Function} generateAccessor - {@link rxDropdown.generateAccessor}
      */
     dropdown: {
-        get initialize() { return exports.rxSelect.initialize; },
-        get generateAccessor() { return exports.rxSelect.generateAccessor; }
+        get initialize() { return rxSelect.initialize; },
+        get generateAccessor() { return rxSelect.generateAccessor; }
     },
 
     /* eslint-enable space-before-function-paren */
@@ -244,7 +249,7 @@ exports.rxForm = {
      * This function will be removed in a future release of the EncoreUI framework.
      */
     currencyToPennies: function (currencyString) {
-        return exports.rxMisc.currencyToPennies(currencyString);
+        return rxMisc.currencyToPennies(currencyString);
     },
 
     /**
@@ -255,6 +260,6 @@ exports.rxForm = {
      * This function will be removed in a future release of the EncoreUI framework.
      */
     slowClick: function (elem) {
-        return exports.rxMisc.slowClick(elem);
+        return rxMisc.slowClick(elem);
     }
 };
