@@ -1,0 +1,5 @@
+{
+    "component.page.js": "utils/rx-page-objects/src/{%= componentName %}.page.js",
+    "component.exercise.js": "utils/rx-page-objects/src/{%= componentName %}.exercise.js",
+    "component.midway.js": "utils/rx-page-objects/test/{%= componentName %}.midway.js"
+}

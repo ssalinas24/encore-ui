@@ -1,6 +1,8 @@
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
+var rxModalAction = require('./rxModalAction.page').rxModalAction;
+
 /**
  * @description Clicking an action menu item will trigger this function.
  * By default, it returns the page object outlined below.
@@ -38,7 +40,7 @@ var action = function (actionElement) {
         openModal: {
             value: function (customFunctionality) {
                 actionElement.$('.modal-link').click();
-                return exports.rxModalAction.initialize(customFunctionality);
+                return rxModalAction.initialize(customFunctionality);
             }
         },
 

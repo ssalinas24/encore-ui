@@ -1,5 +1,3 @@
-*.midway.js
-*.exercise.js
 *.spec.js
 demo/bower_components/
 demo/index.html

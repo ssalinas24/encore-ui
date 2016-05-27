@@ -1,6 +1,10 @@
 var _ = require('lodash');
 var moment = require('moment');
 
+var rxSelect = require('./rxSelect.page').rxSelect;
+var rxForm = require('./rxForm.page').rxForm;
+var rxMisc = require('./rxMisc.page').rxMisc;
+
 /**
  * @class
  * @param {ElementFinder} rxTimePickerElement
@@ -66,8 +70,8 @@ function rxTimePicker (rxTimePickerElement) {
     this.txtDisplayValue = this.rootElement.$('.displayValue');
 
     // Private Page Objects
-    this.pagePeriod = exports.rxSelect.initialize(this.selPeriod);
-    this.pageUtcOffset = exports.rxSelect.initialize(this.selUtcOffset);
+    this.pagePeriod = rxSelect.initialize(this.selPeriod);
+    this.pageUtcOffset = rxSelect.initialize(this.selUtcOffset);
 
     // Properties
     Object.defineProperties(this, {
@@ -97,9 +101,9 @@ function rxTimePicker (rxTimePickerElement) {
             }
         },//minutes
 
-        period: exports.rxSelect.generateAccessor(this.selPeriod),
+        period: rxSelect.generateAccessor(this.selPeriod),
 
-        utcOffset: exports.rxSelect.generateAccessor(this.selUtcOffset),
+        utcOffset: rxSelect.generateAccessor(this.selUtcOffset),
 
         time: {
             get: function () {
@@ -117,7 +121,7 @@ function rxTimePicker (rxTimePickerElement) {
 
                 // set via picker
                 this.open();
-                exports.rxForm.fill(this, {
+                rxForm.fill(this, {
                     hour: date.format('hh'), // 12-hour format (no padding)
                     minutes: date.format('mm'), // padded minutes
                     period: date.format('A'), // AM/PM
@@ -160,7 +164,7 @@ rxTimePicker.prototype.isOpen = function () {
  * @returns {Boolean}
  */
 rxTimePicker.prototype.isClosed = function () {
-    return this.isOpen().then(exports.rxMisc.negate);
+    return this.isOpen().then(rxMisc.negate);
 };
 
 /**

@@ -6,7 +6,7 @@ var config = {
     baseUrl: 'http://localhost:9001',
 
     specs: [
-        './src/**/*.midway.js'
+        './utils/rx-page-objects/test/*.midway.js'
     ],
 
     framework: 'mocha',
