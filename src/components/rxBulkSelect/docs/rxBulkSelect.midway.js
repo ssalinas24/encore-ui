@@ -3,20 +3,20 @@ var Page = require('astrolabe').Page;
 describe('rxBulkSelect', function () {
 
     var page = Page.create({
-
-        selectFirst: {
-            value: function () {
-                element.all(by.css('tbody tr:nth-child(1) input')).click();
-            }
-        },
-
         btnSelectDatacenters: {
             get: function () {
                 return $('rx-modal-action#selectDatacenters a');
             }
         }
-
     });
+
+    var modal = {
+        selectFirst: {
+            value: function () {
+                this.rootElement.all(by.css('tbody tr:nth-child(1) input')).click();
+            }
+        }
+    };
 
     before(function () {
         demoPage.go('#/components/rxBulkSelect');
@@ -30,7 +30,7 @@ describe('rxBulkSelect', function () {
         var validateModal;
 
         beforeEach(function () {
-            validateModal = encore.rxModalAction.initialize();
+            validateModal = encore.rxModalAction.initialize(modal);
         });
 
         it('disables the submit button when no items are selected', function () {
@@ -39,7 +39,7 @@ describe('rxBulkSelect', function () {
         });
 
         it('enables the submit button when an item is selected', function () {
-            page.selectFirst();
+            validateModal.selectFirst();
             expect(validateModal.canSubmit()).to.eventually.be.true;
         });
     });
