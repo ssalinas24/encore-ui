@@ -1,6 +1,8 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var EC = protractor.ExpectedConditions;
+
 /**
  * @namespace
  * @description Functionality for interacting with modals. It is up to you to launch a modal, but once
@@ -68,6 +70,7 @@ var rxModalAction = {
     close: {
         value: function () {
             this.rootElement.$('.modal-close').click();
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     },
 
@@ -93,6 +96,7 @@ var rxModalAction = {
     submit: {
         value: function () {
             this.btnSubmit.click();
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     },
 
@@ -104,6 +108,7 @@ var rxModalAction = {
     cancel: {
         value: function () {
             exports.rxMisc.slowClick(this.btnCancel);
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     }
 

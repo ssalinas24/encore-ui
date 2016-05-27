@@ -1,5 +1,11 @@
 <!-- Sample HTML goes here as a live example of how to the component can be used -->
 <div ng-controller="rxModalActionCtrl">
+
+    <h3>Regular Modals</h3>
+    <p>Use modals whenever a user needs to take an action that needs their
+    attention, or you want to interrupt a user's current task to redirect a 
+    user's full attention to something more important.</p>
+
     <p>Password: {{password}}</p>
     <p>
         <rx-modal-action
@@ -12,6 +18,14 @@
             Change Password
         </rx-modal-action>
     </p>
+
+    <h3>Multi-View Modals</h3>
+    <p>A multi-view modal breaks apart complex interactions so modal content
+    isn't too long. Multi-view modals also work well when the user must 
+    complete multiple sequential steps.</p>
+
+    <p>It works for cases when removing or deleting something needing a
+    confirmation click, such as "Are You Sure you want to Remove this?"</p>
 
     <p>
         <rx-modal-action
@@ -112,5 +126,14 @@
             <button class="button cancel" ng-click="setState('editing')">No</button>
         </rx-modal-footer>
     </script>
+
+    <h3>Do's and Don'ts</h3>
+    <ul>
+        <li>Do use modals to perform actions requiring the users full attention.</li>
+        <li>Don't display a modal without an action button, or a way to close the modal by closing the modal via X or pressing the Cancel button.</li>
+        <li>Don't use modals as pop-ups, having them appear without the user clicking something</li>
+        <li>Don't use modals referring to information on the originating page</li>
+        <li>Don't use a modal to display a set of info or metadata without any direct actions</li>
+    </ul>
 
 </div>

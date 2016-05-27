@@ -82,7 +82,6 @@ describe('rxModalAction', function () {
 
         it('should submit', function () {
             changePasswordModal.submit();
-            browser.sleep(500);
             expect(changePasswordModal.isDisplayed()).to.eventually.be.false;
         });
     });//when triggered
@@ -99,7 +98,6 @@ describe('rxModalAction', function () {
         describe('when closed with the little X in the corner', function () {
             beforeEach(function () {
                 changePasswordModal.close();
-                browser.sleep(500);
             });
 
             it('should close the modal', function () {
@@ -114,7 +112,6 @@ describe('rxModalAction', function () {
         describe('when closed via the "cancel" button', function () {
             beforeEach(function () {
                 changePasswordModal.cancel();
-                browser.sleep(500);
             });
 
             it('should close the modal', function () {

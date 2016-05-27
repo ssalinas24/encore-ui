@@ -19,17 +19,6 @@ var rxDatePicker = {
 
     /**
      * @private
-     * @instance
-     * @type {ElementFinder}
-     */
-    lnkExpandCollapse: {
-        get: function () {
-            return this.rootElement.$('.control');
-        }
-    },
-
-    /**
-     * @private
      * @function
      * @instance
      * @description Return a day in the current visible month by date string.
@@ -210,7 +199,7 @@ var rxDatePicker = {
             var self = this;
             this.isClosed().then(function (closed) {
                 if (closed) {
-                    self.lnkExpandCollapse.click();
+                    self.rootElement.$('.control').click();
                 }
             });
         }
@@ -232,7 +221,7 @@ var rxDatePicker = {
             var self = this;
             return this.isOpen().then(function (isOpen) {
                 if (isOpen) {
-                    self.lnkExpandCollapse.click();
+                    self.rootElement.$('.backdrop').click();
                 }
             });
         }

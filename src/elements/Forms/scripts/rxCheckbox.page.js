@@ -144,7 +144,6 @@ var rxCheckbox = {
      * @instance
      * @function
      * @description Make sure checkbox is deselected.
-     * @returns {undefined}
      */
     deselect: {
         value: function () {

@@ -34,6 +34,10 @@ exports.rxPaginate = function (options) {
             pagination = options.instance;
         });
 
+        beforeEach(function () {
+            encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
+        });
+
         if (options.pages > 1) {
             it('should navigate forward one page at a time', function () {
                 pagination.next();
@@ -49,6 +53,7 @@ exports.rxPaginate = function (options) {
                 pagination.page.then(function (page) {
                     var firstPage = page;
                     pagination.last();
+                    encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
                     expect(pagination.page).to.eventually.be.above(firstPage);
                     pagination.first();
                 });
@@ -113,6 +118,7 @@ exports.rxPaginate = function (options) {
         it('should know the total number of pages without visiting it', function () {
             pagination.totalPages.then(function (totalPages) {
                 pagination.last();
+                encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
                 expect(pagination.page).to.eventually.equal(totalPages);
                 pagination.first();
             });
