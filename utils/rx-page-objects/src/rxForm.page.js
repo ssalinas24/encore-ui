@@ -171,7 +171,7 @@ exports.rxForm = {
         });
     },
 
-    //TODO: split out into exports.rxFieldName (src/rxForm/scripts/rxFieldName.page.js)
+    //TODO: split out into exports.rxFieldName (src/rxFieldName.page.js)
     /**
      * @namespace
      */
@@ -188,5 +188,5 @@ exports.rxForm = {
             };
             return Page.create(rxFieldName);
         }
-    },
+    }
 };

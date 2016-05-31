@@ -1,6 +1,8 @@
 var _ = require('lodash');
 var Page = require('astrolabe').Page;
 
+var rxMisc = require('./rxMisc.page').rxMisc;
+
 /**
  * The specific information about a single select element option.
  * Returned from {@link rxSelect#option}.
@@ -45,7 +47,7 @@ var rxSelectOptionFromElement = function (rootElement) {
          */
         select: {
             value: function (slowClick) {
-                slowClick ? exports.rxMisc.slowClick(rootElement) : rootElement.click();
+                slowClick ? rxMisc.slowClick(rootElement) : rootElement.click();
             }
         },
 

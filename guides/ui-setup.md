@@ -93,20 +93,29 @@ src/rxSearchBox
 ├── README.md
 ├── docs
 │   ├── rxSearchBox.html
-│   ├── rxSearchBox.js
-│   └── rxSearchBox.midway.js
-├── rxSearchBox.exercise.js
+│   └── rxSearchBox.js
 ├── rxSearchBox.js
 ├── rxSearchBox.less
-├── rxSearchBox.page.js
 ├── rxSearchBox.spec.js
 └── templates
     └── rxSearchBox.html
 ```
 
+Once you've created your new component, you can also generate the complementary test code as well. This is covered in the [Component Scaffolding](#component-scaffolding) section below. It populates the following tree into the `utils/rx-page-objects/` directory:
+
+```
+src/
+├── rxSearchBox.page.js
+└── rxSearchBox.exercise.js
+test/
+└── rxSearchBox.midway.js
+```
+
+These files are used to help you create a page object, default tests, and the integration tests used to prove that your new component behaves as expected during end to end testing in our CI pipeline.
+
 If you are going to add a new module to EncoreUI, it must follow this structure. And not only is there an expected file, but some of these files have required "boilerplate" that must be present. The [Component Scaffolding](#component-scaffolding) not only generates these files, but also inserts the necessary boilerplate into them.
 
-Make sure that you've added the necessary tests (to the `.midway.js` and `.spec.js` files), run the tests, and verify that your changes haven't broken anything. Please see our [EncoreUI Testing guide](./testing.md) guide for more details.
+Make sure that you've added the necessary tests (to the `.spec.js` files), run the tests, and verify that your changes haven't broken anything. Please see our [EncoreUI Testing guide](./testing.md) guide for more details.
 
 ### Component Scaffolding
 
@@ -114,7 +123,9 @@ In order to promote consistency between components, and make it easier to create
 
 In order to take advantage of the scaffolding, you need to install grunt-init globally:
 
-`npm install -g grunt-init`
+```
+npm install -g grunt-init
+```
 
 With grunt-init now installed, navigate to the `src` directory in EncoreUI.
 
@@ -124,6 +135,13 @@ Once created, from that folder, run `grunt-init ../../grunt-tasks/component-temp
 
 Answer the questions prompted, let the task complete, and your new component folder should be ready for you to start coding away at. That's it.
 
+To create your page object/exercise/end to end test code, go the root of the project directory, and run this.
+
+```
+grunt-init grunt-tasks/page-object-template
+```
+
+Because page objects can be named whatever they want, and be as granular as they want, you must specify the name of the component at the command line as the only prompt. Typically, it will match the same as your new directory you just created. Other times, such as in the case with rxForm, it makes more sense to break the page objects up into smaller chunks, such as checkboxes, dropdowns, instead of exposing one very large `rxForm` object with an enormous API surface.
 
 ## Modifying Existing Modules
 

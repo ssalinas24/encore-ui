@@ -1,6 +1,9 @@
 var Page = require('astrolabe').Page;
 var moment = require('moment');
 
+var rxSelect = require('./rxSelect.page').rxSelect;
+var rxMisc = require('./rxMisc.page').rxMisc;
+
 /**
  * @namespace
  */
@@ -281,12 +284,12 @@ var rxDatePicker = {
      */
     month: {
         get: function () {
-            return exports.rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.text;
+            return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.text;
         },
 
         set: function (value) {
             this.open();
-            exports.rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value);
+            rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value);
         }
     },
 
@@ -301,12 +304,12 @@ var rxDatePicker = {
      */
     year: {
         get: function () {
-            return exports.rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.text;
+            return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.text;
         },
 
         set: function (value) {
             this.open();
-            exports.rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value);
+            rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value);
         }
     },
 
@@ -329,7 +332,7 @@ var rxDatePicker = {
      */
     date: {
         get: function () {
-            return this.rootElement.$('.displayValue').getText().then(exports.rxMisc.newDate);
+            return this.rootElement.$('.displayValue').getText().then(rxMisc.newDate);
         },
 
         set: function (date) {
