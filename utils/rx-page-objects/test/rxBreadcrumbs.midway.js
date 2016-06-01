@@ -114,7 +114,7 @@ describe('rxBreadcrumbs', function () {
         it('should visit the correct page when clicking on the breadcrumb', function () {
             var componentsHref = browser.baseUrl + '/#/components';
 
-            middle.visit();
+            middle.click();
             expect(browser.getCurrentUrl()).to.eventually.equal(componentsHref);
         });
 
