@@ -116,7 +116,7 @@ On a build of EncoreUI, all page object files are concatenated and tarballed int
 
 Alternatively, they can install the file using this command:
 
-    npm install --save-dev rx-page-objects
+    npm install --save-dev rx-page-objects@2
 
 Once installed, the page objects can be pulled in to any midway test via:
 

@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxMetadata')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxMetadata.directive:rxMeta
+ * @name elements.directive:rxMeta
  * @scope
  * @restrict E
  * @description
@@ -13,7 +13,7 @@ angular.module('encore.ui.rxMetadata')
  *   <dt>Parent:</dt>
  *   <dd>
  *     <ul>
- *       <li>{@link rxMetadata.directive:rxMetadata rxMetadata}</li>
+ *       <li>{@link elements.directive:rxMetadata rxMetadata}</li>
  *       <li>SECTION element</li>
  *     </ul>
  *   </dd>
@@ -25,6 +25,17 @@ angular.module('encore.ui.rxMetadata')
  *   <dd>Any HTML Element</dd>
  * </dl>
  *
+ * ## Long Data Values
+ *
+ * For data values that do not naturally break to fit the width of the column, a `.force-word-break` CSS class is
+ * available on the `<rx-meta>` element to prevent the value from overflowing to adjacent content.
+ *
+ * <pre>
+ *   <rx-meta label="Super Long Value" class="force-word-break">
+ *     A super long data value with anunseeminglyunbreakablewordthatcouldoverflowtothenextcolumn
+ *   </rx-meta>
+ * </pre>
+
  * @example
  * <pre>
  * <rx-metadata>
