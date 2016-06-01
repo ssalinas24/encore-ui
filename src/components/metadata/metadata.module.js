@@ -5,6 +5,6 @@
  * @description
  * # metadata Component
  *
- * **Deprecated**: Use {@link rxMetadata} instead.
+ * **Deprecated**: Use {@link elements.directive:rxMetadata rxMetadata} instead.
  */
 angular.module('encore.ui.metadata', []);

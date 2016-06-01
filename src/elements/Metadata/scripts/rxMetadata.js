@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxMetadata')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxMetadata.directive:rxMetadata
+ * @name elements.directive:rxMetadata
  * @restrict E
  * @description
  * Parent directive used for styling and arranging metadata information.
@@ -19,7 +19,7 @@ angular.module('encore.ui.rxMetadata')
  *   <dt>Children:</dt>
  *   <dd>
  *     <ul>
- *       <li>{@link rxMetadata.directive:rxMeta rxMeta}</li>
+ *       <li>{@link elements.directive:rxMeta rxMeta}</li>
  *       <li>SECTION element</li>
  *     </ul>
  *   </dd>
