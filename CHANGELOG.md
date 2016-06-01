@@ -1,3 +1,12 @@
+<a name="2.0.0-8"></a>
+### 2.0.0-8 (2016-06-01)
+
+
+#### Bug Fixes
+
+* **regression:** undo regression introduced in merge/sync ([890f67e8](git@github.com:rackerlabs/encore-ui/commit/890f67e8878ef98708b01635fd629ad9b0f1baaf))
+
+
 <a name="2.0.0-7"></a>
 ### 2.0.0-7 (2016-05-23)
 
