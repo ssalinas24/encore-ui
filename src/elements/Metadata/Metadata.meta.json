@@ -1,0 +1,12 @@
+{
+    "displayName": "Metadata",
+    "stability": "stable",
+    "description": "Metadata contains directives to provide consistent styling for the display of metadata information",
+    "hasApi": false,
+    "keywords": [
+        "description",
+        "metadata",
+        "rxMeta",
+        "rxMetadata"
+    ]
+}

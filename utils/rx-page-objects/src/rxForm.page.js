@@ -1,6 +1,11 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var rxMisc = require('./rxMisc.page').rxMisc;
+var rxSelect = require('./rxSelect.page').rxSelect;
+var rxRadio = require('./rxRadio.page').rxRadio;
+var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+
 /**
  * @namespace
  */
