@@ -1,8 +1,8 @@
 // Note that these factories are only present for the purposes of this demo. In a real application,
 // SupportAccount, Teams, AccountStatusGroup, and Encore will have to be provided from elsewhere,
-// outside of encore-ui. Specifically, we implement them in encore-ui-svcs
+// outside of encore-ui. Specifically, we implement them in encore-ui-svcs.
 
-angular.module('encore.ui.rxAccountInfo')
+angular.module('demoApp')
 .value('Badges',
        [{
            url: 'http://mirrors.creativecommons.org/presskit/icons/cc.large.png',
@@ -104,52 +104,4 @@ angular.module('encore.ui.rxAccountInfo')
         }
         return '';
     };
-})
-.controller('rxAccountInfoDemo', function ($scope) {
-    $scope.customMenu = [{
-        title: 'Example Menu',
-        children: [{
-            href: 'Lvl1-1',
-            linkText: '1st Order Item'
-        }, {
-            linkText: '1st Order Item (w/o href) w/ Children',
-            childVisibility: [ 'isUserDefined' ],
-            childHeader: '<strong class="current-search">Current User:</strong>' +
-                '<span class="current-result">{{$root.user}}</span>',
-            children: [{
-                href: 'Lvl1-2-Lvl2-1',
-                linkText: '2nd Order Item w/ Children',
-                children: [{
-                    href: 'Lvl1-2-Lvl2-1-Lvl3-1',
-                    linkText: '3rd Order Item'
-                }]
-            }, {
-                href: 'Lvl1-2-Lvl2-2',
-                linkText: '2nd Order Item w/ Children',
-                children: [{
-                    href: 'Lvl1-2-Lvl2-2-Lvl3-1',
-                    linkText: '3rd Order Item'
-                }, {
-                    href: 'Lvl1-2-Lvl2-2-Lvl3-2',
-                    linkText: '3rd Order Item'
-                }, {
-                    href: 'Lvl1-2-Lvl2-2-Lvl3-3',
-                    linkText: '3rd Order Item'
-                }, {
-                    href: 'Lvl1-2-Lvl2-2-Lvl3-4',
-                    linkText: '3rd Order Item'
-                }]
-            }, {
-                href: 'Lvl1-2-Lvl2-3',
-                linkText: '2nd Order Item'
-            }]
-        }, {
-            href: 'Lvl1-3',
-            linkText: '1st Order Item w/ Children',
-            children: [{
-                href: 'Lvl1-3-Lvl2-1',
-                linkText: '2nd Order Item'
-            }]
-        }]
-    }];
 });

@@ -1,7 +1,12 @@
 {
-    "displayName": "rxAccountInfo",
-    "stability": "experimental",
-    "description": "",
-    "isLegacy": true,
-    "keywords": []
+    "displayName": "Account Info",
+    "stability": "stable",
+    "description": "Responsible for drawing an account info box.",
+    "api": "directive:rxAccountInfo",
+    "keywords": [
+        "account",
+        "info",
+        "information",
+        "rxAccountInfo"
+    ]
 }
