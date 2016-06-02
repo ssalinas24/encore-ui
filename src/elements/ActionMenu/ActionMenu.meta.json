@@ -1,0 +1,13 @@
+{
+    "displayName": "Action Menu",
+    "stability": "stable",
+    "description": "Display configurable action menu",
+    "api": "directive:rxActionMenu",
+    "keywords": [
+        "rxActionMenu",
+        "action",
+        "menu",
+        "table",
+        "context"
+    ]
+}
