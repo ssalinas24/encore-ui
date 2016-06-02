@@ -9,7 +9,7 @@ describe('layouts', function () {
         });
 
         it('metadata', function () {
-            screenshot.snap(this, $('.metadata-section'));
+            screenshot.snap(this, $('rx-metadata'));
         });
 
         it('data tables', function () {
