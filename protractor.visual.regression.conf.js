@@ -6,6 +6,21 @@ var config = {
 
     framework: 'mocha',
 
+    snappit: {
+        screenshotsDirectory: './screenshots',
+        threshold: 5,
+        defaultResolutions: [[768, 1024], [1024, 768]], // tablet
+        cicd: {
+            serviceAccount: {
+                userName: 'comeatmebro',
+                userEmail: 'comeatmebro@users.noreply.github.com',
+                teamId: 442108
+            },
+            screenshotsRepo: 'https://github.com/rackerlabs/encore-ui-screenshots',
+            projectRepo: 'https://github.com/rackerlabs/encore-ui'
+        }
+    },
+
     specs: [
         './utils/visual-regression/**/*.midway.js'
     ],
@@ -24,9 +39,6 @@ var config = {
         encore = require('./utils/rx-page-objects/index');
         browser.driver.manage().window().setSize(1366, 768); // laptop
         screenshot = require('snappit-mocha-protractor');
-        screenshot.configure({
-            defaultResolutions: [[768, 1024], [1024, 768]] // tablet
-        });
     },
 
     mochaOpts: {
