@@ -1,5 +1,3 @@
-/*jshint node:true */
-
 var config = {
 
     baseUrl: 'http://localhost:9001',
