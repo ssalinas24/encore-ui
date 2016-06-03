@@ -180,7 +180,7 @@ var rxDatePicker = {
      * @instance
      * @function
      * @description Whether or not the calendar is open.
-     * @return {Boolean}
+     * @return {Promise<Boolean>}
      */
     isOpen: {
         value: function () {
@@ -194,8 +194,11 @@ var rxDatePicker = {
      * @private
      * @instance
      * @function
+     * @deprecated
      * @description Whether or not the calendar is closed.
-     * @return {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isOpen()` instead.
+     * @return {Promise<Boolean>}
      */
     isClosed: {
         value: function () {
@@ -218,8 +221,8 @@ var rxDatePicker = {
     open: {
         value: function () {
             var self = this;
-            this.isClosed().then(function (closed) {
-                if (closed) {
+            this.isOpen().then(function (open) {
+                if (!open) {
                     self.rootElement.$('.control').click();
                 }
             });
