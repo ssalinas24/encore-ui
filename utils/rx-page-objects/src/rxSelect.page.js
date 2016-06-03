@@ -98,21 +98,36 @@ var rxSelect = {
     /**
      * @instance
      * @function
+     * @deprecated
      * @description Whether or not the select element is disabled.
-     * @returns {Boolean}
+     *
+     * **DEPRECATED** check for inverse of `isEnabled()` instead.
+     * @returns {Promise<Boolean>}
      */
     isDisabled: {
+        value: function () {
+            return this.isEnabled().then(function (enabled) {
+                return !enabled;
+            });
+        }
+    },
+
+    /**
+     * @instance
+     * @function
+     * @description Whether or not the select element is enabled.
+     * @returns {Promise<Boolean>}
+     */
+    isEnabled: {
         value: function () {
             var page = this;
             return this.eleFakeSelect.isPresent().then(function (isFakeSelect) {
                 if (isFakeSelect) {
                     return page.eleWrapper.getAttribute('class').then(function (classes) {
-                        return _.contains(classes.split(' '), 'rx-disabled');
+                        return !_.contains(classes.split(' '), 'rx-disabled');
                     });
                 }
-                return page.rootElement.getAttribute('disabled').then(function (disabled) {
-                    return disabled === null ? false : true;
-                });
+                return page.rootElement.isEnabled();
             });
         }
     },

@@ -47,7 +47,7 @@ exports.rxSelect = function (options) {
         });
 
         it('should ' + (options.disabled ? 'be' : 'not be') + ' disabled', function () {
-            expect(component.isDisabled()).to.eventually.eq(options.disabled);
+            expect(component.isEnabled()).to.eventually.eq(!options.disabled);
         });
 
         it('should ' + (options.valid ? 'be' : 'not be') + ' valid', function () {

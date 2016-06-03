@@ -70,26 +70,43 @@ var rxSearchBox = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not the search box is searchable.
-     * To make this check, {@link rxSearchBox#isDisabled} is called.
-     * @returns {Boolean}
+     *
+     * **DEPRECATED** Use `isEnabled()` instead.
+     * @returns {Promise<Boolean>}
      */
     isSearchable: {
         value: function () {
-            return this.isDisabled();
+            return this.isEnabled();
         }
     },
 
     /**
      * @function
      * @instance
+     * @description Whether or not the search box is enabled.
+     * @returns {Promise<Boolean>}
+     */
+    isEnabled: {
+        value: function () {
+            return this.txtSearch.isEnabled();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @deprecated
      * @description Whether or not the search box is disabled.
-     * @returns {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isEnabled()` instead.
+     * @returns {Promise<Boolean>}
      */
     isDisabled: {
         value: function () {
-            return this.txtSearch.getAttribute('disabled').then(function (disabled) {
-                return disabled === null ? true : false;
+            return this.isEnabled().then(function (enabled) {
+                return !enabled;
             });
         }
     },

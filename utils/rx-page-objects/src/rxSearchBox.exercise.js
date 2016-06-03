@@ -46,6 +46,10 @@ exports.rxSearchBox = function (options) {
             expect(component.isDisplayed()).to.eventually.be.true;
         });
 
+        it('should ' + (options.disabled ? 'not be' : 'be') + ' enabled', function () {
+            expect(component.isEnabled()).to.eventually.eq(!options.disabled);
+        });
+
         if (options.placeholder) {
             it('should have a placeholder', function () {
                 expect(component.placeholder).to.eventually.equal(options.placeholder);
@@ -57,17 +61,9 @@ exports.rxSearchBox = function (options) {
                 it('should not display the clear button', function () {
                     expect(component.isClearable()).to.eventually.be.false;
                 });
-
-                it('should not be searchable', function () {
-                    expect(component.isSearchable()).to.eventually.be.false;
-                });
             });//when disabled
         } else {
             describe('when enabled', function () {
-                it('should be searchable', function () {
-                    expect(component.isSearchable()).to.eventually.be.true;
-                });
-
                 it('should update the search term', function () {
                     component.term = 'testing';
                     expect(component.term).to.eventually.equal('testing');

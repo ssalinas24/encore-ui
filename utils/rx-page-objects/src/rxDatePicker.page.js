@@ -120,16 +120,34 @@ var rxDatePicker = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not the entire calendar component is disabled.
-     * @return {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isEnabled()` instead.
+     * @return {Promise<Boolean>}
      */
     isDisabled: {
         value: function () {
-            return this.rootElement.getAttribute('disabled').then(function (disabled) {
-                return (disabled ? true : false);
+            return this.isEnabled().then(function (enabled) {
+                return !enabled;
             });
         }
     },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the entire calendar component is enabled.
+     * @return {Promise<Boolean>}
+     */
+    isEnabled: {
+        value: function () {
+            return this.rootElement.getAttribute('disabled').then(function (disabled) {
+                return !disabled;
+            });
+        }
+    },
+
 
     /**
      * @function
