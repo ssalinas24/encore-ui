@@ -60,7 +60,7 @@ exports.rxTags = function (options) {
                     });
 
                     it('should no longer exist', function () {
-                        expect(tag.exists()).to.eventually.be.false;
+                        expect(tag.isPresent()).to.eventually.be.false;
                     });
 
                     it('should decrement total tags by 1', function () {
@@ -89,7 +89,7 @@ exports.rxTags = function (options) {
                         });
 
                         it('should no longer exist', function () {
-                            expect(component.byText(options.sampleText).exists()).to.eventually.be.false;
+                            expect(component.byText(options.sampleText).isPresent()).to.eventually.be.false;
                         });
 
                         it('should decrement count by 1', function () {

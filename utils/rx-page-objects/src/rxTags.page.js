@@ -32,14 +32,34 @@ var tag = function (tagElement) {
          * @instance
          * @function
          * @memberof rxTags.tag
-         * @returns {Boolean}
+         * @deprecated
          * @description Whether or not the tag exists.
+         *
+         * **DEPRECATED** Use `isPresent()` instead.
          * @example
          * it('should have a tag present after creating it', function () {
          *     expect(encore.rxTags.initialize().addTag('Foo').exists()).to.eventually.be.true;
          * });
+         * @returns {Promise<Boolean>}
          */
         exists: {
+            value: function () {
+                return this.isPresent();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxTags.tag
+         * @description Whether or not the tag exists.
+         * @example
+         * it('should have a tag present after creating it', function () {
+         *     expect(encore.rxTags.initialize().addTag('Foo').isPresent()).to.eventually.be.true;
+         * });
+         * @returns {Promise<Boolean>}
+         */
+        isPresent: {
             value: function () {
                 return tagElement.isPresent();
             }
