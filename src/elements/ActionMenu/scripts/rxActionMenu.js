@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxActionMenu')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxActionMenu.directive:rxActionMenu
+ * @name elements.directive:rxActionMenu
  * @restrict E
  * @scope
  * @description
