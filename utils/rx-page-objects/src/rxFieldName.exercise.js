@@ -61,11 +61,11 @@ exports.rxFieldName = function (options) {
 
         if (options.required === true) {
             it('should have a symbol visible', function () {
-                expect(component.isSymbolVisible()).to.eventually.be.true;
+                expect(component.isSymbolDisplayed()).to.eventually.be.true;
             });
         } else {
             it('should not have a symbol visible', function () {
-                expect(component.isSymbolVisible()).to.eventually.be.false;
+                expect(component.isSymbolDisplayed()).to.eventually.be.false;
             });
         }
     };
