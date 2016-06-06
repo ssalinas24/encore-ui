@@ -56,8 +56,8 @@ describe('tabs', function () {
             expect(tab.isActive()).to.eventually.be.false;
         });
 
-        it('should report that it is the active tab after visiting it', function () {
-            tab.visit();
+        it('should report that it is the active tab after clicking it', function () {
+            tab.click(true);
             expect(tab.isActive()).to.eventually.be.true;
         });
 

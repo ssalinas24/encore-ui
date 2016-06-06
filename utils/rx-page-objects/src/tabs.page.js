@@ -1,3 +1,4 @@
+var rxMisc = require('./rxMisc.page').rxMisc;
 var Page = require('astrolabe').Page;
 
 var tabFromElement = function (tabElement) {
@@ -131,19 +132,7 @@ var tabFromElement = function (tabElement) {
          */
         click: {
             value: function (slowClick) {
-                slowClick ? exports.rxMisc.slowClick(tabElement) : tabElement.click();
-            }
-        },
-
-        /**
-         * @deprecated Use tabs.tab#click instead.
-         * @instance
-         * @function
-         * @memberof tabs.tab
-         */
-        visit: {
-            value: function () {
-                browser.actions().mouseDown(tabElement).mouseUp().perform();
+                slowClick ? rxMisc.slowClick(tabElement) : tabElement.click();
             }
         }
 
