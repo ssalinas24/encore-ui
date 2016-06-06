@@ -5,7 +5,7 @@ describe('demo component', function () {
     });
 
     it('custom app', function () {
-        screenshot.snap(this, $('#custom-rxApp'), { threshold: 1 });
+        screenshot.snap(this, $('#custom-rxApp .rx-app'), { threshold: 1 });
     });
 
 });
