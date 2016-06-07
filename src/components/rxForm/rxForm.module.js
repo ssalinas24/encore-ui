@@ -213,5 +213,5 @@
  */
 angular.module('encore.ui.rxForm', [
     'ngSanitize',
-    'encore.ui.rxMisc'
+    'encore.ui.utilities'
 ]);
