@@ -19,7 +19,7 @@ var autoSaving = Page.create({
 
 describe('rxMisc', function () {
     before(function () {
-        demoPage.go('#/components/rxMisc');
+        demoPage.go('#/utilities/rxAutoSave');
     });
 
     describe('convenience functions', function () {
@@ -171,7 +171,7 @@ describe('rxMisc', function () {
             });
 
             it('should not update the metrics when a request is made without a refresh', function () {
-                demoPage.go('#/components/rxMisc');
+                demoPage.go('#/utilities/rxAutoSave');
                 encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
                     metrics = performanceMetrics;
                     element(by.buttonText('Clear rxAutoSave by resolving a promise')).click();

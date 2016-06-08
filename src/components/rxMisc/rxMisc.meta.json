@@ -1,7 +1,0 @@
-{
-    "displayName": "rxMisc",
-    "stability": "unstable",
-    "description": "A module for shared functionality across framework components.",
-    "isLegacy": true,
-    "keywords": []
-}

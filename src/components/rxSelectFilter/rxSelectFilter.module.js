@@ -12,6 +12,5 @@
  */
 angular.module('encore.ui.rxSelectFilter', [
     'encore.ui.utilities',
-    'encore.ui.rxMisc',
     'encore.ui.rxSelect'
 ]);

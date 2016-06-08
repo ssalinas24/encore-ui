@@ -12,6 +12,5 @@
  */
 angular.module('encore.ui.rxTags', [
     'encore.ui.utilities',
-    'encore.ui.rxMisc',
     'ui.bootstrap'
 ]);

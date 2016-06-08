@@ -21,7 +21,6 @@ describe('Pagination', function () {
             // Load the directive's module
             module('encore.ui.rxPaginate');
             module('templates/rxPaginate.html');
-            module('encore.ui.rxMisc');
             module('encore.ui.rxNotify');
 
             // Inject in angular constructs
