@@ -1,10 +1,10 @@
 angular.module('demoApp')
-.controller('rxBreadcrumbsCtrl', function ($scope, rxBreadcrumbsSvc) {
+.controller('BreadcrumbsSimpleCtrl', function ($scope, rxBreadcrumbsSvc) {
     rxBreadcrumbsSvc.set([{
-        path: '/#/components',
-        name: 'Components',
+        path: '/#/elements',
+        name: 'Elements',
     }, {
-        name: '<strong>All Components</strong>',
+        name: '<strong>All Elements</strong>',
         status: 'demo'
     }]);
 });

@@ -1,7 +1,12 @@
 {
-    "displayName": "rxBreadcrumbs",
-    "stability": "unstable",
+    "displayName": "Breadcrumbs",
+    "stability": "stable",
     "description": "Displays navigation breadcrumbs on a page",
-    "isLegacy": true,
-    "keywords": []
+    "api": "directive:rxBreadcrumbs",
+    "keywords": [
+        "breadcrumbs",
+        "navigation",
+        "menu",
+        "rxBreadcrumbs"
+    ]
 }
