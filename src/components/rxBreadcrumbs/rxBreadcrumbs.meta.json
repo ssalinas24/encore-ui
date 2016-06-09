@@ -1,7 +1,0 @@
-{
-    "displayName": "rxBreadcrumbs",
-    "stability": "unstable",
-    "description": "Displays navigation breadcrumbs on a page",
-    "isLegacy": true,
-    "keywords": []
-}
