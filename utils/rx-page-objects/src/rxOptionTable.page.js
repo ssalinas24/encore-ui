@@ -321,19 +321,6 @@ var rxOptionTable = {
 
     /**
      * @function
-     * @deprecated
-     * @alias {rxOptionTable.deselectAll}
-     * @instance
-     * @description **DEPRECATED** Unselects every row in the rxOptionTable.
-     */
-    unselectAll: {
-        value: function () {
-            return this.deselectAll();
-        }
-    },
-
-    /**
-     * @function
      * @instance
      * @description Deselects every row in the rxOptionTable.
      */
