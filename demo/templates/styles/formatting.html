@@ -1,19 +1,21 @@
-<rx-page title="'Formatting'">
-  <h3 class="clear">Date formatting</h3>
-
-  <h3>DateTime Formats</h3>
+<rx-page title="'Date/Time Formatting'">
+  <h3> class="clear"DateTime Formats</h3>
 
   <h4>Long-form</h4>
   <ul class="list">
     <li>
-      <code>MMMM D, YYYY @ h:mmA (UTCZ)</code>
+      <code>MMM D, YYYY @ h:mmA (UTCZ)</code>
     </li>
     <li>
       This matches the Long-form Date Formats and Long-form Time Formats
       with the " @ " between.
     </li>
     <li>
-      <code>March 3, 2016 @ 10:56PM (UTC-06:00)</code>
+      This format is seen the most in Encore Cloud to show create/update 
+      timestamps.
+    </li>
+    <li>
+      <code>Mar 3, 2016 @ 10:56PM (UTC-06:00)</code>
     </li>
   </ul>
 
@@ -65,12 +67,14 @@
       <code>MM / YY</code>
     </li>
     <li>
-      This is a accepted standard format for credit card expiration dates,
-      which we honor for Encore. This formats matches the format of physical
-      credit cards as closely as possible.
+      This is the <a 
+        href="http://baymard.com/blog/how-to-format-expiration-date-fields" 
+        target="_blank">accepted standard format</a> for credit card 
+      expiration date, which is honored in Encore, matching the format of 
+      physical credit cards as closely as possible.
     </li>
     <li>
-      Note that spaces between the slash.
+      Note those spaces between the slash!
     </li>
     <li>
       Example: <code>03 / 12</code>
@@ -123,7 +127,7 @@
   <h3>Relative Dates</h3>
   <ul class="list">
     <li>
-      Relatives dates, such as such as "4 hours ago" or "1 week ago", are
+      Relative dates, such as such as "4 hours ago" or "1 week ago", are
       reserved for more informal settings like user notes or comments.
     </li>
     <li>
