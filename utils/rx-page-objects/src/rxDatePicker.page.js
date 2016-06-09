@@ -120,16 +120,34 @@ var rxDatePicker = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not the entire calendar component is disabled.
-     * @return {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isEnabled()` instead.
+     * @return {Promise<Boolean>}
      */
     isDisabled: {
         value: function () {
-            return this.rootElement.getAttribute('disabled').then(function (disabled) {
-                return (disabled ? true : false);
+            return this.isEnabled().then(function (enabled) {
+                return !enabled;
             });
         }
     },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the entire calendar component is enabled.
+     * @return {Promise<Boolean>}
+     */
+    isEnabled: {
+        value: function () {
+            return this.rootElement.getAttribute('disabled').then(function (disabled) {
+                return !disabled;
+            });
+        }
+    },
+
 
     /**
      * @function
@@ -162,7 +180,7 @@ var rxDatePicker = {
      * @instance
      * @function
      * @description Whether or not the calendar is open.
-     * @return {Boolean}
+     * @return {Promise<Boolean>}
      */
     isOpen: {
         value: function () {
@@ -176,8 +194,11 @@ var rxDatePicker = {
      * @private
      * @instance
      * @function
+     * @deprecated
      * @description Whether or not the calendar is closed.
-     * @return {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isOpen()` instead.
+     * @return {Promise<Boolean>}
      */
     isClosed: {
         value: function () {
@@ -200,8 +221,8 @@ var rxDatePicker = {
     open: {
         value: function () {
             var self = this;
-            this.isClosed().then(function (closed) {
-                if (closed) {
+            this.isOpen().then(function (open) {
+                if (!open) {
                     self.rootElement.$('.control').click();
                 }
             });

@@ -1,4 +1,4 @@
-describe('Breadcrumbs', function () {
+describe('elements:Breadcrumbs', function () {
     var scope, compile, breadcrumbs;
 
     var mockBreadcrumbs = [
@@ -19,8 +19,8 @@ describe('Breadcrumbs', function () {
 
     beforeEach(function () {
         // Load the service's module
-        module('encore.ui.rxBreadcrumbs');
         module('encore.ui.utilities');
+        module('encore.ui.elements');
         module('encore.ui.rxApp');
 
         // load the template

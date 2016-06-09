@@ -37,8 +37,8 @@ var rxApp = {
     expand: {
         value: function () {
             var page = this;
-            return this.isCollapsed().then(function (collapsed) {
-                if (collapsed) {
+            return this.isExpanded().then(function (expanded) {
+                if (!expanded) {
                     page.btnCollapseToggle.click();
                 }
             });
@@ -64,11 +64,29 @@ var rxApp = {
     /**
      * @instance
      * @function
-     * @returns {Boolean}
+     * @deprecated
      * @description Whether or not the navigation section is collapsed. If the navigation section is
      * not collapsible, it will throw an {@link rxApp#NotCollapsibleException}.
+     *
+     * **DEPRECATED** Check inverse of `isExpanded()` instead.
+     * @returns {Promise<Boolean>}
      */
     isCollapsed: {
+        value: function () {
+            return this.isExpanded().then(function (expanded) {
+                return !expanded;
+            });
+        }
+    },
+
+    /**
+     * @instance
+     * @function
+     * @description Whether or not the navigation section is expanded. If the navigation section is
+     * not expandable, it will throw an {@link rxApp#NotCollapsibleException}.
+     * @returns {Promise<Boolean>}
+     */
+    isExpanded: {
         value: function () {
             var page = this;
             return this.isCollapsible().then(function (isCollapsible) {
@@ -79,23 +97,8 @@ var rxApp = {
                 }
 
                 return page.rootElement.$('.rx-app').getAttribute('class').then(function (classNames) {
-                    return (classNames.indexOf('collapsed') >= 0);
+                    return !(classNames.indexOf('collapsed') >= 0);
                 });
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
-     * @returns {Boolean}
-     * @description Whether or not the navigation section is expanded. If the navigation section is
-     * not expandable, it will throw an {@link rxApp#NotCollapsibleException}.
-     */
-    isExpanded: {
-        value: function () {
-            return this.isCollapsed().then(function (result) {
-                return !result;
             });
         }
     },

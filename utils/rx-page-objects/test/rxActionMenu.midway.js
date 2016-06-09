@@ -19,7 +19,7 @@ describe('rxActionMenu', function () {
     };
 
     before(function () {
-        demoPage.go('#/components/rxActionMenu');
+        demoPage.go('#/elements/ActionMenu');
         globalDismiss = encore.rxActionMenu.initialize($('rx-action-menu#globalDismissal'));
         localDismiss = encore.rxActionMenu.initialize($('rx-action-menu[global-dismiss="false"]'));
         customActions = encore.rxActionMenu.initialize($('rx-action-menu#custom'), customActionMenuItem);

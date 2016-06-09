@@ -39,31 +39,26 @@ exports.rxCollapse = function (options) {
 
         it('should expand', function () {
             component.expand();
-            expect(component.isCollapsed()).to.eventually.be.false;
             expect(component.isExpanded()).to.eventually.be.true;
         });
 
         it('should not expand again', function () {
             component.expand();
-            expect(component.isCollapsed()).to.eventually.be.false;
             expect(component.isExpanded()).to.eventually.be.true;
         });
 
         it('should collapse', function () {
             component.collapse();
-            expect(component.isCollapsed()).to.eventually.be.true;
             expect(component.isExpanded()).to.eventually.be.false;
         });
 
         it('should not collapse again', function () {
             component.collapse();
-            expect(component.isCollapsed()).to.eventually.be.true;
             expect(component.isExpanded()).to.eventually.be.false;
         });
 
         it('should toggle', function () {
             component.toggle();
-            expect(component.isCollapsed()).to.eventually.be.false;
             expect(component.isExpanded()).to.eventually.be.true;
         });
 

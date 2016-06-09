@@ -1,10 +1,10 @@
 var rxBreadcrumbs = encore.rxBreadcrumbs;
 
-describe('rxBreadcrumbs', function () {
+describe('elements:rxBreadcrumbs', function () {
     var breadcrumbs;
 
     before(function () {
-        demoPage.go('#/components/rxBreadcrumbs');
+        demoPage.go('#/elements/Breadcrumbs');
         breadcrumbs = rxBreadcrumbs.initialize($('.module-demo rx-breadcrumbs'));
     });
 
@@ -63,8 +63,8 @@ describe('rxBreadcrumbs', function () {
             expect(last.isLast()).to.eventually.be.true;
         });
 
-        it('should have the name "All Components"', function () {
-            expect(last.name).to.eventually.equal('All Components');
+        it('should have the name "All Elements"', function () {
+            expect(last.name).to.eventually.equal('All Elements');
         });
 
         it('should have a "DEMO TAG" tag',  function () {
@@ -82,7 +82,7 @@ describe('rxBreadcrumbs', function () {
         var middle;
 
         before(function () {
-            middle = breadcrumbs.byName('Components');
+            middle = breadcrumbs.byName('Elements');
         });
 
         it('should fetch a single breadcrumb by position', function () {
@@ -97,8 +97,8 @@ describe('rxBreadcrumbs', function () {
             expect(middle.isLast()).to.eventually.be.false;
         });
 
-        it('should have the name "Components"', function () {
-            expect(middle.name).to.eventually.equal('Components');
+        it('should have the name "Elements"', function () {
+            expect(middle.name).to.eventually.equal('Elements');
         });
 
         it('should not have a tag', function () {
@@ -108,18 +108,18 @@ describe('rxBreadcrumbs', function () {
 
         it('should have an href property', function () {
             expect(middle.isLink()).to.eventually.be.true;
-            expect(middle.href).to.eventually.equal(browser.baseUrl + '/#/components');
+            expect(middle.href).to.eventually.equal(browser.baseUrl + '/#/elements');
         });
 
         it('should visit the correct page when clicking on the breadcrumb', function () {
-            var componentsHref = browser.baseUrl + '/#/components';
+            var componentsHref = browser.baseUrl + '/#/elements';
 
             middle.click();
             expect(browser.getCurrentUrl()).to.eventually.equal(componentsHref);
         });
 
         after(function () {
-            demoPage.go('#/components/rxBreadcrumbs');
+            demoPage.go('#/elements/Breadcrumbs');
         });
     });
 

@@ -30,8 +30,8 @@ describe('rxDatePicker', function () {
             picker = encore.rxDatePicker.initialize($('#dpSimple'));
         });
 
-        it('should not be disabled', function () {
-            expect(picker.isDisabled()).to.eventually.eq(false);
+        it('should be enabled', function () {
+            expect(picker.isEnabled()).to.eventually.eq(true);
         });
 
         it('should be valid', function () {
@@ -155,8 +155,8 @@ describe('rxDatePicker', function () {
             picker = encore.rxDatePicker.initialize($('#dpEnabledValid'));
         });
 
-        it('should not be disabled', function () {
-            expect(picker.isDisabled()).to.eventually.eq(false);
+        it('should be enabled', function () {
+            expect(picker.isEnabled()).to.eventually.eq(true);
         });
 
         it('should be valid', function () {
@@ -169,8 +169,8 @@ describe('rxDatePicker', function () {
             picker = encore.rxDatePicker.initialize($('#dpEnabledInvalid'));
         });
 
-        it('should not be disabled', function () {
-            expect(picker.isDisabled()).to.eventually.eq(false);
+        it('should be enabled', function () {
+            expect(picker.isEnabled()).to.eventually.eq(true);
         });
 
         it('should not be valid', function () {
@@ -183,8 +183,8 @@ describe('rxDatePicker', function () {
             picker = encore.rxDatePicker.initialize($('#dpDisabledValid'));
         });
 
-        it('should be disabled', function () {
-            expect(picker.isDisabled()).to.eventually.eq(true);
+        it('should not be enabled', function () {
+            expect(picker.isEnabled()).to.eventually.eq(false);
         });
 
         it('should be valid', function () {
@@ -197,8 +197,8 @@ describe('rxDatePicker', function () {
             picker = encore.rxDatePicker.initialize($('#dpDisabledInvalid'));
         });
 
-        it('should be disabled', function () {
-            expect(picker.isDisabled()).to.eventually.eq(true);
+        it('should not be enabled', function () {
+            expect(picker.isEnabled()).to.eventually.eq(false);
         });
 
         it('should not be valid', function () {

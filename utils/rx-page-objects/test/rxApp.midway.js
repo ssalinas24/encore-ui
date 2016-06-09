@@ -34,7 +34,7 @@ describe('rxApp', function () {
 
         it('should collapse the navigation', function () {
             rxAppCustom.collapse();
-            expect(rxAppCustom.isCollapsed()).to.eventually.be.true;
+            expect(rxAppCustom.isExpanded()).to.eventually.be.false;
         });
 
         it.skip('should expand the navigation', function () {
