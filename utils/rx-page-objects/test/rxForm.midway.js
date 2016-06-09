@@ -63,7 +63,7 @@ describe('rxForm', function () {
                 });
 
                 it('symbol should be visible', function () {
-                    expect(subject.isSymbolVisible()).to.eventually.be.true;
+                    expect(subject.isSymbolDisplayed()).to.eventually.be.true;
                 });
             });
 
@@ -73,7 +73,7 @@ describe('rxForm', function () {
                 });
 
                 it('symbol should not be visible', function () {
-                    expect(subject.isSymbolVisible()).to.eventually.be.false;
+                    expect(subject.isSymbolDisplayed()).to.eventually.be.false;
                 });
             });
         });
