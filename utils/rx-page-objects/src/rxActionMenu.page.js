@@ -91,7 +91,7 @@ var rxActionMenu = {
      * @function
      * @instance
      * @description Whether or not the action cog is showing its underlying menu.
-     * @returns {Boolean}
+     * @returns {Promise<Boolean>}
      */
     isExpanded: {
         value: function () {
@@ -104,8 +104,11 @@ var rxActionMenu = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not the action cog is hiding its underlying menu.
-     * @returns {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isExpanded()` instead
+     * @returns {Promise<Boolean>}
      */
     isCollapsed: {
         value: function () {
@@ -123,8 +126,8 @@ var rxActionMenu = {
     expand: {
         value: function () {
             var page = this;
-            return this.isCollapsed().then(function (collapsed) {
-                if (collapsed) {
+            return this.isExpanded().then(function (expanded) {
+                if (!expanded) {
                     page.icoCog.click();
                 }
             });

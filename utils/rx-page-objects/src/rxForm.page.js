@@ -25,10 +25,25 @@ var rxFieldName = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not a required field currently displays a red asterisk next to it.
+     *
+     * **DEPRECATED** Use `isSymbolDisplayed()` instead.
      * @returns {Boolean}
      */
     isSymbolVisible: {
+        value: function () {
+            return this.isSymbolDisplayed();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not a required field currently displays a red asterisk next to it.
+     * @returns {Boolean}
+     */
+    isSymbolDisplayed: {
         value: function () {
             return this.eleRequiredSymbol.isDisplayed();
         }

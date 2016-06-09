@@ -55,8 +55,8 @@ var rxToggleSwitch = {
     enable: {
         value: function () {
             var page = this;
-            return this.isDisabled().then(function (disabled) {
-                if (disabled) {
+            return this.isEnabled().then(function (enabled) {
+                if (!enabled) {
                     page.btnToggleSwitch.click();
                 }
             });
@@ -68,6 +68,8 @@ var rxToggleSwitch = {
      * @function
      * @instance
      * @description Whether or not the switch component is currently set to the "off" position.
+     *
+     * **DEPRECATED** Check inverse of `isEnabled()` instead.
      * @returns {Boolean}
      */
     isDisabled: {
