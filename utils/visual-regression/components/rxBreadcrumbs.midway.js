@@ -1,11 +1,11 @@
 describe('demo component', function () {
 
     before(function () {
-        demoPage.go('#/components/rxBreadcrumbs');
+        demoPage.go('#/elements/Breadcrumbs');
     });
 
     it('default', function () {
-        screenshot.snap(this, $('.tab-content rx-breadcrumbs ol'), { threshold: 1 });
+        screenshot.snap(this, $('.site-breadcrumbs rx-breadcrumbs ol'), { threshold: 1 });
     });
 
 });

@@ -151,7 +151,7 @@ rxTimePicker.prototype.canCancel = function () {
 
 /**
  * @description Whether the picker is open
- * @returns {Boolean}
+ * @returns {Promise<Boolean>}
  */
 rxTimePicker.prototype.isOpen = function () {
     return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
@@ -160,8 +160,11 @@ rxTimePicker.prototype.isOpen = function () {
 };
 
 /**
+ * @deprecated
  * @description Whether the picker is closed
- * @returns {Boolean}
+ *
+ * **DEPRECATED** Check inverse of `isOpen()` instead
+ * @returns {Promise<Boolean>}
  */
 rxTimePicker.prototype.isClosed = function () {
     return this.isOpen().then(rxMisc.negate);
@@ -172,8 +175,8 @@ rxTimePicker.prototype.isClosed = function () {
  */
 rxTimePicker.prototype.open = function () {
     var self = this;
-    return this.isClosed().then(function (closed) {
-        if (closed) {
+    return this.isOpen().then(function (opened) {
+        if (!opened) {
             self.eleControl.click();
         }
     });

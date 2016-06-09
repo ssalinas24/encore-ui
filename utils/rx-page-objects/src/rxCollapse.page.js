@@ -22,7 +22,7 @@ var rxCollapse = {
      * @instance
      * @function
      * @description Whether or not the component is currently expanded.
-     * @returns {Boolean}
+     * @returns {Promise<Boolean>}
      */
     isExpanded: {
         value: function () {
@@ -33,8 +33,11 @@ var rxCollapse = {
     /**
      * @instance
      * @function
+     * @deprecated
      * @description Whether or not the component is currently collapsed.
-     * @returns {Boolean}
+     *
+     * **DEPRECATED** Check inverse of `isExpanded()` instead.
+     * @returns {Promise<Boolean>}
      */
     isCollapsed: {
         value: function () {
@@ -103,8 +106,8 @@ var rxCollapse = {
     expand: {
         value: function () {
             var page = this;
-            return this.isCollapsed().then(function (collapsed) {
-                if (collapsed) {
+            return this.isExpanded().then(function (expanded) {
+                if (!expanded) {
                     page.toggle();
                 }
             });

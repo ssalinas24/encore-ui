@@ -4,7 +4,7 @@ describe('rxActionMenu', function () {
 
         beforeEach(function () {
             // load module
-            module('encore.ui.rxActionMenu');
+            module('encore.ui.elements');
 
             // load templates
             module('templates/rxActionMenu.html');

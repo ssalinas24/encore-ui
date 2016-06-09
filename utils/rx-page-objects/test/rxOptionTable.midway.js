@@ -103,8 +103,8 @@ describe('rxOptionTable', function () {
             expect(component.selections).to.eventually.eql([0]);
         });
 
-        it('should unselect all rows', function () {
-            component.unselectAll();
+        it('should deselect all rows', function () {
+            component.deselectAll();
             expect(component.selections).to.eventually.be.empty;
         });
 

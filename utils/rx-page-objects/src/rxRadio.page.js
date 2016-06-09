@@ -76,21 +76,36 @@ var rxRadio = {
     /**
      * @function
      * @instance
+     * @deprecated
      * @description Whether or not the radio element is disabled.
-     * @return {Boolean}
+     *
+     * **DEPRECATED** Check for inverse of `isEnabled()` instead.
+     * @return {Promise<Boolean>}
      */
     isDisabled: {
+        value: function () {
+            return this.isEnabled().then(function (enabled) {
+                return !enabled;
+            });
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the radio element is enabled.
+     * @return {Promise<Boolean>}
+     */
+    isEnabled: {
         value: function () {
             var page = this;
             return this.eleFakeRadio.isPresent().then(function (isFakeRadio) {
                 if (isFakeRadio) {
                     return page.eleWrapper.getAttribute('class').then(function (classes) {
-                        return _.contains(classes.split(' '), 'rx-disabled');
+                        return !_.contains(classes.split(' '), 'rx-disabled');
                     });
                 }
-                return page.rootElement.getAttribute('disabled').then(function (disabled) {
-                    return disabled === null ? false : true;
-                });
+                return page.rootElement.isEnabled();
             });
         }
     },

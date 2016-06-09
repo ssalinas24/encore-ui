@@ -1,11 +1,11 @@
-angular.module('encore.ui.rxBreadcrumbs')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxBreadcrumbs.directive:rxBreadcrumbs
+ * @name elements.directive:rxBreadcrumbs
  * @restrict E
  * @scope
  * @description
- * Responsible for drawing the breadcrumbs for a page
+ * Responsible for drawing the breadcrumbs for a page.
  *
  *
  * By default, the first breadcrumb will always have an URL of `'/'` and a name of `'Home'`. This can be changed

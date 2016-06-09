@@ -321,10 +321,23 @@ var rxOptionTable = {
 
     /**
      * @function
+     * @deprecated
+     * @alias {rxOptionTable.deselectAll}
      * @instance
-     * @description Unselects every row in the rxOptionTable.
+     * @description **DEPRECATED** Unselects every row in the rxOptionTable.
      */
     unselectAll: {
+        value: function () {
+            return this.deselectAll();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Deselects every row in the rxOptionTable.
+     */
+    deselectAll: {
         value: function () {
             this.tblRows.map(function (rowElement) {
                 optionRowFromElement(rowElement).deselect();
@@ -561,7 +574,7 @@ exports.rxOptionTable = {
             },
             set: function (selections) {
                 var optionTable = exports.rxOptionTable.initialize(elem);
-                optionTable.unselectAll();
+                optionTable.deselectAll();
                 optionTable.selectMany(selections);
             }
         };

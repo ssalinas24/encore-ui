@@ -97,7 +97,7 @@ angular.module('encore.ui.rxApp')
  * CSS style in your application and use those instead, passing it as the `class`
  * value to `addStatus()`.
  *
- * All the tags are accessible inside of {@link rxBreadcrumbs}
+ * All the tags are accessible inside of {@link elements.directive:rxBreadcrumbs rxBreadcrumbs}
  * as well. Any breadcrumb that was created with `useStatusTag: true` will automatically
  * receive the same status tag as you passed to `<rx-page>`.
  *

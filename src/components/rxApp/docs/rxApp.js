@@ -128,5 +128,9 @@ angular.module('demoApp')
     }];
 
     // Load docs homepage ('Overview')
-    $scope.embedUrl = $location.absUrl().split('#')[0];
+    // NOTE: Trailing forward slash is not an accident.
+    // This is required to get Firefox to load the iframe.
+    //
+    // The resulting url should have double forward slashes `//`.
+    $scope.embedUrl = $location.absUrl().split('#')[0] + '/';
 });

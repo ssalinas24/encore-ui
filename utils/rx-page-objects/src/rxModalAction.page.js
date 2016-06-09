@@ -83,9 +83,7 @@ var rxModalAction = {
      */
     canSubmit: {
         value: function () {
-            return this.btnSubmit.getAttribute('disabled').then(function (isDisabled) {
-                return isDisabled === null;
-            });
+            return this.btnSubmit.isEnabled();
         }
     },
 
