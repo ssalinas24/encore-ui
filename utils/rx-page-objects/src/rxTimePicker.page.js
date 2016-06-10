@@ -2,7 +2,6 @@ var _ = require('lodash');
 var moment = require('moment');
 
 var rxSelect = require('./rxSelect.page').rxSelect;
-var rxForm = require('./rxForm.page').rxForm;
 var rxMisc = require('./rxMisc.page').rxMisc;
 
 /**
@@ -121,12 +120,11 @@ function rxTimePicker (rxTimePickerElement) {
 
                 // set via picker
                 this.open();
-                rxForm.fill(this, {
-                    hour: date.format('hh'), // 12-hour format (no padding)
-                    minutes: date.format('mm'), // padded minutes
-                    period: date.format('A'), // AM/PM
-                    utcOffset: date.format('Z')
-                });
+
+                this.hour = date.format('hh'); // 12-hour format (no padding)
+                this.minutes = date.format('mm'); // padded minutes
+                this.selPeriod.element(by.cssContainingText('option', date.format('A'))).click();
+                this.selUtcOffset.element(by.cssContainingText('option', date.format('Z'))).click();
                 this.submit();
             }
         }//time
