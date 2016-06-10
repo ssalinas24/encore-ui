@@ -77,6 +77,7 @@ describe('rxSelect', function () {
     });
 
     describe('How do you like your bacon?', function () {
+        var slowClick = false;
         before(function () {
             subject = encore.rxSelect.initialize($('#selBaconPrep'));
         });
@@ -127,11 +128,10 @@ describe('rxSelect', function () {
             var val = 'thin';
 
             beforeEach(function () {
-                subject.select(txt);
+                subject.select(txt, slowClick);
             });
 
             afterEach(function () {
-                var slowClick = false;
                 subject.select('I do not like bacon', slowClick);
             });
 
@@ -173,13 +173,12 @@ describe('rxSelect', function () {
             });
 
             it('should remove the select element to the DOM', function () {
-                var slowClick = false;
                 willHide.select('Hide Next Select Box', slowClick);
                 expect(willBeHidden.isPresent()).to.eventually.be.false;
             });
 
             it('should add the select element back', function () {
-                willHide.select('Show Next Select Box');
+                willHide.select('Show Next Select Box', slowClick);
                 expect(willBeHidden.isPresent()).to.eventually.be.true;
                 expect(willBeHidden.isDisplayed()).to.eventually.be.true;
             });
