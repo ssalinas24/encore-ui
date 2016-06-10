@@ -156,7 +156,7 @@ var rxActionMenu = {
      * @function
      * @instance
      * @param {String} actionName - The name of the action menu item to check for existence.
-     * @returns {Boolean}
+     * @returns {Promise<Boolean>}
      */
     hasAction: {
         value: function (actionName) {
@@ -190,7 +190,7 @@ var rxActionMenu = {
      * Does not expand the action menu to determine the count of menu items.
      * @function
      * @instance
-     * @returns {Number}
+     * @returns {Promise<Number>}
      */
     actionCount: {
         value: function () {
