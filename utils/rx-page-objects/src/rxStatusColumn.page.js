@@ -190,7 +190,16 @@ var rxStatusColumn = {
                     get: function () {
                         var tooltip = this;
                         return this.exists.then(function (exists) {
-                            return exists ? tooltip.rootElement.getText() : null;
+                            if (exists) {
+                                // Tooltips, when left open, can obscure other hover/click
+                                // events on the page. Avoid this by getting the text, stop
+                                // hovering, then return the text value back to the user.
+                                return tooltip.rootElement.getText().then(function (text) {
+                                    browser.actions().mouseMove($('body')).perform();
+                                    return text;
+                                });
+                            }
+                            return null;
                         });
                     }
                 }
