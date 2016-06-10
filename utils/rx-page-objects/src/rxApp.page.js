@@ -64,24 +64,6 @@ var rxApp = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the navigation section is collapsed. If the navigation section is
-     * not collapsible, it will throw an {@link rxApp#NotCollapsibleException}.
-     *
-     * **DEPRECATED** Check inverse of `isExpanded()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isCollapsed: {
-        value: function () {
-            return this.isExpanded().then(function (expanded) {
-                return !expanded;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the navigation section is expanded. If the navigation section is
      * not expandable, it will throw an {@link rxApp#NotCollapsibleException}.
      * @returns {Promise<Boolean>}

@@ -50,23 +50,6 @@ var rxCheckbox = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the checkbox is disabled.
-     *
-     * **DEPRECATED** Check for inverse of `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the checkbox is enabled.
      * @returns {Promise<Boolean>}
      */

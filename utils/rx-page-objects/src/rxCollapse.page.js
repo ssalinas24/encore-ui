@@ -33,23 +33,6 @@ var rxCollapse = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the component is currently collapsed.
-     *
-     * **DEPRECATED** Check inverse of `isExpanded()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isCollapsed: {
-        value: function () {
-            return this.isExpanded().then(function (expanded) {
-                return !expanded;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the component has a custom title.
      * @returns {Boolean}
      */

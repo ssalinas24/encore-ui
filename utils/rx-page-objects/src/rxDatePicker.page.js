@@ -120,23 +120,6 @@ var rxDatePicker = {
     /**
      * @function
      * @instance
-     * @deprecated
-     * @description Whether or not the entire calendar component is disabled.
-     *
-     * **DEPRECATED** Check inverse of `isEnabled()` instead.
-     * @return {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
      * @description Whether or not the entire calendar component is enabled.
      * @return {Promise<Boolean>}
      */
@@ -186,24 +169,6 @@ var rxDatePicker = {
         value: function () {
             return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
                 return !_.contains(classes, 'ng-hide');
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @deprecated
-     * @description Whether or not the calendar is closed.
-     *
-     * **DEPRECATED** Check inverse of `isOpen()` instead.
-     * @return {Promise<Boolean>}
-     */
-    isClosed: {
-        value: function () {
-            return this.isOpen().then(function (open) {
-                return !open;
             });
         }
     },
