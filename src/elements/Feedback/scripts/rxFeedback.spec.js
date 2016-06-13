@@ -38,7 +38,7 @@ describe('rxFeedback', function () {
 
         // load module
         module('encore.ui.utilities');
-        module('encore.ui.rxFeedback');
+        module('encore.ui.elements');
 
         // load templates
         module('templates/rxFeedback.html');
