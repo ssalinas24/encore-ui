@@ -1,3 +1,14 @@
+<a name="1.50.0-0"></a>
+### 1.50.0-0 (2016-06-15)
+
+
+#### Bug Fixes
+
+* **metadataSimpleExample:** consistentify date format with styleguide ([cf0378ef](git@github.com:rackerlabs/encore-ui/commit/cf0378ef141afe12a76d25ce249d78c1d24a001c))
+* **rxApp:** fix embedded demo for Firefox ([f1f9475b](git@github.com:rackerlabs/encore-ui/commit/f1f9475b894be2416ea1ac268ddb2670b685a699))
+* **visreg:** tweak rxApp selector ([a682e9df](git@github.com:rackerlabs/encore-ui/commit/a682e9dfff69c37044567241b32e844472a488db))
+
+
 <a name="1.49.0"></a>
 ## 1.49.0 (2016-06-01)
 
