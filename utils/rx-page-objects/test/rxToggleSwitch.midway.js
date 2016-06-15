@@ -17,12 +17,12 @@ describe('rxToggleSwitch', function () {
 
     describe('failed asynchronous operation', encore.exercise.rxToggleSwitch({
         instance: encore.rxToggleSwitch.initialize($('.demo-failed-async')),
-        enabledAtEnd: false
+        toggledAtEnd: false
     }));
 
     describe('disabled', encore.exercise.rxToggleSwitch({
         instance: encore.rxToggleSwitch.initialize($('.demo-disabled')),
-        disabled: true
+        enabled: false
     }));
 
 });

@@ -1,12 +1,10 @@
 var _ = require('lodash');
-var rxRadio = require('./rxRadio.page').rxRadio;
 
 /**
  * @description rxRadio exercises
  * @exports exercise/rxRadio
- * @param {Object} [options] - Test options. Used to build valid tests.
+ * @param {Object} options - Test options. Used to build valid tests.
  * @param {rxRadio} options.instance - Component to exercise.
- * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Boolean} [options.disabled=false] - Whether or not the radio button is disabled at the start of the exercise.
  * @param {Boolean} [options.selected=false] - Whether or not the radio button is selected at the start of the exercise.
  * @param {Boolean} [options.visible=true] - Whether or not the radio button is visible at the start of the exercise.
@@ -28,14 +26,7 @@ exports.rxRadio = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxRadio.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should be present', function () {

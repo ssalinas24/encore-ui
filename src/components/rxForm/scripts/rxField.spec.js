@@ -3,7 +3,7 @@ describe('rxForm', function () {
 
     beforeEach(function () {
         module('encore.ui.rxForm');
-
+        module('encore.ui.utilities');
         inject(function ($rootScope, $compile) {
             scope = $rootScope.$new();
             compile = $compile;

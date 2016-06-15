@@ -4,19 +4,19 @@ var Page = require('astrolabe').Page;
 var formPageObject = Page.create({
     form: {
         set: function (formData) {
-            encore.rxForm.form.fill(this, formData);
+            encore.rxForm.fill(this, formData);
         }
     },
 
     plainTextbox: encore.rxForm.textField.generateAccessor($('#txtPlain')),
 
-    requireName: encore.rxForm.checkbox.generateAccessor($('#chkVolumeNameRequired')),
+    requireName: encore.rxCheckbox.generateAccessor($('#chkVolumeNameRequired')),
 
     options: {
         get: function () {
             return Page.create({
-                first: encore.rxForm.radioButton.generateAccessor($('#favBeatle_0')),
-                second: encore.rxForm.radioButton.generateAccessor($('#favBeatle_1'))
+                first: encore.rxRadio.generateAccessor($('#favBeatle_0')),
+                second: encore.rxRadio.generateAccessor($('#favBeatle_1'))
             });
         }
     },
@@ -25,7 +25,7 @@ var formPageObject = Page.create({
         get: function () {
             var slowClick = false;
             return Page.create({
-                type: encore.rxForm.dropdown.generateAccessor($('#selVolumeType'), slowClick)
+                type: encore.rxSelect.generateAccessor($('#selVolumeType'), slowClick)
             });
         }
     }
@@ -53,7 +53,7 @@ describe('rxForm', function () {
             var checkbox, subject;
 
             before(function () {
-                checkbox = encore.rxForm.checkbox.initialize($('#chkVolumeNameRequired'));
+                checkbox = encore.rxCheckbox.initialize($('#chkVolumeNameRequired'));
                 subject = encore.rxForm.fieldName.initialize($('#fieldNameVolumeName'));
             });
 
@@ -63,7 +63,7 @@ describe('rxForm', function () {
                 });
 
                 it('symbol should be visible', function () {
-                    expect(subject.isSymbolVisible()).to.eventually.be.true;
+                    expect(subject.isSymbolDisplayed()).to.eventually.be.true;
                 });
             });
 
@@ -73,7 +73,7 @@ describe('rxForm', function () {
                 });
 
                 it('symbol should not be visible', function () {
-                    expect(subject.isSymbolVisible()).to.eventually.be.false;
+                    expect(subject.isSymbolDisplayed()).to.eventually.be.false;
                 });
             });
         });

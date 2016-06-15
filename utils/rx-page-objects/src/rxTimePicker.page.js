@@ -2,7 +2,6 @@ var _ = require('lodash');
 var moment = require('moment');
 
 var rxSelect = require('./rxSelect.page').rxSelect;
-var rxMisc = require('./rxMisc.page').rxMisc;
 
 /**
  * @class
@@ -155,17 +154,6 @@ rxTimePicker.prototype.isOpen = function () {
     return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
         return !_.contains(classes, 'ng-hide');
     });
-};
-
-/**
- * @deprecated
- * @description Whether the picker is closed
- *
- * **DEPRECATED** Check inverse of `isOpen()` instead
- * @returns {Promise<Boolean>}
- */
-rxTimePicker.prototype.isClosed = function () {
-    return this.isOpen().then(rxMisc.negate);
 };
 
 /**

@@ -271,23 +271,5 @@ exports.rxBulkSelect = {
             get: function () { return rxBulkSelectElement; }
         };
         return Page.create(rxBulkSelect);
-    },
-
-    /**
-     * @memberof rxBulkSelect
-     * @deprecated
-     * @description Page object representing the first {@link rxBulkSelect} object found on the page.
-     * DEPRECATED: Use {@link rxBulkSelect.initialize} (without arguments) instead.
-     * @returns {rxBulkSelect}
-     */
-    main: (function () {
-        rxBulkSelect.rowFromElement = {
-            value: rxBulkSelectDefaultRowFn
-        };
-
-        rxBulkSelect.rootElement = {
-            get: function () { return $('[rx-bulk-select]'); }
-        };
-        return Page.create(rxBulkSelect);
-    })()
+    }
 };

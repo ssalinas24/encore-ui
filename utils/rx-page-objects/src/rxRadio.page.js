@@ -76,23 +76,6 @@ var rxRadio = {
     /**
      * @function
      * @instance
-     * @deprecated
-     * @description Whether or not the radio element is disabled.
-     *
-     * **DEPRECATED** Check for inverse of `isEnabled()` instead.
-     * @return {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
      * @description Whether or not the radio element is enabled.
      * @return {Promise<Boolean>}
      */

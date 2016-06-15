@@ -171,11 +171,9 @@ angular.module('encore.ui.rxCharacterCount')
                 element.off('input');
                 $timeout(function () {
                     // When the element containing the rx-character-count is removed, we have to
-                    // ensure we also remove the `wrapper`, which we created. We have to manually
-                    // destroy its scope and remove the element itself. All of this has to happen
+                    // ensure we also remove the `wrapper`, which we created. This has to happen
                     // in a $timeout() to ensure it occurs on the next $digest cycle, otherwise
-                    // we go into an infinite loop
-                    wrapper.scope().$destroy();
+                    // we go into an infinite loop.
                     wrapper.remove();
                 });
             });

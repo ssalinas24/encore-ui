@@ -102,23 +102,6 @@ var rxActionMenu = {
     },
 
     /**
-     * @function
-     * @instance
-     * @deprecated
-     * @description Whether or not the action cog is hiding its underlying menu.
-     *
-     * **DEPRECATED** Check inverse of `isExpanded()` instead
-     * @returns {Promise<Boolean>}
-     */
-    isCollapsed: {
-        value: function () {
-            return this.isExpanded().then(function (isExpanded) {
-                return !isExpanded;
-            });
-        }
-    },
-
-    /**
      * @description Clicks the action cog to expand the action menu, unless it's already open.
      * @function
      * @instance

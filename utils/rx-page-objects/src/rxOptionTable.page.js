@@ -125,19 +125,6 @@ var optionRowFromElement = function (eleOptionRow) {
             value: function () {
                 this.selectInput.deselect();
             }
-        },
-
-        /**
-         * @deprecated
-         * @function
-         * @instance
-         * @memberof rxOptionTable.row
-         * @description **DEPRECATED**: Use {@link rxOptionTable.row#deselect} instead.
-         */
-        unselect: {
-            value: function () {
-                this.deselect();
-            }
         }
     });
 };//optionRowFromElement
@@ -334,19 +321,6 @@ var rxOptionTable = {
 
     /**
      * @function
-     * @deprecated
-     * @alias {rxOptionTable.deselectAll}
-     * @instance
-     * @description **DEPRECATED** Unselects every row in the rxOptionTable.
-     */
-    unselectAll: {
-        value: function () {
-            return this.deselectAll();
-        }
-    },
-
-    /**
-     * @function
      * @instance
      * @description Deselects every row in the rxOptionTable.
      */
@@ -379,21 +353,8 @@ var rxOptionTable = {
             var css = cellSelectorForColumn(columnName);
             var cellElement = this.rootElement.element(by.cssContainingText(css, columnText));
             return rowNumberFromCell(cellElement).then(function (rowNumber) {
-                optionRowFromElement(page.tblRows.get(rowNumber)).unselect();
+                optionRowFromElement(page.tblRows.get(rowNumber)).deselect();
             });
-        }
-    },
-
-    /**
-     * @deprecated
-     * @function
-     * @instance
-     * @description **DEPRECATED**: Use {@link rxOptionTable#deselectByColumnText} instead.
-     * @alias rxOptionTable#deselectByColumnText
-     */
-    unselectByColumnText: {
-        value: function (columnName, columnText) {
-            this.deselectByColumnText(columnName, columnText);
         }
     },
 
@@ -402,7 +363,7 @@ var rxOptionTable = {
      * @instance
      * @description
      * Deselect options where each `{ columnName: columnText }` in `selections` is passed to
-     * {@link rxOptionTable#unselectByColumnText}.
+     * {@link rxOptionTable#deselectByColumnText}.
      * @param {Object[]} selections - Array of single key-value pairs to unselect.
      * @returns {undefined}
      * @example
@@ -421,21 +382,8 @@ var rxOptionTable = {
         value: function (selections) {
             var page = this;
             _.forEach(selections, function (selection) {
-                page.unselectByColumnText(_.first(_.keys(selection)), _.first(_.values(selection)));
+                page.deselectByColumnText(_.first(_.keys(selection)), _.first(_.values(selection)));
             });
-        }
-    },
-
-    /**
-     * @deprecated
-     * @function
-     * @instance
-     * @description **DEPRECATED**: Use {@link rxOptionTable#deselectMany} instead.
-     * @alias rxCheckbox#deselectMany
-     */
-    unselectMany: {
-        value: function (selections) {
-            this.deselectMany(selections);
         }
     },
 
@@ -575,20 +523,6 @@ exports.rxOptionTable = {
     },
 
     /**
-     * @deprecated
-     * @memberof rxOptionTable
-     * @description **DEPRECATED**: Use {@link rxOptionTable.initialize} without arguments instead.
-     * Will return a page object representing the _first_ rxOptionTable object found on the page.
-     * @type {rxOptionTable}
-     */
-    main: (function () {
-        rxOptionTable.rootElement = {
-            get: function () { return $('rx-option-table'); }
-        };
-        return Page.create(rxOptionTable);
-    })(),
-
-    /**
      * @memberof rxOptionTable
      * @function
      * @description
@@ -632,41 +566,4 @@ exports.rxOptionTable = {
             }
         };
     }
-};
-
-/**
- * @deprecated
- * @namespace
- * @description
- * **DEPRECATED**: Please use {@link rxOptionTable} as a stand-in replacement.
- */
-exports.rxOptionFormTable = {
-    /**
-     * @deprecated
-     * @function
-     * @returns {rxOptionTable}
-     * @memberof rxOptionFormTable
-     * @description
-     * **DEPRECATED**: Please use {@link encore.rxOptionTable.initialize} as a stand-in replacement.
-     */
-    initialize: exports.rxOptionTable.initialize,
-
-    /**
-     * @deprecated
-     * @memberof rxOptionFormTable
-     * @type {rxOptionTable}
-     * @description
-     * **DEPRECATED**: Please use {@link rxOptionTable.initialize} (without arguments) as a stand-in replacement.
-     */
-    main: exports.rxOptionTable.main,
-
-    /**
-     * @deprecated
-     * @function
-     * @memberof rxOptionFormTable
-     * @returns {rxOptionTable}
-     * @description
-     * **DEPRECATED**: Please use {@link rxOptionTable.generateAccessor} as a stand-in replacement.
-     */
-    generateAccessor: exports.rxOptionTable.generateAccessor
 };

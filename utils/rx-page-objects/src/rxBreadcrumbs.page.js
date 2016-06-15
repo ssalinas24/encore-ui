@@ -64,20 +64,6 @@ var breadcrumb = function (rootElement) {
         /**
          * @instance
          * @function
-         * @deprecated
-         * @alias {rxBreadcrumbs.breadcrumb#click}
-         * @memberOf rxBreadcrumbs.breadcrumb
-         * @description Use rxBreadcrumbs.breadcrumb#click instead. This will be removed in the future.
-         */
-        visit: {
-            value: function () {
-                return this.click();
-            }
-        },
-
-        /**
-         * @instance
-         * @function
          * @memberOf rxBreadcrumbs.breadcrumb
          * @description Click the breadcrumb to visit it.
          */
@@ -221,19 +207,5 @@ exports.rxBreadcrumbs = {
             get: function () { return rootElement; }
         };
         return Page.create(rxBreadcrumbs);
-    },
-
-    /**
-     * @memberof rxBreadcrumbs
-     * @deprecated
-     * @description Page object representing the first {@link rxBreadcrumbs} object found on the page.
-     * DEPRECATED: Use {@link rxBreadcrumbs.initialize} (without arguments) instead.
-     * @returns {rxBreadcrumbs}
-     */
-    main: (function () {
-        rxBreadcrumbs.rootElement = {
-            get: function () { return $('rx-breadcrumbs'); }
-        };
-        return Page.create(rxBreadcrumbs);
-    })()
+    }
 };

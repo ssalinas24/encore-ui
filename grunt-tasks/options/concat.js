@@ -41,7 +41,6 @@ module.exports = {
             /* Non-responsive Styles */
             {
                 src: [
-                    'demo/bower_components/pure/grids-min.css',
                     'src/**/*.less',
                     '!src/styles/*.less',
                     // exclude responsive, handled below
@@ -52,7 +51,6 @@ module.exports = {
             /* Responsive Styles */
             {
                 src: [
-                    'demo/bower_components/pure/grids-min.css',
                     'src/**/*.less',
                     '!src/styles/*.less'
                 ],

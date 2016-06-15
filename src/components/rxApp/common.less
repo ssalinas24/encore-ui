@@ -25,9 +25,7 @@ select {
 // Set default font
 button,
 input,
-select,
-.pure-g [class *= "pure-u"],
-.pure-g-r [class *= "pure-u"] {
+select {
   font-family: @app-font;
 }
 
@@ -190,56 +188,23 @@ h6 {
 }
 
 h1 {
-  // same as .title.xl
   font-size: 28px;
 }
 h2 {
-  // same as .title.lg
   font-size: 22px;
 }
 h3 {
-  // same as .title
   font-size: 18px;
 }
 h4 {
-  // same as .title.sm
   font-size: 16px;
 }
 h5 {
-  // same as .title.xs
   font-size: 13px;
 }
 h6 {
-  // no legacy equivalent
   font-size: 10px;
 }
-
-// Heading/Title Styles
-.title {
-  margin: 1em 0;
-
-  // Sizing
-  &.xl { // h1
-    font-size: 28px;
-  }
-  &.lg { // h2
-    font-size: 22px;
-  }
-  & { // h3
-    font-size: 18px;
-  }
-  &.sm { // h4
-    font-size: 16px;
-  }
-  &.xs { // h5
-    font-size: 13px;
-  }
-
-  // Colors
-  &.subdued {
-    color: @gray-700;
-  }
-}//.title
 
 // Wells
 .well {
@@ -281,7 +246,7 @@ a.subdued:hover,
 a.subdued:focus,
 a:hover .subdued,
 a:focus .subdued {
-  color: @subduedTextHover;
+  color: darken(@gray-700, 15%);
 }
 
 // Hidden content
@@ -347,23 +312,18 @@ body:hover .visually-hidden button {
  * https://css-tricks.com/snippets/css/style-placeholder-text/
  */
 ::-webkit-input-placeholder { // Chrome
-  color: @inputPlaceholderColor;
+  color: @rxForm-placeholder-color;
   font-weight: 300;
   font-style: italic;
 }
 ::-moz-placeholder { // Firefox 19+
-  color: @inputPlaceholderColor;
+  color: @rxForm-placeholder-color;
   font-weight: 400;
-  font-style: italic;
-}
-
-//DEPRECATED: A "filter" style rxSearchBox
-.filter-box {
   font-style: italic;
 }
 
 //DEPRECATED
 .action-separator {
   font-size: 1.1em;
-  color: @subduedText;
+  color: @gray-700;
 }

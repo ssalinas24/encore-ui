@@ -70,44 +70,12 @@ var rxSearchBox = {
     /**
      * @function
      * @instance
-     * @deprecated
-     * @description Whether or not the search box is searchable.
-     *
-     * **DEPRECATED** Use `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isSearchable: {
-        value: function () {
-            return this.isEnabled();
-        }
-    },
-
-    /**
-     * @function
-     * @instance
      * @description Whether or not the search box is enabled.
      * @returns {Promise<Boolean>}
      */
     isEnabled: {
         value: function () {
             return this.txtSearch.isEnabled();
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @deprecated
-     * @description Whether or not the search box is disabled.
-     *
-     * **DEPRECATED** Check inverse of `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
         }
     },
 
@@ -164,27 +132,9 @@ exports.rxSearchBox = {
      * @description Page object representing the rxSearchBox object.
      */
     initialize: function (rxSearchBoxElement) {
-        if (rxSearchBoxElement === undefined) {
-            rxSearchBoxElement = $('rx-search-box');
-        }
-
         rxSearchBox.rootElement = {
             get: function () { return rxSearchBoxElement; }
         };
         return Page.create(rxSearchBox);
-    },
-
-    /**
-     * @memberof rxSearchBox
-     * @deprecated Use {@link rxSearchBox.initialize} without arguments instead.
-     * @type {rxSearchBox}
-     * @description Will return a page object representing the _first_ rxSearchBox object found on the page.
-     */
-    main: (function () {
-        rxSearchBox.rootElement = {
-            get: function () { return $$('rx-search-box').first(); }
-        };
-        return Page.create(rxSearchBox);
-    })()
-
+    }
 };

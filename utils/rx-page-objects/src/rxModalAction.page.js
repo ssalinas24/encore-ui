@@ -1,6 +1,7 @@
 var Page = require('astrolabe').Page;
 var _ = require('lodash');
 
+var EC = protractor.ExpectedConditions;
 var rxMisc = require('./rxMisc.page').rxMisc;
 
 /**
@@ -70,6 +71,7 @@ var rxModalAction = {
     close: {
         value: function () {
             this.rootElement.$('.modal-close').click();
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     },
 
@@ -93,6 +95,7 @@ var rxModalAction = {
     submit: {
         value: function () {
             this.btnSubmit.click();
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     },
 
@@ -104,6 +107,7 @@ var rxModalAction = {
     cancel: {
         value: function () {
             rxMisc.slowClick(this.btnCancel);
+            browser.wait(EC.stalenessOf(this.rootElement));
         }
     }
 

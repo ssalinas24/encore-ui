@@ -32,26 +32,6 @@ var tag = function (tagElement) {
          * @instance
          * @function
          * @memberof rxTags.tag
-         * @deprecated
-         * @description Whether or not the tag exists.
-         *
-         * **DEPRECATED** Use `isPresent()` instead.
-         * @example
-         * it('should have a tag present after creating it', function () {
-         *     expect(encore.rxTags.initialize().addTag('Foo').exists()).to.eventually.be.true;
-         * });
-         * @returns {Promise<Boolean>}
-         */
-        exists: {
-            value: function () {
-                return this.isPresent();
-            }
-        },
-
-        /**
-         * @instance
-         * @function
-         * @memberof rxTags.tag
          * @description Whether or not the tag exists.
          * @example
          * it('should have a tag present after creating it', function () {
@@ -296,18 +276,5 @@ exports.rxTags = {
             get: function () { return rxTagsElement; }
         };
         return Page.create(rxTags);
-    },
-
-    /**
-     * @memberof rxTags
-     * @deprecated Use {@link rxTags.initialize} without arguments instead.
-     * @returns {rxTags} Page object representing the _first_ rxTags object found on the page.
-     */
-    main: (function () {
-        rxTags.rootElement = {
-            get: function () { return $('rx-tags'); }
-        };
-        return Page.create(rxTags);
-    })()
-
+    }
 };

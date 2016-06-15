@@ -45,12 +45,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 { name: 'Flexbox Grid' }
             ])
         })
-        .when('/layout/grid-1-0', {
-            templateUrl: 'templates/layout/grid-1-0.html',
-            controller: genericRouteController([
-                { name: 'Pure CSS Grid' }
-            ])
-        })
         .when('/layout/modals', {
             templateUrl: 'templates/layout/modals.html',
             controller: genericRouteController([
