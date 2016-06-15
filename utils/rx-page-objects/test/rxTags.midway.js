@@ -1,7 +1,7 @@
 describe('rxTags', function () {
 
     before(function () {
-        demoPage.go('#/components/rxTags');
+        demoPage.go('#/elements/Tags');
     });
 
     describe('exercises', encore.exercise.rxTags({

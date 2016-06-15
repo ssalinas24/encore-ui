@@ -1,0 +1,12 @@
+{
+    "displayName": "rxTags",
+    "stability": "stable",
+    "description": "apply predetermined descriptions to an entity",
+    "api": "directive:rxTags",
+    "keywords": [
+      "cloud",
+      "rxTags",
+      "tag",
+      "tags"
+    ]
+}
