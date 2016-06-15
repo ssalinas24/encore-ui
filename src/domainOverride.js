@@ -7,4 +7,6 @@ var index = host.indexOf(prefix);
 // Get the domain without the prefix if it includes it
 var domain = host.substr((index < 0) ? 0 : index + prefix.length);
 // Override the documnet.domain that allows for explicit iframe communication
-document.domain = domain;
+if (domain !== 'localhost') {
+    document.domain = domain;
+}
