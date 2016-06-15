@@ -1,4 +1,4 @@
-describe('rxAccountInfo', function () {
+describe('elements:rxAccountInfo', function () {
     describe('directive:rxAccountInfo', function () {
         var scope, compile, el, rxnotify, encoreRoutesMock;
         var validTemplate = '<rx-account-info account-info-banner="true" account-number="123"></rx-account-info>';
@@ -78,7 +78,7 @@ describe('rxAccountInfo', function () {
             module('encore.ui.rxNotify');
             module('encore.ui.rxInfoPanel');
             module('templates/rxInfoPanel.html');
-            module('encore.ui.rxAccountInfo', 'testApp');
+            module('encore.ui.elements', 'testApp');
 
             // load templates
             module('templates/rxAccountInfo.html');

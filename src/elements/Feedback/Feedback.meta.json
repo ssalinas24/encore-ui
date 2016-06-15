@@ -1,0 +1,12 @@
+{
+    "displayName": "Feedback",
+    "stability": "stable",
+    "description": "Gather and send user feedback",
+    "api": "directive:rxFeedback",
+    "keywords": [
+        "rxFeedback",
+        "feedback",
+        "form",
+        "modal"
+    ]
+}

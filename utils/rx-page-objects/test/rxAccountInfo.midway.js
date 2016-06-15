@@ -2,12 +2,12 @@ var rxAccountInfoPage = encore.rxAccountInfo;
 var notifications = encore.rxNotify;
 var expect = require('chai').use(require('chai-as-promised')).expect;
 
-describe('rxAccountInfo', function () {
+describe('elements:rxAccountInfo', function () {
     var rxAccountInfo;
 
     before(function () {
-        demoPage.go('#/components/rxAccountInfo');
-        rxAccountInfo = rxAccountInfoPage.initialize($('.demo-working-account rx-account-info'));
+        demoPage.go('#/elements/AccountInfo');
+        rxAccountInfo = rxAccountInfoPage.initialize($('.demo-simple-account rx-account-info'));
     });
 
     it('should show element', function () {

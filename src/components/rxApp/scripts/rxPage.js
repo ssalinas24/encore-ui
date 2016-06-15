@@ -45,7 +45,7 @@ angular.module('encore.ui.rxApp')
  *
  * ### Account Info below Breadcrumbs
  *
- * `rxPage` integrates with the {@link rxAccountInfo} component,
+ * `rxPage` integrates with the {@link elements.directive:rxAccountInfo rxAccountInfo} component,
  * to draw the Account Info box directly underneath the `rxBreadcrumbs`.
  * This is opt-in. By default, it will not appear. To enable it, pass the
  * `account-number="..."` attribute to `<rx-page>` in your template, i.e
@@ -54,7 +54,7 @@ angular.module('encore.ui.rxApp')
  * <rx-page account-number="{{ accountNumber }}">
  * </pre>
  *
- * As noted in {@link rxAccountInfo}, this
+ * As noted in {@link elements.directive:rxAccountInfo rxAccountInfo}, this
  * directive requires that `SupportAccount`, `Encore` and `Teams` services are
  * available to the Angular Dependency Injection system. These are *not* provided
  * by EncoreUI, but are available in an internal Rackspace repository.

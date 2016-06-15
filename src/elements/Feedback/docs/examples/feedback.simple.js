@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxFeedbackCtrl', function ($scope, rxNotify) {
+.controller('feedbackSimpleExampleCtrl', function ($scope, rxNotify) {
     $scope.alwaysSucceed = function () {
         rxNotify.add('Thanks for your feedback!', {
             type: 'success',

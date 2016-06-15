@@ -1,11 +1,27 @@
-angular.module('encore.ui.rxAccountInfo')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxAccountInfo.directive:rxAccountInfo
+ * @name elements.directive:rxAccountInfo
  * @restrict E
  * @scope
  * @description
- * Responsible for drawing an account info box.
+ * This element is used to draw an account info box at the top of each page,
+ * directly underneath the breadcrumbs. `rxPage` (through `rxApp`) integrates it
+ * directly into its template, and you activate it by passing `account-number="..."`
+ * to `<rx-page>`.
+ *
+ * While you could theoretically use this element elsewhere, its design and style
+ * were done with the intention of sitting underneath the breadcrumbs.
+ *
+ * When placed on a page that has `:user` in its route parameters, this element
+ * will also draw a drop-down user selector, to allow the Racker to change which
+ * user they're looking at for the given account. At this time, this user-selection
+ * is *only* available for products under Cloud. If you need it for additional products,
+ * please let us know.
+ *
+ * This directive requires that `SupportAccount`, `Encore`, `AccountStatusGroup`,
+ * and `Teams` services are available. These are not provided by this project,
+ * but are available in an internal Rackspace repository.
  *
  * There are two different styles of account info box supported. The "old" one, which appears
  * wherever you want it to be, and a new one that is intended to be placed underneath the breadcrumbs.
