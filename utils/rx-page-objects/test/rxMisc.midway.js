@@ -140,7 +140,7 @@ describe('rxMisc', function () {
 
         describe('timings', function () {
             var metrics;
-            var commonProperties = [ // present in both Chrome and Firefox
+            var commonMetrics = [ // present in both Chrome and Firefox
                 'appcacheTime',
                 'connectTime',
                 'domReadyTime',
@@ -155,14 +155,24 @@ describe('rxMisc', function () {
                 'unloadEventTime'
             ];
 
+            var chromeMetrics = ['firstPaintTime'];
+
+            before(function () {
+                browser.getCapabilities().then(function (capabilities) {
+                    metrics = commonMetrics;
+                    if (capabilities.get('browserName') === 'chrome') {
+                        metrics = [...metrics, ...chromeMetrics].sort();
+                    }
+                });
+            });
+
             it('should report some timings', function () {
                 expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.not.be.empty;
             });
 
             it('should report a time for page load time', function () {
                 encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
-                    metrics = performanceMetrics;
-                    expect(Object.keys(metrics).sort()).to.eql(commonProperties);
+                    expect(Object.keys(performanceMetrics).sort()).to.eql(metrics);
                 });
             });
 
@@ -174,12 +184,11 @@ describe('rxMisc', function () {
             it('should not update the metrics when a request is made without a refresh', function () {
                 demoPage.go('#/components/rxMisc');
                 encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
-                    metrics = performanceMetrics;
                     element(by.buttonText('Clear rxAutoSave by resolving a promise')).click();
                     browser.wait(function () {
                         return encore.rxNotify.all.exists('rxAutoSave data has been cleared!', 'success');
                     }, 5000, 'rxAutoSave notification did not appear!');
-                    expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.eql(metrics);
+                    expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.eql(performanceMetrics);
                 });
             });
 
