@@ -275,7 +275,8 @@ var rxDatePicker = {
 
         set: function (value) {
             this.open();
-            rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value);
+            var slowClick = false;
+            rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value, slowClick);
         }
     },
 
@@ -295,7 +296,8 @@ var rxDatePicker = {
 
         set: function (value) {
             this.open();
-            rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value);
+            var slowClick = false;
+            rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value, slowClick);
         }
     },
 

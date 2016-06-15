@@ -88,6 +88,14 @@ var notification = function (rootElement) {
                 return this.isDismissable().then(function (dismissable) {
                     if (dismissable) {
                         page.btnDismiss.click();
+                        // hack for chrome support -- this is for any possible
+                        // alerts that are opened by closing this notification.
+                        // also, before you check, EC.isAlertPresent does not work here.
+                        return browser.getCapabilities().then(function (capabilities) {
+                            if (capabilities.get('browserName') === 'chrome') {
+                                browser.sleep(500);
+                            }
+                        });
                     }
                 });
             }

@@ -173,15 +173,12 @@ describe('rxNotify', function () {
             it('should have an alert when the message is dismissed', function () {
                 notifications.byStack('custom').byText(msgText).dismiss();
 
-                browser.wait(function () {
-                    return browser.switchTo().alert().then(function (alertBox) {
-                        return alertBox.getText().then(function (txt) {
-                            expect(txt).to.eq('We are dismissing the message: Testing On Dismiss Method');
-                            return alertBox.dismiss().then(function () {
-                                return true;
-                            });
-                        });
-                    });
+                var EC = protractor.ExpectedConditions;
+                browser.wait(EC.alertIsPresent());
+                browser.switchTo().alert().then(function (alertBox) {
+                    var msg = 'We are dismissing the message: Testing On Dismiss Method';
+                    expect(alertBox.getText()).to.eventually.equal(msg);
+                    alertBox.accept();
                 });
             });
         });
