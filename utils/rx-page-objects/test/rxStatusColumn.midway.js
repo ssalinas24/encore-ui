@@ -88,7 +88,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should not have a tooltip', function () {
-                expect(status.tooltip.exists).to.eventually.be.true;
+                expect(status.tooltip.isPresent()).to.eventually.be.true;
             });
 
             it('should have tooltip text', function () {
@@ -120,7 +120,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should not have a tooltip', function () {
-                expect(status.tooltip.exists).to.eventually.be.true;
+                expect(status.tooltip.isPresent()).to.eventually.be.true;
             });
 
             it('should have tooltip text', function () {
@@ -148,7 +148,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should have a tooltip', function () {
-                expect(status.tooltip.exists).to.eventually.be.true;
+                expect(status.tooltip.isPresent()).to.eventually.be.true;
             });
 
             it('should have tooltip text', function () {

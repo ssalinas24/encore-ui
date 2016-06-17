@@ -157,18 +157,31 @@ var rxStatusColumn = {
                 },
 
                 /**
-                 * @description Hovers over the current row's status column and
-                 * returns whether or not a tooltip appears.
                  * @instance
+                 * @deprecated
                  * @memberof rxStatusColumn.tooltip
-                 * @type {Boolean}
-                 * @example
-                 * it('should have a tooltip for the second row', function () {
-                 *     expect(myTable.row(1).status.tooltip.exists).to.eventually.be.true;
-                 * });
+                 * @description **DEPRECATED**: Use {@link rxStatusColumn.tooltip#isPresent} instead.
                  */
                 exists: {
                     get: function () {
+                        return this.isPresent();
+                    }
+                },
+
+                /**
+                 * @instance
+                 * @function
+                 * @memberof rxStatusColumn.tooltip
+                 * @description Hovers over the current row's status column and
+                 * returns whether or not a tooltip appears.
+                 * @example
+                 * it('should have a tooltip for the second row', function () {
+                 *     expect(myTable.row(1).status.tooltip.isPresent()).to.eventually.be.true;
+                 * });
+                 * @returns {Promise<Boolean>}
+                 */
+                isPresent: {
+                    value: function () {
                         browser.actions().mouseMove(cellElement.$('i')).perform();
                         return this.rootElement.isPresent();
                     }
@@ -189,8 +202,8 @@ var rxStatusColumn = {
                 text: {
                     get: function () {
                         var tooltip = this;
-                        return this.exists.then(function (exists) {
-                            if (exists) {
+                        return this.isPresent().then(function (isPresent) {
+                            if (isPresent) {
                                 // Tooltips, when left open, can obscure other hover/click
                                 // events on the page. Avoid this by getting the text, stop
                                 // hovering, then return the text value back to the user.

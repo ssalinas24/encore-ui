@@ -26,7 +26,7 @@ describe('rxNotify', function () {
 
         it('should remove itself after a little while', function () {
             browser.sleep(1000);
-            expect(notifications.byStack('custom').exists('My message', 'success')).to.eventually.false;
+            expect(notifications.byStack('custom').isPresent('My message', 'success')).to.eventually.false;
         });
 
         it('should add a new success message indefinitely', function () {
@@ -100,31 +100,31 @@ describe('rxNotify', function () {
     describe('notifications exist', function () {
 
         it('should find a notification with no class and a string (all)', function () {
-            expect(notifications.all.exists('Under Attack by Aliens')).to.eventually.be.true;
+            expect(notifications.all.isPresent('Under Attack by Aliens')).to.eventually.be.true;
         });
 
         it('should find a notification with no class and a string (custom stack)', function () {
-            expect(notifications.byStack('custom').exists('Under Attack by Aliens')).to.eventually.be.true;
+            expect(notifications.byStack('custom').isPresent('Under Attack by Aliens')).to.eventually.be.true;
         });
 
         it('should find a notification with a class and a string', function () {
-            expect(notifications.all.exists('Under Attack by Aliens','error')).to.eventually.be.true;
+            expect(notifications.all.isPresent('Under Attack by Aliens','error')).to.eventually.be.true;
         });
 
         it('should find a notification with a class and no string', function () {
-            expect(notifications.all.exists('','error')).to.eventually.be.true;
+            expect(notifications.all.isPresent('','error')).to.eventually.be.true;
         });
 
         it('should not find a notification with the wrong class and a string', function () {
-            expect(notifications.all.exists('Under Attack by Aliens','success')).to.eventually.be.false;
+            expect(notifications.all.isPresent('Under Attack by Aliens','success')).to.eventually.be.false;
         });
 
         it('should not find a notification with the wrong class and no string', function () {
-            expect(notifications.all.exists('','abject_failure')).to.eventually.be.false;
+            expect(notifications.all.isPresent('','abject_failure')).to.eventually.be.false;
         });
 
         it('should not find a notification with no class and a wrong string', function () {
-            expect(notifications.all.exists('Under Attack by Alienists')).to.eventually.be.false;
+            expect(notifications.all.isPresent('Under Attack by Alienists')).to.eventually.be.false;
         });
 
     });

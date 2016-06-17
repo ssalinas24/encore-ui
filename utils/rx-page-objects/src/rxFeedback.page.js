@@ -125,7 +125,7 @@ var rxFeedback = {
      * @param {String} feedbackType - The type of feedback to submit.
      * @param {String} feedbackText - The text to include as a feedback description.
      * @param {Number} [confirmSuccessWithin=3000] - Milliseconds to confirm success within.
-     * @param {Function} [confirmSuccessFn={@link rxNotify#exists}] -
+     * @param {Function} [confirmSuccessFn={@link rxNotify#isPresent}] -
      * Function used to detect whether the feedback submission was successful.
      */
     send: {
@@ -156,7 +156,7 @@ var rxFeedback = {
         value: function (within, fn) {
             if (fn === undefined) {
                 fn = function () {
-                    return rxNotify.all.exists('feedback', 'success');
+                    return rxNotify.all.isPresent('feedback', 'success');
                 };
             }
 

@@ -218,6 +218,18 @@ var rxNotify = {
     /**
      * @instance
      * @function
+     * @deprecated
+     * @description **DEPRECATED**: Use {@link rxNotify#isPresent} instead.
+     */
+    exists: {
+        value: function (string, type) {
+            return this.isPresent(string, type);
+        }
+    },
+
+    /**
+     * @instance
+     * @function
      * @param {String} string - The text to look for inside the notification.
      * @param {String} [type=] - The notification type ('success', 'info', 'warning', 'error').
      * @description Whether or not the notification matching text `string` exists in the current
@@ -226,13 +238,14 @@ var rxNotify = {
      * to see the list of notification types supported.
      * @example
      * it('should have the notification present', function () {
-     *     expect(encore.rxNotify.all.exists('My message', 'error')).to.eventually.be.false;
+     *     expect(encore.rxNotify.all.isPresent('My message', 'error')).to.eventually.be.false;
      *     expect(encore.rxNotify.all.byText('My message').type).to.eventually.equal('info');
-     *     expect(encore.rxNotify.all.exists('My message')).to.eventually.be.true;
-     *     expect(encore.rxNotify.all.exists('My message', encore.rxNotify.types.info)).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('My message')).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('My message', encore.rxNotify.types.info)).to.eventually.be.true;
      * });
+     * @returns {Promise<Boolean>}
      */
-    exists: {
+    isPresent: {
         value: function (string, type) {
             var elementsOfType;
 
