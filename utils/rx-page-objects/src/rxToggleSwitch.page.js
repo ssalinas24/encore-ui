@@ -44,12 +44,12 @@ var rxToggleSwitch = {
      * set to this position, nothing happens.
      * @example
      * it('should enable the switch', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     expect(switch.isEnabled()).to.eventually.be.false;
-     *     switch.enable();
-     *     expect(switch.isEnabled()).to.eventually.be.true;
-     *     switch.enable(); // does nothing the second time it is called
-     *     expect(switch.isEnabled()).to.eventually.be.true;
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     expect(mySwitch.isEnabled()).to.eventually.be.false;
+     *     mySwitch.enable();
+     *     expect(mySwitch.isEnabled()).to.eventually.be.true;
+     *     mySwitch.enable(); // does nothing the second time it is called
+     *     expect(mySwitch.isEnabled()).to.eventually.be.true;
      * });
      */
     enable: {
@@ -87,12 +87,12 @@ var rxToggleSwitch = {
      * set to this position, nothing happens.
      * @example
      * it('should disable the switch', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     expect(switch.isEnabled()).to.eventually.be.true;
-     *     switch.disable();
-     *     expect(switch.isEnabled()).to.eventually.be.false;
-     *     switch.disable(); // does nothing the second time it is called
-     *     expect(switch.isEnabled()).to.eventually.be.false;
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     expect(mySwitch.isEnabled()).to.eventually.be.true;
+     *     mySwitch.disable();
+     *     expect(mySwitch.isEnabled()).to.eventually.be.false;
+     *     mySwitch.disable(); // does nothing the second time it is called
+     *     expect(mySwitch.isEnabled()).to.eventually.be.false;
      * });
      */
     disable: {
@@ -112,9 +112,9 @@ var rxToggleSwitch = {
      * @type {String}
      * @example
      * it('should toggle to the "on" position', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     switch.enable();
-     *     expect(switch.text).to.eventually.equal('ON');
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     mySwitch.enable();
+     *     expect(mySwitch.text).to.eventually.equal('ON');
      * });
      */
     text: {
