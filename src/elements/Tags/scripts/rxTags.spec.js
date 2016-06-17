@@ -4,7 +4,7 @@ describe('rxTags', function () {
     var standardTemplate = createTemplate({ attrs: '' });
 
     beforeEach(function () {
-        module('encore.ui.rxTags');
+        module('encore.ui.elements');
         module('templates/rxTags.html');
 
         inject(function ($rootScope, $compile) {

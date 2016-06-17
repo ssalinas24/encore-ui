@@ -1,4 +1,4 @@
-angular.module('encore.ui.rxTags')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
  * @name rxTags.directive:rxTags
