@@ -135,6 +135,11 @@ module.exports = function (grunt) {
 
         // Set the concat task to concatenate the given src modules
         var srcFiles = _.pluck(modules, 'srcFiles'); // OK
+
+        // Prepend override files in order to achieve custom functionality outside of the encore ecosystem
+        srcFiles = [ 'src/domainOverride.js' ].concat(srcFiles);
+
+
         grunt.config('concat.dist.src', grunt.config('concat.dist.src').concat(srcFiles));
 
         // Set the concat-with-templates task to concat the given src & tpl modules

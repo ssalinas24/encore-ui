@@ -21,28 +21,33 @@ angular.module('encore.ui.utilities')
  * </pre>
  */
 .service('rxLocalStorage', function ($window) {
+    var localStorage = $window.localStorage;
+    if ($window.self !== $window.top && $window.top.localStorage) {
+        localStorage = $window.top.localStorage;
+    }
+
     this.setItem = function (key, value) {
-        $window.localStorage.setItem(key, value);
+        localStorage.setItem(key, value);
     };
 
     this.getItem = function (key) {
-        return $window.localStorage.getItem(key);
+        return localStorage.getItem(key);
     };
 
     this.key = function (key) {
-        return $window.localStorage.key(key);
+        return localStorage.key(key);
     };
 
     this.removeItem = function (key) {
-        $window.localStorage.removeItem(key);
+        localStorage.removeItem(key);
     };
 
     this.clear = function () {
-        $window.localStorage.clear();
+        localStorage.clear();
     };
 
     this.__defineGetter__('length', function () {
-        return $window.localStorage.length;
+        return localStorage.length;
     });
 
     this.setObject = function (key, val) {
@@ -51,7 +56,7 @@ angular.module('encore.ui.utilities')
     };
 
     this.getObject = function (key) {
-        var item = $window.localStorage.getItem(key);
+        var item = localStorage.getItem(key);
         try {
             item = JSON.parse(item);
         } catch (error) {
