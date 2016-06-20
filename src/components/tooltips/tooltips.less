@@ -8,14 +8,14 @@
   visibility: visible;
   font-size: @app-font-size;
   line-height: @app-line-height;
-  .opacity(0);
+  opacity: 0;
 
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 
   &.in {
-    .opacity(@tooltip-opacity);
+    opacity: @tooltip-opacity;
   }
 
   // Make room for arrow
@@ -44,7 +44,7 @@
   text-align: center;
   text-decoration: none;
   background-color: @tooltip-background-color;
-  .border-radius(4px);
+  border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.35) 1px 1px 4px 0px;
   padding: 15px;
 

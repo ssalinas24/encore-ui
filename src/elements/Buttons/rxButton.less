@@ -67,13 +67,13 @@
   &.finish {
     background: @rxButton-finish-background-color;
     color: @rxButton-finish-text-color;
-    // Inset line is created with .box-shadow instead of border property, because it avoids changing button height.
-    .box-shadow(inset 0 0 0 2px @rxButton-finish-outline-color);
+    // Inset line is created with box-shadow instead of border property, because it avoids changing button height.
+    box-shadow: inset 0 0 0 2px @rxButton-finish-outline-color;
 
     &:hover,
     &:focus {
       color: @rxButton-finish-hover-text-color;
-      .box-shadow(inset 0 0 0 2px @rxButton-finish-hover-outline-color);
+      box-shadow: inset 0 0 0 2px @rxButton-finish-hover-outline-color;
     }
   }
 
@@ -110,7 +110,7 @@
       height: 5px;
       background: @rxButton-spinner-background-color;
 
-      .border-radius(100%);
+      border-radius: 100%;
       display: inline-block;
       -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
       animation: bouncedelay 1.4s infinite ease-in-out;

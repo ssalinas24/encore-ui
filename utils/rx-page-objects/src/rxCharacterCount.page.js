@@ -120,7 +120,7 @@ exports.rxCharacterCount = {
      * @function
      * @memberof rxCharacterCount
      * @description Creates a page object from an `[rx-bulk-select]` DOM element.
-     * @param {ElementFinder} [rxCharacterCountElement=$('[rx-character-count]')] -
+     * @param {ElementFinder} rxCharacterCountElement -
      * ElementFinder to be transformed into an {@link rxCharacterCount} object.
      * @returns {rxCharacterCount}
      */
@@ -129,20 +129,5 @@ exports.rxCharacterCount = {
             get: function () { return rxCharacterCountElement; }
         };
         return Page.create(rxCharacterCount);
-    },
-
-    /**
-     * @memberof rxCharacterCount
-     * @deprecated
-     * @description Page object representing the first {@link rxCharacterCount} object found on the page.
-     * DEPRECATED: Use {@link rxCharacterCount.initialize} (without arguments) instead.
-     * @returns {rxCharacterCount}
-     */
-    main: (function () {
-        rxCharacterCount.rootElement = {
-            get: function () { return $('[rx-character-count]'); }
-        };
-        return Page.create(rxCharacterCount);
-    })()
-
+    }
 };

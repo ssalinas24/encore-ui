@@ -111,23 +111,6 @@ var rxSelect = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the select element is disabled.
-     *
-     * **DEPRECATED** check for inverse of `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the select element is enabled.
      * @returns {Promise<Boolean>}
      */

@@ -1,5 +1,3 @@
-var modal = encore.rxModalAction;
-
 describe('rxModalAction', function () {
     var changePasswordModal, triggerModal;
 
@@ -33,7 +31,7 @@ describe('rxModalAction', function () {
             encore.rxMisc.slowClick($('#modChangePassword .modal-link'));
         };
 
-        changePasswordModal = modal.initialize(customFunctionalty);
+        changePasswordModal = encore.rxModalAction.initialize(customFunctionalty);
     });
 
     it('should not display the modal unless triggered', function () {
@@ -130,7 +128,7 @@ describe('rxModalAction', function () {
         var defaultModal;
 
         before(function () {
-            defaultModal = modal.initialize();
+            defaultModal = encore.rxModalAction.initialize();
         });
 
         it('should support basic functionality without supplying any arguments', function () {
@@ -147,7 +145,7 @@ describe('rxModalAction', function () {
             triggerModal = function () {
                 encore.rxMisc.slowClick($('#btnDisabledModal .modal-link'));
             };
-            defaultModal = modal.initialize();
+            defaultModal = encore.rxModalAction.initialize();
         });
 
         it('should not open modal', function () {

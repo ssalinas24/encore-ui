@@ -8,10 +8,9 @@
  *  visible, even as a user scrolls down the page.
  *
  * `rxFloatingHeader` is also fully compatible with {@link rxSortableColumn} and {@link rxPaginate}.
- * 
+ *
  * ## Directives
  * * {@link rxFloatingHeader.directive:rxFloatingHeader rxFloatingHeader}
  */
 angular.module('encore.ui.rxFloatingHeader', [
-    'encore.ui.rxMisc'
 ]);

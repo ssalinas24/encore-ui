@@ -57,7 +57,6 @@
  * * {@link utilities.service:rxDOMHelper rxDOMHelper}
  * * {@link utilities.service:rxFeedbackSvc rxFeedbackSvc}
  * * {@link utilities.service:rxFormUtils rxFormUtils}
- * * {@link utilities.service:rxHideIfUkAccount rxHideIfUkAccount}
  * * {@link utilities.service:rxLocalStorage rxLocalStorage}
  * * {@link utilities.service:rxModalFooterTemplates rxModalFooterTemplates}
  * * {@link utilities.service:rxNestedElement rxNestedElement}

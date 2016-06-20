@@ -1,5 +1,5 @@
 describe('utilities:rxAutoSave', function () {
-    var $rootScope, $q, $timeout, scope, rxAutoSave, a, LocalStorage, SessionStorage,
+    var $rootScope, $q, $timeout, scope, rxAutoSave, a, rxLocalStorage, SessionStorage,
         now;
 
     var url;
@@ -38,10 +38,10 @@ describe('utilities:rxAutoSave', function () {
             $q = _$q_;
             $timeout = _$timeout_;
             rxAutoSave = _rxAutoSave_;
-            LocalStorage = _rxLocalStorage_;
+            rxLocalStorage = _rxLocalStorage_;
             SessionStorage = _SessionStorage_;
             scope = $rootScope.$new();
-            LocalStorage.clear();
+            rxLocalStorage.clear();
             SessionStorage.clear();
         });
 
@@ -60,7 +60,7 @@ describe('utilities:rxAutoSave', function () {
         now.restore();
     });
 
-    it('should store a value in LocalStorage on change', function () {
+    it('should store a value in rxLocalStorage on change', function () {
         // have rxAutoSave save the value
         scope.formA.foo = 'bar';
         scope.formB.foo = 'baz';

@@ -1,7 +1,7 @@
 {
   "author": "",
   "name": "EncoreUI",
-  "version": "1.50.0",
+  "version": "2.0.0-9",
   "homepage": "https://github.com/rackerlabs/encore-ui",
   "license": "Apache-2.0",
   "repository": {
@@ -18,8 +18,7 @@
     "eslint-test": "eslint -c .eslintrc.test.json --ignore-path .eslintignore-test {src,demo} utils/rx-page-objects/{test,src}"
   },
   "dependencies": {
-    "normalize.css": "^3.0.2",
-    "karma-sinon-chai": "^0.3.0"
+    "normalize.css": "^3.0.2"
   },
   "devDependencies": {
     "astrolabe": "0.3.6",

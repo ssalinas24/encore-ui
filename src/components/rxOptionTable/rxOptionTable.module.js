@@ -8,7 +8,6 @@
  *
  * ## Directives
  * * {@link rxOptionTable.directive:rxOptionTable rxOptionTable}
- * * {@link rxOptionTable.directive:rxFormOptionTable rxFormOptionTable} (*deprecated*)
  */
 angular.module('encore.ui.rxOptionTable', [
     'encore.ui.elements',

@@ -6,15 +6,15 @@
     <div class="page-body">
         <rx-notifications></rx-notifications>
         <div class="page-titles" ng-if="title.length > 0 || unsafeHtmlTitle.length > 0 || subtitle.length > 0">
-            <h2 class="page-title title lg" ng-if="title.length > 0">
+            <h2 class="page-title" ng-if="title.length > 0">
                 <span ng-bind="title"></span>
                 <rx-status-tag status="{{ status }}"></rx-status-tag>
             </h2>
-            <h2 class="page-title title lg" ng-if="unsafeHtmlTitle.length > 0">
+            <h2 class="page-title" ng-if="unsafeHtmlTitle.length > 0">
                 <span ng-bind-html="unsafeHtmlTitle"></span>
                 <rx-status-tag status="{{ status }}"></rx-status-tag>
             </h2>
-            <h3 class="page-subtitle title subdued" ng-bind-html="subtitle" ng-if="subtitle.length > 0"></h3>
+            <h3 class="page-subtitle subdued" ng-bind-html="subtitle" ng-if="subtitle.length > 0"></h3>
         </div>
         <div class="page-content" ng-transclude></div>
     </div>

@@ -85,18 +85,5 @@ exports.rxSelectFilter = {
             get: function () { return rxSelectFilterElement; }
         };
         return Page.create(rxSelectFilter);
-    },
-
-    /**
-     * @memberof rxSelectFilter
-     * @deprecated Use {@link rxSelectFilter.initialize} without arguments instead.
-     * @returns {rxSelectFilter} Page object representing the _first_ rxSelectFilter object found on the page.
-     */
-    main: (function () {
-        rxSelectFilter.rootElement = {
-            get: function () { return $('rx-select-filter'); }
-        };
-        return Page.create(rxSelectFilter);
-    })()
-
+    }
 };

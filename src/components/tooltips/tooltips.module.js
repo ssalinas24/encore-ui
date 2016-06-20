@@ -21,7 +21,7 @@
  * <rx-button tooltip="...">
  * </pre>
  *
- * If you're creating your own custom directive, it's fine to use the `tooltip` 
+ * If you're creating your own custom directive, it's fine to use the `tooltip`
  * directive inside of your directive's template.  See the tooltips component
  * {@link /encore-ui/#/components/tooltips demo} for example usage.
  *

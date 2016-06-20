@@ -43,7 +43,6 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxMisc');
         module('encore.ui.rxBulkSelect');
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');

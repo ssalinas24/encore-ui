@@ -1,13 +1,11 @@
 var _ = require('lodash');
-var rxSearchBox = require('./rxSearchBox.page').rxSearchBox;
 
 /**
  * @description rxSearchBox exercises.
  * @see rxSearchBox
  * @exports exercise/rxSearchBox
- * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxSearchBox} [options.instance=rxSearchbox.initialize()] - Component to exercise.
- * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
+ * @param {Object} options - Test options. Used to build valid tests.
+ * @param {rxSearchBox} options.instance - Component to exercise.
  * @param {Boolean} [options.disabled=false] - Determines if the search box is disabled at the start of the exercise.
  * @param {String} [options.placeholder='Search...'] - Expected placeholder value.
  * @example
@@ -30,16 +28,7 @@ exports.rxSearchBox = function (options) {
         var component;
 
         before(function () {
-            if (options.instance !== undefined) {
-                component = options.instance;
-            } else {
-                component = rxSearchBox.initialize();
-            }
-
-            if (options.cssSelector !== undefined) {
-                console.warn('Deprecated exercise option `cssSelector` will be removed in favor of `instance`');
-                component = rxSearchBox.initialize($(options.cssSelector));
-            }
+            component = options.instance;
         });
 
         it('should show the element', function () {
