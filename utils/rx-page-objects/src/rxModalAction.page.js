@@ -162,7 +162,7 @@ exports.rxModalAction = {
         if (!_.isObject(customFunctionality)) {
             customFunctionality = {};
         }
-        return Page.create(_.merge(customFunctionality, rxModalAction));
+        return Page.create(_.defaults(customFunctionality, rxModalAction));
     }
 
 };
