@@ -115,7 +115,7 @@ describe('rxForm', function () {
         });
 
         it('should have selected the volume type', function () {
-            expect(formPageObject.volumeTypeSelect.type.text).to.eventually.equal('PUNCHCARDS');
+            expect(formPageObject.volumeTypeSelect.type.getText()).to.eventually.equal('PUNCHCARDS');
         });
 
     });

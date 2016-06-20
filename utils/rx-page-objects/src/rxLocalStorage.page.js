@@ -34,7 +34,7 @@ var rxLocalStorage = {
      * @returns {*|null}
      * @example
      * it('should add the token when you click the button', function () {
-     *     expect(encore.rxLocalStorage.exists('key')).to.eventually.be.false;
+     *     expect(encore.rxLocalStorage.isPresent('key')).to.eventually.be.false;
      *     $('#the-button').click();
      *     expect(encore.rxLocalStorage.getItem('key')).to.eventually.equal('value');
      * });
@@ -54,9 +54,9 @@ var rxLocalStorage = {
      * @param {String} key - The key to look up in local storage (and then delete).
      * @example
      * it('should remove the token from local storage', function () {
-     *     expect(encore.rxLocalStorage.exists('key')).to.eventually.be.true;
+     *     expect(encore.rxLocalStorage.isPresent('key')).to.eventually.be.true;
      *     encore.rxLocalStorage.removeItem('key');
-     *     expect(encore.rxLocalStorage.exists('key')).to.eventually.be.false;
+     *     expect(encore.rxLocalStorage.isPresent('key')).to.eventually.be.false;
      * });
      */
     removeItem: {
@@ -70,17 +70,28 @@ var rxLocalStorage = {
 
     /**
      * @function
-     * @description Whether or not the `key` provided has already been set in local storage.
-     * @param {String} key - The key to look up in local storage (and check if it exists).
-     * @returns {Boolean}
-     * @example
-     * it('should report if the key exists', function () {
-     *     expect(encore.rxLocalStorage.exists('key')).to.eventually.be.false;
-     *     encore.rxLocalStorage.setItem('key', 'value');
-     *     expect(encore.rxLocalStorage.exists('key')).to.eventually.be.true;
-     * });
+     * @deprecated
+     * @description **DEPRECATED**: Use {@link rxLocalStorage.isPresent} instead.
      */
     exists: {
+        value: function (key) {
+            return this.isPresent(key);
+        }
+    },
+
+    /**
+     * @function
+     * @description Whether or not the `key` provided has already been set in local storage.
+     * @param {String} key - The key to look up in local storage (and check if it is present).
+     * @returns {Boolean}
+     * @example
+     * it('should report if the key isPresent', function () {
+     *     expect(encore.rxLocalStorage.isPresent('key')).to.eventually.be.false;
+     *     encore.rxLocalStorage.setItem('key', 'value');
+     *     expect(encore.rxLocalStorage.isPresent('key')).to.eventually.be.true;
+     * });
+     */
+    isPresent: {
         value: function (key) {
             var command = function (key) {
                 return localStorage.getItem(key) !== null;

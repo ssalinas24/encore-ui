@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxTagsCtrl', function ($scope) {
+.controller('tagsSimpleExampleCtrl', function ($scope) {
     $scope.tagOptions = [
         { text: 'apple', category: 'fruit' },
         { text: 'orange', category: 'fruit' },

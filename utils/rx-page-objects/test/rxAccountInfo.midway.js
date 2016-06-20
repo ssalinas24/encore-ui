@@ -57,12 +57,12 @@ describe('elements:rxAccountInfo', function () {
                 expect(rxAccountInfo.badge.byName('Attribution').name).to.eventually.equal('Attribution');
             });
 
-            it('should report that a badge exists', function () {
-                expect(rxAccountInfo.badge.exists('Non-Commercial')).to.eventually.be.true;
+            it('should report that a badge is present', function () {
+                expect(rxAccountInfo.badge.isPresent('Non-Commercial')).to.eventually.be.true;
             });
 
             it('should report that a badge does not exist', function () {
-                expect(rxAccountInfo.badge.exists('Caveat Emptor')).to.eventually.be.false;
+                expect(rxAccountInfo.badge.isPresent('Caveat Emptor')).to.eventually.be.false;
             });
 
             it('should search for many badges with a regular expression', function () {
@@ -124,12 +124,12 @@ describe('elements:rxAccountInfo', function () {
 
         it('should show an error notification when it cannot load badges', function () {
             var errorMessage = 'Error retrieving badges for this account';
-            expect(notifications.byStack('badgeError').exists(errorMessage)).to.eventually.be.true;
+            expect(notifications.byStack('badgeError').isPresent(errorMessage)).to.eventually.be.true;
         });
 
         it('should show an error notification when it cannot load account name', function () {
             var errorMessage = 'Error retrieving account name';
-            expect(notifications.byStack('nameError').exists(errorMessage)).to.eventually.be.true;
+            expect(notifications.byStack('nameError').isPresent(errorMessage)).to.eventually.be.true;
         });
     });
 

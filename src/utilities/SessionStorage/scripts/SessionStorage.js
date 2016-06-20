@@ -22,28 +22,33 @@ angular.module('encore.ui.utilities')
  * </pre>
  */
 .service('SessionStorage', function ($window) {
+    var sessionStorage = $window.sessionStorage;
+    if ($window.self !== $window.top && $window.top.sessionStorage) {
+        sessionStorage = $window.top.sessionStorage;
+    }
+
     this.setItem = function (key, value) {
-        $window.sessionStorage.setItem(key, value);
+        sessionStorage.setItem(key, value);
     };
 
     this.getItem = function (key) {
-        return $window.sessionStorage.getItem(key);
+        return sessionStorage.getItem(key);
     };
 
     this.key = function (key) {
-        return $window.sessionStorage.key(key);
+        return sessionStorage.key(key);
     };
 
     this.removeItem = function (key) {
-        $window.sessionStorage.removeItem(key);
+        sessionStorage.removeItem(key);
     };
 
     this.clear = function () {
-        $window.sessionStorage.clear();
+        sessionStorage.clear();
     };
 
     this.__defineGetter__('length', function () {
-        return $window.sessionStorage.length;
+        return sessionStorage.length;
     });
 
     this.setObject = function (key, val) {
@@ -52,7 +57,7 @@ angular.module('encore.ui.utilities')
     };
 
     this.getObject = function (key) {
-        var item = $window.sessionStorage.getItem(key);
+        var item = sessionStorage.getItem(key);
         try {
             item = JSON.parse(item);
         } catch (error) {

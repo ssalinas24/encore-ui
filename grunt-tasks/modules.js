@@ -136,8 +136,12 @@ module.exports = function (grunt) {
         // Set the concat task to concatenate the given src modules
         var srcFiles = _.pluck(modules, 'srcFiles'); // OK
 
-        // Prepend ngBootstrap overrides to suppress v0.14.3 deprecation warnings
-        srcFiles = [ 'src/ngBootstrapOverrides.js' ].concat(srcFiles);
+        srcFiles = [
+            // Prepend override files in order to achieve custom functionality outside of the encore ecosystem
+            'src/domainOverride.js',
+            // Prepend ngBootstrap overrides to suppress v0.14.3 deprecation warnings
+            'src/ngBootstrapOverrides.js'
+        ].concat(srcFiles);
 
         grunt.config('concat.dist.src', grunt.config('concat.dist.src').concat(srcFiles));
 

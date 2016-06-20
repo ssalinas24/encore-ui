@@ -51,17 +51,30 @@ var notification = function (rootElement) {
 
         /**
          * @instance
+         * @deprecated
          * @memberof rxNotify.notification
-         * @type {String}
-         * @description The text of the notification.
-         * @example
-         * it('should have the right notification text', function () {
-         *     var notificationText = encore.rxNotify.all.byText('Something bad happened').text;
-         *     expect(notificationText).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
-         * });
+         * @description **DEPRECATED**: Use {@link rxNotify.notification#getText} instead.
          */
         text: {
             get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxNotify.notification
+         * @description The text of the notification.
+         * @example
+         * it('should have the right notification text', function () {
+         *     var notificationText = encore.rxNotify.all.byText('Something bad happened').getText();
+         *     expect(notificationText).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
+         * });
+         * @returns {Promise<String>}
+         */
+        getText: {
+            value: function () {
                 return rootElement.getText().then(function (text) {
                     // Remove any lingering '× ' characters.
                     return text.split('\n')[0].trim();
@@ -173,7 +186,7 @@ var rxNotify = {
      * @example
      * it('should have a success message that personally thanks the user', function () {
      *     var notification = encore.rxNotify.all.byText('Good job, ');
-     *     expect(notification.text).to.eventually.equal('Good job, ' + browser.params.username + '!');
+     *     expect(notification.getText()).to.eventually.equal('Good job, ' + browser.params.username + '!');
      * });
      */
     byText: {
@@ -218,6 +231,18 @@ var rxNotify = {
     /**
      * @instance
      * @function
+     * @deprecated
+     * @description **DEPRECATED**: Use {@link rxNotify#isPresent} instead.
+     */
+    exists: {
+        value: function (string, type) {
+            return this.isPresent(string, type);
+        }
+    },
+
+    /**
+     * @instance
+     * @function
      * @param {String} string - The text to look for inside the notification.
      * @param {String} [type=] - The notification type ('success', 'info', 'warning', 'error').
      * @description Whether or not the notification matching text `string` exists in the current
@@ -226,13 +251,14 @@ var rxNotify = {
      * to see the list of notification types supported.
      * @example
      * it('should have the notification present', function () {
-     *     expect(encore.rxNotify.all.exists('My message', 'error')).to.eventually.be.false;
+     *     expect(encore.rxNotify.all.isPresent('My message', 'error')).to.eventually.be.false;
      *     expect(encore.rxNotify.all.byText('My message').type).to.eventually.equal('info');
-     *     expect(encore.rxNotify.all.exists('My message')).to.eventually.be.true;
-     *     expect(encore.rxNotify.all.exists('My message', encore.rxNotify.types.info)).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('My message')).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('My message', encore.rxNotify.types.info)).to.eventually.be.true;
      * });
+     * @returns {Promise<Boolean>}
      */
-    exists: {
+    isPresent: {
         value: function (string, type) {
             var elementsOfType;
 

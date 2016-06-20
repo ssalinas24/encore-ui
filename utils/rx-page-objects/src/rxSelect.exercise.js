@@ -47,7 +47,7 @@ exports.rxSelect = function (options) {
 
         if (options.selectedText) {
             it('should have the correct selected option already chosen', function () {
-                expect(component.selectedOption.text).to.eventually.equal(options.selectedText);
+                expect(component.selectedOption.getText()).to.eventually.equal(options.selectedText);
             });
         }
     };

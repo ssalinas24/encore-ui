@@ -32,6 +32,22 @@ var tag = function (tagElement) {
          * @instance
          * @function
          * @memberof rxTags.tag
+         * @deprecated
+         * @description Whether or not the tag exists.
+         *
+         * **DEPRECATED**: Use {@link rxTags.tag#isPresent} instead.
+         * @returns {Promise<Boolean>}
+         */
+        exists: {
+            value: function () {
+                return this.isPresent();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxTags.tag
          * @description Whether or not the tag exists.
          * @example
          * it('should have a tag present after creating it', function () {
@@ -79,7 +95,7 @@ var tag = function (tagElement) {
          * it('should show a warning when deleting an existing tag with backspace', function () {
          *     encore.rxTags.initialize().byText('Enterprise').sendBackspace();
          *     var warning = 'Warning: Deleting tag "Enterprise" will notify some very angry sysadmins';
-         *     expect(encore.rxNotify.all.exists(warning, 'warning')).to.eventually.be.true;
+         *     expect(encore.rxNotify.all.isPresent(warning, 'warning')).to.eventually.be.true;
          * });
          */
         sendBackspace: {
@@ -90,17 +106,33 @@ var tag = function (tagElement) {
         },
 
         /**
+         * @deprecated
          * @instance
-         * @type {String}
+         * @memberof rxTags.tag
+         * @description The text within the tag. Does not include the text in
+         * {@link rxTags.tag#category}.
+         *
+         * **DEPRECATED**: Use {@link rxTags.tag#getText} instead.
+         */
+        text: {
+            get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
          * @memberof rxTags.tag
          * @description The text within the tag. Does not include the text in {@link rxTags.tag#category}.
          * @example
          * it('should have "Enterprise" as the exact tag name', function () {
-         *     expect(encore.rxTags.initialize().byText('Banana').text).to.eventually.equal('Banana');
+         *     expect(encore.rxTags.initialize().byText('Banana').getText()).to.eventually.equal('Banana');
          * });
+         * @returns {Promise<String>}
          */
-        text: {
-            get: function () {
+        getText: {
+            value: function () {
                 return tagElement.$('.text').getText();
             }
         },
@@ -133,7 +165,7 @@ var tag = function (tagElement) {
          * it('should show a warning when deleting an existing tag with the close button', function () {
          *     encore.rxTags.initialize().byText('Enterprise').remove();
          *     var warning = 'Warning: Deleting tag "Enterprise" will notify some very angry sysadmins';
-         *     expect(encore.rxNotify.all.exists(warning, 'warning')).to.eventually.be.true;
+         *     expect(encore.rxNotify.all.isPresent(warning, 'warning')).to.eventually.be.true;
          * });
          */
         remove: {
@@ -205,7 +237,7 @@ var rxTags = {
      * @example
      * it('should show an warning notification when adding the "Enterprise" tag', function () {
      *     encore.rxTags.initialize().addTag('Enterprise');
-     *     expect(encore.rxNotify.all.exists('Warning: "Enterprise"', 'warning')).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('Warning: "Enterprise"', 'warning')).to.eventually.be.true;
      * });
      */
     addTag: {

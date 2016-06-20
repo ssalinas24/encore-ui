@@ -10,13 +10,28 @@ var selectOptionFromElement = function (optionElement) {
     return Object.create(rxCheckbox.initialize(optionElement.$('input')), {
 
         /**
+         * @deprecated
          * @memberof rxMultiSelect.option
          * @instance
          * @description The text inside of the current option.
-         * @type {String}
+         *
+         * **DEPRECATED**: Use {@link rxMultiSelect.option#getText} instead.
          */
         text: {
             get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @function
+         * @memberof rxMultiSelect.option
+         * @instance
+         * @description The text inside of the current option.
+         * @returns {Promise<String>}
+         */
+        getText: {
+            value: function () {
                 return optionElement.getText();
             }
         },
@@ -154,7 +169,7 @@ var rxMultiSelect = {
     options: {
         get: function () {
             return this.rootElement.$$('rx-select-option').map(function (optionElement) {
-                return selectOptionFromElement(optionElement).text;
+                return selectOptionFromElement(optionElement).getText();
             });
         }
     },
@@ -192,7 +207,7 @@ var rxMultiSelect = {
                 var option = selectOptionFromElement(optionElement);
                 return option.isSelected().then(function (isSelected) {
                     if (isSelected) {
-                        return option.text.then(function (text) {
+                        return option.getText().then(function (text) {
                             accumulator.push(text);
                             return accumulator;
                         });

@@ -243,7 +243,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                             href: '#/styles/color'
                         },
                         {
-                            linkText: 'Formatting',
+                            linkText: 'Date/Time Formatting',
                             href: '#/styles/formatting'
                         },
                         {

@@ -105,7 +105,7 @@ describe('rxModalAction', function () {
             });
 
             it('should display an info notification', function () {
-                expect(encore.rxNotify.all.exists('Password Unchanged', 'info')).to.eventually.be.true;
+                expect(encore.rxNotify.all.isPresent('Password Unchanged', 'info')).to.eventually.be.true;
             });
         });//when closed with "X"
 
@@ -119,7 +119,7 @@ describe('rxModalAction', function () {
             });
 
             it('should display an info notification', function () {
-                expect(encore.rxNotify.all.exists('Password Unchanged', 'info')).to.eventually.be.true;
+                expect(encore.rxNotify.all.isPresent('Password Unchanged', 'info')).to.eventually.be.true;
             });
         });//when closed via "cancel"
     });//when triggered and closed

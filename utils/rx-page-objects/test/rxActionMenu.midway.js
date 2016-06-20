@@ -84,7 +84,7 @@ describe('rxActionMenu', function () {
         });
 
         it('should have text', function () {
-            expect(actionItem.text).to.eventually.equal('Add');
+            expect(actionItem.getText()).to.eventually.equal('Add');
         });
 
         it('should include custom functionality for a modal', function () {
@@ -103,7 +103,7 @@ describe('rxActionMenu', function () {
         });
 
         it('should not have any text', function () {
-            expect(actionItem.text).to.not.exist;
+            expect(actionItem.getText).to.not.exist;
         });
 
         it('should not have a root element', function () {

@@ -42,12 +42,12 @@ var rxToggleSwitch = {
      * set to this position, nothing happens.
      * @example
      * it('should enable the switch', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     expect(switch.isEnabled()).to.eventually.be.false;
-     *     switch.enable();
-     *     expect(switch.isEnabled()).to.eventually.be.true;
-     *     switch.enable(); // does nothing the second time it is called
-     *     expect(switch.isEnabled()).to.eventually.be.true;
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     expect(mySwitch.isToggled()).to.eventually.be.false;
+     *     mySwitch.toggleOn();
+     *     expect(mySwitch.isToggled()).to.eventually.be.true;
+     *     mySwitch.toggleOn(); // does nothing the second time it is called
+     *     expect(mySwitch.isToggled()).to.eventually.be.true;
      * });
      */
     toggleOn: {
@@ -68,12 +68,12 @@ var rxToggleSwitch = {
      * set to this position, nothing happens.
      * @example
      * it('should disable the switch', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     expect(switch.isEnabled()).to.eventually.be.true;
-     *     switch.disable();
-     *     expect(switch.isEnabled()).to.eventually.be.false;
-     *     switch.disable(); // does nothing the second time it is called
-     *     expect(switch.isEnabled()).to.eventually.be.false;
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     expect(mySwitch.isToggled()).to.eventually.be.true;
+     *     mySwitch.toggleOff();
+     *     expect(mySwitch.isToggled()).to.eventually.be.false;
+     *     mySwitch.toggleOff(); // does nothing the second time it is called
+     *     expect(mySwitch.isToggled()).to.eventually.be.false;
      * });
      */
     toggleOff: {
@@ -95,7 +95,7 @@ var rxToggleSwitch = {
      */
     isToggled: {
         value: function () {
-            return this.text.then(function (text) {
+            return this.getText().then(function (text) {
                 if (text === 'ON') {
                     return true;
                 } else if (text === 'OFF') {
@@ -107,18 +107,32 @@ var rxToggleSwitch = {
     },
 
     /**
+     * @deprecated
      * @instance
      * @description The current text of the switch.
-     * @type {String}
-     * @example
-     * it('should toggle to the "on" position', function () {
-     *     var switch = encore.rxToggleSwitch.initialize();
-     *     switch.enable();
-     *     expect(switch.text).to.eventually.equal('ON');
-     * });
+     *
+     * **DEPRECATED**: Use {@link rxToggleSwitch#getText} instead.
      */
     text: {
         get: function () {
+            return this.getText();
+        }
+    },
+
+    /**
+     * @instance
+     * @function
+     * @description The current text of the switch.
+     * @example
+     * it('should toggle to the "on" position', function () {
+     *     var mySwitch = encore.rxToggleSwitch.initialize();
+     *     mySwitch.enable();
+     *     expect(mySwitch.getText()).to.eventually.equal('ON');
+     * });
+     * @returns {Promise<String>}
+     */
+    getText: {
+        value: function () {
             return this.btnToggleSwitch.$('span').getText();
         }
     }

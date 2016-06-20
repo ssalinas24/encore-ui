@@ -13,12 +13,25 @@ var rxSelectOptionFromElement = function (rootElement) {
 
         /**
          * @instance
+         * @deprecated
          * @memberof rxSelect.option
-         * @description The text inside of the `<option>` element.
-         * @type {String}
+         * @description **DEPRECATED**: Use {@link rxSelect.option#getText} instead.
          */
         text: {
             get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxSelect.option
+         * @description The text inside of the `<option>` element.
+         * @returns {Promise<String>}
+         */
+        getText: {
+            value: function () {
                 return rootElement.getText();
             }
         },
@@ -186,7 +199,7 @@ var rxSelect = {
 
     /**
      * @instance
-     * @description List of each {@link rxSelect.option#text} values in the dropdown.
+     * @description List of each {@link rxSelect.option#getText} values in the dropdown.
      * @type {String[]}
      * @example
      * it('should have every Texas location in the dropdown', function () {
@@ -198,7 +211,7 @@ var rxSelect = {
     options: {
         get: function () {
             return this.rootElement.$$('option').map(function (optionElement) {
-                return rxSelectOptionFromElement(optionElement).text;
+                return rxSelectOptionFromElement(optionElement).getText();
             });
         }
     },
@@ -262,7 +275,7 @@ var rxSelect = {
      * @example
      * it('should already have the username populated', function () {
      *     var dropdown = encore.rxSelect.initialize(element(by.model('username')));
-     *     expect(dropdown.selectedOption.text).to.eventually.equal('Andrew Yurisich');
+     *     expect(dropdown.selectedOption.getText()).to.eventually.equal('Andrew Yurisich');
      * });
      */
     selectedOption: {
@@ -295,7 +308,7 @@ var rxSelect = {
      * it('should select the United States for the country', function () {
      *     var dropdown = encore.rxSelect.initialize($('#country-select'));
      *     dropdown.select('United States');
-     *     expect(dropdown.selectedOption.text).to.eventually.equal('United States');
+     *     expect(dropdown.selectedOption.getText()).to.eventually.equal('United States');
      * });
      */
     select: {

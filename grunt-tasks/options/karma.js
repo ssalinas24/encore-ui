@@ -26,6 +26,7 @@ module.exports = {
             'src/*/*.module.js',         // src/:category/<category>.module.js
             'src/*/**/*.module.js',      // src/:category/:component/<component>.module.js
             'src/**/templates/*.html',   // src/:category/:component/templates/*.html
+            'src/*.js',                  // src/*.js
             'src/**/scripts/*.js'        // src/:category/:component/scripts/*.js
         ])
     },
