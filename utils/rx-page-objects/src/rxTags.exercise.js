@@ -43,7 +43,7 @@ exports.rxTags = function (options) {
                 });
 
                 it('should have expected value', function () {
-                    expect(tag.text).to.eventually.equal(options.sampleText);
+                    expect(tag.getText()).to.eventually.equal(options.sampleText);
                 });
 
                 it('should increment total tags by 1', function () {

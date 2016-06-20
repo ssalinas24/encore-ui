@@ -3,7 +3,7 @@ var Page = require('astrolabe').Page;
 
 // "wait" for autosave to clear -- function passed to `browser.wait`
 var forAutoSaveToClear = function () {
-    return encore.rxNotify.all.exists('rxAutoSave data has been cleared!');
+    return encore.rxNotify.all.isPresent('rxAutoSave data has been cleared!');
 };
 
 // anonymous page object

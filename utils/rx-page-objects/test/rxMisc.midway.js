@@ -186,7 +186,7 @@ describe('rxMisc', function () {
                 encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
                     element(by.buttonText('Clear rxAutoSave by resolving a promise')).click();
                     browser.wait(function () {
-                        return encore.rxNotify.all.exists('rxAutoSave data has been cleared!', 'success');
+                        return encore.rxNotify.all.isPresent('rxAutoSave data has been cleared!', 'success');
                     }, 5000, 'rxAutoSave notification did not appear!');
                     expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.eql(performanceMetrics);
                 });

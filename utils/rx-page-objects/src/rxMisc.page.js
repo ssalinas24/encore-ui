@@ -16,9 +16,9 @@ exports.rxMisc = {
      * it('should click the crazy custom HTML thing that looks like a button but isn\'t', function () {
      *     var crazyButton = $('.button-wrapper[id="userId_"' + browser.params.userId + '"]');
      *     crazyButton.click(); // didn't work!
-     *     expect(encore.rxNotify.all.exists('You will be redirected', 'success')).to.eventually.be.false;
+     *     expect(encore.rxNotify.all.isPresent('You will be redirected', 'success')).to.eventually.be.false;
      *     encore.rxMisc.slowClick(crazyButton);
-     *     expect(encore.rxNotify.all.exists('You will be redirected', 'success')).to.eventually.be.true;
+     *     expect(encore.rxNotify.all.isPresent('You will be redirected', 'success')).to.eventually.be.true;
      * });
      */
     slowClick: function (elem) {

@@ -107,18 +107,32 @@ var rxToggleSwitch = {
     },
 
     /**
+     * @deprecated
      * @instance
      * @description The current text of the switch.
-     * @type {String}
+     *
+     * **DEPRECATED**: Use {@link rxToggleSwitch#getText} instead.
+     */
+    text: {
+        get: function () {
+            return this.getText();
+        }
+    },
+
+    /**
+     * @instance
+     * @function
+     * @description The current text of the switch.
      * @example
      * it('should toggle to the "on" position', function () {
      *     var mySwitch = encore.rxToggleSwitch.initialize();
      *     mySwitch.enable();
-     *     expect(mySwitch.text).to.eventually.equal('ON');
+     *     expect(mySwitch.getText()).to.eventually.equal('ON');
      * });
+     * @returns {Promise<String>}
      */
-    text: {
-        get: function () {
+    getText: {
+        value: function () {
             return this.btnToggleSwitch.$('span').getText();
         }
     }

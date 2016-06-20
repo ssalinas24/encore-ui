@@ -140,7 +140,7 @@ describe('rxSelect', function () {
             });
 
             it('should display correct text', function () {
-                expect(subject.selectedOption.text).to.eventually.eq(txt);
+                expect(subject.selectedOption.getText()).to.eventually.eq(txt);
             });
 
             it('should have correct value', function () {

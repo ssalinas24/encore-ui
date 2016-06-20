@@ -73,23 +73,23 @@ exports.rxToggleSwitch = function (options) {
             it('does not change state when clicked', function () {
                 toggle();
                 expect(component.isEnabled()).to.eventually.equal(enabledAtStart);
-                expect(component.text).to.eventually.equal(getText(enabledAtStart));
+                expect(component.getText()).to.eventually.equal(getText(enabledAtStart));
             });
         } else {
             it('begins in the ' + getText(enabledAtStart) + ' state', function () {
-                expect(component.text).to.eventually.equal(getText(enabledAtStart));
+                expect(component.getText()).to.eventually.equal(getText(enabledAtStart));
             });
 
             it('changes to ' + getText(enabledAtEnd) + ' when clicked', function () {
                 toggle();
                 expect(component.isEnabled()).to.eventually.equal(enabledAtEnd);
-                expect(component.text).to.eventually.equal(getText(enabledAtEnd));
+                expect(component.getText()).to.eventually.equal(getText(enabledAtEnd));
             });
 
             it('returns to the ' + getText(enabledAtStart) + ' when clicked again', function () {
                 toggle();
                 expect(component.isEnabled()).to.eventually.equal(enabledAtStart);
-                expect(component.text).to.eventually.equal(getText(enabledAtStart));
+                expect(component.getText()).to.eventually.equal(getText(enabledAtStart));
             });
         }
 

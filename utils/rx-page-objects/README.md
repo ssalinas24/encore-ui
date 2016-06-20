@@ -115,14 +115,14 @@ it('should fill out the form correctly', function () {
     form.name = 'Charlie Day';
     form.country = 'United States';
     form.submit();
-    expect(encore.rxNotify.all.exists('Success')).to.eventually.be.true;
+    expect(encore.rxNotify.all.isPresent('Success')).to.eventually.be.true;
 });
 
 it('should show an error message when submitting a foreign country', function () {
     form.name = 'Lāčplēsis';
     form.country = 'Latvia';
     form.submit();
-    expect(encore.rxNotify.all.exists('Error')).to.eventually.be.true;
+    expect(encore.rxNotify.all.isPresent('Error')).to.eventually.be.true;
 });
 ```
 
@@ -156,7 +156,7 @@ it('should fill out the form correctly', function () {
         name: 'Charlie Day',
         country: 'United States'
     });
-    expect(encore.rxNotify.all.exists('Success')).to.eventually.be.true;
+    expect(encore.rxNotify.all.isPresent('Success')).to.eventually.be.true;
 });
 
 it('should show an error message when submitting a foreign country', function () {
@@ -164,7 +164,7 @@ it('should show an error message when submitting a foreign country', function ()
         name: 'Lāčplēsis',
         country: 'Latvia'
     });
-    expect(encore.rxNotify.all.exists('Error')).to.eventually.be.true;
+    expect(encore.rxNotify.all.isPresent('Error')).to.eventually.be.true;
 });
 ```
 
