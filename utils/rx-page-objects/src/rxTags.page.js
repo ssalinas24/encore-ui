@@ -106,17 +106,33 @@ var tag = function (tagElement) {
         },
 
         /**
+         * @deprecated
          * @instance
-         * @type {String}
+         * @memberof rxTags.tag
+         * @description The text within the tag. Does not include the text in
+         * {@link rxTags.tag#category}.
+         *
+         * **DEPRECATED**: Use {@link rxTags.tag#getText} instead.
+         */
+        text: {
+            get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
          * @memberof rxTags.tag
          * @description The text within the tag. Does not include the text in {@link rxTags.tag#category}.
          * @example
          * it('should have "Enterprise" as the exact tag name', function () {
-         *     expect(encore.rxTags.initialize().byText('Banana').text).to.eventually.equal('Banana');
+         *     expect(encore.rxTags.initialize().byText('Banana').getText()).to.eventually.equal('Banana');
          * });
+         * @returns {Promise<String>}
          */
-        text: {
-            get: function () {
+        getText: {
+            value: function () {
                 return tagElement.$('.text').getText();
             }
         },

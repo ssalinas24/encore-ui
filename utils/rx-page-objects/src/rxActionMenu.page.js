@@ -45,16 +45,29 @@ var action = function (actionElement) {
         },
 
         /**
+         * @deprecated
          * @instance
-         * @type String
          * @description The trimmed text of the action menu item.
+         *
+         * **DEPRECATED**: Use {@link rxActionMenu.action#getText} instead.
          * @memberof rxActionMenu.action
          */
         text: {
             get: function () {
-                return actionElement.getText().then(function (text) {
-                    return text.trim();
-                });
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @description The trimmed text of the action menu item.
+         * @memberof rxActionMenu.action
+         * @returns {Promise<String>}
+         */
+        getText: {
+            value: function () {
+                return actionElement.getText();
             }
         }
 

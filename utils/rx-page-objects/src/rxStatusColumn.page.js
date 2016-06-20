@@ -170,6 +170,18 @@ var rxStatusColumn = {
 
                 /**
                  * @instance
+                 * @deprecated
+                 * @memberof rxStatusColumn.tooltip
+                 * @description **DEPRECATED**: Use {@link rxStatusColumn.tooltip#getText} instead.
+                 */
+                text: {
+                    get: function () {
+                        return this.getText();
+                    }
+                },
+
+                /**
+                 * @instance
                  * @function
                  * @memberof rxStatusColumn.tooltip
                  * @description Hovers over the current row's status column and
@@ -188,19 +200,20 @@ var rxStatusColumn = {
                 },
 
                 /**
+                 * @function
                  * @description Warning: This property is known to be unstable in many Selenium end to end
                  * test runs in EncoreUI. Returns the tooltip text. Will automatically hover over the tooltip
                  * for you to retrieve the text. If there is no tooltip present on hover, returns `null`.
                  * @instance
                  * @memberof rxStatusColumn.tooltip
-                 * @type {String|null}
                  * @example
                  * it('should have the correct tooltip text for the second row', function () {
-                 *     expect(myTable.row(1).status.tooltip.text).to.eventually.equal('DELETED');
+                 *     expect(myTable.row(1).status.tooltip.getText()).to.eventually.equal('DELETED');
                  * });
+                 * @returns {Promise<String|null>}
                  */
-                text: {
-                    get: function () {
+                getText: {
+                    value: function () {
                         var tooltip = this;
                         return this.isPresent().then(function (isPresent) {
                             if (isPresent) {

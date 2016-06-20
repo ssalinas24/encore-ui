@@ -47,7 +47,7 @@ var rxFeedback = {
      */
     type: {
         get: function () {
-            return this.selReportType.selectedOption.text;
+            return this.selReportType.selectedOption.getText();
         },
         set: function (optionText) {
             var option = this.selReportType.rootElement.element(by.cssContainingText('option', optionText));

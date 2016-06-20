@@ -305,7 +305,7 @@ var rxDatePicker = {
      */
     month: {
         get: function () {
-            return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.text;
+            return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.getText();
         },
 
         set: function (value) {
@@ -326,7 +326,7 @@ var rxDatePicker = {
      */
     year: {
         get: function () {
-            return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.text;
+            return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.getText();
         },
 
         set: function (value) {

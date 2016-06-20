@@ -51,17 +51,30 @@ var notification = function (rootElement) {
 
         /**
          * @instance
+         * @deprecated
          * @memberof rxNotify.notification
-         * @type {String}
-         * @description The text of the notification.
-         * @example
-         * it('should have the right notification text', function () {
-         *     var notificationText = encore.rxNotify.all.byText('Something bad happened').text;
-         *     expect(notificationText).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
-         * });
+         * @description **DEPRECATED**: Use {@link rxNotify.notification#getText} instead.
          */
         text: {
             get: function () {
+                return this.getText();
+            }
+        },
+
+        /**
+         * @instance
+         * @function
+         * @memberof rxNotify.notification
+         * @description The text of the notification.
+         * @example
+         * it('should have the right notification text', function () {
+         *     var notificationText = encore.rxNotify.all.byText('Something bad happened').getText();
+         *     expect(notificationText).to.eventually.equal('Something bad happened: Contact joe@rackspace.com');
+         * });
+         * @returns {Promise<String>}
+         */
+        getText: {
+            value: function () {
                 return rootElement.getText().then(function (text) {
                     // Remove any lingering '× ' characters.
                     return text.split('\n')[0].trim();
@@ -173,7 +186,7 @@ var rxNotify = {
      * @example
      * it('should have a success message that personally thanks the user', function () {
      *     var notification = encore.rxNotify.all.byText('Good job, ');
-     *     expect(notification.text).to.eventually.equal('Good job, ' + browser.params.username + '!');
+     *     expect(notification.getText()).to.eventually.equal('Good job, ' + browser.params.username + '!');
      * });
      */
     byText: {

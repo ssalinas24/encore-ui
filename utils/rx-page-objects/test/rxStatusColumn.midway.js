@@ -92,7 +92,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should have tooltip text', function () {
-                expect(status.tooltip.text).to.eventually.equal('ACTIVE');
+                expect(status.tooltip.getText()).to.eventually.equal('ACTIVE');
             });
 
         });
@@ -124,7 +124,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should have tooltip text', function () {
-                expect(status.tooltip.text).to.eventually.equal('DISABLED');
+                expect(status.tooltip.getText()).to.eventually.equal('DISABLED');
             });
 
         });
@@ -152,7 +152,7 @@ describe('rxStatusColumn', function () {
             });
 
             it('should have tooltip text', function () {
-                expect(status.tooltip.text).to.eventually.equal('ERROR');
+                expect(status.tooltip.getText()).to.eventually.equal('ERROR');
             });
 
         });
@@ -226,7 +226,7 @@ describe('rxStatusColumn', function () {
                 });
 
                 it('should have tooltip text', function () {
-                    expect(status.tooltip.text).to.eventually.equal('DELETING');
+                    expect(status.tooltip.getText()).to.eventually.equal('DELETING');
                 });
 
             });
