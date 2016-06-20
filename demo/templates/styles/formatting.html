@@ -1,26 +1,139 @@
-<rx-page title="'Formatting'">
-  <h3 class="clear">Date formatting</h3>
+<rx-page title="'Date/Time Formatting'">
+
+  <h3>Date Formats</h3>
+
+  <h4>Short-form</h4>
   <ul class="list">
     <li>
-      Dates in any context should be formatted this way:
-      <code>Mar 2, 2015 @ 15:40 (UTC-0600)</code> &mdash; a three-letter
-      capitalized month abbreviation (no period), followed by the day of
-      the month (no leading zeroes), a comma, the four-digit year, an
-      @ symbol, military time, and UTC in parentheses.
+      <code>YYYY-MM-DD</code>
     </li>
     <li>
-      The only time this formatting standard would not be used is when
-      relative dates would be helpful to the user, such as "4 hours ago"
-      or "1 week ago".
+      This matches the date format international standard, ISO 8601.
     </li>
     <li>
-      It is recommended that relative dates be reserved for more informal
-      settings like user notes or comments. Relative dates should not
-      extend too far into the past. For instance, "1 week ago" may be
-      helpful to the user, but "8 months ago" or "3 years ago" is better
-      represented by the non-relative format detailed above, as it reveals
-      more specific information about dates that provide better context and
-      information to the user when comparing dates and times.
+      Example: <code>2016-03-25</code>
+    </li>
+  </ul>
+
+  <h4>Long-form</h4>
+  <ul class="list">
+    <li>
+      <code>MMMM D, YYYY</code>
+    </li>
+    <li>
+      Example: <code>March 25, 2016</code>
+    </li>
+  </ul>
+
+  <h3>Date Formats (Month Only)</h3>
+
+  <h4>Micro Month Format</h4>
+  <ul class="list">
+    <li>
+      <code>MM / YY</code>
+    </li>
+    <li>
+      This is the <a
+        href="http://baymard.com/blog/how-to-format-expiration-date-fields"
+        target="_blank">accepted standard format</a> for credit card
+      expiration date, which is honored in Encore, matching the format of
+      physical credit cards as closely as possible.
+    </li>
+    <li>
+      Note those spaces between the slash!
+    </li>
+    <li>
+      Example: <code>03 / 12</code>
+    </li>
+  </ul>
+
+  <h4>Short-form</h4>
+  <ul class="list">
+    <li><code>MM / YYYY</code></li>
+    <li>Example: <code>03 / 2016</code></li>
+  </ul>
+
+  <h4>Long-form</h4>
+  <ul class="list">
+    <li>
+      <code>MMMM YYYY</code>
+    </li>
+    <li>
+      Example: <code>March 2016</code>
+    </li>
+  </ul>
+
+  <h3>Time Formats</h3>
+
+  <h4>Short-form</h4>
+  <ul class="list">
+    <li>
+      <code>HH:mmZ</code>
+    </li>
+    <li>
+      The Z above is a colon-separated timezone offset (<code>-10:00</code>,
+      not <code>-1000</code>) for explicit hour/minute offsets.
+    </li>
+    <li>
+      Example: <code>22:56-06:00</code>
+    </li>
+  </ul>
+
+  <h4>Long-form</h4>
+  <ul class="list">
+    <li>
+      <code>h:mmA (UTCZ)</code>
+    </li>
+    <li>
+      Example: <code>10:56PM (UTC-06:00)</code>
+    </li>
+  </ul>
+
+  <h3 class="clear">DateTime Formats</h3>
+
+  <h4>Long-form</h4>
+  <ul class="list">
+    <li>
+      <code>MMM D, YYYY @ h:mmA (UTCZ)</code>
+    </li>
+    <li>
+      This matches the Long-form Date Formats and Long-form Time Formats
+      with the " @ " between.
+    </li>
+    <li>
+      This format is seen the most in Encore Cloud to show create/update
+      timestamps.
+    </li>
+    <li>
+      <code>Mar 25, 2016 @ 10:56PM (UTC-06:00)</code>
+    </li>
+  </ul>
+
+  <h4>Short-form</h4>
+  <ul class="list">
+    <li>
+      <code>YYYY-MM-DD @ HH:mmZ</code>
+    </li>
+    <li>
+      This matches the date format international standard, ISO 8601.
+    </li>
+    <li>
+      <code>2016-03-25 @ 22:56-06:00</code>
+    </li>
+  </ul>
+
+  <h3>Relative Dates</h3>
+  <ul class="list">
+    <li>
+      Relative dates, such as such as "4 hours ago" or "1 week ago", are
+      reserved for more informal settings like user notes or comments.
+    </li>
+    <li>
+      Relative dates should not extend too far into the past. For instance,
+      "1 week ago" may be helpful to the user, but "8 months ago" or "3 years
+      ago" is better represented by the non-relative format detailed above, as
+      it reveals more specific information about dates that provide better
+      context and information to the user when comparing dates and times.
     </li>
   </ul>
   <div class="example-case do">
