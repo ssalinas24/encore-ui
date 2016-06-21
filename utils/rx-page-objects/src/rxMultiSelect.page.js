@@ -10,20 +10,6 @@ var selectOptionFromElement = function (optionElement) {
     return Object.create(rxCheckbox.initialize(optionElement.$('input')), {
 
         /**
-         * @deprecated
-         * @memberof rxMultiSelect.option
-         * @instance
-         * @description The text inside of the current option.
-         *
-         * **DEPRECATED**: Use {@link rxMultiSelect.option#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
          * @function
          * @memberof rxMultiSelect.option
          * @instance

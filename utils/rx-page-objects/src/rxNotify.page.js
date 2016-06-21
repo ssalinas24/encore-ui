@@ -51,18 +51,6 @@ var notification = function (rootElement) {
 
         /**
          * @instance
-         * @deprecated
-         * @memberof rxNotify.notification
-         * @description **DEPRECATED**: Use {@link rxNotify.notification#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
-         * @instance
          * @function
          * @memberof rxNotify.notification
          * @description The text of the notification.
@@ -225,18 +213,6 @@ var rxNotify = {
                     }
                 });
             });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
-     * @deprecated
-     * @description **DEPRECATED**: Use {@link rxNotify#isPresent} instead.
-     */
-    exists: {
-        value: function (string, type) {
-            return this.isPresent(string, type);
         }
     },
 

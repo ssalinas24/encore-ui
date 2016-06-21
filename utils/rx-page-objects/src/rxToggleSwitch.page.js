@@ -107,19 +107,6 @@ var rxToggleSwitch = {
     },
 
     /**
-     * @deprecated
-     * @instance
-     * @description The current text of the switch.
-     *
-     * **DEPRECATED**: Use {@link rxToggleSwitch#getText} instead.
-     */
-    text: {
-        get: function () {
-            return this.getText();
-        }
-    },
-
-    /**
      * @instance
      * @function
      * @description The current text of the switch.

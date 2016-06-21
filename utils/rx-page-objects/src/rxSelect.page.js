@@ -13,18 +13,6 @@ var rxSelectOptionFromElement = function (rootElement) {
 
         /**
          * @instance
-         * @deprecated
-         * @memberof rxSelect.option
-         * @description **DEPRECATED**: Use {@link rxSelect.option#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
-         * @instance
          * @function
          * @memberof rxSelect.option
          * @description The text inside of the `<option>` element.
