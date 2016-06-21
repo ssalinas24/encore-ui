@@ -158,30 +158,6 @@ var rxStatusColumn = {
 
                 /**
                  * @instance
-                 * @deprecated
-                 * @memberof rxStatusColumn.tooltip
-                 * @description **DEPRECATED**: Use {@link rxStatusColumn.tooltip#isPresent} instead.
-                 */
-                exists: {
-                    get: function () {
-                        return this.isPresent();
-                    }
-                },
-
-                /**
-                 * @instance
-                 * @deprecated
-                 * @memberof rxStatusColumn.tooltip
-                 * @description **DEPRECATED**: Use {@link rxStatusColumn.tooltip#getText} instead.
-                 */
-                text: {
-                    get: function () {
-                        return this.getText();
-                    }
-                },
-
-                /**
-                 * @instance
                  * @function
                  * @memberof rxStatusColumn.tooltip
                  * @description Hovers over the current row's status column and

@@ -70,17 +70,6 @@ var rxLocalStorage = {
 
     /**
      * @function
-     * @deprecated
-     * @description **DEPRECATED**: Use {@link rxLocalStorage.isPresent} instead.
-     */
-    exists: {
-        value: function (key) {
-            return this.isPresent(key);
-        }
-    },
-
-    /**
-     * @function
      * @description Whether or not the `key` provided has already been set in local storage.
      * @param {String} key - The key to look up in local storage (and check if it is present).
      * @returns {Boolean}

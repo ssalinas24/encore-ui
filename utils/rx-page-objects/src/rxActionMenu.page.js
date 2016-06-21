@@ -45,20 +45,6 @@ var action = function (actionElement) {
         },
 
         /**
-         * @deprecated
-         * @instance
-         * @description The trimmed text of the action menu item.
-         *
-         * **DEPRECATED**: Use {@link rxActionMenu.action#getText} instead.
-         * @memberof rxActionMenu.action
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
          * @instance
          * @function
          * @description The trimmed text of the action menu item.
