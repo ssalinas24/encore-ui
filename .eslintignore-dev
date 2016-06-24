@@ -4,3 +4,4 @@ demo/index.html
 demo/scripts/prism.js
 demo/scripts/loadModuleDemoControllers.js
 demo/scripts/loadModules.js
+demo/scripts/loadExamples.js

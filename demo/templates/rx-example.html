@@ -4,7 +4,7 @@
   <tabset class="source-tabset">
     <tab heading="Markup">
       <div class="source-code-wrapper" ng-class="{ expanded: isExpanded('markup') }">
-        <rx-prism language="markup" code-url="{{markupUrl}}"></rx-prism>
+        <pre><code class="line-numbers language-markup">{{ example.markup }}</code></pre>
       </div>
       <a class="toggle-expand"
         ng-class="{expanded: isExpanded('markup')}"
@@ -16,23 +16,23 @@
       </a>
     </tab>
 
-    <tab ng-if="hasSource('js')" heading="JavaScript">
-      <div class="source-code-wrapper" ng-class="{ expanded: isExpanded('js') }">
-        <rx-prism language="clike" code-url="{{javascriptUrl}}"></rx-prism>
+    <tab ng-if="example.javascript" heading="JavaScript">
+      <div class="source-code-wrapper" ng-class="{ expanded: isExpanded('javascript') }">
+        <pre><code class="line-numbers language-clike">{{ example.javascript }}</code></pre>
       </div>
       <a class="toggle-expand"
-        ng-class="{expanded: isExpanded('js')}"
-        ng-show="canExpand('js')"
-        ng-click="toggleExpanded('js')">
+        ng-class="{expanded: isExpanded('javascript')}"
+        ng-show="canExpand('javascript')"
+        ng-click="toggleExpanded('javascript')">
         <i class="fa fa-fw fa-expand"></i>
         <i class="fa fa-fw fa-compress"></i>
-        {{ isExpanded('js') ? 'Collapse' : 'Expand' }} Snippet
+        {{ isExpanded('javascript') ? 'Collapse' : 'Expand' }} Snippet
       </a>
     </tab>
 
-    <tab ng-if="hasSource('less')" heading="Less">
+    <tab ng-if="example.less" heading="Less">
       <div class="source-code-wrapper" ng-class="{ expanded: isExpanded('less') }">
-        <rx-prism language="css" code-url="{{lessUrl}}"></rx-prism>
+        <pre><code class="line-numbers language-css">{{ example.less }}</code></pre>
       </div>
       <a class="toggle-expand"
         ng-class="{expanded: isExpanded('less')}"
@@ -40,7 +40,7 @@
         ng-click="toggleExpanded('less')">
         <i class="fa fa-fw fa-expand"></i>
         <i class="fa fa-fw fa-compress"></i>
-        {{ isExpanded('js') ? 'Collapse' : 'Expand' }} Snippet
+        {{ isExpanded('less') ? 'Collapse' : 'Expand' }} Snippet
       </a>
     </tab>
   </tabset>
