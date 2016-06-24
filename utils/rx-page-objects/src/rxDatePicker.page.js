@@ -26,7 +26,7 @@ class rxDatePicker {
      * **Format:** `MMM` (e.g. "Apr", "May", "Jun")
      */
     get month () {
-        return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.text;
+        return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.getText();
     }
     set month (value) {
         this.open();
@@ -44,7 +44,7 @@ class rxDatePicker {
      * **Format:** `YYYY` (e.g. "2016")
      */
     get year () {
-        return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.text;
+        return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.getText();
     }
     set year (value) {
         this.open();
