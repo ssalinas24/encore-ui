@@ -3,6 +3,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:build',
             'modules',
+            'examples',
             'concat:dist',
             'concat:distTpls',
             'concat:tmpEncoreLess',
