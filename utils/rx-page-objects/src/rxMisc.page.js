@@ -377,32 +377,6 @@ exports.rxMisc = {
     /**
      * @private
      * @function
-     * @description Return the absolute distance between `e1` and `e2`'s Y-coordinates on the screen.
-     * This function does not account for the extra space incurred by measuring the the heights of `e1`
-     * or `e2` themselves. This function returns only the distance between the top left corner of `e1`
-     * and the top left corner of `e2`.
-     * @param {ElementFinder|Number} e1 - The element to measure (or its y-coordinates as a number).
-     * @param {ElementFinder|Number} e2 - The element to compare (or its y-coordinates as a number).
-     * @example
-     * it('should be 20 pixels below the breadcrumbs', function () {
-     *     var yDifference = encore.rxMisc.yDiff(myPage.lblTitle, myPage.pagination.rootElement);
-     *     expect(yDifference).to.eventually.equal(-20);
-     * });
-     */
-    yDiff: function (e1, e2) {
-        var promises = [
-            this.transformLocation(e1, 'y'),
-            this.transformLocation(e2, 'y')
-        ];
-
-        return protractor.promise.all(promises).then(function (locations) {
-            return locations[0] - locations[1];
-        });
-    },
-
-    /**
-     * @private
-     * @function
      * @param {ElementFinder} e1 First element to compare locations against.
      * @param {ElementFinder} e2 Second element to compare locations against.
      * @param {String} attribute attribute to compare ('x' or 'y')
