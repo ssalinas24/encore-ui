@@ -1,6 +1,7 @@
 var Page = require('astrolabe').Page;
 
 var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+var _ = require('lodash');
 
 var selectOptionFromElement = function (optionElement) {
     /**
@@ -284,7 +285,7 @@ var rxMultiSelect = {
     isValid: {
         value: function () {
             return this.rootElement.getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'ng-valid');
+                return _.includes(classes.split(' '), 'ng-valid');
             });
         }
     }

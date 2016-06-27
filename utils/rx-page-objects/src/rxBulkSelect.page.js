@@ -224,7 +224,7 @@ var rxBulkSelect = {
     selectByIndex: {
         value: function selectRowByIndex (i) {
             if (_.isArray(i)) {
-                _.each(i, selectRowByIndex, this);
+                _.each(i, rowIndex => this.selectByIndex(rowIndex));
             } else {
                 rxBulkSelectDefaultRowFn(this.tblRows.get(i)).select();
             }
@@ -238,7 +238,7 @@ var rxBulkSelect = {
     deselectByIndex: {
         value: function deselectRowByIndex (i) {
             if (Array.isArray(i)) {
-                _.each(i, deselectRowByIndex, this);
+                _.each(i, rowIndex => this.deselectByIndex(rowIndex));
             } else {
                 rxBulkSelectDefaultRowFn(this.tblRows.get(i)).deselect();
             }
