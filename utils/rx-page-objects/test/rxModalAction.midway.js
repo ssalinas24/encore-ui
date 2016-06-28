@@ -1,7 +1,7 @@
 describe('rxModalAction', function () {
     var changePasswordModal, triggerModal;
 
-    var customFunctionalty = {
+    var customFunctionality = {
         txtNewPassword: {
             get: function () {
                 return this.rootElement.element(by.model('fields.password'));
@@ -31,7 +31,7 @@ describe('rxModalAction', function () {
             encore.rxMisc.slowClick($('#modChangePassword .modal-link'));
         };
 
-        changePasswordModal = encore.rxModalAction.initialize(customFunctionalty);
+        changePasswordModal = encore.rxModalAction.initialize(customFunctionality);
     });
 
     it('should not display the modal unless triggered', function () {

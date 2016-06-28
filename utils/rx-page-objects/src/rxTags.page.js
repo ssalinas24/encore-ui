@@ -53,7 +53,7 @@ var tag = function (tagElement) {
          * @returns {Boolean}
          * @example
          * it('should focus on the last tag when clicking it', function () {
-         *     encore.rxTags.intitialize().addTag('Banana').then(function (tag) {
+         *     encore.rxTags.initialize().addTag('Banana').then(function (tag) {
          *         expect(tag.isFocused()).to.eventually.be.false;
          *         tag.click();
          *         expect(tag.isFocused()).to.eventually.be.true;

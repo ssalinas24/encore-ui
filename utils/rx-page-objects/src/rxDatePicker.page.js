@@ -242,7 +242,7 @@ rxDatePicker.prototype.isOpen = function () {
 /**
  * @param {ElementFinder} rxDatePickerElement
  * ElementFinder to be transformed into an rxDatePicker page object.
- * @returns {rxDatePicker} Page object representing the rxDatepicker element.
+ * @returns {rxDatePicker} Page object representing the rxDatePicker element.
  */
 rxDatePicker.initialize = function (rxDatePickerElement) {
     return new rxDatePicker(rxDatePickerElement);
