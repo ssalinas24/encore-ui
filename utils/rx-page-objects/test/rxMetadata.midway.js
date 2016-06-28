@@ -87,7 +87,7 @@ describe('rxMetadata', function () {
         });
 
         it('should still work fine without any transform functions defined', function () {
-            expect(encore.rxMetadata.main.term('Amount')).to.eventually.equal('$192.68');
+            expect(encore.rxMetadata.initialize().term('Amount')).to.eventually.equal('$192.68');
         });
 
         it('should report back null for definitions that are not present', function () {

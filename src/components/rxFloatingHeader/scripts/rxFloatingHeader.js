@@ -158,7 +158,6 @@ angular.module('encore.ui.rxFloatingHeader')
                         var type = input.attr('type');
                         if (!type || type === 'text') {
                             th.addClass('filter-header');
-                            input.addClass('filter-box');
                             inputs.push(input);
                         }
                     }

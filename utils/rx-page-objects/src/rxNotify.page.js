@@ -51,18 +51,6 @@ var notification = function (rootElement) {
 
         /**
          * @instance
-         * @deprecated
-         * @memberof rxNotify.notification
-         * @description **DEPRECATED**: Use {@link rxNotify.notification#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
-         * @instance
          * @function
          * @memberof rxNotify.notification
          * @description The text of the notification.
@@ -231,18 +219,6 @@ var rxNotify = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description **DEPRECATED**: Use {@link rxNotify#isPresent} instead.
-     */
-    exists: {
-        value: function (string, type) {
-            return this.isPresent(string, type);
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @param {String} string - The text to look for inside the notification.
      * @param {String} [type=] - The notification type ('success', 'info', 'warning', 'error').
      * @description Whether or not the notification matching text `string` exists in the current
@@ -313,17 +289,6 @@ exports.rxNotify = {
 
         return Page.create(rxNotify);
     },
-
-    /**
-     * @deprecated Use {@link rxNotify.initialize} without arguments instead.
-     * @memberof rxNotify
-     * @type {rxNotify.notification}
-     * @description The first notification present on the page. Does not return
-     * a collection of notification page objects, but a singular notification page object.
-     */
-    main: (function () {
-        return notification($('.rx-notifications .rx-notification'));
-    })(),
 
     /**
      * @memberof rxNotify

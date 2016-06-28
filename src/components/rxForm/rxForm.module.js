@@ -98,9 +98,6 @@
  * framework.** They are still functional, but **WILL display a warning in the javascript console** to let you know
  * you should upgrade your code.
  *
- * ### **rxFormOptionTable**
- * Please use {@link rxOptionTable} as a stand-in replacement.
- *
  * ### **rxFormItem**
  * See "Before & After" below
  *
@@ -213,12 +210,8 @@
  * * {@link rxSelect.directive:rxSelect rxSelect}
  * * {@link rxToggleSwitch.directive:rxToggleSwitch rxToggleSwitch}
  *
- * ### Deprecated Directives
- * * {@link rxForm.directive:rxFormItem rxFormItem}
- * * {@link rxForm.directive:rxFormFieldset rxFormFieldset}
- *
  */
 angular.module('encore.ui.rxForm', [
     'ngSanitize',
-    'encore.ui.rxMisc'
+    'encore.ui.utilities'
 ]);

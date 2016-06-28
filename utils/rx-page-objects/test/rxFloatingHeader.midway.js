@@ -1,3 +1,14 @@
+var yDiff = function (e1, e2) {
+    var promises = [
+        encore.rxMisc.transformLocation(e1, 'y'),
+        encore.rxMisc.transformLocation(e2, 'y')
+    ];
+
+    return protractor.promise.all(promises).then(function (locations) {
+        return locations[0] - locations[1];
+    });
+};
+
 var singleRowTable = {
     isDisplayed: function () {
         return this.table.isDisplayed();
@@ -205,7 +216,7 @@ describe('rxFloatingHeader', function () {
             it('should have the row exactly in the middle of the screen', function () {
                 var t = calculateTolerance(innerHeight / 2);
                 var middleRowLocation = multiRowTable.rowLocation('middle');
-                var yDifference = encore.rxMisc.yDiff(middleRowLocation, encore.rxMisc.scrollPosition.y);
+                var yDifference = yDiff(middleRowLocation, encore.rxMisc.scrollPosition.y);
                 expect(yDifference).to.eventually.be.within(t.lower, t.upper);
             });
 
@@ -259,7 +270,7 @@ describe('rxFloatingHeader', function () {
 
             it('should scroll to the first element', function () {
                 var header = multiRowTable.filtersHeader;
-                expect(encore.rxMisc.yDiff(header, multiRowTable.trs)).to.eventually.equal(0);
+                expect(yDiff(header, multiRowTable.trs)).to.eventually.equal(0);
             });
         });
 

@@ -1,7 +1,0 @@
-{
-    "displayName": "rxActiveUrl",
-    "stability": "deprecated",
-    "description": "Adds a class name of 'selected' to an LI if the current url matches a pre-defined value",
-    "isLegacy": true,
-    "keywords": []
-}

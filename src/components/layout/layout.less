@@ -9,7 +9,7 @@
  */
 
 [layout] {
-  .box-sizing(border-box);
+  box-sizing: border-box;
   display: flex;
 }
 
@@ -84,7 +84,7 @@
 .layout-for-name(@name) {
   @selector: ~'layout-@{name}';
   [@{selector}] {
-    .box-sizing(border-box);
+    box-sizing: border-box;
     display: flex;
   }
   [@{selector}="column"] {
@@ -119,7 +119,7 @@
   .concat-selector('flex', @suffix);
 
   [@{selector}] {
-    .box-sizing(border-box);
+    box-sizing: border-box;
     flex: 1;
   }
 

@@ -8,19 +8,18 @@ var autoSaving = Page.create({
         }
     },
 
-    checkbox: encore.rxForm.checkbox.generateAccessor(element(by.model('formData.checkbox'))),
+    checkbox: encore.rxCheckbox.generateAccessor(element(by.model('formData.checkbox'))),
 
     name: encore.rxForm.textField.generateAccessor(element(by.model('formData.name'))),
 
     description: encore.rxForm.textField.generateAccessor(element(by.model('formData.description'))),
 
     sensitiveData: encore.rxForm.textField.generateAccessor(element(by.model('formData.sensitive'))),
-
 });
 
 describe('rxMisc', function () {
     before(function () {
-        demoPage.go('#/components/rxMisc');
+        demoPage.go('#/utilities/rxAutoSave');
     });
 
     describe('convenience functions', function () {
@@ -134,71 +133,6 @@ describe('rxMisc', function () {
             it('should match the date exactly', function () {
                 var explicitDate = new Date('January 6, 1989 @ 00:00 (UTC-0600)');
                 expect(date.valueOf()).to.equal(explicitDate.valueOf());
-            });
-
-        });
-
-        describe('timings', function () {
-            var metrics;
-            var commonMetrics = [ // present in both Chrome and Firefox
-                'appcacheTime',
-                'connectTime',
-                'domReadyTime',
-                'firstPaint',
-                'initDomTreeTime',
-                'loadEventTime',
-                'loadTime',
-                'lookupDomainTime',
-                'readyStart',
-                'redirectTime',
-                'requestTime',
-                'unloadEventTime'
-            ];
-
-            var chromeMetrics = ['firstPaintTime'];
-
-            before(function () {
-                browser.getCapabilities().then(function (capabilities) {
-                    metrics = commonMetrics;
-                    if (capabilities.get('browserName') === 'chrome') {
-                        metrics = [...metrics, ...chromeMetrics].sort();
-                    }
-                });
-            });
-
-            it('should report some timings', function () {
-                expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.not.be.empty;
-            });
-
-            it('should report a time for page load time', function () {
-                encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
-                    expect(Object.keys(performanceMetrics).sort()).to.eql(metrics);
-                });
-            });
-
-            it('should update the metrics on page change', function () {
-                demoPage.go('#/components/rxAge');
-                expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.not.eql(metrics);
-            });
-
-            it('should not update the metrics when a request is made without a refresh', function () {
-                demoPage.go('#/components/rxMisc');
-                encore.rxMisc.getPerformanceMetrics().then(function (performanceMetrics) {
-                    element(by.buttonText('Clear rxAutoSave by resolving a promise')).click();
-                    browser.wait(function () {
-                        return encore.rxNotify.all.isPresent('rxAutoSave data has been cleared!', 'success');
-                    }, 5000, 'rxAutoSave notification did not appear!');
-                    expect(encore.rxMisc.getPerformanceMetrics()).to.eventually.eql(performanceMetrics);
-                });
-            });
-
-            it('should get just one property at a time', function () {
-                expect(encore.rxMisc.getPerformanceMetrics('loadTime')).to.eventually.be.above(0);
-            });
-
-            it('should get more than one property at a time', function () {
-                var keys = ['loadTime', 'redirectTime'];
-                expect(encore.rxMisc.getPerformanceMetrics(keys)).to.eventually.include.keys(keys);
             });
 
         });

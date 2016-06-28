@@ -1,387 +1,251 @@
-var Page = require('astrolabe').Page;
+'use strict';
 var moment = require('moment');
+var _ = require('lodash');
 
 var rxSelect = require('./rxSelect.page').rxSelect;
-var rxMisc = require('./rxMisc.page').rxMisc;
 
 /**
- * @namespace
+ * @class
  */
-var rxDatePicker = {
-
+class rxDatePicker {
     /**
-     * @private
-     * @instance
-     * @type {ElementArrayFinder}
+     * @param {ElementFinder} rxDatePickerElement
+     * ElementFinder to be transformed into an rxDatePicker page object
+     * @returns {rxDatePicker}
      */
-    tblCurrentMonthDays: {
-        get: function () {
-            return this.rootElement.$$('.day.inMonth');
-        }
-    },
+    constructor (rxDatePickerElement) {
+        this.rootElement = rxDatePickerElement || $$('rx-date-picker').first();
+
+        // Private selectors
+        this.tblCurrentMonthDays = this.rootElement.$$('.day.inMonth');
+    }//constructor
 
     /**
-     * @private
-     * @function
-     * @instance
-     * @description Return a day in the current visible month by date string.
-     * Formatted as an ISOString.
-     * @param {String} dateString - ISOString-formatted string representing the date to select.
-     * @returns {ElementFinder}
-     * @example
-     * var picker = encore.rxDatePicker.initialize();
-     * picker.open();
-     * picker.dateElementByDate('2012-06-23').getAttribute('class');
-     */
-    dateElementByDate: {
-        value: function (dateString) {
-            return this.rootElement.$('[data-date="' + dateString + '"]');
-        }
-    },
-
-    /**
-     * @private
-     * @function
-     * @instance
-     * @description Whether or not the date requested is currently selected.
-     * @param {Date} date - The date to verify whether or not it is currently selected.
-     * @returns {Boolean}
-     */
-    isDateSelected: {
-        value: function (date) {
-            this.open();
-            var dateString = moment(date).format('YYYY-MM-DD');
-            return this.dateElementByDate(dateString).getAttribute('class').then(function (classes) {
-                return _.contains(classes, 'selected');
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @function
-     * @instance
-     * @description Whether or not the date passed in matches the "today" date in the calendar.
-     * @param {Date} [date=new Date] - The date to check against the calendar to confirm that it is today's date.
-     * @returns {Boolean}
-     */
-    isDateToday: {
-        value: function (date) {
-            this.open();
-            var dateString = moment(date).format('YYYY-MM-DD');
-            return this.dateElementByDate(dateString).getAttribute('class').then(function (classes) {
-                return _.contains(classes, 'today');
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @description Will select the last day of the currently visible month. Does not accept arguments.
-     * Set the visible month yourself with {@link rxDatePicker#month} and {@link rxDatePicker#year} first
-     * to pick the right last day of the month.
-     * @example
-     * var picker = encore.rxDatePicker.initialize();
-     * picker.date = new Date('January 2016');
-     * // don't do this!
-     * picker.date = moment(new Date('January 2016')).endOf('month');
-     * // the date picker uses all `ISOString()` calls to grab dates.
-     * picker.date.then(function (date) {
-     *     // notice the timezone conversion -- it will select the first of the next month
-     *     // if your machine is set to the Central Standard Time timezone.
-     *     expect(date.toISOString()).to.equal('2016-02-01T05:59:59.999Z');
-     * });
-     * // do this instead
-     * picker.date = new Date('January 2016');
-     * picker.selectLastDayOfCurrentMonth();
-     * picker.date.then(function (date) {
-     *     // although the date is the same, `selectLastDayOfCurrentMonth` uses moment
-     *     // to select the last day of the month for you, in a way that won't incur
-     *     // any timezone changes.
-     *     expect(date.toISOString()).to.equal('2016-02-01T05:59:59.999Z');
-     * });
-     */
-    selectLastDayOfCurrentMonth: {
-        value: function () {
-            var self = this;
-            this.open();
-
-            return protractor.promise.all([this.month, this.year]).then(function (results) {
-                var currentDate = new Date(results[0] + ' ' + results[1]);
-                var lastDate = moment(new Date(currentDate)).endOf('month').format();
-                var lastDayString = lastDate.split('T')[0];
-                self.selectVisibleDate(lastDayString);
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @deprecated
-     * @description Whether or not the entire calendar component is disabled.
+     * @type {String}
+     * @description (get/set) Month value of the picker _calendar_.
      *
-     * **DEPRECATED** Check inverse of `isEnabled()` instead.
-     * @return {Promise<Boolean>}
+     * **Format:** `MMM` (e.g. "Apr", "May", "Jun")
      */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @description Whether or not the entire calendar component is enabled.
-     * @return {Promise<Boolean>}
-     */
-    isEnabled: {
-        value: function () {
-            return this.rootElement.getAttribute('disabled').then(function (disabled) {
-                return !disabled;
-            });
-        }
-    },
-
-
-    /**
-     * @function
-     * @instance
-     * @description Whether or not the entire calendar component is present on the page.
-     * @returns {Boolean}
-     */
-    isPresent: {
-        value: function () {
-            return this.rootElement.isPresent();
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @description Whether or not the calendar is in an invalid state.
-     * @return {Boolean}
-     */
-    isValid: {
-        value: function () {
-            return this.rootElement.getAttribute('class').then(function (classes) {
-                return !_.contains(classes, 'ng-invalid');
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @description Whether or not the calendar is open.
-     * @return {Promise<Boolean>}
-     */
-    isOpen: {
-        value: function () {
-            return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
-                return !_.contains(classes, 'ng-hide');
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @deprecated
-     * @description Whether or not the calendar is closed.
-     *
-     * **DEPRECATED** Check inverse of `isOpen()` instead.
-     * @return {Promise<Boolean>}
-     */
-    isClosed: {
-        value: function () {
-            return this.isOpen().then(function (open) {
-                return !open;
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @description Ensures that the date picker is open.
-     * @see rxDatePicker#close
-     * @example
-     * var picker = encore.rxDatePicker.initialize();
-     * picker.open();
-     * picker.open(); // does nothing
-     */
-    open: {
-        value: function () {
-            var self = this;
-            this.isOpen().then(function (open) {
-                if (!open) {
-                    self.rootElement.$('.control').click();
-                }
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @description Ensures that the date picker is closed.
-     * @see rxDatePicker#open
-     * @example
-     * var picker = encore.rxDatePicker.initialize();
-     * picker.open();
-     * picker.close();
-     * picker.close(); // does nothing
-     */
-    close: {
-        value: function () {
-            var self = this;
-            return this.isOpen().then(function (isOpen) {
-                if (isOpen) {
-                    self.rootElement.$('.backdrop').click();
-                }
-            });
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @description Click over to the next month in the calendar.
-     */
-    nextMonth: {
-        value: function () {
-            this.open();
-            this.rootElement.$('.arrow.next').click();
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @description Click back to the previous month in the calendar.
-     */
-    previousMonth: {
-        value: function () {
-            this.open();
-            this.rootElement.$('.arrow.prev').click();
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @function
-     * @param {String} dateString - YYYY-MM-DD formatted string to select on the current month.
-     * @description Clicks and sets the calendar's date to the one corresponding to `dateString`'s value.
-     * @example
-     * var picker = rxDatePicker.initialize();
-     * picker.monthAndYear = new Date('May 2014');
-     * picker.selectVisibleDate('2014-05-13');
-     * expect(picker.date).to.eventually.equalDate(new Date('May 13, 2014'));
-     */
-    selectVisibleDate: {
-        value: function (dateString) {
-            this.open();
-            this.dateElementByDate(dateString).$('span').click();
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @description Getter/setter for entering and retrieving the month from the date picker.
-     * @returns {String} The current month selected on the calendar.
-     * @param {String} month - Sets the current month on the calendar.
-     */
-    month: {
-        get: function () {
-            return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.getText();
-        },
-
-        set: function (value) {
-            this.open();
-            var slowClick = false;
-            rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value, slowClick);
-        }
-    },
-
-    /**
-     * @private
-     * @instance
-     * @description Getter/setter for entering and retrieving the year from the date picker.
-     * The date picker provides a 10-year range before and after the selected date, if present.  Otherwise,
-     * the range is calculated from today's date.
-     * @returns {String} The current year selected on the calendar.
-     * @param {String} year - Sets the current year on the calendar.
-     */
-    year: {
-        get: function () {
-            return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.getText();
-        },
-
-        set: function (value) {
-            this.open();
-            var slowClick = false;
-            rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value, slowClick);
-        }
-    },
-
-    /**
-     * @instance
-     * @description Getter/setter for entering and retrieving a date from the date picker.
-     * @returns {Date} The current date set on the calendar
-     * @param {Date} date - The date to pick in the date picker.
-     * @example
-     * it('should have today\'s date set by default', function () {
-     *     var today = new Date(new Date().toISOString().split('T')[0]);
-     *     expect(myPage.datepicker.date).to.eventually.equalDate(today);
-     * });
-     *
-     * it('should set the date to Midsummer 2012', function () {
-     *     var midsummer = new Date('2012-06-23');
-     *     myPage.datepicker.date = midsummer;
-     *     expect(myPage.datepicker.date).to.eventually.equalDate(midsummer); // priekā!
-     * });
-     */
-    date: {
-        get: function () {
-            return this.rootElement.$('.displayValue').getText().then(rxMisc.newDate);
-        },
-
-        set: function (date) {
-            this.month = date.toString().split(' ')[1];
-            this.year = date.toString().split(' ')[3];
-            var targetDateString = date.toISOString().split('T')[0];
-            this.selectVisibleDate(targetDateString);
-        }
+    get month () {
+        return rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).selectedOption.getText();
     }
+    set month (value) {
+        this.open();
+        var slowClick = false;
+        rxSelect.initialize(this.rootElement.element(by.model('currentMonth'))).select(value, slowClick);
+    }
+
+    /**
+     * @type {String}
+     * @description (get/set) Year value of the picker _calendar_.
+     *
+     * The date picker provides a 10-year range before and after the selected date,
+     * if present.  Otherwise, the range is calculated from today's date.
+     *
+     * **Format:** `YYYY` (e.g. "2016")
+     */
+    get year () {
+        return rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).selectedOption.getText();
+    }
+    set year (value) {
+        this.open();
+        var slowClick = false;
+        rxSelect.initialize(this.rootElement.element(by.model('currentYear'))).select(value, slowClick);
+    }
+
+    /**
+     * @type {String}
+     * @description (get/set) _Selected value_ of the picker.
+     *
+     * **Format:** `YYYY-MM-DD` (e.g. "2016-05-25")
+     */
+    get date () {
+        return this.rootElement.$('.displayValue').getAttribute('datetime');
+    }
+    set date (dateString) {
+        var date = moment(dateString, 'YYYY-MM-DD');
+        this.month = date.format('MMM');
+        this.year = date.format('YYYY');
+        this._selectVisibleDate(dateString);
+    }
+}//rxDatePicker
+
+/* ========== Private API Functions ========== */
+
+/**
+ * @private
+ * @description
+ * Sets the calendar's date by clicking the date corresponding to the value of
+ * `dateString`.
+ *
+ * @param {String} dateString
+ * `YYYY-MM-DD` formatted string to select on the current month.
+ *
+ * @example
+ * var picker = rxDatePicker.initialize();
+ * picker._selectVisibleDate('2014-05-13');
+ * expect(picker.date).to.eventually.eq('2014-05-13');
+ */
+rxDatePicker.prototype._selectVisibleDate = function (dateString) {
+    this.open();
+    this._dateElementByDate(dateString).$('span').click();
+};//_selectVisibleDate()
+
+/**
+ * @private
+ * @description
+ * Will select the last day of the current month seen on the picker calendar.
+ * Does not accept arguments. Set the calendar month yourself with
+ * {@link rxDatePicker#month} and {@link rxDatePicker#year} first, so that logic
+ * picks the correct date.
+ */
+rxDatePicker.prototype._selectLastDayOfCurrentMonth = function () {
+    this.open();
+    return protractor.promise.all([this.month, this.year])
+        .then((results) => {
+            var formattedDate = `${results[0]}-${results[1]}`;
+            var lastOfMonth = moment(formattedDate, 'MMM-YYYY').endOf('month');
+            this._selectVisibleDate(lastOfMonth.format('YYYY-MM-DD'));
+        });
+};//_selectLastDayOfCurrentMonth()
+
+/**
+ * @private
+ * @description
+ * Return a day seen on the picker calendar that corresponds to the value of
+ * `dateString`.
+ *
+ * @param {String} dateString
+ * `YYYY-MM-DD` formatted string of the date to select.
+ *
+ * @example
+ * var picker = encore.rxDatePicker.initialize();
+ * picker.open();
+ * picker._dateElementByDate('2012-06-23').getAttribute('class');
+ *
+ * @returns {ElementFinder}
+ */
+rxDatePicker.prototype._dateElementByDate = function (dateString) {
+    return this.rootElement.$(`[data-date="${dateString}"]`);
 };
 
-exports.rxDatePicker = {
-    /**
-     * @function
-     * @memberof rxDatePicker
-     * @param {ElementFinder} rxDatePickerElement - ElementFinder to be transformed into an rxDatePicker page object.
-     * @returns {rxDatePicker} Page object representing the rxDatePicker element.
-     */
-    initialize: function (rxDatePickerElement) {
-        if (rxDatePickerElement === undefined) {
-            rxDatePickerElement = $('rx-date-picker');
+/* ========== Public API Functions ========== */
+/**
+ * @see rxDatePicker#close
+ * @description Ensures that the date picker is open.
+ * @example
+ * var picker = encore.rxDatePicker.initialize();
+ * picker.open();
+ * picker.open(); // does nothing
+ */
+rxDatePicker.prototype.open = function () {
+    this.isOpen().then((open) => {
+        if (!open) {
+            this.rootElement.$('.control').click();
         }
+    });
+};//open()
 
-        rxDatePicker.rootElement = {
-            get: function () { return rxDatePickerElement; }
-        };
-        return Page.create(rxDatePicker);
-    }
+/**
+ * @see rxDatePicker#open
+ * @description Ensures that the date picker is closed.
+ * @example
+ * var picker = encore.rxDatePicker.initialize();
+ * picker.open();
+ * picker.close();
+ * picker.close(); // does nothing
+ */
+rxDatePicker.prototype.close = function () {
+    return this.isOpen().then((isOpen) => {
+        if (isOpen) {
+            this.rootElement.$('.backdrop').click();
+        }
+    });
+};//close()
+
+/**
+ * @description Click over to the next month in the calendar.
+ */
+rxDatePicker.prototype.nextMonth = function () {
+    this.open();
+    this.rootElement.$('.arrow.next').click();
+};//nextMonth()
+
+/**
+ * @description Click back to the previous month in the calendar.
+ */
+rxDatePicker.prototype.previousMonth = function () {
+    this.open();
+    this.rootElement.$('.arrow.prev').click();
+};//previousMonth()
+
+/**
+ * @description Whether or not the date requested is currently selected.
+ * @param {String} date
+ * `YYYY-MM-DD` formatted date to check if it is currently selected.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isDateSelected = function (date) {
+    this.open();
+    return this._dateElementByDate(date).getAttribute('class')
+        .then((classes) => _.includes(classes, 'selected'));
+};//isDateSelected()
+
+/**
+ * @description
+ * Whether or not the date passed in matches the "today" date in the calendar.
+ * @param {String} date
+ * `YYYY-MM-DD` formatted date to check if it is styled as today's date.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isDateToday = function (date) {
+    this.open();
+    return this._dateElementByDate(date).getAttribute('class')
+        .then((classes) => _.includes(classes, 'today'));
+};//isDateToday()
+
+/**
+ * @description Whether or not the entire calendar component is enabled.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isEnabled = function () {
+    return this.rootElement.getAttribute('disabled')
+        .then((disabled) => !disabled);
+};//isEnabled()
+
+/**
+ * @description Whether or not the entire calendar component is present on the page.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isPresent = function () {
+    return this.rootElement.isPresent();
+};//isPresent()
+
+/**
+ * @description Whether or not the calendar is in an invalid state.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isValid = function () {
+    return this.rootElement.getAttribute('class')
+        .then((classes) => !_.includes(classes, 'ng-invalid'));
+};//isValid()
+
+/**
+ * @description Whether or not the calendar is open.
+ * @returns {Promise<Boolean>}
+ */
+rxDatePicker.prototype.isOpen = function () {
+    return this.rootElement.$('.popup').getAttribute('class')
+        .then((classes) => !_.includes(classes, 'ng-hide'));
+};//isOpen()
+
+/**
+ * @param {ElementFinder} rxDatePickerElement
+ * ElementFinder to be transformed into an rxDatePicker page object.
+ * @returns {rxDatePicker} Page object representing the rxDatePicker element.
+ */
+rxDatePicker.initialize = function (rxDatePickerElement) {
+    return new rxDatePicker(rxDatePickerElement);
 };
+
+exports.rxDatePicker = rxDatePicker;

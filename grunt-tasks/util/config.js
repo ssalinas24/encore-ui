@@ -20,6 +20,7 @@ module.exports = {
     latestTag: '', // filled in by shipit task
     moduleName: 'encore.ui',
     modules: [], // filled in by modules task
+    examples: {}, // filled in by examples task
     dependencies: ['cfp.hotkeys', 'ui.bootstrap'],
     meta: {
         modules: 'angular.module(\'<%= config.moduleName %>\', [<%= config.srcModules %>, ' +

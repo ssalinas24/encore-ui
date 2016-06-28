@@ -50,23 +50,6 @@ var rxCheckbox = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the checkbox is disabled.
-     *
-     * **DEPRECATED** Check for inverse of `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the checkbox is enabled.
      * @returns {Promise<Boolean>}
      */
@@ -76,7 +59,7 @@ var rxCheckbox = {
             return this.eleFakeCheckbox.isPresent().then(function (isFakeCheckbox) {
                 if (isFakeCheckbox) {
                     return page.eleWrapper.getAttribute('class').then(function (classes) {
-                        return !_.contains(classes.split(' '), 'rx-disabled');
+                        return !_.includes(classes.split(' '), 'rx-disabled');
                     });
                 }
                 return page.rootElement.isEnabled();
@@ -108,7 +91,7 @@ var rxCheckbox = {
     isValid: {
         value: function () {
             return this.rootElement.getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'ng-valid');
+                return _.includes(classes.split(' '), 'ng-valid');
             });
         }
     },
@@ -138,20 +121,6 @@ var rxCheckbox = {
                     checkbox.click();
                 }
             });
-        }
-    },
-
-    /**
-     * @instance
-     * @deprecated
-     * @function
-     * @description DEPRECATED: Use {@link rxCheckbox#deselect} instead.
-     * This function will be removed in a future release of the EncoreUI framework.
-     * @returns {undefined}
-     */
-    unselect: {
-        value: function () {
-            return this.deselect();
         }
     },
 

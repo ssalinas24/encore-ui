@@ -224,7 +224,7 @@ var rxBulkSelect = {
     selectByIndex: {
         value: function selectRowByIndex (i) {
             if (_.isArray(i)) {
-                _.each(i, selectRowByIndex, this);
+                _.each(i, rowIndex => this.selectByIndex(rowIndex));
             } else {
                 rxBulkSelectDefaultRowFn(this.tblRows.get(i)).select();
             }
@@ -238,7 +238,7 @@ var rxBulkSelect = {
     deselectByIndex: {
         value: function deselectRowByIndex (i) {
             if (Array.isArray(i)) {
-                _.each(i, deselectRowByIndex, this);
+                _.each(i, rowIndex => this.deselectByIndex(rowIndex));
             } else {
                 rxBulkSelectDefaultRowFn(this.tblRows.get(i)).deselect();
             }
@@ -271,23 +271,5 @@ exports.rxBulkSelect = {
             get: function () { return rxBulkSelectElement; }
         };
         return Page.create(rxBulkSelect);
-    },
-
-    /**
-     * @memberof rxBulkSelect
-     * @deprecated
-     * @description Page object representing the first {@link rxBulkSelect} object found on the page.
-     * DEPRECATED: Use {@link rxBulkSelect.initialize} (without arguments) instead.
-     * @returns {rxBulkSelect}
-     */
-    main: (function () {
-        rxBulkSelect.rowFromElement = {
-            value: rxBulkSelectDefaultRowFn
-        };
-
-        rxBulkSelect.rootElement = {
-            get: function () { return $('[rx-bulk-select]'); }
-        };
-        return Page.create(rxBulkSelect);
-    })()
+    }
 };

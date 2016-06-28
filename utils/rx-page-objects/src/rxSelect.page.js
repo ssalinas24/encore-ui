@@ -13,18 +13,6 @@ var rxSelectOptionFromElement = function (rootElement) {
 
         /**
          * @instance
-         * @deprecated
-         * @memberof rxSelect.option
-         * @description **DEPRECATED**: Use {@link rxSelect.option#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
-         * @instance
          * @function
          * @memberof rxSelect.option
          * @description The text inside of the `<option>` element.
@@ -111,23 +99,6 @@ var rxSelect = {
     /**
      * @instance
      * @function
-     * @deprecated
-     * @description Whether or not the select element is disabled.
-     *
-     * **DEPRECATED** check for inverse of `isEnabled()` instead.
-     * @returns {Promise<Boolean>}
-     */
-    isDisabled: {
-        value: function () {
-            return this.isEnabled().then(function (enabled) {
-                return !enabled;
-            });
-        }
-    },
-
-    /**
-     * @instance
-     * @function
      * @description Whether or not the select element is enabled.
      * @returns {Promise<Boolean>}
      */
@@ -137,7 +108,7 @@ var rxSelect = {
             return this.eleFakeSelect.isPresent().then(function (isFakeSelect) {
                 if (isFakeSelect) {
                     return page.eleWrapper.getAttribute('class').then(function (classes) {
-                        return !_.contains(classes.split(' '), 'rx-disabled');
+                        return !_.includes(classes.split(' '), 'rx-disabled');
                     });
                 }
                 return page.rootElement.isEnabled();
@@ -188,7 +159,7 @@ var rxSelect = {
     isValid: {
         value: function () {
             return this.rootElement.getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'ng-valid');
+                return _.includes(classes.split(' '), 'ng-valid');
             });
         }
     },

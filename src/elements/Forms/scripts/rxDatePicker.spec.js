@@ -45,7 +45,7 @@ describe('rxDatePicker', function () {
                     '<rx-date-picker name="specModel" ng-model="specModel"></rx-date-picker>' +
                 '</form>';
                 renderDirective(scope);
-                expect(scope.specForm.specModel.$error.date).to.eq(false);
+                expect(scope.specForm.specModel.$error.date).to.not.exist;
             });
 
             it('should set isoScope.selected', function () {

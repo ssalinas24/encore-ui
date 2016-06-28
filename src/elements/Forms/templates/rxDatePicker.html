@@ -1,7 +1,8 @@
 <div class="rxDatePicker wrapper">
   <div class="control" ng-click="toggleCalendar()">
-
-    <span class="displayValue">{{ displayValue }}</span>
+    <time class="displayValue" datetime="{{selected}}">
+      {{displayValue}}
+    </time>
     <i class="icon fa fa-fw fa-calendar"></i>
   </div>
 

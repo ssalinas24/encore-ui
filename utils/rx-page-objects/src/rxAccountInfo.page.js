@@ -161,19 +161,6 @@ var rxAccountInfo = {
                 },
 
                 /**
-                 * @instance
-                 * @function
-                 * @deprecated
-                 * @memberof rxAccountInfo.badge
-                 * @description **DEPRECATED**: Use {@link rxAccountInfo.badge#isPresent} instead.
-                 */
-                exists: {
-                    value: function (badgeName) {
-                        return this.isPresent(badgeName);
-                    }
-                },
-
-                /**
                  * @function
                  * @instance
                  * @description Whether or not the badge `badgeName` is present.
@@ -282,20 +269,6 @@ exports.rxAccountInfo = {
         };
         return Page.create(rxAccountInfo);
     },
-
-    /**
-     * @memberof rxAccountInfo
-     * @deprecated
-     * @description Page object representing the first {@link rxAccountInfo} object found on the page.
-     * DEPRECATED: Use {@link rxAccountInfo.initialize} (without arguments) instead.
-     * @returns {rxAccountInfo}
-     */
-    main: (function () {
-        rxAccountInfo.rootElement = {
-            get: function () { return $('html'); }
-        };
-        return Page.create(rxAccountInfo);
-    })(),
 
     /**
      * @description Lookup of account statuses from status text. Used for comparisons in tests.

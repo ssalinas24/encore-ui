@@ -32,22 +32,6 @@ var tag = function (tagElement) {
          * @instance
          * @function
          * @memberof rxTags.tag
-         * @deprecated
-         * @description Whether or not the tag exists.
-         *
-         * **DEPRECATED**: Use {@link rxTags.tag#isPresent} instead.
-         * @returns {Promise<Boolean>}
-         */
-        exists: {
-            value: function () {
-                return this.isPresent();
-            }
-        },
-
-        /**
-         * @instance
-         * @function
-         * @memberof rxTags.tag
          * @description Whether or not the tag exists.
          * @example
          * it('should have a tag present after creating it', function () {
@@ -102,21 +86,6 @@ var tag = function (tagElement) {
             value: function () {
                 this.click();
                 tagElement.sendKeys(protractor.Key.BACK_SPACE);
-            }
-        },
-
-        /**
-         * @deprecated
-         * @instance
-         * @memberof rxTags.tag
-         * @description The text within the tag. Does not include the text in
-         * {@link rxTags.tag#category}.
-         *
-         * **DEPRECATED**: Use {@link rxTags.tag#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
             }
         },
 
@@ -308,18 +277,5 @@ exports.rxTags = {
             get: function () { return rxTagsElement; }
         };
         return Page.create(rxTags);
-    },
-
-    /**
-     * @memberof rxTags
-     * @deprecated Use {@link rxTags.initialize} without arguments instead.
-     * @returns {rxTags} Page object representing the _first_ rxTags object found on the page.
-     */
-    main: (function () {
-        rxTags.rootElement = {
-            get: function () { return $('rx-tags'); }
-        };
-        return Page.create(rxTags);
-    })()
-
+    }
 };

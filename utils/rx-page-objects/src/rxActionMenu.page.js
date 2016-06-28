@@ -45,20 +45,6 @@ var action = function (actionElement) {
         },
 
         /**
-         * @deprecated
-         * @instance
-         * @description The trimmed text of the action menu item.
-         *
-         * **DEPRECATED**: Use {@link rxActionMenu.action#getText} instead.
-         * @memberof rxActionMenu.action
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
-
-        /**
          * @instance
          * @function
          * @description The trimmed text of the action menu item.
@@ -110,23 +96,6 @@ var rxActionMenu = {
         value: function () {
             return this.rootElement.$('.action-list').getAttribute('class').then(function (className) {
                 return className.indexOf('ng-hide') === -1;
-            });
-        }
-    },
-
-    /**
-     * @function
-     * @instance
-     * @deprecated
-     * @description Whether or not the action cog is hiding its underlying menu.
-     *
-     * **DEPRECATED** Check inverse of `isExpanded()` instead
-     * @returns {Promise<Boolean>}
-     */
-    isCollapsed: {
-        value: function () {
-            return this.isExpanded().then(function (isExpanded) {
-                return !isExpanded;
             });
         }
     },

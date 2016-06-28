@@ -49,16 +49,16 @@ var table = Page.create({
 
     textFilter: {
         get: function () {
-            return encore.rxSearchBox.main.term;
+            return encore.rxSearchBox.initialize($('rx-search-box')).term;
         },
         set: function (filterTerm) {
-            encore.rxSearchBox.main.term = filterTerm;
+            encore.rxSearchBox.initialize($('rx-search-box')).term = filterTerm;
         }
     },
 
     selectFilter: {
         value: function (filterData) {
-            encore.rxSelectFilter.main.apply(filterData);
+            encore.rxSelectFilter.initialize($('rx-select-filter')).apply(filterData);
         }
     },
 

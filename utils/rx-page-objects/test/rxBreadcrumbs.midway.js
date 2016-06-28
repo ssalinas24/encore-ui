@@ -114,7 +114,7 @@ describe('elements:rxBreadcrumbs', function () {
         it('should visit the correct page when clicking on the breadcrumb', function () {
             var componentsHref = browser.baseUrl + '/#/elements';
 
-            middle.visit();
+            middle.click();
             expect(browser.getCurrentUrl()).to.eventually.equal(componentsHref);
         });
 
@@ -128,7 +128,7 @@ describe('elements:rxBreadcrumbs', function () {
 
         before(function () {
             demoPage.go('#/utilities/titleize');
-            defaultBreadcrumbs = rxBreadcrumbs.main;
+            defaultBreadcrumbs = rxBreadcrumbs.initialize();
         });
 
         it('should find the default breadcrumbs', function () {

@@ -1,6 +1,7 @@
 var Page = require('astrolabe').Page;
 
 var rxCheckbox = require('./rxCheckbox.page').rxCheckbox;
+var _ = require('lodash');
 
 var selectOptionFromElement = function (optionElement) {
     /**
@@ -8,20 +9,6 @@ var selectOptionFromElement = function (optionElement) {
      * @namespace rxMultiSelect.option
      */
     return Object.create(rxCheckbox.initialize(optionElement.$('input')), {
-
-        /**
-         * @deprecated
-         * @memberof rxMultiSelect.option
-         * @instance
-         * @description The text inside of the current option.
-         *
-         * **DEPRECATED**: Use {@link rxMultiSelect.option#getText} instead.
-         */
-        text: {
-            get: function () {
-                return this.getText();
-            }
-        },
 
         /**
          * @function
@@ -298,7 +285,7 @@ var rxMultiSelect = {
     isValid: {
         value: function () {
             return this.rootElement.getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'ng-valid');
+                return _.includes(classes.split(' '), 'ng-valid');
             });
         }
     }
@@ -314,26 +301,9 @@ exports.rxMultiSelect = {
      * @returns {rxMultiSelect}
      */
     initialize: function (rxMultiSelectElement) {
-        if (rxMultiSelectElement === undefined) {
-            rxMultiSelectElement = $('rx-multi-select');
-        }
-
         rxMultiSelect.rootElement = {
             get: function () { return rxMultiSelectElement; }
         };
         return Page.create(rxMultiSelect);
-    },
-
-    /**
-     * @memberof rxMultiSelect
-     * @deprecated Use {@link rxMultiSelect.initialize} without arguments instead.
-     * @description Page object representing the _first_ rxMultiSelect object found on the page.
-     * @type {rxMultiSelect}
-     */
-    main: (function () {
-        rxMultiSelect.rootElement = {
-            get: function () { return $('rx-multi-select'); }
-        };
-        return Page.create(rxMultiSelect);
-    })()
+    }
 };
