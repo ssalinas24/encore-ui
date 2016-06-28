@@ -1,5 +1,6 @@
 'use strict';
 var moment = require('moment');
+var _ = require('lodash');
 
 var rxSelect = require('./rxSelect.page').rxSelect;
 
@@ -187,7 +188,7 @@ rxDatePicker.prototype.previousMonth = function () {
 rxDatePicker.prototype.isDateSelected = function (date) {
     this.open();
     return this._dateElementByDate(date).getAttribute('class')
-        .then((classes) => _.contains(classes, 'selected'));
+        .then((classes) => _.includes(classes, 'selected'));
 };//isDateSelected()
 
 /**
@@ -200,7 +201,7 @@ rxDatePicker.prototype.isDateSelected = function (date) {
 rxDatePicker.prototype.isDateToday = function (date) {
     this.open();
     return this._dateElementByDate(date).getAttribute('class')
-        .then((classes) => _.contains(classes, 'today'));
+        .then((classes) => _.includes(classes, 'today'));
 };//isDateToday()
 
 /**
@@ -226,7 +227,7 @@ rxDatePicker.prototype.isPresent = function () {
  */
 rxDatePicker.prototype.isValid = function () {
     return this.rootElement.getAttribute('class')
-        .then((classes) => !_.contains(classes, 'ng-invalid'));
+        .then((classes) => !_.includes(classes, 'ng-invalid'));
 };//isValid()
 
 /**
@@ -235,7 +236,7 @@ rxDatePicker.prototype.isValid = function () {
  */
 rxDatePicker.prototype.isOpen = function () {
     return this.rootElement.$('.popup').getAttribute('class')
-        .then((classes) => !_.contains(classes, 'ng-hide'));
+        .then((classes) => !_.includes(classes, 'ng-hide'));
 };//isOpen()
 
 /**

@@ -41,7 +41,7 @@ var rxRadio = {
     isValid: {
         value: function () {
             return this.rootElement.getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'ng-valid');
+                return _.includes(classes.split(' '), 'ng-valid');
             });
         }
     },
@@ -85,7 +85,7 @@ var rxRadio = {
             return this.eleFakeRadio.isPresent().then(function (isFakeRadio) {
                 if (isFakeRadio) {
                     return page.eleWrapper.getAttribute('class').then(function (classes) {
-                        return !_.contains(classes.split(' '), 'rx-disabled');
+                        return !_.includes(classes.split(' '), 'rx-disabled');
                     });
                 }
                 return page.rootElement.isEnabled();

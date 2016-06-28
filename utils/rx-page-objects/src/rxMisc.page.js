@@ -198,31 +198,6 @@ exports.rxMisc = {
     },
 
     /**
-     * @see https://github.com/Droogans/node-timing.js#sample-output-of-timinggettimes
-     * @description A collection of timing information from the current browser being used in a
-     * Selenium test. Can return just one item of interest, or can accept a list of items to return
-     * if you need many different timing metrics. If no parameter is used, all timing metrics are returned.
-     * @function
-     * @param {String|Array} [keys] - Key to get (string), keys to get (Array), or all (`undefined`).
-     * @returns {Object} An object of timings that can be used to infer browser render performance.
-     * @example
-     * it('should have loaded the page in less than two seconds', function () {
-     *     expect(encore.rxMisc.getPerformanceMetrics('loadTime')).to.eventually.be.under(2000);
-     * });
-     */
-    getPerformanceMetrics: function (keys) {
-        return browser.driver.executeScript(require('node-timing.js').getTimes).then(function (times) {
-            if (_.isString(keys)) {
-                return times[keys];
-            } else if (_.isArray(keys)) {
-                return _.pick(times, keys);
-            } else {
-                return times;
-            }
-        });
-    },
-
-    /**
      * @description Accepts an ElementFinder, or an ElementArrayFinder, which can have several locations.
      * Should the list of elements be stacked vertically (say, in a list of table rows),
      * the element with the smallest Y coordinate will be scrolled to.
@@ -397,32 +372,6 @@ exports.rxMisc = {
                 return protractor.promise.fulfilled(location);
             }
         }
-    },
-
-    /**
-     * @private
-     * @function
-     * @description Return the absolute distance between `e1` and `e2`'s Y-coordinates on the screen.
-     * This function does not account for the extra space incurred by measuring the the heights of `e1`
-     * or `e2` themselves. This function returns only the distance between the top left corner of `e1`
-     * and the top left corner of `e2`.
-     * @param {ElementFinder|Number} e1 - The element to measure (or its y-coordinates as a number).
-     * @param {ElementFinder|Number} e2 - The element to compare (or its y-coordinates as a number).
-     * @example
-     * it('should be 20 pixels below the breadcrumbs', function () {
-     *     var yDifference = encore.rxMisc.yDiff(myPage.lblTitle, myPage.pagination.rootElement);
-     *     expect(yDifference).to.eventually.equal(-20);
-     * });
-     */
-    yDiff: function (e1, e2) {
-        var promises = [
-            this.transformLocation(e1, 'y'),
-            this.transformLocation(e2, 'y')
-        ];
-
-        return protractor.promise.all(promises).then(function (locations) {
-            return locations[0] - locations[1];
-        });
     },
 
     /**

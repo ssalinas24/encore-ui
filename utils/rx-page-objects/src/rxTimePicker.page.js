@@ -152,7 +152,7 @@ rxTimePicker.prototype.canCancel = function () {
  */
 rxTimePicker.prototype.isOpen = function () {
     return this.rootElement.$('.popup').getAttribute('class').then(function (classes) {
-        return !_.contains(classes, 'ng-hide');
+        return !_.includes(classes, 'ng-hide');
     });
 };
 

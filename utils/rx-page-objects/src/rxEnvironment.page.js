@@ -54,7 +54,7 @@ exports.rxEnvironment = {
      */
     compare: function (url) {
         return _.find(this.environments, function findEnvironment (envName, env) {
-            if (_.contains(url, env)) {
+            if (_.includes(url, env)) {
                 return envName;
             }
         }) || 'production';

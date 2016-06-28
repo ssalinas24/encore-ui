@@ -39,7 +39,7 @@ var rxCollapse = {
     hasCustomTitle: {
         value: function () {
             return this.rootElement.$('.collapse-title-wrap').getAttribute('class').then(function (classes) {
-                return _.contains(classes.split(' '), 'collapse-title-wrap-custom');
+                return _.includes(classes.split(' '), 'collapse-title-wrap-custom');
             });
         }
     },
