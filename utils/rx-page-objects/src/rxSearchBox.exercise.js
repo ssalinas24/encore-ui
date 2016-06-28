@@ -6,7 +6,7 @@ var rxSearchBox = require('./rxSearchBox.page').rxSearchBox;
  * @see rxSearchBox
  * @exports exercise/rxSearchBox
  * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxSearchBox} [options.instance=rxSearchbox.initialize()] - Component to exercise.
+ * @param {rxSearchBox} [options.instance=rxSearchBox.initialize()] - Component to exercise.
  * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Boolean} [options.disabled=false] - Determines if the search box is disabled at the start of the exercise.
  * @param {String} [options.placeholder='Search...'] - Expected placeholder value.

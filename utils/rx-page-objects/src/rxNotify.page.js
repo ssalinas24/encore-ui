@@ -278,7 +278,7 @@ exports.rxNotify = {
      * @function
      * @type {rxNotify.notification}
      * @param {ElementFinder} [rxNotificationElement=$('.rx-notifications .rx-notification')] -
-     * The *singluar* rxNotify notification element to be transformed into an {@link rxNotify.notification} page object.
+     * The *singular* rxNotify notification element to be transformed into an {@link rxNotify.notification} page object.
      * @description Create a single {@link rxNotify.notification} page object from a DOM element.
      * @example
      * it('should have a notification', function () {

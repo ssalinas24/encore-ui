@@ -372,7 +372,7 @@ exports.rxDatePicker = {
      * @function
      * @memberof rxDatePicker
      * @param {ElementFinder} rxDatePickerElement - ElementFinder to be transformed into an rxDatePicker page object.
-     * @returns {rxDatePicker} Page object representing the rxDatepicker element.
+     * @returns {rxDatePicker} Page object representing the rxDatePicker element.
      */
     initialize: function (rxDatePickerElement) {
         if (rxDatePickerElement === undefined) {
