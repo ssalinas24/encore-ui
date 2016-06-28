@@ -198,6 +198,7 @@ exports.rxMisc = {
     },
 
     /**
+     * @deprecated Dropped in favor of newrelic's much more robust browser analytics systems.
      * @see https://github.com/Droogans/node-timing.js#sample-output-of-timinggettimes
      * @description A collection of timing information from the current browser being used in a
      * Selenium test. Can return just one item of interest, or can accept a list of items to return
