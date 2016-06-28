@@ -123,7 +123,7 @@ exports.rxModalAction = {
      * @param {Object} [customFunctionality={}] - Page object to extend on top of {@link rxModalAction}.
      * @returns {rxModalAction}
      * @example
-     * var customFunctionalty = {
+     * var customFunctionality = {
      *     txtNewPassword: {
      *         get: function () {
      *             // `this.rootElement` is never defined here.
@@ -152,7 +152,7 @@ exports.rxModalAction = {
      *
      * // this modal not only has a close button, title, etc...
      * // but also a couple of form elements for checking an old password and a new password.
-     * changePasswordModal = modal.initialize(customFunctionalty);
+     * changePasswordModal = modal.initialize(customFunctionality);
      */
     initialize: function (customFunctionality) {
         if (!_.isObject(customFunctionality)) {

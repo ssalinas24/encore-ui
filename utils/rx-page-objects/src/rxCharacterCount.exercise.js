@@ -7,7 +7,7 @@ var rxCharacterCount = require('./rxCharacterCount.page').rxCharacterCount;
  * @exports exercise/rxCharacterCount
  * @returns {function} A function to be passed to mocha's `describe`.
  * @param {Object} [options] - Test options. Used to build valid tests.
- * @param {rxCharacterCount} [options.instance={@link rxCharacterCount.intiailize}] - Component to exercise.
+ * @param {rxCharacterCount} [options.instance={@link rxCharacterCount.initialize}] - Component to exercise.
  * @param {String} [options.cssSelector] - DEPRECATED: Fallback selector string to initialize widget with.
  * @param {Number} [options.maxCharacters=254] - The total number of characters allowed.
  * @param {Number} [options.nearLimit=10] - The number of remaining characters needed to trigger the "near-limit" class.

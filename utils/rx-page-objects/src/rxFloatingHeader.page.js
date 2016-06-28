@@ -5,7 +5,7 @@ exports.rxFloatingHeader = {
     /**
      * @deprecated Use rxMisc.scrollToElement
      * @description
-     * **ALIASED**: Plese use {@link rxMisc.scrollToElement} instead.
+     * **ALIASED**: Please use {@link rxMisc.scrollToElement} instead.
      * This function will be removed in a future release of the framework.
      */
     scrollToElement: function (elem) {
@@ -15,7 +15,7 @@ exports.rxFloatingHeader = {
     /**
      * @deprecated Use rxMisc.compareYLocations
      * @description
-     * **ALIASED**: Plese use {@link rxMisc.compareYLocations} instead.
+     * **ALIASED**: Please use {@link rxMisc.compareYLocations} instead.
      * This function will be removed in a future release of the framework.
      */
     compareYLocations: function (e1, e2) {
@@ -25,7 +25,7 @@ exports.rxFloatingHeader = {
     /**
      * @deprecated Use rxMisc.compareXLocations
      * @description
-     * **ALIASED**: Plese use {@link rxMisc.compareXLocations} instead.
+     * **ALIASED**: Please use {@link rxMisc.compareXLocations} instead.
      * This function will be removed in a future release of the framework.
      */
     compareXLocations: function (e1, e2) {
@@ -35,7 +35,7 @@ exports.rxFloatingHeader = {
     /**
      * @deprecated Use rxMisc.transformLocation
      * @description
-     * **ALIASED**: Plese use {@link rxMisc.transformLocation} instead.
+     * **ALIASED**: Please use {@link rxMisc.transformLocation} instead.
      * This function will be removed in a future release of the framework.
      */
     transformLocation: function (elementOrLocation, attribute) {
