@@ -1,3 +1,13 @@
+<a name="1.50.1-0"></a>
+### 1.50.1-0 (2016-06-29)
+
+
+#### Features
+
+* **domain:** Override domain to allow open iframe communication ([354f8fd7](git@github.com:rackerlabs/encore-ui/commit/354f8fd776be19ef66589766b69d1b0f8e4ea173))
+* **overrides:** add ability to manually add files to concat ([3be7f430](git@github.com:rackerlabs/encore-ui/commit/3be7f4304d038966edfd46fba8e9dad92d390fa3))
+
+
 <a name="1.50.0"></a>
 ## 1.50.0 (2016-06-15)
 
