@@ -1,3 +1,18 @@
+<a name="2.0.0-10"></a>
+### 2.0.0-10 (2016-06-29)
+
+
+#### Bug Fixes
+
+* **rxExample:** fix performance lag/delay ([be92df44](git@github.com:rackerlabs/encore-ui/commit/be92df44e4a761819ab758fa2a8193cc7105218d))
+
+
+#### Features
+
+* **domain:** Override domain to allow open iframe communication ([354f8fd7](git@github.com:rackerlabs/encore-ui/commit/354f8fd776be19ef66589766b69d1b0f8e4ea173))
+* **overrides:** add ability to manually add files to concat ([3be7f430](git@github.com:rackerlabs/encore-ui/commit/3be7f4304d038966edfd46fba8e9dad92d390fa3))
+
+
 <a name="1.50.0"></a>
 ## 1.50.0 (2016-06-15)
 
