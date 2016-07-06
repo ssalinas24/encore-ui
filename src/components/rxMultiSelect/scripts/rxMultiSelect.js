@@ -104,10 +104,6 @@ angular.module('encore.ui.rxMultiSelect')
                 }
             };
 
-            scope.closeMenu = function () {
-                scope.listDisplayed = false;
-            };
-
             var selectCtrl = controllers[0];
             var ngModelCtrl = controllers[1];
 
@@ -136,6 +132,14 @@ angular.module('encore.ui.rxMultiSelect')
             };
 
             selectCtrl.ngModelCtrl = ngModelCtrl;
+
+            $document.on('click', function (clickEvent) {
+                if (scope.listDisplayed && !element[0].contains(clickEvent.target)) {
+                    scope.$apply(function () {
+                        scope.listDisplayed = false;
+                    })
+                }
+            });
         }
     };
 });
