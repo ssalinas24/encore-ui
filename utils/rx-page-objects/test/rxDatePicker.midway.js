@@ -76,6 +76,12 @@ describe('rxDatePicker', function () {
             expect(picker.isOpen()).to.eventually.eq(false);
         });
 
+        it('should close the calendar by clicking somewhere else', function () {
+            picker.open();
+            $('body').click();
+            expect(picker.isOpen()).to.eventually.eq(false);
+        });
+
         it('should reopen the calendar and have the month unchanged', function () {
             picker.open();
             expect(picker.month).to.eventually.equal(nextMonthName);

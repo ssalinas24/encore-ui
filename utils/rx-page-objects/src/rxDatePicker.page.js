@@ -158,7 +158,7 @@ rxDatePicker.prototype.open = function () {
 rxDatePicker.prototype.close = function () {
     return this.isOpen().then((isOpen) => {
         if (isOpen) {
-            this.rootElement.$('.backdrop').click();
+            this.rootElement.$('.control').click();
         }
     });
 };//close()
