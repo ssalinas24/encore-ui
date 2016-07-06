@@ -13,6 +13,13 @@ describe('rxTimePicker', function () {
         it('should have a time already set in place', function () {
             expect(picker.time).to.eventually.eq('22:10-10:00');
         });
+
+        it('should close by clicking away from it', function () {
+            picker.open();
+            expect(picker.isOpen()).to.eventually.eq(true);
+            $('body').click();
+            expect(picker.isOpen()).to.eventually.eq(false);
+        });
     });//predefined picker
 
     describe('empty picker', function () {
