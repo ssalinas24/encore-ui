@@ -5,55 +5,70 @@ angular.module('encore.ui.rxModalAction')
  * @restrict E
  * @scope
  * @description
- * Link which will show a modal window on click, and handle callbacks for pre/post modal actions
+ * Link which will show a modal window on click, and handle callbacks for
+ * pre/post modal actions
  *
  * # Template URL
  *
- * Due to the complex nature of the information passed into modal windows, HTML is handled via a template (versus
- * transcluding the content).
+ * Due to the complex nature of the information passed into modal windows,
+ * HTML is handled via a template (versus transcluding the content).
  *
- * One benefit is that this allows for multiple actions to re-use the same template. It also allows modal content to
- * live in a separate file, which can be helpful for maintainability if the modal HTML is complex. While this can be
- * done via `ng-include`, it would be a little extra work for a common scenario.
+ * One benefit is that this allows for multiple actions to re-use the same
+ * template. It also allows modal content to live in a separate file, which
+ * can be helpful for maintainability if the modal HTML is complex. While this
+ * can be done via `ng-include`, it would be a little extra work for a common
+ * scenario.
  *
  * # Hooks
  *
- * `rxModalAction` allows you to define functions to be called at different points of the modal lifecycle.  These hooks
- * are optional and the modal window is fully functional without any being defined.
+ * `rxModalAction` allows you to define functions to be called at different
+ * points of the modal lifecycle.  These hooks are optional and the modal window
+ * is fully functional without any being defined.
  *
  * ## Pre-hook
  *
- * The `pre-hook` function is called before the modal window is shown.  Use a this to populate field information inside
- * of the modal.  This is useful when you have information you don't want loaded when the page is first opened, but do
- * need for the modal.  It is also useful for dynamic information that is based on actions taken.
+ * The `pre-hook` function is called before the modal window is shown.  Use this
+ * to populate field information inside of the modal.  This is useful when you
+ * have information you don't want loaded when the page is first opened, but do
+ * need for the modal.  It is also useful for dynamic information that is based
+ * on actions taken.
  *
  * ## Post-hook
  *
- * The `post-hook` function is called after the modal is submitted.  A `post-hook` is useful to take actions based upon
- * input in the modal.  For example, you can use the user input that gets entered to send API requests with specific
- * JSON data.  Or you can simply run a pre-defined API call (assuming the modal is a simple confirmation dialog).
+ * The `post-hook` function is called after the modal is submitted.  A
+ * `post-hook` is useful to take actions based upon input in the modal.  For
+ * example, you can use the user input that gets entered to send API requests
+ * with specific JSON data.  Or you can simply run a pre-defined API call
+ * (assuming the modal is a simple confirmation dialog).
  *
  * ## Dismiss-hook
  *
- * The `dismiss-hook` function is called after the modal is closed without submitting.  This may happen via any of the
- * following scenarios:
+ * The `dismiss-hook` function is called after the modal is closed without
+ * submitting.  This may happen via any of the following scenarios:
  *
  * * Clicking the "Cancel" button
  * * Clicking the "X" button in the top right
  * * Pressing `ESC`
  * * Explicitly calling `$modalInstance.dismiss()` in your javascript logic
  *
- * This hook is useful for making changes to UI state when the user wants to cancel the given action.  For example, you
- * may use this to return an indeterminate component to a previous state (e.g. toggle switches).
+ * This hook is useful for making changes to UI state when the user wants to
+ * cancel the given action.  For example, you may use this to return an
+ * indeterminate component to a previous state (e.g. toggle switches).
  *
- * @param {Function=} [preHook] Function to call when a modal is opened
- * @param {Function=} [postHook] Function to call when a modal is submitted (not called when cancelled out of)
- * @param {Function=} [dismissHook] Function to call when a modal is dismissed (not called when submitted)
- * @param {String=} [templateUrl] URL of template to use for modal content
- * @param {*=} [disable-esc] If the `disable-esc` attribute is present, then "Press Esc to close" will be disabled
- *                           for the modal. This attribute takes no values.
- * @param {Expression=} [disabled=false] the `disabled` attribute takes an expression. If expression is present,
- *                      then link for opening modal will be disabled.
+ * @param {Function=} [preHook]
+ * Function to call when a modal is opened
+ * @param {Function=} [postHook]
+ * Function to call when a modal is submitted (not called when modal cancelled)
+ * @param {Function=} [dismissHook]
+ * Function to call when a modal is dismissed (not called when modal submitted)
+ * @param {String=} [templateUrl]
+ * URL of template to use for modal content
+ * @param {*=} [disable-esc]
+ * If the `disable-esc` attribute is present, then "Press Esc to close" will be
+ * disabled for the modal. This attribute takes no values.
+ * @param {Expression=} [ngDisabled=false]
+ * If the expression evaluates to true, then the link for opening the modal will
+ * be disabled.
  *
  * @example
  * <pre>
@@ -93,7 +108,13 @@ angular.module('encore.ui.rxModalAction')
             scope.classes = attrs.classes;
 
             attrs.$observe('disabled', function (newValue) {
-                scope.isDisabled = scope.$eval(newValue);
+                if (typeof newValue === 'boolean') {
+                    scope.isDisabled = newValue;
+                } else {
+                    // TODO: remove in 3.0.0
+                    // DEPRECATED: override [disabled] behavior
+                    scope.isDisabled = scope.$eval(newValue);
+                }
             });
 
             var focusLink = function () {
