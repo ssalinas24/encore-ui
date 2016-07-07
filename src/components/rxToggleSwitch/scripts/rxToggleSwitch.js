@@ -23,7 +23,7 @@ angular.module('encore.ui.rxToggleSwitch')
  * an asynchronous operation.
  *
  * @param {String} [ng-model] The scope property to bind to
- * @param {Boolean} [disabled] Indicates if the input is disabled
+ * @param {Boolean} [ng-disabled] Indicates if the input is disabled
  * @param {Function} [postHook] A function to run when the switch is toggled
  * @param {Expression} [trueValue=true] The value of the scope property when the switch is on
  * @param {Expression} [falseValue=false] The value of the scope property when the switch is off
@@ -40,7 +40,8 @@ angular.module('encore.ui.rxToggleSwitch')
         require: 'ngModel',
         scope: {
             model: '=ngModel',
-            disabled: '=?',
+            disabled: '=?', // **DEPRECATED** - remove in 3.0.0
+            ngDisabled: '=?',
             postHook: '&',
             trueValue: '@',
             falseValue: '@'
@@ -65,8 +66,15 @@ angular.module('encore.ui.rxToggleSwitch')
                 scope.state = ngModelCtrl.$viewValue ? 'ON' : 'OFF';
             };
 
+            scope.$watch(function () {
+                return (scope.disabled || scope.ngDisabled);
+            }, function (newVal) {
+                // will be true, false, or undefined
+                scope.isDisabled = newVal;
+            });
+
             scope.update = function () {
-                if (scope.disabled) {
+                if (scope.isDisabled) {
                     return;
                 }
 
