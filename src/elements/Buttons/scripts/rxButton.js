@@ -38,7 +38,7 @@ angular.module('encore.ui.elements')
  * @param {String} loadingMsg Text to be displayed when an operation is in progress.
  * @param {String} defaultMsg Text to be displayed by default when no operation is in progress.
  * @param {Boolean=} [toggle=false] When true, the button will display the loading text.
- * @param {Boolean=} [disable=false] When true, the button will be disabled.
+ * @param {Boolean=} [ngDisabled=false] When true, the button will be disabled.
  * @param {String=} [classes=""] The class names to be applied to the button.
  *
  */
@@ -50,8 +50,17 @@ angular.module('encore.ui.elements')
             toggleMsg: '@',
             defaultMsg: '@',
             toggle: '=',
-            disable: '=?',
+            disable: '=?', // **DEPRECATED** - Remove in 3.0.0
+            ngDisabled: '=?',
             classes: '@?'
         },
+        link: function (scope) {
+            // Support [ng-disabled] OR [disabled] (for backward compatibility)
+            scope.$watch(function () {
+                return (scope.disable || scope.ngDisabled);
+            }, function (newVal) {
+                scope.isDisabled = newVal;
+            });
+        }
     };
 });
