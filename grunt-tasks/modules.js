@@ -129,10 +129,6 @@ module.exports = function (grunt) {
             });
         }));
 
-        //- used in grunt-tasks/phantomjs-checks.js
-        //  - run via `grunt test:full` on TravisCI
-        grunt.config('config.demoModules', _.filter(modules, { 'isCategory': false }));
-
         // Set the concat task to concatenate the given src modules
         var srcFiles = _.pluck(modules, 'srcFiles'); // OK
 
