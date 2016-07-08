@@ -30,8 +30,8 @@ angular.module('encore.ui.utilities')
      * @description Takes a function and a list of roles, and returns the
      * result of calling that function with `roles`, and comparing to userRoles().
      *
-     * @param {function} fn - Comparison function to use. _.any, _.all, etc.
-     * @param {array} roles - List of desired roles
+     * @param {Function} fn Comparison function to use. _.any, _.all, etc.
+     * @param {String[]} roles List of desired roles
      */
     var checkRoles = function (roles, fn) {
         // Some code expects to pass a comma-delimited string
@@ -66,7 +66,7 @@ angular.module('encore.ui.utilities')
      * @ngdoc method
      * @methodOf utilities.service:Permission
      * @description Check if user has at least _one_ of the given roles.
-     * @param {Array} roles List of roles to check against
+     * @param {String[]} roles List of roles to check against
      * @returns {Boolean} True if user has at least _one_ of the given roles; otherwise, False.
      */
     permissionSvc.hasRole = function (roles) {
@@ -78,7 +78,7 @@ angular.module('encore.ui.utilities')
      * @ngdoc method
      * @methodOf utilities.service:Permission
      * @description Checks if user has _every_ role in given list.
-     * @param {Array} roles List of roles to check against
+     * @param {String[]} roles List of roles to check against
      * @returns {Boolean} True if user has _every_ role in given list; otherwise, False.
      *
      */

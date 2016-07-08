@@ -9,21 +9,32 @@ angular.module('encore.ui.rxPaginate')
  * filter for UI-based pagination, or can take an optional serverInterface
  * object if you instead intend to use a paginated server-side API
  *
- * @param {Object} pageTracking This is the page tracking service instance to
- * be used for this directive. See {@link utilities.service:PageTracking}
- * @param {Number} numberOfPages This is the maximum number of pages that the
- * page object will display at a time.
- * @param {Object} [serverInterface] An object with a `getItems()` method. The requirements
- * of this method are described in the rxPaginate module documentation
- * @param {Object} [filterText] The model for the table filter input, if any. This directive
- * will watch that model for changes, and request new results from the paginated API, on change
- * @param {Object} [selections] The `selected` property of a SelectFilter instance, if one is being used.
- * This directive will watch the filter's selections, and request new results from the paginated API, on change
- * @param {Object} [sortColumn] The model containing the current column the results should sort on.
- * This directive will watch that column for changes, and request new results from the paginated API, on change
- * @param {Object} [sortDirection] The model containing the current direction of the current sort column. This
- * directive will watch for changes, and request new results from the paginated API, on change
- * @param {String} [errorMessage] An error message that should be displayed if a call to the request fails
+ * @param {Object} pageTracking
+ * This is the page tracking service instance to be used for this directive.
+ * See {@link utilities.service:PageTracking}
+ * @param {Number} numberOfPages
+ * This is the maximum number of pages that the page object will display at a
+ * time.
+ * @param {Object=} serverInterface
+ * An object with a `getItems()` method. The requirements of this method are
+ * described in the rxPaginate module documentation
+ * @param {Object=} filterText
+ * The model for the table filter input, if any. This directive will watch that
+ * model for changes, and request new results from the paginated API, on change
+ * @param {Object=} selections
+ * The `selected` property of a SelectFilter instance, if one is being used.
+ * This directive will watch the filter's selections, and request new results
+ * from the paginated API, on change
+ * @param {Object=} sortColumn
+ * The model containing the current column the results should sort on. This
+ * directive will watch that column for changes, and request new results from
+ * the paginated API, on change
+ * @param {Object=} sortDirection
+ * The model containing the current direction of the current sort column. This
+ * directive will watch for changes, and request new results from the paginated
+ * API, on change.
+ * @param {String=} errorMessage
+ * An error message that should be displayed if a call to the request fails
  */
 .directive('rxPaginate', function ($q, $compile, debounce, PageTracking, rxPromiseNotifications) {
     return {

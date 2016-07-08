@@ -19,7 +19,7 @@ angular.module('encore.ui.elements')
  *   mentioned above.
  * * This element will never generate anything other than a String.
  *
- * @param {expression} ngModel
+ * @param {Expression} ngModel
  * Expression that evaluates to a time string in `HH:mmZ` format, where `Z`
  * should match `/[-+]\d{2}:\d{2}/`.
  *

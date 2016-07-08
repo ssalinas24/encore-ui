@@ -22,11 +22,11 @@ angular.module('encore.ui.rxToggleSwitch')
  * attribute can be used to prevent further toggles if the `post-hook` performs
  * an asynchronous operation.
  *
- * @param {String} [ng-model] The scope property to bind to
- * @param {Boolean} [ng-disabled] Indicates if the input is disabled
- * @param {Function} [postHook] A function to run when the switch is toggled
- * @param {Expression} [trueValue=true] The value of the scope property when the switch is on
- * @param {Expression} [falseValue=false] The value of the scope property when the switch is off
+ * @param {String} ng-model The scope property to bind to
+ * @param {Function} postHook A function to run when the switch is toggled
+ * @param {Boolean=} ng-disabled Indicates if the input is disabled
+ * @param {Expression=} [trueValue=true] The value of the scope property when the switch is on
+ * @param {Expression=} [falseValue=false] The value of the scope property when the switch is off
  *
  * @example
  * <pre>

@@ -108,7 +108,7 @@ angular.module('encore.ui.utilities')
  *     ttl: 172800,                 // Integer (seconds) - two days default
  *     load: true,                  // Boolean or Promise that will resolve with a Boolean
  *     save: true,                  // Boolean or Promise that will resolve with a Boolean
- *     exclude: [],                 // Array<String>
+ *     exclude: [],                 // String[]
  *     storageBackend: rxLocalStorage // Object
  *   });
  * </pre>
@@ -285,10 +285,10 @@ angular.module('encore.ui.utilities')
  * @param {String} variable
  * variable name corresponding to an object on the given scope
  * @param {Object=} options usage options
- * @param {Promise} [options.clearOnSuccess=null] *optional* -
+ * @param {Promise=} [options.clearOnSuccess=null]
  * Clear saved data on successful resolution of given promise.
  *
- * @param {Function} [options.keyShaping]
+ * @param {Function=} options.keyShaping
  * Sometimes, it may be necessary to change how a key is formed for the specified
  * `storageBackend`.  Keys are calculated by prepending `'rxAutoSave::'` before the
  * url. Your custom `keyShaping` function will take one parameter (`key`), to which
@@ -303,7 +303,7 @@ angular.module('encore.ui.utilities')
  * });
  * </pre>
  *
- * @param {Integer} [options.ttl=172800] *optional* -
+ * @param {Integer=} [options.ttl=172800]
  * Time to Live (in seconds) - defaults to 2 days
  *
  * Whenever data changes in the watched variable, the expiry time will be freshly set
@@ -323,23 +323,25 @@ angular.module('encore.ui.utilities')
  * * `clear()`
  * * `clearOnSuccess()`
  *
- * @param {Boolean|Promise} [options.load=true] *optional* -
+ * @param {Boolean|Promise=} [options.load=true]
  * If false, will prevent data from being automatically loaded onto the scope.
  *
  * You may use a promise that resolves to a boolean, if desired.
- * @param {Boolean|Promise} [options.save=true] *optional* -
+ * @param {Boolean|Promise=} [options.save=true]
  * If false, will prevent data from being automatically saved on change.
  *
  * You may use a promise that resolves to a boolean, if desired.
- * @param {String[]} [options.exclude] *optional* -
+ * @param {String[]=} options.exclude
  * A string of property names to exclude from automatic save. This is useful to
  * exclude saving any sensitive information like passwords, credit card numbers, etc.
  *
  * <pre>
- * var autosave = rxAutoSave($scope, 'formData', { exclude: ['password'] });
- * </pr>
+ * var autosave = rxAutoSave($scope, 'formData', {
+ *     exclude: ['password']
+ * });
+ * </pre>
  *
- * @param {Object} [options.storageBackend=rxLocalStorage] *optional* -
+ * @param {Object=} [options.storageBackend=rxLocalStorage]
  * Must be an object which has `getObject(key)` and `setObject(key, val)` methods.
  * `rxLocalStorage` and `SessionStorage` are both provided by EncoreUI, and support
  * this interface.
@@ -366,11 +368,11 @@ angular.module('encore.ui.utilities')
      *                  data: {
      *                      // Serialized form data
      *                  }
-     *              }
+     *              },
      *              "form2": {
      *                  config: {
      *                      expires: 33421234322,
-     *                  }
+     *                  },
      *                  data: {
      *                      // Serialized form data
      *                  }

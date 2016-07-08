@@ -55,18 +55,18 @@ angular.module('encore.ui.rxModalAction')
  * cancel the given action.  For example, you may use this to return an
  * indeterminate component to a previous state (e.g. toggle switches).
  *
- * @param {Function=} [preHook]
+ * @param {Function=} preHook
  * Function to call when a modal is opened
- * @param {Function=} [postHook]
+ * @param {Function=} postHook
  * Function to call when a modal is submitted (not called when modal cancelled)
- * @param {Function=} [dismissHook]
+ * @param {Function=} dismissHook
  * Function to call when a modal is dismissed (not called when modal submitted)
- * @param {String=} [templateUrl]
+ * @param {String=} templateUrl
  * URL of template to use for modal content
- * @param {*=} [disable-esc]
+ * @param {*=} disable-esc
  * If the `disable-esc` attribute is present, then "Press Esc to close" will be
  * disabled for the modal. This attribute takes no values.
- * @param {Expression=} [ngDisabled=false]
+ * @param {Boolean=} [ngDisabled=false]
  * If the expression evaluates to true, then the link for opening the modal will
  * be disabled.
  *
