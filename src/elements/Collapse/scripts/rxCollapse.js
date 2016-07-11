@@ -1,4 +1,4 @@
-angular.module('encore.ui.rxCollapse')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
  * @name rxCollapse.directive:rxCollapse

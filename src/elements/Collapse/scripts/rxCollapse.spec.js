@@ -6,7 +6,7 @@ describe('rxCollapse', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxCollapse');
+        module('encore.ui.elements');
 
         // load templates
         module('templates/rxCollapse.html');
