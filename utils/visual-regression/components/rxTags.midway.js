@@ -1,11 +1,11 @@
 describe('demo component', function () {
 
     before(function () {
-        demoPage.go('#/elements/Metadata');
+        demoPage.go('#/elements/Tags');
     });
 
     it('default', function () {
-        screenshot.snap(this, $('rx-metadata'), { threshold: 0.2 });
+        screenshot.snap(this, $('.demo-wrapper'), { threshold: 1 });
     });
 
 });
