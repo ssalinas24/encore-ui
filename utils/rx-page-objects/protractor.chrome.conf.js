@@ -6,7 +6,7 @@ var config = {
     baseUrl: 'http://localhost:9001',
 
     specs: [
-        './utils/rx-page-objects/test/*.midway.js'
+        './test/*.midway.js'
     ],
 
     framework: 'mocha',
@@ -33,8 +33,8 @@ var config = {
         expect = require('chai').use(require('chai-as-promised')).expect;
         _ = require('lodash');
         moment = require('moment');
-        demoPage = require('./utils/demo.page.js');
-        encore = require('./utils/rx-page-objects/index');
+        demoPage = require('../demo.page.js');
+        encore = require('./index');
     },
 
     // Options to be passed to mocha
