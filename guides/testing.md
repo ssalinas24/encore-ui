@@ -70,11 +70,20 @@ Midway Tests
  - Somewhat slow
  - Story Based
 
+### The Testing Environment
+
+The test code for this project isn't just to validate the correctness of the encore-ui component library. Like the encore-ui project itself, it is designed to be shared between various projects.
+
+Because of this, the test code (called "rx-page-objects") is organized to be exported as a stand alone node package. The directory where this project is hosted can be found in `./utils/rx-page-objects`. This directory contains its own `package.json` file, `.gitignore` file, and other project-specific files.
+
+As a contributor, when you run `npm install` in the root of this project, it will automatically install the rx-page-object dependencies for you too. If you find that you're having trouble running end to end tests, try deleteing the `utils/rx-page-objects/node_modules` directory and reinstalling dependencies there.
+
 ### Running Tests
 
 In order to run the midway test suite, you will need a Selenium server running. To install and run Selenium, execute the webdriver-manager. To do this, open a new terminal window and run the following from the `encore-ui` directory:
 
 ```
+cd utils/rx-page-objects/
 ./node_modules/.bin/webdriver-manager update # First time only
 ./node_modules/.bin/webdriver-manager start
 ```
@@ -88,20 +97,21 @@ INFO - Started org.openqa.jetty.jetty.Server@401363ff
 
 Make sure you keep this terminal window running!
 
-To run all tests, enter `./node_modules/.bin/protractor` from the `encore-ui` directory, in a different terminal. You need to ensure that you already have a development server running. If you haven't already, run `grunt server` in a separate terminal. You will need to keep this running in the background through the entirety of the midway tests.
+To run all tests, enter `./node_modules/.bin/protractor` from the `encore-ui/utils/rx-page-objects` directory, in a different terminal. You need to ensure that you already have a development server running. If you haven't already, run `grunt server` in a separate terminal. You will need to keep this running in the background through the entirety of the midway tests.
 
 In other words, to run the tests, you need a total of _three_ terminal windows.
 
  * One terminal running the Selenium server
  * One terminal running `grunt server`
- * One terminal running `./node_modules/.bin/protractor`
+ * One terminal running `./utils/rx-page-objects/node_modules/.bin/protractor`
 
 #### Testing Individual Components
 
 When developing a specific component, it's much quicker to run tests only for that component (rather than run through the entire suite every time). To do this, pass in path to the file as a 'specs' option in your protractor command. For example:
 
 ```
-./node_modules/.bin/protractor --specs=src/rxComponent/docs/rxComponent.midway.js
+cd utils/rx-page-objects/
+./node_modules/.bin/protractor --specs test/rxComponent.midway.js
 ```
 
 ### Convenience Page Objects
@@ -182,15 +192,18 @@ Simply put, you shouldn't run these tests! They run invisibly on the Travis CI s
 But if you do want to run the tests, feel free to run them by themselves to populate a fresh copy of screenshots locally:
 
 ```
+cd utils/rx-page-objects/
 npm install snappit-mocha-protractor
 ./node_modules/.bin/protractor protractor.visual.regression.conf.js
 ```
 
 This is useful only for experimenting with what your screenshots look like *on your current operating system*, at *your current resolution*, and your *specific version of your browser*! This is why it is recommended that you refrain from running these tests locally. They are designed to run on one machine and one machine only, to ensure that any visual regressions are triggered by visual changes, and not differences in hardware or software.
 
+Note, that there are detailed install instructions for `snappit-mocha-protractor` [ocated on its wiki page](https://github.com/rackerlabs/snappit-mocha-protractor/wiki#introduction)
+
 ### Triggering Visual Regression Runs on Travis
 
-In order to get a visual regression to run against your PR, **you must push your pull request directly to the remote repository located at `rackerlabs/encore-ui`, and not a fork**. Travis CI will not expose encrypted environment variables to forks that request a build from Travis (this prevents attackers from dumping your encrypted variables to console via a pull request).
+In order to get a visual regression to run against your PR, **you must push your pull request directly to the remote repository located at `rackerlabs/encore-ui`, and not a fork**. codeship.io will not run its tests against pull requests originating from forks.
 
 Visual regressions include posting an reference link from a pull request in the encore-ui-screenshots repository to the current pull request. It looks like this:
 

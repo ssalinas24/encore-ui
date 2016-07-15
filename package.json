@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "postinstall": "grunt hooks",
+    "postinstall": "cd utils/rx-page-objects; npm i; cd -; grunt hooks",
     "eslint-dev": "eslint -c .eslintrc.json --ignore-path .eslintignore-dev {src,demo}",
     "eslint-test": "eslint -c .eslintrc.test.json --ignore-path .eslintignore-test {src,demo} utils/rx-page-objects/{test,src}"
   },
@@ -71,9 +71,6 @@
     "lodash": "2.4.1",
     "marked": "0.3.3",
     "mocha": "2.1.0",
-    "moment": "2.13.0",
-    "node-timing.js": "1.1.0",
-    "protractor": "3.3.0",
-    "protractor-console-plugin": "^0.1.1"
+    "moment": "2.13.0"
   }
 }
