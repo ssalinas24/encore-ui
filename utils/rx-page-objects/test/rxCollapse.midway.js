@@ -1,7 +1,7 @@
 describe('rxCollapse', function () {
 
     before(function () {
-        demoPage.go('#/components/rxCollapse');
+        demoPage.go('#/elements/Collapse');
     });
 
     describe('custom title', encore.exercise.rxCollapse({

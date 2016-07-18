@@ -1,0 +1,10 @@
+{
+    "displayName": "rxCollapse",
+    "stability": "stable",
+    "description": "display and hide content on a page",
+    "api": "directive:rxCollapse",
+    "keywords": [
+      "collapse",
+      "rxCollapse"
+    ]
+}
