@@ -37,7 +37,7 @@ exports.rxAge = {
             return [matches[3], matches[1]];
         });
 
-        var elapsed = _.zipObject(ageParts);
+        var elapsed = _.fromPairs(ageParts);
         return moment().utc().subtract(elapsed);
     }
 

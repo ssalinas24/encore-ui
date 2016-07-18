@@ -5,7 +5,7 @@ var config = {
     framework: 'mocha',
 
     snappit: {
-        screenshotsDirectory: './screenshots',
+        screenshotsDirectory: '../../screenshots',
         threshold: 5,
         defaultResolutions: [[768, 1024], [1024, 768]], // tablet
         cicd: {
@@ -20,7 +20,7 @@ var config = {
     },
 
     specs: [
-        './utils/visual-regression/**/*.midway.js'
+        '../visual-regression/**/*.midway.js'
     ],
 
     capabilities: {
@@ -33,8 +33,8 @@ var config = {
 
     onPrepare: function () {
         expect = require('chai').use(require('chai-as-promised')).expect;
-        demoPage = require('./utils/demo.page.js');
-        encore = require('./utils/rx-page-objects/index');
+        demoPage = require('../demo.page.js');
+        encore = require('./index');
         browser.driver.manage().window().setSize(1366, 768); // laptop
         screenshot = require('snappit-mocha-protractor');
     },

@@ -37,10 +37,5 @@ results
 /tmp/
 /bower/
 /dist/
-/utils/rx-page-objects/node_modules/*
-/utils/rx-page-objects/doc/*
-!/utils/rx-page-objects/doc/jsdoc-custom.css
-!/utils/rx-page-objects/doc/layout.tmpl
-!/utils/rx-page-objects/doc/README.md
 
 /screenshots/
