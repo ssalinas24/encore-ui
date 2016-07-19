@@ -20,7 +20,7 @@
  *
  * * {@link rxForm.directive:rxForm rxForm}
  *   * {@link rxForm.directive:rxFormSection rxFormSection} (0..N)
- *      * {@link rxSelectFilter.directive:rxSelectFilter rxSelectFilter} (0..N)
+ *      * {@link elements.directive:rxSelectFilter rxSelectFilter} (0..N)
  *      * {@link rxForm.directive:rxField rxField} (0..N)
  *        * {@link rxForm.directive:rxFieldName rxFieldName} (0..1)
  *        * {@link rxForm.directive:rxFieldContent rxFieldContent} (0..1)

@@ -24,7 +24,7 @@ angular.module('encore.ui.rxForm')
  *   <dd>
  *     <ul>
  *       <li>{@link rxForm.directive:rxField rxField}</li>
- *       <li>{@link rxSelectFilter.directive:rxSelectFilter rxSelectFilter}</li>
+ *       <li>{@link elements.directive:rxSelectFilter rxSelectFilter}</li>
  *       <li>HTML DIV Element</li>
  *     </ul>
  *   </dd>
