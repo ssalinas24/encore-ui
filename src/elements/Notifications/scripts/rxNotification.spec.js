@@ -4,7 +4,7 @@ describe('rxNotify', function () {
     var defaultStack = 'page';
 
     beforeEach(function () {
-        module('encore.ui.rxNotify');
+        module('encore.ui.elements');
         module('templates/rxNotification.html');
 
         inject(function ($rootScope, $compile, rxNotify) {
@@ -14,7 +14,7 @@ describe('rxNotify', function () {
         });
     });
 
-    describe('Directive: rxNotification', function () {
+    describe('element: Notifications', function () {
         beforeEach(function () {
             var rxNotificationTemplate = '<rx-notification type="warning">' + messageText1 + '</rx-notification>';
             el2 = helpers.createDirective(rxNotificationTemplate, compile, scope);

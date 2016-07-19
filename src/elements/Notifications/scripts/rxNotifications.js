@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxNotify')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxNotify.directive:rxNotifications
+ * @name elements.directive:rxNotifications
  * @restrict E
  * @scope
  * @description

@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxNotifyCtrl', function ($rootScope, $scope, $window, rxNotify) {
+.controller('notificationsStackCtrl', function ($rootScope, $scope, $window, rxNotify) {
     $scope.message = 'My message';
 
     $scope.types = [ 'info', 'success', 'warning', 'error' ];
@@ -16,15 +16,6 @@ angular.module('demoApp')
         method: function (msg) {
             $window.alert('We are dismissing the message: ' + msg.text);
         }
-    };
-
-    $scope.routeChange = function (stack) {
-        $rootScope.$broadcast('$routeChangeStart', {});
-        $rootScope.$broadcast('$routeChangeSuccess', {});
-
-        rxNotify.add('Route Changed', {
-            stack: stack
-        });
     };
 
     $scope.add = function (stack) {
