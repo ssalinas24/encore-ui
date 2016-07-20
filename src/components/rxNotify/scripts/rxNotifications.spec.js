@@ -7,7 +7,7 @@ describe('rxNotify', function () {
 
     beforeEach(function () {
         module('encore.ui.rxNotify');
-        module('encore.ui.rxSpinner');
+        module('encore.ui.elements');
         module('templates/rxNotifications.html');
         module('templates/rxNotification.html');
 
