@@ -32,6 +32,14 @@ exports.rxCharacterCount = function (options) {
         highlight: false
     });
 
+    var belowNearLimitLength = options.maxCharacters - options.nearLimit;
+    var atNearLimitLength = options.maxCharacters + 2 - options.nearLimit;
+    var overLimit = options.maxCharacters + 1;
+    var aboveNearLimitLength = options.maxCharacters + 3 - options.nearLimit;
+    var whitespace = '    leading and trailing whitespace    ';
+    var whitespaceLength = whitespace.length;
+    var trimmedLength = whitespace.trim().length;
+
     return function () {
         var component;
 
@@ -43,81 +51,130 @@ exports.rxCharacterCount = function (options) {
             expect(component.isDisplayed()).to.eventually.be.true;
         });
 
-        it('should update the remaining number of characters left when you insert text', function () {
-            component.comment = 'Foo';
-            expect(component.remaining).to.eventually.equal(options.maxCharacters - 3);
-        });
+        describe('with empty value', function () {
 
-        it('should erase all text and replace it with new text on update', function () {
-            component.comment = 'Bar';
-            expect(component.comment).to.eventually.equal('Bar');
-        });
-
-        it('should not set the near-limit class on an empty text box', function () {
-            component.comment = '';
-            expect(component.isNearLimit()).to.eventually.be.false;
-        });
-
-        it('should have ' + options.maxCharacters + ' remaining characters by default', function () {
-            expect(component.remaining).to.eventually.equal(options.maxCharacters);
-        });
-
-        it('should not set the over-limit class on an empty text box', function () {
-            expect(component.isOverLimit()).to.eventually.be.false;
-        });
-
-        var belowNearLimitLength = options.maxCharacters + 1 - options.nearLimit;
-        it('should not set the near-limit class when ' + belowNearLimitLength + ' characters are entered', function () {
-            component.comment = Array(belowNearLimitLength).join('a');
-            expect(component.isNearLimit()).to.eventually.be.false;
-        });
-
-        var atNearLimitLength = options.maxCharacters + 2 - options.nearLimit;
-        it('should set the near-limit class when ' + atNearLimitLength + ' characters are entered', function () {
-            component.comment = Array(atNearLimitLength).join('a');
-            expect(component.isNearLimit()).to.eventually.be.true;
-        });
-
-        var aboveNearLimitLength = options.maxCharacters + 3 - options.nearLimit;
-        it('should set the near-limit class when ' + aboveNearLimitLength + ' characters are entered', function () {
-            component.comment = Array(aboveNearLimitLength).join('a');
-            expect(component.isNearLimit()).to.eventually.be.true;
-        });
-
-        var atLimit = options.maxCharacters + 1;
-        it('should not set the over-limit class when ' + atLimit + ' characters are entered', function () {
-            component.comment = Array(atLimit).join('a');
-            expect(component.isOverLimit()).to.eventually.be.false;
-        });
-
-        it('should have zero remaining characters', function () {
-            expect(component.remaining).to.eventually.equal(0);
-        });
-
-        var overLimit = options.maxCharacters + 2;
-        it('should set the over-limit class when ' + overLimit + ' characters are entered', function () {
-            component.comment = Array(overLimit).join('a');
-            expect(component.isOverLimit()).to.eventually.be.true;
-        });
-
-        it('should display a negative number when the over-limit class is reached', function () {
-            expect(component.remaining).to.eventually.equal(-1);
-        });
-
-        var whitespace = '    leading and trailing whitespace    ';
-        var whitespaceLength = whitespace.length;
-        var trimmedLength = whitespace.trim().length;
-        if (options.ignoreInsignificantWhitespace) {
-            it('should ignore insignificant leading and trailing whitespace', function () {
-                component.comment = whitespace;
-                expect(component.remaining).to.eventually.equal(options.maxCharacters - trimmedLength);
+            beforeEach(function () {
+                component.comment = '';
             });
-        } else {
-            it('should count insignificant leading and trailing whitespace', function () {
-                component.comment = whitespace;
-                expect(component.remaining).to.eventually.equal(options.maxCharacters - whitespaceLength);
+
+            it('should not set the near-limit class', function () {
+                expect(component.isNearLimit()).to.eventually.be.false;
             });
-        }
+
+            it('should have ' + options.maxCharacters + ' remaining characters', function () {
+                expect(component.remaining).to.eventually.equal(options.maxCharacters);
+            });
+
+            it('should not set the over-limit class', function () {
+                expect(component.isOverLimit()).to.eventually.be.false;
+            });
+        });
+
+        describe('with "Foo" value', function () {
+
+            beforeEach(function () {
+                component.comment = 'Foo';
+            });
+
+            it('should update the remaining number of characters', function () {
+                expect(component.remaining).to.eventually.equal(options.maxCharacters - 3);
+            });
+
+            describe('and changed to "Bar"', function () {
+
+                beforeEach(function () {
+                    component.comment = 'Bar';
+                });
+
+                it('should replace value with new text', function () {
+                    expect(component.comment).to.eventually.equal('Bar');
+                });
+            });
+        });
+
+
+        describe('when ' + belowNearLimitLength + ' characters are entered', function () {
+
+            beforeEach(function () {
+                component.comment = 'a'.repeat(belowNearLimitLength);
+            });
+
+            it('should not set the near-limit class ', function () {
+                expect(component.isNearLimit()).to.eventually.be.false;
+            });
+        });
+
+        describe('when ' + atNearLimitLength + ' near limit characters are entered', function () {
+
+            beforeEach(function () {
+                component.comment = 'b'.repeat(atNearLimitLength);
+            });
+
+            it('should set the near-limit class', function () {
+                expect(component.isNearLimit()).to.eventually.be.true;
+            });
+        });
+
+
+        describe('when ' + aboveNearLimitLength + ' above limit characters are entered', function () {
+
+            beforeEach(function () {
+                component.comment = 'c'.repeat(aboveNearLimitLength);
+            });
+
+            it('should set the near-limit class', function () {
+                expect(component.isNearLimit()).to.eventually.be.true;
+            });
+        });
+
+
+        describe('when ' + options.maxCharacters + ' characters are entered', function () {
+
+            beforeEach(function () {
+                component.comment = 'd'.repeat(options.maxCharacters);
+            });
+
+            it('should not set the over-limit class', function () {
+                expect(component.isOverLimit()).to.eventually.be.false;
+            });
+
+            it('should have zero remaining characters', function () {
+                expect(component.remaining).to.eventually.equal(0);
+            });
+        });
+
+
+        describe('when ' + overLimit + ' characters are entered', function () {
+
+            beforeEach(function () {
+                component.comment = 'e'.repeat(overLimit);
+            });
+
+            it('should set the over-limit class', function () {
+                expect(component.isOverLimit()).to.eventually.be.true;
+            });
+
+            it('should display a negative number when the over-limit class is reached', function () {
+                expect(component.remaining).to.eventually.equal(-1);
+            });
+        });
+
+        describe('with leading and trailing whitespace', function () {
+
+            beforeEach(function () {
+                component.comment = whitespace;
+            });
+
+            if (options.ignoreInsignificantWhitespace) {
+                it('should count the trimmed length', function () {
+                    expect(component.remaining).to.eventually.equal(options.maxCharacters - trimmedLength);
+                });
+            } else {
+                it('should count the full length', function () {
+                    expect(component.remaining).to.eventually.equal(options.maxCharacters - whitespaceLength);
+                });
+            }
+        });
 
         if (options.highlight) {
             describe('highlighting', function () {
@@ -128,21 +185,22 @@ exports.rxCharacterCount = function (options) {
                     expect(component.overLimitText).to.eventually.equal('');
                 });
 
-                it('should not highlight any characters when ' + atLimit + ' characters are entered', function () {
-                    component.comment = Array(atLimit).join('a');
-                    expect(component.overLimitText).to.eventually.equal('');
-                });
+                it('should not highlight any characters when ' + options.maxCharacters + ' characters are entered',
+                    function () {
+                        component.comment = 'f'.repeat(options.maxCharacters);
+                        expect(component.overLimitText).to.eventually.equal('');
+                    }
+                );
 
                 it('should highlight a single characters when ' + overLimit + ' characters are entered', function () {
-                    component.comment = Array(overLimit).join('a');
-                    expect(component.overLimitText).to.eventually.equal('a');
+                    component.comment = 'g'.repeat(overLimit);
+                    expect(component.overLimitText).to.eventually.equal('g');
                 });
 
                 it('should clear the over-limit text highlighting when the text is reduced', function () {
-                    component.comment = 'a';
+                    component.comment = 'h';
                     expect(component.overLimitText).to.eventually.equal('');
                 });
-
             });
         }
 
