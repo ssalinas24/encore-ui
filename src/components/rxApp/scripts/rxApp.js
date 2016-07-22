@@ -7,13 +7,13 @@ angular.module('encore.ui.rxApp')
  * @description
  * Responsible for creating the HTML necessary for a common Encore layout.
  *
- * @param {string} [siteTitle] Title of site to use in upper right hand corner
- * @param {array} [menu] Menu items used for left-hand navigation
- * @param {string} [collapsibleNav] Set to 'true' if the navigation menu should be collapsible
- * @param {string} [collapsedNav] Binding for the collapsed state of the menu.
- * @param {boolean} [newInstance] Whether the menu items should be a new instance of `rxAppRoutes`
- * @param {boolean} [hideFeeback] Whether to hide the 'feedback' link or not (defaults to show it)
- * @param {string} [logoutUrl] URL to pass to rx-logout
+ * @param {String=} siteTitle Title of site to use in upper right hand corner
+ * @param {Array=} menu Menu items used for left-hand navigation
+ * @param {String=} collapsibleNav Set to 'true' if the navigation menu should be collapsible
+ * @param {String=} collapsedNav Binding for the collapsed state of the menu.
+ * @param {Boolean=} newInstance Whether the menu items should be a new instance of `rxAppRoutes`
+ * @param {Boolean=} [hideFeeback=false] Whether to hide the 'feedback' link
+ * @param {String=} logoutUrl URL to pass to rx-logout
  *
  * @example
  * <pre>

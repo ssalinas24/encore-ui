@@ -20,7 +20,7 @@ angular.module('encore.ui.elements')
  *   mentioned above.
  * * This element will never generate anything other than a String.
  *
- * @param {expression} ngModel
+ * @param {Expression} ngModel
  * Expression that evaluates to a date string in `YYYY-MM-DD` format
  *
  * @return {String} **IMPORTANT** returns an ISO 8601 standard date string in the

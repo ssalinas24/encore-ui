@@ -469,8 +469,8 @@ angular.module('encore.ui.rxApp')
  * `Machine Support`, then the `/support` Angular application will be loaded,
  * the and the directives will become available.
  *
- * @param {object} items Menu items to display. See encoreNav for object definition
- * @param {string} level Level in heirarchy in page. Higher number is deeper nested
+ * @param {Object} items Menu items to display. See encoreNav for object definition
+ * @param {String} level Level in heirarchy in page. Higher number is deeper nested
  *
  * @example
  * <pre>

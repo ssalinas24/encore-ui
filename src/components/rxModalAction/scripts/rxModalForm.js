@@ -7,22 +7,29 @@ angular.module('encore.ui.rxModalAction')
  * @description
  * Responsible for creating the HTML necessary for modal form
  *
- * The `<rx-modal-form>` directive is helpful for providing a common format to forms inside modals (hence the name).
+ * The `<rx-modal-form>` directive is helpful for providing a common format to
+ * forms inside modals (hence the name).
  *
- * This directive also provides an 'autofocus' mechanism, which will move the keyboard focus cursor to the first
- * 'tabbable' input available in the form.
+ * This directive also provides an 'autofocus' mechanism, which will move the
+ * keyboard focus cursor to the first 'tabbable' input available in the form.
  *
- * @param {string} title Title of modal window
- * @param {string} [subtitle] Subtitle of modal window
- * @param {boolean} [isLoading] True to show a spinner by default
- * @param {string} [submitText] 'Submit' button text to use. Defaults to 'Submit'
- * @param {string} [cancelText] 'Cancel' button text to use. Defaults to 'Cancel'
- * @param {string} [returnText] 'Return' button text to use. Defaults to 'Return'
- * @param {string} [defaultFocus] default focus element. May be 'submit' or 'cancel'. Defaults to 'firstTabbable'
+ * @param {String} title Title of modal window
+ * @param {String=} subtitle Subtitle of modal window
+ * @param {Boolean=} isLoading True to show a spinner by default
+ * @param {String=} [submitText='Submit'] 'Submit' button text to use.
+ * @param {String=} [cancelText='Cancel'] 'Cancel' button text to use.
+ * @param {String=} [returnText='Return'] 'Return' button text to use.
+ * @param {String=} defaultFocus
+ * The default focus element. May be 'submit' or 'cancel'. If not provided,
+ * it'll default to the first 'tabbable' input available in the form.
  *
  * @example
  * <pre>
- * <rx-modal-form title="My Form" is-loading="true" submit-text="Yes!"></rx-modal-form>
+ * <rx-modal-form
+ *     title="My Form"
+ *     is-loading="true"
+ *     submit-text="Yes!">
+ * </rx-modal-form>
  * </pre>
  */
 .directive('rxModalForm', function ($timeout, $compile, rxModalFooterTemplates) {

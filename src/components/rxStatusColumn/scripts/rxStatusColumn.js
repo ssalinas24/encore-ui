@@ -22,8 +22,8 @@ angular.module('encore.ui.rxStatusColumn')
  * internally you will be receiving a number of different statuses from your
  * APIs, and will need to map them to these six statuses.
  *
- * The example in the {@link /encore-ui/#/components/rxStatusColumn demo} shows a typical
- * use of this directive, such as:
+ * The example in the {@link /encore-ui/#/components/rxStatusColumn demo} shows
+ * a typical use of this directive, such as:
  *
  * <pre>
  * <tbody>
@@ -52,9 +52,11 @@ angular.module('encore.ui.rxStatusColumn')
  * ends in -`ING`, it should get the animated yellow stripes of `PENDING`.
  *
  * @param {String} status The status to draw
- * @param {String} [api] Optionally specify which API mapping to use for the status
- * @param {String} [tooltip] The string to use for the tooltip. If omitted,
- *                           it will default to using the passed in status
+ * @param {String=} api
+ * Optionally specify which API mapping to use for the status
+ * @param {String=} tooltip
+ * The string to use for the tooltip. If omitted, it will default to using the
+ * passed in status
  */
 .directive('rxStatusColumn', function (rxStatusMappings, rxStatusColumnIcons) {
     return {

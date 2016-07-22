@@ -7,7 +7,7 @@ angular.module('encore.ui.rxAttributes')
  *
  * This drective allows you to add attributes based on a value in scope being defined or not.
  *
- * @param {JSON} rxAttributes an attribute allows you to add custom attributes
+ * @param {Object} rxAttributes an attribute allows you to add custom attributes
  */
 .directive('rxAttributes', function ($parse, $compile) {
     // @see http://stackoverflow.com/questions/19224028/add-directives-from-directive-in-angularjs

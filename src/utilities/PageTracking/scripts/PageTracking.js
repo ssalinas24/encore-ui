@@ -19,29 +19,37 @@ angular.module('encore.ui.utilities')
 .factory('PageTracking', function ($q, rxLocalStorage, rxPaginateUtils) {
     var PageTracking = {
         /**
-        * @ngdoc method
-        * @name utilities.service:PageTracking#createInstance
-        * @methodOf utilities.service:PageTracking
-        * @param {Object} options Configuration options for the pager
-        * @param {number} [options.itemsPerPage=200] The default number of items to display per page.
-        * If you choose a value * that is not in the default set ot itemsPerPage options (50, 200, 350, 500),
-        * then that value will be inserted into that list in the appropriate place
-        * @param {number[]} [options.itemSizeList=(50, 200, 350, 500)] The "items per page" options to give to the user.
-        * As these * same values are used all throughout Encore, you probably should not alter them for your table.
-        * @param {boolean} [options.persistItemsPerPage=true] Whether or not a change to this pager's itemsPerPage
-        * should be persisted globally to all other pagers
-        * @param {number} [options.pagesToShow=5] This is the number of page numbers to show
-        * in the pagination controls
-        * @param {boolean} [options.showAll=false] This is used to determine whether or not to use
-        * the pagination. If `true`, then all items will be displayed, i.e. pagination will not be used
-        *
-        * @description This is used to generate the instance of the
-        * PageTracking object. It takes an optional `options` object, allowing you to customize the default
-        * pager behaviour.
-        *
-        * @return {Object} A new pager instance to be passed to the `page-tracking` attribute of `<rx-paginate>`
-        * (see {@link rxPaginate.directive:rxPaginate})
-        */
+         * @ngdoc method
+         * @name utilities.service:PageTracking#createInstance
+         * @methodOf utilities.service:PageTracking
+         * @param {Object} options Configuration options for the pager
+         * @param {Number=} [options.itemsPerPage=200]
+         * The default number of items to display per page. If you choose a
+         * value that is not in the default set to itemsPerPage options
+         * (50, 200, 350, 500), then that value will be inserted into that
+         * list in the appropriate place
+         * @param {Number[]=} [options.itemSizeList=(50, 200, 350, 500)]
+         * The "items per page" options to give to the user. As these same
+         * values are used all throughout Encore, you probably should not alter
+         * them for your table.
+         * @param {Boolean=} [options.persistItemsPerPage=true]
+         * Whether or not a change to this pager's itemsPerPage should be
+         * persisted globally to all other pagers
+         * @param {Number=} [options.pagesToShow=5]
+         * This is the number of page numbers to show in the pagination controls
+         * @param {Boolean=} [options.showAll=false]
+         * This is used to determine whether or not to use the pagination. If
+         * `true`, then all items will be displayed, i.e. pagination will not
+         * be used
+         *
+         * @description This is used to generate the instance of the
+         * PageTracking object. It takes an optional `options` object,
+         * allowing you to customize the default pager behaviour.
+         *
+         * @return {Object} A new pager instance to be passed to the
+         * `page-tracking` attribute of `<rx-paginate>`
+         * (see {@link rxPaginate.directive:rxPaginate})
+         */
         createInstance: function (options) {
             options = options ? options : {};
             var tracking = new PageTrackingObject(options);

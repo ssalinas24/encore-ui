@@ -6,13 +6,15 @@ angular.module('encore.ui.rxApp')
  * @scope
  * @description
  *
- * Responsible for creating the HTML necessary for a page (including breadcrumbs and page title)
- * You can pass in a `title` attribute or an `unsafeHtmlTitle` attribute, but not both. Use the former
- * if your title is a plain string, use the latter if your title contains embedded HTML tags AND you
- * trust the source of this title. Arbitrary javascript can be executed, so ensure you trust your source.
+ * Responsible for creating the HTML necessary for a page (including breadcrumbs
+ * and page title) You can pass in a `title` attribute or an `unsafeHtmlTitle`
+ * attribute, but not both. Use the former if your title is a plain string, use
+ * the latter if your title contains embedded HTML tags AND you trust the source
+ * of this title. Arbitrary javascript can be executed, so ensure you trust your
+ * source.
  *
- * The document title will be set to either `title` or a stripped version of `unsafeHtmlTitle`, depending
- * on which you provide.
+ * The document title will be set to either `title` or a stripped version of
+ * `unsafeHtmlTitle`, depending on which you provide.
  *
  * You'll likely want to use the {@link rxApp.directive:rxPage rxPage} directive
  * inside your template view. For example, inside a 'myView.html' file:
@@ -29,8 +31,8 @@ angular.module('encore.ui.rxApp')
  *
  * Both the `title` and `subtitle` attributes accept an Angular expression,
  * which can be a string (shown in the previous example) or a scope property.
- * This string/property can accept other expressions, enabling you to build custom
- * titles. The demo has an example of this usage.
+ * This string/property can accept other expressions, enabling you to build
+ * custom titles. The demo has an example of this usage.
  *
  * If you wish to use arbitrary HTML in your title, you can use the
  * `unsafe-html-title` attribute instead of `title`. This is considered "unsafe"
@@ -39,16 +41,16 @@ angular.module('encore.ui.rxApp')
  * demo shows the use of HTML tags.
  *
  * In either case (`title` or `unsafe-html-title`), the document title
- * (i.e. visible in the browser tab) will be set to your chosen title. If you use
- * `unsafe-html-title`, all HTML tags will be stripped before setting the document
- * title.
+ * (i.e. visible in the browser tab) will be set to your chosen title. If you
+ * use `unsafe-html-title`, all HTML tags will be stripped before setting the
+ * document title.
  *
  * ### Account Info below Breadcrumbs
  *
- * `rxPage` integrates with the {@link elements.directive:rxAccountInfo rxAccountInfo} component,
- * to draw the Account Info box directly underneath the `rxBreadcrumbs`.
- * This is opt-in. By default, it will not appear. To enable it, pass the
- * `account-number="..."` attribute to `<rx-page>` in your template, i.e
+ * `rxPage` integrates with the {@link elements.directive:rxAccountInfo rxAccountInfo}
+ * component, to draw the Account Info box directly underneath the
+ * `rxBreadcrumbs`. This is opt-in. By default, it will not appear. To enable it,
+ * pass the `account-number="..."` attribute to `<rx-page>` in your template, i.e
  *
  * <pre>
  * <rx-page account-number="{{ accountNumber }}">
@@ -56,8 +58,8 @@ angular.module('encore.ui.rxApp')
  *
  * As noted in {@link elements.directive:rxAccountInfo rxAccountInfo}, this
  * directive requires that `SupportAccount`, `Encore` and `Teams` services are
- * available to the Angular Dependency Injection system. These are *not* provided
- * by EncoreUI, but are available in an internal Rackspace repository.
+ * available to the Angular Dependency Injection system. These are *not*
+ * provided by EncoreUI, but are available in an internal Rackspace repository.
  *
  *
  * ### Status tags
@@ -67,10 +69,10 @@ angular.module('encore.ui.rxApp')
  * The "Customized rxApp" demo shows the use of this with the `"alpha"` tag.
  *
  * The framework currently provides `"alpha"` and `"beta"` tags, but any product
- * can specify their own custom tags using the `rxStatusTagsProvider`. It currently
- * has one method, `addStatus`, which takes an unique `key` for the new tag, the
- * `class` it should use in the HTML, and the `text` that will be drawn. All custom
- * tags are drawn inside of a `<span>`, essentially as:
+ * can specify their own custom tags using the `rxStatusTagsProvider`. It
+ * currently has one method, `addStatus`, which takes an unique `key` for the
+ * new tag, the `class` it should use in the HTML, and the `text` that will be
+ * drawn. All custom tags are drawn inside of a `<span>`, essentially as:
  *
  * <pre>
  * <span class="status-tag {{ class }}">{{ text }}</span>
@@ -86,7 +88,8 @@ angular.module('encore.ui.rxApp')
  * });
  * </pre>
  *
- * This will create a new status tag called `"gamma"`, which you can pass to `rx-page` as:
+ * This will create a new status tag called `"gamma"`, which you can pass to
+ * `rx-page` as:
  *
  * <pre>
  * <rx-page title="'Some Title'" status="gamma">
@@ -98,8 +101,8 @@ angular.module('encore.ui.rxApp')
  * value to `addStatus()`.
  *
  * All the tags are accessible inside of {@link elements.directive:rxBreadcrumbs rxBreadcrumbs}
- * as well. Any breadcrumb that was created with `useStatusTag: true` will automatically
- * receive the same status tag as you passed to `<rx-page>`.
+ * as well. Any breadcrumb that was created with `useStatusTag: true` will
+ * automatically receive the same status tag as you passed to `<rx-page>`.
  *
  * ### .page-actions
  *
@@ -116,9 +119,9 @@ angular.module('encore.ui.rxApp')
  * </rx-page>
  * </pre>
  *
- * @param {expression} [title] Title of page
- * @param {expression} [unsafeHtmlTitle] Title for the page, with embedded HTML tags
- * @param {expression} [subtitle] Subtitle of page
+ * @param {String} title Title of page
+ * @param {String} unsafeHtmlTitle Title for the page, with embedded HTML tags
+ * @param {String=} subtitle Subtitle of page
  *
  * @example
  * <pre>

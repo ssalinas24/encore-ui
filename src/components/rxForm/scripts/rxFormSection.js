@@ -6,9 +6,9 @@ angular.module('encore.ui.rxForm')
  * @description
  * Structural element directive used for layout of sub-elements.
  *
- * By default, all `rxField`, `rxSelectFilter`, and `<div>` elements will display inline (horizontally).
- * If you wish to display these elements in a stacked manner, you may
- * place the `stacked` attribute on `rx-form-section`.
+ * By default, all `rxField`, `rxSelectFilter`, and `<div>` elements will
+ * display inline (horizontally). If you wish to display these elements in a
+ * stacked manner, you may place the `stacked` attribute on `rx-form-section`.
  *
  * <dl>
  *   <dt>Display:</dt>
@@ -46,6 +46,8 @@ angular.module('encore.ui.rxForm')
  * @param {*=} stacked
  * If present, `rxField` children will stack vertically rather than
  * display horizontally.
+ * @param {*=} controlled-width
+ * If present, the element will not consume the full width of its container.
  */
 .directive('rxFormSection', function (rxNestedElement) {
     return rxNestedElement({

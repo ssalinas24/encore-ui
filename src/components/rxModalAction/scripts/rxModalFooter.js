@@ -7,28 +7,35 @@ angular.module('encore.ui.rxModalAction')
  * @description
  * Define a footer for the next modal.
  *
- * When a modal has multiple views or kicks off a process that should be tracked within the modal, the
- * `<rx-modal-footer>` directive should be used.
+ * When a modal has multiple views or kicks off a process that should be
+ * tracked within the modal, the `<rx-modal-footer>` directive should be used.
  *
- * Modal Footers should be defined in the same template as the Modal Form unless the footer is global, in which case it
- * should be loaded in `module.run()`.  Global footers can be used in any subsequent modal by changing to the state
+ * Modal Footers should be defined in the same template as the Modal Form unless
+ * the footer is global, in which case it should be loaded in `module.run()`.
+ * Global footers can be used in any subsequent modal by changing to the state
  * they were defined with.
  *
- * The modal's controller also inherits the `setState()` method on the scope, which should be used to toggle different
- * views or footers. See the *Multi-View Example* in the component {@link /encore-ui/#/components/rxModalAction demo}
+ * The modal's controller also inherits the `setState()` method on the scope,
+ * which should be used to toggle different views or footers. See the
+ * *Multi-View Example* in the component {@link /encore-ui/#/components/rxModalAction demo}
  * for an example of this design pattern's usage.
  *
- * The default `editing` state shows the standard submit and cancel buttons, and the only other state provided by the
- * framework is `complete` (showing the return button).
+ * The default `editing` state shows the standard submit and cancel buttons,
+ * and the only other state provided by the framework is `complete` (showing the
+ * return button).
  *
- * @param {String} state The content will be shown in the footer when this state is activated.
- * @param {String=} [global] If the global attribute is present, then this footer can be used
- *                          in other modals. This attribute takes no values.
+ * @param {String} state
+ * The content will be shown in the footer when this state is activated.
+ * @param {String=} global
+ * If the global attribute is present, then this footer can be used in other
+ * modals. This attribute takes no values.
  *
  * @example
  * <pre>
  * <rx-modal-footer state="confirm">
- *     <button class="button" ng-click="setState('pending')">I understand the risks.</button>
+ *     <button class="button" ng-click="setState('pending')">
+ *         I understand the risks.
+ *     </button>
  * </rx-modal-footer>
  * </pre>
  */
