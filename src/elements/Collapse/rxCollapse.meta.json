@@ -1,5 +1,5 @@
 {
-    "displayName": "rxCollapse",
+    "displayName": "Collapse",
     "stability": "stable",
     "description": "display and hide content on a page",
     "api": "directive:rxCollapse",
