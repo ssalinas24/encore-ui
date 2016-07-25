@@ -35,7 +35,6 @@ describe('rxMultiSelect', function () {
     });
 
     [transcludedTemplate, optionsTemplate].forEach(function (template, i) {
-
         describe(i === 0 ? 'without options attribute' : 'with options attribute', function () {
             var isolateScope, el;
 
@@ -59,13 +58,6 @@ describe('rxMultiSelect', function () {
 
             it('does not toggle the visibility of the menu when a child element is clicked', function () {
                 angular.element(el[0].querySelector('.menu')).click();
-                expect(isolateScope.listDisplayed).to.be.false;
-            });
-
-            it('should close an open menu', function () {
-                isolateScope.listDisplayed = true;
-
-                isolateScope.closeMenu();
                 expect(isolateScope.listDisplayed).to.be.false;
             });
 

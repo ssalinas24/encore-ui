@@ -91,11 +91,6 @@ exports.rxMultiSelect = function (options) {
                 expect(component.selectedOptions).to.eventually.be.empty;
                 expect(component.preview).to.eventually.equal('None');
             });
-
-            it('should hide the menu when backdrop is clicked', function () {
-                component.rootElement.$('.backdrop').click();
-                expect(component.isOpen()).to.eventually.be.false;
-            });
         }//if options.disabled
 
         it('hides the menu when another element is clicked', function () {

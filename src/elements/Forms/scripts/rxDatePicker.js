@@ -26,7 +26,7 @@ angular.module('encore.ui.elements')
  * @return {String} **IMPORTANT** returns an ISO 8601 standard date string in the
  * format of `YYYY-MM-DD`.
  */
-.directive('rxDatePicker', function () {
+.directive('rxDatePicker', function ($document) {
     var isoFormat = 'YYYY-MM-DD';
     const YEAR_RANGE = 10;
 
@@ -105,10 +105,6 @@ angular.module('encore.ui.elements')
                     scope.calendarVisible = !scope.calendarVisible;
                 }
             };//toggleCalendar()
-
-            scope.closeCalendar = function () {
-                scope.calendarVisible = false;
-            };
 
             /**
              * @param {String} destination
@@ -224,6 +220,12 @@ angular.module('encore.ui.elements')
             ngModelCtrl.$render = function () {
                 scope.displayValue = ngModelCtrl.$viewValue;
             };
+
+            $document.on('click', function (clickEvent) {
+                if (scope.calendarVisible && !element[0].contains(clickEvent.target)) {
+                    scope.$apply(function () { scope.calendarVisible = false; });
+                }
+            });
         }
     };
 });

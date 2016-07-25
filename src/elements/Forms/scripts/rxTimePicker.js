@@ -26,7 +26,7 @@ angular.module('encore.ui.elements')
  * @return {String} **IMPORTANT** returns an ISO 8601 standard time string in the
  * format of `HH:mmZ`.
  */
-.directive('rxTimePicker', function (rxTimePickerUtil, UtcOffsets) {
+.directive('rxTimePicker', function (rxTimePickerUtil, UtcOffsets, $document) {
     return {
         restrict: 'E',
         require: 'ngModel',
@@ -35,7 +35,7 @@ angular.module('encore.ui.elements')
             isDisabled: '=ngDisabled'
         },
         templateUrl: 'templates/rxTimePicker.html',
-        link: function (scope, el, attrs, ngModelCtrl) {
+        link: function (scope, element, attrs, ngModelCtrl) {
             var pickerUtil = rxTimePickerUtil;
 
             scope.availableUtcOffsets = UtcOffsets;
@@ -139,6 +139,12 @@ angular.module('encore.ui.elements')
             ngModelCtrl.$render = function () {
                 scope.displayValue = ngModelCtrl.$viewValue || '';
             };
+
+            $document.on('click', function (clickEvent) {
+                if (scope.isPickerVisible && !element[0].contains(clickEvent.target)) {
+                    scope.$apply(function () { scope.isPickerVisible = false; });
+                }
+            });
         }//link
     };
 });
