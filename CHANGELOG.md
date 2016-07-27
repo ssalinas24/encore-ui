@@ -1,3 +1,21 @@
+<a name="2.1.0-0"></a>
+### 2.1.0-0 (2016-07-27)
+
+
+#### Bug Fixes
+
+* **Collapse:** correct displayName ([9144d47d](git@github.com:rackerlabs/encore-ui/commit/9144d47d50a3077648a1d0eb9296cb1c138e4364))
+* **rxAge:** Upgrade lodash method to 'fromPairs' ([d8d8da60](git@github.com:rackerlabs/encore-ui/commit/d8d8da60f0e64982bb4f10046b901f4710f0e7a1))
+* **rxDatePicker:** close on click away ([ec3d5446](git@github.com:rackerlabs/encore-ui/commit/ec3d54460be9dae0afde9f6a6586253059e7a2c3))
+* **rxMultiSelect:** close on click away ([a0f32db6](git@github.com:rackerlabs/encore-ui/commit/a0f32db65ac930cb9056f68b920cfbb4e117cb0a))
+
+
+#### Features
+
+* **DateTimeFilters:** create formatting filters for Date and Time ([1fd0a06e](git@github.com:rackerlabs/encore-ui/commit/1fd0a06ee4186c2118f832c1ef11fcc62e04a632))
+* **rxTimePicker:** close on click away ([497e722d](git@github.com:rackerlabs/encore-ui/commit/497e722d2d5ebdb62d685d72d44b9be2a437c484))
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2016-06-29)
 
