@@ -386,7 +386,12 @@
 </ul>
 <rx-example name="forms.radios"></rx-example>
 
-<h3><rx-permalink>Using a Character Counter</rx-permalink></h3>
+<!-- BEGIN: rxCharacterCount -->
+<h3>
+  <rx-permalink>Using a Character Counter</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxCharacterCount/">View API</a>
+  <!-- (NOTE) stability: 'experimental' -->
+</h3>
 <ul class="list">
   <li>
     Character counters provide color feedback to the user in addition to
@@ -405,11 +410,91 @@
     test your code.
   </li>
   <li>
-    See <a href="#/components/rxCharacterCount/">rxCharacterCount</a> for
-    more specific documentation about implementing a counter on a
+    Please see the example below for implementing a character counter on a
     textarea or text input field.
   </li>
+  <li>
+    For more options regarding rxCharacterCount functionality, see API docs.
+  </li>
 </ul>
+
+<rx-example name="rxCharacterCount.simple"></rx-example>
+
+<rx-debug>
+  <div ng-controller="rxCharacterCountCtrl">
+    <h4>Character Count: Default Values</h4>
+    <div>
+      <textarea
+        ng-model="data.comment1"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        class="demo-default-char-count-values">
+      </textarea>
+    </div>
+
+    <h4>Character Count: Custom <code>max-characters="25"</code></h4>
+    <div>
+      <textarea
+        ng-model="data.comment2"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        max-characters="25"
+        class="demo-custom-max-characters">
+      </textarea>
+    </div>
+
+    <h4>Character Count: Custom <code>low-boundary="250"</code></h4>
+    <div>
+      <textarea
+        ng-model="data.comment3"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        low-boundary="250"
+        class="demo-custom-low-boundary">
+      </textarea>
+    </div>
+
+    <h4>Character Count: Count leading and trailing spaces</h4>
+    <div>
+      <textarea
+        ng-model="data.comment4"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        ng-trim="false"
+        class="demo-custom-do-not-trim">
+      </textarea>
+    </div>
+
+    <h4>Character Count: Accounts for initial values</h4>
+    <div>
+      <textarea
+        ng-model="data.comment5"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        class="demo-initial-value">
+      </textarea>
+    </div>
+
+    <h4>Character Count: With highlighting</h4>
+    <div>
+      <textarea
+        ng-model="data.comment6"
+        ng-model-options="{ debounce: 100 }"
+        rows="10" cols="50"
+        rx-character-count
+        highlight="true"
+        max-characters="10"
+        class="demo-highlighting">
+      </textarea>
+    </div>
+  </div>
+</rx-debug>
+<!-- END: rxCharacterCount -->
 
 <h3><rx-permalink>Disabled State</rx-permalink></h3>
 <ul class="list">
