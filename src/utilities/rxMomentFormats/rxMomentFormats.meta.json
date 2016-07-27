@@ -1,0 +1,14 @@
+{
+    "displayName": "rxMomentFormats",
+    "stability": "unstable",
+    "description": "Formatting masks that are compliant with approved Date/Time formats",
+    "hasApi": false,
+    "keywords": [
+        "date",
+        "datetime",
+        "format",
+        "moment",
+        "month",
+        "time"
+    ]
+}

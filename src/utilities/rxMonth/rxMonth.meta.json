@@ -1,0 +1,13 @@
+{
+    "displayName": "rxMonth",
+    "stability": "unstable",
+    "description": "Filter to convert a date string to an accepted standard Month format",
+    "api": "utilities.filter:rxMonth",
+    "keywords": [
+        "filter",
+        "format",
+        "moment",
+        "month",
+        "rxMonth"
+    ]
+}

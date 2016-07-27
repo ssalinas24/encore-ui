@@ -1,0 +1,13 @@
+{
+    "displayName": "rxDate",
+    "stability": "unstable",
+    "description": "Filter to convert a date string to an accepted standard Date format",
+    "api": "utilities.filter:rxDate",
+    "keywords": [
+        "date",
+        "filter",
+        "format",
+        "moment",
+        "rxDate"
+    ]
+}

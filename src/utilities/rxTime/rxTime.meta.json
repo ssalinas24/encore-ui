@@ -1,0 +1,13 @@
+{
+    "displayName": "rxTime",
+    "stability": "unstable",
+    "description": "Filter to convert a date string to an accepted standard Time format",
+    "api": "utilities.filter:rxTime",
+    "keywords": [
+        "filter",
+        "format",
+        "moment",
+        "rxTime",
+        "time"
+    ]
+}
