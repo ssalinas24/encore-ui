@@ -4,6 +4,7 @@ describe('rxTags', function () {
     var standardTemplate = createTemplate({ attrs: '' });
 
     beforeEach(function () {
+        module('encore.ui.utilities');
         module('encore.ui.elements');
         module('templates/rxTags.html');
 

@@ -5,7 +5,7 @@ describe('typeahead', function () {
                    'typeahead="letter for letter in letters | filter:$viewValue:allowEmpty">';
 
     beforeEach(function () {
-        module('encore.ui.typeahead');
+        module('encore.ui.elements');
 
         inject(function ($rootScope, $filter, $compile) {
             scope = $rootScope.$new();

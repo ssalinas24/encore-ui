@@ -25,6 +25,7 @@ describe('utilities:rxAutoSave', function () {
     };
 
     beforeEach(function () {
+        module('encore.ui.utilities');
         module('encore.ui.elements');
 
         module(function ($provide) {

@@ -18,5 +18,6 @@
 angular.module('encore.ui.elements', [
     'encore.ui.utilities',
     'ngSanitize',
-    'ngAnimate'
+    'ngAnimate',
+    'ui.bootstrap'
 ]);
