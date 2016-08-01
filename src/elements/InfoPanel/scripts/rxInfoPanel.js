@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxInfoPanel')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxInfoPanel.directive:rxInfoPanel
+ * @name elements.directive:rxInfoPanel
  * @restrict E
  * @scope
  * @description
