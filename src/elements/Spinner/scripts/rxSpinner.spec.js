@@ -5,7 +5,7 @@ describe('rxSpinner', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxSpinner');
+        module('encore.ui.elements');
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {

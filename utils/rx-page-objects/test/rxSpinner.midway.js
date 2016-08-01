@@ -1,6 +1,6 @@
 describe('rxSpinner', function () {
     before(function () {
-        demoPage.go('#/components/rxSpinner');
+        demoPage.go('#/elements/Spinner');
     });
 
     it.skip('should show element', function () {

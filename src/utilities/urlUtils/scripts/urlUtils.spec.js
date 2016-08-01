@@ -10,6 +10,7 @@ describe('utilities:urlUtils', function () {
 
     beforeEach(function () {
         module('encore.ui.utilities');
+        module('encore.ui.elements');
         module('encore.ui.rxEnvironment');
         // Provide any mocks needed
         module(function ($provide) {
