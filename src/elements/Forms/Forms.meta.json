@@ -1,6 +1,6 @@
 {
     "displayName": "Forms",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Usage and examples of different Form usage patterns.",
     "hasApi": false,
     "keywords": [

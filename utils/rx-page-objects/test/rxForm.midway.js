@@ -33,7 +33,7 @@ var formPageObject = Page.create({
 
 describe('rxForm', function () {
     before(function () {
-        demoPage.go('#/components/rxForm');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('rxFieldName', function () {

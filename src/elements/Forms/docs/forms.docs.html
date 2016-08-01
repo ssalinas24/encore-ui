@@ -687,26 +687,67 @@
 </table>
 <!-- END: rxTimePicker -->
 
-<h3><rx-permalink>Form Validation</rx-permalink></h3>
-<ul class="list">
-  <li>
-    EncoreUI is built on Angular and uses ngModel directives for validation.
-    As a result, you will see custom CSS styling if an element has the
-    <code>.ng-invalid</code> and/or <code>.ng-dirty</code> classes, which are
-    dynamically added by ngModel validation logic.
-  </li>
-  <li>
-    Some components will style based on both classes being present (typical
-    use case), while others will only use <code>.ng-invalid</code>.
-  </li>
-  <li>
-    Creating an EncoreUI-specific design pattern for placement of form
-    validation messages is on our roadmap.
-  </li>
-  <li>At present, there are no styles for invalid toggle switches.</li>
-</ul>
-<rx-example name="forms.validation"></rx-example>
+<h3><rx-permalink>Simple Controls</rx-permalink></h3>
 
+<h4><rx-permalink>Text Inputs</rx-permalink></h4>
+<p>
+  Three <code>rx-field</code> elements each consume between 250px and 1/3 of the width.
+</p>
+<rx-example name="forms.simple"></rx-example>
+
+<h4><rx-permalink>Text Area</rx-permalink></h4>
+<p>
+  One <code>rx-field</code> element consumes the full width.
+</p>
+<rx-example name="forms.textarea"></rx-example>
+
+<h3><rx-permalink>Intermediate Controls</rx-permalink></h3>
+<p>
+  Two <code>rx-field</code> elements each consume between 250px and 1/2 of the width.
+</p>
+<rx-example name="forms.intermediatecontrols"></rx-example>
+
+<h4><rx-permalink>Drop-Down Selection</rx-permalink></h4>
+<p>
+  For drop-down selections, two options are available: a drop-down 
+  that only permits a single selection, or a drop-down that allows 
+  the user to make multiple selections.
+</p>
+<rx-example name="forms.dropdown"></rx-example>
+
+<h4><rx-permalink>Input Groups</rx-permalink></h4>
+<rx-example name="forms.inputgroups"></rx-example>
+
+<h3><rx-permalink>Option Tables</rx-permalink></h3>
+
+<h4><rx-permalink>Radio Option Tables</rx-permalink></h4>
+<rx-example name="forms.radioOptionTable"></rx-example>
+
+<h4><rx-permalink>Checkbox Option Tables</rx-permalink></h4>
+<rx-example name="forms.checkboxOptionTable"></rx-example>
+
+<h4><rx-permalink>Empty Option Tables</rx-permalink></h4>
+<rx-example name="forms.emptyOptionTable"></rx-example>
+
+<h3><rx-permalink>Advanced Controls</rx-permalink></h3>
+<rx-example name="forms.advancedcontrols"></rx-example>
+
+<h4><rx-permalink>Advanced Text Area</rx-permalink></h4>
+<p>
+  Text areas can utilize multiple features simultaneously. In the following 
+  example, the text area is a required field, has a character counter 
+  applied, and shows help text.
+</p>
+<rx-example name="forms.advancedtextarea"></rx-example>
+
+<h3><rx-permalink>Form Actions</rx-permalink></h3>
+<p>
+  At the end of each form, the user should be presented with a cancel button and a submit button. The 
+  submit button should appear on the left, the cancel button to the right. 
+  Submit button text should be as specific as possible to reinforce for the user 
+  what change they are about to make. For example, "Update Server" is better than a general "Submit".
+</p>
+<rx-example name="forms.formactions"></rx-example> 
 
 <h2><rx-permalink>Saving Form Data</rx-permalink></h2>
 
