@@ -15,30 +15,6 @@ The [Encore Generator](https://github.com/rackerlabs/generator-encore) is a proj
 
 If you're unable to (or prefer not to) use the Encore Generator, you need to manually create a new Angular project. Once set up, add the EncoreUI files to your page either through the CDN or Bower:
 
-#### CDN
-
-To use the CDN in your app, do the following:
-
-1. Install and include the dependencies listed in [bower.json](./bower.json) (items listed in devDependencies are not required)
-
-2. Include the EncoreUI CSS file in the `<head>` of your index.html (before the CSS for your app):
-
-    ```
-    <link rel="stylesheet" href="https://95c7050854423f809e66-6999ba0e7a4f47d417515fb3f08fa9b8.ssl.cf1.rackcdn.com/encore-ui-2.1.0.min.css">
-    ```
-
-3. Include the EncoreUI JS file (**Dependencies must be included before this line**):
-
-    ```
-    <script src="https://95c7050854423f809e66-6999ba0e7a4f47d417515fb3f08fa9b8.ssl.cf1.rackcdn.com/encore-ui-tpls-2.1.0.min.js"></script>
-    ```
-
-4. Add 'encore.ui' as a dependency in your app.js module declaration. For example:
-
-    ```
-    angular.module('myApp', ['encore.ui']);
-    ```
-
 #### Bower
 
 If you have a static server that you'd like to build your files off of, you can install EncoreUI via [Bower](http://bower.io):

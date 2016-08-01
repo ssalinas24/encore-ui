@@ -82,17 +82,6 @@ You'll need to be a member of the `encore-ui-admin` team in github to have prope
 
 For `grunt rxPageObjects`, you'll need to put the contents of the EncoreUI password safe entry for NPM in the project-local `.npmrc` file. This is located in the root of the project, and is ignored by git.
 
-#### `localConfig.js`
-Used for CDN configuration/credentials, you'll need a `localConfig.js` file in the root of your repo with the following format:
-
-```javascript
-module.export = {
-  cloudUsername: ‘encorecloudfiles’,
-  apiKey: GET_FROM_PASSWORDSAFE,
-  baseUrl: 'https://95c7050854423f809e66-6999ba0e7a4f47d417515fb3f08fa9b8.ssl.cf1.rackcdn.com'
-}
-```
-
 #### `.npmrc`
 To publish `rx-page-objects` to the public npm registry.
 
