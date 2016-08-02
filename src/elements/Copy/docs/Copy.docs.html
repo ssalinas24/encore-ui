@@ -1,0 +1,130 @@
+<rx-notification type="warning">
+  Chrome 43+ and Firefox 41+ are required to take advantage of full functionality.
+  <br />
+  <em>Other browsers and older versions may have degraded or broken functionality.</em>
+</rx-notification>
+
+<rx-notification type="info">
+  This Element is designed to copy <em>plain text</em> and will not preserve any HTML formatting.
+</rx-notification>
+
+<p>
+  Element to aid in copying plain text to the system clipboard.
+</p>
+
+<h3><rx-permalink>Simple Usage</rx-permalink></h3>
+<rx-example name="copy.simple"></rx-example>
+
+
+<h3><rx-permalink>Advanced Usage</rx-permalink></h3>
+<p>
+  You can use the <code>compact</code> property along with the optional
+  <code>.bordered</code> CSS class to apply advanced styling to the Copy
+  Element.
+</p>
+<rx-example name="copy.advanced"></rx-example>
+
+
+<h4><rx-permalink>Table Usage</rx-permalink></h4>
+<ul class="list">
+  <li>
+    Use the <code>.rxCopyTable</code> CSS class on your table to use the Copy
+    Element within table cells. Without this, your table may grow wider than
+    expected.
+  </li>
+  <li>
+    <strong>NOTE:</strong> The <code>.rxCopyTable</code> will apply a fixed
+    table layout to your table, so there is a high liklihood that you will
+    see a change to your column widths after it is applied.
+  </li>
+</ul>
+<rx-example name="copy.tables"></rx-example>
+
+<h4>Test Clipboard</h4>
+<div rx-form>
+  <rx-form-section controlled-width>
+    <rx-field>
+      <rx-field-content>
+        <rx-input>
+          <textarea rows="10" id="test-textarea"></textarea>
+        </rx-input>
+      </rx-field-content>
+    </rx-field>
+  </rx-form-section>
+</div>
+
+<section class="rxCopy-visual-regression" layout="column" layout-padding>
+  <h4>rxCopy Visual Styles</h4>
+  <section>
+    <div>
+      <h5>Short Text</h5>
+      <rx-copy>Fully Visible</rx-copy>
+    </div>
+    <div>
+      <h5>Long Text (Compact)</h5>
+      <rx-copy compact>Compact without borders, yada yada yada</rx-copy>
+    </div>
+    <div>
+      <h5>Long Text (Compact, Bordered)</h5>
+      <rx-copy compact class="bordered">
+        Compact with borders, yada yada yada hiss boom bah
+      </rx-copy>
+    </div>
+  </section>
+
+  <h5>Basic Table</h5>
+  <section>
+    <table>
+      <colgroup>
+        <col width="200"/>
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Too Large for Cell</th>
+          <th>Fully Visible</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <rx-copy>
+              Too large for cell width, this should wrap across multiple lines.
+            </rx-copy>
+          </td>
+          <td>
+            <rx-copy>Fully Visible</rx-copy>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <h5>Using <code>.rxCopyTable</code></h5>
+  <section>
+    <table class="rxCopyTable">
+      <colgroup>
+        <col width="200"/>
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Too Large for Cell</th>
+          <th>Fully Visible</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <rx-copy>
+              Too large for cell width, this should overflow.
+            </rx-copy>
+          </td>
+          <td>
+            <rx-copy>Fully Visible</rx-copy>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

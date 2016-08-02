@@ -1,0 +1,16 @@
+<div class="rxCopy__wrapper">
+  <span class="rxCopy__text">{{trimmedContent}}</span>
+
+  <div class="rxCopy__action rxCopy__action--{{copyState}}"
+    ng-click="copyText()"
+    ng-switch="copyState"
+    tooltip-class="rxCopy__tooltip"
+    tooltip-html="tooltip"
+    tooltip-placement="left"
+    tooltip-popup-delay="250">
+
+    <i class="fa fa-fw fa-clipboard" ng-switch-when="waiting"></i>
+    <i class="fa fa-fw fa-check" ng-switch-when="success"></i>
+    <i class="fa fa-fw fa-times" ng-switch-when="fail"></i>
+  </div>
+</div>

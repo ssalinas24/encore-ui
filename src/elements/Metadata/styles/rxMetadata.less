@@ -2,6 +2,8 @@
  * rxMetadata
  */
 rx-metadata {
+  @max-section-width: 300px;
+
   box-sizing: border-box;
   padding: 0;
   margin: @rxMetadata-gutter 0;
@@ -37,10 +39,15 @@ rx-metadata {
     display: block;
     padding: 0;
     margin: 0 @rxMetadata-gutter 0 0;
-    flex: 0 0 300px; // no grow, no shrink, always 300px wide;
+    flex: 0 0 @max-section-width; // no grow, no shrink, always 300px wide;
 
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  // Ensure rx-copy doesn't break out of column boundary
+  rx-copy {
+    max-width: @max-section-width;
   }
 }

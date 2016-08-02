@@ -1,4 +1,5 @@
 var Page = require('astrolabe').Page;
+var Tooltip = require('./tooltip.page').Tooltip;
 
 var classNameToStatus = function (iconClassName) {
     iconClassName = iconClassName.replace(/fa fa-lg/, '').trim();
@@ -57,7 +58,6 @@ var classNameToStatus = function (iconClassName) {
  * });
  */
 var rxStatusColumn = {
-
     /**
      * @todo Rename this to just `type`, or make it a function `byType()`.
      * @instance
@@ -140,73 +140,15 @@ var rxStatusColumn = {
     /**
      * @instance
      * @description Will appear on hover. Exposes the functions contained within {@link rxStatusColumn.tooltip}.
-     * @type {rxStatusColumn.tooltip}
+     * @type {Tooltip}
      */
     tooltip: {
         get: function () {
             var cellElement = this.rootElement;
-            /**
-             * @namespace rxStatusColumn.tooltip
-             * @see rxStatusColumn
-             */
-            return Page.create({
-                rootElement: {
-                    get: function () {
-                        return cellElement.$('.tooltip-inner');
-                    }
-                },
-
-                /**
-                 * @instance
-                 * @function
-                 * @memberof rxStatusColumn.tooltip
-                 * @description Hovers over the current row's status column and
-                 * returns whether or not a tooltip appears.
-                 * @example
-                 * it('should have a tooltip for the second row', function () {
-                 *     expect(myTable.row(1).status.tooltip.isPresent()).to.eventually.be.true;
-                 * });
-                 * @returns {Promise<Boolean>}
-                 */
-                isPresent: {
-                    value: function () {
-                        browser.actions().mouseMove(cellElement.$('i')).perform();
-                        return this.rootElement.isPresent();
-                    }
-                },
-
-                /**
-                 * @function
-                 * @description Warning: This property is known to be unstable in many Selenium end to end
-                 * test runs in EncoreUI. Returns the tooltip text. Will automatically hover over the tooltip
-                 * for you to retrieve the text. If there is no tooltip present on hover, returns `null`.
-                 * @instance
-                 * @memberof rxStatusColumn.tooltip
-                 * @example
-                 * it('should have the correct tooltip text for the second row', function () {
-                 *     expect(myTable.row(1).status.tooltip.getText()).to.eventually.equal('DELETED');
-                 * });
-                 * @returns {Promise<String|null>}
-                 */
-                getText: {
-                    value: function () {
-                        var tooltip = this;
-                        return this.isPresent().then(function (isPresent) {
-                            if (isPresent) {
-                                // Tooltips, when left open, can obscure other hover/click
-                                // events on the page. Avoid this by getting the text, stop
-                                // hovering, then return the text value back to the user.
-                                return tooltip.rootElement.getText().then(function (text) {
-                                    browser.actions().mouseMove($('body')).perform();
-                                    return text;
-                                });
-                            }
-                            return null;
-                        });
-                    }
-                }
-
-            });
+            // Hover over cell element to trigger tooltip addition to DOM
+            browser.actions().mouseMove(cellElement.$('i')).perform();
+            // Create a new Tooltip with new DOM element as rootElement
+            return new Tooltip(cellElement.$('.tooltip'));
         }
     }
 
