@@ -7,7 +7,7 @@ describe('rxInfoPanel', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxInfoPanel');
+        module('encore.ui.elements');
 
         // load templates
         module('templates/rxInfoPanel.html');

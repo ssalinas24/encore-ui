@@ -1,0 +1,11 @@
+{
+    "displayName": "Info Panel",
+    "stability": "stable",
+    "description": "This is a generic info panel for use at the top of pages",
+    "api": "directive:rxInfoPanel",
+    "keywords": [
+    	"info",
+    	"panel",
+    	"rxInfoPanel"
+    ]
+}
