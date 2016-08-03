@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxSelectFilter')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxSelectFilter.directive:rxSelectFilter
+ * @name elements.directive:rxSelectFilter
  * @restrict E
  * @scope
  * @description

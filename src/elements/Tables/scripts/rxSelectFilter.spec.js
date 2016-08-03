@@ -2,7 +2,7 @@ describe('rxSelectFilter', function () {
     var scope, compile, template;
 
     beforeEach(function () {
-        module('encore.ui.rxSelectFilter');
+        module('encore.ui.elements');
         module('encore.ui.rxForm');
         module('templates/rxSelectFilter.html');
         module('templates/rxFieldName.html');
