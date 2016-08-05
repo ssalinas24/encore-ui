@@ -1,5 +1,4 @@
-<!-- Sample HTML goes here as a live example of how to the component can be used -->
-<div ng-controller="rxNotifyCtrl">
+<div ng-controller="notificationsStackCtrl">
   <div layout="row">
     <div rx-form flex>
       <rx-form-section>
@@ -75,20 +74,6 @@
           <button class="button" ng-click="add('custom')">Add to Custom Stack</button>
         </div>
       </rx-form-section>
-
-      <rx-form-section>
-        <div>
-          <h3>rxPromiseNotifications</h3>
-          <p>Please see <a href="#/utilities/rxPromiseNotifications">rxPromiseNotifications</a> demo.</p>
-        </div>
-      </rx-form-section>
-
-      <rx-form-section>
-        <div>
-          <h3>Simulated Route Changes</h3>
-          <button class="button" ng-click="routeChange()">Simulate Route Change</button>
-        </div>
-      </rx-form-section>
     </div>
 
     <div flex layout="column" layout-align="top stretch">
@@ -103,28 +88,4 @@
       </div>
     </div>
   </div>
-
-  <hr />
-
-  <h2>Using rxNotification</h2>
-  <rx-notification type="error">Hello, world! <a href="#">This is a link.</a></rx-notification>
-  <rx-notification type="warning">Hello, world! <a href="#">This is a link.</a></rx-notification>
-  <rx-notification type="info">Hello, world! <a href="#">This is a link.</a></rx-notification>
-  <rx-notification type="success">Hello, world! <a href="#">This is a link.</a></rx-notification>
-
-  <h3>Using rxNotification with custom stack</h3>
-  <div layout="row">
-    <div flex>
-      <h4>Demo Stack (demo-stack)</h4>
-      <rx-notifications stack="demo-stack"></rx-notifications>
-    </div>
-
-    <div flex>
-      <h4>Custom Stack (custom-stack)</h4>
-      <rx-notifications stack="custom-stack"></rx-notifications>
-    </div>
-  </div>
-
-  <rx-notification stack="demo-stack" type="info">Hello, world in demo-stack stack!</rx-notification>
-  <rx-notification stack="custom-stack" type="warning">Hello, world in custom-stack stack!</rx-notification>
 </div>

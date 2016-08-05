@@ -16,5 +16,7 @@
  * * {@link elements.directive:rxTimePicker rxTimePicker}
  */
 angular.module('encore.ui.elements', [
-    'encore.ui.utilities'
+    'encore.ui.utilities',
+    'ngSanitize',
+    'ngAnimate'
 ]);
