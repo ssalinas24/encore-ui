@@ -89,6 +89,18 @@ var rxActionMenu = {
     /**
      * @function
      * @instance
+     * @description Whether or not the action menu is present on the DOM.
+     * @return {Promise<Boolean>}
+     */
+    isPresent: {
+        value: function () {
+            return this.rootElement.isPresent();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
      * @description Whether or not the action cog is showing its underlying menu.
      * @returns {Promise<Boolean>}
      */
