@@ -25,6 +25,10 @@ describe('rxActionMenu', function () {
         customActions = encore.rxActionMenu.initialize($('rx-action-menu#custom'), customActionMenuItem);
     });
 
+    it('should be visible', function () {
+        expect(globalDismiss.isPresent()).to.eventually.be.true;
+    });
+
     it('should be collapsed by default', function () {
         expect(globalDismiss.isExpanded()).to.eventually.be.false;
     });
