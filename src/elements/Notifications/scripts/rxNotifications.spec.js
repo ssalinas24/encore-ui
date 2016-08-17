@@ -1,4 +1,4 @@
-describe('rxNotify', function () {
+describe('rxNotifications', function () {
     var scope, compile, el, notifySvc, interval;
     var validTemplate = '<rx-notifications></rx-notifications>';
     var messageText1 = 'My Message 1';
@@ -7,7 +7,9 @@ describe('rxNotify', function () {
 
     beforeEach(function () {
 
+        module('encore.ui.utilities');
         module('encore.ui.elements');
+        module('ngSanitize');
         module('templates/rxNotifications.html');
         module('templates/rxNotification.html');
 

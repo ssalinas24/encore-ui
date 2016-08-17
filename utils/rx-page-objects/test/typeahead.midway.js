@@ -2,7 +2,7 @@ describe('typeahead', function () {
     var typeahead;
 
     before(function () {
-        demoPage.go('#/components/typeahead');
+        demoPage.go('#/elements/typeahead');
         typeahead = encore.typeahead.initialize($('#typeahead'));
     });
 
