@@ -8,7 +8,7 @@ angular.module('encore.ui.elements')
  * Automatically creates the appropriate dropdowns to manage a filter object.
  *
  * **NOTE:** `rxSelectFilter` directive must be instaniated as a child of
- * {@link rxForm.directive:rxFormSection rxFormSection} directive.  The {@link rxForm} component
+ * {@link elements.directive:rxFormSection rxFormSection} directive.  The {@link elements} component
  * hierarchy validation enforces this relationship.
  *
  * ## rxSelectFilter

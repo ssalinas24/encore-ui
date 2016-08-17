@@ -3,7 +3,6 @@ describe('rxSelectFilter', function () {
 
     beforeEach(function () {
         module('encore.ui.elements');
-        module('encore.ui.rxForm');
         module('templates/rxSelectFilter.html');
         module('templates/rxFieldName.html');
 
