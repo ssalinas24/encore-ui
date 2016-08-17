@@ -16,7 +16,7 @@ describe('rxModalAction', function () {
 
     beforeEach(function () {
         // Load the directive's module
-        module('encore.ui.rxModalAction');
+        module('encore.ui.elements');
         module('encore.ui.utilities');
 
         // load the template

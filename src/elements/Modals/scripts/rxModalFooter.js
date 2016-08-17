@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxModalAction')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxModalAction.directive:rxModalFooter
+ * @name elements.directive:rxModalFooter
  * @restrict E
  * @scope
  * @description
@@ -17,7 +17,7 @@ angular.module('encore.ui.rxModalAction')
  *
  * The modal's controller also inherits the `setState()` method on the scope,
  * which should be used to toggle different views or footers. See the
- * *Multi-View Example* in the component {@link /encore-ui/#/components/rxModalAction demo}
+ * *Multi-View Example* in the element {@link /encore-ui/#/elements/Modals demo}
  * for an example of this design pattern's usage.
  *
  * The default `editing` state shows the standard submit and cancel buttons,

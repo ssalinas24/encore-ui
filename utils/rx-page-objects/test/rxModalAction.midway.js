@@ -26,7 +26,7 @@ describe('rxModalAction', function () {
     };
 
     before(function () {
-        demoPage.go('#/components/rxModalAction');
+        demoPage.go('#/elements/Modals');
         triggerModal = function () {
             encore.rxMisc.slowClick($('#modChangePassword .modal-link'));
         };

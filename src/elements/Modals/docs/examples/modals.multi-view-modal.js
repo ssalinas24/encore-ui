@@ -1,25 +1,5 @@
 angular.module('demoApp')
-.controller('rxModalActionCtrl', function ($scope, rxNotify) {
-    $scope.password = 'guest';
-
-    $scope.populate = function (modalScope) {
-        modalScope.user = 'hey_dude';
-    };
-
-    $scope.changePass = function (fields) {
-        $scope.password = fields.password;
-        rxNotify.add('Password Updated!', {
-            type: 'success'
-        });
-    };
-
-    $scope.notifyDismissal = function () {
-        rxNotify.add('Password Unchanged', {
-            type: 'info'
-        });
-    };
-})
-.controller('rxModalStateCtrl', function ($scope, $modalInstance, $timeout, rxNotify) {
+.controller('rxModalMultiViewCtrl', function ($scope, $modalInstance, $timeout, rxNotify) {
     var complete = function () {
         $scope.loaded = true;
         $scope.setState('complete');

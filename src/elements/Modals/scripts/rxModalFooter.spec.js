@@ -4,7 +4,7 @@ describe('rxModalFooter', function () {
     var footerHtml = '<rx-modal-footer state="testState">foo</rx-modal-footer>';
 
     beforeEach(function () {
-        module('encore.ui.rxModalAction');
+        module('encore.ui.elements');
 
         module(function ($provide) {
             addFooter = sinon.stub();
