@@ -67,9 +67,14 @@ angular.module('encore.ui.rxApp')
                 scope.routes = appRoutes.fetchRoutes();
             }
 
-            appRoutes.getAll().then(function (routes) {
-                scope.routes = routes;
-            });
+            var setRoutes = function () {
+                appRoutes.getAll().then(function (routes) {
+                    scope.routes = routes;
+                });
+            };
+
+            scope.$evalAsync(setRoutes);
+            scope.$on('rxUpdateNavRoutes', setRoutes);
 
             // default hideFeedback to false
             scope.hideFeedback = scope.hideFeedback ? true : false;
