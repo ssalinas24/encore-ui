@@ -524,5 +524,84 @@ describe('encore.ui.rxApp', function () {
                     .to.contain('You are using a pre-production environment that has real, live production data!');
             });
         });
+
+        describe('updateRoutes', function () {
+            var encoreRoutes, encoreRoutesSpy, rootScope,
+                compile, httpMock, encoreRoutes, cdnGet, scope;
+
+            var standardTemplate = '<rx-app></rx-app>';
+
+            var localNav = [{
+                title: 'Local Nav',
+                children: [
+                    {
+                        'href': '/local',
+                        'linkText': 'Local Nav test',
+                        'key': 'localNav',
+                        'directive': 'localNav'
+                    }
+                ]
+            }];
+
+            beforeEach(function () {
+
+                var customURL = 'foo.json';
+
+                // load module
+                module('encore.ui.utilities');
+                module('encore.ui.elements');
+
+                // load templates
+                module('templates/rxApp.html');
+                module('templates/rxAppNav.html');
+                module('templates/rxAppNavItem.html');
+
+                // Initialize a fake module to get at its config block
+                // when running against local
+                angular.module('testApp', function () {})
+                    .config(function (routesCdnPathProvider) {
+                        routesCdnPathProvider.customURL = customURL;
+                    });
+                module('encore.ui.rxApp', 'testApp');
+
+                // Inject in angular constructs
+                inject(function ($rootScope, $compile, $httpBackend, _encoreRoutes_) {
+                    rootScope = $rootScope;
+                    compile = $compile;
+                    httpMock = $httpBackend;
+                    encoreRoutes = _encoreRoutes_;
+
+                    encoreRoutesSpy = sinon.spy(encoreRoutes, 'getAll');
+                });
+
+                cdnGet = httpMock.whenGET(customURL);
+                cdnGet.respond(localNav);
+
+                scope = rootScope.$new();
+
+                helpers.createDirective(standardTemplate, compile, scope);
+            });
+
+            it('should load routes', function () {
+                // get the nav data from the URL pointed to by .customURL
+                httpMock.flush();
+
+                expect(encoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
+            });
+
+            it('should update routes', function () {
+                // get the nav data from the URL pointed to by .customURL
+                httpMock.flush();
+
+                expect(encoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
+
+                rootScope.$broadcast('rxUpdateNavRoutes');
+                rootScope.$digest();
+
+                expect(encoreRoutesSpy.calledTwice, 'getAll called on update event').to.be.true;
+            });
+
+        });
     });
+
 });
