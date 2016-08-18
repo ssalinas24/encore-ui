@@ -1,6 +1,6 @@
 module.exports = {
     options: {
-        banner: '<%= config.meta.banner %>',
+        banner: '<%= config.banner %>',
         except: ['angular'],
         sourceMap: true
     },

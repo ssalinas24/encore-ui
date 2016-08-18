@@ -1,16 +1,20 @@
 module.exports = {
+    // Both dist and distTpls will contain the same content, to retain
+    // backward compatibility
     dist: {
         options: {
-            banner: '<%= config.meta.banner %><%= config.meta.modules %>\n'
+            banner: '<%= config.banner %>\n',
+            process: true
         },
-        src: [], //src filled in by build task
+        src: [], //src filled in by 'modules' task
         dest: '<%= config.dir.dist %>/<%= config.dist.fileName %>.js'
     },
-    distTpls: {
+    distTpls: { // TODO: Remove in 3.0.0
         options: {
-            banner: '<%= config.meta.banner %><%= config.meta.all %>\n<%= config.meta.tplmodules %>\n'
+            banner: '<%= config.banner %>\n',
+            process: true
         },
-        src: [], //src filled in by build task
+        src: [], //src filled in by 'modules' task
         dest: '<%= config.dir.dist %>/<%= config.dist.fileNameTpl %>.js'
     },
     tmpDemosLess: {

@@ -1,6 +1,6 @@
 module.exports = {
     options: {
-        banner: '<%= config.meta.banner %>'
+        banner: '<%= config.banner %>'
     },
     dist: {
         src: ['<%= config.dir.dist %>/<%= config.dist.fileName %>.js'],

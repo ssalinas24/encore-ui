@@ -47,7 +47,7 @@ module.exports = {
         options: {
             files: files.concat([
                 'src/**/*.spec.js',
-                '<%= config.dir.dist %>/<%= config.dist.fileNameTpl %>.min.js'
+                '<%= config.dir.dist %>/<%= config.dist.fileName %>.min.js'
             ])
         },
         singleRun: true,
