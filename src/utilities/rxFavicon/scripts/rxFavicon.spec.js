@@ -7,8 +7,8 @@ describe('utilities:rxFavicon', function () {
         local: 'local.png'
     };
 
-    var baseTemplate = _.template('<link rel="icon" type="image/png" href="<%= prod %>"' +
-        ' rx-favicon="{ staging: \'<%= staging %>\', local: \'<%= local %>\' }" />');
+    var baseTemplate = _.template('<link rel="icon" type="image/png" href="${prod}"' +
+        ' rx-favicon="{ staging: \'${staging}\', local: \'${local}\' }" />');
 
     var allTemplate = baseTemplate(paths);
 

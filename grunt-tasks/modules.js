@@ -131,18 +131,21 @@ module.exports = function (grunt) {
 
         // Set the concat task to concatenate the given src modules
         var srcFiles = _.pluck(modules, 'srcFiles'); // OK
+        var tplJsFiles = _.pluck(modules, 'tplJsFiles'); // OK
 
         srcFiles = [
+            'grunt-tasks/templates/encore-ui.ejs.js',
             // Prepend override files in order to achieve custom functionality outside of the encore ecosystem
             'src/domainOverride.js',
             // Prepend ngBootstrap overrides to suppress v0.14.3 deprecation warnings
             'src/ngBootstrapOverrides.js'
-        ].concat(srcFiles);
+        ].concat(srcFiles).concat(tplJsFiles);
 
         grunt.config('concat.dist.src', grunt.config('concat.dist.src').concat(srcFiles));
 
-        // Set the concat-with-templates task to concat the given src & tpl modules
-        var tplJsFiles = _.pluck(modules, 'tplJsFiles'); // OK
-        grunt.config('concat.distTpls.src', grunt.config('concat.distTpls.src').concat(srcFiles).concat(tplJsFiles));
+        // TODO: remove in 3.0.0
+        // Both dist.src and distTpls.src should be the same to retain
+        // backward compatibility
+        grunt.config('concat.distTpls.src', grunt.config('concat.dist.src'));
     });
 };

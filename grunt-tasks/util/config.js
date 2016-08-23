@@ -1,3 +1,11 @@
+var _banner = `/*
+ * <%= pkg.name %>
+ * <%= pkg.homepage %>
+ *
+ * Version: <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>
+ * License: <%= pkg.license %>
+ */`;
+
 module.exports = {
     dir: {
         app: 'src',
@@ -18,26 +26,9 @@ module.exports = {
         port: 9001
     },
     latestTag: '', // filled in by shipit task
-    moduleName: 'encore.ui',
     modules: [], // filled in by modules task
     examples: {}, // filled in by examples task
-    dependencies: ['cfp.hotkeys', 'ui.bootstrap'],
-    meta: {
-        modules: 'angular.module(\'<%= config.moduleName %>\', [<%= config.srcModules %>, ' +
-            '\'<%= config.dependencies.join("\',\'") %>\']);',
-        tplmodules: 'angular.module(\'<%= config.moduleName %>.tpls\', [<%= config.tplModules %>]);',
-        all: 'angular.module(\'<%= config.moduleName %>\', ' +
-            '[\'<%= config.moduleName %>.tpls\', <%= config.srcModules %>, ' +
-            '\'<%= config.dependencies.join("\',\'") %>\']);',
-        banner: [
-            '/*',
-            ' * <%= pkg.name %>',
-            ' * <%= pkg.homepage %>\n',
-            ' * Version: <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
-            ' * License: <%= pkg.license %>',
-            ' */\n'
-        ].join('\n')
-    },
+    banner: _banner,
     css: {
         demoApp: 'css/demoApp.css',
         demos: 'css/demos.css',

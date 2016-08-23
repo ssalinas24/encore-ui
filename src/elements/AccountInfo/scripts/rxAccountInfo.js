@@ -4,6 +4,7 @@ angular.module('encore.ui.elements')
  * @name elements.directive:rxAccountInfo
  * @restrict E
  * @scope
+ * @requires $interpolate
  * @description
  * This element is used to draw an account info box at the top of each page,
  * directly underneath the breadcrumbs. `rxPage` (through `rxApp`) integrates it
@@ -33,7 +34,7 @@ angular.module('encore.ui.elements')
  * @param {String=} accountInfoBanner - Set to "true" to use the new under-the-breadcrumbs style
  */
 .directive('rxAccountInfo', function (Teams, SupportAccount, Encore, rxNotify, encoreRoutes,
-                                    AccountStatusGroup) {
+    AccountStatusGroup, $interpolate) {
     return {
         templateUrl: function (elem, attr) {
             if (attr.accountInfoBanner === 'true') {
@@ -62,7 +63,7 @@ angular.module('encore.ui.elements')
                 scope.showCurrentUser = isCloud;
             });
 
-            scope.accountPageUrl = _.template('/accounts/<%= accountNumber %>', scope);
+            scope.accountPageUrl = $interpolate('/accounts/{{accountNumber}}')(scope);
 
             SupportAccount.getBadges({ accountNumber: scope.accountNumber }, function (badges) {
                 scope.badges = scope.badges.concat(badges);

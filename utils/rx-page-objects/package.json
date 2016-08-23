@@ -4,7 +4,7 @@
   "description": "Midway test page objects for all of the Encore UI components",
   "version": "2.2.0-0",
   "main": "index.js",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "postinstall": ""
   },
