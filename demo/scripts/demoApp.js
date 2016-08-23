@@ -69,12 +69,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 { name: 'Form Page' }
             ])
         })
-        .when('/layout/wells', {
-            templateUrl: 'templates/layout/wells.html',
-            controller: genericRouteController([
-                { name: 'Wells' }
-            ])
-        })
 
         /* Style Pages */
         .when('/styles/color', {
@@ -299,10 +293,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                                     href: '#/layout/page/form'
                                 }
                             ]
-                        },
-                        {
-                            linkText: 'Wells',
-                            href: '#/layout/wells'
                         }
                     ]
                 },
