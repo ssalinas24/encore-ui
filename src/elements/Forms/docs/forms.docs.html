@@ -5,24 +5,12 @@
     and positioning. However, there are some that are for stylistic
     purposes.
   </li>
-  <li>
-    See
-    <a href="ngdocs/index.html#/api/rxForm">rxForm API Documentation</a>
-    for a more comprehensive list of available directives.
-  </li>
 </ul>
 
-<h3><rx-permalink>Labels and Inputs</rx-permalink></h3>
+<h3><rx-permalink>Label</rx-permalink></h3>
 <ul class="list">
   <li>
-    You should remember that the rxFieldName isn't an HTML label element.
-    <ul>
-      <li>
-        rxFieldName is a descriptive design element for a particular
-        form field.
-      </li>
-      <li>An HTML label is used for accessibility.</li>
-    </ul>
+    An HTML label is used for accessibility.
   </li>
   <li>
     You should use the <code>&lt;label for="formControlId"&gt;</code>
@@ -34,44 +22,52 @@
         is placed in the DOM, it will focus or activate its
         corresponding form control.
       </li>
+    </ul>
+  </li>
+  <li>
+    Inline HTML label elements should only be used with radios,
+    checkboxes, and toggle switches.
+    <ul>
       <li>
-        <strong class="msg-warn">
-          DO NOT wrap the control within a label element.
-        </strong>
+        Place the label
+        <strong>immediately after the form control</strong>.
         <ul>
           <li>
-            CSS does not have proper selectors to style label text based
-            on control state
+            This enables you to style the label based on the state
+            of the control.
           </li>
-        </ul>
-      </li>
-      <li>
-        You should place an HTML label around text in an appropriate
-        rxFieldName element.
-      </li>
-      <li>
-        Inline HTML label elements should only be used with radios,
-        checkboxes, and toggle switches.
-        <ul>
           <li>
-            Place the label
-            <strong>immediately after the form control</strong>.
-            <ul>
-              <li>
-                This enables you to style the label based on the state
-                of the control.
-              </li>
-              <li>
-                See <a href="#/elements/Forms#checkboxes">checkboxes</a>,
-                <a href="#/components/rxRadio">rxRadio</a>,
-                and <a href="#/components/rxForm">rxForm</a> for markup
-                examples.
-              </li>
-            </ul>
+            See <a href="#/elements/Forms#checkboxes">checkboxes</a>,
+            <a href="#/components/rxRadio">rxRadio</a>,
+            and <a href="#/elements/Forms">rxForm</a> for markup
+            examples.
           </li>
         </ul>
       </li>
     </ul>
+  </li>
+  <li>
+    <strong class="msg-warn">
+      DO NOT wrap the control within a label element.
+    </strong>
+    <ul>
+      <li>
+        CSS does not have proper selectors to style label text based
+        on control state
+      </li>
+    </ul>
+  </li>
+  <li>
+    You should place an HTML label around text in an appropriate
+    rxFieldName element.
+  </li>
+</ul>
+
+<h3><rx-permalink>Inputs</rx-permalink></h3>
+<ul class="list">
+  <li>
+    rxFieldName is a descriptive design element for a particular
+    form field.      
   </li>
   <li>
     In contrast to its predecessor (rxFormItem), rxField and children
@@ -79,7 +75,7 @@
     use of one or more controls.
     <ul>
       <li>See "Advanced Controls" in
-        <a href="#/components/rxForm">rxForm</a> demo for examples.
+        <a href="#/elements/Forms">rxForm</a> demo for examples.
       </li>
     </ul>
   </li>
@@ -104,7 +100,7 @@
 <ul class="list">
   <li>
     Help text should make use of the
-    <a href="ngdocs/index.html#/api/rxForm.directive:rxHelpText">
+    <a href="ngdocs/index.html#/api/elements.directive:rxHelpText">
       rxHelpText
     </a> directive.
   </li>
