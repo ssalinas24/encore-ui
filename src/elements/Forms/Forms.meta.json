@@ -29,6 +29,7 @@
         "rxFormSection",
         "rxInfix",
         "rxPrefix",
+        "rxRadio",
         "rxSuffix",
         "rxTimePicker",
         "select",

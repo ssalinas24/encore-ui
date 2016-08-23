@@ -3,7 +3,7 @@ describe('rxRadio', function () {
     var parent;
 
     beforeEach(function () {
-        module('encore.ui.rxRadio');
+        module('encore.ui.elements');
 
         inject(function ($rootScope, $compile) {
             scope = $rootScope.$new();
