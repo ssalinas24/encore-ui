@@ -181,6 +181,28 @@ angular.module('encore.ui.rxApp')
                 }
                 // otherwise, let the default nav do it's thing
             };
+
+            $scope.navigateToApp = function (ev, url) {
+                // We want to control what the click to the <a> tag does
+                // If it is Origin prevent the default click action
+                // otherwise handle the click as normal (implied by the lack of else block)
+                if ($injector.has('oriLocationService')) {
+                    var oriLocationService = $injector.get('oriLocationService');
+                    var currentIframeUrl = oriLocationService.getCanvasURL();
+                    var finalUrl = $scope.getUrl(url);
+
+                    ev.preventDefault();
+                    // Only change the iFrame if the urls are different
+                    if (!_.isEmpty(finalUrl) && currentIframeUrl !== finalUrl) {
+                        oriLocationService.setCanvasURL(finalUrl);
+                    }
+                }
+            };
+
+            $scope.navClickHandler = function (clickEvent, item) {
+                $scope.toggleNav(clickEvent, item.href);
+                $scope.navigateToApp(clickEvent, item.url);
+            }
         }
     };
 });
