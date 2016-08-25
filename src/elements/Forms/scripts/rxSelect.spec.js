@@ -3,7 +3,7 @@ describe('rxSelect', function () {
     var parent;
 
     beforeEach(function () {
-        module('encore.ui.rxSelect');
+        module('encore.ui.elements');
 
         inject(function ($rootScope, $compile) {
             scope = $rootScope.$new();

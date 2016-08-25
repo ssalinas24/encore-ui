@@ -2,7 +2,7 @@ describe('rxSelect', function () {
     var subject;
 
     before(function () {
-        demoPage.go('#/components/rxSelect');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('(State) Valid Enabled', encore.exercise.rxSelect({
@@ -55,21 +55,21 @@ describe('rxSelect', function () {
 
     describe('plain HTML select elements', function () {
         describe('Enabled Default Starting Value', encore.exercise.rxSelect({
-            instance: encore.rxSelect.initialize($('#plainHtmlNormal')),
+            instance: encore.rxSelect.initialize($('#plainSelNormal')),
             disabled: false,
             valid: false,
             selectedText: 'Plain HTML Select Option'
         }));
 
         describe('Disabled', encore.exercise.rxSelect({
-            instance: encore.rxSelect.initialize($('#plainHtmlDisabled')),
+            instance: encore.rxSelect.initialize($('#plainSelDisabled')),
             disabled: true,
             valid: false,
             selectedText: 'Disabled HTML Select Option'
         }));
 
         describe('Valid Enabled Non-Default Starting Value', encore.exercise.rxSelect({
-            instance: encore.rxSelect.initialize($('#plainHtmlSecondSelected')),
+            instance: encore.rxSelect.initialize($('#plainSelSecondSelected')),
             disabled: false,
             valid: true,
             selectedText: 'Non Default Starting Option'

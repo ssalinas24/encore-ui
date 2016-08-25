@@ -1,7 +1,5 @@
 angular.module('demoApp')
 .controller('rxSelectCtrl', function ($scope) {
-    $scope.radCreateDestroy = 'destroyed';
-
     $scope.validEnabled = 3;
     $scope.validNgDisabled = 'na';
     $scope.validDisabled = 'na';

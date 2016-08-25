@@ -132,17 +132,156 @@
   </li>
 </ul>
 
-<h3><rx-permalink>Selects</rx-permalink></h3>
+<h3>
+  <rx-permalink>Selects</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxSelect/">View API</a>
+</h3>
+
 <ul class="list">
-  <li>For single item selection, use the
-    <a href="#/components/rxSelect">rxSelect</a> component.
-  </li>
+  <li>For single item selection, use the rxSelect directive.</li>
   <li>
     For multi-item selection, use the rxMultiSelect element defined in
     the <a href="#/components/rxMultiSelect">rxMultiSelect</a>
     component.
   </li>
 </ul>
+
+<h3>With Validation</h3>
+<rx-example name="rxSelect.simple"></rx-example>
+
+<h3>Show/Hide Select</h3>
+<rx-example name="rxSelect.showHide"></rx-example>
+
+<h3>Destroy Select</h3>
+<p>Support for <code>$destroy</code> events.</p>
+<rx-example name="rxSelect.destroy"></rx-example>
+
+<h3>Select States</h3>
+<table ng-controller="rxSelectCtrl">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Enabled</th>
+      <th>Disabled (ng-disabled)</th>
+      <th>Disabled (disabled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Valid -->
+    <tr>
+      <th>Valid</th>
+      <!-- Valid Enabled -->
+      <td>
+        <select rx-select
+          id="selValidEnabled"
+          ng-model="validEnabled">
+          <option value="1">First</option>
+          <option value="2">Second</option>
+          <option value="3">Third</option>
+          <option value="4">Fourth</option>
+        </select>
+      </td>
+      <!-- Valid Ng-Disabled -->
+      <td>
+        <select rx-select
+          id="selValidNgDisabled"
+          ng-model="validNgDisabled"
+          ng-disabled="true">
+          <option value="na">Disabled by 'ng-disabled' attribute</option>
+        </select>
+      </td>
+      <!-- Valid Disabled -->
+      <td>
+        <select rx-select
+          id="selValidDisabled"
+          disabled
+          ng-model="validDisabled">
+          <option value="na">Disabled by 'disabled' attribute</option>
+        </select>
+      </td>
+    </tr>
+    <!-- Invalid -->
+    <tr>
+      <th>Invalid</th>
+      <!-- Invalid Enabled -->
+      <td>
+        <select rx-select
+          id="selInvalidEnabled"
+          always-invalid
+          ng-model="invalidEnabled">
+          <option value="1">First</option>
+          <option value="2">Second</option>
+          <option value="3">Third</option>
+          <option value="4">Fourth</option>
+        </select>
+      </td>
+      <!-- Invalid Ng-Disabled -->
+      <td>
+        <select rx-select
+          id="selInvalidNgDisabled"
+          always-invalid
+          ng-model="invalidNgDisabled"
+          ng-disabled="true">
+          <option value="na">Disabled by 'ng-disabled' attribute</option>
+        </select>
+      </td>
+      <!-- Invalid Disabled -->
+      <td>
+        <select rx-select
+          id="selInvalidDisabled"
+          disabled
+          always-invalid
+          ng-model="invalidDisabled">
+          <option value="na">Disabled by 'disabled' attribute</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<rx-debug>
+  <h3>Plain HTML Select Boxes (for comparison)</h3>
+  <p>
+    <select id="plainSelNormal" ng-required="true">
+      <option value="">Plain HTML Select Option</option>
+      <option value="first">First Option</option>
+      <option value="second">Second Option</option>
+      <option value="third">Third Option</option>
+      <option value="fourth">Fourth Option</option>
+    </select>
+  </p>
+  <p>
+    <select id="plainSelDisabled" disabled>
+      <option value="">Disabled HTML Select Option</option>
+      <option value="first">First Option</option>
+      <option value="second">Second Option</option>
+      <option value="third">Third Option</option>
+      <option value="fourth">Fourth Option</option>
+    </select>
+  </p>
+  <p ng-controller="rxSelectCtrl">
+    <select id="plainSelSecondSelected"
+      ng-model="htmlSelectAlternativeValue">
+      <option value="">Starts on Second Option</option>
+      <option value="first">First Option</option>
+      <option value="second">Non Default Starting Option</option>
+      <option value="third">Third Option</option>
+      <option value="fourth">Fourth Option</option>
+    </select>
+  </p>
+  <p>
+    <select id="plainSelShowSelect"
+      ng-model="plainHtmlSelect">
+      <option value="hide">Hide Next Select Box</option>
+      <option value="show">Show Next Select Box</option>
+    </select>
+    <select id="plainSelRemoveable"
+      value="hidden"
+      ng-if="plainHtmlSelect !== 'hide'">
+      <option value="">Is Present</option>
+    </select>
+  </p>
+</rx-debug>
 
 <!-- BEGIN: checkboxes -->
 <h3>
