@@ -9,7 +9,7 @@ describe('directive:rxToggleSwitch', function () {
             '<rx-toggle-switch ng-model="model" post-hook="failedAsync(initVal, finalVal)"></rx-toggle-switch>';
 
     beforeEach(function () {
-        module('encore.ui.rxToggleSwitch');
+        module('encore.ui.elements');
         module('templates/rxToggleSwitch.html');
 
         inject(function ($rootScope, $compile, $timeout) {

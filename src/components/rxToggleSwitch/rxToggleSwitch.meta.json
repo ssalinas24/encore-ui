@@ -1,7 +1,0 @@
-{
-    "displayName": "rxToggleSwitch",
-    "stability": "experimental",
-    "description": "Displays a boolean toggle switch",
-    "isLegacy": true,
-    "keywords": []
-}

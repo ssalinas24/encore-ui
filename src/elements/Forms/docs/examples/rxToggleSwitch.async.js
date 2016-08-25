@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxToggleSwitchCtrl', function ($scope, $timeout, rxNotify) {
+.controller('rxToggleSwitchAsyncCtrl', function ($scope, $timeout, rxNotify) {
     $scope.toggle3 = true;
     $scope.toggle5 = true;
 
