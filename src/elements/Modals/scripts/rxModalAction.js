@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxModalAction')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxModalAction.directive:rxModalAction
+ * @name elements.directive:rxModalAction
  * @restrict E
  * @scope
  * @description

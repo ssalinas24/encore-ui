@@ -1,0 +1,12 @@
+{
+    "displayName": "Modals",
+    "stability": "stable",
+    "description": "",
+    "api":"directive:rxModalAction",
+    "keywords": [
+      "form",
+      "modal",
+      "rxModalAction",
+      "window"
+    ]
+}

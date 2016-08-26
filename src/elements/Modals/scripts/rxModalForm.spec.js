@@ -12,9 +12,8 @@ describe('rxModalForm', function () {
     beforeEach(function () {
         // The footers template must be loaded first because it is used in .run
         module('templates/rxModalFooters.html');
-
+        module('encore.ui.elements');
         module('encore.ui.utilities');
-        module('encore.ui.rxModalAction');
         module('templates/rxModalActionForm.html');
 
         // Inject in angular constructs

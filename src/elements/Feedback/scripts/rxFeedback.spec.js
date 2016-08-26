@@ -42,6 +42,7 @@ describe('rxFeedback', function () {
 
         // load templates
         module('templates/rxFeedback.html');
+        module('templates/rxModalAction.html');
 
         module(function ($provide) {
             $provide.value('rxNotify', notifySvcMock);

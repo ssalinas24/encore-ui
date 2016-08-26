@@ -2,6 +2,7 @@ describe('encore.ui.rxApp', function () {
 
     beforeEach(function () {
         module('templates/rxFeedback.html');
+        module('templates/rxModalAction.html');
     });
 
     describe('rxApp', function () {

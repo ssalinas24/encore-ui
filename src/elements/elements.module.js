@@ -20,4 +20,7 @@ angular.module('encore.ui.elements', [
     'ngSanitize',
     'ngAnimate',
     'ui.bootstrap'
-]);
+])
+.run(function ($compile, $templateCache) {
+    $compile($templateCache.get('templates/rxModalFooters.html'));
+});

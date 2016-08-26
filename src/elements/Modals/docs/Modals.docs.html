@@ -1,0 +1,93 @@
+<p>
+  The Modal component provides a hook to open and perform operations on a modal window.
+</p>
+
+<h3><rx-permalink>Regular Modals</rx-permalink></h3>
+<p>
+  Use modals whenever a user needs to take an action that needs their
+  attention, or you want to interrupt a user's current task to redirect a
+  user's full attention to something more important.
+</p>
+<rx-example name="modals.regular-modal"></rx-example>
+
+<h3><rx-permalink>Multi-View Modals</rx-permalink></h3>
+<p>
+  A multi-view modal breaks apart complex interactions so modal content
+  isn't too long. Multi-view modals also work well when the user must
+  complete multiple sequential steps.
+</p>
+<p>
+  It works for cases when removing or deleting something needing a
+  confirmation click, such as "Are You Sure you want to Remove this?"
+</p>
+<rx-example name="modals.multi-view-modal"></rx-example>
+
+<h3><rx-permalink>Disabled Modal</rx-permalink></h3>
+<rx-example name="modals.disabled-modal"></rx-example>
+
+<h3><rx-permalink>Delete Modal</rx-permalink></h3>
+<h4>Design Patterns within Encore</h4>
+<ul class="list">
+  <li>
+    When should you use modals instead of a new page?
+    <ul class="list">
+      <li>
+        According to Bootstrap, "Modals are streamlined, but flexible,
+        dialog prompts with the minimum required functionality and smart
+        defaults."
+      </li>
+      <li>
+        In Encore, you should use modals for confirmation messaging. For
+        notifications you will use rxNotification, which is the static
+        subdirective of rxNotify. See the example below which uses
+        <code>type="error"</code>. <code>type="error"</code> can be
+        replaced with the appropriate message response style.
+      </li>
+      <li>
+        You also can use modals to edit content in lieu of having an edit
+        view. This design pattern is not ideal. An Edit View will need to
+        be considered as a pattern in future iterations.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Using the rxModalForm subdirective will automatically provide you with
+    a title, subtitle, submit and cancel text. You can use rxForm elements
+    within rxModalForm.
+  </li>
+  <li>
+    For real world examples, take a look at the
+    <a href="https://github.com/rackerlabs/encore-cloud-ui/blob/master/app/views/servers/templates/server-actions.html">
+      ng-template blocks triggered from server action links
+    </a>
+    under Encore Cloud.
+  </li>
+  <li>
+    If you need to deviate from the title / footer pattern at all, you'll
+    need to take a look at the
+    <a href="https://github.com/rackerlabs/encore-ui/blob/master/src/elements/Modals/templates/rxModalActionForm.html">
+      rxModalForm directive template markup
+    </a>
+    and build upon that.
+  </li>
+</ul>
+<rx-example name="modals.delete-modal"></rx-example>
+
+<div class="example-case do">
+  <h4>DO</h4>
+  <ul class="list">
+    <li>Do use modals to perform actions requiring the users full attention.</li>
+  </ul>
+</div>
+
+<div class="example-case avoid">
+  <h4>DON'T</h4>
+  <ul class="list">
+    <li>
+      Don't display a modal without an action button, or a way to close the modal by closing the modal via X or pressing the Cancel button.
+    </li>
+    <li>Don't use modals as pop-ups, having them appear without the user clicking something</li>
+    <li>Don't use modals referring to information on the originating page</li>
+    <li>Don't use a modal to display a set of info or metadata without any direct actions</li>
+  </ul>
+</div>
