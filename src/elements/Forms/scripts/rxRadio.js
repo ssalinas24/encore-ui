@@ -1,6 +1,6 @@
-angular.module('encore.ui.rxRadio')
+angular.module('encore.ui.elements')
 /**
- * @name rxRadio.directive:rxRadio
+ * @name elements.directive:rxRadio
  * @ngdoc directive
  * @restrict A
  * @scope

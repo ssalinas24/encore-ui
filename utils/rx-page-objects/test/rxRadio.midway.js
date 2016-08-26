@@ -4,7 +4,7 @@ describe('rxRadio', function () {
     var subject;
 
     before(function () {
-        demoPage.go('#/components/rxRadio');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('(State) Valid Enabled Selected', encore.exercise.rxRadio({
@@ -93,21 +93,22 @@ describe('rxRadio', function () {
 
     describe('plain HTML radio buttons', function () {
         describe('Valid Enabled Unchecked', encore.exercise.rxRadio({
-            instance: encore.rxRadio.initialize($('#plainHtmlNormal')),
+            instance: encore.rxRadio.initialize($('#plainRadNormal')),
             disabled: false,
-            selected: false
+            selected: false,
+            valid: false
         }));
 
         describe('Valid Disabled Unchecked', encore.exercise.rxRadio({
-            instance: encore.rxRadio.initialize($('#plainHtmlDisabled')),
+            instance: encore.rxRadio.initialize($('#plainRadDisabled')),
             disabled: true,
             selected: false
         }));
 
         describe('Valid Enabled Checked', encore.exercise.rxRadio({
-            instance: encore.rxRadio.initialize($('#plainHtmlChecked')),
+            instance: encore.rxRadio.initialize($('#plainRadChecked')),
             disabled: false,
-            selected: true
+            selected: false
         }));
     });
 
@@ -200,7 +201,7 @@ describe('rxRadio', function () {
             before(function () {
                 willHide = encore.rxRadio.initialize($('#plainRadRemoveRadio'));
                 willBeHidden = encore.rxRadio.initialize($('#plainRadRemoveable'));
-                otherRadio = encore.rxRadio.initialize($('#plainHtmlNormal'));
+                otherRadio = encore.rxRadio.initialize($('#plainRadNormal'));
             });
 
             it('should show the radio button by default', function () {

@@ -38,7 +38,7 @@
           </li>
           <li>
             See <a href="#/elements/Forms#checkboxes">checkboxes</a>,
-            <a href="#/components/rxRadio">rxRadio</a>,
+            <a href="#/elements/Forms#radios">Radio</a>,
             and <a href="#/elements/Forms">rxForm</a> for markup
             examples.
           </li>
@@ -363,12 +363,13 @@
   </li>
 </ul>
 
-<h3><rx-permalink>Radios</rx-permalink></h3>
+<!-- BEGIN: radio -->
+<h3>
+  <rx-permalink>Radios</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxRadio/">View API</a>
+</h3>
 <ul class="list">
-  <li>
-    Use the <a href="#/components/rxRadio">rxRadio</a> component for
-    radio controls.
-  </li>
+  <li>Use the rxRadio directive for radio controls.</li>
   <li>
     If you intend to use a label element, place it <strong>immediately
     after the rxRadio</strong> so that CSS rules may style the label when
@@ -380,7 +381,214 @@
     </strong>
   </li>
 </ul>
+
 <rx-example name="forms.radios"></rx-example>
+
+<h4>Show/Hide Input</h4>
+<rx-example name="rxRadio.showHide"></rx-example>
+
+<h4>Destroy Input</h4>
+<p>Support for <code>$destroy</code> events.</p>
+<rx-example name="rxRadio.destroy"></rx-example>
+
+<h4>Radio States</h3>
+<table ng-controller="rxRadioCtrl">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Enabled</th>
+      <th>Disabled (ng-disable)</th>
+      <th>Disabled (disabled)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Valid</th>
+
+      <!-- Valid Enabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radValidEnabledOne"
+            value="1"
+            ng-model="validEnabled"/>
+          <label for="radValidEnabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radValidEnabledTwo"
+            value="2"
+            ng-model="validEnabled"/>
+          <label for="radValidEnabledTwo">Unselected</label>
+        </p>
+      </td>
+
+      <!-- Valid NG-Disabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radValidNgDisabledOne"
+            value="1"
+            ng-disabled="true"
+            ng-model="validNgDisabled"/>
+          <label for="radValidNgDisabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radValidNgDisabledTwo"
+            value="2"
+            ng-disabled="true"
+            ng-model="validNgDisabled"/>
+          <label for="radValidNgDisabledTwo">Unselected</label>
+        </p>
+      </td>
+
+      <!-- Valid Disabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radValidDisabledOne"
+            value="1"
+            disabled
+            ng-model="validDisabled"/>
+          <label for="radValidDisabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radValidDisabledTwo"
+            value="2"
+            disabled
+            ng-model="validDisabled"/>
+          <label for="radValidDisabledTwo">Unselected</label>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <th>Invalid</th>
+
+      <!-- Invalid Enabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidEnabledOne"
+            value="1"
+            ng-model="invalidEnabled"
+            always-invalid/>
+          <label for="radInvalidEnabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidEnabledTwo"
+            value="2"
+            ng-model="invalidEnabled"
+            always-invalid/>
+          <label for="radInvalidEnabledTwo">Unselected</label>
+        </p>
+      </td>
+
+      <!-- Invalid NG-Disabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidNgDisabledOne"
+            value="1"
+            ng-disabled="true"
+            ng-model="invalidNgDisabled"
+            always-invalid/>
+          <label for="radInvalidNgDisabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidNgDisabledTwo"
+            value="2"
+            ng-disabled="true"
+            ng-model="invalidNgDisabled"
+            always-invalid/>
+          <label for="radInvalidNgDisabledTwo">Unselected</label>
+        </p>
+      </td>
+
+      <!-- Invalid Disabled -->
+      <td>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidDisabledOne"
+            value="1"
+            disabled
+            ng-model="invalidDisabled"
+            always-invalid/>
+          <label for="radInvalidDisabledOne">Selected</label>
+        </p>
+        <p>
+          <input 
+            rx-radio
+            id="radInvalidDisabledTwo"
+            value="2"
+            disabled
+            ng-model="invalidDisabled"
+            always-invalid/>
+          <label for="radInvalidDisabledTwo">Unselected</label>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<rx-debug>
+  <h3>Plain HTML Radios (for comparison)</h3>
+  <p>
+    <input 
+      type="radio"
+      id="plainRadNormal"
+      ng-model="plainHtmlRadio"
+      value="plain"
+      ng-required="true"/>
+    <label for="plainRadNormal">A plain radio</label>
+  </p>
+  <p>
+    <input 
+      type="radio"
+      id="plainRadDisabled"
+      value="disabled"
+      ng-model="plainHtmlRadio"
+      disabled/>
+    <label for="plainRadDisabled">A plain radio (disabled)</label>
+  </p>
+  <p>
+    <input 
+      type="radio"
+      id="plainRadChecked"
+      value="isChecked"
+      ng-model="plainHtmlRadio"/>
+    <label for="plainRadChecked">A plain radio (checked)</label>
+  </p>
+  <p>
+    <input 
+      type="radio"
+      id="plainRadRemoveRadio"
+      value="shows"
+      ng-model="plainHtmlRadio"/>
+    <label for="plainRadRemoveRadio">Add Following Radio:</label>
+
+    <input 
+      type="radio"
+      id="plainRadRemoveable"
+      value="hidden"
+      ng-if="plainHtmlRadio === 'shows'"/>
+  </p>
+</rx-debug>
+<!-- END: radio -->
 
 <!-- BEGIN: rxCharacterCount -->
 <h3>

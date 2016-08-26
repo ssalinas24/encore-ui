@@ -33,6 +33,7 @@
         "rxInfix",
         "rxInlineError",
         "rxPrefix",
+        "rxRadio",
         "rxSuffix",
         "rxTimePicker",
         "select",
