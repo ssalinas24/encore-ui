@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxMultiSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxMultiSelect.directive:rxSelectOption
+ * @name elements.directive:rxSelectOption
  * @restrict E
  * @requires elements.directive:rxCheckbox
  * @description
