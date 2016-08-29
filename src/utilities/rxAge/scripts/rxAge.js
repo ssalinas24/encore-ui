@@ -73,9 +73,9 @@ angular.module('encore.ui.utilities')
         var date = moment(new Date(dateString));
         var diff = now.diff(date);
         var duration = moment.duration(diff);
-        var days = parseInt(duration.asDays(), 10);
-        var hours = parseInt(duration.asHours(), 10);
-        var mins = parseInt(duration.asMinutes(), 10);
+        var days = Math.floor(duration.asDays());
+        var hours = Math.floor(duration.asHours());
+        var mins = Math.floor(duration.asMinutes());
         var age = [];
 
         if (_.isBoolean(maxUnits)) {
