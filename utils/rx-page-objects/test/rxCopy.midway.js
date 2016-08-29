@@ -3,81 +3,34 @@
 if (!process.env.TRAVIS) {
     describe('rxCopy', function () {
         var subject;
-        var testCopyArea;
-
-        /**
-         * @returns {Promise<String>}
-         */
-        function getPastedValue () {
-            return $('#test-textarea')
-                .clear()
-                .sendKeys(protractor.Key.chord(
-                    (process.platform === 'darwin' ? protractor.Key.META : protractor.Key.CONTROL),
-                    'v'
-                ))
-                .getAttribute('value');
-        }
 
         before(function () {
-            testCopyArea = $('#test-textarea');
             demoPage.go('#/elements/Copy');
         });
 
         describe('simple usage', encore.exercise.rxCopy({
             instance: new encore.rxCopy($('#copy-simple-short')),
-            testCopyArea: testCopyArea
+            expectedText: 'This is a short sentence.',
+            testCopyArea: $('#test-textarea')
         }));
 
-        describe('simple usage with angular variables', function () {
-            before(function () {
-                subject = new encore.rxCopy($('#copy-simple-long'));
-            });
+        describe('simple usage with angular variables', encore.exercise.rxCopy({
+            instance: new encore.rxCopy($('#copy-simple-long')),
+            expectedText: /^A paragraph that will wrap/,
+            testCopyArea: $('#test-textarea')
+        }));
 
-            it('should have expected text', function () {
-                expect(subject.getText()).to.eventually.match(/^A paragraph that will wrap/);
-            });
+        describe('compact paragraph', encore.exercise.rxCopy({
+            instance: new encore.rxCopy($('#copy-long-compact')),
+            expectedText: /^A compacted paragraph/,
+            testCopyArea: $('#test-textarea')
+        }));
 
-            it('should copy text to clipboard', function () {
-                subject.copy();
-                getPastedValue().then(function (pastedValue) {
-                    expect(subject.getText()).to.eventually.eq(pastedValue);
-                });
-            });
-        });
-
-        describe('compact paragraph', function () {
-            before(function () {
-                subject = new encore.rxCopy($('#copy-long-compact'));
-            });
-
-            it('should have expected text', function () {
-                expect(subject.getText()).to.eventually.match(/^A compacted paragraph/);
-            });
-
-            it('should copy text to clipboard', function () {
-                subject.copy();
-                getPastedValue().then(function (pastedValue) {
-                    expect(subject.getText()).to.eventually.eq(pastedValue);
-                });
-            });
-        });
-
-        describe('compact metadata', function () {
-            before(function () {
-                subject = new encore.rxCopy($('#copy-metadata-compact'));
-            });
-
-            it('should have expected text', function () {
-                expect(subject.getText()).to.eventually.match(/^A compacted metadata value/);
-            });
-
-            it('should copy text to clipboard', function () {
-                subject.copy();
-                getPastedValue().then(function (pastedValue) {
-                    expect(subject.getText()).to.eventually.eq(pastedValue);
-                });
-            });
-        });
+        describe('compact metadata', encore.exercise.rxCopy({
+            instance: new encore.rxCopy($('#copy-metadata-compact')),
+            expectedText: /^A compacted metadata value/,
+            testCopyArea: $('#test-textarea')
+        }));
 
         describe('table usage', function () {
             describe('(icon visibility)', function () {
@@ -104,39 +57,17 @@ if (!process.env.TRAVIS) {
                 });//on hover
             });//icon visibility
 
-            describe('short visible values', function () {
-                before(function () {
-                    subject = new encore.rxCopy($('td.copy-short rx-copy:first-of-type'));
-                });
+            describe('short visible values', encore.exercise.rxCopy({
+                instance: new encore.rxCopy($('td.copy-short rx-copy:first-of-type')),
+                expectedText: 'Short',
+                testCopyArea: $('#test-textarea')
+            }));//short visible values
 
-                it('should have expected text', function () {
-                    expect(subject.getText()).to.eventually.eq('Short');
-                });
-
-                it('should copy text to clipboard', function () {
-                    subject.copy();
-                    getPastedValue().then(function (pastedValue) {
-                        expect(subject.getText()).to.eventually.eq(pastedValue);
-                    });
-                });
-            });//short visible values
-
-            describe('long overflow values', function () {
-                before(function () {
-                    subject = new encore.rxCopy($('td.copy-long rx-copy:first-of-type'));
-                });
-
-                it('should have expected text', function () {
-                    expect(subject.getText()).to.eventually.match(/^An extremely long cell value/);
-                });
-
-                it('should copy text to clipboard', function () {
-                    subject.copy();
-                    getPastedValue().then(function (pastedValue) {
-                        expect(subject.getText()).to.eventually.eq(pastedValue);
-                    });
-                });
-            });//long overflow values
+            describe('long overflow values', encore.exercise.rxCopy({
+                instance: new encore.rxCopy($('td.copy-long rx-copy:first-of-type')),
+                expectedText: /^An extremely long cell value/,
+                testCopyArea: $('#test-textarea')
+            }));//long overflow values
         });
     });
 }

@@ -10,8 +10,8 @@ var _ = require('lodash');
  * @param {Boolean} [options.isDisabled=false] - Determines if the component is disabled.
  * @param {Boolean} [options.isDisplayed=true] - Determines if the component is displayed.
  * @param {ElementFinder} [testCopyArea=] - An input element somewhere that rxCopy contents can be pasted to.
- * @param {String} [expectedText=] - The expected text content inside the input element to be copied.
- *
+ * @param {String|Regex} [expectedText=] - The expected text content inside the input element to be copied.
+ * Can be a regular expression if the text content is very large.
  */
 exports.rxCopy = function (options) {
     if (options === undefined) {
@@ -83,9 +83,17 @@ exports.rxCopy = function (options) {
             });
 
             if (options.expectedText) {
-                it('should have expected text', function () {
-                    expect(component.getText()).to.eventually.eq(options.expectedText);
-                });
+                if (_.isString(options.expectedText)) {
+                    it('should have the expected text', function () {
+                        expect(component.getText()).to.eventually.eq(options.expectedText);
+                    });
+                }
+
+                if (_.isRegExp(options.expectedText)) {
+                    it('should match the expected text', function () {
+                        expect(component.getText()).to.eventually.match(options.expectedText);
+                    });
+                }
             }
 
             it('should have a tooltip informing users to click to copy', function () {
@@ -124,7 +132,7 @@ exports.rxCopy = function (options) {
 
                 describe('and after a short wait', function () {
                     before(function () {
-                        browser.sleep(3500);
+                        browser.sleep(3000);
                     });
 
                     it('should be waiting', function () {
