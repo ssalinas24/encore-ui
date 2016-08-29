@@ -3,6 +3,7 @@
 if (!process.env.TRAVIS) {
     describe('rxCopy', function () {
         var subject;
+        var testCopyArea;
 
         /**
          * @returns {Promise<String>}
@@ -18,85 +19,14 @@ if (!process.env.TRAVIS) {
         }
 
         before(function () {
+            testCopyArea = $('#test-textarea');
             demoPage.go('#/elements/Copy');
         });
 
-        describe('simple usage', function () {
-            before(function () {
-                subject = new encore.rxCopy($('#copy-simple-short'));
-            });
-
-            it('should be waiting', function () {
-                expect(subject.isWaiting()).to.eventually.be.true;
-            });
-
-            it('should not be successful', function () {
-                expect(subject.isSuccessful()).to.eventually.be.false;
-            });
-
-            it('should not be failed', function () {
-                expect(subject.isFailed()).to.eventually.be.false;
-            });
-
-            it('should have expected text', function () {
-                expect(subject.getText()).to.eventually.eq('This is a short sentence.');
-            });
-
-            it('should have default tooltip', function () {
-                expect(subject.tooltip.getText()).to.eventually.eq('Click to Copy');
-            });
-
-            it('should copy text to clipboard', function () {
-                subject.copy();
-                getPastedValue().then(function (pastedValue) {
-                    expect(subject.getText()).to.eventually.eq(pastedValue);
-                });
-            });
-
-            describe('after copy', function () {
-                before(function () {
-                    subject.copy();
-                });
-
-                it('should not be waiting', function () {
-                    expect(subject.isWaiting()).to.eventually.be.false;
-                });
-
-                it('should be successful', function () {
-                    expect(subject.isSuccessful()).to.eventually.be.true;
-                });
-
-                it('should not be failed', function () {
-                    expect(subject.isFailed()).to.eventually.be.false;
-                });
-
-                it ('should have success tooltip', function () {
-                    expect(subject.tooltip.getText()).to.eventually.eq('Copied!');
-                });
-
-                describe('and after a short wait', function () {
-                    before(function () {
-                        browser.sleep(3500);
-                    });
-
-                    it('should be waiting', function () {
-                        expect(subject.isWaiting()).to.eventually.be.true;
-                    });
-
-                    it('should not be successful', function () {
-                        expect(subject.isSuccessful()).to.eventually.be.false;
-                    });
-
-                    it('should not be failed', function () {
-                        expect(subject.isFailed()).to.eventually.be.false;
-                    });
-
-                    it ('should have default tooltip', function () {
-                        expect(subject.tooltip.getText()).to.eventually.eq('Click to Copy');
-                    });
-                });//after short wait
-            });//after copy
-        });
+        describe('simple usage', encore.exercise.rxCopy({
+            instance: new encore.rxCopy($('#copy-simple-short')),
+            testCopyArea: testCopyArea
+        }));
 
         describe('simple usage with angular variables', function () {
             before(function () {
