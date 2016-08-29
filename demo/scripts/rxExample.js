@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.directive('rxExample', function ($http, Examples) {
+.directive('rxExample', function ($interval, Examples) {
     var MAX_PREVIEW_LINES = 10;
 
     function countLines (content) {
@@ -62,9 +62,9 @@ angular.module('demoApp')
                 _isExpanded[ilk] = !_isExpanded[ilk];
             };
 
-            scope.$applyAsync(function () {
+            $interval(function () {
                 Prism.highlightAll();
-            });
+            }, 0, 1);
         }
     };
 });
