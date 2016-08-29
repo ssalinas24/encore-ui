@@ -6,13 +6,13 @@ var config = {
     baseUrl: 'http://localhost:9001',
 
     specs: [
-        './utils/rx-page-objects/test/*.midway.js'
+        './test/*.midway.js'
     ],
 
     framework: 'mocha',
 
     capabilities: {
-        browserName: 'firefox'
+        browserName: 'chrome'
     },
 
     allScriptsTimeout: 30000,
@@ -24,13 +24,17 @@ var config = {
         }
     },
 
+    plugins: [{
+        package: 'protractor-console-plugin'
+    }],
+
     onPrepare: function () {
         browser.driver.manage().window().setSize(1366, 768); // laptop
         expect = require('chai').use(require('chai-as-promised')).expect;
         _ = require('lodash');
         moment = require('moment');
-        demoPage = require('./utils/demo.page.js');
-        encore = require('./utils/rx-page-objects/index');
+        demoPage = require('../demo.page.js');
+        encore = require('./index');
     },
 
     // Options to be passed to mocha

@@ -152,34 +152,44 @@ describe('rxNotify', function () {
         });
 
         describe('with ondismiss function', function () {
+            var browserName;
             var msgText = 'Testing On Dismiss Method';
 
             before(function () {
-                var chkOnDismiss = $('input[ng-model="ondismiss.should"]');
-                var txtMessage = $('input[ng-model="message"]');
+                // https://git.io/vKHN1
+                browser.getCapabilities().then(function (capabilities) {
+                    browserName = capabilities.get('browserName');
+                    if (browserName !== 'chrome') {
+                        var chkOnDismiss = $('input[ng-model="ondismiss.should"]');
+                        var txtMessage = $('input[ng-model="message"]');
 
-                txtMessage.clear();
-                txtMessage.sendKeys(msgText);
+                        txtMessage.clear();
+                        txtMessage.sendKeys(msgText);
 
-                chkOnDismiss.getAttribute('checked').then(function (isChecked) {
-                    if (!isChecked) {
-                        chkOnDismiss.click();
+                        chkOnDismiss.getAttribute('checked').then(function (isChecked) {
+                            if (!isChecked) {
+                                chkOnDismiss.click();
+                            }
+                        });
+
+                        element(by.buttonText('Add to Custom Stack')).click();
                     }
                 });
-
-                element(by.buttonText('Add to Custom Stack')).click();
             });
 
             it('should have an alert when the message is dismissed', function () {
-                notifications.byStack('custom').byText(msgText).dismiss();
+                // https://git.io/vKHN1
+                if (browserName !== 'chrome') {
+                    notifications.byStack('custom').byText(msgText).dismiss();
 
-                var EC = protractor.ExpectedConditions;
-                browser.wait(EC.alertIsPresent());
-                browser.switchTo().alert().then(function (alertBox) {
-                    var msg = 'We are dismissing the message: Testing On Dismiss Method';
-                    expect(alertBox.getText()).to.eventually.equal(msg);
-                    alertBox.accept();
-                });
+                    var EC = protractor.ExpectedConditions;
+                    browser.wait(EC.alertIsPresent());
+                    browser.switchTo().alert().then(function (alertBox) {
+                        var msg = 'We are dismissing the message: Testing On Dismiss Method';
+                        expect(alertBox.getText()).to.eventually.equal(msg);
+                        alertBox.accept();
+                    });
+                }
             });
         });
 

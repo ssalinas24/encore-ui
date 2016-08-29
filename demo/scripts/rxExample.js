@@ -1,11 +1,32 @@
 angular.module('demoApp')
-.directive('rxExample', function ($http) {
+.directive('rxExample', function ($interval, Examples) {
     var MAX_PREVIEW_LINES = 10;
 
+    function countLines (content) {
+        return content.trim().split('\n').length;
+    }//countLines()
+
     function isExpandable (content) {
-        var lineCount = content.trim().split('\n').length;
-        return lineCount > MAX_PREVIEW_LINES;
+        if (!content) {
+            return false;
+        }
+        var lineCount = countLines(content);
+
+        if (lineCount === MAX_PREVIEW_LINES + 1) {
+            // collapse is unnecessary
+            return false;
+        } else {
+            return lineCount > MAX_PREVIEW_LINES;
+        }
     }//isExpandable()
+
+    function isExpandedOnLoad (content) {
+        if (!content) { return false; }
+
+        var lineCount = countLines(content);
+
+        return lineCount <= (MAX_PREVIEW_LINES + 1);
+    }//isExpandedOnLoad()
 
     return {
         restrict: 'E',
@@ -14,16 +35,20 @@ angular.module('demoApp')
             name: '@'
         },
         link: function (scope) {
-            var baseName = 'examples/' + scope.name;
-            var _canExpand = { markup: false, js: false, less: false };
-            var _isExpanded = { markup: false, js: false, less: false };
-            // markup not included b/c it's required for minimum functionality
-            var _hasSource = { js: false, less: false };
+            scope.markupUrl = 'examples/' + scope.name + '.html'; // used by ng-include
+            scope.example = Examples[scope.name];
 
-            // used by ng-include and code-url
-            scope.markupUrl = baseName + '.html';
-            scope.javascriptUrl = baseName + '.js';
-            scope.lessUrl = baseName + '.less';
+            var _canExpand = {
+                markup: isExpandable(scope.example.markup),
+                javascript: isExpandable(scope.example.javascript),
+                less: isExpandable(scope.example.less)
+            }
+
+            var _isExpanded = {
+                markup: isExpandedOnLoad(scope.example.markup),
+                javascript: isExpandedOnLoad(scope.example.javascript),
+                less: isExpandedOnLoad(scope.example.less)
+            };
 
             scope.isExpanded = function (ilk) {
                 return _isExpanded[ilk];
@@ -33,43 +58,13 @@ angular.module('demoApp')
                 return _canExpand[ilk];
             };
 
-            scope.hasSource = function (ilk) {
-                return _hasSource[ilk];
-            };
-
             scope.toggleExpanded = function (ilk) {
                 _isExpanded[ilk] = !_isExpanded[ilk];
             };
 
-            /* ===== Source Checks ===== */
-            $http.get(scope.markupUrl).then(
-                function (result) {
-                    // Check Line Count
-                    _canExpand.markup = isExpandable(result.data);
-                }
-            );//GET markupUrl
-
-            $http.get(scope.javascriptUrl).then(
-                function (result) {
-                    _hasSource.js = true;
-                    // Check Line Count
-                    _canExpand.js = isExpandable(result.data);
-                },
-                function () {
-                    _hasSource.js = false;
-                }
-            );//GET javascriptUrl
-
-            $http.get(scope.lessUrl).then(
-                function (result) {
-                    _hasSource.less = true;
-                    // Check Line Count
-                    _canExpand.less = isExpandable(result.data);
-                },
-                function () {
-                    _hasSource.less = false;
-                }
-            );//GET lessUrl
+            $interval(function () {
+                Prism.highlightAll();
+            }, 0, 1);
         }
     };
 });
