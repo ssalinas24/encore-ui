@@ -58,7 +58,32 @@ class rxCopy {
     }
 
     /**
-     * @description Trigger a click on the icon
+     * @description Whether or not the rxCopy instance is present.
+     * @returns {Promise<Boolean>}
+     */
+    isPresent () {
+        return this.rootElement.isPresent();
+    }
+
+    /**
+     * @description Whether or not the rxCopy instance is visible.
+     * @returns {Promise<Boolean>}
+     */
+    isDisplayed () {
+        return this.rootElement.isDisplayed();
+    }
+
+    /**
+     * @description Whether or not the rxCopy instance is enabled.
+     * @returns {Promise<Boolean>}
+     */
+    isEnabled () {
+        return this.rootElement.isEnabled();
+    }
+
+    /**
+     * @description Will click the "copy" icon. Attempts to copy the contents of the rxCopy instance
+     * to the clipboard. You may experience issues attempting to do this in unsupported browsers.
      * @example
      * var element = new encore.rxCopy($('.myCopyText'));
      * element.copy();
@@ -90,7 +115,7 @@ class rxCopy {
      * @description Whether or not the copy failed.
      * @returns {Promise<Boolean>}
      */
-    isFailed () {
+    isFailure () {
         return this.icoTimes.isPresent();
     }
 
@@ -99,6 +124,9 @@ class rxCopy {
      * @description Perform a mouse hover over the clickable action element.
      */
     _hoverOverAction () {
+        browser.actions().mouseMove(this.eleAction).perform();
+        // I know what you're thinking -- don't. Just leave it.
+        // Otherwise, tooltips in tables in Chrome will not actually appear.
         browser.actions().mouseMove(this.eleAction).perform();
     }
 }//rxCopy
