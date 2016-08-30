@@ -66,6 +66,11 @@
       }
     }
 
+    &:focus + .fake-radio {
+      border-color: @app-input-focus-border-color;
+      box-shadow: @app-input-focus-box-shadow;
+    }
+
     .disabled() {
       cursor: not-allowed;
 
