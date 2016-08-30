@@ -5,6 +5,7 @@ describe('encore.ui.rxApp', function () {
 
         var menuItem = {
             href: { tld: 'example', path: 'myPath' },
+            url: 'someapp.com',
             linkText: '1st',
             directive: 'fake-directive',
             visibility: function () {
@@ -295,5 +296,49 @@ describe('encore.ui.rxApp', function () {
                 expect(item.attr('target')).to.equal('_self');
             });
         });
+
+        describe('Origin Navigation', function () {
+            var navigateToAppSpy;
+            var setCanvasURLSpy;
+            var currentCanvasURL = 'someapp.com';
+
+            var fakeOriLocationService = {
+                getCanvasURL: function () {
+                    return currentCanvasURL;
+                },
+                setCanvasURL: function () {}
+            };
+
+            beforeEach(function () {
+                setCanvasURLSpy = sinon.spy(fakeOriLocationService, 'setCanvasURL');
+                provide.factory('oriLocationService', function () {
+                    return fakeOriLocationService;
+                });
+                el = helpers.createDirective(template, compile, scope);
+                navigateToAppSpy = sinon.spy(el.isolateScope(), 'navigateToApp');
+            });
+
+            afterEach(function () {
+                navigateToAppSpy.restore();
+                setCanvasURLSpy.restore();
+            });
+
+            it('should call navigateToApp on click', function () {
+                el.find('.item-link').click();
+                expect(navigateToAppSpy).to.have.been.called;
+            });
+
+            it('should not call setCanvasURL when urls are the same', function () {
+                el.find('.item-link').click();
+                expect(setCanvasURLSpy).to.have.not.been.called;
+            });
+
+            it('should call setCanvasURL when urls are different', function () {
+                currentCanvasURL = 'someotherapp.com';
+                el.find('.item-link').click();
+                expect(setCanvasURLSpy).to.have.been.called;
+                expect(setCanvasURLSpy).to.have.been.calledWith('someapp.com');
+            });
+        })
     });
 });
