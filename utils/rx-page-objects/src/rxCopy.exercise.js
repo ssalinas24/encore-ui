@@ -78,7 +78,7 @@ exports.rxCopy = function (options) {
                 expect(component.isSuccessful()).to.eventually.be.false;
             });
 
-            it('should not be failed', function () {
+            it('should not have failed', function () {
                 expect(component.isFailure()).to.eventually.be.false;
             });
 
@@ -122,7 +122,7 @@ exports.rxCopy = function (options) {
                     expect(component.isSuccessful()).to.eventually.be.true;
                 });
 
-                it('should not be failed', function () {
+                it('should not have failed', function () {
                     expect(component.isFailure()).to.eventually.be.false;
                 });
 
@@ -143,7 +143,7 @@ exports.rxCopy = function (options) {
                         expect(component.isSuccessful()).to.eventually.be.false;
                     });
 
-                    it('should not be failed', function () {
+                    it('should not have failed', function () {
                         expect(component.isFailure()).to.eventually.be.false;
                     });
 

@@ -83,7 +83,7 @@ class rxCopy {
 
     /**
      * @description Will click the "copy" icon. Attempts to copy the contents of the rxCopy instance
-     * to the clipboard. You may experience issues attempting to do this is unsupported browsers.
+     * to the clipboard. You may experience issues attempting to do this in unsupported browsers.
      * @example
      * var element = new encore.rxCopy($('.myCopyText'));
      * element.copy();
