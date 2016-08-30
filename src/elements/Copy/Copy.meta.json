@@ -1,0 +1,11 @@
+{
+    "displayName": "Copy",
+    "stability": "experimental",
+    "description": "Element to aid in copying text to the system clipboard",
+    "api": "directive:rxCopy",
+    "keywords": [
+        "clipboard",
+        "copy",
+        "rxCopy"
+    ]
+}

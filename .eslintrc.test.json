@@ -8,6 +8,7 @@
         "expect": true,
         "it": false,
         "inject": false,
+        "process": true,
         "screenshot": true,
         "sinon": false
     },

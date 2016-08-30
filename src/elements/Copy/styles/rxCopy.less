@@ -1,0 +1,132 @@
+#rxCopy { // namespace
+  .inline() {
+    display: inline;
+
+    .rxCopy__wrapper {
+      display: block;
+    }
+
+    .rxCopy__text {
+      display: inline;
+    }
+
+    .rxCopy__action {
+      display: inline-block;
+    }
+  }//.inline()
+
+  // Causes the text to truncate if too long.
+  .compact() {
+    display: block;
+
+    .rxCopy__wrapper {
+      display: flex;
+    }
+
+    .rxCopy__text {
+      flex: 1 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .rxCopy__action {
+      flex: none;
+    }
+  }//.compact()
+}//#rxCopy namespace
+
+rx-copy {
+  /* ===== VARIABLES ===== */
+  @compact-max-width: @app-input-width;
+
+  /* ===== DEFINITIONS ===== */
+  #rxCopy.inline();
+
+  .rxCopy__text {
+    margin-right: 6px;
+  }
+
+  .rxCopy__action {
+    cursor: pointer;
+
+    &--waiting {
+      color: @blue-700;
+
+      &:hover {
+        color: @blue-500;
+      }
+    }
+
+    &--success {
+      color: @green-500;
+    }
+
+    &--fail {
+      color: @red-700;
+    }
+  }//.rxCopy__action
+
+  &[compact] {
+    #rxCopy.compact();
+    max-width: @compact-max-width;
+
+    &.bordered { // TODO: better class name
+      border: 1px solid @app-input-border-color;
+
+      .rxCopy__wrapper {
+        background-color: @app-input-background-color;
+      }//.rxCopy__wrapper
+
+      .rxCopy__text {
+        padding: 5px 5px;
+      }//.rxCopy__text
+
+      .rxCopy__action {
+        border-left: 1px solid @app-input-border-color;
+        color: @white;
+        padding: 5px 10px;
+
+        &--waiting {
+          background-color: @blue-700;
+
+          &:hover {
+            background-color: @blue-500;
+          }
+        }
+
+        &--success {
+          background-color: @green-500;
+        }
+
+        &--fail {
+          background-color: @red-700;
+        }
+      }//.rxCopy__action
+    }//.bordered
+  }//[compact]
+}
+
+table {
+  &.rxCopyTable {
+    // PROPERTY MUST BE PRESENT
+    // for dynamic overflow/truncation functionality
+    //
+    // TODO: this should become the default for 3.0.0 tables
+    table-layout: fixed;
+
+    rx-copy {
+      #rxCopy.compact();
+
+      .rxCopy__action {
+        visibility: hidden;
+      }
+
+      &:hover {
+        .rxCopy__action {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
