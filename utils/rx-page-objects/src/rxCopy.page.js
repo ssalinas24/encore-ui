@@ -125,6 +125,9 @@ class rxCopy {
      */
     _hoverOverAction () {
         browser.actions().mouseMove(this.eleAction).perform();
+        // I know what you're thinking -- don't. Just leave it.
+        // Otherwise, tooltips in tables in Chrome will not actually appear.
+        browser.actions().mouseMove(this.eleAction).perform();
     }
 }//rxCopy
 
