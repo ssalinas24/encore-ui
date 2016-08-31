@@ -1,3 +1,15 @@
+<a name="1.50.2-0"></a>
+### 1.50.2-0 (2016-08-31)
+
+
+#### Bug Fixes
+
+* **rxAge:** Fixes parseInt bug With really small durations moment returns a small float pars ([f23640f1](git@github.com:rackerlabs/encore-ui/commit/f23640f1f260b143e27c8b80827193d94f11dd3d))
+* **rxExample:**
+  * use ng1.2-equivalent code ([79f0c487](git@github.com:rackerlabs/encore-ui/commit/79f0c4873b9389af7af817c8946425c7a3eae899))
+  * fix performance lag/delay ([481b07d1](git@github.com:rackerlabs/encore-ui/commit/481b07d16c3711e7f588034ec931fa500fed710d))
+
+
 <a name="1.50.1"></a>
 ### 1.50.1 (2016-06-29)
 
