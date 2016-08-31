@@ -1,3 +1,18 @@
+<a name="2.2.0-1"></a>
+### 2.2.0-1 (2016-08-31)
+
+
+#### Bug Fixes
+
+* **rxAge:** Fixes parseInt bug With really small durations moment returns a small float pars ([bb7c5d6f](git@github.com:rackerlabs/encore-ui/commit/bb7c5d6f1a261695b479dd60b7ae039065c6cede))
+
+
+#### Features
+
+* **navItem:** Checks url before passing to origin Checks to see if the iframe has url that has ([1d62ae0b](git@github.com:rackerlabs/encore-ui/commit/1d62ae0bf51986a06593f7e5a926e88fff2de074))
+* **rxCopy:** add rxCopy ([3aa49f9b](git@github.com:rackerlabs/encore-ui/commit/3aa49f9b66468b41a163687eeb61dc92b7cfd831))
+
+
 <a name="2.2.0-0"></a>
 ### 2.2.0-0 (2016-08-19)
 
