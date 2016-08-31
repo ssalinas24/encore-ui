@@ -23,7 +23,7 @@ angular.module('encore.ui.utilities')
     };
 
     var userRoles = function () {
-        return _.pluck(permissionSvc.getRoles(), 'name');
+        return _.map(permissionSvc.getRoles(), 'name');
     };
 
     /**

@@ -148,7 +148,7 @@ angular.module('encore.ui.utilities')
             function init (list) {
                 filter.properties.forEach(function (property) {
                     if (_.isUndefined(filter.available[property])) {
-                        filter.available[property] = _.uniq(_.pluck(list, property));
+                        filter.available[property] = _.uniq(_.map(list, property));
                     }
 
                     // Check `options.selected` instead of `filter.selected` because the latter

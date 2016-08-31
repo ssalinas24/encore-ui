@@ -253,7 +253,7 @@ describe('Pagination', function () {
                 scope.api = api;
                 scope.d = { filter: '' };
                 scope.selected = {
-                    os: _.pluck(response.items, 'os')
+                    os: _.map(response.items, 'os')
                 };
                 scope.sort = {
                     predicate: 'Name',
