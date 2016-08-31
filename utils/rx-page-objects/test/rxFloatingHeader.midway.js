@@ -106,7 +106,7 @@ describe('rxFloatingHeader', function () {
     var initialY;
 
     before(function () {
-        demoPage.go('#/components/rxFloatingHeader');
+        demoPage.go('#/elements/Tables');
     });
 
     describe('Single-row floating header at top of table', function () {
