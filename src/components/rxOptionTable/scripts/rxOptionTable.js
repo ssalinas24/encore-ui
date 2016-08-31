@@ -77,7 +77,7 @@ angular.module('encore.ui.rxOptionTable')
             scope.selectAllModel = false;
 
             scope.$watchCollection('modelProxy', function (newValue) {
-                scope.selectAllModel = !_.any(newValue, function (val) {
+                scope.selectAllModel = !_.some(newValue, function (val) {
                     return val === false;
                 });
             });
