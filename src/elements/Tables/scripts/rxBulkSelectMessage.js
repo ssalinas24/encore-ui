@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxBulkSelect.directive:rxBulkSelectMessage
+ * @name elements.directive:rxBulkSelectMessage
  * @restrict A
  * @scope
- * @requires rxBulkSelect.directive:rxBulkSelect
+ * @requires elements.directive:rxBulkSelect
  * @description
  *
  * This directive is responsible for drawing the appearing/disappearing

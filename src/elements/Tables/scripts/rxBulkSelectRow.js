@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxBulkSelect.directive:rxBulkSelectRow
+ * @name elements.directive:rxBulkSelectRow
  * @restrict A
  * @scope
- * @requires rxBulkSelect.directive:rxBulkSelect
+ * @requires elements.directive:rxBulkSelect
  * @description
  *
  * A directive you place on your `<td>` element which will contain the bulk-select

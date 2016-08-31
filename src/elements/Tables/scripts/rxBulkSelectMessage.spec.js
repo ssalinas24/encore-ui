@@ -43,7 +43,7 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxBulkSelect');
+        module('encore.ui.elements');
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');
 
@@ -59,26 +59,32 @@ describe('rxBulkSelect', function () {
         scope.$digest();
     });
 
-    describe('directive:rxBatchActions', function () {
-        var filterRowEl, batchActionsScope, rowCheck;
+    describe('directive:rxBulkSelectMessage', function () {
+        var rowEl, rowCheck, messageEl, numSelected, controller;
 
         beforeEach(function () {
-            var batchActionsEl = el.find('rx-batch-actions');
-            filterRowEl = batchActionsEl.parent().parent();
-            batchActionsScope = batchActionsEl.scope();
+            rowEl = el.find('td[rx-bulk-select-row]').first();
+            rowCheck = rowEl.find('input[type="checkbox"]');
+            messageEl = el.find('tr[rx-bulk-select-message]');
 
-            rowCheck = el.find('td[rx-bulk-select-row] input[type="checkbox"]').first();
+            controller = el.controller('rxBulkSelect');
+            var update = function (newVal) {
+                numSelected = newVal;
+            };
+
+            controller.registerForNumSelected(update);
         });
 
-        it('should have added rx-table-filter-row', function () {
-            expect(filterRowEl.hasClass('rx-table-filter-row')).to.be.true;
-        });
-
-        it('should show the bulk actions when a row is selected, via the `rowsSelected` scope attribute', function () {
-            expect(batchActionsScope.rowsSelected).to.be.false;
+        it('should show/hide the bulk select message when we check/uncheck a row', function () {
             rowCheck.click();
             timeout.flush();
-            expect(batchActionsScope.rowsSelected).to.be.true;
+            expect(numSelected).to.equal(1);
+            expect(messageEl.hasClass('ng-hide'), 'visible').to.be.false;
+
+            rowCheck.click();
+            timeout.flush();
+            expect(numSelected).to.equal(0);
+            expect(messageEl.hasClass('ng-hide'), 'hidden').to.be.true;
         });
-    });//directive:batchActions
-});//rxBulkSelect
+    });
+});

@@ -8,7 +8,7 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxBulkSelect');
+        module('encore.ui.elements');
         module('templates/rxBulkSelectMessage.html');
 
         inject(function ($compile, $rootScope) {

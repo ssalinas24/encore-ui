@@ -1,6 +1,5 @@
-// This file is used to help build the 'demo' documentation page and should be updated with example code
 angular.module('demoApp')
-.controller('rxBulkSelectCtrl', function ($scope) {
+.controller('rxBulkSelectValidateCtrl', function ($scope) {
 
     $scope.datacenters = [
         { name: 'ORD1', city: 'Chicago' },

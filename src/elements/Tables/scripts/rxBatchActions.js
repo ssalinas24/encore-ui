@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxBulkSelect.directive:rxBatchActions
+ * @name elements.directive:rxBatchActions
  * @restrict E
  * @scope
- * @requires rxBulkSelect.directive:rxBulkSelect
+ * @requires elements.directive:rxBulkSelect
  * @description
  *
  * This directive is responsible for adding the batch action menu link
