@@ -30,7 +30,7 @@ angular.module('encore.ui.utilities')
      * @description Takes a function and a list of roles, and returns the
      * result of calling that function with `roles`, and comparing to userRoles().
      *
-     * @param {Function} fn Comparison function to use. _.some, _.all, etc.
+     * @param {Function} fn Comparison function to use. _.some, _.every, etc.
      * @param {String[]} roles List of desired roles
      */
     var checkRoles = function (roles, fn) {
@@ -83,7 +83,7 @@ angular.module('encore.ui.utilities')
      *
      */
     permissionSvc.hasAllRoles = function (roles) {
-        return checkRoles(roles, _.all);
+        return checkRoles(roles, _.every);
     };
 
     return permissionSvc;
