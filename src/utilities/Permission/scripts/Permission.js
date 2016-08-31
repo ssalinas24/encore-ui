@@ -42,7 +42,7 @@ angular.module('encore.ui.utilities')
 
         var allUserRoles = userRoles();
         return fn(roles, function (role) {
-            return _.contains(allUserRoles, role);
+            return _.includes(allUserRoles, role);
         });
     };
 

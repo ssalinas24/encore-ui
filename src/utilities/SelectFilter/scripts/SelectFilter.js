@@ -163,7 +163,7 @@ angular.module('encore.ui.utilities')
 
             function isItemValid (item) {
                 return filter.properties.every(function (property) {
-                    return _.contains(filter.selected[property], item[property]);
+                    return _.includes(filter.selected[property], item[property]);
                 });
             }
 

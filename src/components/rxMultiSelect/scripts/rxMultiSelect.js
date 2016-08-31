@@ -85,7 +85,7 @@ angular.module('encore.ui.rxMultiSelect')
                 if (option === 'all') {
                     return this.options.length === $scope.selected.length;
                 } else {
-                    return _.contains($scope.selected, option);
+                    return _.includes($scope.selected, option);
                 }
             };
 

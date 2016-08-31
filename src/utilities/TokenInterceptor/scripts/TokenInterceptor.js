@@ -30,7 +30,7 @@ angular.module('encore.ui.utilities')
                 // into something with a `.hostname`
                 url.href = config.url;
                 var exclude = _.some(exclusionList, function (item) {
-                    if (_.contains(url.hostname, item)) {
+                    if (_.includes(url.hostname, item)) {
                         return true;
                     }
                 });

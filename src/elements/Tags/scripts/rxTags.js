@@ -112,7 +112,7 @@ angular.module('encore.ui.elements')
 
                 ngModelCtrl.$formatters.push(function ($modelValue) {
                     return scope.options.filter(function (option) {
-                        return _.contains($modelValue, option[attrs.key]);
+                        return _.includes($modelValue, option[attrs.key]);
                     });
                 });
             }
