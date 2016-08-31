@@ -3,7 +3,6 @@ var Page = require('astrolabe').Page;
 // rowFromElement and table are anonymous page objects to assist with table data
 var rowFromElement = function (rowElement) {
     return Page.create({
-
         name: {
             get: function () {
                 return rowElement.element(by.binding('name')).getText();
@@ -49,22 +48,22 @@ var table = Page.create({
 
     textFilter: {
         get: function () {
-            return encore.rxSearchBox.initialize($('rx-search-box')).term;
+            return encore.rxSearchBox.initialize($(tableSelector + ' rx-search-box')).term;
         },
         set: function (filterTerm) {
-            encore.rxSearchBox.initialize($('rx-search-box')).term = filterTerm;
+            encore.rxSearchBox.initialize($(tableSelector + ' rx-search-box')).term = filterTerm;
         }
     },
 
     selectFilter: {
         value: function (filterData) {
-            encore.rxSelectFilter.initialize($('rx-select-filter')).apply(filterData);
+            encore.rxSelectFilter.initialize($(tableSelector + ' rx-select-filter')).apply(filterData);
         }
     },
 
     pagination: {
         get: function () {
-            return encore.rxPaginate.initialize($('.demo-api-pagination .rx-paginate'));
+            return encore.rxPaginate.initialize($(tableSelector + ' .rx-paginate'));
         }
     }
 
@@ -73,7 +72,7 @@ var table = Page.create({
 describe('rxPaginate', function () {
 
     before(function () {
-        demoPage.go('#/components/rxPaginate');
+        demoPage.go('#/elements/Tables');
     });
 
     describe('Non present pagination exercise', encore.exercise.rxPaginate({
@@ -104,12 +103,14 @@ describe('rxPaginate', function () {
         var osColumn = table.column('OS');
 
         beforeEach(function () {
-            encore.rxMisc.scrollToElement(table.tblResults);
             table.textFilter = '';
             table.selectFilter({
                 Os: { All: true }
             });
             nameColumn.sortAscending();
+            encore.rxMisc.scrollToElement(table.tblResults, {
+                positionOnScreen: 'middle'
+            });
         });
 
         it('should get new items when filter text is entered', function () {
@@ -138,6 +139,5 @@ describe('rxPaginate', function () {
             osColumn.sortDescending();
             expect(table.row(0).os).to.eventually.equal('Ubuntu 13.04');
         });
-
     });
 });

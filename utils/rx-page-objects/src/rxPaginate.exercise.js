@@ -43,7 +43,9 @@ exports.rxPaginate = function (options) {
         });
 
         beforeEach(function () {
-            encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
+            encore.rxMisc.scrollToElement(pagination.rootElement, {
+                positionOnScreen: 'middle'
+            });
         });
 
         it(`should ${options.isDisplayed ? 'be' : 'not be'} displayed`, function () {
@@ -69,7 +71,9 @@ exports.rxPaginate = function (options) {
                 pagination.page.then(function (page) {
                     var firstPage = page;
                     pagination.last();
-                    encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
+                    encore.rxMisc.scrollToElement(pagination.rootElement, {
+                        positionOnScreen: 'middle'
+                    });
                     expect(pagination.page).to.eventually.be.above(firstPage);
                     pagination.first();
                 });
@@ -134,7 +138,9 @@ exports.rxPaginate = function (options) {
         it('should know the total number of pages without visiting it', function () {
             pagination.totalPages.then(function (totalPages) {
                 pagination.last();
-                encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
+                encore.rxMisc.scrollToElement(pagination.rootElement, {
+                    positionOnScreen: 'middle'
+                });
                 expect(pagination.page).to.eventually.equal(totalPages);
                 pagination.first();
             });

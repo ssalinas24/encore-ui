@@ -258,6 +258,9 @@ var rxPaginate = {
                     });
                 }).then(function (matchingPageSizeElements) {
                     matchingPageSizeElements[0].$('button').click();
+                    encore.rxMisc.scrollToElement(page.rootElement, {
+                        positionOnScreen: 'middle'
+                    });
                 });
             });
         }

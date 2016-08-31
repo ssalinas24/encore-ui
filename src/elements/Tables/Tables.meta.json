@@ -28,6 +28,8 @@
         "row",
         "rxBulkSelect",
         "rxFloatingHeader",
+        "rxLoadingOverlay",
+        "rxPaginate",
         "rxSelectFilter",
         "rxSortableColumn",
         "rxStatusColumn",

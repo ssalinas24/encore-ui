@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxPaginate')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxPaginate.directive:rxLoadingOverlay
+ * @name elements.directive:rxLoadingOverlay
  * @restrict A
  * @description
  * This directive can be used to show and hide a "loading" overlay on top

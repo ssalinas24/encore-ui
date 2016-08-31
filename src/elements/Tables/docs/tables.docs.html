@@ -155,13 +155,11 @@
 </ul>
 <rx-example name="table.actionMenu"></rx-example>
 
-
-<h3><rx-permalink>Table Footer Pagination via rxPaginate</rx-permalink></h3>
+<h2>
+  <rx-permalink>Table Pagination</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxPaginate/">View API</a>
+</h2>
 <ul class="list">
-  <li>
-    For implementation and examples, see the
-    <a href="#/components/rxPaginate">rxPaginate</a> directive.
-  </li>
   <li>
     <span class="msg-info">ENCORE-SPECIFIC:</span> To show how mark-up will be
     implemented, pagination is visible in this example. The pagination
@@ -182,8 +180,49 @@
       .pagination-per-page { display: none; }
   }
 </pre>
-<rx-example name="table.paginate"></rx-example>
 
+<h3><rx-permalink>UI-Based Pagination</rx-permalink></h3>
+
+<ul class="list">
+  <li>
+    UI-based pagination, where all items are retrieved at once, and paginated in the UI
+  </li>
+</ul>
+<rx-example name="table.paginate.ui"></rx-example>
+
+<rx-debug>
+  <div ng-controller="rxPaginateUiCtrl">
+    <h3>Non-displayed pagination</h3>
+    <rx-paginate
+      id="rx-paginate-hidden"
+      page-tracking="pager"
+      ng-hide="true">
+    </rx-paginate>
+  </div>
+</rx-debug>
+
+<h3><rx-permalink>API-Based Pagination</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Server-side pagination, where the pagination directive works with a paginated API
+  </li>
+  <li>
+      <p>
+        The API used by this demo is returning 100 items more than the user's selected <code>itemsPerPage</code>. If the
+        user's <code>itemsPerPage</code> is 25, then the API will return 125 items on each request. This means with the
+        default <code>itemsPerPage</code> of 25, five pages of results are coming back at a time. You should be able to
+        click through pages 1-5 without a loading message, and then the loading message will appear for page 6.
+      </p>
+
+      <p>
+        Click the "Refresh" button to see how the current page can be reloaded without the user interacting with the
+        <code>&lt;rx-paginate&gt;</code> buttons.
+      </p>
+
+      <p>Enter a search string of "error" to see the default error handling.</p>
+  </li>
+</ul>
+<rx-example name="table.paginate.api"></rx-example>
 
 <h2><rx-permalink>Design Patterns</rx-permalink></h2>
 
@@ -316,13 +355,45 @@
   </li>
   <li>
     <p>
-      Note: The demo table is also using <code>rx-floating-header</code>, which is not required. 
-      We've only done this to illustrate that <code>rxSortableColumn</code> works properly with 
+      Note: The demo table is also using <code>rx-floating-header</code>, which is not required.
+      We've only done this to illustrate that <code>rxSortableColumn</code> works properly with
       <code>rxFloatingHeader</code>. The table is also using <code>rxSortEmptyTop</code>.
     </p>
   </li>
 </ul>
 <rx-example name="rxSortableColumn.simple"></rx-example>
+
+<rx-debug>
+  <h3>Testing table for protractor tests.</h3>
+  <table
+     id="sortable-column-testing-table-errors"
+     rx-floating-header
+     class="sortable-column-table">
+    <thead>
+      <tr>
+        <th scope="col">
+          <rx-sortable-column
+             sort-method="sortCol"
+             sort-property="none"
+             predicate="sort.predicate"
+             reverse="sort.reverse">
+            Testing Sort Errors (see Protractor Tab)
+          </rx-sortable-column>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="resource in talentPool | rxSortEmptyTop:sort.predicate:sort.reverse">
+        <th scope="row" class="talent-name">
+          {{resource.name}}
+        </th>
+        <td class="talent-job">
+          {{resource.jobTitle}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</rx-debug>
 
 <h2>UI Roadmap / Possible Future-work</h2><!-- TODO: Do we keep? -->
 <ul class="list">
