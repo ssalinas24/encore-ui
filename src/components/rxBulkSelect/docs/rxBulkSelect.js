@@ -21,7 +21,7 @@ angular.module('demoApp')
     $scope.filter = { keyword: '' };
 
     $scope.getSelectedDatacenters = function () {
-        return _.cloneDeep(_.where($scope.datacenters, { rowIsSelected: true }));
+        return _.cloneDeep(_.filter($scope.datacenters, { rowIsSelected: true }));
     };
 
 })
