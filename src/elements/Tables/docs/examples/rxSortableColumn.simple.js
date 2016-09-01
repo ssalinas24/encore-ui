@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxSortableColumnCtrl', function ($scope, rxSortUtil) {
+.controller('rxSortableColumnSimpleCtrl', function ($scope, rxSortUtil) {
     $scope.sort = rxSortUtil.getDefault('name', false);
 
     $scope.sortCol = function (predicate) {

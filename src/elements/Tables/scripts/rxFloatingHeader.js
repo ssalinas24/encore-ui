@@ -17,7 +17,8 @@ angular.module('encore.ui.elements')
  *
  * * Make sure you set the `colspan` attribute on the filter's `<th>`, to match the number of columns you have.
  *
- * * `rxFloatingHeader` is also fully compatible with {@link rxSortableColumn} and {@link rxPaginate}.
+ * * `rxFloatingHeader` is also fully compatible with {@link elements.directive:rxSortableColumn rxSortableColumn}
+ * * and {@link rxPaginate}.
  *
  * @example
  * <pre>

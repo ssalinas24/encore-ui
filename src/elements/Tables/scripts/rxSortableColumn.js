@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxSortableColumn')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxSortableColumn.directive:rxSortableColumn
+ * @name elements.directive:rxSortableColumn
  * @restrict E
  * @description
  * Renders a clickable link in a table heading which will sort the table by
