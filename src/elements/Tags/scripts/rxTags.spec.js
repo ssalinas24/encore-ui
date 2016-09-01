@@ -151,7 +151,7 @@ describe('rxTags', function () {
             var tags = scope.options;
             scope.tags = _.clone(tags);
             scope.$digest();
-            isolateScope.remove(_.first(tags));
+            isolateScope.remove(_.head(tags));
             expect(scope.tags).to.eql(_.rest(tags));
         });
 

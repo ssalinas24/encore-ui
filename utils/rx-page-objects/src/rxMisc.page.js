@@ -47,7 +47,7 @@ exports.rxMisc = {
             var resFloat = parseFloat(currencyString.split(' ')[0].replace(/[,$()]/g, '').trim());
 
             // Negative number
-            if (_.first(currencyString) === '(' && _.last(currencyString) === ')') {
+            if (_.head(currencyString) === '(' && _.last(currencyString) === ')') {
                 resFloat = -resFloat;
             }
 

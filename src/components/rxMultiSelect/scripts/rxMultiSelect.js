@@ -120,7 +120,7 @@ angular.module('encore.ui.rxMultiSelect')
                         } else if (scope.selected.length === 1) {
                             return getLabel(scope.selected[0]) || scope.selected[0];
                         } else if (scope.selected.length === selectCtrl.options.length - 1) {
-                            var option = _.first(_.difference(selectCtrl.options, scope.selected));
+                            var option = _.head(_.difference(selectCtrl.options, scope.selected));
                             return 'All except ' + getLabel(option) || scope.selected[0];
                         } else if (scope.selected.length === selectCtrl.options.length) {
                             return 'All Selected';
