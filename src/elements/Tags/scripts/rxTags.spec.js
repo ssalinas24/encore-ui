@@ -152,7 +152,7 @@ describe('rxTags', function () {
             scope.tags = _.clone(tags);
             scope.$digest();
             isolateScope.remove(_.head(tags));
-            expect(scope.tags).to.eql(_.rest(tags));
+            expect(scope.tags).to.eql(_.tail(tags));
         });
 
         it('focuses the input', function () {

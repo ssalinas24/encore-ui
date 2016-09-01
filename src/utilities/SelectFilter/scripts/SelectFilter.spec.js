@@ -47,7 +47,7 @@ describe('utilities:SelectFilter', function () {
         });
 
         it('keeps items with properties that are all selected', function () {
-            expect(result).to.eql(_.rest(inputArray));
+            expect(result).to.eql(_.tail(inputArray));
         });
 
         it('removes items with properties that are not selected', function () {
