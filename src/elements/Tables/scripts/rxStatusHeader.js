@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxStatusColumn')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxStatusColumn.directive:rxStatusHeader
+ * @name elements.directive:rxStatusHeader
  * @description
  *
  * Place this attribute directive on the `<th>` for the status columns. It

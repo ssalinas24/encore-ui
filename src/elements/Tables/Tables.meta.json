@@ -23,11 +23,13 @@
         "pagination",
         "row",
         "rxSelectFilter",
+        "rxStatusColumn",
         "search",
         "select",
         "sort",
         "sortable",
         "sorting",
+        "status",
         "status column",
         "striped",
         "table"

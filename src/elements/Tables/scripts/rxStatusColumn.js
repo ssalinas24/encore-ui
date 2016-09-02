@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxStatusColumn')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxStatusColumn.directive:rxStatusColumn
+ * @name elements.directive:rxStatusColumn
  * @restrict A
  * @scope
  * @description
