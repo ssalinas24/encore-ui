@@ -163,7 +163,7 @@ angular.module('encore.ui.utilities')
         loading: false,
         show: 'immediate',
         dismiss: 'next',
-        ondismiss: _.noop(),
+        ondismiss: _.noop,
         stack: 'page',
         repeat: true
     };
@@ -383,11 +383,11 @@ angular.module('encore.ui.utilities')
             stacks[stack] = [];
         }
 
-        // merge options with defaults (overwriting defaults where applicable)
+        // add defaults to options
         _.defaults(options, messageDefaults);
 
         // add options to message
-        _.merge(message, options);
+        _.defaults(message, options);
 
         // if dismiss is set to array, watch variable
         if (_.isArray(message.dismiss)) {
