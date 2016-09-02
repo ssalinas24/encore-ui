@@ -5,6 +5,7 @@ var _ = require('lodash');
  * @exports exercise/rxPaginate
  * @param {Object} options - Test options. Used to build valid tests.
  * @param {rxPaginate} options.instance - Component to exercise.
+ * @param {Boolean} [options.isPresent=true] - Whether or not the pagination element is present.
  * @param {String} [options.pages=6] - Estimated page size in the pagination widget.
  * @param {Number[]} [options.pageSizes=[50, 200, 350, 500]] - Page sizes to validate.
  * @param {Number} [options.defaultPageSize=50] - Default page size on page load.
@@ -21,6 +22,7 @@ exports.rxPaginate = function (options) {
     }
 
     options = _.defaults(options, {
+        isPresent: true,
         pages: 6,
         pageSizes: [50, 200, 350, 500],
         defaultPageSize: 50,
@@ -29,6 +31,10 @@ exports.rxPaginate = function (options) {
 
     return function () {
         var pagination;
+
+        if (!options.isPresent) {
+            return;
+        }
 
         before(function () {
             pagination = options.instance;
