@@ -4,7 +4,7 @@ describe('rxAttributes', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxAttributes');
+        module('encore.ui.utilities');
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {
