@@ -11,6 +11,7 @@
     },
     "files": [
         "src/rxComponent.ts",
-        "src/rxDatePicker.page.ts"
+        "src/rxDatePicker.page.ts",
+        "src/rxDatePicker.exercise.ts"
     ]
 }

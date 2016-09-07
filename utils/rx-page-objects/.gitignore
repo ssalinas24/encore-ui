@@ -10,3 +10,4 @@ typings/
 # can be ignored with a glob.
 src/rxComponent.js
 src/rxDatePicker.page.js
+src/rxDatePicker.exercise.js
