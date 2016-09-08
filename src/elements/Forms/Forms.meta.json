@@ -23,6 +23,7 @@
         "option",
         "picker",
         "radio",
+        "rxSelect",
         "rxCharacterCount",
         "rxCheckbox",
         "rxDatePicker",

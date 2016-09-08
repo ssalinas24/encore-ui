@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxSelect.directive:rxSelect
+ * @name elements.directive:rxSelect
  * @restrict A
  * @scope
  * @description

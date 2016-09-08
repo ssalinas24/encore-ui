@@ -254,7 +254,7 @@ describe('rxRadio', function () {
             });
 
             it('target radio should be present', function () {
-                radTargetCreated = rxRadioPage.initialize($('#radTargetCreated'));
+                radTargetCreated = rxRadioPage.initialize($('#selTargetCreated'));
                 expect(radTargetCreated.isPresent()).to.eventually.be.true;
             });
         });
