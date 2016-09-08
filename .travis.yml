@@ -19,6 +19,8 @@ before_script:
 - nohup bash -c "./utils/rx-page-objects/node_modules/.bin/webdriver-manager start 2>&1 &"
 - sleep 5 # wait for selenium server to actually come up
 script:
+- npm run eslint-dev
+- npm run eslint-test
 - grunt
 - grunt karma:single
 - grunt karma:minified
