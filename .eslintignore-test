@@ -9,3 +9,4 @@
 # can be ignored with a glob.
 *rxComponent.page.js
 *rxDatePicker.page.js
+*rxDatePicker.exercise.js
