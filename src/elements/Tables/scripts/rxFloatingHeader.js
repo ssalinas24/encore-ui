@@ -1,4 +1,4 @@
-angular.module('encore.ui.rxFloatingHeader')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
  * @name rxFloatingHeader.directive:rxFloatingHeader

@@ -51,7 +51,7 @@ describe('rxFloatingHeader', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxFloatingHeader');
+        module('encore.ui.elements');
 
         module(function ($provide) {
             $provide.value('rxDOMHelper', mockJq);
