@@ -37,6 +37,9 @@ exports.rxToggleSwitch = function (options) {
         };
 
         var toggle = function () {
+            encore.rxMisc.scrollToElement(component.rootElement, {
+                positionOnScreen: 'middle'
+            });
             return component.isToggled().then(function (toggled) {
                 toggled ? component.toggleOff() : component.toggleOn();
             });

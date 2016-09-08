@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxToggleSwitch')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxToggleSwitch.directive:rxToggleSwitch
+ * @name elements.directive:rxToggleSwitch
  * @restrict E
  * @description
  *
@@ -18,7 +18,7 @@ angular.module('encore.ui.rxToggleSwitch')
  * time the switch is toggled (after the model property is written on the
  * scope).  It takes one argument, `value`, which is the new value of the model.
  * This can be used instead of a `$scope.$watch` on the `ng-model` property.
- * As shown in the {@link /encore-ui/#/components/rxToggleSwitch demo}, the `disabled`
+ * As shown in the {@link /encore-ui/#/elements/Forms demo}, the `disabled`
  * attribute can be used to prevent further toggles if the `post-hook` performs
  * an asynchronous operation.
  *

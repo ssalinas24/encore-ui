@@ -1,6 +1,6 @@
 describe('rxToggleSwitch', function () {
     before(function () {
-        demoPage.go('#/components/rxToggleSwitch');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('defaults', encore.exercise.rxToggleSwitch({
