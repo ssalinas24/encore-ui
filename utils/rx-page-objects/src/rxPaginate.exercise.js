@@ -5,6 +5,8 @@ var _ = require('lodash');
  * @exports exercise/rxPaginate
  * @param {Object} options - Test options. Used to build valid tests.
  * @param {rxPaginate} options.instance - Component to exercise.
+ * @param {Boolean} [options.isPresent=true] - Whether or not the pagination element is present.
+ * @param {Boolean} [options.isDisplayed=true] - Whether or not the pagination element is displayed.
  * @param {String} [options.pages=6] - Estimated page size in the pagination widget.
  * @param {Number[]} [options.pageSizes=[50, 200, 350, 500]] - Page sizes to validate.
  * @param {Number} [options.defaultPageSize=50] - Default page size on page load.
@@ -21,6 +23,8 @@ exports.rxPaginate = function (options) {
     }
 
     options = _.defaults(options, {
+        isPresent: true,
+        isDisplayed: true,
         pages: 6,
         pageSizes: [50, 200, 350, 500],
         defaultPageSize: 50,
@@ -30,6 +34,10 @@ exports.rxPaginate = function (options) {
     return function () {
         var pagination;
 
+        if (!options.isPresent) {
+            return;
+        }
+
         before(function () {
             pagination = options.instance;
         });
@@ -37,6 +45,14 @@ exports.rxPaginate = function (options) {
         beforeEach(function () {
             encore.rxMisc.scrollToElement(pagination.rootElement, { positionOnScreen: 'bottom' });
         });
+
+        it(`should ${options.isDisplayed ? 'be' : 'not be'} displayed`, function () {
+            expect(pagination.isDisplayed()).to.eventually.equal(options.isDisplayed);
+        });
+
+        if (!options.isDisplayed) {
+            return;
+        }
 
         if (options.pages > 1) {
             it('should navigate forward one page at a time', function () {

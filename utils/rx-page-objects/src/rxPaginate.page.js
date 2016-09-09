@@ -486,6 +486,30 @@ var rxPaginate = {
     },
 
     /**
+     * @function
+     * @instance
+     * @description Whether or not the pagination element is present.
+     * @returns {Promise<Boolean>}
+     */
+    isPresent: {
+        value: function () {
+            return this.rootElement.isPresent();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the pagination element is displayed.
+     * @returns {Promise<Boolean>}
+     */
+    isDisplayed: {
+        value: function () {
+            return this.rootElement.isDisplayed();
+        }
+    },
+
+    /**
      * @type {Exception}
      * @instance
      * @description Will be thrown should you attempt to navigate to a page that doesn't exist.

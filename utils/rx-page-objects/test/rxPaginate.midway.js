@@ -76,6 +76,16 @@ describe('rxPaginate', function () {
         demoPage.go('#/components/rxPaginate');
     });
 
+    describe('Non present pagination exercise', encore.exercise.rxPaginate({
+        instance: encore.rxPaginate.initialize($('#does-not-exist')),
+        isPresent: false
+    }));
+
+    describe('Non displayed pagination exercise', encore.exercise.rxPaginate({
+        instance: encore.rxPaginate.initialize($('#rx-paginate-hidden')),
+        isDisplayed: false
+    }));
+
     describe('UI pagination exercises', encore.exercise.rxPaginate({
         pageSizes: [3, 50, 200, 350, 500],
         defaultPageSize: 3,
