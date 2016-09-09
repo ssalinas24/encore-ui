@@ -10,7 +10,7 @@ describe('rxMultiSelect', function () {
     var optionsTemplate = '<rx-multi-select ng-model="types" options="options"></rx-multi-select>';
 
     beforeEach(function () {
-        module('encore.ui.rxMultiSelect');
+        module('encore.ui.elements');
 
         module('templates/rxMultiSelect.html');
         module('templates/rxSelectOption.html');

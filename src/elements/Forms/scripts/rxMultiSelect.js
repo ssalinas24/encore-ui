@@ -1,10 +1,10 @@
-angular.module('encore.ui.rxMultiSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxMultiSelect.directive:rxMultiSelect
+ * @name elements.directive:rxMultiSelect
  * @restrict E
  * @scope
- * @requires rxMultiSelect.directive:rxSelectOption
+ * @requires elements.directive:rxSelectOption
  * @description
  * This component is a multi-select dropdown with checkboxes for each option.
  * It is a replacement for `<select multiple>` when space is an issue, such as

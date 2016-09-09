@@ -67,7 +67,7 @@
 <ul class="list">
   <li>
     rxFieldName is a descriptive design element for a particular
-    form field.      
+    form field.
   </li>
   <li>
     In contrast to its predecessor (rxFormItem), rxField and children
@@ -139,11 +139,7 @@
 
 <ul class="list">
   <li>For single item selection, use the rxSelect directive.</li>
-  <li>
-    For multi-item selection, use the rxMultiSelect element defined in
-    the <a href="#/components/rxMultiSelect">rxMultiSelect</a>
-    component.
-  </li>
+  <li>For multi-item selection, use the rxMultiSelect directive.</li>
 </ul>
 
 <h3>With Validation</h3>
@@ -282,6 +278,92 @@
     </select>
   </p>
 </rx-debug>
+
+<!-- BEGIN: multiselect -->
+<h3>
+  <rx-permalink>MultiSelect</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxMultiSelect/">
+    View API
+  </a>
+  <!-- (NOTE) stability: 'READY' -->
+</h3>
+
+<h4>MultiSelect Input</h4>
+<rx-example name="rxMultiSelect.simple"></rx-example>
+
+<h4>MultiSelect States</h4>
+<p>
+  Below you'll find examples of how <code>rxMultiSelect</code> will appear in different states.
+</p>
+<div ng-controller="rxMultiSelectCtrl">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Enabled</th>
+        <th>Disabled</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Valid States -->
+      <tr>
+        <th>Valid</th>
+        <!-- Valid Enabled -->
+        <td>
+          <rx-multi-select
+            id="msValidEnabled"
+            ng-model="validEnabled">
+
+            <rx-select-option value="A">Type A</rx-select-option>
+            <rx-select-option value="B">Type B</rx-select-option>
+            <rx-select-option value="C">Type C</rx-select-option>
+            <rx-select-option value="D">Type D</rx-select-option>
+          </rx-multi-select>
+        </td>
+        <!-- Valid Disabled -->
+        <td>
+          <rx-multi-select
+            id="msValidDisabled"
+            ng-model="validDisabled"
+            ng-disabled="true">
+
+            <rx-select-option value="Not allowed">Not Allowed</rx-select-option>
+          </rx-multi-select>
+        </td>
+      </tr>
+      <!-- Invalid States -->
+      <tr>
+        <th>Invalid</th>
+        <!-- Invalid Enabled -->
+        <td>
+          <rx-multi-select
+            id="msInvalidEnabled"
+            ng-model="invalidEnabled"
+            always-invalid>
+
+            <rx-select-option value="A">Type A</rx-select-option>
+            <rx-select-option value="B">Type B</rx-select-option>
+            <rx-select-option value="C">Type C</rx-select-option>
+            <rx-select-option value="D">Type D</rx-select-option>
+          </rx-multi-select>
+        </td>
+
+        <!-- Invalid Disabled -->
+        <td>
+          <rx-multi-select
+            id="msInvalidDisabled"
+            ng-model="invalidDisabled"
+            always-invalid
+            ng-disabled="true">
+
+            <rx-select-option value="Not allowed">Not Allowed</rx-select-option>
+          </rx-multi-select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- END: multiselect -->
 
 <!-- BEGIN: checkboxes -->
 <h3>
@@ -559,7 +641,7 @@
       <!-- Valid Enabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidEnabledOne"
             value="1"
@@ -567,7 +649,7 @@
           <label for="radValidEnabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidEnabledTwo"
             value="2"
@@ -579,7 +661,7 @@
       <!-- Valid NG-Disabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidNgDisabledOne"
             value="1"
@@ -588,7 +670,7 @@
           <label for="radValidNgDisabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidNgDisabledTwo"
             value="2"
@@ -601,7 +683,7 @@
       <!-- Valid Disabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidDisabledOne"
             value="1"
@@ -610,7 +692,7 @@
           <label for="radValidDisabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radValidDisabledTwo"
             value="2"
@@ -626,7 +708,7 @@
       <!-- Invalid Enabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidEnabledOne"
             value="1"
@@ -635,7 +717,7 @@
           <label for="radInvalidEnabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidEnabledTwo"
             value="2"
@@ -648,7 +730,7 @@
       <!-- Invalid NG-Disabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidNgDisabledOne"
             value="1"
@@ -658,7 +740,7 @@
           <label for="radInvalidNgDisabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidNgDisabledTwo"
             value="2"
@@ -672,7 +754,7 @@
       <!-- Invalid Disabled -->
       <td>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidDisabledOne"
             value="1"
@@ -682,7 +764,7 @@
           <label for="radInvalidDisabledOne">Selected</label>
         </p>
         <p>
-          <input 
+          <input
             rx-radio
             id="radInvalidDisabledTwo"
             value="2"
@@ -699,7 +781,7 @@
 <rx-debug>
   <h3>Plain HTML Radios (for comparison)</h3>
   <p>
-    <input 
+    <input
       type="radio"
       id="plainRadNormal"
       ng-model="plainHtmlRadio"
@@ -708,7 +790,7 @@
     <label for="plainRadNormal">A plain radio</label>
   </p>
   <p>
-    <input 
+    <input
       type="radio"
       id="plainRadDisabled"
       value="disabled"
@@ -717,7 +799,7 @@
     <label for="plainRadDisabled">A plain radio (disabled)</label>
   </p>
   <p>
-    <input 
+    <input
       type="radio"
       id="plainRadChecked"
       value="isChecked"
@@ -725,14 +807,14 @@
     <label for="plainRadChecked">A plain radio (checked)</label>
   </p>
   <p>
-    <input 
+    <input
       type="radio"
       id="plainRadRemoveRadio"
       value="shows"
       ng-model="plainHtmlRadio"/>
     <label for="plainRadRemoveRadio">Add Following Radio:</label>
 
-    <input 
+    <input
       type="radio"
       id="plainRadRemoveable"
       value="hidden"
@@ -1056,7 +1138,7 @@
     Please see the example below for implementing a textarea input.
   </li>
   <li>
-    <code>rows</code> attribute can used to set the default number of rows in textarea, 
+    <code>rows</code> attribute can used to set the default number of rows in textarea,
     if input limit exceeds it will apply auto-scroll feature.
   </li>
   <li>
@@ -1073,8 +1155,8 @@
 
 <h4><rx-permalink>Drop-Down Selection</rx-permalink></h4>
 <p>
-  For drop-down selections, two options are available: a drop-down 
-  that only permits a single selection, or a drop-down that allows 
+  For drop-down selections, two options are available: a drop-down
+  that only permits a single selection, or a drop-down that allows
   the user to make multiple selections.
 </p>
 <rx-example name="forms.dropdown"></rx-example>
@@ -1084,8 +1166,8 @@
 
 <h3><rx-permalink>Option Tables</rx-permalink></h3>
 <p>
-  The rxOptionTable component provides functionality to create a series 
-  of radio or checkbox inputs within a table.  
+  The rxOptionTable component provides functionality to create a series
+  of radio or checkbox inputs within a table.
 </p>
 
 <h4><rx-permalink>Radio Option Tables</rx-permalink></h4>
@@ -1102,20 +1184,20 @@
 
 <h4><rx-permalink>Advanced Text Area</rx-permalink></h4>
 <p>
-  Text areas can utilize multiple features simultaneously. In the following 
-  example, the text area is a required field, has a character counter 
+  Text areas can utilize multiple features simultaneously. In the following
+  example, the text area is a required field, has a character counter
   applied, and shows help text.
 </p>
 <rx-example name="forms.advancedtextarea"></rx-example>
 
 <h3><rx-permalink>Form Actions</rx-permalink></h3>
 <p>
-  At the end of each form, the user should be presented with a cancel button and a submit button. The 
-  submit button should appear on the left, the cancel button to the right. 
-  Submit button text should be as specific as possible to reinforce for the user 
+  At the end of each form, the user should be presented with a cancel button and a submit button. The
+  submit button should appear on the left, the cancel button to the right.
+  Submit button text should be as specific as possible to reinforce for the user
   what change they are about to make. For example, "Update Server" is better than a general "Submit".
 </p>
-<rx-example name="forms.formactions"></rx-example> 
+<rx-example name="forms.formactions"></rx-example>
 
 <h2><rx-permalink>Saving Form Data</rx-permalink></h2>
 
