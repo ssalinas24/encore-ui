@@ -97,9 +97,9 @@ angular.module('demoApp')
 
     return function (statusText) {
         var lower = statusText.toLowerCase();
-        if (_.contains(warning, lower)) {
+        if (_.includes(warning, lower)) {
             return 'warning';
-        } else if (_.contains(info, lower)) {
+        } else if (_.includes(info, lower)) {
             return 'info';
         }
         return '';

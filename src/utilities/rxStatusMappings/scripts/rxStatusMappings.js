@@ -98,7 +98,7 @@ angular.module('encore.ui.utilities')
      * @param {String} mapping This is mapping with keys and values
      */
     rxStatusMappings.addGlobal = function (mapping) {
-        _.assign(globalMappings, mapping, upperCaseCallback);
+        _.assignInWith(globalMappings, mapping, upperCaseCallback);
     };
 
     /**
@@ -143,7 +143,7 @@ angular.module('encore.ui.utilities')
      */
     rxStatusMappings.addAPI = function (apiName, mapping) {
         var api = apiMappings[apiName] || {};
-        _.assign(api, mapping, upperCaseCallback);
+        _.assignInWith(api, mapping, upperCaseCallback);
         apiMappings[apiName] = api;
     };
 

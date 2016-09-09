@@ -148,7 +148,7 @@ exports.rxPaginate = function (options) {
         });
 
         // execute only if the greatest items per page setting can contain all items
-        if (_.first(options.pageSizes) * options.pages < _.last(options.pageSizes)) {
+        if (_.head(options.pageSizes) * options.pages < _.last(options.pageSizes)) {
 
             it('should not fail to match the upper bounds of the shown items even if not displayed', function () {
                 pagination.pageSize = _.last(options.pageSizes);

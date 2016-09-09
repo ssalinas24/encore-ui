@@ -93,7 +93,7 @@ angular.module('encore.ui.elements')
                 // Only attempt if no teamId is passed to directive
                 if (_.isEmpty(scope.teamId)) {
                     var primaryTeam = _.find(account.teams, function (team) {
-                        return _.contains(team.flags, 'primary');
+                        return _.includes(team.flags, 'primary');
                     });
 
                     if (primaryTeam) {

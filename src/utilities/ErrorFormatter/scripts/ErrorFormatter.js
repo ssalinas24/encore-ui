@@ -45,7 +45,7 @@ angular.module('encore.ui.utilities')
         if (!_.has(error, 'message')) {
             error.message = _.has(error, 'statusText') ? error.statusText : 'Unknown error';
         }
-        return _.template(formatString, error);
+        return _.template(formatString)(error);
     };
 
     return {

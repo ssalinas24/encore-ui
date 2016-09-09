@@ -67,6 +67,6 @@ angular.module('demoApp')
         }
     ];
     // select the first type by default
-    $scope.volumeType = _.first($scope.volumeTypes).value;
+    $scope.volumeType = _.head($scope.volumeTypes).value;
     $scope.selectedServices = [];
 });

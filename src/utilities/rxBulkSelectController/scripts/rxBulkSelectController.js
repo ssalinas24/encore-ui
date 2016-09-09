@@ -22,7 +22,7 @@ angular.module('encore.ui.utilities')
     this.messageStats = messageStats;
 
     var numSelected = function () {
-        var selected = _.where($scope.bulkSource, $scope.selectedKey);
+        var selected = _.filter($scope.bulkSource, $scope.selectedKey);
         return selected.length;
     };
 

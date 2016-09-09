@@ -47,7 +47,7 @@ exports.rxMisc = {
             var resFloat = parseFloat(currencyString.split(' ')[0].replace(/[,$()]/g, '').trim());
 
             // Negative number
-            if (_.first(currencyString) === '(' && _.last(currencyString) === ')') {
+            if (_.head(currencyString) === '(' && _.last(currencyString) === ')') {
                 resFloat = -resFloat;
             }
 
@@ -256,11 +256,11 @@ exports.rxMisc = {
             var loc = info[1];
 
             if (_.isArray(loc)) {
-                loc = _.min(loc, 'y');
+                loc = _.minBy(loc, 'y');
             }
 
             if (_.isArray(size)) {
-                size = _.min(size, 'height');
+                size = _.minBy(size, 'height');
             }
 
             return browser.executeScript('return window.innerHeight;').then(function (height) {

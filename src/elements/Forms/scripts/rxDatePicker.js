@@ -51,8 +51,8 @@ angular.module('encore.ui.elements')
         }
 
         // until first item of array is Sunday, prepend earlier days to array
-        while (_.first(days).day() > 0) {
-            prependDay = _.first(days).clone();
+        while (_.head(days).day() > 0) {
+            prependDay = _.head(days).clone();
             days.unshift(prependDay.subtract(1, 'day'));
         }
 

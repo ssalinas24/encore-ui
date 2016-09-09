@@ -22,7 +22,7 @@ angular.module('demoApp')
         var messageOptions = _.clone($scope.options);
 
         if ($scope.ondismiss.should) {
-            messageOptions.ondismiss = _.clone($scope.ondismiss.method);
+            messageOptions.ondismiss = $scope.ondismiss.method;
         }
 
         messageOptions.stack = stack;

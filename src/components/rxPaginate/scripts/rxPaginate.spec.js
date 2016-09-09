@@ -253,7 +253,7 @@ describe('Pagination', function () {
                 scope.api = api;
                 scope.d = { filter: '' };
                 scope.selected = {
-                    os: _.pluck(response.items, 'os')
+                    os: _.map(response.items, 'os')
                 };
                 scope.sort = {
                     predicate: 'Name',
@@ -332,7 +332,7 @@ describe('Pagination', function () {
         });
 
         it('should show the loading overlay when selections changes', function () {
-            scope.selected.os = _.first(scope.selected.os);
+            scope.selected.os = _.head(scope.selected.os);
             scope.$apply();
             $timeout.flush();
             expect(overlayScope._rxLoadingOverlayVisible).to.be.true;

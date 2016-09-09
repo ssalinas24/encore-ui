@@ -10,7 +10,7 @@ describe('rxPermission', function () {
             module('encore.ui.rxPermission', function ($provide) {
                 $provide.decorator('Permission', function ($delegate) {
                     $delegate.hasRole = function (role) {
-                        return _.contains(role, 'pass') || _.contains(role, 'also');
+                        return _.includes(role, 'pass') || _.includes(role, 'also');
                     };
 
                     return $delegate;
