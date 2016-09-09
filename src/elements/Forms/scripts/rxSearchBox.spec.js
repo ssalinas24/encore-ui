@@ -2,7 +2,7 @@ describe('rxSearchBox', function () {
     var scope, isoScope, compile, el, template;
 
     beforeEach(function () {
-        module('encore.ui.rxSearchBox');
+        module('encore.ui.elements');
         module('templates/rxSearchBox.html');
 
         inject(function ($location, $rootScope, $compile) {

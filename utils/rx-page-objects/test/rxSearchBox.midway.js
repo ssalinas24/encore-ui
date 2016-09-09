@@ -1,6 +1,6 @@
 describe('rxSearchBox', function () {
     before(function () {
-        demoPage.go('#/components/rxSearchBox');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('default rxSearchBox', encore.exercise.rxSearchBox({
@@ -13,7 +13,7 @@ describe('rxSearchBox', function () {
     }));
 
     describe('custom, wide rxSearchBox', encore.exercise.rxSearchBox({
-        instance: encore.rxSearchBox.initialize($('.wide-search-box')),
+        instance: encore.rxSearchBox.initialize($('.custom-search-box')),
         placeholder: 'Filter by any...'
     }));
 });

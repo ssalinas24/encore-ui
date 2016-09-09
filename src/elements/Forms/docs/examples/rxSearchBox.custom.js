@@ -1,5 +1,4 @@
 angular.module('demoApp')
-.controller('rxSearchBoxCtrl', function ($scope) {
-    $scope.searchModel = '';
+.controller('rxSearchBoxCustomCtrl', function ($scope) {
     $scope.filterPlaceholder = 'Filter by any...';
 });
