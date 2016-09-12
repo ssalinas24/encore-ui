@@ -105,9 +105,10 @@ angular.module('encore.ui.rxApp')
                 // Check if we have a definition of NAV_ITEM_TARGET, if so let's retrieve it and enable the target attr
                 // on the nav item.  This allows applications like origin to give a target to it's nav items, while not
                 // messing with nav items in the demo/documentation.
-                // The default of `_self` is based on the default value of `target` when there's no value present:
-                // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target
-                return $injector.has('NAV_ITEM_TARGET') ? $injector.get('NAV_ITEM_TARGET') : '_self';
+                // We have to pass null in order for the `target` attribute to have no value, the reason for this
+                // is ngRoute will take an href with `target="_self"` and not use it's $location service
+                // allowing the browser to reload the angular application
+                return $injector.has('NAV_ITEM_TARGET') ? $injector.get('NAV_ITEM_TARGET') : null;
             };
             // provide `route` as a scope property so that links can tie into them
             $scope.route = $route;
