@@ -4,7 +4,7 @@ describe('rxStatusColumn', function () {
 
         beforeEach(function () {
             // load module
-            module('encore.ui.rxStatusColumn');
+            module('encore.ui.elements');
 
             // load templates
             module('templates/rxStatusColumn.html');

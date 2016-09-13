@@ -59,7 +59,7 @@ var colors = rxStatusColumn.colors;
 describe('rxStatusColumn', function () {
 
     before(function () {
-        demoPage.go('#/components/rxStatusColumn');
+        demoPage.go('#/elements/Tables');
     });
 
     describe('rows', function () {
