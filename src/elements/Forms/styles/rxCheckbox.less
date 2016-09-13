@@ -62,6 +62,11 @@
       border: 0;
     }
 
+    &:focus + .fake-checkbox {
+      border-color: @app-input-focus-border-color;
+      box-shadow: @app-input-focus-box-shadow;
+    }
+
     .disabled() {
       cursor: not-allowed;
 

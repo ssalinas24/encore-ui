@@ -82,6 +82,11 @@
       border-width: 1px;
     }
 
+    &:focus + .fake-select {
+      border-color: @app-input-focus-border-color;
+      box-shadow: @app-input-focus-box-shadow;
+    }
+
     &.ng-invalid.ng-dirty {
       .invalidSelect();
     }
