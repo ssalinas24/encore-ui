@@ -11,8 +11,8 @@ describe('rxSortableColumn', function () {
     var columns, nameColumn, roleColumn;
 
     before(function () {
-        demoPage.go('#/components/rxSortableColumn');
-        columns = rxSortableColumn.byTable($('.module-demo table'));
+        demoPage.go('#/elements/Tables');
+        columns = rxSortableColumn.byTable($('.sortable-column-table'));
         nameColumn = column('Name', 'resource in talentPool');
         roleColumn = column('Occupation');
     });

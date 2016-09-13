@@ -4,7 +4,7 @@ describe('rxSortableColumn', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxSortableColumn');
+        module('encore.ui.elements');
 
         // load templates
         module('templates/rxSortableColumn.html');
