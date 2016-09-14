@@ -1,5 +1,5 @@
 describe('rxBulkSelect', function () {
-    var scope, compile, timeout, el;
+    var scope, compile, el, isolateScope;
 
     var template =
         '<table rx-bulk-select bulk-source="servers" selected-key="rowIsSelected" num-columns="2">' +
@@ -43,56 +43,29 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxBulkSelect');
+        module('encore.ui.elements');
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');
 
-        inject(function ($compile, $rootScope, $timeout) {
+        inject(function ($compile, $rootScope) {
             compile = $compile;
             scope = $rootScope.$new();
-            timeout = $timeout;
         });
 
         scope.servers = servers;
 
         el = helpers.createDirective(template, compile, scope);
         scope.$digest();
+        isolateScope = el.isolateScope();
     });
 
-    describe('directive:rxBulkSelectHeaderCheck', function () {
-        var headerEl, headerCheck;
-
-        beforeEach(function () {
-            headerEl = el.find('thead th[rx-bulk-select-header-check]');
-            headerCheck = headerEl.find('input[type="checkbox"]');
+    describe(' - directive', function () {
+        it('should have added a <tr rx-bulk-select-message> to the header', function () {
+            expect(el.find('thead tr[rx-bulk-select-message]')).to.have.length(1);
         });
 
-        it('should have added a checkbox input to the header', function () {
-            expect(headerEl.find('input[type="checkbox"]')).to.have.length(1);
-        });
-
-        it('should cause all rows to be selected/deselected when clicked', function () {
-            var numSelected;
-            var controller = el.controller('rxBulkSelect');
-            var update = function (newVal) {
-                numSelected = newVal;
-            };
-
-            controller.registerForNumSelected(update);
-
-            headerCheck.click();
-            timeout.flush();
-            expect(numSelected).to.equal(3);
-            expect(servers[0].rowIsSelected).to.be.true;
-            expect(servers[1].rowIsSelected).to.be.true;
-            expect(servers[2].rowIsSelected).to.be.true;
-
-            headerCheck.click();
-            timeout.flush();
-            expect(numSelected).to.equal(0);
-            expect(servers[0].rowIsSelected).to.be.false;
-            expect(servers[1].rowIsSelected).to.be.false;
-            expect(servers[2].rowIsSelected).to.be.false;
+        it('should set tableElement on the scope', function () {
+            expect(isolateScope.tableElement).to.not.be.undefined;
         });
     });
 });

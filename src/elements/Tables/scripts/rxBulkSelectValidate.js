@@ -1,9 +1,9 @@
-angular.module('encore.ui.rxBulkSelect')
+angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxBulkSelect.directive:rxBulkSelectValidate
+ * @name elements.directive:rxBulkSelectValidate
  * @restrict A
- * @requires rxBulkSelect.directive:rxBulkSelect
+ * @requires elements.directive:rxBulkSelect
  * @description
  *
  * A directive used to validate rxBulkSelect in a form. The directive should be placed

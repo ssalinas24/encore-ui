@@ -19,7 +19,7 @@ describe('rxBulkSelect', function () {
     };
 
     before(function () {
-        demoPage.go('#/components/rxBulkSelect');
+        demoPage.go('#/elements/Tables');
     });
 
     describe('exercises', encore.exercise.rxBulkSelect({

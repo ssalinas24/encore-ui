@@ -88,11 +88,15 @@
 
   // Disabled styles should always come last in the cascade for color
   // variations styles, or else they won't override other colors properly.
+  //
+  // FIXME: !important is a quick fix to address a change in CSS load order
+  // of css selectors with the same specificity. This may be correctable with
+  // modifications to html templates, but it's unclear at present.
   &[disabled],
   &[disabled]:hover {
-    cursor: not-allowed;
-    color: @rxButton-disabled-text-color;
-    background: @rxButton-disabled-background-color;
+    cursor: not-allowed !important;
+    color: @rxButton-disabled-text-color !important;
+    background: @rxButton-disabled-background-color !important;
   }
 
   &.inline {
@@ -169,10 +173,13 @@
     text-decoration: underline;
   }
 
+  // FIXME: !important is a quick fix to address a change in CSS load order
+  // of css selectors with the same specificity. This may be correctable with
+  // modifications to html templates, but it's unclear at present.
   &[disabled],
   &[disabled]:hover {
-    cursor: not-allowed;
-    color: @rxButton-disabled-background-color;
+    cursor: not-allowed !important;
+    color: @rxButton-disabled-background-color !important;
   }
 }
 

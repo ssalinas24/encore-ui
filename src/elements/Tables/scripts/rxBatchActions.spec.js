@@ -43,7 +43,7 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxBulkSelect');
+        module('encore.ui.elements');
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');
 
@@ -59,45 +59,26 @@ describe('rxBulkSelect', function () {
         scope.$digest();
     });
 
-    describe('directive:rxBulkSelectRow', function () {
-        var rowEl, rowCheck, messageEl, numSelected, controller, selectAllEl, deSelectAllEl;
+    describe('directive:rxBatchActions', function () {
+        var filterRowEl, batchActionsScope, rowCheck;
 
         beforeEach(function () {
-            rowEl = el.find('td[rx-bulk-select-row]').first();
-            rowCheck = rowEl.find('input[type="checkbox"]');
-            messageEl = el.find('tr[rx-bulk-select-message]');
-            selectAllEl = messageEl.find('button[ng-click="selectAll()"]');
-            deSelectAllEl = messageEl.find('button[ng-click="deselectAll()"]');
+            var batchActionsEl = el.find('rx-batch-actions');
+            filterRowEl = batchActionsEl.parent().parent();
+            batchActionsScope = batchActionsEl.scope();
 
-            controller = el.controller('rxBulkSelect');
-            var update = function (newVal) {
-                numSelected = newVal;
-            };
-
-            controller.registerForNumSelected(update);
+            rowCheck = el.find('td[rx-bulk-select-row] input[type="checkbox"]').first();
         });
 
-        it('should notify the controller whenever we check/uncheck on a row', function () {
-            rowCheck.click();
-            timeout.flush();
-            expect(numSelected).to.equal(1);
-
-            rowCheck.click();
-            timeout.flush();
-            expect(numSelected).to.equal(0);
+        it('should have added rx-table-filter-row', function () {
+            expect(filterRowEl.hasClass('rx-table-filter-row')).to.be.true;
         });
 
-        it('should have a working Select All button when visible', function () {
+        it('should show the bulk actions when a row is selected, via the `rowsSelected` scope attribute', function () {
+            expect(batchActionsScope.rowsSelected).to.be.false;
             rowCheck.click();
             timeout.flush();
-            expect(numSelected).to.equal(1);
-
-            selectAllEl.click();
-            expect(numSelected).to.equal(3);
-
-            deSelectAllEl.click();
-            expect(numSelected).to.equal(0);
-            expect(messageEl.hasClass('ng-hide'), 'hidden').to.be.true;
+            expect(batchActionsScope.rowsSelected).to.be.true;
         });
-    });
-});
+    });//directive:batchActions
+});//rxBulkSelect

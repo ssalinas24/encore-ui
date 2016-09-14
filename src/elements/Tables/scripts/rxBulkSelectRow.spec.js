@@ -43,7 +43,7 @@ describe('rxBulkSelect', function () {
     ];
 
     beforeEach(function () {
-        module('encore.ui.rxBulkSelect');
+        module('encore.ui.elements');
         module('templates/rxBulkSelectMessage.html');
         module('templates/rxBatchActions.html');
 
@@ -59,13 +59,15 @@ describe('rxBulkSelect', function () {
         scope.$digest();
     });
 
-    describe('directive:rxBulkSelectMessage', function () {
-        var rowEl, rowCheck, messageEl, numSelected, controller;
+    describe('directive:rxBulkSelectRow', function () {
+        var rowEl, rowCheck, messageEl, numSelected, controller, selectAllEl, deSelectAllEl;
 
         beforeEach(function () {
             rowEl = el.find('td[rx-bulk-select-row]').first();
             rowCheck = rowEl.find('input[type="checkbox"]');
             messageEl = el.find('tr[rx-bulk-select-message]');
+            selectAllEl = messageEl.find('button[ng-click="selectAll()"]');
+            deSelectAllEl = messageEl.find('button[ng-click="deselectAll()"]');
 
             controller = el.controller('rxBulkSelect');
             var update = function (newVal) {
@@ -75,14 +77,25 @@ describe('rxBulkSelect', function () {
             controller.registerForNumSelected(update);
         });
 
-        it('should show/hide the bulk select message when we check/uncheck a row', function () {
+        it('should notify the controller whenever we check/uncheck on a row', function () {
             rowCheck.click();
             timeout.flush();
             expect(numSelected).to.equal(1);
-            expect(messageEl.hasClass('ng-hide'), 'visible').to.be.false;
 
             rowCheck.click();
             timeout.flush();
+            expect(numSelected).to.equal(0);
+        });
+
+        it('should have a working Select All button when visible', function () {
+            rowCheck.click();
+            timeout.flush();
+            expect(numSelected).to.equal(1);
+
+            selectAllEl.click();
+            expect(numSelected).to.equal(3);
+
+            deSelectAllEl.click();
             expect(numSelected).to.equal(0);
             expect(messageEl.hasClass('ng-hide'), 'hidden').to.be.true;
         });

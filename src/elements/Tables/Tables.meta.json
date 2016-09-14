@@ -5,6 +5,8 @@
     "hasApi": false,
     "keywords": [
         "actions",
+        "bulk",
+        "checkbox",
         "column",
         "dropdown",
         "filter",
@@ -24,6 +26,7 @@
         "paginated",
         "pagination",
         "row",
+        "rxBulkSelect",
         "rxFloatingHeader",
         "rxSelectFilter",
         "rxSortableColumn",
