@@ -1,0 +1,10 @@
+{
+    "displayName": "rxCompile",
+    "stability": "stable",
+    "description": "Allows compilation of expressions inside of other expressions.",
+    "api": "directive:rxCompile",
+    "keywords": [
+        "compile",
+        "rxCompile"
+    ]
+}

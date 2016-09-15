@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxCompile')
+angular.module('encore.ui.utilities')
 /**
  * @ngdoc directive
- * @name rxCompile.directive:rxCompile
+ * @name utilities.directive:rxCompile
  * @see http://docs.angularjs.org/api/ng/service/$compile#attributes
  */
 .directive('rxCompile', function ($compile) {
