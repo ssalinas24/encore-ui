@@ -89,12 +89,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 name: 'Formatting'
             }])
         })
-        .when('/styles/helper-classes', {
-            templateUrl: 'templates/styles/helper-classes.html',
-            controller: genericRouteController([
-                { name: 'Helper Classes' }
-            ])
-        })
         .when('/styles/typography', {
             templateUrl: 'templates/styles/typography.html',
             controller: genericRouteController([
@@ -239,10 +233,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         {
                             linkText: 'Date/Time Formatting',
                             href: '#/styles/formatting'
-                        },
-                        {
-                            linkText: 'Helper classes',
-                            href: '#/styles/helper-classes'
                         },
                         {
                             linkText: 'Typography',
