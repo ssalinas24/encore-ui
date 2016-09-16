@@ -80,4 +80,5 @@
 angular.module('encore.ui.utilities', [
     'ngResource',
     'debounce',
+    'ngSanitize'
 ]);

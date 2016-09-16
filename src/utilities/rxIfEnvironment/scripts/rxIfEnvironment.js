@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxEnvironment')
+angular.module('encore.ui.utilities')
 /**
  * @ngdoc directive
- * @name rxEnvironment.directive:rxEnvironment
+ * @name utilities.directive:rxIfEnvironment
  * @restrict A
  * @requires utilities.service:Environment
  * @description

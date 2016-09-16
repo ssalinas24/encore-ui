@@ -3,7 +3,6 @@ describe('rxEnvironmentUrl', function () {
 
     beforeEach(function () {
         module('encore.ui.utilities');
-        module('encore.ui.rxEnvironment');
 
         inject(function ($filter, Environment) {
             urlFilter = $filter('rxEnvironmentUrl');

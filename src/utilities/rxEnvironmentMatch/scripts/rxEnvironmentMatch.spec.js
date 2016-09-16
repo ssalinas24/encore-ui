@@ -3,7 +3,6 @@ describe('rxEnvironmentMatch', function () {
 
     beforeEach(function () {
         module('encore.ui.utilities');
-        module('encore.ui.rxEnvironment');
 
         inject(function ($filter, Environment, $location) {
             urlMatch = $filter('rxEnvironmentMatch');

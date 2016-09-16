@@ -1,0 +1,11 @@
+{
+    "displayName": "rxIfEnvironment",
+    "stability": "stable",
+    "description": "",
+    "api": "directive:rxIfEnvironment",
+    "keywords": [
+        "detect",
+        "environment",
+        "rxIfEnvironment"
+    ]
+}
