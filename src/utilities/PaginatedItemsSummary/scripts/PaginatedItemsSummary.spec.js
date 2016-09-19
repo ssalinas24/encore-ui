@@ -3,7 +3,7 @@ describe('Pagination', function () {
         var summary;
 
         beforeEach(function () {
-            module('encore.ui.rxPaginate');
+            module('encore.ui.elements');
             module('encore.ui.utilities');
 
             inject(function ($filter) {

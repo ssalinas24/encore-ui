@@ -1,7 +1,6 @@
 angular.module('demoApp')
-.controller('rxPaginateCtrl', function ($scope, $q, $timeout, $filter, rxPaginateUtils,
-                                        PageTracking, rxSortUtil, SelectFilter) {
-    $scope.pager = PageTracking.createInstance({ itemsPerPage: 3 });
+.controller('rxPaginateApiCtrl', function ($scope, $q, $timeout, $filter, PageTracking,
+                rxSortUtil, SelectFilter) {
 
     var os = ['Ubuntu 12.04', 'Red Hat Enterprise Linux 6.4', 'CentOS 6.4', 'Ubuntu 13.04'];
     var makeServers = function (serverCount) {
@@ -15,18 +14,6 @@ angular.module('demoApp')
             servers.push(server);
         }
         return servers;
-    };
-
-    $scope.servers = makeServers(21);
-
-    $scope.removeServers = function () {
-        if ($scope.servers.length > 2) {
-            $scope.servers = $scope.servers.splice(2);
-        }
-    };
-
-    $scope.addServers = function () {
-        $scope.servers = $scope.servers.concat(makeServers(2));
     };
 
     var allLazyServers = makeServers(701);
