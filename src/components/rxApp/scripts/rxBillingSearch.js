@@ -5,7 +5,7 @@ angular.module('encore.ui.rxApp')
  * @restrict E
  * @description [TBD]
  */
-.directive('rxBillingSearch', function ($location, $window, encoreRoutes) {
+.directive('rxBillingSearch', function ($location, $window, $injector, encoreRoutes) {
     return {
         templateUrl: 'templates/rxBillingSearch.html',
         restrict: 'E',
@@ -18,10 +18,13 @@ angular.module('encore.ui.rxApp')
                 if (!_.isEmpty(searchValue)) {
                     // Assuming we are already in /billing, we should use $location to prevent a page refresh
                     encoreRoutes.isActiveByKey('billing').then(function (isBilling) {
-                        if (isBilling) {
-                            $location.url('/search?q=' + searchValue + '&type=' + scope.searchType);
+                        var path = '/search?q=' + searchValue + '&type=' + scope.searchType;
+                        if ($injector.has('oriLocationService')) {
+                            $injector.get('oriLocationService').setCanvasURL('/billing' + path);
+                        } else if (isBilling) {
+                            $location.url(path);
                         } else {
-                            $window.location = '/billing/search?q=' + searchValue + '&type=' + scope.searchType;
+                            $window.location = '/billing' + path;
                         }
                     });
                 }
