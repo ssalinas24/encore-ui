@@ -6,14 +6,19 @@ angular.module('encore.ui.rxApp')
  * @description
  * Used to search accounts for Cloud Atlas
  */
-.directive('rxAtlasSearch', function ($window) {
+.directive('rxAtlasSearch', function ($window, $injector) {
     return {
         template: '<rx-app-search placeholder="Search by username..." submit="searchAccounts"></rx-app-search>',
         restrict: 'E',
         link: function (scope) {
             scope.searchAccounts = function (searchValue) {
                 if (!_.isEmpty(searchValue)) {
-                    $window.location = '/cloud/' + searchValue + '/servers/';
+                    var path = '/cloud/' + searchValue + '/servers/';
+                    if ($injector.has('oriLocationService')) {
+                        $injector.get('oriLocationService').setCanvasURL(path);
+                    } else {
+                        $window.location = path;
+                    }
                 }
             };
         }
