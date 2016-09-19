@@ -1,0 +1,13 @@
+{
+    "displayName": "Flexbox Grid",
+    "stability": "stable",
+    "description": "",
+    "hasApi": false,
+    "keywords": [
+        "columns",
+        "flexbox",
+        "grid",
+        "layout",
+        "rows"
+    ]
+}
