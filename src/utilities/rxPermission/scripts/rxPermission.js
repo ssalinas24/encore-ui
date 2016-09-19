@@ -1,14 +1,13 @@
-angular.module('encore.ui.rxPermission')
+angular.module('encore.ui.utilities')
 /**
  * @ngdoc directive
- * @name rxPermission.directive:rxPermission
+ * @name utilities.directive:rxPermission
  * @restrict E
  * @scope
  * @description
- * Simple directive which will show or hide content based on whether or not the user has the specified role. See
- * the `rxPermission` component {@link /encore-ui/#/components/rxPermission demo} for an example.
+ * Simple directive which will show or hide content based on whether or not the user has the specified role.
  *
- * @requires rxPermission.service:Permission
+ * @requires utilities.service:Permission
  *
  * @param {String} role - Name of required role.
  */

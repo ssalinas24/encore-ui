@@ -7,7 +7,7 @@ describe('rxPermission', function () {
         var invalidRolesTemplate = '<rx-permission role="fail,failure-role">Hello</rx-permission>';
 
         beforeEach(function () {
-            module('encore.ui.rxPermission', function ($provide) {
+            module('encore.ui.utilities', function ($provide) {
                 $provide.decorator('Permission', function ($delegate) {
                     $delegate.hasRole = function (role) {
                         return _.contains(role, 'pass') || _.contains(role, 'also');
