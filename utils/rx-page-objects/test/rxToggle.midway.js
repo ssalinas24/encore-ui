@@ -2,7 +2,7 @@ describe('rxToggle', function () {
     var rxToggle, rxToggleContent;
 
     before(function () {
-        demoPage.go('#/components/rxToggle');
+        demoPage.go('#/utilities/rxToggle');
         rxToggle = $('#vacillator');
         rxToggleContent = $('#vacillated');
     });
