@@ -1,3 +1,18 @@
+<a name="2.3.0-0"></a>
+### 2.3.0-0 (2016-09-21)
+
+
+#### Bug Fixes
+
+* **demo:** correct broken rxNotify link ([95170eb7](git@github.com:rackerlabs/encore-ui/commit/95170eb7e94361311f9f2a523953e5f5ce0e75d7))
+* **styles:** correct styling issue with CSS load order ([9bdd7a37](git@github.com:rackerlabs/encore-ui/commit/9bdd7a37dc1fdaa5c7d2520826b1b4dd518d6683))
+
+
+#### Features
+
+* **rxNav:** check for oriLocationService and use it in search ([83599c81](git@github.com:rackerlabs/encore-ui/commit/83599c81293dc2e30b61d97646a9fa5d2bd84002))
+
+
 <a name="2.2.0"></a>
 ## 2.2.0 (2016-08-31)
 
