@@ -45,17 +45,6 @@ module.exports = function (grunt) {
                     cwd: 'utils/'
                 }
             }
-        },
-
-        latestTag: {
-            command: 'git describe --abbrev=0',
-            options: {
-                callback: function (err, stdout, stderr, cb) {
-                    // Replace '\n' to ensure clean output from `git describe`
-                    grunt.config('config.latestTag', stdout.replace('\n', ''));
-                    cb();
-                }
-            }
         }
     };
 };
