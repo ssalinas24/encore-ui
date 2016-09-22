@@ -5,7 +5,7 @@ describe('rxToggle', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxToggle');
+        module('encore.ui.utilities');
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, $compile) {

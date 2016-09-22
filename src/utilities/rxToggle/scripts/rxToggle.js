@@ -1,7 +1,7 @@
-angular.module('encore.ui.rxToggle', [])
+angular.module('encore.ui.utilities')
 /**
  * @ngdoc directive
- * @name rxToggle.directive:rxToggle
+ * @name utilities.directive:rxToggle
  * @restrict A
  * @description
  *

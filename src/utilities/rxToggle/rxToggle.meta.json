@@ -1,0 +1,10 @@
+{
+    "displayName": "rxToggle",
+    "stability": "stable",
+    "description": "",
+    "api": "directive:rxToggle",
+    "keywords": [
+        "rxToggle",
+        "toggle"
+    ]
+}
