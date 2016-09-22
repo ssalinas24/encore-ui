@@ -37,7 +37,7 @@ While the intention of EncoreUI is for it to be used in conjunction with Angular
 
 The entirety of the EncoreUI CSS is available via the main CSS file. To use, include it on your page [as described above](#cdn).
 
-> Disclaimer: At any point in time, an HTML change to the Angular directive template can change the HTML needed for the CSS to work properly. Be sure when upgrading major/minor versions of the CSS file to check [the changelog](../CHANGELOG.md) for details on what has been updated.
+> Disclaimer: At any point in time, an HTML change to the Angular directive template can change the HTML needed for the CSS to work properly. Be sure when upgrading major/minor versions of the CSS file to check [the releases](https://github.com/rackerlabs/encore-ui/releases) for details on what has been updated.
 
 ## Further Guidance
 

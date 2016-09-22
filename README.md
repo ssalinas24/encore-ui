@@ -16,7 +16,7 @@ You can see all components in action by visiting [the EncoreUI demo page](http:/
 
  - [Contribution Guide](./CONTRIBUTING.md)
  - [Versioning Guide](./guides/versioning.md)
- - [Changelog](./CHANGELOG.md)
+ - [Releases](https://github.com/rackerlabs/encore-ui/releases)
  - [Developer Setup](./guides/ui-setup.md)
  - [Introduction to Testing](./guides/testing.md)
  - [Common Questions](./guides/common-questions.md)
