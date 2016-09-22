@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxPermissionCtrl', function ($scope, Session, rxNotify) {
+.controller('rxPermissionSimpleCtrl', function ($scope, Session, rxNotify) {
     rxNotify.add('Respect My Authority!!', {
         stack: 'permission',
         type: 'warning'

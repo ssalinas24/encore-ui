@@ -107,7 +107,6 @@
 angular.module('encore.ui.rxApp', [
     'cfp.hotkeys',
     'encore.ui.utilities',
-    'encore.ui.rxPermission',
     'ngRoute',
     'ngSanitize'
 ]);
