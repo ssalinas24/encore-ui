@@ -7,7 +7,7 @@ describe('rxIfEnvironment', function () {
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxEnvironment');
+        module('encore.ui.utilities');
 
         inject(function ($rootScope, $compile, $location, Environment) {
             scope = $rootScope.$new();

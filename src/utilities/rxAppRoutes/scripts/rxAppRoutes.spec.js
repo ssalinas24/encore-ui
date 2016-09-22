@@ -58,7 +58,6 @@ describe('utilities:rxAppRoutes', function () {
     beforeEach(function (done) {
         // load module
         module('encore.ui.utilities');
-        module('encore.ui.rxEnvironment');
 
         // Provide any mocks needed
         module(function ($provide) {

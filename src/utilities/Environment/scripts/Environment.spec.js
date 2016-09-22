@@ -1,9 +1,9 @@
-describe('rxEnvironment', function () {
+describe('Environment', function () {
     var envSvc, location, log;
 
     beforeEach(function () {
         // load module
-        module('encore.ui.rxEnvironment');
+        module('encore.ui.utilities');
 
         // Inject in angular constructs
         inject(function ($location, $rootScope, Environment, $log) {

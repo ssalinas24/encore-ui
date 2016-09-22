@@ -1,9 +1,9 @@
 var environment = encore.rxEnvironment;
 
-describe('rxEnvironment', function () {
+describe('rxIfEnvironment', function () {
 
     before(function () {
-        demoPage.go('#/components/rxEnvironment');
+        demoPage.go('#/utilities/rxIfEnvironment');
     });
 
     it('should be on localhost', function () {
