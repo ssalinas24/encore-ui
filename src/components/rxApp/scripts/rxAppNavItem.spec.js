@@ -111,8 +111,7 @@ describe('encore.ui.rxApp', function () {
             };
 
             module('encore.ui.rxApp');
-            module('encore.ui.rxCompile');
-
+            
             // load templates
             module('templates/rxAppNav.html');
             module('templates/rxAppNavItem.html');

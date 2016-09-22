@@ -302,7 +302,7 @@ angular.module('encore.ui.rxApp')
  * attribute requires having a `children` attribute).
  *
  * `childHeader` receives HTML content as a string, and uses
- * {@link rxCompile} to compile and insert the content above
+ * {@link utilities.directive:rxCompile} to compile and insert the content above
  * the `children` items. The compiled content will be linked against the current
  * scope, allowing you to do things like:
  *
