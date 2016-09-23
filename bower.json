@@ -2,7 +2,7 @@
   "name": "encore-ui",
   "version": "3.0.0-0",
   "main": [
-    "./encore-ui-tpls.js",
+    "./encore-ui.js",
     "./encore-ui.css"
   ],
   "dependencies": {
