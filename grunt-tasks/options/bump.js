@@ -11,7 +11,6 @@ module.exports = {
         commitFiles: [
             'package.json',
             'bower.json',
-            'CHANGELOG.md',
             'guides/using-encoreui.md',
             'guides/testing.md',
             'utils/rx-page-objects/package.json'

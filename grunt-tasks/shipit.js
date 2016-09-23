@@ -11,12 +11,6 @@ module.exports = function (grunt) {
             // increment the version
             tasks.push('bump-only:' + versionType);
 
-            // set the last tag, for changelog to use
-            tasks.push('shell:latestTag');
-
-            // create changelog
-            tasks.push('changelog');
-
             // increment version in readme
             tasks.push('replace:readme');
 
