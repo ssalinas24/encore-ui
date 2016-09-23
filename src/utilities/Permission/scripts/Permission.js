@@ -23,14 +23,14 @@ angular.module('encore.ui.utilities')
     };
 
     var userRoles = function () {
-        return _.pluck(permissionSvc.getRoles(), 'name');
+        return _.map(permissionSvc.getRoles(), 'name');
     };
 
     /**
      * @description Takes a function and a list of roles, and returns the
      * result of calling that function with `roles`, and comparing to userRoles().
      *
-     * @param {Function} fn Comparison function to use. _.any, _.all, etc.
+     * @param {Function} fn Comparison function to use. _.some, _.every, etc.
      * @param {String[]} roles List of desired roles
      */
     var checkRoles = function (roles, fn) {
@@ -42,7 +42,7 @@ angular.module('encore.ui.utilities')
 
         var allUserRoles = userRoles();
         return fn(roles, function (role) {
-            return _.contains(allUserRoles, role);
+            return _.includes(allUserRoles, role);
         });
     };
 
@@ -70,7 +70,7 @@ angular.module('encore.ui.utilities')
      * @returns {Boolean} True if user has at least _one_ of the given roles; otherwise, False.
      */
     permissionSvc.hasRole = function (roles) {
-        return checkRoles(roles, _.any);
+        return checkRoles(roles, _.some);
     };
 
     /**
@@ -83,7 +83,7 @@ angular.module('encore.ui.utilities')
      *
      */
     permissionSvc.hasAllRoles = function (roles) {
-        return checkRoles(roles, _.all);
+        return checkRoles(roles, _.every);
     };
 
     return permissionSvc;

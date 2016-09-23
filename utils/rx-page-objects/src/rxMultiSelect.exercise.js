@@ -65,7 +65,7 @@ exports.rxMultiSelect = function (options) {
             });
 
             it('should select a single option', function () {
-                var input = _.first(options.inputs);
+                var input = _.head(options.inputs);
                 component.select([input]);
                 expect(component.selectedOptions).to.eventually.eql([input]);
                 expect(component.preview).to.eventually.equal(input);

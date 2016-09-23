@@ -2,7 +2,7 @@ describe('utilities:rxModalFooterTemplates', function () {
     var rxModalFooterTemplates;
 
     function wrap (html) {
-        return _.template('<div ng-switch="state">${html}</div>', {
+        return _.template('<div ng-switch="state">${html}</div>')({
             html: html
         });
     }

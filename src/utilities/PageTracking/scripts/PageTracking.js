@@ -87,7 +87,7 @@ angular.module('encore.ui.utilities')
         // If itemSizeList doesn't contain the desired itemsPerPage,
         // then find the right spot in itemSizeList and insert the
         // itemsPerPage value
-        if (!_.contains(itemSizeList, itemsPerPage)) {
+        if (!_.includes(itemSizeList, itemsPerPage)) {
             var index = _.sortedIndex(itemSizeList, itemsPerPage);
             itemSizeList.splice(index, 0, itemsPerPage);
         }
@@ -96,7 +96,7 @@ angular.module('encore.ui.utilities')
 
         // If the user has chosen a desired itemsPerPage, make sure we're respecting that
         // However, a value specified in the options will take precedence
-        if (!opts.itemsPerPage && !_.isNaN(selectedItemsPerPage) && _.contains(itemSizeList, selectedItemsPerPage)) {
+        if (!opts.itemsPerPage && !_.isNaN(selectedItemsPerPage) && _.includes(itemSizeList, selectedItemsPerPage)) {
             pager.itemsPerPage = selectedItemsPerPage;
         }
 
@@ -175,7 +175,7 @@ angular.module('encore.ui.utilities')
             // By setting `updateCache` to false, it ensures that the current
             // pager.cacheOffset and pager.cachedPages values stay the
             // same
-            if (!opts.forceCacheUpdate && _.contains(pager.cachedPages, n)) {
+            if (!opts.forceCacheUpdate && _.includes(pager.cachedPages, n)) {
                 shouldUpdateCache = false;
                 return pager.newItems($q.when({
                     pageNumber: n,

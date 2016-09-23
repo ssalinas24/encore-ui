@@ -172,7 +172,7 @@ angular.module('encore.ui.utilities')
             return pattern.test(href);
         }
 
-        return _.contains(href, pattern);
+        return _.includes(href, pattern);
     };
 
     /*
@@ -238,7 +238,7 @@ angular.module('encore.ui.utilities')
         var matchingEnvironments = _.filter(environments, function (environment) {
             return environmentPatternMatch(href, environment.pattern);
         });
-        return _.contains(_.pluck(matchingEnvironments, 'name'), name);
+        return _.includes(_.map(matchingEnvironments, 'name'), name);
     };
 
     var makeEnvCheck = function (name) {

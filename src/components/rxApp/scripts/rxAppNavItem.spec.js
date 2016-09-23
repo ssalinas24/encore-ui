@@ -142,7 +142,7 @@ describe('encore.ui.rxApp', function () {
                 function () { return false; }
             );
 
-            scope.item = _.clone(menuItem, true);
+            scope.item = _.cloneDeep(menuItem);
 
             el = helpers.createDirective(template, compile, scope);
         });

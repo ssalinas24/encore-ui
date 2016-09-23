@@ -107,12 +107,12 @@ angular.module('encore.ui.elements')
 
             if (!_.isEmpty(attrs.key)) {
                 ngModelCtrl.$parsers.push(function ($viewValue) {
-                    return _.pluck($viewValue, attrs.key);
+                    return _.map($viewValue, attrs.key);
                 });
 
                 ngModelCtrl.$formatters.push(function ($modelValue) {
                     return scope.options.filter(function (option) {
-                        return _.contains($modelValue, option[attrs.key]);
+                        return _.includes($modelValue, option[attrs.key]);
                     });
                 });
             }

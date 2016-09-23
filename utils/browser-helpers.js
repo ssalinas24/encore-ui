@@ -117,13 +117,13 @@ helpers = {
             dataAttribute = 'data-title';
         }
 
-        var foundChildDiv = _.find(children, function (child) {
+        var foundChildDiv = _.find(children, _.bind(function (child) {
             if (this.dataAttribute == 'class') {
                 return angular.element(child).hasClass(this.childTitle);
             } else {
                 return (angular.element(child).attr(this.dataAttribute) === this.childTitle);
             }
-        }, {childTitle: childTitle, dataAttribute: dataAttribute});
+        }, {childTitle: childTitle, dataAttribute: dataAttribute}));
 
         // We're going to massage this into a jQueryLite element
         if (foundChildDiv) {

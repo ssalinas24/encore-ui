@@ -13,6 +13,15 @@
 * **rxNav:** check for oriLocationService and use it in search ([83599c81](git@github.com:rackerlabs/encore-ui/commit/83599c81293dc2e30b61d97646a9fa5d2bd84002))
 
 
+<a name="3.0.0-0"></a>
+### 3.0.0-0 (2016-09-19)
+
+
+#### Bug Fixes
+
+* **example:** don't _.clone(fn()) ([7b253a43](git@github.com:rackerlabs/encore-ui/commit/7b253a43a162daa0eefc81a03fcef0cac0354dca))
+
+
 <a name="2.2.0"></a>
 ## 2.2.0 (2016-08-31)
 
