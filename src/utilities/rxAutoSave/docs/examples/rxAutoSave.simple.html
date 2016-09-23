@@ -55,7 +55,7 @@
             toggle="status.loading"
             default-msg="Clear rxAutoSave"
             toggle-msg="Clearing rxAutoSave data"
-            disable="status.disable">
+            ng-disabled="status.disable">
         </rx-button>
 
         <rx-button
@@ -63,7 +63,7 @@
             toggle="status.deferredLoading"
             default-msg="Clear rxAutoSave by resolving a promise"
             toggle-msg="Clearing rxAutoSave data"
-            disable="status.deferredDisable">
+            ng-disabled="status.deferredDisable">
         </rx-button>
       </div>
     </rx-form-section>

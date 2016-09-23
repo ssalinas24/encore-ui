@@ -1,7 +1,7 @@
 describe('directive:rxToggleSwitch', function () {
     var scope, timeout, compile, directiveScope, el, disabledEL, customEL, postHookEL, failedAsyncEL,
         validTemplate = '<rx-toggle-switch ng-model="model"></rx-toggle-switch>',
-        disabledTemplate = '<rx-toggle-switch ng-model="model" disabled="true"></rx-toggle-switch>',
+        disabledTemplate = '<rx-toggle-switch ng-model="model" ng-disabled="true"></rx-toggle-switch>',
         postHookTemplate = '<rx-toggle-switch ng-model="model" post-hook="countMe(newVal, oldVal)"></rx-toggle-switch>',
         customTemplate =
             '<rx-toggle-switch ng-model="customModel" true-value="TEST" false-value="TEST-FALSY"></rx-toggle-switch>',

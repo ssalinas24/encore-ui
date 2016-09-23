@@ -18,13 +18,14 @@ angular.module('encore.ui.elements')
  * time the switch is toggled (after the model property is written on the
  * scope).  It takes one argument, `value`, which is the new value of the model.
  * This can be used instead of a `$scope.$watch` on the `ng-model` property.
- * As shown in the {@link /encore-ui/#/elements/Forms demo}, the `disabled`
+ * As shown in the {@link /encore-ui/#/elements/Forms demo}, the `ng-disabled`
  * attribute can be used to prevent further toggles if the `post-hook` performs
  * an asynchronous operation.
  *
  * @param {String} ng-model The scope property to bind to
  * @param {Function} postHook A function to run when the switch is toggled
- * @param {Boolean=} ng-disabled Indicates if the input is disabled
+ * @param {Expression=} [ngDisabled=false] If the expression is truthy, then the
+ * `disabled` attribute will be set on the toggle switch.
  * @param {Expression=} [trueValue=true] The value of the scope property when the switch is on
  * @param {Expression=} [falseValue=false] The value of the scope property when the switch is off
  *
@@ -40,8 +41,7 @@ angular.module('encore.ui.elements')
         require: 'ngModel',
         scope: {
             model: '=ngModel',
-            disabled: '=?', // **DEPRECATED** - remove in 3.0.0
-            ngDisabled: '=?',
+            isDisabled: '=?ngDisabled',
             postHook: '&',
             trueValue: '@',
             falseValue: '@'
@@ -65,13 +65,6 @@ angular.module('encore.ui.elements')
             ngModelCtrl.$render = function () {
                 scope.state = ngModelCtrl.$viewValue ? 'ON' : 'OFF';
             };
-
-            scope.$watch(function () {
-                return (scope.disabled || scope.ngDisabled);
-            }, function (newVal) {
-                // will be true, false, or undefined
-                scope.isDisabled = newVal;
-            });
 
             scope.update = function () {
                 if (scope.isDisabled) {
