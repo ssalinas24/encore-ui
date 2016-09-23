@@ -25,7 +25,6 @@ module.exports = {
         hostname: 'localhost',
         port: 9001
     },
-    latestTag: '', // filled in by shipit task
     modules: [], // filled in by modules task
     examples: {}, // filled in by examples task
     banner: _banner,
