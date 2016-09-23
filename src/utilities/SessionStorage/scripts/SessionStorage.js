@@ -23,8 +23,12 @@ angular.module('encore.ui.utilities')
  */
 .service('SessionStorage', function ($window) {
     var sessionStorage = $window.sessionStorage;
-    if ($window.self !== $window.top && $window.top.sessionStorage) {
-        sessionStorage = $window.top.sessionStorage;
+    if ($window.self !== $window.top) {
+        try {
+            sessionStorage = $window.top.sessionStorage;
+        } catch (e) {
+            sessionStorage = $window.sessionStorage;
+        }
     }
 
     this.setItem = function (key, value) {

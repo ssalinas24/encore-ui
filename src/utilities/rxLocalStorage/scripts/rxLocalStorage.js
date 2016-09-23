@@ -22,8 +22,12 @@ angular.module('encore.ui.utilities')
  */
 .service('rxLocalStorage', function ($window) {
     var localStorage = $window.localStorage;
-    if ($window.self !== $window.top && $window.top.localStorage) {
-        localStorage = $window.top.localStorage;
+    if ($window.self !== $window.top) {
+        try {
+            localStorage = $window.top.localStorage;
+        } catch (e) {
+            localStorage = $window.localStorage;
+        }
     }
 
     this.setItem = function (key, value) {

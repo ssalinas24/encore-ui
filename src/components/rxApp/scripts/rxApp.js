@@ -44,7 +44,17 @@ angular.module('encore.ui.rxApp')
 
             scope.isWarning = scope.isPreProd || scope.isLocalNav;
 
-            scope.isEmbedded = $window.self !== $window.top;
+            scope.isEmbedded = false;
+            try {
+                // Checks to see if we have access to the global scope of a DOM Window
+                // Element by attempting to set a property on it.  If we have no errors
+                // then this means that `document.domain` matches and we have no Cross
+                // Origin security constraints
+                $window.top['encore'] = true;
+                scope.isEmbedded = $window.self !== $window.top;
+            } catch (e) {
+                scope.isEmbedded = false;
+            }
 
             if (scope.isPreProd) {
                 scope.warningMessage =
