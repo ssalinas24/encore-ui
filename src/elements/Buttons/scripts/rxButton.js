@@ -19,15 +19,13 @@ angular.module('encore.ui.elements')
  * disables the button and replaces the `default-msg` with the `toggle-msg` as
  * the button's text.  There are no defaults for these messages, so they must
  * be defined if the toggle behavior is desired.  While the button is in the
- * toggled state, it is also disabled (no matter what the value of `disable` is).
+ * toggled state, it is also disabled (no matter what the value of `ng-disabled`
+ * may be).
  *
  * The button does not modify the variable passed to `toggle`; it should be
  * modified in the handler provided to `ng-click`.  Usually, the handler will
  * set the variable to `true` immediately, and then to `false` once the the
  * process (e.g. an API call) is complete.
- *
- * To disable the button, use the `disable` attribute instead of the normal
- * `ng-disabled` - the behavior is the same.
  *
  * ## Styling
  *
@@ -38,7 +36,8 @@ angular.module('encore.ui.elements')
  * @param {String} loadingMsg Text to be displayed when an operation is in progress.
  * @param {String} defaultMsg Text to be displayed by default when no operation is in progress.
  * @param {Boolean=} [toggle=false] When true, the button will display the loading text.
- * @param {Boolean=} [ngDisabled=false] When true, the button will be disabled.
+ * @param {Expression=} [ngDisabled=false] If the expression is truthy, then the
+ * `disabled` attribute will be set on the button
  * @param {String=} [classes=""] The class names to be applied to the button.
  *
  */
@@ -49,18 +48,9 @@ angular.module('encore.ui.elements')
         scope: {
             toggleMsg: '@',
             defaultMsg: '@',
-            toggle: '=',
-            disable: '=?', // **DEPRECATED** - Remove in 3.0.0
-            ngDisabled: '=?',
+            toggle: '=?',
+            isDisabled: '=?ngDisabled',
             classes: '@?'
-        },
-        link: function (scope) {
-            // Support [ng-disabled] OR [disabled] (for backward compatibility)
-            scope.$watch(function () {
-                return (scope.disable || scope.ngDisabled);
-            }, function (newVal) {
-                scope.isDisabled = newVal;
-            });
         }
     };
 });
