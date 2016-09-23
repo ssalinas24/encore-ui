@@ -5,7 +5,6 @@ module.exports = function (grunt) {
             'modules',
             'examples',
             'concat:dist',
-            'concat:distTpls',
             'concat:tmpEncoreLess',
             'concat:tmpDemosLess',
             'concat:tmpExamplesLess',

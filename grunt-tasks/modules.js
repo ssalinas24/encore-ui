@@ -142,10 +142,5 @@ module.exports = function (grunt) {
         ].concat(srcFiles).concat(tplJsFiles);
 
         grunt.config('concat.dist.src', grunt.config('concat.dist.src').concat(srcFiles));
-
-        // TODO: remove in 3.0.0
-        // Both dist.src and distTpls.src should be the same to retain
-        // backward compatibility
-        grunt.config('concat.distTpls.src', grunt.config('concat.dist.src'));
     });
 };

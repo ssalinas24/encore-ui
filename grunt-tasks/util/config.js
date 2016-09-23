@@ -18,8 +18,7 @@ module.exports = {
     /* BOWER OUTPUT/DISTRIBUTION */
     dist: {
         fileName: 'encore-ui-<%= pkg.version %>',
-        fileNameResp: 'encore-ui-resp-<%= pkg.version %>',
-        fileNameTpl: 'encore-ui-tpls-<%= pkg.version %>'
+        fileNameResp: 'encore-ui-resp-<%= pkg.version %>'
     },
     server: {
         hostname: 'localhost',
