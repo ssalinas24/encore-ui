@@ -4,7 +4,7 @@ angular.module('encore.ui.utilities')
  * @name utilities.controller:rxBulkSelectController
  * @scope
  * @description
- * Provides controller logic for {@link rxBulkSelect}.
+ * Provides controller logic for {@link elements.directive:rxBulkSelect}.
  */
 .controller('rxBulkSelectController', function ($scope, NotifyProperties, rxBulkSelectUtils) {
     $scope.showMessage = false;

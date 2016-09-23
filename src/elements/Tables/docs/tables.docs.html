@@ -1,3 +1,47 @@
+<h2>
+  <rx-permalink>Bulk Select</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxBulkSelect/">View API</a>
+</h2>
+<p>
+  The rxBulkSelect directive is used to perform actions on multiple items
+  in a table.There are no directives provided for the modal, but it should
+  follow a few design conventions:
+</p>
+<ul class="list">
+  <li>
+    The first view has a warning at the top, and a table listing the selected
+    items. The table should be paginated with 8 items per page, and items may
+    be removed via an "X" icon (see the Delete "X" action).
+  </li>
+  <li>
+    In the second view, the table has a status column with text describing
+    the state of each item, and another column with an icon to indicate
+    the state. A progressbar should be included as well as a link that
+    opens the current page in a new tab.
+  </li>
+  <li>
+    Once the process is complete a "Return to [x]" button should appear
+    in the footer, and the progressbar should be replaced with some text
+    indicating the process is complete.
+  </li>
+</ul>
+<rx-example name="rxBulkSelect.advanced"></rx-example>
+
+<h3>Bulk Selection Validation</h3>
+<p>
+  To validate bulk selection in a form, use the rxBulkSelectValidate directive.
+</p>
+<rx-example name="rxBulkSelect.validate"></rx-example>
+
+<h2>
+  <rx-permalink>Status Column</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxStatusColumn/">View API</a>
+</h2>
+<p>
+  To add status columns to table rows, use the rxStatusColumn directive.
+</p>
+<rx-example name="table.statusColumn"></rx-example>
+
 <h2><rx-permalink>Basic Tables</rx-permalink></h2>
 <ul class="list">
   <li>
@@ -22,6 +66,58 @@
   </li>
 </ul>
 <rx-example name="table.basic"></rx-example>
+
+<h2><rx-permalink>Floating Header</rx-permalink></h2>
+<ul class="list">
+  <li>
+    The rxFloatingHeader directive maintains the visibility of column titles in a table
+    as a user scrolls down the page.
+  </li>
+  <li>
+    A common pattern is to include a filter with tables.
+    You can have that as part of the floating header by setting
+    it in a separate <code>&lt;tr&gt;</code> element.
+  </li>
+</ul>
+<rx-example name="rxFloatingHeader"></rx-example>
+
+<rx-debug>
+  <h2>Non-filtered floating header</h2>
+  <table rx-floating-header class="no-filter">
+    <thead>
+      <tr>
+        <th>Column One Header</th>
+        <th>Column Two Header</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="first-row">
+        <td>table1 data1</td>
+        <td>table1 data1</td>
+      </tr>
+      <tr>
+        <td>table1 data2</td>
+        <td>table1 data2</td>
+      </tr>
+      <tr>
+        <td>table1 data3</td>
+        <td>table1 data3</td>
+      </tr>
+      <tr class="middle-row">
+        <td>table1 data4</td>
+        <td>table1 data4</td>
+      </tr>
+      <tr>
+        <td>table1 data5</td>
+        <td>table1 data5</td>
+      </tr>
+      <tr class="last-row">
+        <td>table1 data6</td>
+        <td>table1 data6</td>
+      </tr>
+    </tbody>
+  </table>
+</rx-debug>
 
 <h2><rx-permalink>Directives</rx-permalink></h2>
 
@@ -59,13 +155,11 @@
 </ul>
 <rx-example name="table.actionMenu"></rx-example>
 
-
-<h3><rx-permalink>Table Footer Pagination via rxPaginate</rx-permalink></h3>
+<h2>
+  <rx-permalink>Table Pagination</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxPaginate/">View API</a>
+</h2>
 <ul class="list">
-  <li>
-    For implementation and examples, see the
-    <a href="#/components/rxPaginate">rxPaginate</a> directive.
-  </li>
   <li>
     <span class="msg-info">ENCORE-SPECIFIC:</span> To show how mark-up will be
     implemented, pagination is visible in this example. The pagination
@@ -86,8 +180,49 @@
       .pagination-per-page { display: none; }
   }
 </pre>
-<rx-example name="table.paginate"></rx-example>
 
+<h3><rx-permalink>UI-Based Pagination</rx-permalink></h3>
+
+<ul class="list">
+  <li>
+    UI-based pagination, where all items are retrieved at once, and paginated in the UI
+  </li>
+</ul>
+<rx-example name="table.paginate.ui"></rx-example>
+
+<rx-debug>
+  <div ng-controller="rxPaginateUiCtrl">
+    <h3>Non-displayed pagination</h3>
+    <rx-paginate
+      id="rx-paginate-hidden"
+      page-tracking="pager"
+      ng-hide="true">
+    </rx-paginate>
+  </div>
+</rx-debug>
+
+<h3><rx-permalink>API-Based Pagination</rx-permalink></h3>
+<ul class="list">
+  <li>
+    Server-side pagination, where the pagination directive works with a paginated API
+  </li>
+  <li>
+      <p>
+        The API used by this demo is returning 100 items more than the user's selected <code>itemsPerPage</code>. If the
+        user's <code>itemsPerPage</code> is 25, then the API will return 125 items on each request. This means with the
+        default <code>itemsPerPage</code> of 25, five pages of results are coming back at a time. You should be able to
+        click through pages 1-5 without a loading message, and then the loading message will appear for page 6.
+      </p>
+
+      <p>
+        Click the "Refresh" button to see how the current page can be reloaded without the user interacting with the
+        <code>&lt;rx-paginate&gt;</code> buttons.
+      </p>
+
+      <p>Enter a search string of "error" to see the default error handling.</p>
+  </li>
+</ul>
+<rx-example name="table.paginate.api"></rx-example>
 
 <h2><rx-permalink>Design Patterns</rx-permalink></h2>
 
@@ -209,6 +344,56 @@
 
 <h3><rx-permalink>Nested Metadata</rx-permalink></h3>
 <rx-example name="table.nestedMetadata"></rx-example>
+
+<h3>
+  <rx-permalink>Sortable Column</rx-permalink>
+  <a class="button xs inline" href="ngdocs/index.html#/api/elements.directive:rxSortableColumn/">View API</a>
+</h3>
+<ul class="list">
+  <li>
+    The rxSortableColumn component provides functionality to sort a table on a single property value.
+  </li>
+  <li>
+    <p>
+      Note: The demo table is also using <code>rx-floating-header</code>, which is not required.
+      We've only done this to illustrate that <code>rxSortableColumn</code> works properly with
+      <code>rxFloatingHeader</code>. The table is also using <code>rxSortEmptyTop</code>.
+    </p>
+  </li>
+</ul>
+<rx-example name="rxSortableColumn.simple"></rx-example>
+
+<rx-debug>
+  <h3>Testing table for protractor tests.</h3>
+  <table
+     id="sortable-column-testing-table-errors"
+     rx-floating-header
+     class="sortable-column-table">
+    <thead>
+      <tr>
+        <th scope="col">
+          <rx-sortable-column
+             sort-method="sortCol"
+             sort-property="none"
+             predicate="sort.predicate"
+             reverse="sort.reverse">
+            Testing Sort Errors (see Protractor Tab)
+          </rx-sortable-column>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="resource in talentPool | rxSortEmptyTop:sort.predicate:sort.reverse">
+        <th scope="row" class="talent-name">
+          {{resource.name}}
+        </th>
+        <td class="talent-job">
+          {{resource.jobTitle}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</rx-debug>
 
 <h2>UI Roadmap / Possible Future-work</h2><!-- TODO: Do we keep? -->
 <ul class="list">

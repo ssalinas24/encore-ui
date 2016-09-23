@@ -11,7 +11,7 @@ describe('utilities:urlUtils', function () {
     beforeEach(function () {
         module('encore.ui.utilities');
         module('encore.ui.elements');
-        module('encore.ui.rxEnvironment');
+        module('encore.ui.utilities');
         // Provide any mocks needed
         module(function ($provide) {
             $provide.value('$route', route);

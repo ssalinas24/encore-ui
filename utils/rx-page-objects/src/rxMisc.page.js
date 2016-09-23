@@ -1,4 +1,6 @@
 var _ = require('lodash');
+var ElementFinder = require('protractor/built/element').ElementFinder;
+var ElementArrayFinder = require('protractor/built/element').ElementArrayFinder;
 
 /**
  * @namespace
@@ -355,11 +357,11 @@ exports.rxMisc = {
      * return a promise representing the y value of the resulting (or provided) location object.
      */
     transformLocation: function (elementOrLocation, attribute) {
-        if (elementOrLocation instanceof protractor.ElementArrayFinder) {
+        if (elementOrLocation instanceof ElementArrayFinder) {
             elementOrLocation = elementOrLocation.first();
         }
 
-        if (elementOrLocation instanceof protractor.ElementFinder) {
+        if (elementOrLocation instanceof ElementFinder) {
             var elem = elementOrLocation;
             return elem.getLocation().then(function (loc) {
                 return loc[attribute];

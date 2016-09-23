@@ -1,18 +1,18 @@
 var rxSortableColumn = encore.rxSortableColumn;
 
 var column = function (columnName, repeaterString) {
-    var columnElement = element(by.cssContainingText('rx-sortable-column', columnName));
+    var columnElement = element(by.cssContainingText('#sortable-column-testing-table rx-sortable-column', columnName));
     return rxSortableColumn.initialize(columnElement, repeaterString);
 };
 
 describe('rxSortableColumn', function () {
     var sorts = rxSortableColumn.sortDirections;
-    var columnNames = ['Name', 'Occupation', 'Testing Sort Errors (see Protractor Tab)'];
+    var columnNames = ['Name', 'Occupation'];
     var columns, nameColumn, roleColumn;
 
     before(function () {
-        demoPage.go('#/components/rxSortableColumn');
-        columns = rxSortableColumn.byTable($('.module-demo table'));
+        demoPage.go('#/elements/Tables');
+        columns = rxSortableColumn.byTable($('#sortable-column-testing-table'));
         nameColumn = column('Name', 'resource in talentPool');
         roleColumn = column('Occupation');
     });
@@ -28,11 +28,11 @@ describe('rxSortableColumn', function () {
                 return text.indexOf('Occupation') > -1;
             });
         };
-        expect(columns.getNamesUsing(doesNotUseBoldText)).to.eventually.eql([false, true, false]);
+        expect(columns.getNamesUsing(doesNotUseBoldText)).to.eventually.eql([false, true]);
     });
 
     it('should return all sorts in the table', function () {
-        expect(columns.sorts).to.eventually.eql([sorts.ascending, sorts.notSorted, sorts.notSorted]);
+        expect(columns.sorts).to.eventually.eql([sorts.ascending, sorts.notSorted]);
     });
     // https://github.com/rackerlabs/encore-ui/issues/694 -- End odd behavior.
 
@@ -132,9 +132,11 @@ describe('rxSortableColumn', function () {
 
     describe('unresponsive column sorting', function () {
         var errorColumn;
-
+        var columnElement;
         before(function () {
-            errorColumn = column('Testing Sort Errors');
+            var cssSelector = '#sortable-column-testing-table-errors rx-sortable-column';
+            columnElement = element(by.cssContainingText(cssSelector, 'Testing Sort Errors'));
+            errorColumn = rxSortableColumn.initialize(columnElement);
         });
 
         it('should throw an error if the column does not respond to sorting clicks', function () {

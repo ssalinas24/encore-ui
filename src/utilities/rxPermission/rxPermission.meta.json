@@ -1,0 +1,10 @@
+{
+    "displayName": "rxPermission",
+    "stability": "stable",
+    "description": "",
+    "api": "directive:rxPermission",
+    "keywords": [
+        "permission",
+        "rxPermission"
+    ]
+}

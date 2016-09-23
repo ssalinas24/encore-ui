@@ -111,8 +111,7 @@ describe('encore.ui.rxApp', function () {
             };
 
             module('encore.ui.rxApp');
-            module('encore.ui.rxCompile');
-
+            
             // load templates
             module('templates/rxAppNav.html');
             module('templates/rxAppNavItem.html');
@@ -293,7 +292,7 @@ describe('encore.ui.rxApp', function () {
                 el = helpers.createDirective(template, compile, scope);
 
                 var item = angular.element(el[0].querySelector('a'));
-                expect(item.attr('target')).to.equal('_self');
+                expect(item.attr('target')).to.equal('');
             });
         });
 

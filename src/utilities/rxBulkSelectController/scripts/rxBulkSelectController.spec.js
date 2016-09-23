@@ -17,7 +17,7 @@ describe('utilities:rxBulkSelectController', function () {
 
     beforeEach(function () {
         module('encore.ui.utilities');
-        module('encore.ui.rxBulkSelect', function ($provide) {
+        module('encore.ui.elements', function ($provide) {
             $provide.value('rxBulkSelectUtils', rxBulkSelectUtils);
         });
         module('templates/rxBulkSelectMessage.html');

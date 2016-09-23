@@ -258,6 +258,9 @@ var rxPaginate = {
                     });
                 }).then(function (matchingPageSizeElements) {
                     matchingPageSizeElements[0].$('button').click();
+                    encore.rxMisc.scrollToElement(page.rootElement, {
+                        positionOnScreen: 'middle'
+                    });
                 });
             });
         }
@@ -482,6 +485,30 @@ var rxPaginate = {
                     }
                 });
             });
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the pagination element is present.
+     * @returns {Promise<Boolean>}
+     */
+    isPresent: {
+        value: function () {
+            return this.rootElement.isPresent();
+        }
+    },
+
+    /**
+     * @function
+     * @instance
+     * @description Whether or not the pagination element is displayed.
+     * @returns {Promise<Boolean>}
+     */
+    isDisplayed: {
+        value: function () {
+            return this.rootElement.isDisplayed();
         }
     },
 

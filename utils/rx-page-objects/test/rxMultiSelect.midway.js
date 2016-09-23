@@ -1,6 +1,6 @@
 describe('rxMultiSelect', function () {
     before(function () {
-        demoPage.go('#/components/rxMultiSelect');
+        demoPage.go('#/elements/Forms');
     });
 
     describe('(state) Valid Enabled', encore.exercise.rxMultiSelect({

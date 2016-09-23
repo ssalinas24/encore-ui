@@ -24,8 +24,8 @@ angular.module('encore.ui.elements')
  *       <li>{@link elements.directive:rxSuffix rxSuffix}</li>
  *       <li>{@link elements.directive:rxCheckbox rxCheckbox}</li>
  *       <li>{@link elements.directive:rxRadio rxRadio}</li>
- *       <li>{@link rxSelect.directive:rxSelect rxSelect}</li>
- *       <li>{@link rxToggleSwitch.directive:rxToggleSwitch rxToggleSwitch}</li>
+ *       <li>{@link elements.directive:rxSelect rxSelect}</li>
+ *       <li>{@link elements.directive:rxToggleSwitch rxToggleSwitch}</li>
  *       <li>{@link rxOptionTable.directive:rxOptionTable rxOptionTable}</li>
  *       <li>Any HTML Element</li>
  *     </ul>

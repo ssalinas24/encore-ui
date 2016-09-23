@@ -4,7 +4,8 @@ var srcDirs = [
     'src/atoms',
     'src/components',
     'src/molecules',
-    'src/elements'
+    'src/elements',
+    'src/utilities'
 ];
 var exportFiles = srcDirs.map(function (dir) {
     return {

@@ -5,6 +5,8 @@ describe('rxSelectFilter', function () {
         module('encore.ui.elements');
         module('templates/rxSelectFilter.html');
         module('templates/rxFieldName.html');
+        module('templates/rxMultiSelect.html');
+        module('templates/rxSelectOption.html');
 
         inject(function ($rootScope, $compile) {
             scope = $rootScope.$new();

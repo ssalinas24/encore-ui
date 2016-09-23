@@ -5,7 +5,7 @@ angular.module('encore.ui.utilities')
  * @description
  * This is the data service that can be used in conjunction with the pagination
  * objects to store/control page display of data tables and other items.
- * This is intended to be used with {@link rxPaginate.directive:rxPaginate}
+ * This is intended to be used with {@link elements.directive:rxPaginate}
  * @namespace PageTracking
  *
  * @example

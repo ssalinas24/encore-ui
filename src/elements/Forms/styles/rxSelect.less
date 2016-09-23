@@ -1,0 +1,126 @@
+/*
+ * rxSelect
+ */
+.rxSelect {
+  z-index: 0; // creates local z-index stacking context
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  color: @rxSelect-text-color;
+  background: @rxSelect-background-color;
+  border-radius: @rxSelect-border-radius;
+
+  // Element should be resizable via wrapper alone
+  min-width: @rxSelect-min-width;
+  height: @rxSelect-height;
+
+  &.rx-disabled {
+    color: @rxSelect-disabled-text-color;
+    background: @rxSelect-disabled-background-color;
+  }
+
+  // position elements in wrapper
+  select,
+  .fake-select {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .disabledSelect() {
+    cursor: not-allowed;
+
+    & + .fake-select {
+      border-color: @rxSelect-disabled-border-color;
+      border-width: 1px;
+
+      .select-trigger {
+        background: @rxSelect-disabled-background-color;
+        border-left-width: 0px;
+        border-left-color: @rxSelect-disabled-border-color;
+        color: @rxSelect-disabled-trigger-color;
+      }
+    }
+  }//.disabledSelect()
+
+  .invalidSelect() {
+    & + .fake-select {
+      border-color: @rxSelect-invalid-border-color;
+      border-width: 2px;
+
+      .select-trigger {
+        color: @rxSelect-invalid-trigger-color;
+      }
+    }
+
+    &[disabled] {
+      .rxSelect.disabledSelect();
+    }
+  }//.invalidSelect()
+
+  select {
+    z-index: 0;
+    cursor: pointer;
+
+    // reset native styling
+    // !important is required to reset native styling and avoid any additional styling
+    border: 0 !important; // lesshint importantRule: false
+    outline: none !important; // lesshint importantRule: false
+    background: transparent;
+    &:-moz-focusring {
+      // FF uses text color to draw ring. Make it transparent
+      color: transparent;
+      // However, we still need to display our select <option> text
+      text-shadow: 0 0 0 @rxSelect-text-color;
+    }
+
+    & + .fake-select {
+      border-color: @rxSelect-border-color;
+      border-width: 1px;
+    }
+
+    &:focus + .fake-select {
+      border-color: @app-input-focus-border-color;
+      box-shadow: @app-input-focus-box-shadow;
+    }
+
+    &.ng-invalid.ng-dirty {
+      .invalidSelect();
+    }
+
+    // Disabled Trumps All
+    &[disabled] {
+      .disabledSelect();
+    }
+  }//select
+
+  .fake-select {
+    z-index: 10;
+    border: @rxSelect-border-width solid @rxSelect-border-color;
+    overflow: hidden;
+    border-radius: @rxSelect-border-radius;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row nowrap;
+
+    // This allow pointer events to pass THROUGH to the
+    // native <select> element
+    pointer-events: none !important; // lesshint importantRule: false
+
+    // Custom trigger button will cover native <select> button
+    .select-trigger {
+      box-sizing: border-box;
+      width: @rxSelect-trigger-width;
+      background: @rxSelect-background-color;
+      color: @rxSelect-trigger-color;
+
+      // perfectly center the trigger icon
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }//.select-trigger
+  }//.fake-select
+}//.rxSelect
