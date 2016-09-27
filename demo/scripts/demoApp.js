@@ -39,18 +39,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 { name: 'Collapsible' }
             ])
         })
-        .when('/layout/grid', {
-            templateUrl: 'templates/layout/grid.html',
-            controller: genericRouteController([
-                { name: 'Flexbox Grid' }
-            ])
-        })
-        .when('/layout/modals', {
-            templateUrl: 'templates/layout/modals.html',
-            controller: genericRouteController([
-                { name: 'Modals' }
-            ])
-        })
         .when('/layout/page/detail', {
             templateUrl: 'templates/layout/page/detail-page.html',
             controller: genericRouteController([
@@ -73,12 +61,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
         /* Style Pages */
         .when('/styles/color', {
             templateUrl: 'templates/styles/color.html',
-            controller: genericRouteController([
-                { name: 'Color' }
-            ])
-        })
-        .when('/styles/color-1-0', {
-            templateUrl: 'templates/styles/color-1-0.html',
             controller: genericRouteController([
                 { name: 'Color' }
             ])
@@ -258,14 +240,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                         {
                             linkText: 'Collapsible',
                             href: '#/layout/collapsible'
-                        },
-                        {
-                            linkText: 'Flexbox Grid',
-                            href: '#/layout/grid'
-                        },
-                        {
-                            linkText: 'Modals',
-                            href: '#/layout/modals'
                         },
                         {
                             linkText: 'Page Examples',
