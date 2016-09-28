@@ -8,7 +8,7 @@ var files = [
     'demo/bower_components/angular-resource/angular-resource.js',
     'demo/bower_components/angular-route/angular-route.js',
     'demo/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-    'demo/bower_components/lodash/dist/lodash.compat.js',
+    'demo/bower_components/lodash/lodash.js',
     'demo/bower_components/moment/moment.js',
     'demo/bower_components/html2canvas/build/html2canvas.js',
     'demo/bower_components/angular-hotkeys/build/hotkeys.min.js',

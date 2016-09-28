@@ -382,7 +382,7 @@ var rxOptionTable = {
         value: function (selections) {
             var page = this;
             _.forEach(selections, function (selection) {
-                page.deselectByColumnText(_.first(_.keys(selection)), _.first(_.values(selection)));
+                page.deselectByColumnText(_.head(_.keys(selection)), _.head(_.values(selection)));
             });
         }
     },
@@ -437,7 +437,7 @@ var rxOptionTable = {
         value: function (selections) {
             var page = this;
             _.forEach(selections, function (selection) {
-                page.selectByColumnText(_.first(_.keys(selection)), _.first(_.values(selection)));
+                page.selectByColumnText(_.head(_.keys(selection)), _.head(_.values(selection)));
             });
         }
     },

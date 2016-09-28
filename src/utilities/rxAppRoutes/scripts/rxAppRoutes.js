@@ -158,7 +158,7 @@ angular.module('encore.ui.utilities')
             },
             setAll: function (newRoutes) {
                 // let's not mess with the original object
-                var routesToBe = _.clone(newRoutes, true);
+                var routesToBe = _.cloneDeep(newRoutes);
 
                 routes = setDynamicProperties(routesToBe);
                 loadingDeferred.resolve();

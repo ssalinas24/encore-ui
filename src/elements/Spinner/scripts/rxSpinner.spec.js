@@ -1,7 +1,5 @@
 describe('rxSpinner', function () {
-    var scope, compile, el;
-    var validTemplate = '<div rx-spinner toggle="toggle"></div>';
-    var darkTemplate = '<div rx-spinner="dark" toggle="toggle"></div>';
+    var scope, compile, el, template;
 
     beforeEach(function () {
         // load module
@@ -14,43 +12,64 @@ describe('rxSpinner', function () {
         });
     });
 
-    it('should add spinner div to element', function () {
-        el = helpers.createDirective(validTemplate, compile, scope);
-        scope.$digest();
+    describe('with default spinner template', function () {
+        beforeEach(function () {
+            template = '<div rx-spinner toggle="toggle"></div>';
+            el = helpers.createDirective(template, compile, scope);
+            scope.$digest();
+        });
 
-        var domEl = el[0];
-        // should not have spinner by default
-        expect(domEl.querySelector('.rx-spinner')).to.be.null;
+        describe('when toggled', function () {
+            beforeEach(function () {
+                scope.toggle = true;
+                scope.$digest();
+            });
 
-        // should have it when loading is true
-        scope.toggle = true;
-        scope.$digest();
-        expect(domEl.querySelector('.rx-spinner')).to.exist;
-        expect(helpers.getChildDiv(domEl, 'rx-spinner', 'class').hasClass('dark')).to.be.false;
+            it('should render a normal spinner', function () {
+                expect(el.children()).to.have.lengthOf(1);
+                expect(el.children()[0].getAttribute('class')).to.not.match(/ dark /);
+            });
+        });//toggled
 
-        // should not have it when loading is set back to false
-        scope.toggle = false;
-        scope.$digest();
-        expect(domEl.querySelector('.rx-spinner')).to.be.null;
-    });
+        describe('when not toggled', function () {
+            beforeEach(function () {
+                scope.toggle = false;
+                scope.$digest();
+            });
 
-    it('should add dark spinner div to element', function () {
-        el = helpers.createDirective(darkTemplate, compile, scope);
-        scope.$digest();
+            it('should not render a spinner', function () {
+                expect(el.children()).to.have.lengthOf(0);
+            });
+        });//not toggled
+    });//default spinner
 
-        var domEl = el[0];
-        // should not have spinner by default
-        expect(domEl.querySelector('.rx-spinner')).to.be.null;
+    describe('with dark spinner template', function () {
+        beforeEach(function () {
+            template = '<div rx-spinner="dark" toggle="toggle"></div>';
+            el = helpers.createDirective(template, compile, scope);
+        });
 
-        // should have it when loading is true
-        scope.toggle = true;
-        scope.$digest();
-        expect(domEl.querySelector('.rx-spinner')).to.exist;
-        expect(helpers.getChildDiv(domEl, 'rx-spinner', 'class').hasClass('dark')).to.be.true;
+        describe('when toggled', function () {
+            beforeEach(function () {
+                scope.toggle = true;
+                scope.$digest();
+            });
 
-        // should not have it when loading is set back to false
-        scope.toggle = false;
-        scope.$digest();
-        expect(domEl.querySelector('.rx-spinner')).to.be.null;
-    });
+            it('should render a dark spinner', function () {
+                expect(el.children()).to.have.lengthOf(1);
+                expect(el.children()[0].getAttribute('class')).to.match(/ dark /);
+            });
+        });//toggled
+
+        describe('when not toggled', function () {
+            beforeEach(function () {
+                scope.toggle = false;
+                scope.$digest();
+            });
+
+            it('should not render a spinner', function () {
+                expect(el.children()).to.have.lengthOf(0);
+            });
+        });//not toggled
+    });//dark spinner
 });

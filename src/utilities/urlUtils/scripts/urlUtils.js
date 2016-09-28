@@ -90,7 +90,7 @@ angular.module('encore.ui.utilities')
         // if current item not active, check if any children are active
         // This requires that `isActive` was called on all the children beforehand
         if (!pathMatches && item.children) {
-            pathMatches = _.any(item.children, 'active');
+            pathMatches = _.some(item.children, 'active');
         }
 
         return pathMatches;

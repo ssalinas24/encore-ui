@@ -66,8 +66,8 @@ angular.module('encore.ui.elements')
  * @param {*=} disable-esc
  * If the `disable-esc` attribute is present, then "Press Esc to close" will be
  * disabled for the modal. This attribute takes no values.
- * @param {Boolean=} [ngDisabled=false]
- * If the expression evaluates to true, then the link for opening the modal will
+ * @param {Expression=} [ngDisabled=false]
+ * If the expression evaluates truthy, then the link for opening the modal will
  * be disabled.
  *
  * @example
@@ -102,19 +102,11 @@ angular.module('encore.ui.elements')
         restrict: 'E',
         scope: true,
         link: function (scope, element, attrs) {
-            scope.isDisabled = false;
-
             // add any class passed in to scope
             scope.classes = attrs.classes;
 
-            attrs.$observe('disabled', function (newValue) {
-                if (typeof newValue === 'boolean') {
-                    scope.isDisabled = newValue;
-                } else {
-                    // TODO: remove in 3.0.0
-                    // DEPRECATED: override [disabled] behavior
-                    scope.isDisabled = scope.$eval(newValue);
-                }
+            attrs.$observe('ngDisabled', function (newValue) {
+                scope.isDisabled = scope.$eval(newValue);
             });
 
             var focusLink = function () {

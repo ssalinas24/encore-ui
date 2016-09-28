@@ -1,6 +1,4 @@
 module.exports = {
-    // Both dist and distTpls will contain the same content, to retain
-    // backward compatibility
     dist: {
         options: {
             banner: '<%= config.banner %>\n',
@@ -8,14 +6,6 @@ module.exports = {
         },
         src: [], //src filled in by 'modules' task
         dest: '<%= config.dir.dist %>/<%= config.dist.fileName %>.js'
-    },
-    distTpls: { // TODO: Remove in 3.0.0
-        options: {
-            banner: '<%= config.banner %>\n',
-            process: true
-        },
-        src: [], //src filled in by 'modules' task
-        dest: '<%= config.dir.dist %>/<%= config.dist.fileNameTpl %>.js'
     },
     tmpDemosLess: {
         options: {
