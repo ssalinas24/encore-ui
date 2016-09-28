@@ -62,22 +62,29 @@ angular.module('encore.ui.utilities')
         // http://encore.dev/
         // http://apps.server/
         name: 'local',
-        pattern: /\/\/(?:apps\.)?(localhost|server|(.*)\.dev)(:\d{1,4})?/,
+        pattern: /\/\/(?:\w+\.)?(localhost|server|(.*)\.dev)(:\d{1,4})?/,
         url: '//' + $location.host() + ($location.port() !== 80 ? ':' + $location.port() : '') + '/{{path}}'
     }, {
-        // Matches only https://preprod.encore.rackspace.com
-        // Regexr: http://www.regexr.com/3de5p
+        // Matches only preprod and it's subdomains
+        // Regexr: http://www.regexr.com/3eani
+        // https://preprod.encore.rackspace.com
+        // https://apps.preprod.encore.rackspace.com
+        // https://cloud.preprod.encore.rackspace.com
         name: 'preprod',
-        pattern: /\/\/(?:apps\.)?preprod.encore.rackspace.com/,
+        pattern: /\/\/(?:\w+\.)?preprod.encore.rackspace.com/,
         url: '{{path}}'
     }, {
         // This is anything with a host preceeding encore.rackspace.com
-        // Regexr: http://www.regexr.com/3de5s
+        // Regexr: http://www.regexr.com/3eanl
         // https://staging.encore.rackspace.com/
         // https://preprod.encore.rackspace.com/
+        // https://apps.encore.rackspace.com
+        // https://apps.staging.encore.rackspace.com
+        // https://cloud.staging.encore.rackspace.com
         // https://apps.preprod.encore.rackspace.com/
+        // https://cloud.preprod.encore.rackspace.com/
         name: 'unified-preprod',
-        pattern: /\/\/(?:apps\.)?(\w+\.)encore.rackspace.com/,
+        pattern: /\/\/(?:\w+\.)?(\w+\.)encore.rackspace.com/,
         url: '{{path}}'
     }, {
         // This is *all* environments
@@ -91,10 +98,13 @@ angular.module('encore.ui.utilities')
         pattern: 'encore.rackspace.com',
         url: '{{path}}'
     }, {
-        // This is only https://encore.rackspace.com/
-        // Regexr: http://www.regexr.com/3de62
+        // This is only production only
+        // Regexr: http://www.regexr.com/3eal4
+        // https://encore.rackspace.com/
+        // https://apps.encore.rackspace.com
+        // https://origin.encore.rackspace.com
         name: 'unified-prod',
-        pattern: /\/\/(?:apps\.)?encore.rackspace.com/,
+        pattern: /\/\/(?:apps\.|origin\.)?encore.rackspace.com/,
         url: '{{path}}'
     }];
 
