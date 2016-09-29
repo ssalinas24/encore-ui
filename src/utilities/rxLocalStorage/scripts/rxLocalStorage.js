@@ -24,7 +24,7 @@ angular.module('encore.ui.utilities')
     var localStorage = $window.localStorage;
     if ($window.self !== $window.top) {
         try {
-            localStorage = $window.top.localStorage;
+            localStorage = $window.top.localStorage || $window.localStorage;
         } catch (e) {
             localStorage = $window.localStorage;
         }
