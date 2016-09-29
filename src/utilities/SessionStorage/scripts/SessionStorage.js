@@ -25,7 +25,7 @@ angular.module('encore.ui.utilities')
     var sessionStorage = $window.sessionStorage;
     if ($window.self !== $window.top) {
         try {
-            sessionStorage = $window.top.sessionStorage;
+            sessionStorage = $window.top.sessionStorage || $window.sessionStorage;
         } catch (e) {
             sessionStorage = $window.sessionStorage;
         }
