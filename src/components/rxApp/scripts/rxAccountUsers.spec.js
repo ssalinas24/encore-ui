@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAccountUsers', function () {
-        var scope, compile, userSelect, users, encoreRoutesMock;
+        var scope, compile, userSelect, users, encoreRoutesMock, $route, $location, provide;
         var validTemplate = '<rx-account-users></rx-account-users>';
         var unregisterCheckCloud = sinon.spy();
         var rootScopeStub = null;
@@ -37,16 +37,21 @@ describe('encore.ui.rxApp', function () {
 
             module('encore.ui.rxApp', 'testDirective');
             module('templates/rxAccountUsers.html');
+            module(function ($provide) {
+                provide = $provide;
+            });
 
-            inject(function ($rootScope, $compile, $templateCache, $location, $route, $q, encoreRoutes) {
+            inject(function ($rootScope, $compile, $templateCache, _$location_, _$route_, $q, encoreRoutes) {
+                $route = _$route_;
+                $location = _$location_;
                 compile = $compile;
                 scope = $rootScope.$new();
                 rootScopeStub = sinon.stub($rootScope, '$on').returns(unregisterCheckCloud);
                 encoreRoutesMock = encoreRoutes;
 
-                $location.url('http://server/cloud/');
+                $location.url('/server/cloud/323676/hub_cap');
                 $route.current = {};
-                $route.current.originalPath = $location.url();
+                $route.current.originalPath = '/server/cloud/:accountNumber/:user';
                 $route.current.params = {
                     accountNumber: 323676,
                     user: 'hub_cap'
@@ -102,6 +107,37 @@ describe('encore.ui.rxApp', function () {
             userSelect = helpers.createDirective(angular.element(validTemplate), compile, scope);
             userSelect.remove();
             expect(unregisterCheckCloud.called).to.eq(true);
+        });
+
+        describe('Origin Navigation', function () {
+            var setCanvasURLSpy;
+            var currentCanvasURL = 'someapp.com';
+
+            var fakeOriLocationService = {
+                getCanvasURL: function () {
+                    return currentCanvasURL;
+                },
+                setCanvasURL: function () {}
+            };
+
+            beforeEach(function () {
+                setCanvasURLSpy = sinon.spy(fakeOriLocationService, 'setCanvasURL');
+                provide.factory('oriLocationService', function () {
+                    return fakeOriLocationService;
+                });
+            });
+
+            afterEach(function () {
+                setCanvasURLSpy.restore();
+            }); 
+
+            it('should use oriLocationService on user change', function () {
+                userSelect = helpers.createDirective(angular.element(validTemplate), compile, scope);
+                scope.switchUser('testaccountuser');
+
+                expect(setCanvasURLSpy).to.have.been.calledWith('/server/cloud/323676/testaccountuser');
+                
+            });
         });
 
         afterEach(function () {
