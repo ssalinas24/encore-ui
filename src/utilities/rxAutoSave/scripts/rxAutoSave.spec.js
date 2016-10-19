@@ -2,11 +2,14 @@ describe('utilities:rxAutoSave', function () {
     var $rootScope, $q, $timeout, scope, rxAutoSave, a, LocalStorage, SessionStorage,
         now;
 
-    var url;
+    var url, path;
 
     var $location = {
         url: function () {
             return url;
+        },
+        path: function () {
+            return path;
         }
     };
 
@@ -226,8 +229,6 @@ describe('utilities:rxAutoSave', function () {
         // Navigate to a new URL with the same form structure
         url = 'a/new/url';
         initializeScope();
-        a = rxAutoSave(scope, 'formA');
-        scope.$digest();
         expect(scope.formA.foo, 'no data for this url').to.equal('');
 
         // Navigate back to the original URL
