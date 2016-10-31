@@ -1,0 +1,38 @@
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+rx-progressbar {
+  width: 100%;
+}
+.rxProgressbar {
+  background-color: @progressbar-background-color;
+  border: 1px solid @progressbar-border-color;
+  height: @progressbar-line-height-computed;
+  margin-bottom: @progressbar-line-height-computed;
+  padding: 1px;
+  &__value {
+    background-color: @progressbar-default-background-color;
+    color: @progressbar-default-text-color;
+    line-height: @progressbar-line-height-computed;
+    text-align: center;
+    width: 0%;
+    height: 100%;
+  }
+  &--striped {
+    @progressbar-stripe-color: rgba(255, 255, 255, .15);
+    .rxProgressbar__value {
+      animation: progress-bar-stripes 2s linear infinite;
+      background-image: linear-gradient(45deg, 
+        @progressbar-stripe-color 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        @progressbar-stripe-color 50%, 
+        @progressbar-stripe-color 75%, 
+        transparent 75%, 
+        transparent
+      );
+      background-size: 40px 40px;
+    }
+  }
+}

@@ -2,12 +2,13 @@
     "displayName": "Progress Bars",
     "stability": "experimental",
     "description": "Provides feedback on the progress of a workflow or action",
-    "hasApi": false,
+    "api": "directive:rxProgressbar",
     "keywords": [
         "bar",
         "load",
         "loading",
         "progress",
-        "progressbar"
+        "progressbar",
+        "rxProgressbar"
     ]
 }
