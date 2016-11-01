@@ -181,7 +181,7 @@ describe('utilities:urlUtils', function () {
             var parsed = urlutils.parseUrl('http://something.com/foo/bar?test=four#foobar');
             expect(parsed.protocol).to.equal('http:');
             expect(parsed.hostname).to.equal('something.com');
-            expect(parsed.port).to.equal('0');
+            expect(parsed.port).to.equal('');
             expect(parsed.pathname).to.equal('/foo/bar');
             expect(parsed.search).to.equal('?test=four');
             expect(parsed.hash).to.equal('#foobar');
@@ -210,7 +210,7 @@ describe('utilities:urlUtils', function () {
             var parsed = urlutils.parseUrl(null);
             expect(parsed.protocol).to.equal(':');
             expect(parsed.hostname).to.equal('');
-            expect(parsed.port).to.equal('0');
+            expect(parsed.port).to.equal('');
             expect(parsed.pathname).to.equal('');
             expect(parsed.search).to.equal('');
             expect(parsed.hash).to.equal('');
