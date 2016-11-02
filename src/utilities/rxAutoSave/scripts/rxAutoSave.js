@@ -277,7 +277,7 @@ angular.module('encore.ui.utilities')
  * </pre>
  *
  * The above example could be used to have the current url ignore any caching flags passed in. The `keyShaping`
- * function will receive the default calculated key (`rxAutoSave::` + $location.url()). By default, `keyShaping`
+ * function will receive the default calculated key (`rxAutoSave::` + $location.path()). By default, `keyShaping`
  * just returns the original calculated key.
  *
  *
@@ -391,10 +391,10 @@ angular.module('encore.ui.utilities')
     //                           it must support both getObject(key) and setObject(key, val), matching
     //                           the operations of rxLocalStorage and SessionStorage
     // @param [keyShaping] - Optional, defaults to just returning the originally defined key value.
-    //                       It gets passed the original value defined ('rxAutoSave::' + $location.url())
+    //                       It gets passed the original value defined ('rxAutoSave::' + $location.path())
     //                       and is expected to return the new key that you wish to have used.
     var StorageAPI = function (watchVar, storageBackend, keyShaping) {
-        this.key = keyShaping('rxAutoSave::' + $location.url());
+        this.key = keyShaping('rxAutoSave::' + $location.path());
         this.watchVar = watchVar;
         this.storage = storageBackend ? storageBackend : rxLocalStorage;
     };
