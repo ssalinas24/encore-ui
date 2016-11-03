@@ -1,3 +1,14 @@
+<a name="1.50.6"></a>
+### 1.50.6 (2016-11-03)
+
+
+#### Bug Fixes
+
+* **phantomjs:** upgrade to PhantomJS 2.x ([85399662](git@github.com:rackerlabs/encore-ui/commit/853996622ea2a15ae4d336ce1f5fcdc3bfb87ee3))
+* **protractor:** update to protractor 4 for Codeship testing ([89b637ff](git@github.com:rackerlabs/encore-ui/commit/89b637ff6316bf8508c7d9e7fc29cca2c9f1b8c7))
+* **rxAutoSave:** Update rxAutoSave to use $location.path() ([50642beb](git@github.com:rackerlabs/encore-ui/commit/50642beb60f3a086e0790afc5c0cdf5a9295316d))
+
+
 <a name="1.50.5"></a>
 ### 1.50.5 (2016-09-29)
 
