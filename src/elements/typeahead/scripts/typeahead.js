@@ -1,6 +1,6 @@
 /**
  * @ngdoc overview
- * @name typeahead
+ * @name elements.directive:typeahead
  * @description
  * # typeahead Component
  *
