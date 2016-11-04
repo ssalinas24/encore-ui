@@ -1,5 +1,5 @@
 {
-    "displayName": "rxTags",
+    "displayName": "Tags",
     "stability": "stable",
     "description": "apply predetermined descriptions to an entity",
     "api": "directive:rxTags",
