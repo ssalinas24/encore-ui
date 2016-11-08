@@ -11,7 +11,6 @@ module.exports = function (grunt) {
             'less:encore',
             'less:encoreResp',
             'less:styleguide',
-            'copy:demomarkdown',
             'copy:demohtml',
             'copy:demoassets',
             'copy:demopolyfills',

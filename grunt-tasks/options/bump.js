@@ -11,8 +11,6 @@ module.exports = {
         commitFiles: [
             'package.json',
             'bower.json',
-            'guides/using-encoreui.md',
-            'guides/testing.md',
             'utils/rx-page-objects/package.json'
         ],
         createTag: true,

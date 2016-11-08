@@ -8,38 +8,7 @@ sure not to overburden the core EncoreUI team.
 The EncoreUI team welcomes bug reports and issues from the community.
 
 Please report any bugs or issues you encounter when using EncoreUI to our 
-[GitHub Issues Tracker](https://github.com/rackerlabs/encore-ui/issues) following the steps below.
-
-### How to Report an Issue
-
-* Open a new [GitHub Issue](https://github.com/rackerlabs/encore-ui/issues).
-* When reporting an issue, please provide:
-  - applicable screenshots
-  - details about your browser and operating environment
-  - Framework version
-  - perspective on whether this issue is blocking your team (if relevant), or how it could improve EncoreUI usage (this 
-    helps the Framework team prioritize your issue)
-* The EncoreUI team will create a JIRA story and add it to the current or future sprint.
-* The GitHub issue will remain open until addressed and before closed, will show steps taken by the EncoreUI team.
-
-**Example Issue:** Please see a [reported issue](https://github.com/rackerlabs/encore-ui/issues/1465) that walks through 
-the steps of replicating, logging, tracking, and follow-up resolution with the reporter.  
-
-### How to Report a Bug 
-
-* Open a new [GitHub Issue](https://github.com/rackerlabs/encore-ui/issues).
-* When reporting a bug, please provide:
-  - **steps to reproduce the bug** (If an EncoreUI developer cannot reproduce it, it becomes much more difficult to 
-    fix.)
-  - screenshots of the bug
-  - operating environment (browser with version, OS, etc)
-  - Framework version
-  - rate the bug as minor or major
-* The EncoreUI team will create a JIRA story and add it to the current or future sprint.
-* The GitHub issue will remain open until addressed and before closed, will show steps taken by the EncoreUI team.
-
-**Example Bug:**  Please see a [reported bug](https://github.com/rackerlabs/encore-ui/issues/1492) 
-that walks through the steps of reporting, logging, and resolving the reported bug.
+[GitHub Issues Tracker](https://github.com/rackerlabs/encore-ui/issues) following the steps at [How to Report an Issue](https://github.com/rackerlabs/encore-ui/wiki/Common-Questions#how-to-report-an-issue) and [How to Report a Bug](https://github.com/rackerlabs/encore-ui/wiki/Common-Questions#how-to-report-a-bug).
 
 ## Preparing an Issue for development
 When an Issue is ready to move to development, make sure it includes the following:
