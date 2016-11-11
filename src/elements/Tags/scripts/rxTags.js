@@ -1,7 +1,7 @@
 angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxTags.directive:rxTags
+ * @name elements.directive:rxTags
  * @description
  *
  * Like native form components, this directive uses `ng-model` to store

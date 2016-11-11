@@ -1,7 +1,7 @@
 angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxFloatingHeader.directive:rxFloatingHeader
+ * @name elements.directive:rxFloatingHeader
  * @restrict A
  * @description
  *

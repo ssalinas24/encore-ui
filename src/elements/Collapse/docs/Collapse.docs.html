@@ -1,5 +1,26 @@
 <p>
-  rxCollapse component is used to display and hide content on a page.
+  To display and hide content, you can use rxCollapse. It can be set as
+  either expanded or collapsed on page load. A double chevron is used as
+  a toggle to show/hide the inner contents, while keeping the header and
+  border visible.
 </p>
+<rx-example name="rxCollapse.box"></rx-example>
 
-<rx-example name="collapse.simple"></rx-example>
+<h3>See More/See Less</h3>
+<p>
+  In areas where metadata needs to be available but space is limited, you
+  can use a "See More"/"See Less" link to expand and show additional
+  metadata. The most relevant lines of metadata should display on page
+  load with less relevant lines of metadata hidden behind "See More".
+</p>
+<ul class="list">
+  <li>
+    This pattern is not very responsive friendly. The column wrap will
+    place your data out of context, making it difficult to read.
+  </li>
+  <li>
+    So you can design responsively, data hidden by rxCollapse should only
+    be used at the end of the page's final column.
+  </li>
+</ul>
+<rx-example name="rxCollapse.moreless"></rx-example>

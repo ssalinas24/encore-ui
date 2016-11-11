@@ -1,7 +1,7 @@
 describe('layouts', function () {
     describe('details', function () {
         before(function () {
-            demoPage.go('#/layout/page/detail');
+            demoPage.go('#/styles/layout/detail');
         });
 
         it('page actions', function () {
@@ -19,7 +19,7 @@ describe('layouts', function () {
 
     describe('data table', function () {
         before(function () {
-            demoPage.go('#/layout/page/data-table');
+            demoPage.go('#/styles/layout/data-table');
         });
 
         it('full table', function () {
@@ -29,7 +29,7 @@ describe('layouts', function () {
 
     describe('create form', function () {
         before(function () {
-            demoPage.go('#/layout/page/form');
+            demoPage.go('#/styles/layout/form');
         });
 
         it('form area', function () {

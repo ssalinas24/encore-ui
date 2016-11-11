@@ -2,7 +2,7 @@
     "displayName": "Typeahead",
     "stability": "stable",
     "description": "",
-    "hasApi": false,
+    "api": "directive:typeahead",
     "keywords": [
       "auto",
       "fill",

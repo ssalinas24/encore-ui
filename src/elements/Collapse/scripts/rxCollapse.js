@@ -1,7 +1,7 @@
 angular.module('encore.ui.elements')
 /**
  * @ngdoc directive
- * @name rxCollapse.directive:rxCollapse
+ * @name elements.directive:rxCollapse
  * @restrict E
  * @scope
  * @description

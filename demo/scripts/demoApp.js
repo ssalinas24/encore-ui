@@ -33,30 +33,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
         })
 
         /* Layout */
-        .when('/layout/collapsible', {
-            templateUrl: 'templates/layout/collapsible.html',
-            controller: genericRouteController([
-                { name: 'Collapsible' }
-            ])
-        })
-        .when('/layout/page/detail', {
-            templateUrl: 'templates/layout/page/detail-page.html',
-            controller: genericRouteController([
-                { name: 'Detail Page' }
-            ])
-        })
-        .when('/layout/page/data-table', {
-            templateUrl: 'templates/layout/page/data-table-page.html',
-            controller: genericRouteController([
-                { name: 'Data Table' }
-            ])
-        })
-        .when('/layout/page/form', {
-            templateUrl: 'templates/layout/page/form-page.html',
-            controller: genericRouteController([
-                { name: 'Form Page' }
-            ])
-        })
 
         /* Style Pages */
         .when('/styles/color', {
@@ -70,6 +46,24 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: genericRouteController([{
                 name: 'Formatting'
             }])
+        })
+        .when('/styles/layout/detail', {
+            templateUrl: 'templates/styles/layouts/detail-page.html',
+            controller: genericRouteController([
+                { name: 'Detail Page' }
+            ])
+        })
+        .when('/styles/layout/data-table', {
+            templateUrl: 'templates/styles/layouts/data-table-page.html',
+            controller: genericRouteController([
+                { name: 'Data Table' }
+            ])
+        })
+        .when('/styles/layout/form', {
+            templateUrl: 'templates/styles/layouts/form-page.html',
+            controller: genericRouteController([
+                { name: 'Form Page' }
+            ])
         })
         .when('/styles/typography', {
             templateUrl: 'templates/styles/typography.html',
@@ -217,6 +211,23 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                             href: '#/styles/formatting'
                         },
                         {
+                            linkText: 'Layouts',
+                            children: [
+                                {
+                                    linkText: 'Layout 1: Detail Page',
+                                    href: '#/styles/layout/detail'
+                                },
+                                {
+                                    linkText: 'Layout 2: Data Table',
+                                    href: '#/styles/layout/data-table'
+                                },
+                                {
+                                    linkText: 'Layout 3: Form Page',
+                                    href: '#/styles/layout/form'
+                                }
+                            ]
+                        },
+                        {
                             linkText: 'Typography',
                             href: '#/styles/typography'
                         }
@@ -233,32 +244,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                 {
                     linkText: 'Utilities',
                     children: linksForModuleCategory('utilities')
-                },
-                {
-                    linkText: 'Layout',
-                    children: [
-                        {
-                            linkText: 'Collapsible',
-                            href: '#/layout/collapsible'
-                        },
-                        {
-                            linkText: 'Page Examples',
-                            children: [
-                                {
-                                    linkText: 'Layout 1: Detail Page',
-                                    href: '#/layout/page/detail'
-                                },
-                                {
-                                    linkText: 'Layout 2: Data Table',
-                                    href: '#/layout/page/data-table'
-                                },
-                                {
-                                    linkText: 'Layout 3: Form Page',
-                                    href: '#/layout/page/form'
-                                }
-                            ]
-                        }
-                    ]
                 },
                 { /* Deprecated in favor of Elements */
                     linkText: 'Components',
