@@ -147,12 +147,6 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
                     });
                 }
             }
-        })
-
-        /* Guide Pages */
-        .when('/guides/:guide', {
-            controller: 'guideController as vm',
-            templateUrl: 'templates/guides/showGuide.html'
         });
 
     // Define a custom status tag for use in the rxBreadcrumbs demo
