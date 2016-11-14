@@ -1,0 +1,7 @@
+{
+    "displayName": "rxProgressbarUtil",
+    "stability": "experimental",
+    "description": "Utilities for rxProgressbar element",
+    "api": "service:rxProgressbarUtil",
+    "keywords": []
+}

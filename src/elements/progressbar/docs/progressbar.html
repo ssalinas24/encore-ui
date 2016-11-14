@@ -1,28 +1,38 @@
 <p>
-  This component may be used to provide feedback on the progress of a workflow or action.
+  Element used to provide feedback on the progress of a workflow or action.
 </p>
 
-<p>
-  Encore Framework utilizes Angular Bootstrap <em>progressbar</em>. See the
-  <a href="http://angular-ui.github.io/bootstrap/#/progressbar">Angular Bootstrap page</a>
-  for more details.
-</p>
 
+<h3>Static Progressbars</h3>
 <ul class="list">
-    <li>
-      There are two states for progress bars: active and complete.
-      Active progress bars have animated stripes, which are produced
-      by the class <code>.active</code>. Full progress bars do not
-      have this class, and are solid and static in appearance.</li>
-    <li>
-      Several options for displaying text with a progress bar are
-      available: no text, a percentage (not italicized), and detailed
-      text (italicized). Always try to show a percentage. Your focus
-      should be to enter specific text, since it reveals both numeric
-      progress and provides context for what progress is being tracked.
-      See demo below.
-    </li>
+  <li>
+    There are two states for progress bars:
+    <ul>
+      <li>Active progress bars have animated stripes.</li>
+      <li>Full progress bars are solid and static in appearance.</li>
+    </ul>
+  </li>
+  <li>
+    Several options for displaying text with a progress bar are
+    available:
+    <ul>
+      <li>No Text</li>
+      <li>Percentage (not italicized)</li>
+      <li>Detailed Text (italicized)</li>
+    </ul>
+  </li>
+  <li>
+    Always try to show a percentage. Your focus should be to enter specific
+    text, since it reveals both numeric progress and provides context for
+    what progress is being tracked.
+    See demo below.
+  </li>
 </ul>
-<br />
-
 <rx-example name="progressbar.simple"></rx-example>
+
+
+<h3>Dynamic Progressbars</h3>
+<p>
+  Progressbars can also be controlled dynamically via model values.
+</p>
+<rx-example name="progressbar.dynamic"></rx-example>
