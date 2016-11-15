@@ -44,7 +44,7 @@ module.exports = function (grunt) {
         }
 
         // Fetch Module Metadata
-        var metadataJson = globBase + '/' + name + '.meta.json';
+        var metadataJson = globBase + '/docs/' + name + '.meta.json';
         var metadata = {};
         if (grunt.file.exists(metadataJson)) {
             metadata = grunt.file.readJSON(metadataJson);
