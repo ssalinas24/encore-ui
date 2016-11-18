@@ -1,8 +1,16 @@
 rx-permalink {
   .permalink {
+    position: relative;
     .icon {
+      top: 0;
+      right: 100%;
+      position: absolute;
       visibility: hidden;
       color: @gray-700;
+
+      &:hover {
+        visibility: visible;
+      }
     }
 
     &:hover {
