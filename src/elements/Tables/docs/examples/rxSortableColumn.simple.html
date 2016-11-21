@@ -2,10 +2,11 @@
   rx-floating-header
   id="sortable-column-testing-table"
   ng-controller="rxSortableColumnSimpleCtrl"
-  class="sortable-column-table">
+  class="table-striped table-demo--sortable-column sortable-column-table">
+
   <thead>
     <tr>
-      <th scope="col">
+      <th scope="col" class="column-name">
         <rx-sortable-column
           sort-method="sortCol(property)"
           sort-property="name"
@@ -14,7 +15,7 @@
           Name
         </rx-sortable-column>
       </th>
-      <th scope="col">
+      <th scope="col" class="column-occupation">
         <rx-sortable-column
           sort-method="sortCol(property)"
           sort-property="jobTitle"
@@ -25,14 +26,11 @@
       </th>
     </tr>
   </thead>
+
   <tbody>
     <tr ng-repeat="resource in talentPool | rxSortEmptyTop:sort.predicate:sort.reverse">
-      <th scope="row" class="talent-name">
-        {{resource.name}}
-      </th>
-      <td class="talent-job">
-        {{resource.jobTitle}}
-      </td>
+      <th class="column-name" scope="row">{{resource.name}}</th>
+      <td class="column-occupation">{{resource.jobTitle}}</td>
     </tr>
   </tbody>
 </table>

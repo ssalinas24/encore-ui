@@ -10,7 +10,7 @@ angular.module('demoApp')
         { name: 'LON1', city: 'West Drayton' },
         { name: 'LON3', city: 'Berkshire' },
         { name: 'LON5', city: 'Crawley' },
-        { name: 'HKG1', city: 'Honk Kong' },
+        { name: 'HKG1', city: 'Hong Kong' },
         { name: 'SYD2', city: 'Sydney' }
     ];
 

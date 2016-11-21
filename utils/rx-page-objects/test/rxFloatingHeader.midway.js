@@ -15,7 +15,7 @@ var singleRowTable = {
     },
 
     get table () {
-        return $('table[rx-floating-header].no-filter');
+        return $('table[rx-floating-header].e2e-no-filter');
     },
 
     get tr () {
@@ -52,7 +52,7 @@ var multiRowTable = {
     },
 
     get table () {
-        return $('table[rx-floating-header].filter');
+        return $('table[rx-floating-header].e2e-filter');
     },
 
     get tableBody () {

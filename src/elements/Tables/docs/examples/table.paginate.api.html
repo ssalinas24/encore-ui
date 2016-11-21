@@ -1,6 +1,11 @@
 <div ng-controller="rxPaginateApiCtrl">
   <button ng-click="pagedServers.refresh()" class="button sm">Refresh</button>
-  <table rx-floating-header rx-loading-overlay class="table-striped demo-api-pagination">
+
+  <table
+    rx-floating-header
+    rx-loading-overlay
+    class="table-striped table-demo--api-pagination">
+
     <thead>
       <tr>
         <th colspan="2" class="filter-header">
@@ -23,7 +28,7 @@
         </th>
       </tr>
       <tr>
-        <th class="column-title" style="width:10em;">
+        <th class="column-name">
           <rx-sortable-column
             sort-method="sortCol(property)"
             sort-property="name"
@@ -32,7 +37,7 @@
             Name
           </rx-sortable-column>
         </th>
-        <th class="column-title">
+        <th class="column-os">
           <rx-sortable-column
             sort-method="sortCol(property)"
             sort-property="os"
@@ -43,12 +48,14 @@
         </th>
       </tr>
     </thead>
+
     <tbody>
       <tr ng-repeat="server in pagedServers.items">
-        <td>{{server.name}}</td>
-        <td>{{server.os}}</td>
+        <td class="column-name">{{server.name}}</td>
+        <td class="column-os">{{server.os}}</td>
       </tr>
     </tbody>
+
     <tfoot>
       <tr class="paginate-area">
         <td colspan="2">
