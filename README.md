@@ -6,7 +6,7 @@ EncoreUI is a library of reusable AngularJS widgets for internal Rackspace proje
 
 # Using EncoreUI In Your Own Project
 
-To help guide you in getting a new project off the ground quickly, please reference ["Using EncoreUI In Your Own Project"](./guides/using-encoreui.md)
+To help guide you in getting a new project off the ground quickly, please reference ["Using EncoreUI In Your Own Project"](https://github.com/rackerlabs/encore-ui/wiki/Using-EncoreUI)
 
 # Demo App
 
@@ -15,11 +15,10 @@ You can see all components in action by visiting [the EncoreUI demo page](http:/
 # Further Reading
 
  - [Contribution Guide](./CONTRIBUTING.md)
- - [Versioning Guide](./guides/versioning.md)
+ - [Versioning Guide](https://github.com/rackerlabs/encore-ui/wiki/Versioning)
  - [Releases](https://github.com/rackerlabs/encore-ui/releases)
- - [Developer Setup](./guides/ui-setup.md)
- - [Introduction to Testing](./guides/testing.md)
- - [Common Questions](./guides/common-questions.md)
- - [CSS Style Guide](./guides/css-styleguide.md)
- - [JS Styleguide](./guides/js-styleguide.md)
- - [Task Board](https://waffle.io/rackerlabs/encore-ui)
+ - [Developer Setup](https://github.com/rackerlabs/encore-ui/wiki/Developer-Setup)
+ - [Introduction to Testing](https://github.com/rackerlabs/encore-ui/wiki/Testing)
+ - [Common Questions](https://github.com/rackerlabs/encore-ui/wiki/Common-Questions)
+ - [CSS Style Guide](https://github.com/rackerlabs/encore-ui/wiki/CSS-Styleguide)
+ - [JS Styleguide](https://github.com/rackerlabs/encore-ui/wiki/Javascript-Styleguide)
