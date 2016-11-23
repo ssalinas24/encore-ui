@@ -1,7 +1,9 @@
 {
-    "displayName": "Apply",
+    "displayName": "rxApply",
     "stability": "experimental",
     "description": "Used to apply an instance of SelectFilter to an array.",
-    "api": "filter:Apply",
-    "keywords": []
+    "api": "filter:rxApply",
+    "keywords": [
+        "Apply"
+    ]
 }
