@@ -2,6 +2,7 @@ angular.module('encore.ui', [
     'cfp.hotkeys',
     'ui.bootstrap',
     'encore.ui.tpls',
+    'ngMessages',
     <%= _.uniq(config.srcModules).join(',\n    ') %>
 ])
 angular.module('encore.ui.tpls', [

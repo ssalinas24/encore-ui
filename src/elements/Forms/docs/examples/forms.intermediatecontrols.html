@@ -33,12 +33,16 @@
           <input name="userEmail" type="email" ng-model="userEmail" foocheck />
         </rx-input>
         <rx-help-text>Must contain foo.</rx-help-text>
-        <rx-inline-error ng-show="formIntermediateControls.userEmail.$error.email">
-          Invalid Email
-        </rx-inline-error>
-        <rx-inline-error ng-show="formIntermediateControls.userEmail.$error.foocheck">
-          Your email must contain 'foo'
-        </rx-inline-error>
+        <div ng-if="formIntermediateControls.userEmail.$dirty && formIntermediateControls.userEmail.$invalid">
+          <div ng-messages="formIntermediateControls.userEmail.$error" ng-messages-multiple>
+            <rx-inline-error ng-message="email">
+              Invalid Email
+            </rx-inline-error>
+            <rx-inline-error ng-message="foocheck">
+              Your email must contain 'foo'
+            </rx-inline-error>
+          </div>
+        </div>
       </rx-field-content>
     </rx-field>
   </rx-form-section>
