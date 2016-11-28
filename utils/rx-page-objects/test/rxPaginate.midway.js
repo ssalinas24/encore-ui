@@ -18,7 +18,7 @@ var rowFromElement = function (rowElement) {
 };
 
 var repeaterString = 'server in pagedServers.items';
-var tableSelector = '.demo-api-pagination';
+var tableSelector = '.table-demo--api-pagination';
 var table = Page.create({
 
     tblResults: {
@@ -88,7 +88,7 @@ describe('rxPaginate', function () {
     describe('UI pagination exercises', encore.exercise.rxPaginate({
         pageSizes: [3, 50, 200, 350, 500],
         defaultPageSize: 3,
-        instance: encore.rxPaginate.initialize($('.demo-ui-pagination .rx-paginate'))
+        instance: encore.rxPaginate.initialize($('.table-demo--ui-pagination .rx-paginate'))
     }));
 
     describe('API pagination exercises', encore.exercise.rxPaginate({

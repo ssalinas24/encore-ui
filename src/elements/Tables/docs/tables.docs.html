@@ -83,7 +83,7 @@
 
 <rx-debug>
   <h2>Non-filtered floating header</h2>
-  <table rx-floating-header class="no-filter">
+  <table rx-floating-header class="e2e-no-filter">
     <thead>
       <tr>
         <th>Column One Header</th>
@@ -404,3 +404,66 @@
   <li>Loading Styles for Tables</li>
   <li>Submit actions for Server-Side Filtering</li>
 </ul>
+
+<h2>
+  <rx-permalink>Known Bugs and Workarounds</rx-permalink>
+</h2>
+
+<h3>
+  <rx-permalink>Inconsistent Column Widths when Paginated</rx-permalink>
+</h3>
+<p>
+  HTML tables are fickle and will resize columns dynamically based on cell
+  content. When navigating between paginated data, cell content length may
+  fluctuate, causing the column width to resize unexpectedly.
+</p>
+
+<h4>Workaround</h4>
+<p>
+  The simple solution is to apply a unique custom CSS class (e.g.
+  <code>.column-*</code>) to both the column header (<code>th</code>) and the
+  body cell (<code>td</code>). With this custom CSS class, you must set an
+  explicit <code>width</code> value in CSS, so that the header and data remain
+  consistent.
+</p>
+<ol class="list">
+  <li>
+    <b>Important:</b> make sure to leave at least one fluid column so that the
+    browser can adjust the table width dynamically based on the viewport size.
+    <ul class="list bulleted">
+      <li>
+        If you set every column width, you may end up with unexpected column
+        sizes, because there is a conflict between the summed pixel width vs
+        the 100% table width styling applied to all tables.
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>
+  <rx-permalink>Misaligned Columns with Floating Headers</rx-permalink>
+</h3>
+<p>
+  The floating header that you see on the page is a copy of the original
+  table header and ends up being rendered outside the context of the normal
+  table document flow. This causes the browser to ignore the header widths,
+  resulting in the header and body columns receiving different widths.
+</p>
+
+<h4>Workaround</h4>
+<p>
+  The workaround is the same as the "Inconsistent Column Widths when Paginated"
+  solution above, but with one caveat.
+</p>
+<ol class="list">
+  <li>
+    <b>Important:</b> Set <code>th, td { box-sizing: border-box; }</code> for
+    cells in your table.
+    <ul class="list bulleted">
+      <li>
+        Without this, floating header logic will incorrectly calculate
+        header widths.
+      </li>
+    </ul>
+  </li>
+</ol>
