@@ -11,9 +11,6 @@ module.exports = function (grunt) {
             // increment the version
             tasks.push('bump-only:' + versionType);
 
-            // increment version in readme
-            tasks.push('replace:readme');
-
             // build the code
             tasks.push('default');
 
