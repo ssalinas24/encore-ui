@@ -1,6 +1,6 @@
 {
     "displayName": "rxLocalStorage",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Simple wrapper for interacting with local storage in the browser.",
     "api": "service:rxLocalStorage",
     "keywords": []

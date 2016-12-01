@@ -1,9 +1,7 @@
 <rx-page title="module.displayName" class="{{module.name}}-demo">
   <div layout="row" layout-align="middle">
     <div flex>
-      <img ng-if="module.stability"
-        alt="stability is {{module.stability}}"
-        ng-src="http://badges.github.io/stability-badges/dist/{{module.stability}}.svg" />
+      <rx-stability stability="module.stability"></rx-stability>
     </div>
 
     <div flex class="align-right">

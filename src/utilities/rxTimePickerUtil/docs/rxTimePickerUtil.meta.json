@@ -1,6 +1,6 @@
 {
     "displayName": "rxTimePickerUtil",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "Utilities for rxTimePicker element",
     "api": "service:rxTimePickerUtil",
     "keywords": []

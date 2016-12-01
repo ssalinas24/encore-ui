@@ -1,6 +1,6 @@
 {
     "displayName": "rxStatusMappings",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "A set of methods for creating mappings to status identifiers used in EncoreUI",
     "api": "service:rxStatusMappings",
     "keywords": []

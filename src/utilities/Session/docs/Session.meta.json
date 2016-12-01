@@ -1,6 +1,6 @@
 {
     "displayName": "Session",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Manages user session",
     "api": "service:Session",
     "keywords": []

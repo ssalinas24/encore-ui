@@ -1,6 +1,6 @@
 {
     "displayName": "rxCopyUtil",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "Utilities for rxCopy element",
     "api": "service:rxCopyUtil",
     "keywords": []

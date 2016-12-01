@@ -1,6 +1,6 @@
 {
     "displayName": "hotkeys",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "",
     "api": "service:hotkeys",
     "keywords": []

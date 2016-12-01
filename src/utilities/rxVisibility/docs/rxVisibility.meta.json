@@ -1,6 +1,6 @@
 {
     "displayName": "rxVisibility",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Provides an interface for adding new visibility methods for nav menus.",
     "api": "service:rxVisibility",
     "keywords": []

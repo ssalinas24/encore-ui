@@ -1,6 +1,6 @@
 {
     "displayName": "Copy",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "Element to aid in copying text to the system clipboard",
     "api": "directive:rxCopy",
     "keywords": [

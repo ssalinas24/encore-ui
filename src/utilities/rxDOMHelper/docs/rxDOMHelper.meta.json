@@ -1,6 +1,6 @@
 {
     "displayName": "rxDOMHelper",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "A small set of useful DOM-related functions.",
     "api": "service:rxDOMHelper",
     "keywords": []

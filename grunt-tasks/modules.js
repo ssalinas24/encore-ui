@@ -56,7 +56,7 @@ module.exports = function (grunt) {
             moduleName: enquote(_moduleName.join('.')),
             category: category,
             description: '',
-            stability: 'experimental', // should be set by <module>.meta.json
+            stability: 'prototype', // should be set by <module>.meta.json
             keywords: [], // should be set by <module>.meta.json
             displayName: name, // should be set by <module>.meta.json
             isLegacy: false, // TODO: to be removed with last of components

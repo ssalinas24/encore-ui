@@ -1,6 +1,6 @@
 {
     "displayName": "rxBytesConvert",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Converts raw byte disk size into a more readable format",
     "api": "filter:rxBytesConvert",
     "keywords": []

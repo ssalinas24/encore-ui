@@ -1,0 +1,33 @@
+.rxStability {
+  &__pill {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    vertical-align: top;
+    background-color: @gray-500;
+    color: @black;
+
+    &--prototype {
+      background-color: @orange-500;
+      color: @gray-950;
+    }
+
+    &--deprecated {
+      background-color: @red-700;
+      color: @white;
+    }
+
+    &--stable {
+      background-color: @green-700;
+      color: @white;
+    }
+  }
+  .tooltip-inner {
+    font-size: 13px;
+    text-align: left;
+    max-width: 300px;
+  }
+}

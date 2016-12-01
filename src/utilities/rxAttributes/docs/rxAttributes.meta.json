@@ -1,6 +1,6 @@
 {
     "displayName": "rxAttributes",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "used to add attributes based on scope values.",
     "api": "directive:rxAttributes",
     "keywords": [

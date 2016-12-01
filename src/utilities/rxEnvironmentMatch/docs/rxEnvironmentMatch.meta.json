@@ -1,6 +1,6 @@
 {
     "displayName": "rxEnvironmentMatch",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Checks if current environment matches target environment",
     "api": "filter:rxEnvironmentMatch",
     "keywords": []

@@ -1,6 +1,6 @@
 {
     "displayName": "rxMomentFormats",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Formatting masks that are compliant with approved Date/Time formats",
     "hasApi": false,
     "keywords": [
