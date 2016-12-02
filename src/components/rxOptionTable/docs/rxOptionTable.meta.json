@@ -1,6 +1,6 @@
 {
     "displayName": "rxOptionTable",
-    "stability": "unstable",
+    "stability": "deprecated",
     "description": "",
     "isLegacy": true,
     "keywords": []
