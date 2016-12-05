@@ -21,7 +21,7 @@ angular.module('encore.ui.rxApp')
  * </pre>
  */
 .directive('rxApp', function (encoreRoutes, rxAppRoutes, hotkeys,
-                              Environment, routesCdnPath, Session, $window) {
+                              rxEnvironment, routesCdnPath, Session, $window) {
     return {
         restrict: 'E',
         transclude: true,
@@ -38,9 +38,9 @@ angular.module('encore.ui.rxApp')
         link: function (scope) {
             scope.userId = Session.getUserId();
 
-            scope.isPreProd = Environment.isPreProd();
+            scope.isPreProd = rxEnvironment.isPreProd();
 
-            scope.isLocalNav = routesCdnPath.hasCustomURL && (Environment.isLocal());
+            scope.isLocalNav = routesCdnPath.hasCustomURL && (rxEnvironment.isLocal());
 
             scope.isWarning = scope.isPreProd || scope.isLocalNav;
 

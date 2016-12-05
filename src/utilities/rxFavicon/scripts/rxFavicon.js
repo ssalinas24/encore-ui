@@ -19,7 +19,7 @@ angular.module('encore.ui.utilities')
  *       rx-favicon="{ staging: 'staging-favicon.png', local: 'local-favicon.png' }" />
  * </pre>
  */
-.directive('rxFavicon', function (Environment, $parse, $log) {
+.directive('rxFavicon', function (rxEnvironment, $parse, $log) {
     return {
         restrict: 'A',
         replace: true,
@@ -48,7 +48,7 @@ angular.module('encore.ui.utilities')
             };
 
             scope.$watch(function () {
-                return Environment.get();
+                return rxEnvironment.get();
             }, function (environment) {
                 var currentEnv = environmentMap[environment.name];
 

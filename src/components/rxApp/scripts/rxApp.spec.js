@@ -227,7 +227,7 @@ describe('encore.ui.rxApp', function () {
                 module('encore.ui.utilities');
                 module('encore.ui.elements');
                 module(function ($provide) {
-                    $provide.value('Environment', mockEnvironment);
+                    $provide.value('rxEnvironment', mockEnvironment);
                     $provide.value('routesCdnPath', mockCdnPath);
                     $provide.value('rxLocalStorage', mockLocalStorage);
                 });
@@ -488,7 +488,7 @@ describe('encore.ui.rxApp', function () {
                 module('templates/rxAppNavItem.html');
 
                 module(function ($provide) {
-                    $provide.constant('Environment', mockEnvironment);
+                    $provide.constant('rxEnvironment', mockEnvironment);
                 });
 
                 // Inject in angular constructs

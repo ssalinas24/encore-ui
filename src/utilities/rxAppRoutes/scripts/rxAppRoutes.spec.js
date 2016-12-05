@@ -65,9 +65,9 @@ describe('utilities:rxAppRoutes', function () {
         });
 
         // Inject in angular constructs
-        inject(function (rxAppRoutes, Environment, $location, $rootScope, $log) {
+        inject(function (rxAppRoutes, rxEnvironment, $location, $rootScope, $log) {
             appRoutes = new rxAppRoutes();
-            envSvc = Environment;
+            envSvc = rxEnvironment;
             location = $location;
             rootScope = $rootScope;
             log = $log;

@@ -1,7 +1,7 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:Environment
+ * @name utilities.service:rxEnvironment
  * @description
  *
  * Allows defining environments and retrieving the current environment based on location
@@ -99,7 +99,7 @@ angular.module('encore.ui.utilities')
  * </pre>
  *
  */
-.service('Environment', function ($location, $rootScope, $log) {
+.service('rxEnvironment', function ($location, $rootScope, $log) {
     /*
      * This array defines different environments to check against.
      * It is prefilled with 'Encore' based environments
@@ -279,4 +279,18 @@ angular.module('encore.ui.utilities')
      * @public
      */
     this.isUnifiedProd = makeEnvCheck('unified-prod');
+})
+/**
+ * @deprecated
+ * Please use rxEnvironment instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:Environment
+ * @requires utilities.service:rxEnvironment
+ */
+.service('Environment', function (rxEnvironment) {
+    console.warn(
+        'DEPRECATED: Environment - Please use rxEnvironment. ' +
+        'Environment will be removed in EncoreUI 4.0.0'
+    );
+    return rxEnvironment;
 });

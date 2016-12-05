@@ -9,7 +9,7 @@ angular.module('encore.ui.utilities')
  * @return {Object} Instance of rxAppRoutes with `fetchRoutes` method added
  */
 .factory('encoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
-                                   rxVisibilityPathParams, rxVisibility, Environment,
+                                   rxVisibilityPathParams, rxVisibility, rxEnvironment,
                                    rxLocalStorage) {
 
     // We use rxVisibility in the nav menu at routesCdnPath, so ensure it's ready
@@ -32,12 +32,12 @@ angular.module('encore.ui.utilities')
 
     var url, suffix;
     switch (true) {
-        case Environment.isUnifiedProd(): {
+        case rxEnvironment.isUnifiedProd(): {
             url = routesCdnPath.production;
             suffix = 'prod';
             break;
         }
-        case Environment.isPreProd(): {
+        case rxEnvironment.isPreProd(): {
             url = routesCdnPath.preprod;
             suffix = 'preprod';
             break;

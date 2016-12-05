@@ -3,7 +3,7 @@ angular.module('encore.ui.utilities')
  * @ngdoc directive
  * @name utilities.directive:rxIfEnvironment
  * @restrict A
- * @requires utilities.service:Environment
+ * @requires utilities.service:rxEnvironment
  * @description
  * Show or hide content based on environment name
  *

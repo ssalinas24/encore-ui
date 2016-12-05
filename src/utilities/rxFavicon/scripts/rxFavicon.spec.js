@@ -29,10 +29,10 @@ describe('utilities:rxFavicon', function () {
         module('encore.ui.utilities');
 
         // Inject in angular constructs
-        inject(function ($location, $rootScope, $compile, Environment, $log) {
+        inject(function ($location, $rootScope, $compile, rxEnvironment, $log) {
             scope = $rootScope.$new();
             compile = $compile;
-            envSvc = Environment;
+            envSvc = rxEnvironment;
             log = $log;
         });
     });
