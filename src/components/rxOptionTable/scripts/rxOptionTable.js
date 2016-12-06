@@ -73,6 +73,10 @@ angular.module('encore.ui.rxOptionTable')
             disableFn: '&?'
         },
         link: function (scope, element) {
+            console.warn(
+                'DEPRECATED: rxOptionTable will be removed in EncoreUI 4.0.0'
+            );
+
             var boxesChecked = 0;
             scope.selectAllModel = false;
 
