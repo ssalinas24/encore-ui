@@ -1,8 +1,18 @@
 module.exports = {
     ghPages: {
         options: {
-            base: '<%= config.dir.docs %>',
-            message: 'docs(ghpages): release v<%= pkg.version %>'
+            // commit the entire build directory
+            base: '<%= config.dir.build %>',
+            // always commit to source repo
+            repo: 'https://github.com/rackerlabs/encore-ui.git',
+            message: 'docs(ghpages): release v<%= pkg.version %>',
+            /*
+             * This is the key to versioned docs. When we output all
+             * documentation to the build/1.x directory, it will only add new
+             * items to the gh-pages branch. This allows each major version to
+             * have its own directory and they won't interfere with one another.
+             */
+            add: true // IMPORTANT! Prevents overwriting documentation
         },
         src: '**/*'
     },

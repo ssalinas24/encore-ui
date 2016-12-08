@@ -36,10 +36,8 @@ module.exports = function (grunt) {
                 tasks.push('rxPageObjects');
             }
 
-            if (arg === 'updateDemo') {
-                // update gh-pages branch, i.e. the demo app
-                tasks.push('gh-pages:ghPages');
-            }
+            // Update Documentation
+            tasks.push('gh-pages:ghPages');
 
             // update bower repo
             tasks.push('bower');

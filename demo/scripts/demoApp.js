@@ -238,6 +238,12 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             type: 'no-title',
             children: [
                 {
+                    linkText: 'Version <%= pkg.version %>',
+                    directive: 'switch-docs',
+                    children: [{}],
+                    childVisibility: 'false'
+                },
+                {
                     linkText: 'Overview',
                     href: '#/overview'
                 },
