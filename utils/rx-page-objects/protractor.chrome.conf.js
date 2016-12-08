@@ -25,7 +25,8 @@ var config = {
     },
 
     plugins: [{
-        package: 'protractor-console-plugin'
+        package: 'protractor-console-plugin',
+        exclude: ['switchDocs.js']
     }],
 
     onPrepare: function () {
