@@ -81,7 +81,7 @@ module.exports = {
         expand: true,
         cwd: 'utils/rx-page-objects/doc/',
         src: '**',
-        dest: '<%= config.dir.build %>/rx-page-objects/'
+        dest: '<%= config.dir.docs %>/rx-page-objects/'
     },
     bower: {
         files: [

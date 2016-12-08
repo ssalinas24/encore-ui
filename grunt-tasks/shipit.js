@@ -4,7 +4,6 @@ module.exports = function (grunt) {
         var tasks = [];
 
         if (validTypes.indexOf(versionType) > -1) {
-
             if (arg === 'hotfix' && versionType !== 'patch') {
                 grunt.fatal('A hotfix release can only have a `patch` type. `major` and `minor` are not allowed');
             }
@@ -24,10 +23,8 @@ module.exports = function (grunt) {
                 tasks.push('rxPageObjects');
             }
 
-            if (arg === 'updateDemo') {
-                // update gh-pages branch, i.e. the demo app
-                tasks.push('gh-pages:ghPages');
-            }
+            // Update Documentation
+            tasks.push('gh-pages:ghPages');
 
             // update bower repo
             tasks.push('bower');
