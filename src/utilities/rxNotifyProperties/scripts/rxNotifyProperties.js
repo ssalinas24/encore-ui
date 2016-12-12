@@ -1,7 +1,7 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:NotifyProperties
+ * @name utilities.service:rxNotifyProperties
  * @description
  *
  * This factory provides functionality for abstracting "properties", and allowing
@@ -20,7 +20,7 @@ angular.module('encore.ui.utilities')
  * @example
  * <pre>
  * stats = { _numSelected: 0 };
- * scope.registerForNumSelected = NotifyProperties.registrationFn(stats, 'numSelected', '_numSelected');
+ * scope.registerForNumSelected = rxNotifyProperties.registrationFn(stats, 'numSelected', '_numSelected');
  * </pre>
  *
  * This is saying "We have a property `_numSelected` in `stats`, and we want it exposed as `numSelected`
@@ -41,10 +41,10 @@ angular.module('encore.ui.utilities')
  * </pre>
  * Everyone that registered for notifications will get their notification function called.
  */
-.factory('NotifyProperties', function ($timeout) {
-    var NotifyProperties = {};
+.factory('rxNotifyProperties', function ($timeout) {
+    var rxNotifyProperties = {};
 
-    NotifyProperties.registrationFn = function (dst, name, sourceName) {
+    rxNotifyProperties.registrationFn = function (dst, name, sourceName) {
         var listeners = [];
         var notify = function (newVal, oldVal) {
             _.each(listeners, function (fn) {
@@ -67,5 +67,20 @@ angular.module('encore.ui.utilities')
 
     };
 
-    return NotifyProperties;
+    return rxNotifyProperties;
+})
+
+/**
+ * @deprecated
+ * Please use rxNotifyProperties instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:NotifyProperties
+ * @requires utilities.service:rxNotifyProperties
+ */
+.service('NotifyProperties', function (rxNotifyProperties) {
+    console.warn(
+        'DEPRECATED: NotifyProperties - Please use rxNotifyProperties. ' +
+        'NotifyProperties will be removed in EncoreUI 4.0.0'
+    );
+    return rxNotifyProperties;
 });
