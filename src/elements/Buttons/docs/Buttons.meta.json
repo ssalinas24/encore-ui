@@ -1,6 +1,6 @@
 {
     "displayName": "Buttons",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Several examples and styles of Buttons available for different contexts.",
     "api": "directive:rxButton",
     "keywords": [

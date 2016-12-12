@@ -1,6 +1,6 @@
 {
     "displayName": "UtcOffsets",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "List of known UTC offset values",
     "api": "constant:UtcOffsets",
     "keywords": []

@@ -1,6 +1,6 @@
 {
     "displayName": "UnauthorizedInterceptor",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Redirects users to the login page, when user authentication fails during a system service request.",
     "api": "service:UnauthorizedInterceptor",
     "keywords": []

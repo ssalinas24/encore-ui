@@ -14,23 +14,21 @@
           </th>
         </tr>
         <tr>
-          <th class="column name" ng-click="vm.sortColumn('displayName')">Name
-            <span ng-show="vm.showCaret('displayName')" ng-class="vm.getCaretType()"></span>
-          </th>
           <th class="column stability" ng-click="vm.sortColumn('stability')">Stability
             <span ng-show="vm.showCaret('stability')" ng-class="vm.getCaretType()"></span>
+          </th>
+          <th class="column name" ng-click="vm.sortColumn('displayName')">Name
+            <span ng-show="vm.showCaret('displayName')" ng-class="vm.getCaretType()"></span>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr ng-if="vm.modules.length" ng-repeat="module in vm.modules | categoryModulesFilter:searchText | orderBy:vm.sortKey:vm.sortReverse">
+          <td class="column stability">
+            <rx-stability stability="module.stability"></rx-stability>
+          </td>
           <td class="column name">
             <a href="#/{{vm.category}}/{{module.name}}">{{ module.displayName }}</a>
-          </td>
-          <td class="column stability">
-            <span ng-if="module.stability">
-              <img ng-src="http://badges.github.io/stability-badges/dist/{{module.stability}}.svg"></img>
-            </span>
           </td>
         </tr>
         <tr ng-if="!vm.modules.length">

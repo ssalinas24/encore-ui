@@ -1,6 +1,6 @@
 {
     "displayName": "rxAutoSave",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Service to help automatically save/load form data.",
     "api": "service:rxAutoSave",
     "keywords": []

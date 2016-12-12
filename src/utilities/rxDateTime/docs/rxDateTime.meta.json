@@ -1,6 +1,6 @@
 {
     "displayName": "rxDateTime",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Filter to convert a date string to an accepted standard DateTime format",
     "api": "utilities.filter:rxDateTime",
     "keywords": [

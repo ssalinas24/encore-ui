@@ -1,6 +1,6 @@
 {
     "displayName": "Links",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Usage and examples of different link and status message patterns.",
     "hasApi": false,
     "keywords": [

@@ -1,6 +1,6 @@
 {
     "displayName": "Auth",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Provides logic for authenticating, validating permissions, and managing sessions.",
     "api": "service:Auth",
     "keywords": []

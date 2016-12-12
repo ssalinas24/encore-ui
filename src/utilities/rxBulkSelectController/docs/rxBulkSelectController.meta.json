@@ -1,6 +1,6 @@
 {
     "displayName": "rxBulkSelectController",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "Provides controller logic for rxBulkSelect",
     "api": "controller:rxBulkSelectController",
     "keywords": []

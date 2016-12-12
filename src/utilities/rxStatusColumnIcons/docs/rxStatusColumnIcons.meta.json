@@ -1,6 +1,6 @@
 {
     "displayName": "rxStatusColumnIcons",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "Mapping of internal statuses to FontAwesome icons.",
     "api": "object:rxStatusColumnIcons",
     "keywords": []

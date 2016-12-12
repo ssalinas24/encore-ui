@@ -1,6 +1,6 @@
 {
     "displayName": "xor",
-    "stability": "experimental",
+    "stability": "prototype",
     "description": "xor filter",
     "api": "filter:xor",
     "keywords": []

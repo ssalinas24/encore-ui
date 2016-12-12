@@ -1,6 +1,6 @@
 {
     "displayName": "SessionStorage",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "",
     "keywords": []
 }

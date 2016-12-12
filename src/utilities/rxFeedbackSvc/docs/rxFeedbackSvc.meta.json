@@ -1,6 +1,6 @@
 {
     "displayName": "rxFeedbackSvc",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Service that supports the customization of user feedback endpoints.",
     "api": "service:rxFeedbackSvc",
     "keywords": []

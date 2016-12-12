@@ -1,6 +1,6 @@
 {
     "displayName": "Lists",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Usage and examples of different List patterns.",
     "hasApi": false,
     "keywords": [

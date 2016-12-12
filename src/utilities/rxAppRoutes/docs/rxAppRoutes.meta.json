@@ -1,6 +1,6 @@
 {
     "displayName": "rxAppRoutes",
-    "stability": "unstable",
+    "stability": "stable",
     "description": "Manage application routes and states of routes.",
     "api": "service:rxAppRoutes",
     "keywords": []
