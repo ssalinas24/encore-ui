@@ -1,4 +1,4 @@
 angular.module('demoApp')
-.controller('rxEnvironmentUrlSimpleCtrl', function ($scope, Environment) {
-    $scope.Environment = Environment;
+.controller('rxEnvironmentUrlSimpleCtrl', function ($scope, rxEnvironment) {
+    $scope.rxEnvironment = rxEnvironment;
 });

@@ -4,9 +4,9 @@ describe('rxEnvironmentUrl', function () {
     beforeEach(function () {
         module('encore.ui.utilities');
 
-        inject(function ($filter, Environment) {
+        inject(function ($filter, rxEnvironment) {
             urlFilter = $filter('rxEnvironmentUrl');
-            envSvc = Environment;
+            envSvc = rxEnvironment;
         });
     });
 

@@ -9,10 +9,10 @@ describe('rxIfEnvironment', function () {
         // load module
         module('encore.ui.utilities');
 
-        inject(function ($rootScope, $compile, $location, Environment) {
+        inject(function ($rootScope, $compile, $location, rxEnvironment) {
             scope = $rootScope.$new();
             compile = $compile;
-            envSvc = Environment;
+            envSvc = rxEnvironment;
             _location = $location;
 
             setUrl = function (url) {

@@ -14,7 +14,7 @@ angular.module('encore.ui.utilities')
  * returns false if current environment is 'production', true otherwise
  * </pre>
  */
-.filter('rxEnvironmentMatch', function (Environment) {
+.filter('rxEnvironmentMatch', function (rxEnvironment) {
     return function (environment) {
         // check to see if first character is negation indicator
         var isNegated = environment[0] === '!';
@@ -22,7 +22,7 @@ angular.module('encore.ui.utilities')
         // get name of environment to look for
         var targetEnvironmentName = isNegated ? environment.substr(1) : environment;
 
-        var environmentMatches = Environment.envCheck(targetEnvironmentName);
+        var environmentMatches = rxEnvironment.envCheck(targetEnvironmentName);
         return isNegated ? !environmentMatches : environmentMatches;
     };
 });
