@@ -1,13 +1,13 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:SelectFilter
+ * @name utilities.service:rxSelectFilter
  * @description
  * A prototype for creating objects that can be used for filtering arrays.
  *
- * ## SelectFilter
+ * ## rxSelectFilter
  * This service exposes an object with single method, `create()`, used to
- * create instances of a `SelectFilter`. It is configurable via three options:
+ * create instances of a `rxSelectFilter`. It is configurable via three options:
  * - `properties`: A list of the properties to create a filter control.
  * Assuming the source data is an array of objects, a property is equivalent to
  * an object's key.
@@ -25,7 +25,7 @@ angular.module('encore.ui.utilities')
  * to `available` will be automatically populated the first time `applyTo()`
  * (see below) is called.
  * <pre>
- * var filter = SelectFilter.create({
+ * var filter = rxSelectFilter.create({
  *   properties: ['year']
  * });
  *
@@ -52,7 +52,7 @@ angular.module('encore.ui.utilities')
  * initialization is delayed until the first call of `applyTo()`.
  *
  * <pre>
- * var filter = SelectFilter.create({
+ * var filter = rxSelectFilter.create({
  *   properties: ['year'],
  *   available: {
  *       year: [2013, 2014, 2015]
@@ -62,14 +62,14 @@ angular.module('encore.ui.utilities')
  * </pre>
  *
  * ### Instances
- * Instances of `SelectFilter` have an `applyTo()` method, which applies the
+ * Instances of `rxSelectFilter` have an `applyTo()` method, which applies the
  * filter's internal state of selected options to the array. This will not
  * often be called directly, but instead used by the
  * {@link utilities.filter:Apply Apply} filter. As stated previously,
  * the first call of `applyTo()` will initialize any
  * `properties` that have not been defined in `available` or `selected`.
  * <pre>
- * var filter = SelectFilter.create({
+ * var filter = rxSelectFilter.create({
  *   properties: ['year'],
  *   selected: {
  *      year: [2014]
@@ -93,12 +93,12 @@ angular.module('encore.ui.utilities')
  * properties, so that they can be watched or changed.
  *
  */
-.service('SelectFilter', function () {
+.service('rxSelectFilter', function () {
     return {
        /**
         * @ngdoc method
         * @name create
-        * @methodOf utilities.service:SelectFilter
+        * @methodOf utilities.service:rxSelectFilter
         * @param {Object} options
         * Options object
         * @param {Object} options.properties
@@ -106,14 +106,14 @@ angular.module('encore.ui.utilities')
         * source data is an array of objects, a property is equivalent to an
         * object's key.
         * <pre>
-        * SelectFilter.create({
+        * rxSelectFilter.create({
         *      properties: ['year']
         * });
         * </pre>
         * @param {Object=} options.available
         * An object that tracks which options are available for a property.
         * <pre>
-        * SelectFilter.create({
+        * rxSelectFilter.create({
         *     // other options...
         *     available: {
         *        year: [2013, 2014, 2015],
@@ -126,7 +126,7 @@ angular.module('encore.ui.utilities')
         * which options are selected, and as such are strict subsets of their
         * `available` counterparts.
         * <pre>
-        * SelectFilter.create({
+        * rxSelectFilter.create({
         *     // other options...
         *     selected: {
         *         year: [2014],
@@ -178,4 +178,19 @@ angular.module('encore.ui.utilities')
             return filter;
         }
     };
-});
+})
+
+/**
+ * @deprecated
+ * Please use rxSelectFilter instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:SelectFilter
+ * @requires utilities.service:rxSelectFilter
+ */
+.service('SelectFilter', function (rxSelectFilter) {
+    console.warn(
+        'DEPRECATED: SelectFilter - Please use rxSelectFilter. ' +
+        'SelectFilter will be removed in EncoreUI 4.0.0'
+    );
+    return rxSelectFilter;
+});;

@@ -145,7 +145,7 @@ angular.module('encore.ui.elements')
  *  `<rx-paginate>` will watch the variables for changes, and will call `getItems()` for updates whenever
  *  the values change.
  *
- * *Note:* If using `<rx-select-filter>` in the table, the `available` option passed to the `SelectFilter`
+ * *Note:* If using `<rx-select-filter>` in the table, the `available` option passed to the `rxSelectFilter`
  * constructor **must** be provided and include every property.  This is because the filter cannot reliably
  * determine all available options from a paginated API.
  *
@@ -497,7 +497,7 @@ angular.module('encore.ui.elements')
  * The model for the table filter input, if any. This directive will watch that
  * model for changes, and request new results from the paginated API, on change
  * @param {Object=} selections
- * The `selected` property of a SelectFilter instance, if one is being used.
+ * The `selected` property of a rxSelectFilter instance, if one is being used.
  * This directive will watch the filter's selections, and request new results
  * from the paginated API, on change
  * @param {Object=} sortColumn
