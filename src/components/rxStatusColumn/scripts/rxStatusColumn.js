@@ -22,7 +22,7 @@ angular.module('encore.ui.rxStatusColumn')
  * internally you will be receiving a number of different statuses from your
  * APIs, and will need to map them to these six statuses.
  *
- * The example in the {@link /encore-ui/#/components/rxStatusColumn demo} shows a typical
+ * The example in the [demo](../#/components/rxStatusColumn) shows a typical
  * use of this directive, such as:
  *
  * <pre>

@@ -91,7 +91,7 @@
  * </tfoot>
  * </pre>
  *
- * See the rxPaginate compoent {@link /encore-ui/#/components/rxPaginate demo} for more examples of this.
+ * See the rxPaginate compoent [demo](../#/components/rxPaginate) for more examples of this.
  *
  * This applies to both UI-based pagination and API-based pagination.
  *
@@ -245,7 +245,7 @@
  * the current filter/sort criteria. But the point is that you can't just call `getItems()` yourself
  * to cause an update. The framework has to call that method, so it knows to wait on the returned promise.
  *
- * This is shown in the rxPaginate component {@link /encore-ui/#/components/rxPaginate demo} with a "Refresh" button
+ * This is shown in the rxPaginate component [demo](../#/components/rxPaginate) with a "Refresh" button
  * above the API-paginated example.
  *
  * ## Error Handling

@@ -59,21 +59,21 @@
  * `rx-field`, `rx-select-filter`, and `div` children elements in a columnar fashion.  This can be used in conjunction
  * with sections taking the full width of the form.
  *
- *  *See "Advanced Inputs" in the {@link /encore-ui/#/components/rxForm demo} for an example.*
+ *  *See "Advanced Inputs" in the [demo](../#/components/rxForm) for an example.*
  *
  * ## Responsive
  * `rx-field` and `div` elements that are immediate children of `rx-form-section` will grow from 250px to full width of
  * the section.  As such, you will see that these elements will wrap in the section if there's not enough width to
  * accomodate more than one child.
  *
- * *You can see this in the {@link /encore-ui/#/components/rxForm demo} if you resize the width of your browser.*
+ * *You can see this in the [demo](../#/components/rxForm) if you resize the width of your browser.*
  *
  * # Validation
  *
  * ## Required Fields
  * When displaying a field that should be required, please make use of the `ng-required` attribute for rxFieldName.
  * When the value evaluates to true, an asterisk will display to the left of the field name.  You can see an example
- * of this with the "Required Textarea" field name in the {@link /encore-ui/#/components/rxForm demo}.
+ * of this with the "Required Textarea" field name in the [demo](../#/components/rxForm).
  *
  * See {@link rxForm.directive:rxFieldName rxFieldName}
  * API Documentation for more information.
@@ -87,7 +87,7 @@
  * The example shown in the "Email Address" example, uses a custom `foocheck` validator. Note that it is enabled by
  * placing the `foocheck` attribute in the `<input>` element, and using it with
  * `ng-show="demoForm.userEmail.$error.foocheck"`.  Check out the Javascript tab in
- * the {@link /encore-ui/#/components/rxForm demo} to see how this validator is implemented.
+ * the [demo](../#/components/rxForm) to see how this validator is implemented.
  *
  * There are plenty of examples online showing the same thing.
  *
