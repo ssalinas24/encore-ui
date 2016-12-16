@@ -1,17 +1,11 @@
 function genericRouteController (breadcrumbs) {
-    return function (rxBreadcrumbsSvc, rxEnvironment, $interpolate) {
+    return function (rxBreadcrumbsSvc) {
         if (breadcrumbs === undefined) {
             breadcrumbs = [{
                 name: '',
                 path: ''
             }]
         }
-
-        breadcrumbs.forEach(function (breadcrumb) {
-            if (breadcrumb.path) {
-                breadcrumb.path = $interpolate(rxEnvironment.get().url)({ path: breadcrumb.path });
-            }
-        });
 
         rxBreadcrumbsSvc.set(breadcrumbs);
     }
@@ -165,7 +159,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
         url: baseGithubUrl + '{{path}}'
     });
 
-    rxBreadcrumbsSvc.setHome($interpolate(rxEnvironment.get().url)({ path: '#/overview' }), 'Overview');
+    rxBreadcrumbsSvc.setHome('#/overview', 'Overview');
 
     var linksForModuleCategory = function (kategory) {
         var filteredModules = _.filter(Modules, {
