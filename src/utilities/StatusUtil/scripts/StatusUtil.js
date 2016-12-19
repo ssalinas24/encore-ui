@@ -8,15 +8,15 @@ angular.module('encore.ui.utilities')
  * @example
  * <pre>
  * $rootScope.$on('$routeChangeSuccess', function () {
- *     Status.setScope(); // no input results in $rootScope being used
- *     Status.setScope($rootScope); // forcibly set $rootScope as the scope to be used
+ *     rxStatus.setScope(); // no input results in $rootScope being used
+ *     rxStatus.setScope($rootScope); // forcibly set $rootScope as the scope to be used
  * });
  * </pre>
  */
-.service('StatusUtil', function ($route, $rootScope, Status) {
+.service('StatusUtil', function ($route, $rootScope, rxStatus) {
     return {
         setupScope: function (scope) {
-            Status.setScope(scope || $rootScope);
+            rxStatus.setScope(scope || $rootScope);
         }
     };
 });

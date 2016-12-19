@@ -1,7 +1,7 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:Status
+ * @name utilities.service:rxStatus
  * @description
  *
  * Manages notifications for rxNotify with an abstracted set of functions for
@@ -13,25 +13,25 @@ angular.module('encore.ui.utilities')
  *
  * ## Preparation
  *
- * In order to use the `Status` service, one has to instantiate it with a proper
+ * In order to use the `rxStatus` service, one has to instantiate it with a proper
  * `$scope` object to keep track of a running state. `rxNotify` indirectly makes
  * use of the `$scope` variable when a message can be auto-dismissed.  In order
  * to keep the interface for the wrapper functions coherent, the `$scope` variable
  * must be provided before use.  This can be accomplished as follows:
  *
  * <pre>
- * Status.setupScope($scope);
+ * rxStatus.setScope($scope);
  * </pre>
  *
  * ## Success cases
  *
- * The `Status` service is provided as a wrapper to `rxNotify`.  As such, the
- * status types supported by `rxNotify` are still used and have been wrapped into
+ * The `rxStatus` service is provided as a wrapper to `rxNotify`.  As such, the
+ * rxStatus types supported by `rxNotify` are still used and have been wrapped into
  * utility functions.  For example, on page load it is usually necessary to inform
  * the user of pending data retrieval.  This can be accomplished by:
  *
  * <pre>
- * Status.setLoading('Retrieving users');
+ * rxStatus.setLoading('Retrieving users');
  * </pre>
  *
  * This will call `rxNotify` in the following manner:
@@ -44,10 +44,10 @@ angular.module('encore.ui.utilities')
  * });
  * </pre>
  *
- * Similarly, the following call using the `Status` service:
+ * Similarly, the following call using the `rxStatus` service:
  *
  * <pre>
- * Status.setSuccess('Successfully deleted questionable ' +
+ * rxStatus.setSuccess('Successfully deleted questionable ' +
  *     'browsing history');
  * </pre>
  *
@@ -74,7 +74,7 @@ angular.module('encore.ui.utilities')
  * it can be shown immediately:
  *
  * <pre>
- * Status.setSuccess('Please show immediately', {
+ * rxStatus.setSuccess('Please show immediately', {
  *     show: 'immediate'
  * });
  * </pre>
@@ -85,16 +85,16 @@ angular.module('encore.ui.utilities')
  * been provided as their own wrapper functions.  For example:
  *
  * <pre>
- * Status.setSuccessImmediate('Please show immediately')
+ * rxStatus.setSuccessImmediate('Please show immediately')
  * </pre>
  *
- * is the equivalent of calling `Status.setSuccess()` with the
+ * is the equivalent of calling `rxStatus.setSuccess()` with the
  * `{ show: 'immediate' }` parameter.  Please note, there isn't much fault
  * checking in place, so the following behaviour although permitted, is not
  * advised:
  *
  * <pre>
- * Status.setSuccessImmediate('Please show immediately', {
+ * rxStatus.setSuccessImmediate('Please show immediately', {
  *     show: 'next'
  * });
  * </pre>
@@ -105,7 +105,7 @@ angular.module('encore.ui.utilities')
  * passed as an error message, just like the wrappers before.  For example:
  *
  * <pre>
- * Status.setError('This is an error!');
+ * rxStatus.setError('This is an error!');
  * </pre>
  *
  * It also allows for a specialized template to be specified as the error string
@@ -115,7 +115,7 @@ angular.module('encore.ui.utilities')
  * For example:
  *
  * <pre>
- * Status.setError(
+ * rxStatus.setError(
  *     'Failed loading browsing history: ${message}',
  *     {
  *         message: 'User has previously cleared their history!'
@@ -149,26 +149,26 @@ angular.module('encore.ui.utilities')
  *
  * # Utilities
  *
- * The `Status` service requires that one provide a `$scope` object to keep
+ * The `rxStatus` service requires that one provide a `$scope` object to keep
  * tracking of state before any of the wrapper functions can be utilized. Since
  * it is expected that almost all pages will make use of notifications, one can
- * place the repeated setup of the `Status` service in a page load event handler.
- * This will allow all pages to gain an already setup `Status` service for
+ * place the repeated setup of the `rxStatus` service in a page load event handler.
+ * This will allow all pages to gain an already setup `rxStatus` service for
  * immediate use.  For example:
  *
  * <pre>
- * .run(function ($rootScope, StatusUtil) {
+ * .run(function ($rootScope, rxStatus {
  *     $rootScope.$on('$routeChangeSuccess', function () {
- *         Status.setupScope($rootScope);
+ *         rxStatus.setScope($rootScope);
  *     });
  * });
  * </pre>
  *
  * Although hidden away in the app's bootstrap code, the above makes for a less
- * repetitive call to `Status.setScope()` at the beginning of each use.
+ * repetitive call to `rxStatus.setScope()` at the beginning of each use.
  *
  */
-.service('Status', function ($rootScope, rxNotify, ErrorFormatter) {
+.service('rxStatus', function ($rootScope, rxNotify, ErrorFormatter) {
     var stack = 'page';
     var scope;
     var status = {
@@ -344,4 +344,19 @@ angular.module('encore.ui.utilities')
     };
 
     return status;
+})
+
+/**
+ * @deprecated
+ * Please use rxStatus instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:Status
+ * @requires utilities.service:rxStatus
+ */
+.service('Status', function (rxStatus) {
+    console.warn (
+        'DEPRECATED: Status - Please use rxStatus. ' +
+        'Status will be removed in EncoreUI 4.0.0'
+    );
+    return rxStatus;
 });
