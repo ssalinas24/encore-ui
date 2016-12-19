@@ -1,12 +1,12 @@
 describe('Pagination', function () {
-    describe('Factory: PageTracking', function () {
+    describe('Factory: rxPageTracker', function () {
         var tracking;
         var rxLocalStorage;
 
         beforeEach(function () {
             module('encore.ui.utilities');
-            inject(function (PageTracking, _rxLocalStorage_) {
-                tracking = PageTracking;
+            inject(function (rxPageTracker, _rxLocalStorage_) {
+                tracking = rxPageTracker;
                 rxLocalStorage = _rxLocalStorage_;
                 rxLocalStorage.clear();
             });

@@ -1,27 +1,27 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:PageTracking
+ * @name utilities.service:rxPageTracker
  * @description
  * This is the data service that can be used in conjunction with the pagination
  * objects to store/control page display of data tables and other items.
  * This is intended to be used with {@link elements.directive:rxPaginate}
- * @namespace PageTracking
+ * @namespace rxPageTracker
  *
  * @example
  * <pre>
- * $scope.pager = PageTracking.createInstance({showAll: true, itemsPerPage: 15});
+ * $scope.pager = rxPageTracker.createInstance({showAll: true, itemsPerPage: 15});
  * </pre>
  * <pre>
  * <rx-paginate page-tracking="pager"></rx-paginate>
  * </pre>
  */
-.factory('PageTracking', function ($q, rxLocalStorage, rxPaginateUtils) {
-    var PageTracking = {
+.factory('rxPageTracker', function ($q, rxLocalStorage, rxPaginateUtils) {
+    var rxPageTracker = {
         /**
          * @ngdoc method
-         * @name utilities.service:PageTracking#createInstance
-         * @methodOf utilities.service:PageTracking
+         * @name utilities.service:rxPageTracker#createInstance
+         * @methodOf utilities.service:rxPageTracker
          * @param {Object} options Configuration options for the pager
          * @param {Number=} [options.itemsPerPage=200]
          * The default number of items to display per page. If you choose a
@@ -43,7 +43,7 @@ angular.module('encore.ui.utilities')
          * be used
          *
          * @description This is used to generate the instance of the
-         * PageTracking object. It takes an optional `options` object,
+         * rxPageTracker object. It takes an optional `options` object,
          * allowing you to customize the default pager behaviour.
          *
          * @return {Object} A new pager instance to be passed to the
@@ -52,7 +52,7 @@ angular.module('encore.ui.utilities')
          */
         createInstance: function (options) {
             options = options ? options : {};
-            var tracking = new PageTrackingObject(options);
+            var tracking = new rxPageTrackerObject(options);
             return tracking.pager;
         },
 
@@ -64,7 +64,7 @@ angular.module('encore.ui.utilities')
         }
     };
 
-    function PageTrackingObject (opts) {
+    function rxPageTrackerObject (opts) {
         var pager = _.defaults(_.cloneDeep(opts), {
             itemsPerPage: 200,
             persistItemsPerPage: true,
@@ -252,7 +252,7 @@ angular.module('encore.ui.utilities')
 
                 // Persist this itemsPerPage as the new global value
                 if (pager.persistItemsPerPage) {
-                    PageTracking.userSelectedItemsPerPage(numItems);
+                    rxPageTracker.userSelectedItemsPerPage(numItems);
                 }
             });
         };
@@ -267,5 +267,21 @@ angular.module('encore.ui.utilities')
 
     }
 
-    return PageTracking;
+    return rxPageTracker;
+})
+
+/**
+ * @deprecated
+ * Please use rxPageTracker instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:PageTracking
+ * @requires utilities.service:rxPageTracker
+ */
+.service('PageTracking', function (rxPageTracker) {
+    console.warn(
+        'DEPRECATED: PageTracking - Please use rxPageTracker ' +
+        'PageTracking will be removed in EncoreUI 4.0.0'
+    );
+    return rxPageTracker;
 });
+
