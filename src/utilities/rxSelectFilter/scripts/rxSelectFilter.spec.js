@@ -1,11 +1,11 @@
-describe('utilities:SelectFilter', function () {
+describe('utilities:rxSelectFilter', function () {
     var filter;
 
     beforeEach(function () {
         module('encore.ui.utilities');
 
-        inject(function (SelectFilter) {
-            filter = SelectFilter.create({
+        inject(function (rxSelectFilter) {
+            filter = rxSelectFilter.create({
                 properties: ['status', 'type'],
                 selected: {
                     status: ['ENABLED']
@@ -14,7 +14,7 @@ describe('utilities:SelectFilter', function () {
         });
     });
 
-    describe('service:SelectFilter', function () {
+    describe('service:rxSelectFilter', function () {
         var result;
         var inputArray = [
             {
