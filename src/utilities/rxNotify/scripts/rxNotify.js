@@ -100,7 +100,7 @@ angular.module('encore.ui.utilities')
  * You can also create custom stacks for specific notification areas. Say you have a form on your page that you want to
  * add error messages to. You can create a custom stack for this form and send form-specific messages to it.
  *
- * Please see the *Custom Stack* usage example in the `rxNotify` {@link /encore-ui/#/components/rxForm demo}.
+ * Please see the *Custom Stack* usage example in the Notifications [demo](../#/elements/Notifications).
  *
  * ## Adding an `rxNotification` to the Default Stack
  *
