@@ -1,12 +1,12 @@
 describe('Pagination', function () {
-    describe('Filter: Page', function () {
+    describe('Filter: rxPager', function () {
         var page;
 
         beforeEach(function () {
             module('encore.ui.utilities');
 
             inject(function ($filter) {
-                page = $filter('Page');
+                page = $filter('rxPager');
             });
         });
 

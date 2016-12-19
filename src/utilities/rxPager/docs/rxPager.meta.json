@@ -1,7 +1,9 @@
 {
-    "displayName": "Page",
+    "displayName": "rxPager",
     "stability": "stable",
     "description": "Pagination filter that is used to limit the number of pages shown.",
-    "api": "filter:Page",
-    "keywords": []
+    "api": "filter:rxPager",
+    "keywords": [
+      "Page"
+    ]
 }
