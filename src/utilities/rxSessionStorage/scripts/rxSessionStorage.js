@@ -1,7 +1,7 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:SessionStorage
+ * @name utilities.service:rxSessionStorage
  * @description
  *
  * A simple wrapper for injecting the global variable sessionStorage
@@ -12,16 +12,16 @@ angular.module('encore.ui.utilities')
  *
  * @example
  * <pre>
- * SessionStorage.setItem('Batman', 'Robin'); // no return value
- * SessionStorage.key(0); // returns 'Batman'
- * SessionStorage.getItem('Batman'); // returns 'Robin'
- * SessionStorage.removeItem('Batman'); // no return value
- * SessionStorage.setObject('hero', {name:'Batman'}); // no return value
- * SessionStorage.getObject('hero'); // returns { name: 'Batman'}
- * SessionStorage.clear(); // no return value
+ * rxSessionStorage.setItem('Batman', 'Robin'); // no return value
+ * rxSessionStorage.key(0); // returns 'Batman'
+ * rxSessionStorage.getItem('Batman'); // returns 'Robin'
+ * rxSessionStorage.removeItem('Batman'); // no return value
+ * rxSessionStorage.setObject('hero', {name:'Batman'}); // no return value
+ * rxSessionStorage.getObject('hero'); // returns { name: 'Batman'}
+ * rxSessionStorage.clear(); // no return value
  * </pre>
  */
-.service('SessionStorage', function ($window) {
+.service('rxSessionStorage', function ($window) {
     var sessionStorage = $window.sessionStorage;
     if ($window.self !== $window.top) {
         try {
@@ -70,4 +70,19 @@ angular.module('encore.ui.utilities')
 
         return item;
     };
+})
+
+/**
+ * @deprecated
+ * Please use rxSessionStorage instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:SessionStorage
+ * @requires utilities.service:rxSessionStorage
+ */
+.service('SessionStorage', function (rxSessionStorage) {
+    console.warn (
+        'DEPRECATED: SessionStorage - Please use rxSessionStorage. ' +
+        'SessionStorage will be removed in EncoreUI 4.0.0'
+    );
+    return rxSessionStorage;
 });

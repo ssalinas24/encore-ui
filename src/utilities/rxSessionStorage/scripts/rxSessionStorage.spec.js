@@ -1,10 +1,10 @@
-describe('service:SessionStorage', function () {
+describe('service:rxSessionStorage', function () {
     var storage;
 
     beforeEach(function () {
         module('encore.ui.utilities');
-        inject(function (SessionStorage) {
-            storage = SessionStorage;
+        inject(function (rxSessionStorage) {
+            storage = rxSessionStorage;
         });
     });
 
@@ -12,22 +12,22 @@ describe('service:SessionStorage', function () {
         storage.clear();
     });
 
-    it('SessionStorage should exist', function () {
+    it('rxSessionStorage should exist', function () {
         expect(storage).to.exist;
     });
 
-    it('SessionStorage should be empty after clear', function () {
+    it('rxSessionStorage should be empty after clear', function () {
         storage.clear();
         expect(storage.length).to.be.eq(0);
     });
 
-    it('SessionStorage should be able to retrieve the key for an item', function () {
+    it('rxSessionStorage should be able to retrieve the key for an item', function () {
         storage.setItem('batman', 'robin');
         expect(storage.key(0)).not.be.empty;
         expect(storage.key(0)).to.be.eq('batman');
     });
 
-    it('SessionStorage should be able to set/get a value in session storage', function () {
+    it('rxSessionStorage should be able to set/get a value in session storage', function () {
         storage.clear();
         //expect(storage.length).to.be.eq(0);
         storage.setItem('joker', 'harley');
@@ -35,14 +35,14 @@ describe('service:SessionStorage', function () {
         expect(storage.getItem('joker')).to.be.eq('harley');
     });
 
-    it('SessionStorage should be able to set/get objects in session storage', function () {
+    it('rxSessionStorage should be able to set/get objects in session storage', function () {
         var batman = { name: 'Batman', realName: 'Bruce Wayne' };
         storage.setObject('hero', batman);
         expect(storage.length).to.be.eq(1);
         expect(storage.getObject('hero')).to.deep.eq(batman);
     });
 
-    it('SessionStorage should be able to set/get arrays in session storage', function () {
+    it('rxSessionStorage should be able to set/get arrays in session storage', function () {
         var heros = [ { name: 'Batman' }, { name: 'Superman' } ];
         expect(storage.length).to.be.eq(0);
         storage.setObject('heros', heros);
@@ -50,7 +50,7 @@ describe('service:SessionStorage', function () {
         expect(storage.getObject('heros')).to.deep.eq(heros);
     });
 
-    it('SessionStorage should be able to remove item by key name', function () {
+    it('rxSessionStorage should be able to remove item by key name', function () {
         storage.setItem('poison', 'ivy');
         expect(storage.length).to.eq(1);
         storage.removeItem('poison');
