@@ -1,5 +1,5 @@
 angular.module('demoApp')
-.controller('rxAppCtrl', function ($scope, $location, $rootScope, $window, encoreRoutes, rxVisibility, Session) {
+.controller('rxAppCtrl', function ($scope, $location, $rootScope, $window, rxEncoreRoutes, rxVisibility, Session) {
     Session.getUserId = function () {
         return 'bert3000';
     };
@@ -28,7 +28,7 @@ angular.module('demoApp')
             ]
         };
 
-        encoreRoutes.setRouteByKey('accountLvlTools', newRoute);
+        rxEncoreRoutes.setRouteByKey('accountLvlTools', newRoute);
     };
 
     // Fake navigation

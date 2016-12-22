@@ -1,6 +1,6 @@
 describe('encore.ui.rxApp', function () {
     describe('rxAccountUsers', function () {
-        var scope, compile, userSelect, users, encoreRoutesMock, $route, $location, provide;
+        var scope, compile, userSelect, users, rxEncoreRoutesMock, $route, $location, provide;
         var validTemplate = '<rx-account-users></rx-account-users>';
         var unregisterCheckCloud = sinon.spy();
         var rootScopeStub = null;
@@ -20,7 +20,7 @@ describe('encore.ui.rxApp', function () {
                         }
                     };
                 })
-                .factory('encoreRoutes', function ($q) {
+                .factory('rxEncoreRoutes', function ($q) {
                     var mockReturn = true;
                     return {
                         isActiveByKey: function () {
@@ -41,13 +41,13 @@ describe('encore.ui.rxApp', function () {
                 provide = $provide;
             });
 
-            inject(function ($rootScope, $compile, $templateCache, _$location_, _$route_, $q, encoreRoutes) {
+            inject(function ($rootScope, $compile, $templateCache, _$location_, _$route_, $q, rxEncoreRoutes) {
                 $route = _$route_;
                 $location = _$location_;
                 compile = $compile;
                 scope = $rootScope.$new();
                 rootScopeStub = sinon.stub($rootScope, '$on').returns(unregisterCheckCloud);
-                encoreRoutesMock = encoreRoutes;
+                rxEncoreRoutesMock = rxEncoreRoutes;
 
                 $location.url('/server/cloud/323676/hub_cap');
                 $route.current = {};
@@ -97,8 +97,8 @@ describe('encore.ui.rxApp', function () {
             expect(users[1]).to.be.selected;
         });
 
-        it('should not render when encoreRoutes.isActiveByKey() returns false', function () {
-            encoreRoutesMock.setMock(false);
+        it('should not render when rxEncoreRoutes.isActiveByKey() returns false', function () {
+            rxEncoreRoutesMock.setMock(false);
             userSelect = helpers.createDirective(angular.element(validTemplate), compile, scope);
             expect(userSelect.find('select')).to.have.length(0);
         });
