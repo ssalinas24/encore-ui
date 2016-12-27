@@ -12,6 +12,11 @@ angular.module('encore.ui.utilities')
                                    rxVisibilityPathParams, rxVisibility, rxEnvironment,
                                    rxLocalStorage) {
 
+    console.warn(
+        'DEPRECATED: encoreRoutes is deprecated. ' +
+        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+    );
+
     // We use rxVisibility in the nav menu at routesCdnPath, so ensure it's ready
     // before loading from the CDN
     rxVisibility.addVisibilityObj(rxVisibilityPathParams);

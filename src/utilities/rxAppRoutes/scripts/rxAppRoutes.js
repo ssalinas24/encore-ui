@@ -2,10 +2,17 @@ angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
  * @name utilities.service:rxAppRoutes
+ * @deprecated
+ * This service is deprecated and will be removed in EncoreUI 4.0.0
  * @description
  * Manages page routes, building urls and marking them as active on route change.
  */
 .factory('rxAppRoutes', function ($rootScope, $log, urlUtils, $q) {
+    console.warn(
+        'DEPRECATED: rxAppRoutes is deprecated. ' +
+        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+    );
+
     var AppRoutes = function (routes) {
         routes = routes || [];
         // we need to get the current path on page load
