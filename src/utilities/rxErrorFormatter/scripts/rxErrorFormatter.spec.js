@@ -1,11 +1,11 @@
-describe('utilities: ErrorFormatter', function () {
+describe('utilities: rxErrorFormatter', function () {
     var errorFormatter;
 
     beforeEach(function () {
         module('encore.ui.utilities');
 
-        inject(function (ErrorFormatter) {
-            errorFormatter = ErrorFormatter;
+        inject(function (rxErrorFormatter) {
+            errorFormatter = rxErrorFormatter;
         });
     });
 
