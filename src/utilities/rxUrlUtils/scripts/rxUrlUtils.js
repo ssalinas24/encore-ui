@@ -1,12 +1,12 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:urlUtils
+ * @name utilities.service:rxUrlUtils
  * @description
  *
  * Set of utility functions to break apart/compare URLs.
  */
-.service('urlUtils', function ($location, rxEnvironmentUrlFilter, $interpolate, $route, $document) {
+.service('rxUrlUtils', function ($location, rxEnvironmentUrlFilter, $interpolate, $route, $document) {
     var urlParser = $document[0].createElement('a');
     // remove any preceding # and / from the URL for cleaner comparison
     this.stripLeadingChars = function (url) {
@@ -128,4 +128,18 @@ angular.module('encore.ui.utilities')
         urlParser.href = url;
         return _.pick(urlParser, ['protocol', 'hostname', 'port', 'pathname', 'search', 'hash', 'host']);
     };
+})
+/**
+ * @deprecated
+ * Please use rxUrlUtils instead. This item will be removed on the 4.0.0 release.
+ * @ngdoc service
+ * @name utilities.service:urlUtils
+ * @requires utilities.service:rxUrlUtils
+ */
+.service('urlUtils', function (rxUrlUtils) {
+    console.warn(
+        'DEPRECATED: urlUtils - Please use rxUrlUtils. ' +
+        'urlUtils will be removed in EncoreUI 4.0.0'
+    );
+    return rxUrlUtils;
 });
