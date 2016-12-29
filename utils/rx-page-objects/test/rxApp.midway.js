@@ -99,11 +99,11 @@ describe('rxPage', function () {
     describe('main title', function () {
 
         before(function () {
-            demoPage.go('#/utilities/titleize');
+            demoPage.go('#/utilities/rxTitleize');
         });
 
         it('should grab the main title', function () {
-            expect(encore.rxPage.initialize().title).to.eventually.equal('titleize');
+            expect(encore.rxPage.initialize().title).to.eventually.equal('rxTitleize');
         });
 
     });
