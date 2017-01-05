@@ -1,6 +1,6 @@
 describe('elements:rxAccountInfo', function () {
     describe('directive:rxAccountInfo', function () {
-        var scope, compile, el, rxnotify, rxEncoreRoutesMock;
+        var scope, compile, el, rxnotify, encoreRoutesMock;
         var validTemplate = '<rx-account-info account-info-banner="true" account-number="123"></rx-account-info>';
         var defaultStack = 'page';
 
@@ -59,7 +59,7 @@ describe('elements:rxAccountInfo', function () {
                         }
                     };
                 })
-                .factory('rxEncoreRoutes', function ($q) {
+                .factory('encoreRoutes', function ($q) {
                     var mockReturn = false;
                     return {
                         isActiveByKey: function () {
@@ -85,11 +85,11 @@ describe('elements:rxAccountInfo', function () {
 
             // Inject in angular constructs
             inject(function ($location, $rootScope, $compile, $q, Encore, SupportAccount,
-                    rxNotify, Teams, rxEncoreRoutes) {
+                    rxNotify, Teams, encoreRoutes) {
                 scope = $rootScope.$new();
                 compile = $compile;
                 rxnotify = rxNotify;
-                rxEncoreRoutesMock = rxEncoreRoutes;
+                encoreRoutesMock = encoreRoutes;
                 helpers.resourceStub($q, Encore, 'getAccount', account);
                 helpers.resourceStub($q, SupportAccount, 'getBadges', badges);
                 helpers.resourceStub($q, Teams, 'badges', teamBadges);
@@ -164,7 +164,7 @@ describe('elements:rxAccountInfo', function () {
         });
 
         it('should show Current User when in Cloud', function () {
-            rxEncoreRoutesMock.setMock(true);
+            encoreRoutesMock.setMock(true);
             el = helpers.createDirective(validTemplate, compile, scope);
             expect(el.text()).to.contain('Current User');
         });

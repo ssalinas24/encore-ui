@@ -33,7 +33,7 @@ angular.module('encore.ui.elements')
  * @param {String=} [notifyStack='page'] - Notifications stack to put errors on.
  * @param {String=} accountInfoBanner - Set to "true" to use the new under-the-breadcrumbs style
  */
-.directive('rxAccountInfo', function (Teams, SupportAccount, Encore, rxNotify, rxEncoreRoutes,
+.directive('rxAccountInfo', function (Teams, SupportAccount, Encore, rxNotify, encoreRoutes,
     AccountStatusGroup, $interpolate) {
     return {
         templateUrl: function (elem, attr) {
@@ -59,7 +59,7 @@ angular.module('encore.ui.elements')
 
             // Currently, the only time we should show the `Current User` area is
             // if the Racker is on the Cloud page
-            rxEncoreRoutes.isActiveByKey('cloud').then(function (isCloud) {
+            encoreRoutes.isActiveByKey('cloud').then(function (isCloud) {
                 scope.showCurrentUser = isCloud;
             });
 

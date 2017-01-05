@@ -1,14 +1,14 @@
 angular.module('encore.ui.utilities')
 /**
  * @ngdoc service
- * @name utilities.service:rxEncoreRoutes
+ * @name utilities.service:encoreRoutes
  * @description
  * Creates a shared instance of `AppRoutes` that is used for the Encore App nav.
- * This allows apps to make updates to the nav via `rxEncoreRoutes`.
+ * This allows apps to make updates to the nav via `encoreRoutes`.
  *
  * @return {Object} Instance of rxAppRoutes with `fetchRoutes` method added
  */
-.factory('rxEncoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
+.factory('encoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
                                    rxVisibilityPathParams, rxVisibility, rxEnvironment,
                                    rxLocalStorage) {
 
@@ -16,7 +16,7 @@ angular.module('encore.ui.utilities')
     // before loading from the CDN
     rxVisibility.addVisibilityObj(rxVisibilityPathParams);
 
-    var rxEncoreRoutes = new rxAppRoutes();
+    var encoreRoutes = new rxAppRoutes();
 
     var setWarningMessage = function () {
         rxNotify.add('There was a problem loading the navigation, so a cached version has been loaded for display.', {
@@ -53,18 +53,18 @@ angular.module('encore.ui.utilities')
         }
     }
 
-    rxEncoreRoutes.fetchRoutes = function () {
-        var routesKey = 'rxEncoreRoutes-' + suffix;
+    encoreRoutes.fetchRoutes = function () {
+        var routesKey = 'encoreRoutes-' + suffix;
         var cachedRoutes = rxLocalStorage.getObject(routesKey);
 
         $http.get(url)
             .success(function (routes) {
-                rxEncoreRoutes.setAll(routes);
+                encoreRoutes.setAll(routes);
                 rxLocalStorage.setObject(routesKey, routes);
             })
             .error(function () {
                 if (cachedRoutes) {
-                    rxEncoreRoutes.setAll(cachedRoutes);
+                    encoreRoutes.setAll(cachedRoutes);
                     setWarningMessage();
                 } else {
                     setFailureMessage();
@@ -74,20 +74,5 @@ angular.module('encore.ui.utilities')
         return cachedRoutes || [];
     };
 
-    return rxEncoreRoutes;
-})
-
-/**
- * @deprecated
- * Please use rxEncoreRoutes instead. This item will be removed on the 4.0.0 release.
- * @ngdoc service
- * @name utilities.service:encoreRoutes
- * @requires utilities.service:rxEncoreRoutes
- */
-.service('encoreRoutes', function (rxEncoreRoutes) {
-    console.warn (
-        'DEPRECATED: encoreRoutes - Please use rxEncoreRoutes. ' +
-        'encoreRoutes will be removed in EncoreUI 4.0.0'
-    );
-    return rxEncoreRoutes;
+    return encoreRoutes;
 });

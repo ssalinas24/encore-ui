@@ -65,7 +65,7 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, rxEncoreRoutes, $httpBackend, routesCdnPath, rxLocalStorage) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, rxLocalStorage) {
                     rootScope = $rootScope;
                     compile = $compile;
                     httpMock = $httpBackend;
@@ -214,9 +214,9 @@ describe('encore.ui.rxApp', function () {
             };
 
             var testEnvironment = function (url, suffix) {
-                inject(function ($httpBackend, rxEncoreRoutes) {
-                    rxEncoreRoutes.fetchRoutes();
-                    expect(mockLocalStorage.getObject).to.have.been.calledWith('rxEncoreRoutes-' + suffix);
+                inject(function ($httpBackend, encoreRoutes) {
+                    encoreRoutes.fetchRoutes();
+                    expect(mockLocalStorage.getObject).to.have.been.calledWith('encoreRoutes-' + suffix);
                     $httpBackend.expectGET(url).respond(500);
                     $httpBackend.verifyNoOutstandingExpectation();
                 });
@@ -293,10 +293,10 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, rxEncoreRoutes, $httpBackend, routesCdnPath, _rxLocalStorage_) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath, _rxLocalStorage_) {
                     rootScope = $rootScope;
                     compile = $compile;
-                    appRoutes = rxEncoreRoutes;
+                    appRoutes = encoreRoutes;
                     httpMock = $httpBackend;
                     cdnPath = routesCdnPath;
                     rxLocalStorage = _rxLocalStorage_;
@@ -320,7 +320,7 @@ describe('encore.ui.rxApp', function () {
             });
 
             it('should load the cached menu from the local storage', function () {
-                rxLocalStorage.setObject('rxEncoreRoutes-staging', defaultNav);
+                rxLocalStorage.setObject('encoreRoutes-staging', defaultNav);
                 createDirective();
                 var navTitle = el[0].querySelector('.nav-section-title');
                 expect($(navTitle).text()).to.equal(defaultNav[0].title);
@@ -329,7 +329,7 @@ describe('encore.ui.rxApp', function () {
             it('should cache the CDN-loaded menu', function () {
                 createDirective();
                 httpMock.flush();
-                expect(rxLocalStorage.getObject('rxEncoreRoutes-staging')).to.eql(defaultNav);
+                expect(rxLocalStorage.getObject('encoreRoutes-staging')).to.eql(defaultNav);
             });
 
             describe('when the CDN request fails', function () {
@@ -339,7 +339,7 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 it('should fall back to the cached menu if available', function () {
-                    rxLocalStorage.setObject('rxEncoreRoutes-staging', defaultNav);
+                    rxLocalStorage.setObject('encoreRoutes-staging', defaultNav);
                     createDirective();
 
                     // Nav content is written before the request responds
@@ -408,7 +408,7 @@ describe('encore.ui.rxApp', function () {
                 module('encore.ui.rxApp', 'testApp');
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, rxEncoreRoutes, $httpBackend, routesCdnPath) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath) {
                     rootScope = $rootScope;
                     compile = $compile;
                     httpMock = $httpBackend;
@@ -492,7 +492,7 @@ describe('encore.ui.rxApp', function () {
                 });
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, rxEncoreRoutes, $httpBackend, routesCdnPath) {
+                inject(function ($rootScope, $compile, encoreRoutes, $httpBackend, routesCdnPath) {
                     rootScope = $rootScope;
                     compile = $compile;
                     httpMock = $httpBackend;
@@ -527,8 +527,8 @@ describe('encore.ui.rxApp', function () {
         });
 
         describe('updateRoutes', function () {
-            var rxEncoreRoutes, rxEncoreRoutesSpy, rootScope,
-                compile, httpMock, rxEncoreRoutes, cdnGet, scope;
+            var encoreRoutes, encoreRoutesSpy, rootScope,
+                compile, httpMock, encoreRoutes, cdnGet, scope;
 
             var standardTemplate = '<rx-app></rx-app>';
 
@@ -566,13 +566,13 @@ describe('encore.ui.rxApp', function () {
                 module('encore.ui.rxApp', 'testApp');
 
                 // Inject in angular constructs
-                inject(function ($rootScope, $compile, $httpBackend, _rxEncoreRoutes_) {
+                inject(function ($rootScope, $compile, $httpBackend, _encoreRoutes_) {
                     rootScope = $rootScope;
                     compile = $compile;
                     httpMock = $httpBackend;
-                    rxEncoreRoutes = _rxEncoreRoutes_;
+                    encoreRoutes = _encoreRoutes_;
 
-                    rxEncoreRoutesSpy = sinon.spy(rxEncoreRoutes, 'getAll');
+                    encoreRoutesSpy = sinon.spy(encoreRoutes, 'getAll');
                 });
 
                 cdnGet = httpMock.whenGET(customURL);
@@ -587,19 +587,19 @@ describe('encore.ui.rxApp', function () {
                 // get the nav data from the URL pointed to by .customURL
                 httpMock.flush();
 
-                expect(rxEncoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
+                expect(encoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
             });
 
             it('should update routes', function () {
                 // get the nav data from the URL pointed to by .customURL
                 httpMock.flush();
 
-                expect(rxEncoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
+                expect(encoreRoutesSpy.calledOnce, 'getAll called on load').to.be.true;
 
                 rootScope.$broadcast('rxUpdateNavRoutes');
                 rootScope.$digest();
 
-                expect(rxEncoreRoutesSpy.calledTwice, 'getAll called on update event').to.be.true;
+                expect(encoreRoutesSpy.calledTwice, 'getAll called on update event').to.be.true;
             });
 
         });
