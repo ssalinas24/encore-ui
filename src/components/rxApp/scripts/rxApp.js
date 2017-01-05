@@ -20,7 +20,7 @@ angular.module('encore.ui.rxApp')
  * <rx-app site-title="Custom Title"></rx-app>
  * </pre>
  */
-.directive('rxApp', function (encoreRoutes, rxAppRoutes, hotkeys,
+.directive('rxApp', function (rxEncoreRoutes, rxAppRoutes, hotkeys,
                               rxEnvironment, routesCdnPath, Session, $window) {
     return {
         restrict: 'E',
@@ -65,7 +65,7 @@ angular.module('encore.ui.rxApp')
             }
 
             // default hideFeedback to false
-            var appRoutes = scope.newInstance ? new rxAppRoutes() : encoreRoutes;
+            var appRoutes = scope.newInstance ? new rxAppRoutes() : rxEncoreRoutes;
 
             // we only want to set new menu data if a new instance of rxAppRoutes was created
             // or if scope.menu was defined

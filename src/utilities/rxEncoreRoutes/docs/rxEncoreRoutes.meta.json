@@ -1,0 +1,9 @@
+{
+    "displayName": "rxEncoreRoutes",
+    "stability": "stable",
+    "description": "Allows apps to make updates to the navigation.",
+    "api": "service:rxEncoreRoutes",
+    "keywords": [
+        "encoreRoutes"
+    ]
+}
