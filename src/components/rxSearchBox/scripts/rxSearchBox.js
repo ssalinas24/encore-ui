@@ -12,12 +12,12 @@ angular.module('encore.ui.rxSearchBox')
  *
  * Though it is described as a search box, you can also use it for filtering
  * capabilities (as seen by the placeholder text in the "Customized"
- * {@link /encore-ui/#/components/rxSearchBox demo}).
+ * [demo](../#/components/rxSearchBox)).
  *
  * # Styling
  * You can style the `<rx-search-box>` element via custom CSS classes the same
  * way you would any HTML element. See the customized search box in the
- * {@link /encore-ui/#/components/rxSearchBox demo} for an example.
+ * [demo](../#/components/rxSearchBox) for an example.
  *
  * <pre>
  * <rx-search-box

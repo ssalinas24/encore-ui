@@ -1,17 +1,11 @@
 function genericRouteController (breadcrumbs) {
-    return function (rxBreadcrumbsSvc, Environment, $interpolate) {
+    return function (rxBreadcrumbsSvc) {
         if (breadcrumbs === undefined) {
             breadcrumbs = [{
                 name: '',
                 path: ''
             }]
         }
-
-        breadcrumbs.forEach(function (breadcrumb) {
-            if (breadcrumb.path) {
-                breadcrumb.path = $interpolate(Environment.get().url)({ path: breadcrumb.path });
-            }
-        });
 
         rxBreadcrumbsSvc.set(breadcrumbs);
     }
@@ -213,7 +207,7 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
         url: baseGithubUrl + '{{path}}'
     });
 
-    rxBreadcrumbsSvc.setHome($interpolate(Environment.get().url)({ path: '#/overview' }), 'Overview');
+    rxBreadcrumbsSvc.setHome('#/overview', 'Overview');
 
     var linksForModuleCategory = function (kategory) {
         var filteredModules = _.filter(Modules, {
@@ -237,6 +231,12 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
         {
             type: 'no-title',
             children: [
+                {
+                    linkText: 'Version <%= pkg.version %>',
+                    directive: 'switch-docs',
+                    children: [{}],
+                    childVisibility: 'false'
+                },
                 {
                     linkText: 'Overview',
                     href: '#/overview'

@@ -1,10 +1,15 @@
 module.exports = {
+    github: {
+        base: 'https://github.com/rackerlabs/encore-ui',
+        branch: '1.x',
+        src: '<%= config.github.base %>/tree/<%= config.github.branch %>/src'
+    },
     dir: {
         app: 'src',
         bower: 'bower',
         build: 'build',
-        dist: '<%= config.dir.build %>/dist', // used for js/css files pushed to CDN/bower
-        docs: 'build', // used for demo, coverage, and jsdocs files to go to gh-pages
+        dist: '<%= config.dir.docs %>/dist', // used for js/css files pushed to CDN/bower
+        docs: 'build/1.x', // used for demo, coverage, and jsdocs files to go to gh-pages
         exportableStyles: '<%= config.dir.app %>/styles',
     },
     /* BOWER OUTPUT/DISTRIBUTION */

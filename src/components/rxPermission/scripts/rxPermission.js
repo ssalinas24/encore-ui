@@ -6,7 +6,7 @@ angular.module('encore.ui.rxPermission')
  * @scope
  * @description
  * Simple directive which will show or hide content based on whether or not the user has the specified role. See
- * the `rxPermission` component {@link /encore-ui/#/components/rxPermission demo} for an example.
+ * the `rxPermission` component [demo](../#/components/rxPermission) for an example.
  *
  * @requires rxPermission.service:Permission
  *
