@@ -4,7 +4,7 @@ angular.module('encore.ui.utilities')
  * @name utilities.service:rxErrorFormatter
  * @description
  * Provides a helper method to parse error objects for `message` and format them
- * as necessary for `Status.setError()`.  See {@link utilities.service:Status Status} Service
+ * as necessary for `rxStatus.setError()`.  See {@link utilities.service:rxStatus rxStatus} Service
  * for more information.
  *
  * # Error Messages Using rxErrorFormatter
@@ -17,7 +17,7 @@ angular.module('encore.ui.utilities')
  * For example:
  *
  * <pre>
- * Status.setError(
+ * rxStatus.setError(
  *     'Failed loading browsing history: ${message}',
  *     {
  *         message: 'User has previously cleared their history!'
