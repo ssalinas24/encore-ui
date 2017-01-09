@@ -1,7 +1,9 @@
 {
-    "displayName": "Auth",
+    "displayName": "rxAuth",
     "stability": "stable",
     "description": "Provides logic for authenticating, validating permissions, and managing sessions.",
-    "api": "service:Auth",
-    "keywords": []
+    "api": "service:rxAuth",
+    "keywords": [
+        "Auth"
+    ]
 }
