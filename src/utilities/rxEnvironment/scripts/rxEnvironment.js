@@ -83,19 +83,20 @@ angular.module('encore.ui.utilities')
  * environment. For now, you should consider it as deprecated. It has problems
  * with overlapping environments, and could potentially generate the wrong URL.
  *
- * ## A Warning About `Environment.get().name` ##
- * You might find older Encore code that uses `Environment.get().name` to get
+ * ## A Warning About `rxEnvironment.get().name` ##
+ * ## DEPRECATED: `rxEnvironment.get()` will be removed in EncoreUI 4.0.0 ##
+ * You might find older Encore code that uses `rxEnvironment.get().name` to get
  * the name of the current environment. This pattern should be avoided,
  * specifically because of the overlapping environment issue discussed above.
- * If you call `Environment.get().name`, it will just return the first matching
+ * If you call `rxEnvironment.get().name`, it will just return the first matching
  * environment in the list of environments, even if we're overlapping and have
  * multiple environments. Instead, check explicitly with
- * `Environment.isLocal()`, `Environment.isPreProd()`, etc., or
- * use `Environment.envCheck('local')`
+ * `rxEnvironment.isLocal()`, `rxEnvironment.isPreProd()`, etc., or
+ * use `rxEnvironment.envCheck('local')`
  *
  * @example
  * <pre>
- * Environment.get() // return environment object that matches current location
+ * rxEnvironment.get() // return environment object that matches current location
  * </pre>
  *
  */
@@ -192,6 +193,10 @@ angular.module('encore.ui.utilities')
      * @returns {Object} The current environment (if found), else 'localhost' environment.
      */
     this.get = function (href) {
+        console.warn (
+            'DEPRECATED: rxEnvironment.get() will be removed in EncoreUI 4.0.0'
+        );
+
         // default to current location if href not provided
         href = href || $location.absUrl();
 
