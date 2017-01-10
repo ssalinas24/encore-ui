@@ -20,8 +20,7 @@ angular.module('encore.ui.utilities')
  */
 .factory('rxVisibility', function () {
     console.warn(
-        'DEPRECATED: rxVisibility is deprecated. ' +
-        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+        'DEPRECATED: rxVisibility will be removed in EncoreUI 4.0.0'
     );
 
     var methods = {};

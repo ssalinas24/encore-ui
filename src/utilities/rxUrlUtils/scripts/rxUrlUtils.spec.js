@@ -1,4 +1,4 @@
-describe('rxUrlUtils', function () {
+describe('service:rxUrlUtils', function () {
     var subject;
     var route = {
         current: {
@@ -223,7 +223,7 @@ describe('rxUrlUtils', function () {
     });
 });
 
-describe('urlUtils (DEPRECATED)', function () {
+describe('service:urlUtils (DEPRECATED)', function () {
     var subject;
     var route = {
         current: {

@@ -1,4 +1,4 @@
-describe('service:rxTokenInterceptor', function () {
+describe('provider:rxTokenInterceptor', function () {
     var interceptor, session;
 
     beforeEach(function () {
@@ -60,8 +60,7 @@ describe('service:rxTokenInterceptor', function () {
     });
 });
 
-// TODO: Deprecated! Remove for 4.0.0
-describe('service:TokenInterceptor', function () {
+describe('provider:TokenInterceptor (DEPRECATED)', function () {
     var interceptor, session;
 
     beforeEach(function () {

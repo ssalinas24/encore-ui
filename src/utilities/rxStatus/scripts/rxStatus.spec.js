@@ -1,5 +1,4 @@
-// TODO: refactor tests
-describe('utilities: rxStatus', function () {
+describe('service:rxStatus', function () {
     var status, scope, rootScope;
 
     beforeEach(function () {
@@ -20,79 +19,331 @@ describe('utilities: rxStatus', function () {
         status.setStatus.restore();
     });
 
-    it('rxStatus: setLoading returns a loading message', function () {
-        status.setLoading('Loading');
-        expect(status.setStatus).to.be.calledWithMatch('Loading');
-        expect(status.setStatus.args[0][1]).to.include.keys('loaded', 'loading');
-        expect(status.setStatus.args[0][1]).to.include({ repeat: true, timeout: -1 });
-    });
+    describe('setLoading()', function () {
+        beforeEach(function () {
+            status.setLoading('Loading');
+        });
 
-    it('rxStatus: setSuccess returns a success message', function () {
-        status.setSuccess('Yup');
-        expect(status.setStatus).to.be.calledWithMatch('Yup');
-        expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
-        expect(status.setStatus.args[0][1]).to.include({ repeat: false, timeout: 5 });
-    });
+        it ('should return a loading message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Loading');
+            expect(status.setStatus.args[0][1]).to.include.keys('loaded', 'loading');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: true,
+                timeout: -1
+            });
+        });
+    });//setLoading()
 
-    it('rxStatus: setSuccessNext returns a success message upon next route change', function () {
-        status.setSuccessNext('Yup later');
-        expect(status.setStatus).to.be.calledWithMatch('later');
-        expect(status.setStatus.args[0][1]).to.include({ show: 'next', repeat: false, timeout: 5 });
-    });
+    describe('setSuccess()', function () {
+        describe('with default options', function () {
+            beforeEach(function () {
+                status.setSuccess('Yup');
+            });
 
-    it('rxStatus: setError returns an error message', function () {
-        status.setError('Err');
-        expect(status.setStatus).to.be.calledWithMatch('Err');
-        expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
-        expect(status.setStatus.args[0][1]).to.include({ repeat: false, timeout: -1 });
-    });
+            it('should return a success message', function () {
+                expect(status.setStatus).to.be.calledWithMatch('Yup');
+                expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+                expect(status.setStatus.args[0][1]).to.include({
+                    repeat: false,
+                    timeout: 5
+                });
+            });
+        });//default options
 
-    it('rxStatus: setWarning returns a warning message', function () {
-        status.setWarning('Warn');
-        expect(status.setStatus).to.be.calledWithMatch('Warn');
-        expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
-        expect(status.setStatus.args[0][1]).to.include({ repeat: true, timeout: -1 });
-    });
+        describe('with timeout override', function () {
+            beforeEach(function () {
+                status.setSuccess('YupOverride', { timeout: 2 });
+            });
 
-    it('rxStatus: setInfo returns an info message', function () {
-        status.setInfo('Info');
-        expect(status.setStatus).to.be.calledWithMatch('Info');
-        expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
-        expect(status.setStatus.args[0][1]).to.include({ repeat: true, timeout: -1 });
-    });
+            it('should allow the override', function () {
+                expect(status.setStatus.args[0][1]).to.include({ timeout: 2 });
+            });
+        });//with timeout override
 
-    it('rxStatus: setSuccess should be able to override a timeout attribute', function () {
-        status.setSuccess('YupOverride', { timeout: 2 });
-        expect(status.setStatus.args[0][1]).to.include({ timeout: 2 });
-    });
+        describe('with repeat override', function () {
+            beforeEach(function () {
+                status.setSuccess('YupOverride2', { repeat: true });
+            });
 
-    it('rxStatus: setSuccess should be able to override a repeat attribute', function () {
-        status.setSuccess('YupOverride2', { repeat: true });
-        expect(status.setStatus.args[0][1]).to.include({ repeat: true });
-    });
+            it('should allow the override', function () {
+                expect(status.setStatus.args[0][1]).to.include({ repeat: true });
+            });
+        });//with repeat override
+    });//setSuccess()
 
-    it('rxStatus: clear returns no message', function () {
-        status.clear();
-        expect(status.setStatus).to.not.have.been.called;
-    });
+    describe('setSuccessNext()', function () {
+        beforeEach(function () {
+            status.setSuccessNext('Yup later');
+        });
 
-    it('rxStatus: complete results in an immediate success', function () {
-        status.complete();
-        expect(scope.status.show).to.equal('immediate');
-    });
+        it('should return a success message upon next route change', function () {
+            expect(status.setStatus).to.be.calledWithMatch('later');
+            expect(status.setStatus.args[0][1]).to.include({
+                show: 'next',
+                repeat: false,
+                timeout: 5
+            });
+        });
+    });//setSuccessNext()
 
-    it('rxStatus: dismiss results in removal of an existing message', function () {
-        var info = status.setInfo('Info');
-        status.dismiss(info);
-        expect(scope.status.loading).to.be.false;
-    });
+    describe('setError()', function () {
+        beforeEach(function () {
+            status.setError('Err');
+        });
 
-    it('rxStatus: should reset stack to "page" upon beginning of route reload', function () {
-        inject(function (rxStatus) {
-            var spy = sinon.spy(rxStatus, 'setStack');
-            rootScope.$broadcast('$routeChangeStart');
-            expect(rxStatus.setStack.args[0][0]).to.equal('page');
-            spy.restore();
+        it('should return an error message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Err');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: false,
+                timeout: -1
+            });
+        });
+    });//setError()
+
+    describe('setWarning()', function () {
+        beforeEach(function () {
+            status.setWarning('Warn');
+        });
+
+        it('should return a warning message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Warn');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: true,
+                timeout: -1
+            });
+        });
+    });//setWarning()
+
+    describe('setInfo()', function () {
+        beforeEach(function () {
+            status.setInfo('Info');
+        });
+
+        it('should return an info message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Info');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({ repeat: true, timeout: -1 });
+        });
+    });//setInfo()
+
+    describe('clear()', function () {
+        beforeEach(function () {
+            status.clear();
+        });
+
+        it('should not return a message', function () {
+            expect(status.setStatus).to.not.have.been.called;
+        });
+    });//clear
+
+    describe('complete()', function () {
+        beforeEach(function () {
+            status.complete();
+        });
+
+        it('should result in an immediate success', function () {
+            expect(scope.status.show).to.equal('immediate');
+        });
+    });//complete()
+
+    describe('dismiss()', function () {
+        var info;
+
+        beforeEach(function () {
+            info = status.setInfo('Info');
+            status.dismiss(info);
+        });
+
+        it('should remove an existing message', function () {
+            expect(scope.status.loading).to.be.false;
+        });
+    });//dismiss()
+
+    describe('on route reload', function () {
+        it('should reset stack to "page"', function () {
+            inject(function (rxStatus) {
+                var spy = sinon.spy(rxStatus, 'setStack');
+                rootScope.$broadcast('$routeChangeStart');
+                expect(rxStatus.setStack.args[0][0]).to.equal('page');
+                spy.restore();
+            });
+        });
+    });//on route load
+});//rxStatus
+
+describe('service:Status (DEPRECATED)', function () {
+    var status, scope, rootScope;
+
+    beforeEach(function () {
+        module('encore.ui.utilities');
+
+        inject(function ($rootScope, Status) {
+            scope = $rootScope.$new();
+            status = Status;
+            rootScope = $rootScope;
+
+            status.setScope(scope);
+
+            sinon.spy(status, 'setStatus');
         });
     });
-});
+
+    afterEach(function () {
+        status.setStatus.restore();
+    });
+
+    describe('setLoading()', function () {
+        beforeEach(function () {
+            status.setLoading('Loading');
+        });
+
+        it ('should return a loading message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Loading');
+            expect(status.setStatus.args[0][1]).to.include.keys('loaded', 'loading');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: true,
+                timeout: -1
+            });
+        });
+    });//setLoading()
+
+    describe('setSuccess()', function () {
+        describe('with default options', function () {
+            beforeEach(function () {
+                status.setSuccess('Yup');
+            });
+
+            it('should return a success message', function () {
+                expect(status.setStatus).to.be.calledWithMatch('Yup');
+                expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+                expect(status.setStatus.args[0][1]).to.include({
+                    repeat: false,
+                    timeout: 5
+                });
+            });
+        });//default options
+
+        describe('with timeout override', function () {
+            beforeEach(function () {
+                status.setSuccess('YupOverride', { timeout: 2 });
+            });
+
+            it('should allow the override', function () {
+                expect(status.setStatus.args[0][1]).to.include({ timeout: 2 });
+            });
+        });//with timeout override
+
+        describe('with repeat override', function () {
+            beforeEach(function () {
+                status.setSuccess('YupOverride2', { repeat: true });
+            });
+
+            it('should allow the override', function () {
+                expect(status.setStatus.args[0][1]).to.include({ repeat: true });
+            });
+        });//with repeat override
+    });//setSuccess()
+
+    describe('setSuccessNext()', function () {
+        beforeEach(function () {
+            status.setSuccessNext('Yup later');
+        });
+
+        it('should return a success message upon next route change', function () {
+            expect(status.setStatus).to.be.calledWithMatch('later');
+            expect(status.setStatus.args[0][1]).to.include({
+                show: 'next',
+                repeat: false,
+                timeout: 5
+            });
+        });
+    });//setSuccessNext()
+
+    describe('setError()', function () {
+        beforeEach(function () {
+            status.setError('Err');
+        });
+
+        it('should return an error message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Err');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: false,
+                timeout: -1
+            });
+        });
+    });//setError()
+
+    describe('setWarning()', function () {
+        beforeEach(function () {
+            status.setWarning('Warn');
+        });
+
+        it('should return a warning message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Warn');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({
+                repeat: true,
+                timeout: -1
+            });
+        });
+    });//setWarning()
+
+    describe('setInfo()', function () {
+        beforeEach(function () {
+            status.setInfo('Info');
+        });
+
+        it('should return an info message', function () {
+            expect(status.setStatus).to.be.calledWithMatch('Info');
+            expect(status.setStatus.args[0][1]).to.include.keys('success', 'type');
+            expect(status.setStatus.args[0][1]).to.include({ repeat: true, timeout: -1 });
+        });
+    });//setInfo()
+
+    describe('clear()', function () {
+        beforeEach(function () {
+            status.clear();
+        });
+
+        it('should not return a message', function () {
+            expect(status.setStatus).to.not.have.been.called;
+        });
+    });//clear
+
+    describe('complete()', function () {
+        beforeEach(function () {
+            status.complete();
+        });
+
+        it('should result in an immediate success', function () {
+            expect(scope.status.show).to.equal('immediate');
+        });
+    });//complete()
+
+    describe('dismiss()', function () {
+        var info;
+
+        beforeEach(function () {
+            info = status.setInfo('Info');
+            status.dismiss(info);
+        });
+
+        it('should remove an existing message', function () {
+            expect(scope.status.loading).to.be.false;
+        });
+    });//dismiss()
+
+    describe('on route reload', function () {
+        it('should reset stack to "page"', function () {
+            inject(function (Status) {
+                var spy = sinon.spy(Status, 'setStack');
+                rootScope.$broadcast('$routeChangeStart');
+                expect(Status.setStack.args[0][0]).to.equal('page');
+                spy.restore();
+            });
+        });
+    });//on route load
+});//Status

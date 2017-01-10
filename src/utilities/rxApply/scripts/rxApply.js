@@ -13,7 +13,7 @@
      * Merely calls the `applyTo()` method of a `rxSelectFilter` instance to an
      * input array.
      * <pre>
-     * <tr ng-repeat="item in list | Apply:filter">
+     * <tr ng-repeat="item in list | rxApply:filter">
      * </pre>
      *
      * @param {Array} list The list to be filtered.
@@ -32,11 +32,13 @@
      * @name utilities.filter:Apply
      * @requires utilities.filter:rxApply
      */
-    function ApplyFilter ($filter) {
-        console.warn(
-            'DEPRECATED: Apply - Please use rxApply. ' +
-            'Apply will be removed in EncoreUI 4.0.0'
-        );
-        return $filter('rxApply');
+    function ApplyFilter () {
+        return function (list, filter) {
+            console.warn(
+                'DEPRECATED: Apply - Please use rxApply. ' +
+                'Apply will be removed in EncoreUI 4.0.0'
+            );
+            return rxApplyFilter()(list, filter);
+        };
     }//ApplyFilter
 })();

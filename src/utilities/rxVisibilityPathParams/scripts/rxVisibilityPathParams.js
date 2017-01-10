@@ -20,8 +20,7 @@ angular.module('encore.ui.utilities')
  */
 .factory('rxVisibilityPathParams', function ($routeParams) {
     console.warn(
-        'DEPRECATED: rxVisibilityPathParams is deprecated. ' +
-        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+        'DEPRECATED: rxVisibilityPathParams will be removed in EncoreUI 4.0.0'
     );
 
     var pathParams = {

@@ -55,7 +55,7 @@ angular.module('encore.ui.rxOptionTable')
  * Example:
  *
  * <pre>
- *  <rx-option-table disable-fn="disableOption(tableId, fieldId, rowId)"></rx-option-table>
+ * <rx-option-table disable-fn="disableOption(tableId, fieldId, rowId)"></rx-option-table>
  * </pre>
  */
 .directive('rxOptionTable', function ($interpolate) {

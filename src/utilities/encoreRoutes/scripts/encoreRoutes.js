@@ -14,8 +14,7 @@ angular.module('encore.ui.utilities')
                                    rxLocalStorage) {
 
     console.warn(
-        'DEPRECATED: encoreRoutes is deprecated. ' +
-        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+        'DEPRECATED: encoreRoutes will be removed in EncoreUI 4.0.0'
     );
 
     // We use rxVisibility in the nav menu at routesCdnPath, so ensure it's ready

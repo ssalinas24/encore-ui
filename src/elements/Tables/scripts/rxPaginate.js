@@ -511,7 +511,7 @@ angular.module('encore.ui.elements')
  * @param {String=} errorMessage
  * An error message that should be displayed if a call to the request fails
  */
-.directive('rxPaginate', function ($q, $compile, debounce, PageTracking, rxPromiseNotifications) {
+.directive('rxPaginate', function ($q, $compile, debounce, rxPromiseNotifications) {
     return {
         templateUrl: 'templates/rxPaginate.html',
         replace: true,
@@ -527,7 +527,6 @@ angular.module('encore.ui.elements')
             sortDirection: '=?'
         },
         link: function (scope, element, attrs, rxLoadingOverlayCtrl) {
-
             var errorMessage = attrs.errorMessage;
 
             rxLoadingOverlayCtrl = rxLoadingOverlayCtrl || {
