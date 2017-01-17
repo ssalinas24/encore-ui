@@ -1,5 +1,5 @@
 describe('utilities:rxAuth', function () {
-    var auth, identity, permission, session, token;
+    var auth, permission, session, token, $httpBackend;
 
     token = {
         'access': {
@@ -21,9 +21,6 @@ describe('utilities:rxAuth', function () {
         inject(function ($injector) {
             permission = $injector.get('Permission');
             session = $injector.get('Session');
-            identity = $injector.get('Identity');
-
-            identity.loginWithJSON = sinon.stub().returns(token);
             session.getToken = sinon.stub().returns(token);
             session.storeToken = sinon.stub();
             session.logout = sinon.stub();
@@ -32,20 +29,23 @@ describe('utilities:rxAuth', function () {
             permission.getRoles = sinon.stub().returns([{ 'name': 'admin' }]);
 
             auth = $injector.get('rxAuth');
+            $httpBackend = $injector.get('$httpBackend');
+            $httpBackend.expectPOST('/api/identity/tokens').respond(token);
         });
     });
 
     describe('service:rxAuth', function () {
         it('login() should get a token', function () {
-            var result = auth.login({ username: 'bruce.wayne', password: 'batmanRulez' });
+            auth.loginWithJSON = sinon.stub().returns(token);
+            var result = auth.login({ username: 'Batman', password: 'dark-knight' });
             expect(result.access).not.be.empty;
-            expect(identity.loginWithJSON).to.be.called;
+            expect(auth.loginWithJSON).to.be.called;
         });
 
         it('loginWithJSON() should get a token', function () {
-            var result = auth.loginWithJSON({ username: 'bruce.wayne', apiToken: '1-800-BAT-MANN' });
+            var result = auth.loginWithJSON({ username: 'Batman', token: 'bat-token' });
+            $httpBackend.flush();
             expect(result.access).not.be.empty;
-            expect(identity.loginWithJSON).to.be.called;
         });
 
         it('getToken() should return a token', function () {
@@ -89,7 +89,7 @@ describe('utilities:rxAuth', function () {
 });
 
 describe('utilities:Auth (DEPRECATED)', function () {
-    var auth, identity, permission, session, token;
+    var auth, permission, session, token, $httpBackend;
 
     token = {
         'access': {
@@ -111,9 +111,6 @@ describe('utilities:Auth (DEPRECATED)', function () {
         inject(function ($injector) {
             permission = $injector.get('Permission');
             session = $injector.get('Session');
-            identity = $injector.get('Identity');
-
-            identity.loginWithJSON = sinon.stub().returns(token);
             session.getToken = sinon.stub().returns(token);
             session.storeToken = sinon.stub();
             session.logout = sinon.stub();
@@ -121,21 +118,24 @@ describe('utilities:Auth (DEPRECATED)', function () {
             session.isAuthenticated = sinon.stub().returns(true);
             permission.getRoles = sinon.stub().returns([{ 'name': 'admin' }]);
 
-            auth = $injector.get('Auth');
+            auth = $injector.get('rxAuth');
+            $httpBackend = $injector.get('$httpBackend');
+            $httpBackend.expectPOST('/api/identity/tokens').respond(token);
         });
     });
 
     describe('service:Auth', function () {
         it('login() should get a token', function () {
-            var result = auth.login({ username: 'bruce.wayne', password: 'batmanRulez' });
+            auth.loginWithJSON = sinon.stub().returns(token);
+            var result = auth.login({ username: 'Batman', password: 'dark-knight' });
             expect(result.access).not.be.empty;
-            expect(identity.loginWithJSON).to.be.called;
+            expect(auth.loginWithJSON).to.be.called;
         });
-
+        
         it('loginWithJSON() should get a token', function () {
-            var result = auth.loginWithJSON({ username: 'bruce.wayne', apiToken: '1-800-BAT-MANN' });
+            var result = auth.loginWithJSON({ username: 'Batman', token: 'bat-token' });
+            $httpBackend.flush();
             expect(result.access).not.be.empty;
-            expect(identity.loginWithJSON).to.be.called;
         });
 
         it('getToken() should return a token', function () {
