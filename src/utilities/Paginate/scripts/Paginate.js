@@ -7,10 +7,10 @@ angular.module('encore.ui.utilities')
  * items list for the paging.
  *
  * @param {Object} items The list of items that are to be sliced into pages
- * @param {Object} pager The instance of the PageTracking service. If not
+ * @param {Object} pager The instance of the rxPageTracker service. If not
  * specified, a new one will be created.
  *
- * @returns {Object} The list of items for the current page in the PageTracking object
+ * @returns {Object} The list of items for the current page in the rxPageTracker object
  */
 .filter('Paginate', function (PageTracking, rxPaginateUtils) {
     return function (items, pager) {

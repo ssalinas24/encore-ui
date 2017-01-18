@@ -111,7 +111,7 @@ angular.module('encore.ui.utilities')
  * It also allows for a specialized template to be specified as the error string
  * with an `object:{}` as the second parameter containing the replacements for
  * the template in the error string.  If in a proper format, the object can be
- * automatically parsed using an `ErrorFormatter` and displayed to the user.
+ * automatically parsed using an `rxErrorFormatter` and displayed to the user.
  * For example:
  *
  * <pre>
