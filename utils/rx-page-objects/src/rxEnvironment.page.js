@@ -4,6 +4,7 @@ var _ = require('lodash');
  * @namespace
  * @description Utilities for getting the current or original environment. Can compare either to a list of default
  * environment names, or custom ones of your choosing.
+ * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
  */
 exports.rxEnvironment = {
     /**
@@ -11,6 +12,7 @@ exports.rxEnvironment = {
      * @description The current environment the user sees. The default is set to something simple and reasonable,
      * but should you find a need to supply your own environments, be sure to have `environments` defined in
      * your protractor conf's params section.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @returns {String}
      * @example
      * browser.get('localhost:9000/home');
@@ -21,6 +23,9 @@ exports.rxEnvironment = {
      * expect(encore.rxEnvironment.current()).to.eventually.equal('production');
      */
     current: function () {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         var component = this;
         return browser.getCurrentUrl().then(function (url) {
             return component.compare(url);
@@ -31,6 +36,7 @@ exports.rxEnvironment = {
      * @function
      * @description The original environment, as defined in the current protractor conf file.
      * Returns a promise to keep the usage consistent with {@link rxEnvironment.current}.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @example
      * browser.get('localhost:9000/home');
      * expect(encore.rxEnvironment.original()).to.eventually.equal('localhost');
@@ -38,6 +44,9 @@ exports.rxEnvironment = {
      * expect(encore.rxEnvironment.original()).to.eventually.equal('localhost');
      */
     original: function () {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return protractor.promise.fulfilled(this.compare(browser.baseUrl));
     },
 
@@ -53,6 +62,9 @@ exports.rxEnvironment = {
      * @param {String} url - The url, as a string.
      */
     compare: function (url) {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return _.find(this.environments, function findEnvironment (envName, env) {
             if (_.includes(url, env)) {
                 return envName;
@@ -65,6 +77,7 @@ exports.rxEnvironment = {
      * @description The default environments used in nearly all encore applications. You can provide your own
      * environments by setting your own in your protractor configuration file as `browser.params.environments`.
      * This object clones the environments found there before filling in any missing entries with reasonable defaults.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @property {String} localhost - 'localhost'
      * @property {String} staging - 'staging'
      * @property {String} preprod - 'preprod'
@@ -86,48 +99,64 @@ exports.rxEnvironment = {
     /**
      * @function
      * @description Whether or not the current environment is in a localhost environment.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @param {Object} [options] - Named arguments.
      * @param {Boolean} [options.useBaseUrl=false] - Set this to `true` to not use the browser's current
      * environment when comparing, instead it will compare it to `protractor.baseUrl`.
      * @returns {Boolean}
      */
     isLocalhost: function (options) {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return this.confirmEnvironment(options, 'localhost');
     },
 
     /**
      * @function
      * @description Whether or not the current environment is in a staging environment.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @param {Object} [options] - Named arguments.
      * @param {Boolean} [options.useBaseUrl=false] - Set this to `true` to not use the browser's current
      * environment when comparing, instead it will compare it to `protractor.baseUrl`.
      * @returns {Boolean}
      */
     isStaging: function (options) {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return this.confirmEnvironment(options, 'staging');
     },
 
     /**
      * @function
      * @description Whether or not the current environment is in a preproduction environment.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @param {Object} [options] - Named arguments.
      * @param {Boolean} [options.useBaseUrl=false] - Set this to `true` to not use the browser's current
      * environment when comparing, instead it will compare it to `protractor.baseUrl`.
      * @returns {Boolean}
      */
     isPreprod: function (options) {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return this.confirmEnvironment(options, 'preprod');
     },
 
     /**
      * @function
      * @description Whether or not the current environment is in a production environment.
+     * @deprecated rxEnvironment will be removed in EncoreUI 4.0.0
      * @param {Object} [options] - Named arguments.
      * @param {Boolean} [options.useBaseUrl=false] - Set this to `true` to not use the browser's current
      * environment when comparing, instead it will compare it to `protractor.baseUrl`.
      * @returns {Boolean}
      */
     isProd: function (options) {
+        console.warn (
+            'DEPRECATED: rxEnvironment will be removed in EncoreUI 4.0.0'
+        );
         return this.confirmEnvironment(options, 'production');
     },
 
