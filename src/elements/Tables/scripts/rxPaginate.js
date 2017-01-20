@@ -31,7 +31,7 @@ angular.module('encore.ui.elements')
  * 2. This is then passed to `orderBy`, to perform column sorting with `rxSortableColumn`.
  * 3. The sorted results are then passed to `Paginate:pager`, where `Paginate` is a filter from the
  * `rxPaginate` module, and `pager` is a variable on your scope created like
- * `$scope.pager = PageTracking.createInstance();`.
+ * `$scope.pager = rxPageTracker.createInstance();`.
  *
  * This `pager` is responsible for tracking pagination state (i.e. "which page are we on", "how many
  * items per page", "total number of items tracked", etc.
@@ -62,7 +62,7 @@ angular.module('encore.ui.elements')
  *
  * This applies to both UI-based pagination and API-based pagination.
  *
- * *NOTE*: If `itemsPerPage` is explicitly specified in the `opts` you pass to `PageTracking.createInstance()`,
+ * *NOTE*: If `itemsPerPage` is explicitly specified in the `opts` you pass to `rxPageTracker.createInstance()`,
  * then that pager instance will load using the `itemsPerPage` you specified, and _not_ the globally persisted value.
  *
  * *NOTE*: If you don't want a specific pager to have its `itemsPerPage` persisted to other pagers,
@@ -149,10 +149,10 @@ angular.module('encore.ui.elements')
  * constructor **must** be provided and include every property.  This is because the filter cannot reliably
  * determine all available options from a paginated API.
  *
- * You will still create a `PageTracking` instance on your scope, just like in UI-based pagination:
+ * You will still create a `rxPageTracker` instance on your scope, just like in UI-based pagination:
  *
  * <pre>
- * $scope.pagedServers = PageTracking.createInstance();
+ * $scope.pagedServers = rxPageTracker.createInstance();
  * </pre>
  *
  * ## getItems()
@@ -486,7 +486,7 @@ angular.module('encore.ui.elements')
  *
  * @param {Object} pageTracking
  * This is the page tracking service instance to be used for this directive.
- * See {@link utilities.service:PageTracking}
+ * See {@link utilities.service:rxPageTracker rxPageTracker}
  * @param {Number} numberOfPages
  * This is the maximum number of pages that the page object will display at a
  * time.

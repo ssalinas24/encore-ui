@@ -1,6 +1,6 @@
 {
     "displayName": "rxApply",
-    "stability": "prototype",
+    "stability": "stable",
     "description": "Used to apply an instance of rxSelectFilter to an array.",
     "api": "filter:rxApply",
     "keywords": [

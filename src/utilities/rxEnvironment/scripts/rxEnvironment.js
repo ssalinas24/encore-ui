@@ -8,7 +8,7 @@ angular.module('encore.ui.utilities')
  *
  * ## Adding New Environments ##
  *
- * If necessary, you can add additional environments with `Environment.add()`.
+ * If necessary, you can add additional environments with `rxEnvironment.add()`.
  * This takes an object with three properties, `name`, `pattern` and `url`, where
  *
  * * name: The "friendly" name of your environment, like "local", "preprod", etc.
@@ -19,7 +19,7 @@ angular.module('encore.ui.utilities')
  * add it as follows:
  *
  * <pre>
- * Environment.add({
+ * rxEnvironment.add({
  *     // Matches only https://preprod.encore.rackspace.com
  *     name: 'preprod',
  *     pattern: /\/\/preprod.encore.rackspace.com/,
@@ -30,7 +30,7 @@ angular.module('encore.ui.utilities')
  * For this demo application, we add a "Github Pages" environment, like this:
  *
  * <pre>
- * Environment.add({
+ * rxEnvironment.add({
  *     name: 'ghPages',
  *     pattern: '//rackerlabs.github.io',
  *     url: baseGithubUrl + '{{path}}'
@@ -56,18 +56,18 @@ angular.module('encore.ui.utilities')
  *
  * ## Checking Current Environment ##
  *
- * The `Environment` service contains methods for checking if we are currently in
+ * The `rxEnvironment` service contains methods for checking if we are currently in
  * one of the five listed environments, namely:
  *
- * * `Environment.isLocal()`
- * * `Environment.isPreProd()`
- * * `Environment.isUnifiedPreProd()`
- * * `Environment.isUnified()`
- * * `Environment.isUnifiedProd()`
+ * * `rxEnvironment.isLocal()`
+ * * `rxEnvironment.isPreProd()`
+ * * `rxEnvironment.isUnifiedPreProd()`
+ * * `rxEnvironment.isUnified()`
+ * * `rxEnvironment.isUnifiedProd()`
  *
  * The normal procedure is to assume that your code is running in local or staging,
- * and take special actions if `Environment.isPreProd()` or
- * `Environment.isUnifiedProd()` are `true`.
+ * and take special actions if `rxEnvironment.isPreProd()` or
+ * `rxEnvironment.isUnifiedProd()` are `true`.
  *
  * ## Overlapping Environments ##
  *
@@ -76,7 +76,7 @@ angular.module('encore.ui.utilities')
  * the `preprod` environment, the `unified-preprod` environment, and `unified-prod`.
  *
  * When you want to check if you're in one of the custom environments, you can
- * use `envCheck()`, i.e.: `Environment.envCheck('ghPages')`
+ * use `envCheck()`, i.e.: `rxEnvironment.envCheck('ghPages')`
  *
  * ## A Warning About rxEnvironmentUrl ##
  * `rxEnvironmentUrl` can be used for building full URLs, based on the current

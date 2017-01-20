@@ -1,5 +1,6 @@
 angular.module('encore.ui.rxOptionTable')
 /**
+ * @deprecated This directive will be removed in EncoreUI 4.0.0
  * @ngdoc directive
  * @name rxOptionTable.directive:rxOptionTable
  * @restrict E

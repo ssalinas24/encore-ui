@@ -11,7 +11,7 @@
      * This is the pagination filter that is used to limit the number of pages
      * shown.
      *
-     * @param {Object} pager The instance of the PageTracking service. If not
+     * @param {Object} pager The instance of the rxPageTracker service. If not
      * specified, a new one will be created.
      *
      * @returns {Array} The list of page numbers that will be displayed.
@@ -45,7 +45,7 @@
             return displayPages;
         };
     }//rxPagerFilter
-    
+
     /**
      * @deprecated
      * Use rxPager instead. This filter will be removed on the 4.0.0 release.
