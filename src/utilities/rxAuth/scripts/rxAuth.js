@@ -4,11 +4,10 @@ angular.module('encore.ui.utilities')
  * @name utilities.service:rxAuth
  * @description
  * Service which provides an entire solution for authenticating, user session management
- * and permissions in the UI.  The rxAuth service is a wrapper for the Identity, Session and
+ * and permissions in the UI.  The rxAuth service is a wrapper for the Session and
  * Permission services.  These services were broken into smaller components to facilitate
  * customization and re-use.
- *
- * @requires utilities.service:Identity
+ * 
  * @requires utilities.service:Session
  * @requires utilities.service:Permission
  *
@@ -25,10 +24,35 @@ angular.module('encore.ui.utilities')
  * rxAuth.hasRole(role) // Returns true/false if user has specified role
  * </pre>
  */
-.factory('rxAuth', function (Identity, Session, Permission) {
-    var svc = {};
+.factory('rxAuth', function ($resource, Session, Permission) {
+    var svc = $resource('/api/identity/:action', {}, { 
+        loginWithJSON: { 
+            method: 'POST', 
+            isArray: false, 
+            params: { 
+                action: 'tokens' 
+            }
+        },
+        validate: { 
+            method: 'GET', 
+            url: '/api/identity/login/session/:id', 
+            isArray: false 
+        }
+    });
 
-    _.assign(svc, Identity);
+    svc.login = function (credentials, success, error) {
+        var body = {
+            auth: {
+                passwordCredentials: {
+                    username: credentials.username,
+                    password: credentials.password
+                }
+            }
+        };
+
+        return svc.loginWithJSON(body, success, error);
+    };
+
     _.assign(svc, Session);
     _.assign(svc, Permission);
 
