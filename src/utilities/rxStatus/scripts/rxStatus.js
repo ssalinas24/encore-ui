@@ -168,7 +168,7 @@ angular.module('encore.ui.utilities')
  * repetitive call to `rxStatus.setScope()` at the beginning of each use.
  *
  */
-.service('rxStatus', function ($rootScope, rxNotify, ErrorFormatter) {
+.service('rxStatus', function ($rootScope, rxNotify, rxErrorFormatter) {
     var stack = 'page';
     var scope;
     var status = {
@@ -325,7 +325,7 @@ angular.module('encore.ui.utilities')
      */
     status.setError = function (msg, error, options) {
         options = _.defaults(options ? options : {}, status.ERROR());
-        msg = ErrorFormatter.buildErrorMsg(msg || '', error);
+        msg = rxErrorFormatter.buildErrorMsg(msg || '', error);
         return status.setStatus(msg, options);
     };
 

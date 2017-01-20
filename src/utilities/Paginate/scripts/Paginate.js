@@ -12,10 +12,10 @@ angular.module('encore.ui.utilities')
  *
  * @returns {Object} The list of items for the current page in the rxPageTracker object
  */
-.filter('Paginate', function (PageTracking, rxPaginateUtils) {
+.filter('Paginate', function (rxPageTracker, rxPaginateUtils) {
     return function (items, pager) {
         if (!pager) {
-            pager = PageTracking.createInstance();
+            pager = rxPageTracker.createInstance();
         }
         if (pager.showAll) {
             pager.total = items.length;

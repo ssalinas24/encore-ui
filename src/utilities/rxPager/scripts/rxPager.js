@@ -16,10 +16,10 @@
      *
      * @returns {Array} The list of page numbers that will be displayed.
      */
-    function rxPagerFilter (PageTracking) {
+    function rxPagerFilter (rxPageTracker) {
         return function (pager) {
             if (!pager) {
-                pager = PageTracking.createInstance();
+                pager = rxPageTracker.createInstance();
             }
 
             var displayPages = [],
@@ -53,11 +53,13 @@
      * @name utilities.filter:Page
      * @requires utilities.filter:rxPager
      */
-    function PageFilter ($filter) {
-        console.warn(
-            'DEPRECATED: Page - Please use rxPager. ' +
-            'Page will be removed in EncoreUI 4.0.0'
-        );
-        return $filter('rxPager');
+    function PageFilter () {
+        return function (pager) {
+            console.warn(
+                'DEPRECATED: Page - Please use rxPager. ' +
+                'Page will be removed in EncoreUI 4.0.0'
+            );
+            return rxPagerFilter()(pager);
+        };
     }//PageFilter
 })();

@@ -1,6 +1,6 @@
 describe('Pagination', function () {
     var originalItems = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
-        mockPageTracking = {
+        mockPageTracker = {
             itemsPerPage: 3,
             pageNumber: 0,
             totalPages: Math.ceil(originalItems.length / 3),
@@ -21,9 +21,9 @@ describe('Pagination', function () {
         beforeEach(function () {
             module('encore.ui.utilities');
 
-            inject(function ($filter, PageTracking) {
+            inject(function ($filter, rxPageTracker) {
                 paginate = $filter('Paginate');
-                pager = PageTracking.createInstance(angular.copy(mockPageTracking));
+                pager = rxPageTracker.createInstance(angular.copy(mockPageTracker));
             });
         });
 

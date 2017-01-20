@@ -1,4 +1,4 @@
-describe('rxTitleize', function () {
+describe('filter:rxTitleize', function () {
     var subject;
 
     beforeEach(function () {
@@ -18,7 +18,7 @@ describe('rxTitleize', function () {
     });
 });
 
-describe('titleize (DEPRECATED)', function () {
+describe('filter:titleize (DEPRECATED)', function () {
     var subject;
 
     beforeEach(function () {
