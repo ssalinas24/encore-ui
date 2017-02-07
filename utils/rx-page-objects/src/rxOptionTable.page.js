@@ -148,7 +148,7 @@ var rowNumberFromCell = function (cellElement) {
 
 /**
  * @namespace
- * @deprecated rxOptionTable will be removed in EncoreUI 4.0.0
+ * @deprecated rxOptionTable will be removed in rxPageObjects 4.0.0
  */
 var rxOptionTable = {
     tblRows: {
@@ -507,14 +507,14 @@ exports.rxOptionTable = {
     /**
      * @function
      * @memberof rxOptionTable
-     * @deprecated rxOptionTable will be removed in EncoreUI 4.0.0
+     * @deprecated rxOptionTable will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder} [rxOptionTableElement=$('rx-option-table')] -
      * ElementFinder to be transformed into an rxOptionTableElement object.
      * @returns {rxOptionTable} Page object representing the rxOptionTable object.
      */
     initialize: function (rxOptionTableElement) {
         console.warn (
-            'DEPRECATED: rxOptionTable will be removed in EncoreUI 4.0.0'
+            'DEPRECATED: rxOptionTable will be removed in rxPageObjects 4.0.0'
         );
         if (rxOptionTableElement === undefined) {
             rxOptionTableElement = $('rx-option-table');
@@ -536,7 +536,7 @@ exports.rxOptionTable = {
      * consider exposing a raw rxOptionTable component on your page object as well. This
      * provides users the ability to not only quickly get and set options in the rxOptionTable,
      * but also get columns, query cells, and other useful functions exposed in the component.
-     * @deprecated rxOptionTable will be removed in EncoreUI 4.0.0
+     * @deprecated rxOptionTable will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder} elem - The root element of the rxOptionTable.
      * @returns {rxOptionTable} A getter and a setter to be applied to an option form table in a page object.
      * @example
@@ -561,7 +561,7 @@ exports.rxOptionTable = {
      */
     generateAccessor: function (elem) {
         console.warn (
-            'DEPRECATED: rxOptionTable will be removed in EncoreUI 4.0.0'
+            'DEPRECATED: rxOptionTable will be removed in rxPageObjects 4.0.0'
         );
         return {
             get: function () {
