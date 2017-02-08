@@ -49,17 +49,11 @@ class rxFieldName {
 }
 
 /**
- * @deprecated Use <code>new</code> keyword instead. This function will be removed in rxPageObjects 4.0.0
  * @param {ElementFinder} rxFieldNameElement -
  * ElementFinder to be transformed into an rxFieldNameElement object.
  * @returns {rxFieldName} Page object representing the rxFieldName object.
  */
 rxFieldName.initialize = function (rxFieldNameElement) {
-    console.warn(
-        'DEPRECATED: rxFieldName.initialize() ' +
-        'Use new rxFieldName() instead. ' +
-        'This function will be removed in rxPageObjects 4.0.0 '
-    );
     return new rxFieldName(rxFieldNameElement);
 };
 
