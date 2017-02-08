@@ -34,6 +34,7 @@ exports.rxMisc = {
      * rounded with Math.round() which doesn't use bankers' rounding for negative numbers.
      * NOTE: AngularJS representation of negative currency changes in
      * [AngularJS v1.4.4](https://code.angularjs.org/1.4.4/docs/api/ng/filter/currency)
+     * @deprecated rxMisc.currencyToPennies will be removed in rxPageObjects 4.0.0
      * @param {string|array<string>} currencyStringOrArray - Raw text or an array of raw texts as output by Angular's
      * `currency` filter.
      *
@@ -45,6 +46,9 @@ exports.rxMisc = {
      * expect(encore.rxMisc.currencyToPennies(['$0.01', '($100 AUS)', '$150.14'])).to.eql([1, -10000, 15014]);
      */
     currencyToPennies: function (currencyStringOrArray) {
+        console.warn(
+            'DEPRECATED: rxMisc.currencyToPennies will be removed in rxPageObjects 4.0.0'
+        );
         var convert = function (currencyString) {
             var resFloat = parseFloat(currencyString.split(' ')[0].replace(/[,$()]/g, '').trim());
 
@@ -71,6 +75,7 @@ exports.rxMisc = {
      * javascript, then you shouldn't use this function. If that is the case, see the link to the
      * Encore-UI styleguide listed in the "See" addendum below. There should be no need to manipulate
      * a date's text to create a valid date object if you are following the styleguide.
+     * @deprecated rxMisc.newDate will be removed in rxPageObjects 4.0.0
      * @param {String} dateText - Text that represents the date object in the UI.
      * @returns {Date}
      * @example
@@ -91,6 +96,9 @@ exports.rxMisc = {
      * }
      */
     newDate: function (dateText) {
+        console.warn(
+            'DEPRECATED: rxMisc.newDate will be removed in rxPageObjects 4.0.0'
+        );
         return new Date(dateText);
     },
 
@@ -98,6 +106,7 @@ exports.rxMisc = {
      * @function
      * @description Utility function to negate a value in a `.then` callback using shorthand.
      * @param {*} value - The value to toggle. Runs the `!` operator on the value.
+     * @deprecated rxMisc.negate will be removed in rxPageObjects 4.0.0
      * @returns {*} Whatever happens when you run `!value` on `value`. Use with caution!
      * @example
      * var myPage = {
@@ -113,12 +122,16 @@ exports.rxMisc = {
      * };
      */
     negate: function (value) {
+        console.warn(
+            'DEPRECATED: rxMisc.negate will be removed in rxPageObjects 4.0.0'
+        );
         return !value;
     },
 
     /**
      * @description A list of common strings that appear in the UI that represent `null` to a page object.
      * Add to this list yourself or create a new one in this namespace for your application.
+     * @deprecated rxMisc.nullValueMatches will be removed in rxPageObjects 4.0.0
      * @example
      * var userPage {
      *     get emailPreferences() { return element(by.model('email.preferences')).getText(); }
@@ -140,6 +153,7 @@ exports.rxMisc = {
      * `fallbackReturnValue`, which will over ride the default `null` response into something else you'd prefer.
      * This is useful when applications feature use of `ng-if` to control various messages to the user.
      * @function
+     * @deprecated rxMisc.unless will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder} elem - The ElementFinder that may or may not be present, or displayed, or valid.
      * @param {Function} [innerFn=getText()] -
      * Function to call on the element should it be present, displayed, and valid.
@@ -175,6 +189,9 @@ exports.rxMisc = {
      * }
      */
     unless: function (elem, innerFn, fallbackReturnValue) {
+        console.warn(
+            'DEPRECATED: rxMisc.unless will be removed in rxPageObjects 4.0.0'
+        );
         if (fallbackReturnValue === undefined) {
             fallbackReturnValue = null;
         }
@@ -292,6 +309,7 @@ exports.rxMisc = {
      * @property {Promise<Number>} y - The number of pixels from the upper edge of the current scroll location.
      * @description The current scroll location, given as an _immediate_ object (not a promise of an object)
      * with members `x`/`y`, which are coordinates that _are_ returned as promises.
+     * @deprecated rxMisc.scrollPosition will be removed in rxPageObjects 4.0.0
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollX
      * @example
@@ -305,10 +323,16 @@ exports.rxMisc = {
      */
     scrollPosition: {
         get x () {
+            console.warn(
+                'DEPRECATED: rxMisc.scrollPosition will be removed in rxPageObjects 4.0.0'
+            );
             return browser.executeScript('return window.scrollX;');
         },
 
         get y () {
+            console.warn(
+                'DEPRECATED: rxMisc.scrollPosition will be removed in rxPageObjects 4.0.0'
+            );
             return browser.executeScript('return window.scrollY;');
         }
     },
@@ -316,6 +340,7 @@ exports.rxMisc = {
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same Y coordinates.
+     * @deprecated rxMisc.compareYLocations will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder|ElementArrayFinder} e1 First element to compare Y locations against.
      * @param {ElementFinder|ElementArrayFinder} e2 Second element to compare Y locations against.
      * @returns {Boolean}
@@ -327,12 +352,16 @@ exports.rxMisc = {
      * expect(encore.rxMisc.compareYLocations(firstThing, lastThing)).to.eventually.be.true;
      */
     compareYLocations: function (e1, e2) {
+        console.warn(
+            'DEPRECATED: rxMisc.compareYLocations will be removed in rxPageObjects 4.0.0'
+        );
         return this.compareLocations(e1, e2, 'y');
     },
 
     /**
      * @function
      * @description Whether or not `e1` and `e2` have the same X coordinates.
+     * @deprecated rxMisc.compareXLocations will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder|ElementArrayFinder} e1 First element to compare X locations against.
      * @param {ElementFinder|ElementArrayFinder} e2 Second element to compare X locations against.
      * @returns {Boolean}
@@ -344,6 +373,9 @@ exports.rxMisc = {
      * expect(encore.rxMisc.compareXLocations(firstThing, lastThing)).to.eventually.be.true;
      */
     compareXLocations: function (e1, e2) {
+        console.warn(
+            'DEPRECATED: rxMisc.compareXLocations will be removed in rxPageObjects 4.0.0'
+        );
         return this.compareLocations(e1, e2, 'x');
     },
 
@@ -379,11 +411,15 @@ exports.rxMisc = {
     /**
      * @private
      * @function
+     * @deprecated rxMisc.transformLocation will be removed in rxPageObjects 4.0.0
      * @param {ElementFinder} e1 First element to compare locations against.
      * @param {ElementFinder} e2 Second element to compare locations against.
      * @param {String} attribute attribute to compare ('x' or 'y')
      */
     compareLocations: function (e1, e2, attribute) {
+        console.warn(
+            'DEPRECATED: rxMisc.transformLocation will be removed in rxPageObjects 4.0.0'
+        );
         var promises = [
             this.transformLocation(e1, attribute),
             this.transformLocation(e2, attribute)
