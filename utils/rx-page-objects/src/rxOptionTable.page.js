@@ -513,7 +513,7 @@ exports.rxOptionTable = {
      * @returns {rxOptionTable} Page object representing the rxOptionTable object.
      */
     initialize: function (rxOptionTableElement) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxOptionTable will be removed in rxPageObjects 4.0.0'
         );
         if (rxOptionTableElement === undefined) {
@@ -560,7 +560,7 @@ exports.rxOptionTable = {
      * });
      */
     generateAccessor: function (elem) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxOptionTable will be removed in rxPageObjects 4.0.0'
         );
         return {

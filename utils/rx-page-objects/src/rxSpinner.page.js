@@ -6,7 +6,7 @@ var Page = require('astrolabe').Page;
 exports.rxSpinner = Page.create({
     rxSpinnerElement: {
         get: function () {
-            console.warn (
+            console.warn(
                 'DEPRECATED: rxSpinner will be removed in rxPageObjects 4.0.0'
             );
             return element(by.id('rxSpinnerElement'));

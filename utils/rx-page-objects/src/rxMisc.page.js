@@ -46,7 +46,7 @@ exports.rxMisc = {
      * expect(encore.rxMisc.currencyToPennies(['$0.01', '($100 AUS)', '$150.14'])).to.eql([1, -10000, 15014]);
      */
     currencyToPennies: function (currencyStringOrArray) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.currencyToPennies will be removed in rxPageObjects 4.0.0'
         );
         var convert = function (currencyString) {
@@ -96,7 +96,7 @@ exports.rxMisc = {
      * }
      */
     newDate: function (dateText) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.newDate will be removed in rxPageObjects 4.0.0'
         );
         return new Date(dateText);
@@ -122,7 +122,7 @@ exports.rxMisc = {
      * };
      */
     negate: function (value) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.negate will be removed in rxPageObjects 4.0.0'
         );
         return !value;
@@ -189,7 +189,7 @@ exports.rxMisc = {
      * }
      */
     unless: function (elem, innerFn, fallbackReturnValue) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.unless will be removed in rxPageObjects 4.0.0'
         );
         if (fallbackReturnValue === undefined) {
@@ -323,14 +323,14 @@ exports.rxMisc = {
      */
     scrollPosition: {
         get x () {
-            console.warn (
+            console.warn(
                 'DEPRECATED: rxMisc.scrollPosition will be removed in rxPageObjects 4.0.0'
             );
             return browser.executeScript('return window.scrollX;');
         },
 
         get y () {
-            console.warn (
+            console.warn(
                 'DEPRECATED: rxMisc.scrollPosition will be removed in rxPageObjects 4.0.0'
             );
             return browser.executeScript('return window.scrollY;');
@@ -352,7 +352,7 @@ exports.rxMisc = {
      * expect(encore.rxMisc.compareYLocations(firstThing, lastThing)).to.eventually.be.true;
      */
     compareYLocations: function (e1, e2) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.compareYLocations will be removed in rxPageObjects 4.0.0'
         );
         return this.compareLocations(e1, e2, 'y');
@@ -373,7 +373,7 @@ exports.rxMisc = {
      * expect(encore.rxMisc.compareXLocations(firstThing, lastThing)).to.eventually.be.true;
      */
     compareXLocations: function (e1, e2) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.compareXLocations will be removed in rxPageObjects 4.0.0'
         );
         return this.compareLocations(e1, e2, 'x');
@@ -417,7 +417,7 @@ exports.rxMisc = {
      * @param {String} attribute attribute to compare ('x' or 'y')
      */
     compareLocations: function (e1, e2, attribute) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxMisc.transformLocation will be removed in rxPageObjects 4.0.0'
         );
         var promises = [

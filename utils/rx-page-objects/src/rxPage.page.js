@@ -72,7 +72,7 @@ exports.rxPage = {
      * @returns {rxPage}
      */
     initialize: function (rxPageElement) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxPage will be removed in rxPageObjects 4.0.0'
         );
         if (rxPageElement === undefined) {

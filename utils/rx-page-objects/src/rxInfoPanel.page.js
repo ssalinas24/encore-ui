@@ -51,7 +51,7 @@ exports.rxInfoPanel = {
      * @returns {rxInfoPanel}
      */
     initialize: function (rxInfoPanelElement) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxInfoPanel will be removed in rxPageObjects 4.0.0'
         );
         if (rxInfoPanelElement === undefined) {

@@ -23,7 +23,7 @@ exports.rxEnvironment = {
      * expect(encore.rxEnvironment.current()).to.eventually.equal('production');
      */
     current: function () {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         var component = this;
@@ -44,7 +44,7 @@ exports.rxEnvironment = {
      * expect(encore.rxEnvironment.original()).to.eventually.equal('localhost');
      */
     original: function () {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return protractor.promise.fulfilled(this.compare(browser.baseUrl));
@@ -62,7 +62,7 @@ exports.rxEnvironment = {
      * @param {String} url - The url, as a string.
      */
     compare: function (url) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return _.find(this.environments, function findEnvironment (envName, env) {
@@ -106,7 +106,7 @@ exports.rxEnvironment = {
      * @returns {Boolean}
      */
     isLocalhost: function (options) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return this.confirmEnvironment(options, 'localhost');
@@ -122,7 +122,7 @@ exports.rxEnvironment = {
      * @returns {Boolean}
      */
     isStaging: function (options) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return this.confirmEnvironment(options, 'staging');
@@ -138,7 +138,7 @@ exports.rxEnvironment = {
      * @returns {Boolean}
      */
     isPreprod: function (options) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return this.confirmEnvironment(options, 'preprod');
@@ -154,7 +154,7 @@ exports.rxEnvironment = {
      * @returns {Boolean}
      */
     isProd: function (options) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxEnvironment will be removed in rxPageObjects 4.0.0'
         );
         return this.confirmEnvironment(options, 'production');

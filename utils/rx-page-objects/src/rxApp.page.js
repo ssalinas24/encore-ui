@@ -128,7 +128,7 @@ exports.rxApp = {
      * @returns {rxApp}
      */
     initialize: function (rxAppElement) {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxApp will be removed in rxPageObjects 4.0.0'
         );
         if (rxAppElement === undefined) {

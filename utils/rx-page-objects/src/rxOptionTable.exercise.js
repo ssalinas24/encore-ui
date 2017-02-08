@@ -22,7 +22,7 @@ exports.rxOptionTable = function (options) {
     });
 
     return function () {
-        console.warn (
+        console.warn(
             'DEPRECATED: rxOptionTable will be removed in rxPageObjects 4.0.0'
         );
         var component;
