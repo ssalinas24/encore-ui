@@ -30,7 +30,10 @@ angular.module('encore.ui.rxPaginate')
         templateUrl: 'templates/rxPaginate.html',
         replace: true,
         restrict: 'E',
-        require: '?^rxLoadingOverlay',
+        require: [
+            '?^rxLoadingOverlay',
+            '?^rxFloatingHeader'
+        ],
         scope: {
             pageTracking: '=',
             numberOfPages: '@',
@@ -40,15 +43,19 @@ angular.module('encore.ui.rxPaginate')
             sortColumn: '=?',
             sortDirection: '=?'
         },
-        link: function (scope, element, attrs, rxLoadingOverlayCtrl) {
-
+        link: function (scope, element, attrs, ctrls) {
             var errorMessage = attrs.errorMessage;
 
-            rxLoadingOverlayCtrl = rxLoadingOverlayCtrl || {
+            var rxLoadingOverlayCtrl = ctrls[0] || {
                 show: _.noop,
                 hide: _.noop,
                 showAndHide: _.noop
             };
+
+            var rxFloatingHeaderCtrl = ctrls[1] || {
+                reapply: _.noop
+            };
+
             // We need to find the `<table>` that contains
             // this `<rx-paginate>`
             var parentElement = element.parent();
@@ -64,7 +71,6 @@ angular.module('encore.ui.rxPaginate')
 
             // Everything here is restricted to using server-side pagination
             if (!_.isUndefined(scope.serverInterface)) {
-
                 var params = function () {
                     var direction = scope.sortDirection ? 'DESCENDING' : 'ASCENDING';
                     return {
@@ -132,9 +138,36 @@ angular.module('encore.ui.rxPaginate')
                 }
 
                 notifyPageTracking();
-
             }
 
+            /*
+             * Wrap pageTracking functions to reapply floating header
+             * when navigating to another page of data.
+             */
+            scope.goToFirstPage = function () {
+                rxFloatingHeaderCtrl.reapply();
+                scope.pageTracking.goToFirstPage();
+            };
+
+            scope.goToPrevPage = function () {
+                rxFloatingHeaderCtrl.reapply();
+                scope.pageTracking.goToPrevPage();
+            };
+
+            scope.goToPage = function (n) {
+                rxFloatingHeaderCtrl.reapply();
+                scope.pageTracking.goToPage(n);
+            };
+
+            scope.goToNextPage = function () {
+                rxFloatingHeaderCtrl.reapply();
+                scope.pageTracking.goToNextPage();
+            };
+
+            scope.goToLastPage = function () {
+                rxFloatingHeaderCtrl.reapply();
+                scope.pageTracking.goToLastPage();
+            };
         }
     };
 });
