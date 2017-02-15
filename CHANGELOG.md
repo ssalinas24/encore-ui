@@ -1,3 +1,16 @@
+<a name="1.50.7-0"></a>
+### 1.50.7-0 (2017-02-15)
+
+
+#### Bug Fixes
+
+* **links:** ensure all links are relative ([c57626ef](git@github.com:rackerlabs/encore-ui/commit/c57626ef5da9183de28ebf88d328431a8dae16e8))
+* **midways:** correct midway due to versioned docs ([0b7b5e6a](git@github.com:rackerlabs/encore-ui/commit/0b7b5e6abc154d4d21a5c91f3dcb2a1098494119))
+* **rxFloatingHeader:** correct numerous rendering bugs ([6b8664ce](git@github.com:rackerlabs/encore-ui/commit/6b8664ce5ba8d061242eb4e5b5b8df166447181c))
+* **tables:** correct table styling ([ae7c5def](git@github.com:rackerlabs/encore-ui/commit/ae7c5def76692ac6bcbd9266952e986c8f0fb2a4))
+* **viewSource:** ensure view source links lead to proper branch ([3c7518d9](git@github.com:rackerlabs/encore-ui/commit/3c7518d96a5f89aeb278d941f52b8df6d3b552c3))
+
+
 <a name="1.50.6"></a>
 ### 1.50.6 (2016-11-03)
 
