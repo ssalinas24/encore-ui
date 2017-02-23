@@ -25,13 +25,13 @@
     indicating the process is complete.
   </li>
 </ul>
-<rx-example name="rxBulkSelect.advanced"></rx-example>
+<rx-example name="bulkSelect.advanced"></rx-example>
 
 <h3>Bulk Selection Validation</h3>
 <p>
   To validate bulk selection in a form, use the rxBulkSelectValidate directive.
 </p>
-<rx-example name="rxBulkSelect.validate"></rx-example>
+<rx-example name="bulkSelect.validate"></rx-example>
 
 <h2>
   <rx-permalink>Status Column</rx-permalink>
@@ -79,7 +79,7 @@
     it in a separate <code>&lt;tr&gt;</code> element.
   </li>
 </ul>
-<rx-example name="rxFloatingHeader"></rx-example>
+<rx-example name="table.floatingHeader"></rx-example>
 
 <rx-debug>
   <h2>Non-filtered floating header</h2>
@@ -188,10 +188,10 @@
     UI-based pagination, where all items are retrieved at once, and paginated in the UI
   </li>
 </ul>
-<rx-example name="table.paginate.ui"></rx-example>
+<rx-example name="table.uiPagination"></rx-example>
 
 <rx-debug>
-  <div ng-controller="rxPaginateUiCtrl">
+  <div ng-controller="tableUiPaginationCtrl">
     <h3>Non-displayed pagination</h3>
     <rx-paginate
       id="rx-paginate-hidden"
@@ -222,7 +222,7 @@
       <p>Enter a search string of "error" to see the default error handling.</p>
   </li>
 </ul>
-<rx-example name="table.paginate.api"></rx-example>
+<rx-example name="table.apiPagination"></rx-example>
 
 <h2><rx-permalink>Design Patterns</rx-permalink></h2>
 
@@ -325,7 +325,7 @@
 <p>
   The rxSelectFilter component that provides a multi-select dropdown interface intended for table filtering.
 </p>
-<rx-example name="rxSelectFilter.simple"></rx-example>
+<rx-example name="selectFilter.simple"></rx-example>
 
 <h2><rx-permalink>Nested Content</rx-permalink></h2>
 <ul class="list">
@@ -361,7 +361,7 @@
     </p>
   </li>
 </ul>
-<rx-example name="rxSortableColumn.simple"></rx-example>
+<rx-example name="sortableColumn.simple"></rx-example>
 
 <rx-debug>
   <h3>Testing table for protractor tests.</h3>
