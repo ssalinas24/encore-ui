@@ -12,7 +12,6 @@ angular.module('encore.ui.utilities')
 .factory('encoreRoutes', function (rxAppRoutes, routesCdnPath, rxNotify, $q, $http,
                                    rxVisibilityPathParams, rxVisibility, rxEnvironment,
                                    rxLocalStorage) {
-
     console.warn(
         'DEPRECATED: encoreRoutes will be removed in EncoreUI 4.0.0'
     );

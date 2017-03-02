@@ -1,5 +1,6 @@
 angular.module('encore.ui.rxApp')
 /**
+ * @deprecated This directive will be removed in EncoreUI 4.0.0
  * @ngdoc directive
  * @name rxApp.directive:rxAppSearch
  * @restrict E
@@ -12,6 +13,10 @@ angular.module('encore.ui.rxApp')
  * @param {Function=} submit Function to run on submit (model is passed as only argument to function)
  */
 .directive('rxAppSearch', function () {
+    console.warn(
+        'DEPRECATED: rxAppSearch will be removed in EncoreUI 4.0.0'
+    );
+
     return {
         restrict: 'E',
         replace: true,
