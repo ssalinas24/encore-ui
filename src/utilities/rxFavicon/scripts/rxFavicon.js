@@ -42,10 +42,10 @@ angular.module('encore.ui.utilities')
             var currentEnv;
             if (rxEnvironment.isLocal()) {
                 currentEnv = 'local';
-            } else if (rxEnvironment.isUnifiedPreProd()) {
-                currentEnv = 'staging';
-            } else {
+            } else if (rxEnvironment.isPreProd() || rxEnvironment.isUnifiedProd()) {
                 currentEnv = 'prod';
+            } else {
+                currentEnv = 'staging';
             }
 
             // update href to use new path

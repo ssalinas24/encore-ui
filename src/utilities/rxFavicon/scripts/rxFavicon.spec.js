@@ -46,10 +46,7 @@ describe('utilities:rxFavicon', function () {
             rxEnvironment.isLocal = function () {
                 return false;
             }; 
-            rxEnvironment.isUnifiedPreProd = function () {
-                return false;
-            };
-            rxEnvironment.isUnifiedProd = function () {
+            rxEnvironment.isPreProd = function () {
                 return true;
             };
         }); 
@@ -66,10 +63,10 @@ describe('utilities:rxFavicon', function () {
             rxEnvironment.isLocal = function () {
                 return false;
             }; 
-            rxEnvironment.isUnifiedPreProd = function () {
-                return true;
-            };
             rxEnvironment.isUnifiedProd = function () {
+                return false;
+            };
+            rxEnvironment.isPreProd = function () {
                 return false;
             };
         });
@@ -92,12 +89,6 @@ describe('utilities:rxFavicon', function () {
             rxEnvironment.isLocal = function () {
                 return true;
             }; 
-            rxEnvironment.isUnifiedPreProd = function () {
-                return false;
-            };
-            rxEnvironment.isUnifiedProd = function () {
-                return false;
-            };
         });
 
         it('should use local path', function () {
