@@ -30,10 +30,8 @@ angular.module('encore.ui.utilities')
  *
  */
 .provider('routesCdnPath', function () {
-
     console.warn(
-        'DEPRECATED: routesCdnPath is deprecated. ' +
-        'This service is deprecated and will be removed in EncoreUI 4.0.0'
+        'DEPRECATED: routesCdnPath will be removed in EncoreUI 4.0.0'
     );
 
     this.customURL = null;

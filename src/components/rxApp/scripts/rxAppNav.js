@@ -1,5 +1,6 @@
 angular.module('encore.ui.rxApp')
 /**
+ * @deprecated This directive will be removed in EncoreUI 4.0.0
  * @ngdoc directive
  * @name rxApp.directive:rxAppNav
  * @restrict E
@@ -478,6 +479,10 @@ angular.module('encore.ui.rxApp')
  * </pre>
  */
 .directive('rxAppNav', function () {
+    console.warn(
+        'DEPRECATED: rxAppNav will be removed in EncoreUI 4.0.0'
+    );
+
     return {
         restrict: 'E',
         replace: true,

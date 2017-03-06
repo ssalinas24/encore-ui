@@ -1,5 +1,6 @@
 angular.module('encore.ui.elements')
 /**
+ * @deprecated This directive will be removed in EncoreUI 4.0.0
  * @ngdoc directive
  * @name elements.directive:rxAccountInfo
  * @restrict E
@@ -35,6 +36,10 @@ angular.module('encore.ui.elements')
  */
 .directive('rxAccountInfo', function (Teams, SupportAccount, Encore, rxNotify, encoreRoutes,
     AccountStatusGroup, $interpolate) {
+    console.warn(
+        'DEPRECATED: rxAccountInfo will be removed in EncoreUI 4.0.0'
+    );
+
     return {
         templateUrl: function (elem, attr) {
             if (attr.accountInfoBanner === 'true') {

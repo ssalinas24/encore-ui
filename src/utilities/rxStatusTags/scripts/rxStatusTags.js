@@ -1,5 +1,6 @@
 angular.module('encore.ui.utilities')
 /**
+ * @deprecated This item will be removed in EncoreUI 4.0.0
  * @ngdoc service
  * @name utilities.service:rxStatusTags
  * @description
@@ -11,6 +12,10 @@ angular.module('encore.ui.utilities')
  * these should rarely, if ever, be needed outside of the framework.
  */
 .provider('rxStatusTags', function () {
+    console.warn(
+        'DEPRECATED: rxStatusTags will be removed in EncoreUI 4.0.0'
+    );
+
     var allTags = {
         alpha: {
             class: 'alpha-status',

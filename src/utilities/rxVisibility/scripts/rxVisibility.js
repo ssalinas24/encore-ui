@@ -1,5 +1,6 @@
 angular.module('encore.ui.utilities')
 /**
+ * @deprecated This item will be removed in EncoreUI 4.0.0
  * @ngdoc service
  * @name utilities.service:rxVisibility
  * @deprecated

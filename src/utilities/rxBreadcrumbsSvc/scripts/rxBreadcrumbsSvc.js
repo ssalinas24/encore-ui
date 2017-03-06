@@ -1,5 +1,6 @@
 angular.module('encore.ui.utilities')
 /**
+ * @deprecated This item will be removed in EncoreUI 4.0.0
  * @ngdoc service
  * @name utilities.service:rxBreadcrumbsSvc
  * @description
@@ -7,6 +8,10 @@ angular.module('encore.ui.utilities')
  *
  */
 .factory('rxBreadcrumbsSvc', function () {
+    console.warn(
+        'DEPRECATED: rxBreadcrumbsSvc will be removed in EncoreUI 4.0.0'
+    );
+
     // default will always be home
     var breadcrumbs = [{
         path: '/',

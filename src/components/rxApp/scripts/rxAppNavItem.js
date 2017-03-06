@@ -1,5 +1,6 @@
 angular.module('encore.ui.rxApp')
 /**
+ * @deprecated This directive will be removed in EncoreUI 4.0.0
  * @ngdoc directive
  * @name rxApp.directive:rxAppNavItem
  * @restrict E
@@ -14,6 +15,10 @@ angular.module('encore.ui.rxApp')
  * </pre>
  */
 .directive('rxAppNavItem', function ($compile, $location, $route) {
+    console.warn(
+        'DEPRECATED: rxAppNavItem will be removed in EncoreUI 4.0.0'
+    );
+
     var linker = function (scope, element) {
         var injectContent = function (selector, content) {
             var el = element[0].querySelector(selector);
