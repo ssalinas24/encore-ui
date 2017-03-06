@@ -1,3 +1,12 @@
+<a name="1.50.8-0"></a>
+### 1.50.8-0 (2017-03-06)
+
+
+#### Bug Fixes
+
+* **rxDatePicker:** correct empty string validity [1.x] ([7547bfb7](git@github.com:rackerlabs/encore-ui/commit/7547bfb77641603ab0439fa744214ab9fe008390))
+
+
 <a name="1.50.7"></a>
 ### 1.50.7 (2017-02-15)
 
