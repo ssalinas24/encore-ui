@@ -1,4 +1,14 @@
-<div class="layout-demo">
+<rx-page class="layout-demo" title="'Flexbox Grid'" subtitle="'Attribute-Based'">
+  <p>
+    <rx-stability stability="'deprecated'"></rx-stability>
+  </p>
+
+  <rx-notification type="warning">
+    <p>
+      The attribute-based grid system is deprecated and should not be used.<br />
+      Please use the <a href="#/elements/FlexboxGrid">class-based grid system</a> instead.
+    </p>
+  </rx-notification>
 
   <!-- Overview -->
   <a id="Overview"></a>
@@ -249,7 +259,7 @@
 
   <p>
     The <code>layout-align</code> attribute takes two parameters in any order. Parameters <code>top</code>,
-    <code>middle</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, and <code>center</code> 
+    <code>middle</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, and <code>center</code>
     determine the alignment of child elements and may be combined in sensible ways (ie <code>top left</code> works but
     <code>top bottom</code> would not).
   </p>
@@ -547,4 +557,4 @@
       <td>Negates hide on devices greater than 1200px wide.</td>
     </tr>
   </table>
-</div>
+</rx-page>
