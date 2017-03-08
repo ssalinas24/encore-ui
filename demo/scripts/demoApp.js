@@ -111,6 +111,9 @@ angular.module('demoApp', ['encore.ui', 'ngRoute'])
             controller: 'listElementsController',
             controllerAs: 'vm'
         })
+        .when('/elements/deprecated/FlexboxGrid', {
+            templateUrl: 'templates/deprecated/FlexboxGrid.html'
+        })
         .when('/elements/:element', {
             templateUrl: 'templates/modules/showModule.html',
             controller: 'showModuleController',
